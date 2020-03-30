@@ -6,14 +6,14 @@ const options = {
   cert: fs.readFileSync('cert.pem')
 };
 
-
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 
 require('dotenv').config();
 
 const app = express();
+const db = require('./db.js');
+
 const local = {
   port: process.env.PORT || 8000,
   environment: process.env.NODE_ENV || 'development'
@@ -22,20 +22,15 @@ const local = {
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log("MongoDB database connection succesful");
-});
-
 const supplierRouter = require('./routes/supplierRouter');
 const rationEventRouter = require('./routes/rationEventRouter');
-const loginRouter = require('./routes/loginRouter')
+const userRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authController');
 
 app.use('/supplier', supplierRouter);
 app.use('/rationEvent', rationEventRouter);
-app.use('/auth', loginRouter)
+app.use('/user', userRouter);
+app.use('/auth', authRouter);
 
 var httpsServer = https.createServer(options, app);
 

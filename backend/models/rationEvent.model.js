@@ -22,5 +22,5 @@ const rationEventSchema = new Schema({
 
 const RationEvent = mongoose.model('RationEvent', rationEventSchema);
 
-module.exports = RationEvent
-module.exports = rationEventSchema
+module.exports.RationEvent = RationEvent;
+module.exports.rationEventSchema = rationEventSchema;

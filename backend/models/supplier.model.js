@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const rationEventSchema = require('./rationEvent.model')
+const rationEventSchema = require('./rationEvent.model').rationEventSchema;
 
 const Schema = mongoose.Schema
 
@@ -7,7 +7,6 @@ const supplierSchema = new Schema({
     supplierName: {
         type: String,
         required: true,
-        unique: true,
         trim: true, 
         minLength: 3
     },
@@ -48,5 +47,5 @@ const supplierSchema = new Schema({
 
 const Supplier = mongoose.model('Supplier', supplierSchema);
 
-module.exports = Supplier;
-module.exports = supplierSchema;
+module.exports.Supplier = Supplier;
+module.exports.supplierSchema = supplierSchema;

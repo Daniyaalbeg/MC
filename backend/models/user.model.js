@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const supplierSchema = require('./supplier.model');
+const supplierSchema = require('./supplier.model').supplierSchema;
 
 const Schema = mongoose.Schema
 
@@ -10,11 +10,13 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   }, 
   password: {
     type: String,
-    required: true
+    required: true,
+    select: false
   },
   supplier: {
     type: supplierSchema,
