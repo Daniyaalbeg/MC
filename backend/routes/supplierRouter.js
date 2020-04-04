@@ -16,7 +16,6 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
     const description = req.body.description;
     const address = req.body.address;
     const contactNumber = req.body.contactNumber;
-    const approved = false;
 
     const supplier = new Supplier({
       supplierName: supplierName,
@@ -26,7 +25,8 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
       description: description,
       address: address,
       contactNumber: contactNumber,
-      approved: approved
+      contactInfo: contactInfo,
+      supplierWebsite: supplierWebsite
     });
 
     user.supplier = supplier;
@@ -63,7 +63,8 @@ router.route('/update').post(verfiyToken, (req, res, next) => {
     supplier.description = req.body.description;
     supplier.address = req.body.address;
     supplier.contactNumber = req.body.contactNumber;
-    supplier.approved = false;
+    supplier.contactInfo = req.body.contactInfo;
+    supplier.supplierWebsite = req.body.supplierWebsite;
 
     user.save()
     .then(() => res.status(200).json("Successfully updated"))

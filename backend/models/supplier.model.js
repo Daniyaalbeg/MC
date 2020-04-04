@@ -8,7 +8,7 @@ const supplierSchema = new Schema({
         type: String,
         required: true,
         trim: true, 
-        minLength: 3
+        minLength: 1
     },
     rationEvents: {
       type: [rationEventSchema],
@@ -27,7 +27,7 @@ const supplierSchema = new Schema({
     description: {
       type: String,
       required: true,
-      minlength: 3,
+      minlength: 1,
     },
     address: {
       type: String,
@@ -36,6 +36,14 @@ const supplierSchema = new Schema({
     contactNumber: {
       type: Number,
       required: true,
+    },
+    contactInfo: {
+      type: Text,
+      required: false
+    },
+    supplierWebsite: {
+      type: Text,
+      required: false
     },
     approved: {
       type: Boolean,
