@@ -20,8 +20,8 @@ const supplierSchema = new Schema({
     },
     type: {
       type: String,
-      enum: ['Person','Organisation', 'Other'],
-      default: 'Person',
+      enum: ['Individual','Organisation', 'Other'],
+      default: 'Individual',
       required: true
     },
     description: {
@@ -38,11 +38,11 @@ const supplierSchema = new Schema({
       required: true,
     },
     contactInfo: {
-      type: Text,
+      type: String,
       required: false
     },
     supplierWebsite: {
-      type: Text,
+      type: String,
       required: false
     },
     approved: {

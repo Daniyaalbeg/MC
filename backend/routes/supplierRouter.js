@@ -5,7 +5,7 @@ const verfiyToken = require('../verifyToken');
 
 //Create a supplier
 router.route('/create').post(verfiyToken, (req, res, next) => {
-  User.findById(req.id, (err, user) => {
+  User.findById(req.id, { password: 0}, (err, user) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 
@@ -40,7 +40,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
 //Get all suppliers
 router.route('/').get((req, res) => {
   const suppliersCollected = [];
-  User.find().lean()
+  User.find(null, { password: 0}).lean()
   .then((users) => {
     users.forEach((user) => {
       suppliersCollected.push(user.supplier);
@@ -52,7 +52,7 @@ router.route('/').get((req, res) => {
 
 //Update a new supplier
 router.route('/update').post(verfiyToken, (req, res, next) => {
-  User.findById(req.id, (err, user) => {
+  User.findById(req.id, { password: 0}, (err, user) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 
@@ -74,7 +74,7 @@ router.route('/update').post(verfiyToken, (req, res, next) => {
 
 //Delete a supplier
 router.route('/delete').delete(verfiyToken, (req, res, next) => {
-  User.findById(req.id, (err, user) => {
+  User.findById(req.id, { password: 0}, (err, user) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 

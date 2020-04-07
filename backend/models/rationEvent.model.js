@@ -7,6 +7,7 @@ const Schema = mongoose.Schema
 const rationEventSchema = new Schema({
     name: { type: String, required: true },
     description: {type: String, required: true },
+    // Number of bags distributed || ration items || Images || 
     location: {
       type: pointSchema,
       required: true

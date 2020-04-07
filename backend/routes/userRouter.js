@@ -22,14 +22,14 @@ router.route('/').post((req, res) => {
 
 //Get all users DELETE OR SOMETHING!
 router.route('/').get((req, res) => {
-  User.find()
+  User.find(null, { password: 0})
   .then((users) => res.status(200).json(users))
   .catch((error) => res.status(500).json('Error: ' + error));
 })
 
 //Get a specific user
 router.route('/:id').get((req, res) => {
-  User.findById(req.params.id)
+  User.findById(req.params.id, { password: 0})
   .then((user) => { res.status(200).json(user) })
   .catch((error) => res.status(500).json("Errpr: " + error));
 });

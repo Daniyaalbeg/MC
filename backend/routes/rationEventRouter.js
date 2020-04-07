@@ -6,7 +6,7 @@ const verifyToken = require('../verifyToken');
 
 //Create a new ration event
 router.route('/create').post(verifyToken, (req, res, next) => {
-  User.findById(req.id, (err, user) => {
+  User.findById(req.id, { password: 0}, (err, user) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 
@@ -37,7 +37,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
 //Get all ration events
 router.route('/').get((req, res) => {
   const rationEventsCollected = [];
-  User.find()
+  User.find(null, { password: 0})
   .then((users) => {
     users.forEach((user) => {
       const rationEvents = user.supplier.rationEvents;
@@ -52,7 +52,7 @@ router.route('/').get((req, res) => {
 
 //Get specific event by id
 router.route('/:id').get((req, res) => {
-  User.find()
+  User.find(null, { password: 0})
   .then((users) => {
     users.forEach((user) => {
       const rationEvents = user.supplier.rationEvents;
@@ -69,7 +69,7 @@ router.route('/:id').get((req, res) => {
 
 //Delete a specific ration event
 router.route('/:id').delete(verifyToken, (req, res, next) => {
-  User.findById(req.id, (err, user) => {
+  User.findById(req.id, { password: 0}, (err, user) => {
     if (err) res.status(500).json("There was a problem finding the ration event/");
     if (!user) res.status(500).json("There was a problem finding your user.")
 
@@ -88,7 +88,7 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
 
 //Update a ration event
 router.route('/update/:id').post(verifyToken, (req, res, next) => {
-  User.findById(req.id, function (err, user) {
+  User.findById(req.id, { password: 0}, function (err, user) {
     if (err) return res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
     

@@ -39,7 +39,7 @@ router.route('/register').post((req, res) => {
 })
 
 router.route('/me').get(verifyToken, (req, res, next) => {
-  User.findById(req.id, function (err, user) {
+  User.findById(req.id, { password: 0}, function (err, user) {
     if (err) return res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
     
@@ -48,7 +48,7 @@ router.route('/me').get(verifyToken, (req, res, next) => {
 });
 
 router.route('/login').post((req, res) => {
-  User.findOne({ username: req.body.username})
+  User.findOne({ email: req.body.email })
   .then((user) => {
     if (!user) {
       return res.status(404).send('No user found');

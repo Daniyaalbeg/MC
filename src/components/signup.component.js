@@ -76,7 +76,7 @@ class Signup extends Component {
           organisationName: "",
           description: "",
           donationInfo: "",
-          typeInfo: "Person",
+          typeInfo: "Individual",
           addressInfo: "",
           numberInfo: "",
           contactInfo: "",
@@ -193,7 +193,7 @@ class Signup extends Component {
         </Form.Group>
 
         <Form.Group controlId="formDonationInfo">
-          <Form.Label>Donation info</Form.Label>
+          <Form.Label>Your bank details for donations</Form.Label>
           <Form.Control
             name="donationInfo"
             as="textarea" 
@@ -218,7 +218,7 @@ class Signup extends Component {
             onBlur={handleBlur}
             value={values.typeInfo}
           >
-            <option>Person</option>
+            <option>Individual</option>
             <option>Organisation</option>
             <option>Other</option>
           </Form.Control>
@@ -242,7 +242,7 @@ class Signup extends Component {
         </Form.Group>
 
         <Form.Group controlId="formContactNumber">
-          <Form.Label>Mobile Number</Form.Label>
+          <Form.Label>Pakistani Mobile Number</Form.Label>
           <Form.Control
             name="numberInfo"
             type="text"
