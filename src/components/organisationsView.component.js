@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
 const organisationsView = () => {
   return (
-    <p> Org view</p>
+    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+      <Tab eventKey="home" title="Home">
+        <p>asdasdasd</p>
+      </Tab>
+      <Tab eventKey="profile" title="Profile">
+      <p>asdasdasd</p>
+      </Tab>
+      <Tab eventKey="contact" title="Contact">
+      <p>asdasdasd</p>
+      </Tab>
+    </Tabs>
   );
 }
 

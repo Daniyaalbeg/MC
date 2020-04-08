@@ -1,0 +1,19 @@
+.errorText {
+  text-align: center;
+}
+
+.rationNameText {
+  vertical-align: middle;
+}
+
+.rationListCard {
+  width: 100%;
+}
+
+.rationCardInfo {
+  text-align: left;
+}
+
+.rationCardButton {
+  text-align: right;
+}

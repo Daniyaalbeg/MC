@@ -10,12 +10,14 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
     if (!user) return res.status(404).send("No user found.");
 
     const supplierName = req.body.supplierName;
-    const rationEvents = req.body.rationEvents;
+    const rationEvents = [];
     const bankingDetails = req.bankingDetails;
     const type = req.body.type;
     const description = req.body.description;
     const address = req.body.address;
     const contactNumber = req.body.contactNumber;
+    const contactInfo = req.body.contactInfo;
+    const supplierWebsite = req.body.supplierWebsite;
 
     const supplier = new Supplier({
       supplierName: supplierName,
@@ -33,8 +35,9 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
 
     user.save()
     .then(() => res.status(200).json("Success"))
+    .catch((error) => res.status(500).json(error))
   })
-  .catch((error) => res.status(500).json(error));
+  .catch((error) => res.status(500).json(error ));
 })
 
 //Get all suppliers

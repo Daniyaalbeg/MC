@@ -1,6 +1,7 @@
 import * as actions from '../Actions/userInfoActions';
 
 export const initialState = {
+  fetched: false,
   loading: false,
   username: "",
   email: "",
@@ -20,6 +21,7 @@ export default function userInfoReducer(state = initialState, action) {
       }
     case actions.GET_USER_INFO_SUCCESS:
       return {
+        fetched: true,
         loading: false,
         username: action.payload.username,
         email: action.payload.email,
@@ -31,7 +33,9 @@ export default function userInfoReducer(state = initialState, action) {
     case actions.GET_USER_INFO_FAILURE:
       return {
         ...state,
+        fetched: false,
         hasErrors: true,
+        loading: false,
         error: action.payload
       }
     default:

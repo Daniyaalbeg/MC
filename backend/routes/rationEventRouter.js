@@ -12,7 +12,6 @@ router.route('/create').post(verifyToken, (req, res, next) => {
 
     const name = req.body.name;
     const description = req.body.description;
-    const supplier = req.body.supplier;
     const location = req.body.location;
     const date = req.body.date;
     const approved = req.body.approved;
@@ -20,7 +19,6 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     const newRationEvent = new RationEvent({
       name,
       description,
-      supplier,
       location,
       date,
       approved

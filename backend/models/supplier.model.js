@@ -44,10 +44,6 @@ const supplierSchema = new Schema({
     supplierWebsite: {
       type: String,
       required: false
-    },
-    approved: {
-      type: Boolean,
-      required: true
     }
 }, {
     timestamps: true,

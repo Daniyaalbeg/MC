@@ -29,7 +29,6 @@ export function getUserInfo() {
       headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })
     .then((res) => {
-      console.log(res.data);
       dispatch(gettingUserInfoSuccess(res.data));
     })
     .catch((error) => {

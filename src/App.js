@@ -11,11 +11,6 @@ import ResetPassword from './components/resetpassword.component';
 
 
 function App() {
-  const user = {
-    auth: false,
-    token: null
-  }
-
   return (
     <Router>
       <NavigationBar />

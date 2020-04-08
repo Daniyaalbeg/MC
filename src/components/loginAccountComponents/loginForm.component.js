@@ -76,7 +76,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
             />
             {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
             <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
-            {hasErrors ? <Form.Text className="text-muted, red"> Wrong Password, try again </Form.Text> : ""}
+            {hasErrors ? <Form.Text className="text-muted, red"> Wrong email or password, try again </Form.Text> : ""}
             <Form.Text className="text-muted">
               <Link to='/resetPassword' onClick={handleClose}>Forgot password?</Link>
             </Form.Text>

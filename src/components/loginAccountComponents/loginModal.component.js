@@ -14,12 +14,12 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        {auth ? "Account" : "Log in"}
+        {auth ? "My Account" : "Log in"}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{auth ? "Account" : "Log in"}</Modal.Title>
+          <Modal.Title>{auth ? "My Account" : "Log in"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 

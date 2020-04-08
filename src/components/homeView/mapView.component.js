@@ -21,10 +21,6 @@ class MapView extends Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom
     });
-
-    // map.on('load', function () {
-    //   map.resize();
-    // });
   }
 
   render() {

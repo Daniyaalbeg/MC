@@ -2,8 +2,7 @@ import React, { Component, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import LoginModal from './loginAccountComponents/loginModal.component';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal'
+
 
 
 const NavigationBar = () => {
