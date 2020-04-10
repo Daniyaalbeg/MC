@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import '../../css/loginModal.css'
 
 import ShowDetails from './showDetails.component'
+import { loggingOut } from '../../Actions/authActions';
 
 const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
   const [show, setShow] = useState(false);
@@ -19,13 +21,18 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{auth ? "My Account" : "Log in"}</Modal.Title>
+          <Modal.Title>
+            {auth ? "My Account" : "Log in"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-
-        <ShowDetails handleClose={handleClose} />
-
+          <ShowDetails handleClose={handleClose} />
         </Modal.Body>
+        {auth && 
+          <Modal.Footer className="logoutButton">
+            <Button variant="danger" className="logoutButton" onClick={() => dispatch(loggingOut())}> Log out </Button>
+          </Modal.Footer>
+        }
       </Modal>
     </>
   );

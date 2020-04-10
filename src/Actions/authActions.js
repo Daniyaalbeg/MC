@@ -4,6 +4,8 @@ export const LOGIN_ATTEMPT = "LOGIN"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "LOGIN_FAILURE"
 
+export const LOGOUT = "LOGOUT"
+
 export const loggingIn = () => ({
   type: LOGIN_ATTEMPT,
 })
@@ -15,6 +17,10 @@ export const loggingInSuccess = (auth) => ({
 
 export const loggingInFailure = () => ({
   type: LOGIN_FAILURE
+})
+
+export const loggingOut = () => ({
+  type: LOGOUT
 })
 
 export function login(auth) {  
@@ -34,7 +40,7 @@ export function login(auth) {
       dispatch(loggingInSuccess(res.data));
     })
     .catch((error) => {
-      dispatch(loggingInFailure());
+      dispatch(loggingInFailure(error));
     });
   }
 }

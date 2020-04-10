@@ -28,7 +28,6 @@ const RationView = (props) => {
           <RationItemCard ration={ration} key={ration._id} onClick={() => {
             setSelectedRationId(ration._id);
             setShowingTabs(false);
-            // console.log(selectedRationId)
           }}/>
         )
         const list = (

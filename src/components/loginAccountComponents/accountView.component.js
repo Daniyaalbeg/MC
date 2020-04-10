@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
-import TabContent from 'react-bootstrap/TabContent'
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container'
 import '../../css/accountView.css'
@@ -62,7 +60,7 @@ const AccountView = ({dispatch, fetched, loading, username, email, supplier, app
       )
     } else {
       return(
-        <Spinner animation="border" role="status" className="loadingSpinner, red">
+        <Spinner animation="border" role="status" className="loadingSpinner">
           <span className="sr-only">Loading...</span>
         </Spinner>
       ) 

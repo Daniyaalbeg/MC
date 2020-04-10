@@ -6,7 +6,7 @@ import './App.css';
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView.component';
 import OrgView from './components/organisationsView.component';
-import Signup from './components/signup.component';
+import Signup from './components/signup/signUp.component';
 import ResetPassword from './components/resetpassword.component';
 
 

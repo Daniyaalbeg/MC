@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const rationEventSchema = require('./rationEvent.model').rationEventSchema;
+const bankingDetailsSchema = require('./bankingDetails.model').bankingDetailSchema;
 
 const Schema = mongoose.Schema
 
@@ -15,13 +16,17 @@ const supplierSchema = new Schema({
       required: false
     },
     bankingDetails: {
-      type: String,
+      type: bankingDetailsSchema,
       required: false
     },
     type: {
       type: String,
       enum: ['Individual','Organisation', 'Other'],
       default: 'Individual',
+      required: true
+    },
+    areaOfWork: {
+      type: [String],
       required: true
     },
     description: {
@@ -34,7 +39,7 @@ const supplierSchema = new Schema({
       required: true,
     },
     contactNumber: {
-      type: Number,
+      type: String,
       required: true,
     },
     contactInfo: {
@@ -42,6 +47,18 @@ const supplierSchema = new Schema({
       required: false
     },
     supplierWebsite: {
+      type: String,
+      required: false
+    },
+    facebookURL: {
+      type: String,
+      required: false
+    },
+    twitterURL: {
+      type: String,
+      required: false
+    },
+    instagramURL: {
       type: String,
       required: false
     }

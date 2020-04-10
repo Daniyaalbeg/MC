@@ -16,3 +16,8 @@
 .red {
   color: red;
 }
+
+.input-feedback {
+  font-size: small;
+  color: #dc3545 !important;
+}

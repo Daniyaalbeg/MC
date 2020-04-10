@@ -1,5 +1,6 @@
 .loadingSpinner {
-  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .centreText {
