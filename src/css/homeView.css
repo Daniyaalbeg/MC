@@ -1,4 +1,42 @@
-.top {
-  height: 60vh;
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 !important;
+  margin: 0 !important;
+  height: 100%;
+  width: 100vw;
 }
 
+.top {
+  display: flex;
+  flex-direction: row;
+  height: 60vh;
+  width: 100vw;
+  /* background-color: blue; */
+}
+
+.bottom {
+  display: flex;
+  height: 33vh;
+  width: 100vw;
+  align-items: stretch;
+  /* background-color: red; */
+}
+
+.mapView {
+  width: 70vw;
+  /* flex-grow: 1; */
+}
+
+.rationListView {
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+
+.rationListView::-webkit-scrollbar {
+  display: none;
+}
+
+.rationInfoView {
+  flex-grow: inherit;
+}

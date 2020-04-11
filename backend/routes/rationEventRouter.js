@@ -39,12 +39,15 @@ router.route('/create').post(verifyToken, (req, res, next) => {
 //Get all ration events
 router.route('/').get((req, res) => {
   const rationEventsCollected = [];
-  User.find(null, { password: 0})
+  User.find(null, { username: 0, email: 0, password: 0})
   .then((users) => {
     users.forEach((user) => {
-      const rationEvents = user.supplier.rationEvents;
+      var rationEvents = user.supplier.rationEvents;
       rationEvents.forEach((rationEvent) => {
-        rationEventsCollected.push(rationEvent);
+        var newRationEvent = {...rationEvent.toObject()} //Convert mongoose model to JS object
+         newRationEvent.supplier = user.supplier;
+        newRationEvent.supplier.rationEvents = null;
+        rationEventsCollected.push(newRationEvent);
       });
     });
     res.status(200).json(rationEventsCollected);

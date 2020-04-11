@@ -8,12 +8,13 @@ import App from './App';
 import rootReducer from './Reducers/reducers.js'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/index.css';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 render(
   <Provider store={store}>
-    <App />
+    <App className="app" />
     </Provider>,
   document.getElementById('root')
   );
