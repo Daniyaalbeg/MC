@@ -1,0 +1,14 @@
+.navlink {
+  color: #B0D6FF;
+  text-decoration: none;
+}
+
+.navlink:active {
+  color: white;
+  text-decoration: none;
+}
+
+.navlink:hover {
+  color: white;
+  text-decoration: none;
+}

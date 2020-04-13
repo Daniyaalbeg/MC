@@ -11,6 +11,7 @@ const RationInfoView = (props) => {
   } else {
     return (
       <div className="bigBoi">
+        <button onClick={props.onClick}> back </button>
         <div className="smallBoi">
           <h6 className="text-muted"> Name </h6>
           <p> {ration.name} </p>

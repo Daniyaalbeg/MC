@@ -1,27 +1,27 @@
-.container {
+.containerHome {
   display: flex;
   flex-direction: column;
-  padding: 0 0 !important;
+  padding-left: 0 !important;
   margin: 0 !important;
-  height: 100%;
-  width: 100vw;
+  height: 93.5vh;
+  /* padding-bottom: 56px; */
+  width: 100vw;;
 }
 
 .top {
   display: flex;
   flex-direction: row;
-  height: 60vh;
+  flex: 1 1 auto;
+  height: 93.5vh;
   width: 100vw;
-  /* background-color: blue; */
 }
 
-.bottom {
+/* .bottom {
   display: flex;
   height: 33vh;
   width: 100vw;
   align-items: stretch;
-  /* background-color: red; */
-}
+} */
 
 .mapView {
   width: 70vw;

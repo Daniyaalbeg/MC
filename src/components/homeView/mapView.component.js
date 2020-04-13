@@ -1,78 +1,104 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { connect } from 'react-redux';
+import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 import '../../css/map.css';
+import token from '../../config';
+import styled from 'styled-components';
+import { selectingRationEvent } from '../../Actions/selectRationEventActions';
+import svgD from '../../assets/svg'
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaXlhYWxiZWciLCJhIjoiY2s2Y2V6M2VtMDRjbTNtcWJpaGl5Z2Q3eCJ9.eL1wNXGcQdJ5CUQCdGNW1A';
 
-const mapStart = ({
-  lng: 69.3451,
-  lat: 30.3753,
-  zoom: 4.7
-})
+mapboxgl.accessToken = token
 
-var mapContainer
+const Map = ReactMapboxGl({
+  accessToken: token
+});
 
-const MapView = ({dispatch, rationEvents, selectedRation}) => {
-
-  useLayoutEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer,
-      style: 'mapbox://styles/mapbox/outdoors-v9',
-      center: [mapStart.lng, mapStart.lat],
-      zoom: mapStart.zoom
-    });
-
-    const features = []
-    rationEvents.map((rationEvent) => {
-      const feature = {
-        'type': 'feature',
-        'geometry': {
-          'type': rationEvent.location.type,
-          'coordinates': [rationEvent.location.coordinates[1], rationEvent.location.coordinates[0]]
-        },
-        'properties': {
-          'title': rationEvent.name,
-          'icon': 'fast-food'
-        }
-      }
-      features.push(feature)
-    });
-  
-    map.on('load', () => {
-      map.addSource('points', {
-        'type': 'geojson',
-        'data': {
-          'type': 'FeatureCollection',
-          'features': features
-        }
-      });
-      map.addLayer({
-        'id': 'points',
-        'type': 'symbol',
-        'source': 'points',
-        'layout': {
-        // get the icon name from the source's "icon" property
-        // concatenate the name to get an icon from the style's sprite sheet
-        'icon-image': ['concat', ['get', 'icon'], '-15'],
-        // get the title name from the source's "title" property
-        'text-field': ['get', 'title'],
-        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-        'text-offset': [0, 0.6],
-        'text-anchor': 'top'
-        }
-        });
-    });
-  });
-
-  return (
-    <div ref={el => mapContainer = el} className="mapContainer" />
-    )
+const flyToOptions = {
+  speed: 1
 }
+
+const image = new Image();
+image.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(svgD);
+const images = ['sack', image]
+
+const StyledPopup = styled.div`
+  background: white;
+  color: #3f618c;
+  font-weight: 40;
+  font-size: 35;
+  padding: 5px;
+  border-radius: 2px;
+`;
+
+const layoutLayer = {
+  'icon-image': 'fast-food'
+}
+
+const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
+
+class MapView extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      center: [69.3451, 30.3753],
+      zoom: [4.7],
+    }
+  }
+
+  onDrag = () => {
+    if (this.props.selectedRation) {
+      this.setState = ({
+        center: this.props.selectedRation.location.coordinates,
+        zoom: [14]
+      })
+      this.props.dispatch(selectingRationEvent(null))
+    }
+  }
+
+  render() {
+    return (
+      <Map
+        style='mapbox://styles/daniyaalbeg/ck8xf05we46ts1ipm9zqkoyya'
+        containerStyle={{
+          height: '100%',
+          width: '100%'
+        }}
+        
+        fitBounds={startingBounds}
+        center={this.props.selectedRation == null ? this.state.center : this.props.selectedRation.location.coordinates}
+        zoom={this.props.selectedRation == null ? this.state.zoom : [14]}
+        // onZoom={}
+        // onMove={}
+        onDrag={this.onDrag}
+        flyToOptions={flyToOptions}
+      >
+        <Layer type="symbol" id="marker" layout={{ "icon-image" : "sack" }} images={images} >
+          {this.props.filteredEvents.map((rationEvent, index) => (
+            <Feature
+              key={rationEvent._id}
+              coordinates={rationEvent.location.coordinates}
+            />
+          ))}
+        </Layer>
+        {this.props.selectedRation && (
+          <Popup key={this.props.selectedRation._id} coordinates={this.props.selectedRation.location.coordinates}>
+            <StyledPopup>
+              <div>{this.props.selectedRation.name}</div>
+            </StyledPopup>
+          </Popup>
+        )
+        }
+      </Map>
+    )
+  } 
+}
+
 
 const MapStateToProps = (state) => ({
   selectedRation: state.rationInfo.selectedRation,
-  rationEvents: state.rationInfo.rationEvents 
+  filteredEvents: state.rationInfo.rationEvents,
 });
 
 export default connect(MapStateToProps)(MapView);

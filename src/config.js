@@ -1,0 +1,3 @@
+const REACT_APP_MAPBOX_API_KEY = 'pk.eyJ1IjoiZGFuaXlhYWxiZWciLCJhIjoiY2s2Y2V6M2VtMDRjbTNtcWJpaGl5Z2Q3eCJ9.eL1wNXGcQdJ5CUQCdGNW1A';
+export default REACT_APP_MAPBOX_API_KEY
+// export const 

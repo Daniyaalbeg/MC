@@ -1,0 +1,32 @@
+.listGroup {
+  height: 100%;
+  width: 100%;
+}
+
+.searchBarSpace {
+  margin: 0;
+}
+
+.searchBarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px darkblue;
+  padding-left: 20px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-right: 20px;
+}
+
+.searchIcon {
+  border: none;
+  font-size: 150;
+  vertical-align: middle;
+}
+
+.searchBar {
+  flex-grow: 2;
+  border: none;
+  padding: 0;
+  padding-left: 12px;
+}

@@ -1,12 +1,14 @@
 import * as actions from '../Actions/getRationinfoActions';
 import * as selectActions from '../Actions/selectRationEventActions';
+import * as filterActions from '../Actions/filterRatioEventAction';
 
 const initialState = {
   loading: false,
   hasErros: false,
   fetched: false,
   rationEvents: [],
-  selectedRation: null
+  selectedRation: null,
+  filter: "all"
 }
 
 export default function rationInfoReducer(state = initialState, action) {
@@ -17,6 +19,9 @@ export default function rationInfoReducer(state = initialState, action) {
         loading: true
       }
     case actions.GET_RATION_INFO_SUCCESS:
+      action.payload.forEach((rationEvent) => {
+        rationEvent.location.coordinates.reverse();
+      })
       return {
         ...state,
         loading: false,
@@ -33,7 +38,12 @@ export default function rationInfoReducer(state = initialState, action) {
     case selectActions.SELECT_RATION_EVENT:
       return {
         ...state,
-        selectedRation: action.payload
+        selectedRation: action.payload,
+      }
+    case filterActions.FILTER_RATION_EVENT:
+      return {
+        ...state,
+        filter: action.payload
       }
     default:
       return state;

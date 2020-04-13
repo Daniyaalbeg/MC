@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import mapboxgl, { Point } from 'mapbox-gl';
 import '../../css/map.css';
+import token from '../../config';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaXlhYWxiZWciLCJhIjoiY2s2Y2V6M2VtMDRjbTNtcWJpaGl5Z2Q3eCJ9.eL1wNXGcQdJ5CUQCdGNW1A';
+mapboxgl.accessToken = token;
 
 class RationItemInfoMap extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class RationItemInfoMap extends Component {
 
   componentDidMount() {
     const map = new mapboxgl.Map({
-      container: this.mapContainer,
+      container: this.mapContainerInfo,
       style: 'mapbox://styles/mapbox/outdoors-v9',
       center: [this.props.ration.location.coordinates[1], this.props.ration.location.coordinates[0]],
       zoom: 14
@@ -58,7 +59,7 @@ class RationItemInfoMap extends Component {
 
   render() {
     return (
-      <div ref={el => this.mapContainer = el} className="mapContainer" />
+      <div ref={el => this.mapContainerInfo = el} className="mapContainerInfo" />
     )
   }
 }
