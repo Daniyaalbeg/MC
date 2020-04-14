@@ -13,6 +13,8 @@
 .rationCardInfo {
   text-align: left;
   display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .rationCardButton {
