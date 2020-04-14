@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import '../../css/rationlistView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons'
+import filterAndSearch from './filterAndSearch';
 
 import { searchRationEvents, filterRationEvents } from '../../Actions/filterSearchRatioEventAction';
 
@@ -24,9 +25,12 @@ const RationListItem = (props) => {
 const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) => {
   
   const onSearchChange = (event) => {
-    console.log(event.target.value)
     dispatch(searchRationEvents(event.target.value))
-}
+  }
+
+  const onFilterChange = (event) => {
+    //Fill filter implementation
+  }
 
 
   if (selectedRation == null) {
@@ -63,24 +67,10 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
   }
 }
 
-const MapStateToProps = (state) => {
-  const filter = state.rationInfo.filter;
-  const filteredRationEvents = state.rationInfo.rationEvents.filter((rationEvent) => {
-    if (filter == "all") {
-      return true
-    } else {
-      //add filter to check ration info
-    }
-  });
-  const searchTerm = state.rationInfo.search;
-  const searchedAndFilteredEvents = filteredRationEvents.filter((rationEvent) => {
-    return (rationEvent.name.toLowerCase().includes(searchTerm) || rationEvent.supplier.supplierName.toLowerCase().includes(searchTerm) || rationEvent.supplier.description.toLowerCase().includes(searchTerm))
-  });
-
-  return ({
-    rationEvents: searchedAndFilteredEvents,
+const MapStateToProps = (state) => ({
+    rationEvents: filterAndSearch(state.rationInfo.rationEvents, state.rationInfo.filter, state.rationInfo.search),
     selectedRation: state.rationInfo.selectedRation,
     searchValue: state.rationInfo.search
-})};
+});
 
 export default connect(MapStateToProps)(RationListView);

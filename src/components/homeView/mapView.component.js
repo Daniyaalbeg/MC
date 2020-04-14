@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect } from 'react';
+import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import { connect } from 'react-redux';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
@@ -7,7 +7,7 @@ import token from '../../config';
 import styled from 'styled-components';
 import { selectingRationEvent } from '../../Actions/selectRationEventActions';
 import svgD from '../../assets/svg.js'
-
+import filterAndSearch from './filterAndSearch'
 
 mapboxgl.accessToken = token
 
@@ -37,6 +37,7 @@ const layoutLayer = {
 }
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
+let rationEventKeys = {}
 
 class MapView extends React.Component {
   constructor(props) {
@@ -47,6 +48,12 @@ class MapView extends React.Component {
     }
   }
 
+  componentWillUpdate() {
+    this.props.filteredEvents.map((event) => {
+      rationEventKeys[event._id] = {...event}
+    });
+  }
+
   onDrag = () => {
     if (this.props.selectedRation) {
       this.setState = ({
@@ -55,6 +62,10 @@ class MapView extends React.Component {
       })
       this.props.dispatch(selectingRationEvent(null))
     }
+  }
+
+  onMarkerClick = (rationEventId) => {
+    this.props.dispatch(selectingRationEvent(rationEventKeys[rationEventId]))
   }
 
   render() {
@@ -79,6 +90,7 @@ class MapView extends React.Component {
             <Feature
               key={rationEvent._id}
               coordinates={rationEvent.location.coordinates}
+              onClick={() => {this.onMarkerClick(rationEvent._id)}}
             />
           ))}
         </Layer>
@@ -98,7 +110,7 @@ class MapView extends React.Component {
 
 const MapStateToProps = (state) => ({
   selectedRation: state.rationInfo.selectedRation,
-  filteredEvents: state.rationInfo.rationEvents,
+  filteredEvents: filterAndSearch(state.rationInfo.rationEvents, state.rationInfo.filter, state.rationInfo.search)
 });
 
 export default connect(MapStateToProps)(MapView);
