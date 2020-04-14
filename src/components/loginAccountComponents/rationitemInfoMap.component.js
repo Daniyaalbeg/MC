@@ -11,15 +11,15 @@ class RationItemInfoMap extends Component {
   }
 
   componentDidMount() {
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: this.mapContainerInfo,
       style: 'mapbox://styles/mapbox/outdoors-v9',
       center: [this.props.ration.location.coordinates[1], this.props.ration.location.coordinates[0]],
       zoom: 14
     });
 
-    map.on('load', () => {
-      map.addSource('points', {
+    this.map.on('load', () => {
+      this.map.addSource('points', {
         'type': 'geojson',
         'data': {
           'type': 'FeatureCollection',
@@ -38,7 +38,7 @@ class RationItemInfoMap extends Component {
           ]
         }
       });
-      map.addLayer({
+      this.map.addLayer({
         'id': 'points',
         'type': 'symbol',
         'source': 'points',
@@ -52,10 +52,15 @@ class RationItemInfoMap extends Component {
         'text-offset': [0, 0.6],
         'text-anchor': 'top'
         }
-        });
+      });
     });
   }
 
+  componentDidUpdate() {
+    window.requestAnimationFrame(()=>{
+      this.map.resize();
+    })
+  }
 
   render() {
     return (
