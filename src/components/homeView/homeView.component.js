@@ -15,10 +15,8 @@ const HomeView = ({ dispatch, loading, fetched}) => {
 
   return (
     <div className="containerHome">
-      <div className="top">
-        <div className="mapView"><MapView /></div>
-        <div className="rationListView"><RationListView /></div>
-      </div>
+      <div className="mapView"><MapView /></div>
+      <div className="rationListView"><RationListView /></div>
     </div>
   )
 }

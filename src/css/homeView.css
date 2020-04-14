@@ -1,14 +1,17 @@
-.containerHome {
-  display: flex;
-  flex-direction: column;
-  padding-left: 0 !important;
-  margin: 0 !important;
-  height: 93.5vh;
-  /* padding-bottom: 56px; */
-  width: 100vw;;
+html, body {
+  height: 100%;
 }
 
-.top {
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerHome {
+  flex-grow: 1;
+  padding-left: 0 !important;
+  margin: 0 !important;
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
