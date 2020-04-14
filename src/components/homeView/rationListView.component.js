@@ -4,7 +4,7 @@ import { selectingRationEvent } from '../../Actions/selectRationEventActions';
 import { connect } from 'react-redux';
 import '../../css/rationlistView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/pro-light-svg-icons'
+import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons'
 
 
 import RationInfoView from './rationInfoView.component';
@@ -20,6 +20,10 @@ const RationListItem = (props) => {
   )
 }
 
+// function onChange(value) {
+//   alert(value.value);
+// }
+
 const RationListView = ({dispatch, rationEvents, selectedRation}) => {
   if (selectedRation == null) {
     return (
@@ -27,6 +31,12 @@ const RationListView = ({dispatch, rationEvents, selectedRation}) => {
       <form className="searchBarContainer">
         <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
         <input type='text' className="searchBar"/>
+        <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
+        <div className="filterSelect">
+          <select>
+            <option value="all"> all </option>
+          </select>
+        </div>
       </form>
       <hr className="searchBarSpace"/>
       <ListGroup variant="flush" className="listGroup">

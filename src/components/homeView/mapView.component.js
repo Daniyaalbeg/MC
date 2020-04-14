@@ -6,7 +6,7 @@ import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
 import { selectingRationEvent } from '../../Actions/selectRationEventActions';
-import svgD from '../../assets/svg'
+import svgD from '../../assets/svg.js'
 
 
 mapboxgl.accessToken = token
@@ -33,7 +33,7 @@ const StyledPopup = styled.div`
 `;
 
 const layoutLayer = {
-  'icon-image': 'fast-food'
+  'icon-image': 'sack'
 }
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
@@ -74,7 +74,7 @@ class MapView extends React.Component {
         onDrag={this.onDrag}
         flyToOptions={flyToOptions}
       >
-        <Layer type="symbol" id="marker" layout={{ "icon-image" : "sack" }} images={images} >
+        <Layer type="symbol" id="marker" layout={layoutLayer} images={images} >
           {this.props.filteredEvents.map((rationEvent, index) => (
             <Feature
               key={rationEvent._id}

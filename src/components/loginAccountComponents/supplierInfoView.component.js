@@ -2,6 +2,10 @@ import React, { Fragment} from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
 import '../../css/supplierInfoView.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
+
 const BankingDetails = (props) => {
   const bankInfo = props.bankingDetails;
   if (bankInfo.bankName != null) {
@@ -93,8 +97,13 @@ const SupplierInfoView = (props) => {
       <h6 className="text-muted"> Other Info </h6>
       <p> {props.supplier.contactInfo} </p>
       <hr />
-      <h6 className="text-muted"> Website </h6>
-      <p> {props.supplier.supplierWebsite} </p>
+      {props.supplierWebsite && (
+        <Fragment>
+        <h6 className="text-muted"> Website </h6>
+        <a href={props.supplier.supplierWebsite} key={props.supplier.supplierWebsite} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faGlobe}/></a>
+        </Fragment>
+      )
+      }
       <SocialMediaIcons supplier={props.supplier} />
     </div>
   )
@@ -104,10 +113,22 @@ const SocialMediaIcons = (props) => {
   const socialMediaIcons = [props.supplier.facebookURL, props.supplier.twitterURL, props.supplier.instagramURL]
   const renderedSocialMediaIcons = socialMediaIcons.map((socialIcon) => {
     if (socialIcon != null) {
-      return <a href={socialIcon} target="_blank" key={socialIcon}> Social icon </a>
+      return whichLogo(socialIcon)
     }
   })
   return renderedSocialMediaIcons;
+}
+
+function whichLogo(socialIcon) {
+  if (socialIcon.includes("facebook")) {
+    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faFacebook}/></a>
+  } else if (socialIcon.includes('twitter')) {
+    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faTwitter} href={socialIcon} key={socialIcon}/> </a>
+  } else if (socialIcon.includes('instagram')) {
+    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon">< FontAwesomeIcon icon={faInstagram} href={socialIcon} key={socialIcon}/> </a>
+  } else {
+    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon">< FontAwesomeIcon icon={faGlobe} href={socialIcon} key={socialIcon}/> </a>
+  }
 }
 
 export default SupplierInfoView
