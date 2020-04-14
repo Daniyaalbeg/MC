@@ -1,3 +1,17 @@
 .logoutButton {
   justify-content: flex-start !important;
 }
+
+.createEventButton {
+  margin-left: 12px;
+}
+
+.linkButtonText {
+  text-decoration: none;
+  color: white;
+}
+
+.linkButtonText:hover {
+  text-decoration: none;
+  color: white;
+}

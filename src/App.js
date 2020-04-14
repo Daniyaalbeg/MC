@@ -6,7 +6,7 @@ import HomeView from './components/homeView/homeView.component';
 import OrgView from './components/organisationsView.component';
 import Signup from './components/signup/signUp.component';
 import ResetPassword from './components/resetpassword.component';
-
+import CreateRation from './components/signup/createRation.component';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <Route path="/organisations" component={OrgView}/>
       <Route path="/signup" component={Signup}/>
       <Route path="/resetPassword" component={ResetPassword} />
+      <Route path="/createRation" component={CreateRation} />
     </Router>
   );
 }

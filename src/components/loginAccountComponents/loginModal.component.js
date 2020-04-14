@@ -6,6 +6,7 @@ import '../../css/loginModal.css'
 
 import ShowDetails from './showDetails.component'
 import { loggingOut } from '../../Actions/authActions';
+import { Redirect, Link } from 'react-router-dom';
 
 const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
   const [show, setShow] = useState(false);
@@ -23,6 +24,9 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
         <Modal.Header closeButton>
           <Modal.Title>
             {auth ? "My Account" : "Log in"}
+            {auth &&
+              <Button onClick={handleClose} size="sm" className="createEventButton"> <Link className="linkButtonText" to="/createRation">Create Event</Link> </Button>
+            }
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
