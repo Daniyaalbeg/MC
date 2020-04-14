@@ -5,10 +5,9 @@ import RationItemInfoMap from './rationitemInfoMap.component.js';
 
 const RationItemInfo = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
-  const ration = props.ration[0];
+  const ration = props.ration;
   return (
     <div>
-      <br />
       <h6 className="text-muted"> Name </h6>
       <p> {ration.name} </p>
       <hr />
