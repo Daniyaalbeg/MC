@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getOrgInfo } from '../Actions/getOrgInfoActions';
 
-const organisationsView = () => {
+const OrganisationsView = ({dispatch, loading, hasErrors, fetched, orgInfo}) => {
+  
+  useEffect(() => {
+    if (!fetched && !loading) {
+      dispatch(getOrgInfo());
+    }
+  });
+
   return (
-    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-      <Tab eventKey="home" title="Home">
-        <p>asdasdasd</p>
-      </Tab>
-      <Tab eventKey="profile" title="Profile">
-      <p>asdasdasd</p>
-      </Tab>
-      <Tab eventKey="contact" title="Contact">
-      <p>asdasdasd</p>
-      </Tab>
-    </Tabs>
-  );
+    <p> hello world </p>
+  )
 }
 
-export default organisationsView;
+const MapStateToProps = (state) => ({
+  loading: state.orgInfo.loading,
+  hasErrors: state.orgInfo.hasErrors,
+  fetched: state.orgInfo.fetched,
+  orgInfo: state.orgInfo.orgInfo
+})
+
+export default connect(MapStateToProps)(OrganisationsView);

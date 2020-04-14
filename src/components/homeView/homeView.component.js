@@ -5,11 +5,7 @@ import { connect } from 'react-redux';
 import { getRationInfo } from '../../Actions/getRationinfoActions';
 import '../../css/homeView.css';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-const HomeView = ({ dispatch, loading, fetched, selectedRation, rationEvents}) => {
+const HomeView = ({ dispatch, loading, fetched}) => {
 
   useEffect(() => {
     if (!fetched && !loading) {
@@ -20,7 +16,7 @@ const HomeView = ({ dispatch, loading, fetched, selectedRation, rationEvents}) =
   return (
     <div className="containerHome">
       <div className="top">
-        <div className="mapView"><MapView rationEvents={rationEvents}/></div>
+        <div className="mapView"><MapView /></div>
         <div className="rationListView"><RationListView /></div>
       </div>
     </div>
@@ -29,9 +25,7 @@ const HomeView = ({ dispatch, loading, fetched, selectedRation, rationEvents}) =
 
 const MapStateToProps = (state) => ({
   loading: state.rationInfo.loading,
-  selectedRation: state.rationInfo.selectedRation,
   fetched: state.rationInfo.fetched,
-  rationEvents: state.rationInfo.rationEvents
 })
 
 export default connect(MapStateToProps)(HomeView);
