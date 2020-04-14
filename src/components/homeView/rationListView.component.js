@@ -6,6 +6,7 @@ import '../../css/rationlistView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons'
 
+import { searchRationEvents, filterRationEvents } from '../../Actions/filterSearchRatioEventAction';
 
 import RationInfoView from './rationInfoView.component';
 
@@ -20,17 +21,20 @@ const RationListItem = (props) => {
   )
 }
 
-// function onChange(value) {
-//   alert(value.value);
-// }
+const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) => {
+  
+  const onSearchChange = (event) => {
+    console.log(event.target.value)
+    dispatch(searchRationEvents(event.target.value))
+}
 
-const RationListView = ({dispatch, rationEvents, selectedRation}) => {
+
   if (selectedRation == null) {
     return (
       <Fragment>
       <form className="searchBarContainer">
         <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
-        <input type='text' className="searchBar"/>
+        <input type='text' className="searchBar" onChange={onSearchChange}/>
         <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
         <div className="filterSelect">
           <select>
@@ -59,9 +63,24 @@ const RationListView = ({dispatch, rationEvents, selectedRation}) => {
   }
 }
 
-const MapStateToProps = (state) => ({
-  rationEvents: state.rationInfo.rationEvents,
-  selectedRation: state.rationInfo.selectedRation
-});
+const MapStateToProps = (state) => {
+  const filter = state.rationInfo.filter;
+  const filteredRationEvents = state.rationInfo.rationEvents.filter((rationEvent) => {
+    if (filter == "all") {
+      return true
+    } else {
+      //add filter to check ration info
+    }
+  });
+  const searchTerm = state.rationInfo.search;
+  const searchedAndFilteredEvents = filteredRationEvents.filter((rationEvent) => {
+    return (rationEvent.name.toLowerCase().includes(searchTerm) || rationEvent.supplier.supplierName.toLowerCase().includes(searchTerm) || rationEvent.supplier.description.toLowerCase().includes(searchTerm))
+  });
+
+  return ({
+    rationEvents: searchedAndFilteredEvents,
+    selectedRation: state.rationInfo.selectedRation,
+    searchValue: state.rationInfo.search
+})};
 
 export default connect(MapStateToProps)(RationListView);

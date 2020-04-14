@@ -1,6 +1,6 @@
 import * as actions from '../Actions/getRationinfoActions';
 import * as selectActions from '../Actions/selectRationEventActions';
-import * as filterActions from '../Actions/filterRatioEventAction';
+import * as filterSearchActions from '../Actions/filterSearchRatioEventAction';
 
 const initialState = {
   loading: false,
@@ -8,7 +8,8 @@ const initialState = {
   fetched: false,
   rationEvents: [],
   selectedRation: null,
-  filter: "all"
+  filter: "all",
+  search: ""
 }
 
 export default function rationInfoReducer(state = initialState, action) {
@@ -40,10 +41,15 @@ export default function rationInfoReducer(state = initialState, action) {
         ...state,
         selectedRation: action.payload,
       }
-    case filterActions.FILTER_RATION_EVENT:
+    case filterSearchActions.FILTER_RATION_EVENT:
       return {
         ...state,
         filter: action.payload
+      }
+    case filterSearchActions.SEARCH_RATION_EVENT:
+      return {
+        ...state,
+        search: action.payload.toLowerCase()       
       }
     default:
       return state;
