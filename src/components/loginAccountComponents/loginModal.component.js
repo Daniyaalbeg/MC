@@ -25,7 +25,7 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
           <Modal.Title>
             {auth ? "My Account" : "Log in"}
             {auth &&
-              <Button onClick={handleClose} size="sm" className="createEventButton"> <Link className="linkButtonText" to="/createRation">Create Event</Link> </Button>
+              <Button onClick={handleClose} size="sm" className="createEventButton"> <Link className="linkButtonText" to="/createRation">Create Ration</Link> </Button>
             }
           </Modal.Title>
         </Modal.Header>

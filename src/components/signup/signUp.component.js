@@ -9,11 +9,9 @@ import Card from 'react-bootstrap/Card';
 import { Col } from 'react-bootstrap';
 import classNames from "classnames";
 import { signUp } from '../../Actions/signUpActions';
+import CheckboxGroup, { Checkbox } from './Checkboxs.component';
 
 import '../../css/form.css';
-
-const InputFeedback = ({ error }) =>
-  error ? <div className={classNames("input-feedback")}>{error}</div> : null;
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -68,10 +66,7 @@ const validationSchema = Yup.object().shape({
   description: Yup.string()
   .required("*Description is required")
   .min(1, "*Description name must be longer than 1 charachter")
-  .max(100, "*Description name must be less than 100 charachters"),
-  // bankingDetails: Yup.string()
-  // .min(1, "*Donation Info name must be longer than 1 charachter")
-  // .max(100, "*Donation Info name must be less than 100 charachters"),
+  .max(1000, "*Description name must be less than 1000 charachters"),
   addressInfo: Yup.string()
   .required("*Address is required")
   .min(10, "*Address name must be longer than 1 charachter")
@@ -97,11 +92,11 @@ const validationSchema = Yup.object().shape({
   .oneOf([true], "*Must accept terms and conditions")
 });
 
-const Signup = ({ dispatch, hasErrors, loading, success }) => {
+const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
   return (
     <Card bsPrefix='card' bg='light' text='dark'>
       <Fragment>
-        {success &&
+        {success || auth &&
           <Redirect push to="/" />
         }
       </Fragment>
@@ -635,7 +630,7 @@ const Signup = ({ dispatch, hasErrors, loading, success }) => {
             component={Checkbox}
             name="agreedToTerms"
             id="agreedToTerms"
-            label="Agree to something"
+            label="Agree to Terms & Conditions"
           />
         </Form.Group>
 
@@ -655,91 +650,11 @@ const Signup = ({ dispatch, hasErrors, loading, success }) => {
   )
 }
 
-class CheckboxGroup extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  handleChange = event => {
-    const target = event.currentTarget;
-    let valueArray = [...this.props.value] || [];
-
-    if (target.checked) {
-      valueArray.push(target.id);
-    } else {
-      valueArray.splice(valueArray.indexOf(target.id), 1);
-    }
-
-    this.props.onChange(this.props.id, valueArray);
-  };
-
-  handleBlur = () => {
-    // take care of touched
-    this.props.onBlur(this.props.id, true);
-  };
-
-  render() {
-    const { value, error, touched, label, className, children } = this.props;
-
-    const classes = classNames(
-      "input-field",
-      {
-        "is-success": value || (!error && touched), // handle prefilled or user-filled
-        "is-error": !!error && touched
-      },
-      className
-    );
-
-    return (
-      <div className={classes}>
-        <fieldset>
-          <legend>{label}</legend>
-          {React.Children.map(children, child => {
-            return React.cloneElement(child, {
-              field: {
-                value: value.includes(child.props.id),
-                onChange: this.handleChange,
-                onBlur: this.handleBlur
-              }
-            });
-          })}
-          {touched && <InputFeedback error={error} />}
-        </fieldset>
-      </div>
-    );
-  }
-}
-
-const Checkbox = ({
-  field: { name, value, onChange, onBlur },
-  form: { errors, touched, setFieldValue },
-  id,
-  label,
-  className,
-  ...props
-}) => {
-  return (
-    <div>
-      <input
-        name={name}
-        id={id}
-        type="checkbox"
-        value={value}
-        checked={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        className={classNames("radio-button")}
-      />
-      <label htmlFor={id}>{label}</label>
-      {touched[name] && <InputFeedback className="checkboxError" error={errors[name]} />}
-    </div>
-  );
-};
-
 const MapStateToProps = (state) => ({
   loading: state.signUp.loading,
   hasErrors: state.signUp.hasErrors,
   success: state.signUp.success,
+  auth: state.auth.auth
 });
 
 export default connect(MapStateToProps)(Signup);
