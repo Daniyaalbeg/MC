@@ -5,7 +5,8 @@ import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component';
 import OrgView from './components/organisationsView.component';
 import Signup from './components/signup/signUp.component';
-import ResetPassword from './components/resetpassword.component';
+import ResetPassword from './components/resetPassword.component';
+import ResettingPassword from './components/signup/resettingPassword.component';
 import CreateRation from './components/signup/createRation.component';
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
       <Route path="/" exact component={HomeView}/>
       <Route path="/organisations" component={OrgView}/>
       <Route path="/signup" component={Signup}/>
-      <Route path="/resetPassword" component={ResetPassword} />
+      <Route path="/reset" component={ResetPassword} />
+      <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
       <Route path="/createRation" component={CreateRation} />
     </Router>
   );

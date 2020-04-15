@@ -38,10 +38,10 @@ const supplierSchema = new Schema({
       type: String,
       required: true,
     },
-    contactName: {
-      type: String,
-      required: true
-    },
+    // contactName: {
+    //   type: String,
+    //   required: true
+    // },
     contactNumber: {
       type: String,
       required: true,

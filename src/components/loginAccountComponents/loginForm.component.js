@@ -18,10 +18,6 @@ const validationSchema = Yup.object().shape({
   .max(100, "*Email must be less than 100 characters"),
   password: Yup.string()
   .required('No password provided.') 
-  // .min(8, 'Password is too short - should be 8 chars minimum.')
-  // .matches('(?=.*[A-Z].)', 'Password must have one upper case letter.')
-  // .matches('(?=.*[a-z].)','Password must have one lower case letter.')
-  // .matches('(?=.*\d).','Password must have a number.')
 });
 
 const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
@@ -35,13 +31,12 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
         password: values.password
       }));
     }}
-    >
-      {( {values,
+    >{( {values,
           errors,
           touched,
           handleChange,
           handleBlur,
-          handleSubmit } ) => (
+          handleSubmit }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <Form.Group controlId="formEmail">
             <Form.Label>Email address</Form.Label>
@@ -78,9 +73,10 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
             <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
             {hasErrors ? <Form.Text className="text-muted, red"> Wrong email or password, try again </Form.Text> : ""}
             <Form.Text className="text-muted">
-              <Link to='/resetPassword' onClick={handleClose}>Forgot password?</Link>
+              <Link to='/reset' onClick={handleClose}>Forgot password?</Link>
             </Form.Text>
           </Form.Group>
+
           <Form.Group>
             <Button variant="primary" type="submit" disabled={loading}>
               {loading ? 'Logging in' : 'Log in'}

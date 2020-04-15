@@ -26,11 +26,13 @@ const supplierRouter = require('./routes/supplierRouter');
 const rationEventRouter = require('./routes/rationEventRouter');
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authController');
+const resetRouter = require('./routes/resetRouter');
 
 app.use('/supplier', supplierRouter);
 app.use('/rationEvent', rationEventRouter);
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
+app.use('/reset', resetRouter);
 
 var httpsServer = https.createServer(options, app);
 

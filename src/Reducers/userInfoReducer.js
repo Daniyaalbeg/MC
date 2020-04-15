@@ -1,4 +1,5 @@
 import * as actions from '../Actions/userInfoActions';
+import { LOGOUT } from '../Actions/authActions'
 
 export const initialState = {
   fetched: false,
@@ -38,6 +39,8 @@ export default function userInfoReducer(state = initialState, action) {
         loading: false,
         error: action.payload
       }
+      case LOGOUT:
+        return initialState
     default:
       return state;
   }
