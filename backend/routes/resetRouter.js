@@ -17,8 +17,12 @@ router.route('/').get((req, res) => {
   );
 })
 
+function ValidateEmail(email) {
+  return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+}
+
 router.route('/password').post((req, res) => {
-  if (req.body.email !== undefined) {
+  if (req.body.email !== undefined && ValidateEmail(req.body.email)) {
     var emailAddress = req.body.email;
 
     User.findOne({email: emailAddress}, {supplier: 0, username: 0, approved: 0})

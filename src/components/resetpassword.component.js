@@ -6,12 +6,14 @@ import '../css/form.css';
 
 const ResetPassword = (props) => {
   const [email, setEmail] = useState("")
+  const [success, setSuccess] = useState(false)
 
   const handleChange = (e) => {
     setEmail(e.target.value)
   }
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault()
     axios({
       method: 'post',
       url: 'http://localhost:8000/reset/password',
@@ -20,18 +22,15 @@ const ResetPassword = (props) => {
         email: email
       }
     })
-    .then((res) => <Link push to='/' />)
+    .then((res) => setSuccess(true))
     .catch((error) => console.log(error));
   }
 
   return (
-    // <Fragment>
-    //   <div className="resetForm" dangerouslySetInnerHTML={{__html: formData}}></div>
-    // </Fragment>
     <Card bsPrefix='card' bg='light' text='dark'>
     <Card.Header>Reset Password</Card.Header>
     <Card.Body>
-    <Form>
+    <Form noValidate onSubmit={null}>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" value={email} placeholder="Enter email" onChange={handleChange}/>
@@ -41,6 +40,12 @@ const ResetPassword = (props) => {
         Submit
       </Button>
   </Form>
+  {success &&
+    <div>
+      <br />
+      <h6> If an email exists you will recieve a password reset link. </h6>    
+    </div>
+  }
   </Card.Body>
   </Card>
   );
