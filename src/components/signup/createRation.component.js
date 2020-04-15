@@ -64,7 +64,7 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
         isSubmitting,
         setFieldValue,
         setFieldTouched, }) => (
-      <Form noValidate>
+      <Form noValidate onSubmit={handleSubmit}>
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
@@ -143,7 +143,7 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Button variant="primary" type="submit" disabled={loading}>
-        {loading ? 'Creating Ration' : 'Create Ration'}
+          {loading ? 'Creating Ration' : 'Create Ration'}
         </Button>
 
         <Form.Text className="text-muted">

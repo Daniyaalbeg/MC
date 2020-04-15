@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import React, { Component, Fragment } from 'react';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import '../../css/rationInfoView.css'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft } from '@fortawesome/pro-light-svg-icons'
 
 const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
 
@@ -10,8 +13,12 @@ const RationInfoView = (props) => {
     return <div className="noRation"><h1> No Ration selected. </h1></div>
   } else {
     return (
+      <Fragment>
+      <button onClick={props.onClick} className="backButton"> <FontAwesomeIcon className="backButtonIcon" icon={faChevronLeft} /> Back </button>
+        
+      <hr className="searchBarSpace"/>
+
       <div className="bigBoi">
-        <button onClick={props.onClick}> back </button>
         <div className="smallBoi">
           <h6 className="text-muted"> Name </h6>
           <p> {ration.name} </p>
@@ -32,7 +39,9 @@ const RationInfoView = (props) => {
           <h6 className="text-muted"> Happened on </h6>
           <p> {new Date(ration.date).toLocaleDateString("en-US", dateOptions)} </p>
         </div>
+        <Button variant="primary" onClick={props.onClick}> Back </Button>
       </div>
+      </Fragment>
     )
   }
 }

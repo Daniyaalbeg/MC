@@ -32,6 +32,7 @@ html, body {
 }
 
 .rationListView {
+  width: 30vw;
   overflow-y: scroll;
   flex-grow: 1;
 }
