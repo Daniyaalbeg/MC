@@ -40,6 +40,7 @@ const ResettingPassword = (props) => {
   var error = null
   var response = null
   const [sending, setSending] = useState(false)
+  const [success, setSuccess] = useState(false)
   const { match: { params } } = props;
 
   return (
@@ -65,6 +66,7 @@ const ResettingPassword = (props) => {
         .then((res) => {
           response = res.data;
           setSending(false)
+          setSuccess(true)
         })
         .catch((error) => {
           error = error
@@ -127,8 +129,8 @@ const ResettingPassword = (props) => {
         <p> {error} </p>
       </div>
     }
-    {response &&
-      <h4> Password updated succesfully. </h4>
+    {success &&
+      <h4 className="successReply"> Password updated succesfully. </h4>
     }
     </div>
   )
