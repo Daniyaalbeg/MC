@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import '../../css/form.css';
 
 import axios from 'axios';
 
@@ -43,6 +44,9 @@ const ResettingPassword = (props) => {
 
   return (
     <div>
+    <Card bsPrefix='card' bg='light' text='dark'>
+    <Card.Header>Reset Password</Card.Header>
+    <Card.Body>
     <Formik
       initialValues={{ password: "", password2: ""}}
       validationSchema={validationSchema}
@@ -114,6 +118,8 @@ const ResettingPassword = (props) => {
       </Form>
     )}
     </Formik>
+    </Card.Body>
+    </Card>
 
     {hasErrors &&
       <div className="error">

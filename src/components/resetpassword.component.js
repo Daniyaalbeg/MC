@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Card, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
+import '../css/form.css';
 
 const ResetPassword = (props) => {
   const [email, setEmail] = useState("")
@@ -27,6 +28,9 @@ const ResetPassword = (props) => {
     // <Fragment>
     //   <div className="resetForm" dangerouslySetInnerHTML={{__html: formData}}></div>
     // </Fragment>
+    <Card bsPrefix='card' bg='light' text='dark'>
+    <Card.Header>Reset Password</Card.Header>
+    <Card.Body>
     <Form>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -37,6 +41,8 @@ const ResetPassword = (props) => {
         Submit
       </Button>
   </Form>
+  </Card.Body>
+  </Card>
   );
 }
 
