@@ -35,6 +35,7 @@ router.route('/createUser').post((req, res) => {
       areaOfWork: req.body.areaOfWork,
       description: req.body.description,
       address: req.body.address,
+      contactName: req.body.contactName,
       contactNumber: req.body.contactNumber,
       contactInfo: req.body.contactInfo,
       supplierWebsite: req.body.supplierWebsite,

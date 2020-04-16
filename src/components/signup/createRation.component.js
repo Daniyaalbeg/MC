@@ -1,10 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Card, Form, Button } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
 import { Redirect } from 'react-router-dom';
-import { Formik, Field } from 'formik';
+import { Formik, Field, setFieldValue } from 'formik';
 import * as Yup from 'yup';
-import CheckboxGroup, { Checkbox } from './Checkboxs.component';
+import { Checkbox } from './Checkboxs.component';
+import { creatingNewRation } from '../../Actions/createRationActions';
+import SelectMap from './selectMap.component';
+
 import '../../css/form.css';
 
 const validationSchema = Yup.object().shape({
@@ -26,23 +30,28 @@ const validationSchema = Yup.object().shape({
   .required("*Description of items is required")
   .min(1, "*Description must be longer than 1 charachter")
   .max(1000, "*Description  must be less than 1000 charachters"),
+  // location: Yup.array(Yup.number())
+  // .required("*Must add a location"),
   agreedToTerms: Yup.bool()
-  .oneOf([true], "*Must accept terms and conditions")
+  .oneOf([true], "*Must accept terms and conditions"),
+  mapClicked: Yup.bool()
+  .oneOf([true], "*Must accept terms and conditions"),
 });
 
-const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
-  
+const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
+  const [location, setLocation] = useState([])
+
   return (
     <Card bg="light" text="dark">
       <Fragment>
        {!auth &&
           <Redirect push to="/" />
         }
-        {/* {success && 
+        {success && 
           <Redirect push to="/" /> 
-        } */}
+        }
       </Fragment>
-      <Card.Header> Create a new ration </Card.Header>
+      <Card.Header> Create New Ration Drive </Card.Header>
 
       <Formik
         initialValues={{
@@ -50,10 +59,26 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
           description: "",
           numOfItems: "",
           descriptionOfItems: "",
-          agreedToTerms: false
+          date: new Date(),
+          agreedToTerms: false,
+          mapClicked: false
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => alert(values)}
+        onSubmit={(values) => {
+          const newPoint = {
+            type: 'Point',
+            coordinates: location
+          }
+          const newRationDrive = {
+            name: values.name,
+            description: values.description,
+            totalNumberOfItems: values.numOfItems,
+            itemsDescription: values.descriptionOfItems,
+            location: newPoint,
+            date: values.date
+          }
+          dispatch(creatingNewRation(newRationDrive))
+        }}
       >
       {({values,
         errors,
@@ -68,7 +93,7 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Name of Ration Drive</Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter name"
@@ -84,9 +109,9 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescription">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Description of Ration Drive</Form.Label>
           <Form.Control
-            as="textArea"
+            as="textarea"
             rows="3"
             placeholder="Enter description"
             name="description"
@@ -101,7 +126,7 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicNumberOfItems">
-          <Form.Label>Total number of items</Form.Label>
+          <Form.Label>Total Quantity of Rations</Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter number of items"
@@ -117,9 +142,9 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescriptionOfItems">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Content of Rations Given </Form.Label>
           <Form.Control
-            as="textArea"
+            as="textarea"
             rows="3"
             placeholder="Enter description of items"
             name="descriptionOfItems"
@@ -131,6 +156,32 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
           />
           <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.descriptionOfItems}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label> Date of the Ration Drive (Can be in the future) </Form.Label>
+          <br />
+          <DatePicker
+            selected={values.date}
+            onChange={(date) => values.date = date}
+            name="date"
+            className="datePicker"
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label> Select Location of the Ration Drive </Form.Label>
+          <SelectMap
+            id="location"
+            name="location"
+            className="selectMap"
+            callBack={(location) => {
+              setLocation(location)
+              setFieldValue("mapClicked", true)
+            }}
+          />
+          <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.location}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group>
@@ -147,7 +198,7 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Button>
 
         <Form.Text className="text-muted">
-          Note: Only once we have verified your information will you be able to add charity drives and appear on the page.
+          Note: Once we have verified your information only then will you be able to add charity drives and become visible on the page.
         </Form.Text>
 
         </Card.Body>
@@ -155,21 +206,6 @@ const createRation = ({dispatch, loading, hasErrors, success, auth}) => {
       )}
       </Formik>
     </Card>
-    // <Card bsPrefix='card' bg='light' text='dark'>
-    //   <Fragment>
-    //     {!auth &&
-    //       <Redirect push to="/" />
-    //     }
-    //     {success && 
-    //       <Redirect push to="/" /> 
-    //     }
-    //   </Fragment>
-    //   <Card.header> Create an Event </Card.header>
-
-    //   <Form noValidate>
-    //     <Card.Title> Stuff </Card.Title>
-    //   </Form>
-    // </Card>
   )
 }
 
@@ -180,4 +216,4 @@ const MapStateToProps = (state) => ({
   success: state.createRation.success
 });
 
-export default connect(MapStateToProps)(createRation)
+export default connect(MapStateToProps)(CreateRation)

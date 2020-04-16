@@ -29,3 +29,17 @@
 .successReply {
   color: #4BB543;
 }
+
+.datePicker {
+  border-radius: 5px;
+  border: #cccccc;
+  border-width: 1px;
+  border-style: solid;
+  /* border: none; */
+  /* border: 2px #cccccc; */
+}
+
+.selectMap {
+  width: 100%;
+  height: 300px;
+}

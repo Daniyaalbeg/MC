@@ -16,7 +16,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     const itemsDescription = req.body.itemsDescription;
     const location = req.body.location;
     const date = req.body.date;
-    const approved = req.body.approved;
+    const approved = false;
 
     const newRationEvent = new RationEvent({
       name,

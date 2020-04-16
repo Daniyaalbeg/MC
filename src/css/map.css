@@ -8,3 +8,6 @@
   width: 100%;
 }
 
+.dontShow {
+  display: none;
+}

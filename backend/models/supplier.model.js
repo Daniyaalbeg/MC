@@ -21,8 +21,6 @@ const supplierSchema = new Schema({
     },
     type: {
       type: String,
-      enum: ['Individual','Organisation', 'Other'],
-      default: 'Individual',
       required: true
     },
     areaOfWork: {
@@ -38,10 +36,10 @@ const supplierSchema = new Schema({
       type: String,
       required: true,
     },
-    // contactName: {
-    //   type: String,
-    //   required: true
-    // },
+    contactName: {
+      type: String,
+      required: true
+    },
     contactNumber: {
       type: String,
       required: true,

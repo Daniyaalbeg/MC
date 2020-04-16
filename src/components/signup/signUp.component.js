@@ -1,13 +1,9 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import { Col } from 'react-bootstrap';
-import classNames from "classnames";
+import { Card, Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { signUp } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from './Checkboxs.component';
 
@@ -71,6 +67,10 @@ const validationSchema = Yup.object().shape({
   .required("*Address is required")
   .min(10, "*Address name must be longer than 1 charachter")
   .max(100, "*Address name must be less than 100 charachters"),
+  contactName: Yup.string()
+  .required("*Contact name is required")
+  .min(1, "*Contact name must be longer than 1 charachter")
+  .max(50, "*Contact name must be longer than 50 charachters"),
   contactNumber: Yup.string()
   .required("*Number is required")
   .min(7, "*Number must be longer than 7 charachters")
@@ -119,6 +119,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           areaOfWork: [],
           description: "",
           addressInfo: "",
+          contactName: "",
           contactNumber: "",
           contactInfo: "",
           supplierWebsite: "",
@@ -149,6 +150,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
             areaOfWork: values.areaOfWork,
             description: values.description,
             address: values.addressInfo,
+            contactName: values.contactName,
             contactNumber: values.contactNumber,
             contactInfo: values.contactInfo,
             supplierWebsite: values.supplierWebsite,
@@ -279,7 +281,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         <br />
         <hr />
         <br />
-        <Card.Subtitle className="mb-2 text-muted">Donation Info</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted"> Banking Details for Donation </Card.Subtitle>
 
         <Form.Row>
           <Form.Group as={Col} controlId="formBankName">
@@ -299,7 +301,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formBankBranch">
-            <Form.Label> Bank branch </Form.Label>
+            <Form.Label> Branch Code </Form.Label>
             <Form.Control
             name="bankBranch"
             type="text"
@@ -418,7 +420,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         <hr />
 
         <Form.Group controlId="formType">
-          <Form.Label>Type of organisation</Form.Label>
+          <Form.Label>Type of Organisation</Form.Label>
           <Form.Control
             as="select"
             name="typeInfo"
@@ -426,90 +428,100 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
             onBlur={handleBlur}
             value={values.typeInfo}
           >
+            <option>Armed Forces</option>
+            <option>Community</option>
+            <option>Corporate</option>
+            <option>Civil Society</option>
+            <option>Government</option>
             <option>Individual</option>
-            <option>Organisation</option>
-            <option>Other</option>
+            <option>NGO</option>
           </Form.Control>
         </Form.Group>
         
         <Form.Group>
-        <Form.Label>Area of work</Form.Label>
-        <CheckboxGroup
-          id="areaOfWork"
-          value={values.areaOfWork}
-          error={errors.areaOfWork}
-          touched={touched.areaOfWork}
-          onChange={setFieldValue}
-          onBlur={setFieldTouched}
-        >
-          <Field
-            component={Checkbox}
-            name="areaOfWork"
-            id="education"
-            label="Education"
-          />
-          <Field
-            component={Checkbox}
-            name="areaOfWork"
-            id="poverty"
-            label="Poverty"
-          />
-          <Field
-            component={Checkbox}
-            name="areaOfWork"
-            id="health"
-            label="Health"
-          />
-          <Field
-            component={Checkbox}
-            name="areaOfWork"
-            id="environment"
-            label="Environment"
-          />
-          <Field
-            component={Checkbox}
-            name="areaOfWork"
-            id="justice"
-            label="Justice"
-          />
-          <Field
-            component={Checkbox}
-            name="areaOfWork"
-            id="gender"
-            label="Gender"
-          />
-          <Field
-            component={Checkbox}
-            name="areaOfWork"
-            id="humanrights"
-            label="Human Rights"
-          />
-        </CheckboxGroup>
-        </Form.Group>
-
-        {/* <Form.Group controlId="formAreaOfWork">
-          <Form.Label>Area of work</Form.Label>
-          <div key="education">
-            <Form.Check inline label="Education" type="checkbox" id="education" />
-            <Form.Check inline label="Poverty" type="checkbox" id="poverty" />
-            <Form.Check inline label="Health" type="checkbox" id="health" />
-            <Form.Check inline label="Environment" type="checkbox" id="environment" />
-            <Form.Check inline label="Justice" type="checkbox" id="justice" />
-            <Form.Check inline label="Gender" type="checkbox" id="gender" />
-            <Form.Check inline label="Human Rights" type="checkbox" id="humanrights" />
-          </div>
-          <Form.Control
-            as="select"
-            name="areaOfWork"
-            onChange={handleChange}
-            onBlur={handleBlur}
+          <Form.Label> Category </Form.Label>
+          <CheckboxGroup
+            id="areaOfWork"
             value={values.areaOfWork}
+            error={errors.areaOfWork}
+            touched={touched.areaOfWork}
+            onChange={setFieldValue}
+            onBlur={setFieldTouched}
           >
-            <option>Individual</option>
-            <option>Organisation</option>
-            <option>Other</option>
-          </Form.Control>
-        </Form.Group> */}
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="communication"
+              label="Communication"
+            />  
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="communityDevelopment"
+              label="Community Development"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="education"
+              label="Education"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="environment"
+              label="Environment"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="gender"
+              label="Gender"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="health"
+              label="Health"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="humanrights"
+              label="Human Rights"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="infrastructure"
+              label="Infrastructure"
+            />
+              <Field
+                component={Checkbox}
+                name="areaOfWork"
+                id="justice"
+                label="Justice"
+              />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="livelihood"
+              label="Livelihood"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="poverty"
+              label="Poverty"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="other"
+              label="Other"
+            />
+          </CheckboxGroup>
+        </Form.Group>
 
         <Form.Group controlId="formAddress">
           <Form.Label>Address</Form.Label>
@@ -528,8 +540,24 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           <Form.Control.Feedback type="invalid">{errors.addressInfo}</Form.Control.Feedback>
         </Form.Group>
 
+        <Form.Group controlId="formContactName">
+          <Form.Label> Name of Point of Contact / Representative</Form.Label>
+          <Form.Control
+            name="contactName"
+            type="text"
+            placeholder="Enter name"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.contactName}
+            isValid={touched.contactName && !errors.contactName}
+            isInvalid={errors.contactName}
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.contactName}</Form.Control.Feedback>
+        </Form.Group>
+
         <Form.Group controlId="formContactNumber">
-          <Form.Label>Pakistani Mobile Number</Form.Label>
+          <Form.Label>Point of Contact Mobile Number</Form.Label>
           <Form.Control
             name="contactNumber"
             type="text"

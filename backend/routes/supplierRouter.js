@@ -16,6 +16,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
     const areaOfWork = req.body.areaOfWork;
     const description = req.body.description;
     const address = req.body.address;
+    const contactName = req.body.contactName
     const contactNumber = req.body.contactNumber;
     const contactInfo = req.body.contactInfo;
     const supplierWebsite = req.body.supplierWebsite;
@@ -31,6 +32,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
       areaOfWork: areaOfWork,
       description: description,
       address: address,
+      contactName: contactName,
       contactNumber: contactNumber,
       contactInfo: contactInfo,
       supplierWebsite: supplierWebsite,
@@ -74,6 +76,7 @@ router.route('/update').post(verfiyToken, (req, res, next) => {
     supplier.areaOfWork = req.body.areaOfWork;
     supplier.description = req.body.description;
     supplier.address = req.body.address;
+    supplier.contactName = req.body.contactName;
     supplier.contactNumber = req.body.contactNumber;
     supplier.contactInfo = req.body.contactInfo;
     supplier.supplierWebsite = req.body.supplierWebsite;

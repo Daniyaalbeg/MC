@@ -39,6 +39,10 @@ const RationInfoView = (props) => {
           <h6 className="text-muted"> Happened on </h6>
           <p> {new Date(ration.date).toLocaleDateString("en-US", dateOptions)} </p>
         </div>
+        <div className="smallBoi">
+          <h6 className="text-muted"> Done by </h6>
+          <p> {ration.supplier.supplierName} </p>
+        </div>
         <Button variant="primary" onClick={props.onClick}> Back </Button>
       </div>
       </Fragment>

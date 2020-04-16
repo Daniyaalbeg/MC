@@ -17,24 +17,30 @@ export const creatingRationFailure = (error) => ({
   payload: error
 });
 
-export function createRation(data) {
+export function creatingNewRation(data) {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
     dispatch(creatingRation());
 
     axios({
       method: 'post',
-      url: 'http://localhost:8000/auth/createUser',
+      url: 'http://localhost:8000/rationEvent/create',
       headers: {'Content-Type': 'application/json', 'x-access-token': token},
       //Add ration info data
-      // data: {
-        
-      // }
+      data: {
+        name: data.name,
+        description: data.description,
+        totalNumberOfItems: data.totalNumberOfItems,
+        itemsDescription: data.itemsDescription,
+        location: data.location,
+        date: data.date
+      }
     })
     .then((res) => {
       dispatch(creatingRationSuccess())
     })
     .catch((error) => {
+      console.log(error.response)
       dispatch(creatingRationFailure(error))
     })
   }
