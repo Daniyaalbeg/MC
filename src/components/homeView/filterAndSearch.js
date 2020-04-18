@@ -1,9 +1,16 @@
 const filterAndSearch = (rationEvents, filter, search) => {
-  const filteredRationEvents = rationEvents.filter((rationEvent) => {
+  const approved = rationEvents.filter((rationEvent) => {
+    return rationEvent.approved
+  })
+  const filteredRationEvents = approved.filter((rationEvent) => {
     if (filter == "all") {
       return true
     } else {
-      //add filter to check ration info
+      if (filter == rationEvent.supplier.type) {
+        return true
+      } else {
+        return false;
+      }
     }
   });
   const searchedAndFilteredEvents = filteredRationEvents.filter((rationEvent) => {

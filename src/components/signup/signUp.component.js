@@ -96,7 +96,10 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
   return (
     <Card bsPrefix='card' bg='light' text='dark'>
       <Fragment>
-        {success || auth &&
+        {success &&
+          <Redirect push to="/" />
+        }
+        {auth &&
           <Redirect push to="/" />
         }
       </Fragment>
@@ -115,7 +118,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           swiftCode: "",
           jazzCash: "",
           easyPaisa: "",
-          typeInfo: "Individual",
+          type: "Individual",
           areaOfWork: [],
           description: "",
           addressInfo: "",
@@ -146,7 +149,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
             password: values.password,
             supplierName: values.supplierName,
             bankingDetails: bankingDetails,
-            typeInfo: values.typeInfo,
+            type: values.type,
             areaOfWork: values.areaOfWork,
             description: values.description,
             address: values.addressInfo,
@@ -423,10 +426,10 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           <Form.Label>Type of Organisation</Form.Label>
           <Form.Control
             as="select"
-            name="typeInfo"
+            name="type"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.typeInfo}
+            value={values.type}
           >
             <option>Armed Forces</option>
             <option>Community</option>

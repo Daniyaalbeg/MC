@@ -29,7 +29,7 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
   }
 
   const onFilterChange = (event) => {
-    //Fill filter implementation
+    dispatch(filterRationEvents(event.target.value))
   }
 
 
@@ -41,8 +41,15 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
         <input type='text' className="searchBar" onChange={onSearchChange}/>
         <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
         <div className="filterSelect">
-          <select>
+          <select onChange={onFilterChange}>
             <option value="all"> all </option>
+            <option value ="Armed Forces">Armed Forces</option>
+            <option value="Community">Community</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Civil Society">Civil Society</option>
+            <option value="Government">Government</option>
+            <option value="Individual">Individual</option>
+            <option value="NGO">NGO</option>
           </select>
         </div>
       </form>

@@ -10,7 +10,7 @@
 .searchBarContainer {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: center;
   border: 1px darkblue;
   padding-left: 20px;
