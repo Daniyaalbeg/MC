@@ -1,7 +1,9 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature, Popup, MapContext } from 'react-mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
@@ -45,6 +47,7 @@ class MapView extends React.Component {
     this.state = {
       center: [69.3451, 30.3753],
       zoom: [4.7],
+      geocoderAdded: false
     }
   }
 
@@ -85,6 +88,21 @@ class MapView extends React.Component {
         onDrag={this.onDrag}
         flyToOptions={flyToOptions}
       >
+        <MapContext.Consumer>
+          {(map) => {
+            if (!this.state.geocoderAdded) {
+              this.setState({
+                geocoderAdded: true
+              })
+              map.addControl(
+                new MapboxGeocoder({
+                  accessToken: token,
+                  mapboxgl: map
+                })
+              )
+            }
+          }}
+        </MapContext.Consumer>
         <Layer type="symbol" id="marker" layout={layoutLayer} images={images} >
           {this.props.filteredEvents.map((rationEvent, index) => (
             <Feature

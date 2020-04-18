@@ -14,7 +14,7 @@ const filterAndSearch = (rationEvents, filter, search) => {
     }
   });
   const searchedAndFilteredEvents = filteredRationEvents.filter((rationEvent) => {
-    return (rationEvent.name.toLowerCase().includes(search) || rationEvent.supplier.supplierName.toLowerCase().includes(search) || rationEvent.supplier.description.toLowerCase().includes(search))
+    return (rationEvent.name.toLowerCase().includes(search) || rationEvent.supplier.supplierName.toLowerCase().includes(search) || rationEvent.supplier.description.toLowerCase().includes(search) || rationEvent.itemsDescription.toLowerCase().includes(search))
   });
   return searchedAndFilteredEvents
 }

@@ -1,9 +1,13 @@
 import React, { Component, Fragment } from "react";
 import token from '../../config';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl, { MapContext } from 'react-mapbox-gl';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
-import svgD from '../../assets/svg.js'
+import * as markers from '../../assets/svg.js';
+// import Geocoder from './Geocoder.component';
 import '../../css/map.css';
+
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 
 mapboxgl.accessToken = token
@@ -12,8 +16,12 @@ const Map = ReactMapboxGl({
   accessToken: token
 });
 
+const GeocodedMap = () => {
+
+}
+
 const layoutLayer = {
-  'icon-image': 'sack'
+  'icon-image': 'marker'
 }
 
 const flyToOptions = {
@@ -21,8 +29,8 @@ const flyToOptions = {
 }
 
 const image = new Image();
-image.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(svgD);
-const images = ['sack', image]
+image.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(markers.markerDuotone);
+const images = ['marker', image]
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
 
@@ -32,7 +40,8 @@ class SelectMap extends Component {
     this.state = {
       center: [69.3451, 30.3753],
       zoom: [4.7],
-      selectedPoint: []
+      selectedPoint: [],
+      geocoderAdded: false
     }
   }
 
@@ -50,7 +59,8 @@ class SelectMap extends Component {
         onClick={ (stuff, e) => {
           this.setState({
            location: e.lngLat,
-           center: e.lngLat
+           center: e.lngLat,
+           selectedPoint: [e.lngLat.lng, e.lngLat.lat]
           })
           this.props.callBack([this.state.location.lng, this.state.location.lat])
         }}
@@ -60,14 +70,30 @@ class SelectMap extends Component {
         onDrag={this.onDrag}
         flyToOptions={flyToOptions}
       >
-        {this.state.selectedPoint &&
-          <Layer type="symbol" id="marker" layout={layoutLayer} images={images} >
+        <MapContext.Consumer>
+          {(map) => {
+            if (!this.state.geocoderAdded) {
+              this.setState({
+                geocoderAdded: true
+              })
+              map.addControl(
+                new MapboxGeocoder({
+                  accessToken: token,
+                  mapboxgl: map
+                })
+              )
+            }
+          }}
+        </MapContext.Consumer>
+        <Layer type="symbol" id="marker" layout={layoutLayer} images={images} >
+          {this.state.selectedPoint.length != 0 &&
             <Feature
               key={'clickedMarker'}
               coordinates={this.state.selectedPoint}
             />
-          </Layer>
-        }
+          }
+        </Layer>
+        {/* <Geocoder /> */}
       </Map>
       </Fragment>
     )
