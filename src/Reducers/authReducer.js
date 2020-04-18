@@ -1,8 +1,8 @@
 import * as actions from '../Actions/authActions';
 
 export const initialState = {
-  auth: true,
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlOGI0MTVkNTQ5NWQ0N2ZiZDJiYzliNSIsImlhdCI6MTU4NzA2OTQ1NSwiZXhwIjoxNTg3MTU1ODU1fQ.ro11kgXk9pET4QxR2GGsf-gTv8ekmfZb0RbW6ToPFNY",
+  auth: false,
+  token: "",
   loading: false,
   hasErrors: false
 }

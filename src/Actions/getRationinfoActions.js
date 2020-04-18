@@ -3,6 +3,7 @@ import axios from 'axios';
 export const GET_RATION_INFO = "GET_RATION_INFO";
 export const GET_RATION_INFO_SUCCESS = "GET_RATION_INFO_SUCCESS";
 export const GET_RATION_INFO_FAILURE = "GET_RATION_INFO_FAILURE";
+export const GET_RATION_RESET_FETCH = "GET_RATION_RESET_FETCH";
 
 export const gettingRationInfo = () => ({
   type: GET_RATION_INFO
@@ -17,6 +18,10 @@ export const gettingRationInfoFailure = (error) => ({
   type: GET_RATION_INFO_FAILURE,
   payload: error
 });
+
+export const getRationResetFetch = () => ({
+  type: GET_RATION_RESET_FETCH
+})
 
 export function getRationInfo() {
   return async dispatch => {

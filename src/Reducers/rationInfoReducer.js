@@ -36,6 +36,13 @@ export default function rationInfoReducer(state = initialState, action) {
         hasErros: true,
         fetched: false
       }
+    case actions.GET_RATION_RESET_FETCH:
+      return {
+        ...state,
+        fetched: false,
+        hasErros: false,
+        loading: false
+      }
     case selectActions.SELECT_RATION_EVENT:
       return {
         ...state,

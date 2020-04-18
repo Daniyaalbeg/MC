@@ -91,6 +91,9 @@ const SupplierInfoView = (props) => {
       <h6 className="text-muted"> Address </h6>
       <p> {props.supplier.address} </p>
       <hr />
+      <h6 className="text-muted"> Point of Contact </h6>
+      <p> {props.supplier.contactName} </p>
+      <hr />
       <h6 className="text-muted"> Contact Number </h6>
       <p> {props.supplier.contactNumber} </p>
       <hr />
