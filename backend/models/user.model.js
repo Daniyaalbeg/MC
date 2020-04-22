@@ -25,6 +25,10 @@ const userSchema = new Schema({
   approved: {
     type: Boolean,
     required: true
+  },
+  verified: {
+    type: Boolean,
+    required: true
   }
 }, {
   timestamps: true

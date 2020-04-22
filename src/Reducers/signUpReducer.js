@@ -25,6 +25,8 @@ export default function signUpReducer(state = initialState, action) {
         success: false,
         hasErrors: true
       }
+    case actions.SIGNUP_RESET:
+      return initialState;
     default:
       return state
   }

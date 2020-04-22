@@ -8,6 +8,7 @@ export const initialState = {
   email: "",
   supplier: null,
   approved: false,
+  verified: false,
   createdAt: "",
   hasErrors: false,
   error: null
@@ -29,6 +30,7 @@ export default function userInfoReducer(state = initialState, action) {
         supplier: action.payload.supplier,
         approved: action.payload.approved,
         createdAt: action.payload.createdAt,
+        verified: action.payload.verified,
         hasErrors: false
       }
     case actions.GET_USER_INFO_FAILURE:

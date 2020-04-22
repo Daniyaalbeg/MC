@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import MapView from './mapView.component';
 import RationListView from './rationListView.component';
 import { connect } from 'react-redux';

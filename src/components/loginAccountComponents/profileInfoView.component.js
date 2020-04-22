@@ -14,6 +14,9 @@ const ProfileInfoView = (props) => {
       <h6 className="text-muted"> Approved </h6>
       <p> {props.approved ? "You have been approved" : "You have not been approved"} </p>
       <hr />
+      <h6 className="text-muted"> Verified </h6>
+      <p> {props.verified ? "You have been verified" : "You have not been verified"} </p>
+      <hr />
       <h6 className="text-muted"> You created this account on </h6>
       <p> {new Date(props.createdAt).toLocaleDateString("en-US", dateOptions)} </p>
     </div>

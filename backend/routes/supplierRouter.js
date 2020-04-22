@@ -10,6 +10,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
     if (!user) return res.status(404).send("No user found.");
 
     const supplierName = req.body.supplierName;
+    const supplierImageURL = req.body.supplierImageURL;
     const rationEvents = [];
     const bankingDetails = req.bankingDetails;
     const type = req.body.type;
@@ -26,6 +27,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
 
     const supplier = new Supplier({
       supplierName: supplierName,
+      supplierImageURL: supplierImageURL,
       rationEvents: rationEvents,
       bankingDetails: bankingDetails,
       type: type,
@@ -69,8 +71,9 @@ router.route('/update').post(verfiyToken, (req, res, next) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 
-    supplier = user.supplier;
+    let supplier = user.supplier;
     supplier.supplierName = req.body.supplierName;
+    supplier.supplierImageURL = req.body.supplierImageURL;
     supplier.bankingDetails = req.body.bankingDetails;
     supplier.type = req.body.type;
     supplier.areaOfWork = req.body.areaOfWork;

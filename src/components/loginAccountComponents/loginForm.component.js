@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import '../../css/form.css';
 import { connect } from 'react-redux';
 
+import { signupReset } from '../../Actions/signUpActions';
 import { login } from '../../Actions/authActions';
 
 
@@ -85,7 +86,10 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
               Close
             </Button>
           </Form.Group>
-          <Form.Text className="text-muted"> Don't have an account? <Link to='/signup' onClick={handleClose}> Sign up </Link></Form.Text>
+          <Form.Text className="text-muted"> Don't have an account? <Link to='/signup' onClick={() =>{
+              handleClose()
+              dispatch(signupReset())
+            }}> Sign up </Link></Form.Text>
         </Form>
       )}
     </Formik>

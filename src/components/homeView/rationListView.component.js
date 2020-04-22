@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ListGroup, Card } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import { selectingRationEvent } from '../../Actions/selectRationEventActions';
 import { connect } from 'react-redux';
 import '../../css/rationlistView.css'

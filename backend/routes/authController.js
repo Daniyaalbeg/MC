@@ -30,6 +30,7 @@ router.route('/createUser').post((req, res) => {
     });
     const supplier = new Supplier({
       supplierName: req.body.supplierName,
+      supplierImageURL: req.body.supplierImageURL,
       bankingDetails: bankingDetails,
       type: req.body.type,
       areaOfWork: req.body.areaOfWork,
@@ -48,7 +49,8 @@ router.route('/createUser').post((req, res) => {
       username: req.body.username,
       password: hashedPassword,
       supplier: supplier,
-      approved: false
+      approved: false,
+      verified: false
     });
 
     newUser.save()
@@ -79,7 +81,8 @@ router.route('/register').post((req, res) => {
       email: req.body.email,
       password: hashedPassword,
       supplier: null,
-      approved: false
+      approved: false,
+      verified: false
     });
   
     newUser.save()

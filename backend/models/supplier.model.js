@@ -11,6 +11,10 @@ const supplierSchema = new Schema({
         trim: true, 
         minLength: 1
     },
+    supplierImageURL: {
+      type: String,
+      required: false
+    },
     rationEvents: {
       type: [rationEventSchema],
       required: false

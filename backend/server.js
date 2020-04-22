@@ -27,12 +27,14 @@ const rationEventRouter = require('./routes/rationEventRouter');
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authController');
 const resetRouter = require('./routes/resetRouter');
+const s3Router = require('./routes/s3Controller');
 
 app.use('/supplier', supplierRouter);
 app.use('/rationEvent', rationEventRouter);
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/reset', resetRouter);
+app.use('/imageUpload', s3Router.sign_s3);
 
 var httpsServer = https.createServer(options, app);
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 export const SIGNUP = "SIGNUP";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+export const SIGNUP_RESET = "SINGUP_RESET"
 
 export const signingUp = () => ({
   type: SIGNUP
@@ -17,39 +18,82 @@ export const signupFailure = (error) => ({
   payload: error
 });
 
+export const signupReset = () => ({
+  type: SIGNUP_RESET
+})
+
 export function signUp(data) {
   return async (dispatch, getState) => {
-    const token = getState().auth.token;
     dispatch(signingUp());
 
-    axios({
-      method: 'post',
-      url: 'http://localhost:8000/auth/createUser',
-      headers: {'Content-Type': 'application/json', 'x-access-token': token},
-      data: {
-        email: data.email,
-        username: data.username,
-        password: data.password,
-        supplierName: data.supplierName,
-        bankingDetails: data.bankingDetails,
-        type: data.type,
-        areaOfWork: data.areaOfWork,
-        description: data.description,
-        address: data.address,
-        contactName: data.contactName,
-        contactNumber: data.contactNumber,
-        contactInfo: data.contactInfo,
-        supplierWebsite: data.supplierWebsite,
-        facebookURL: data.facebookURL,
-        twitterURL: data.twitterURL,
-        instagramURL: data.instagramURL
-      }
+    //Perform image file link request
+    let file = data.imageFile
+    let fileParts = file.name.split('.');
+    let fileName = fileParts[0];
+    let fileType = fileParts[1];
+    
+    axios.post('http://localhost:8000/imageUpload',{
+      fileName: fileName,
+      fileType: fileType
     })
     .then((res) => {
-      dispatch(singupSuccess())
+      const returnData = res.data.data.returnData;
+      const signedRequest = returnData.signedRequest;
+      const url = returnData.url
+      console.log("Recieved a signed request " + signedRequest);
+      console.log(url)
+
+      //create axios put request
+      const options = {
+        headers: {
+          'Content-Type' : fileType
+        }
+      };
+
+      axios.put(signedRequest, file, options)
+      .then((res) => {
+
+        axios({
+          method: 'post',
+          url: 'http://localhost:8000/auth/createUser',
+          headers: {'Content-Type': 'application/json'},
+          data: {
+            email: data.email,
+            username: data.username,
+            password: data.password,
+            supplierName: data.supplierName,
+            supplierImageURL: url,
+            bankingDetails: data.bankingDetails,
+            type: data.type,
+            areaOfWork: data.areaOfWork,
+            description: data.description,
+            address: data.address,
+            contactName: data.contactName,
+            contactNumber: data.contactNumber,
+            contactInfo: data.contactInfo,
+            supplierWebsite: data.supplierWebsite,
+            facebookURL: data.facebookURL,
+            twitterURL: data.twitterURL,
+            instagramURL: data.instagramURL
+          }
+        })
+        .then((res) => {
+          dispatch(singupSuccess())
+        })
+        .catch((error) => {
+          dispatch(signupFailure(error))
+        })
+
+      })
+      .catch((err) => {
+        console.log(err.response)
+        console.log(JSON.stringify(err))
+        dispatch(signupFailure(err))
+      })
     })
-    .catch((error) => {
-      dispatch(signupFailure(error))
+    .catch((err) => {
+      console.log(err);
+      dispatch(signupFailure(err))
     })
   }
 }

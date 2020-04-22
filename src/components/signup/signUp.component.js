@@ -3,11 +3,20 @@ import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
-import { Card, Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Card, Col, Button, Form } from 'react-bootstrap';
 import { signUp } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from './Checkboxs.component';
+import Thumb from './thumb.component';
 
 import '../../css/form.css';
+
+const FILE_SIZE = 2000000;
+const SUPPORTED_FORMATS = [
+  "image/jpg",
+  "image/jpeg",
+  "image/gif",
+  "image/png"
+];
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -30,7 +39,29 @@ const validationSchema = Yup.object().shape({
   .min(1, "*Organisation name must be longer than 1 charachter")
   .max(50, "*Organisation name must be less than 50 charachters")
   .matches(/^[a-zA-Z0-9_ ]*$/, "*Organisation name must only contain letters or numbers"),
-  //BANKING STUFF
+  imageFile: Yup.mixed()
+  .test(
+    "fileFormat",
+    "*Unsupported Format",
+    (value) => {
+      if (value != null) {
+        return SUPPORTED_FORMATS.includes(value.type)
+      } else {
+        return true
+      }
+    }
+  )
+  .test(
+    "fileSize",
+    "*File too large",
+    (value) => {
+      if (value != null) {
+        return value.size <= FILE_SIZE
+      } else {
+        return true
+      }
+    }
+  ),
   bankName: Yup.string()
   .min(1, "*Bank name must be longer than 1 charachter")
   .max(50, "*Bank name must be less than 50 charachter")
@@ -93,6 +124,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
+
   return (
     <Card bsPrefix='card' bg='light' text='dark'>
       <Fragment>
@@ -110,6 +142,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           username: "",
           password: "",
           supplierName: "",
+          imageFile: null,
           bankName: "",
           bankBranch: "",
           accountTitle: "",
@@ -148,6 +181,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
             username: values.username,
             password: values.password,
             supplierName: values.supplierName,
+            imageFile: values.imageFile,
             bankingDetails: bankingDetails,
             type: values.type,
             areaOfWork: values.areaOfWork,
@@ -172,12 +206,16 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           handleSubmit,
           isSubmitting,
           setFieldValue,
-          setFieldTouched, }) => (
+          setFieldTouched,
+          resetForm, }) => (
         <Form noValidate onSubmit={handleSubmit}>
         <Card.Body>
+        <Form.Text className="text-muted">
+          * required fields
+        </Form.Text>
         <Card.Title>Personal Info</Card.Title>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email address *</Form.Label>
           <Form.Control
             type="email" 
             placeholder="Enter email"
@@ -196,7 +234,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         </Form.Group>
 
         <Form.Group controlId="formUsername">
-          <Form.Label>Username</Form.Label>
+          <Form.Label>Username *</Form.Label>
           <Form.Control
             name="username"
             type="text"
@@ -212,7 +250,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         </Form.Group>
 
         <Form.Group controlId="formPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Password *</Form.Label>
           <Form.Control
             name="password"
             type="password"
@@ -232,8 +270,26 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
 
         <Card.Body>
         <Card.Title>Organisation Info</Card.Title>
+
+        <Form.Group controlId="imageUpload">
+            <Form.Label> Icon / Logo of your organisation </Form.Label>
+            <Form.File 
+              id="imageFile"
+              name="imageFile"
+              type="file"
+              label={values.imageFile == null ? "Upload file here" : values.imageFile.name}
+              lang="en"
+              custom
+              onChange={(e) => {
+                setFieldValue("imageFile", e.currentTarget.files[0])
+              }}
+            />
+            <Thumb file={values.imageFile}/>
+            <p className="red"> {errors.imageFile} </p>
+        </Form.Group>
+
         <Form.Group controlId="formsupplierName">
-          <Form.Label>Organisation name</Form.Label>
+          <Form.Label>Organisation name *</Form.Label>
           <Form.Control
             name="supplierName"
             type="text"
@@ -249,7 +305,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         </Form.Group>
 
         <Form.Group controlId="formDescription">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Description *</Form.Label>
           <Form.Control
             name="description"
             as="textarea"
@@ -527,7 +583,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         </Form.Group>
 
         <Form.Group controlId="formAddress">
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Address *</Form.Label>
           <Form.Control
             name="addressInfo"
             as="textarea" 
@@ -544,7 +600,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         </Form.Group>
 
         <Form.Group controlId="formContactName">
-          <Form.Label> Name of Point of Contact / Representative</Form.Label>
+          <Form.Label> Name of Point of Contact / Representative *</Form.Label>
           <Form.Control
             name="contactName"
             type="text"
@@ -560,7 +616,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         </Form.Group>
 
         <Form.Group controlId="formContactNumber">
-          <Form.Label>Point of Contact Mobile Number</Form.Label>
+          <Form.Label>Point of Contact Mobile Number *</Form.Label>
           <Form.Control
             name="contactNumber"
             type="text"
@@ -576,7 +632,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
         </Form.Group>
 
         <Form.Group controlId="formContactInfo">
-          <Form.Label>Other contact info</Form.Label>
+          <Form.Label>Other contact info *</Form.Label>
           <Form.Control
             name="contactInfo"
             as="textarea" 
@@ -665,9 +721,17 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit" disabled={loading}>
+        <Button variant="primary" className="signUpButton" type="submit" disabled={loading}>
         {loading ? 'Signing up' : 'Sign up'}
         </Button>
+
+        <Button variant="primary" onClick={resetForm} disabled={loading}>
+          Reset
+        </Button>
+
+        {hasErrors &&
+          <p className="red"> An error has occured please try again later or email support.</p>
+        }
 
         <Form.Text className="text-muted">
           Note: Only once we have verified your information will you be able to add charity drives and appear on the page.
@@ -687,5 +751,6 @@ const MapStateToProps = (state) => ({
   success: state.signUp.success,
   auth: state.auth.auth
 });
+
 
 export default connect(MapStateToProps)(Signup);
