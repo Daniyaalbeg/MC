@@ -11,7 +11,7 @@ import RationView from './rationView.component'
 import { getUserInfo } from '../../Actions/userInfoActions';
 import { Row, Col, Nav } from 'react-bootstrap';
 
-const AccountView = ({dispatch, fetched, loading, username, email, supplier, approved, verified, createdAt, hasErrors, error}) => {
+const AccountView = ({dispatch, fetched, loading, token, userId, username, email, supplier, approved, verified, createdAt, hasErrors, error}) => {
   
   useEffect(() => {
     if (!fetched) { dispatch(getUserInfo()) }
@@ -46,7 +46,7 @@ const AccountView = ({dispatch, fetched, loading, username, email, supplier, app
           <Col>
             <Tab.Content>
               <Tab.Pane eventKey="userInfo">
-                <ProfileInfoView username={username} email={email} approved={approved} createdAt={createdAt} verified={verified} />
+                <ProfileInfoView id={userId} token={token} username={username} email={email} approved={approved} createdAt={createdAt} verified={verified} />
               </Tab.Pane>
               <Tab.Pane eventKey="supplierInfo">
                 <SupplierInfoView supplier={supplier} />
@@ -74,8 +74,10 @@ const AccountView = ({dispatch, fetched, loading, username, email, supplier, app
 }
 
 const MapStateToProps = state => ({
+  token: state.auth.token,
   fetched: state.userInfo.fetched,
   loading: state.userInfo.loading,
+  userId: state.userInfo.userId,
   username: state.userInfo.username,
   email: state.userInfo.email,
   supplier: state.userInfo.supplier,

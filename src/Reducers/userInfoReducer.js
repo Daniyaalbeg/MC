@@ -4,6 +4,7 @@ import { LOGOUT } from '../Actions/authActions'
 export const initialState = {
   fetched: false,
   loading: false,
+  userId: "",
   username: "",
   email: "",
   supplier: null,
@@ -25,6 +26,7 @@ export default function userInfoReducer(state = initialState, action) {
       return {
         fetched: true,
         loading: false,
+        userId: action.payload._id,
         username: action.payload.username,
         email: action.payload.email,
         supplier: action.payload.supplier,

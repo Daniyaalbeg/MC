@@ -21,9 +21,9 @@
   margin-right: 12px;
 }
 
-.red {
+.redError {
   color: #dc3545;
-  font-size: small;
+  font-size: large;
 }
 
 .input-feedback {
@@ -33,6 +33,7 @@
 
 .successReply {
   color: #4BB543;
+  font-size: small;
 }
 
 .datePicker {

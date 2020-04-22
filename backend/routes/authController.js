@@ -3,6 +3,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var verifyToken = require('../verifyToken');
 
+var email = require('./emailVerificationRouter');
+
 // router.use(bodyParser.urlencoded({ extended: false }));
 // router.use(bodyParser.json());
 
@@ -52,6 +54,12 @@ router.route('/createUser').post((req, res) => {
       approved: false,
       verified: false
     });
+    
+    // try {
+      email.sendVerificationEmail(newUser);
+    // } catch {
+    //   res.status(500).send("An error occured")
+    // }
 
     newUser.save()
     .then(() => {
@@ -65,7 +73,7 @@ router.route('/createUser').post((req, res) => {
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).json("Error: " + error)
+      res.status(500).json(error)
     });
   });
 });

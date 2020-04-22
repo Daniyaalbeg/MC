@@ -1,0 +1,28 @@
+.title {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-middle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Error404 {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Error404Sub {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}

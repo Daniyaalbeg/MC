@@ -3,6 +3,7 @@ import * as actions from '../Actions/signUpActions';
 export const initialState = {
   loading: false,
   hasErrors: false,
+  error: null,
   success: false
 }
 
@@ -20,10 +21,20 @@ export default function signUpReducer(state = initialState, action) {
         success: true
       }
     case actions.SIGNUP_FAILURE:
-      return {
-        loading: false,
-        success: false,
-        hasErrors: true
+      if (typeof action.payload.data != 'undefined') {
+        return {
+          loading: false,
+          success: false,
+          error: action.payload.data.code,
+          hasErrors: true,
+        }
+      } else {
+        return {
+          loading: false,
+          success: false,
+          error: action.payload,
+          hasErrors: true,
+        }
       }
     case actions.SIGNUP_RESET:
       return initialState;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
-import { Card, Col, Button, Form } from 'react-bootstrap';
+import { Card, Col, Button, Form, Toast, Row } from 'react-bootstrap';
 import { signUp } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from './Checkboxs.component';
 import Thumb from './thumb.component';
@@ -53,7 +53,7 @@ const validationSchema = Yup.object().shape({
   )
   .test(
     "fileSize",
-    "*File too large",
+    "*File too large, please keep files below 1MB. Uo can use an online image compressor",
     (value) => {
       if (value != null) {
         return value.size <= FILE_SIZE
@@ -123,14 +123,14 @@ const validationSchema = Yup.object().shape({
   .oneOf([true], "*Must accept terms and conditions")
 });
 
-const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
+const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) => {
 
   return (
     <Card bsPrefix='card' bg='light' text='dark'>
       <Fragment>
-        {success &&
+        {/* {success &&
           <Redirect push to="/" />
-        }
+        } */}
         {auth &&
           <Redirect push to="/" />
         }
@@ -729,8 +729,12 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
           Reset
         </Button>
 
+        {success &&
+          <p className="successReply"> Sign up successfull. A verification email has been sent to {values.email} </p>
+        }
+
         {hasErrors &&
-          <p className="red"> An error has occured please try again later or email support.</p>
+          <ErrorComponent signUpError={signUpError} />
         }
 
         <Form.Text className="text-muted">
@@ -745,11 +749,30 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth }) => {
   )
 }
 
+const ErrorComponent = (props) => {
+  if (props.signUpError === 11000) {
+    return (
+      <Fragment>
+        <br />
+        <p className="redError"> This email is already in use. Please use a different one</p>
+      </Fragment>
+    )
+  } else {
+    return (
+      <Fragment>
+        <br />
+        <p className="redError"> An error has occured please try again later or email support.</p>
+      </Fragment>
+    )
+  }
+}
+
 const MapStateToProps = (state) => ({
   loading: state.signUp.loading,
   hasErrors: state.signUp.hasErrors,
   success: state.signUp.success,
-  auth: state.auth.auth
+  auth: state.auth.auth,
+  signUpError: state.signUp.error
 });
 
 

@@ -4,21 +4,27 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component';
 import OrgView from './components/organisationsView.component';
-import Signup from './components/signup/signUp.component';
+import SignUp from './components/signup/signUp.component';
 import ResetPassword from './components/resetPassword.component';
 import ResettingPassword from './components/signup/resettingPassword.component';
+import EmailVerification from './components/signup/emailVerification.component'
 import CreateRation from './components/signup/createRation.component';
+import Error404 from './components/404.component'
 
 function App() {
   return (
     <Router>
       <NavigationBar />
-      <Route path="/" exact component={HomeView}/>
-      <Route path="/organisations" component={OrgView}/>
-      <Route path="/signup" component={Signup}/>
-      <Route path="/reset" component={ResetPassword} />
-      <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
-      <Route path="/createRation" component={CreateRation} />
+      <Switch>
+        <Route path="/" exact component={HomeView}/>
+        <Route path="/organisations" component={OrgView}/>
+        <Route path="/signup" component={SignUp}/>
+        <Route path="/reset" component={ResetPassword} />
+        <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
+        <Route path="/verify/:token" component={EmailVerification} />
+        <Route path="/createRation" component={CreateRation} />
+        <Route component={Error404} />
+      </Switch>
     </Router>
   );
 }

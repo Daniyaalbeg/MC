@@ -10,30 +10,35 @@ aws.config.update({
 const S3_BUCKET = process.env.BUCKET_NAME;
 
 exports.sign_s3 = ((req, res) => {
-  const s3 = new aws.S3();
-  const fileName = req.body.fileName;
-  const uniqueFileName = uuid.v4()
-  const fileType = req.body.fileType;
+  if (req.body.fileSize > 1200000) {
+    res.status(500).send("File Too Large");
 
-  const s3Params = {
-    Bucket: S3_BUCKET,
-    Key: uniqueFileName,
-    Expires: 500,
-    ContentType: fileType,
-    ACL: 'public-read'
-  };
+  } else {
+    const s3 = new aws.S3();
+    const fileName = req.body.fileName;
+    const uniqueFileName = uuid.v4()
+    const fileType = req.body.fileType;
 
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).json({success: false, error: err})
-    }
-
-    const returnData = {
-      newName: uniqueFileName,
-      signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${uniqueFileName}`
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: uniqueFileName,
+      Expires: 500,
+      ContentType: fileType,
+      ACL: 'public-read'
     };
-    res.status(200).json({ success: true, data: { returnData }})
-  });
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({success: false, error: err})
+      }
+
+      const returnData = {
+        newName: uniqueFileName,
+        signedRequest: data,
+        url: `https://${S3_BUCKET}.s3.amazonaws.com/${uniqueFileName}`
+      };
+      res.status(200).json({ success: true, data: { returnData }})
+    });
+  }
 })

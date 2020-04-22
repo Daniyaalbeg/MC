@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { Card, Form, Button } from 'react-bootstrap';
+import { Row, Card, Form, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
@@ -8,8 +8,19 @@ import * as Yup from 'yup';
 import { Checkbox } from './Checkboxs.component';
 import { creatingNewRation } from '../../Actions/createRationActions';
 import SelectMap from './selectMap.component';
+import Dropzone, { useDropzone } from 'react-dropzone';
+import Thumb from './thumb.component';
 
 import '../../css/form.css';
+
+// const dropzoneStyle = {
+//   width: "100%",
+//   height: "auto",
+//   borderWidth: 2,
+//   borderColor: "rgb(102, 102, 102)",
+//   borderStyle: "dashed",
+//   borderRadius: 5,
+// }
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -38,8 +49,56 @@ const validationSchema = Yup.object().shape({
   .oneOf([true], "*Must accept terms and conditions"),
 });
 
+const baseStyle = {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '20px',
+  borderWidth: 2,
+  borderRadius: 2,
+  borderColor: '#eeeeee',
+  borderStyle: 'dashed',
+  backgroundColor: '#fafafa',
+  color: '#bdbdbd',
+  outline: 'none',
+  transition: 'border .24s ease-in-out'
+};
+
+const activeStyle = {
+  borderColor: '#2196f3'
+};
+
+const acceptStyle = {
+  borderColor: '#00e676'
+};
+
+const rejectStyle = {
+  borderColor: '#ff1744'
+};
+
 const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
   const [location, setLocation] = useState([])
+  const [imageFiles, setImageFiles] = useState([]);
+  const [rejectedFilesState, setRejectedFilesState] = useState([]);
+  const {
+    isDragActive,
+    isDragAccept,
+    isDragReject
+  } = useDropzone({
+    accept: 'image/jpeg, image/png, image/jpg, image/gif',
+    maxSize: 2000000,
+  });
+
+  const style = useMemo(() => ({
+    ...baseStyle,
+    ...(isDragActive ? activeStyle : {}),
+    ...(isDragAccept ? acceptStyle : {}),
+    ...(isDragReject ? rejectStyle : {})
+  }), [
+    isDragActive,
+    isDragReject
+  ]);
 
   return (
     <Card bg="light" text="dark">
@@ -59,6 +118,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           description: "",
           numOfItems: "",
           descriptionOfItems: "",
+          images: [],
           date: new Date(),
           agreedToTerms: false,
           mapClicked: false
@@ -156,6 +216,45 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           />
           <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.descriptionOfItems}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label> Images of Ration Drive (Under 2mb and only 3 images) </Form.Label>
+          <Dropzone 
+            accept = 'image/jpeg, image/png, image/jpg, image/gif'
+            maxSize = '2000000'
+            onDropRejected={(rejectedFiles) => {
+              console.log('rejected')
+              setRejectedFilesState(rejectedFiles)
+            }}
+            onDrop={(acceptedFiles, rejectedFiles) => {
+              if (rejectedFiles.length === 0) {
+                setRejectedFilesState([])
+              }
+              setImageFiles(acceptedFiles);
+              setFieldValue('images', acceptedFiles);
+          }}>
+            {({getRootProps, getInputProps}) => (
+              <Fragment>
+              <div {...getRootProps({style})}>
+                <input {...getInputProps()} />
+                <p>Drag 'n' images here, or click to select images</p>
+                <Row> {
+                  imageFiles.map((file) => {
+                    return <Thumb file={file} />
+                  })
+                } </Row>
+              </div>
+              {rejectedFilesState.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}
+              </Fragment>
+          )}
+          {/* <div {...getRootProps({style})}>
+            <input {...getInputProps()} />
+            <p>Drag 'n' images here, or click to select images</p>
+            <Row> {thumbFiles} </Row>
+          </div>
+          {rejectedFiles.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}     */}
+          </Dropzone>
         </Form.Group>
 
         <Form.Group>

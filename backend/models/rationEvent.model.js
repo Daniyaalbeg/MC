@@ -9,7 +9,10 @@ const rationEventSchema = new Schema({
     description: {type: String, required: true },
     totalNumberOfItems: {type: Number, required: true},
     itemsDescription: {type: String, required: true},
-    // || Images || 
+    images: {
+      type: [String],
+      required: false
+    },
     location: {
       type: pointSchema,
       required: true

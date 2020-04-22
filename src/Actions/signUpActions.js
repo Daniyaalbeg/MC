@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { loggingInSuccess } from '../Actions/authActions';
 
 export const SIGNUP = "SIGNUP";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
@@ -34,14 +35,15 @@ export function signUp(data) {
     
     axios.post('http://localhost:8000/imageUpload',{
       fileName: fileName,
-      fileType: fileType
+      fileType: fileType,
+      fileSize: file.size
     })
     .then((res) => {
       const returnData = res.data.data.returnData;
       const signedRequest = returnData.signedRequest;
       const url = returnData.url
-      console.log("Recieved a signed request " + signedRequest);
-      console.log(url)
+      // console.log("Recieved a signed request " + signedRequest);
+      // console.log(url)
 
       //create axios put request
       const options = {
@@ -79,9 +81,10 @@ export function signUp(data) {
         })
         .then((res) => {
           dispatch(singupSuccess())
+          dispatch(loggingInSuccess(res.data))
         })
         .catch((error) => {
-          dispatch(signupFailure(error))
+          dispatch(signupFailure(error.response))
         })
 
       })

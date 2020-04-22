@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Row, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 const ProfileInfoView = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
@@ -15,12 +17,34 @@ const ProfileInfoView = (props) => {
       <p> {props.approved ? "You have been approved" : "You have not been approved"} </p>
       <hr />
       <h6 className="text-muted"> Verified </h6>
-      <p> {props.verified ? "You have been verified" : "You have not been verified"} </p>
+      <Verified verified={props.verified} />
       <hr />
       <h6 className="text-muted"> You created this account on </h6>
       <p> {new Date(props.createdAt).toLocaleDateString("en-US", dateOptions)} </p>
     </div>
   )
+}
+
+const Verified = (props) => {
+  return (
+    <Fragment>
+      <p> {props.verified ? "You have been verified" : "You have not been verified"} </p>
+      {!props.verified &&
+        <Button onClick={() => {
+          sendVerificationEmail(props.token);
+        }}> Verify </Button>
+      }
+    </Fragment>
+  )
+}
+
+const sendVerificationEmail = (token) => {
+  axios({
+    method: 'post',
+    url: 'http://localhost:8000/emailVerification',
+    headers: {'Content-Type': 'application/json', 'x-access-token': token}
+  })
+  .catch((error) => console.log(error.response))
 }
 
 export default ProfileInfoView;

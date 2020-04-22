@@ -28,6 +28,7 @@ const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authController');
 const resetRouter = require('./routes/resetRouter');
 const s3Router = require('./routes/s3Controller');
+const emailVerificationRouter = require('./routes/emailVerificationRouter');
 
 app.use('/supplier', supplierRouter);
 app.use('/rationEvent', rationEventRouter);
@@ -35,10 +36,11 @@ app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/reset', resetRouter);
 app.use('/imageUpload', s3Router.sign_s3);
+app.use('/emailVerification', emailVerificationRouter.router);
 
 var httpsServer = https.createServer(options, app);
 
-if (local.environment == 'production') {
+if (local.environment === 'production') {
   httpsServer.listen(local.port, () => {
     console.log(`HTTPS server is running on port: ${local.port}`)
   })
