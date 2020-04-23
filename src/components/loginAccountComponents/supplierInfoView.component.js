@@ -81,6 +81,11 @@ const SupplierInfoView = (props) => {
       <h6 className="text-muted"> {props.supplier.type} name </h6>
       <p> {props.supplier.supplierName} </p>
       <hr />
+      <h6 className="text-muted"> {props.supplier.type} logo </h6>
+      <div className="imageContainer">
+        <img src={props.supplier.supplierImageURL} className="supplerImage" alt=""/>
+      </div>
+      <hr />
       <BankingDetails bankingDetails={props.supplier.bankingDetails} />
       <EasyPaisaDetails easyPaisa={props.supplier.bankingDetails.easyPaisa} />
       <JazzCashDetails jazzCash={props.supplier.bankingDetails.jazzCash} />
@@ -100,7 +105,7 @@ const SupplierInfoView = (props) => {
       <h6 className="text-muted"> Other Info </h6>
       <p> {props.supplier.contactInfo} </p>
       <hr />
-      {props.supplierWebsite && (
+      {props.supplierWebsite !== "" && (
         <Fragment>
         <h6 className="text-muted"> Website </h6>
         <a href={props.supplier.supplierWebsite} key={props.supplier.supplierWebsite} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faGlobe}/></a>
@@ -108,29 +113,45 @@ const SupplierInfoView = (props) => {
       )
       }
       <SocialMediaIcons supplier={props.supplier} />
+      <WhichLogo icon={props.supplier.facebookURL} />
+      <WhichLogo icon={props.supplier.twitterURL} />
+      <WhichLogo icon={props.supplier.instagramURL} />
     </div>
   )
 }
 
 const SocialMediaIcons = (props) => {
   const socialMediaIcons = [props.supplier.facebookURL, props.supplier.twitterURL, props.supplier.instagramURL]
-  const renderedSocialMediaIcons = socialMediaIcons.map((socialIcon) => {
-    if (socialIcon != null) {
-      return whichLogo(socialIcon)
+  let anyIcons = false
+  socialMediaIcons.forEach((socialIcon) => {
+    if (socialIcon !== "") {
+      anyIcons = true
     }
-  })
-  return renderedSocialMediaIcons;
+  });
+  if (anyIcons) {
+    return (
+      <Fragment>
+        <hr />
+        <h6 className="text-muted"> Social media </h6>
+      </Fragment>
+    );
+  } else {
+    return null
+  };
 }
 
-function whichLogo(socialIcon) {
-  if (socialIcon.includes("facebook")) {
-    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faFacebook}/></a>
-  } else if (socialIcon.includes('twitter')) {
-    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faTwitter} href={socialIcon} key={socialIcon}/> </a>
-  } else if (socialIcon.includes('instagram')) {
-    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon">< FontAwesomeIcon icon={faInstagram} href={socialIcon} key={socialIcon}/> </a>
+const WhichLogo = (props) => {
+  if (props.icon === "") {
+    return null
+  }
+  if (props.icon.includes("facebook")) {
+    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faFacebook}/></a>
+  } else if (props.icon.includes('twitter')) {
+    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faTwitter} href={props.icon} /> </a>
+  } else if (props.icon.includes('instagram')) {
+    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="icon">< FontAwesomeIcon icon={faInstagram} href={props.icon} /> </a>
   } else {
-    return <a href={socialIcon} key={socialIcon} target="_blank" rel="noopener noreferrer" className="icon">< FontAwesomeIcon icon={faGlobe} href={socialIcon} key={socialIcon}/> </a>
+    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="icon">< FontAwesomeIcon icon={faGlobe} href={props.icon} /> </a>
   }
 }
 

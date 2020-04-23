@@ -33,7 +33,9 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     user.supplier.rationEvents.push(newRationEvent);
 
     user.save()
-    .then(() => res.json('New ration event created'))
+    .then(() => {
+      res.json('New ration event created')
+    })
     .catch((error) => res.status(500).json('Error: ' + error));
   });
 });

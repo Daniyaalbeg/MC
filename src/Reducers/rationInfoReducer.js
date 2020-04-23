@@ -20,9 +20,6 @@ export default function rationInfoReducer(state = initialState, action) {
         loading: true
       }
     case actions.GET_RATION_INFO_SUCCESS:
-      action.payload.forEach((rationEvent) => {
-        rationEvent.location.coordinates.reverse();
-      })
       return {
         ...state,
         loading: false,

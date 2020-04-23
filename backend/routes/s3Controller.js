@@ -10,15 +10,15 @@ aws.config.update({
 const S3_BUCKET = process.env.BUCKET_NAME;
 
 exports.sign_s3 = ((req, res) => {
-  if (req.body.fileSize > 1200000) {
+  if (req.body.fileSize > 2100000) {
     res.status(500).send("File Too Large");
 
   } else {
     const s3 = new aws.S3();
-    const fileName = req.body.fileName;
-    const uniqueFileName = uuid.v4()
+    const imageCategory = req.body.imageCategory
+    const fileName = req.body.fileName
+    const uniqueFileName= imageCategory +'/'+ uuid.v4()
     const fileType = req.body.fileType;
-
     const s3Params = {
       Bucket: S3_BUCKET,
       Key: uniqueFileName,
@@ -34,9 +34,11 @@ exports.sign_s3 = ((req, res) => {
       }
 
       const returnData = {
+        oldName: fileName,
         newName: uniqueFileName,
         signedRequest: data,
-        url: `https://${S3_BUCKET}.s3.amazonaws.com/${uniqueFileName}`
+        url: `https://${S3_BUCKET}.s3.amazonaws.com/${uniqueFileName}`,
+        fileType: fileType
       };
       res.status(200).json({ success: true, data: { returnData }})
     });

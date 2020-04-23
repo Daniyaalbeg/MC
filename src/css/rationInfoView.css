@@ -23,14 +23,48 @@
   margin: 0;
 }
 
+.imageContainer {
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+  width: auto;
+  }
+  .img {
+  position: absolute;
+  width: auto;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  }
+
+.carouselImage {
+  height: 100%;
+  width: 100%;
+}
+
 p {
   font-size: larger;
+}
+
+.imageCarouselContainer {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.imageCarousel {
+  background-color: #F7F7F7;
+  border-radius: .25rem;
 }
 
 /* .backButtonIcon {
   padding-right: 6px;
 } */
-
+.spaceBelow {
+  margin-bottom: 12px;
+}
 .backButton {
   border: 0;
   text-align: left;

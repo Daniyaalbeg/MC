@@ -1,10 +1,9 @@
-import React, { useEffect, Component } from 'react';
-import Button from 'react-bootstrap/Button';
-
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import '../../css/rationInfoView.css'
 import RationItemInfoMap from './rationitemInfoMap.component.js';
 
 const RationItemInfo = (props) => {
-  const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
   const ration = props.ration;
   return (
     <div>
@@ -16,6 +15,24 @@ const RationItemInfo = (props) => {
       <h6 className="text-muted"> Descripiton of items </h6>
       <p> {ration.itemsDescription} </p>
       <hr />
+      {ration.images.length !== 0 &&
+          <div className="imageCarouselContainer">
+          <h6 className="text-muted"> Images </h6>
+          <Carousel className="imageCarousel">
+            {ration.images.map((image) => {
+              return (
+                <Carousel.Item key={image}>
+                  <div className="imageContainer">
+                    <img className="img" src={image} alt="" />
+                  </div>
+                </Carousel.Item>
+              )
+            })}
+          </Carousel>
+          </div>
+        }
+      <hr />
+      <h6 className="text-muted"> Location </h6>
       <RationItemInfoMap ration={ration} />
     </div>
   )

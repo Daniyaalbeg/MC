@@ -14,7 +14,7 @@ class RationItemInfoMap extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainerInfo,
       style: 'mapbox://styles/mapbox/outdoors-v9',
-      center: [this.props.ration.location.coordinates[1], this.props.ration.location.coordinates[0]],
+      center: [this.props.ration.location.coordinates[0], this.props.ration.location.coordinates[1]],
       zoom: 14
     });
 
@@ -28,7 +28,7 @@ class RationItemInfoMap extends Component {
               'type': 'feature',
               'geometry': {
                 'type': this.props.ration.location.type,
-                'coordinates' : [this.props.ration.location.coordinates[1], this.props.ration.location.coordinates[0]]
+                'coordinates' : [this.props.ration.location.coordinates[0], this.props.ration.location.coordinates[1]]
               },
               'properties': {
                 'title': this.props.ration.name,

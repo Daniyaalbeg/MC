@@ -30,13 +30,21 @@ export function signUp(data) {
     //Perform image file link request
     let file = data.imageFile
     let fileParts = file.name.split('.');
-    let fileName = fileParts[0];
-    let fileType = fileParts[1];
+    let fileName
+    let fileType
+    try {
+      fileName = fileParts[0];
+      fileType = fileParts[1];
+    } catch {
+      dispatch(signupFailure("File name must end in an extension"))
+    }
+    let imageCategory = "orgImages"
     
     axios.post('http://localhost:8000/imageUpload',{
       fileName: fileName,
       fileType: fileType,
-      fileSize: file.size
+      fileSize: file.size,
+      imageCategory: imageCategory
     })
     .then((res) => {
       const returnData = res.data.data.returnData;

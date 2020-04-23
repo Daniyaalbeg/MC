@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import React, { Fragment } from 'react';
+import { Button, Carousel } from 'react-bootstrap';
 import '../../css/rationInfoView.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -43,7 +43,25 @@ const RationInfoView = (props) => {
           <h6 className="text-muted"> Charity </h6>
           <p> {ration.supplier.supplierName} </p>
         </div>
-        <Button variant="primary" onClick={props.onClick}> Back </Button>
+        {ration.images.length !== 0 &&
+          <div className="smallBoi spaceBelow">
+          <h6 className="text-muted"> Images </h6>
+          <Carousel>
+            {ration.images.map((image) => {
+              return (
+                <Carousel.Item>
+                  <div className="imageContainer">
+                    <img className="img" src={image} alt="" />
+                  </div>
+                </Carousel.Item>
+              )
+            })}
+          </Carousel>
+          </div>
+        }
+        <div className="smallBoi">
+          <Button variant="primary" onClick={props.onClick}> Back </Button>
+        </div>
       </div>
       </Fragment>
     )

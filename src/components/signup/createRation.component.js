@@ -134,6 +134,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
             description: values.description,
             totalNumberOfItems: values.numOfItems,
             itemsDescription: values.descriptionOfItems,
+            images: values.images,
             location: newPoint,
             date: values.date
           }
@@ -219,10 +220,10 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Images of Ration Drive (Under 2mb and only 3 images) </Form.Label>
+          <Form.Label> Images of Ration Drive (Under 2mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
             accept = 'image/jpeg, image/png, image/jpg, image/gif'
-            maxSize = '2000000'
+            maxSize = {2000000}
             onDropRejected={(rejectedFiles) => {
               console.log('rejected')
               setRejectedFilesState(rejectedFiles)

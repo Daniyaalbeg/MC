@@ -32,7 +32,7 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
                   </Col>
                   <Col>
                   <Nav.Item>
-                    <Nav.Link eventKey="supplierInfo" className="centreText"> {supplier.type + " Info"} </Nav.Link>
+                    <Nav.Link eventKey="supplierInfo" className="centreText"> Organisation </Nav.Link>
                   </Nav.Item>
                   </Col>
                   <Col>

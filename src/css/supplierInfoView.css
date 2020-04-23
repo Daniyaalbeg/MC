@@ -5,6 +5,7 @@
 
 .icon {
   text-decoration: none;
+  margin-right: 6px;
 }
 
 .icon:hover {
@@ -14,3 +15,22 @@
 .icon:visited {
   text-decoration: none;
 }
+
+.imageContainer {
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+  width: auto;
+  border-radius: 0.25rem;
+  }
+  .supplerImage {
+  border-radius: 0.25rem;
+  position: absolute;
+  width: auto;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  }
