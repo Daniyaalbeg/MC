@@ -62,7 +62,10 @@ router.route('/').get((req, res) => {
     })
     res.status(200).json(suppliersCollected);
   })
-  .catch((error) => res.status(500).json('Error: ' + error))
+  .catch((error) => {
+    console.log(error)
+    res.status(500).send("An error occured")
+  })
 })
 
 //Update a new supplier

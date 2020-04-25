@@ -36,7 +36,10 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     .then(() => {
       res.json('New ration event created')
     })
-    .catch((error) => res.status(500).json('Error: ' + error));
+    .catch((error) => {
+      console.log(error)
+      res.status(500).json("An error occured")
+    });
   });
 });
 
@@ -56,7 +59,10 @@ router.route('/').get((req, res) => {
     });
     res.status(200).json(rationEventsCollected);
   })
-  .catch((error) => res.status(500).json("Error: " + error));
+  .catch((error) => {
+    console.log(error)
+    res.status(500).json("An error occured")
+  });
 });
 
 //Get specific event by id
@@ -67,13 +73,16 @@ router.route('/:id').get((req, res) => {
       const rationEvents = user.supplier.rationEvents;
       rationEvents.forEach((rationEvent) => {
         if (rationEvent._id == req.params.id) {
-          return res.status(200).json(rationEvent);
+          return res.status(200).send(rationEvent);
         }
       });
     });
     // return res.status(404).json("Requested resource not found");
   })
-  .catch((error) => res.status(500).json("Error: " + error));
+  .catch((error) => {
+    console.log(error)
+    res.status(500).send("An error occured")
+  });
 })
 
 //Delete a specific ration event
@@ -91,7 +100,10 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
     user.save()
     .then(() => res.status(200).json("Delete succesful"))
   })
-  .catch((error) => res.status(500).json("Error:" + error));
+  .catch((error) => {
+    console.log(error)
+    res.status(500).json("An error occured")
+  });
 })
 
 
@@ -124,7 +136,10 @@ router.route('/update/:id').post(verifyToken, (req, res, next) => {
 
     rationEvent.save()
     .then(() => res.status(200).json("rationEvent updated succesfully"))
-    .catch((error) => res.status(500).json("Error: " + error))
+    .catch((error) => {
+      console.log(error)
+      res.status(500).json("An error occured")
+    })
   })
 })
 

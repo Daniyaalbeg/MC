@@ -11,6 +11,15 @@ const S3_BUCKET = process.env.BUCKET_NAME;
 
 exports.sign_s3 = ((req, res) => {
   if (req.body.fileSize > 2100000) {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '-1',
+      'X-XSS-Protection': '1;mode=block',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'SAMEORIGIN'
+    });
     res.status(500).send("File Too Large");
 
   } else {

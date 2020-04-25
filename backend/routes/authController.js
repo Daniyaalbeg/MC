@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var verifyToken = require('../verifyToken');
+const { check, validationResult } = require('express-validator');
 
 var email = require('./emailVerificationRouter');
 
@@ -14,7 +15,35 @@ var BankingDetails = require('../models/bankingDetails.model').BankingDetails;
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 
-router.route('/createUser').post((req, res) => {
+router.route('/createUser').post([
+  check('email').isEmail().normalizeEmail(),
+  check('username').trim().escape(),
+  check('password').trim(),
+  check('supplierName'),
+  check('supplierImageURL').isURL(),
+  check('type'),
+  check('areaOfWork'),
+  check('description'),
+  check('address'),
+  check('contactName'),
+  check('contactNumber'),
+  check('contactInfo'),
+  check('supplierWebsite').isURL(),
+  check('facebookURL').isURL(),
+  check('twitterURL').isURL(),
+  check('instagramURL').isURL(),
+  check('bankName'),
+  check('bankBranch'),
+  check('accountTitle'),
+  check('accountNumber'),
+  check('IBAN'),
+  check('swiftCode'),
+  check('jazzCash'),
+  check('easyPaisa')
+
+],(req, res) => {
+
+
   const password = req.body.password;
 
   bcrypt.hash(password, 12)
@@ -73,7 +102,7 @@ router.route('/createUser').post((req, res) => {
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).json(error)
+      res.status(500).send("An error occured")
     });
   });
 });
@@ -103,9 +132,9 @@ router.route('/register').post((req, res) => {
         token, token
       });
     })
-    .catch((error) => res.status(500).json("Error: " + error));
+    .catch((error) => res.status(500).send("An error occured"));
   })
-  .catch((error) => res.status(500).json("Error: " + error))
+  .catch((error) => res.status(500).send("An error occured"))
 })
 
 router.route('/me').get(verifyToken, (req, res, next) => {
@@ -142,19 +171,15 @@ router.route('/login').post((req, res) => {
         token: token
       });
     })
-    .catch((error) => res.status(500).json("Error: " + error));
+    .catch((error) => {
+      console.log(error)
+      res.status(500).json("An error occured")
+    });
   })
   .catch((error) => res.status(401).json({
     auth: false,
     token: null
   }));
-});
-
-router.route('/logout').post((req, res) => {
-  res.status(200).json({
-    auth: false,
-    token: null
-  });
 });
 
 module.exports = router
