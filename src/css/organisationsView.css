@@ -1,3 +1,175 @@
-.cardHover {
-    box-shadow: 0px 5px 7px 1px rgba(0,0,0,0.19)
+.cardOrg {
+    box-shadow: 0px 5px 7px 1px rgba(0,0,0,0.19);
+    max-width: 210px;
+    float: left;
+    margin: 12px;
+}
+
+@media only screen and (min-width: 600px) {
+    .orgInfoCardContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .orgInfoCard {
+        text-align: center;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .orgInfoCard {
+        display: inline-block;
+        margin: 5px;
+        text-align: center;
+        width: 90%;
+    }   
+    .orgInfoCardContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .cardContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .cardOrg {
+        max-width: 80vw;
+    }
+    .invisButton {
+        width: fit-content;
+    }
+}
+
+.pillBadge {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.backButtonOrgView {
+    margin-bottom: 20px;
+}
+
+.modal-90w {
+    width: 90vw;
+}
+
+.headingContainer {
+    text-align: center;
+}
+
+.biggerCardContainer {
+    text-align: center;
+}
+
+.cardContainer {
+    overflow: auto;
+    /* width: fit-content; */
+}
+
+.heading {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    /* border-radius: 1px rgba(0,0,0,0.19);
+    box-shadow: 0px 3px 7px 1px rgba(0,0,0,0.19);
+    border-radius: 5px;    
+    display: inline-block;
+    padding: 5px;
+    padding-left: 12px;
+    padding-right: 12px; */
+}
+
+.titleLine {
+    color: black;
+    width: 75%;
+    margin-top: 0PX;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
+.spinnerThing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.column {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.cardImage {
+    height: 150px;
+    object-fit: scale-down;
+    background-color: rgba(0,0,0,0.19);
+}
+
+.headerText {
+    text-align: center;
+}
+
+.descText {
+    text-align: center;
+}
+
+.footerText {
+    text-align: center;
+}
+
+.searchIcon1 {
+    margin-right: 4px;
+}
+
+.searchBarContainer1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px darkblue;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 12px;
+    padding: 12px;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.19);
+    width: fit-content;
+}
+
+.searchBar1 {
+    border: none;
+    font-size: 150;
+    vertical-align: middle;
+}
+
+.filterIcon1 {
+    border: none;
+    font-size: 150;
+    vertical-align: middle;
+}
+
+.filterSelect1 {
+    border: none;
+    padding: 0;
+    padding-left: 12px;
+}
+
+select#xyz {
+    border:0px;
+    outline:0px;
+ }
+
+.filterSelect1 select {
+    border: none;
+    width: 100%;
+}
+
+.orgInfoImage {
+    height: 300px;
+    object-fit: scale-down;
 }

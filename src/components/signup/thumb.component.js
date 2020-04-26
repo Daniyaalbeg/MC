@@ -8,15 +8,15 @@ class Thumb extends React.Component {
     file: undefined
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.file == null || this.state.loading == true) {
-      return true
-    }
-    if (this.props.file.name === nextProps.file.name) {
-      return false
-    }
-    return true
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.props.file == null || this.state.loading == true) {
+  //     return true
+  //   }
+  //   if (this.props.file.name === nextProps.file.name) {
+  //     return false
+  //   }
+  //   return true
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.file) { return; }

@@ -101,7 +101,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
   ]);
 
   return (
-    <Card bg="light" text="dark">
+    <Card bg="light" text="dark" className="signUpCard">
       <Fragment>
        {!auth &&
           <Redirect push to="/" />
@@ -220,10 +220,10 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Images of Ration Drive (Under 2mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
+          <Form.Label> Images of Ration Drive (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
             accept = 'image/jpeg, image/png, image/jpg, image/gif'
-            maxSize = {2000000}
+            maxSize = {11000000}
             onDropRejected={(rejectedFiles) => {
               console.log('rejected')
               setRejectedFilesState(rejectedFiles)

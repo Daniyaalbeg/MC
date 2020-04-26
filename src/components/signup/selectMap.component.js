@@ -69,22 +69,16 @@ class SelectMap extends Component {
         zoom={this.state.zoom}
         onDrag={this.onDrag}
         flyToOptions={flyToOptions}
+        onStyleLoad={(map) => {
+          map.addControl(
+            new MapboxGeocoder({
+              accessToken: token,
+              mapboxgl: map,
+              countries: 'pk'
+            })
+          )
+        }}
       >
-        <MapContext.Consumer>
-          {(map) => {
-            if (!this.state.geocoderAdded) {
-              this.setState({
-                geocoderAdded: true
-              })
-              map.addControl(
-                new MapboxGeocoder({
-                  accessToken: token,
-                  mapboxgl: map
-                })
-              )
-            }
-          }}
-        </MapContext.Consumer>
         <Layer type="symbol" id="marker" layout={layoutLayer} images={images} >
           {this.state.selectedPoint.length != 0 &&
             <Feature

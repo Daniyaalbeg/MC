@@ -10,7 +10,7 @@ import Thumb from './thumb.component';
 
 import '../../css/form.css';
 
-const FILE_SIZE = 2000000;
+const FILE_SIZE = 1100000;
 const SUPPORTED_FORMATS = [
   "image/jpg",
   "image/jpeg",
@@ -53,7 +53,7 @@ const validationSchema = Yup.object().shape({
   )
   .test(
     "fileSize",
-    "*File too large, please keep files below 1MB. Uo can use an online image compressor",
+    "*File too large, please keep files below 1MB. You can use an online image compressor to reudce the size",
     (value) => {
       if (value != null) {
         return value.size <= FILE_SIZE
@@ -126,7 +126,7 @@ const validationSchema = Yup.object().shape({
 const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) => {
 
   return (
-    <Card bsPrefix='card' bg='light' text='dark'>
+    <Card bsPrefix='card' bg='light' text='dark' className="signUpCard">
       <Fragment>
         {/* {success &&
           <Redirect push to="/" />

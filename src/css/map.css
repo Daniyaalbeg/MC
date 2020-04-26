@@ -11,3 +11,32 @@
 .dontShow {
   display: none;
 }
+
+@media only screen and (max-width: 600px) {
+  .mapboxgl-ctrl-geocoder--input {
+    width: 50%
+  }
+}
+
+.imageContainerMap {
+  width: 100px;
+  height: 100px;
+}
+
+.imgMap {
+  width: 100px;
+  height: 100%;
+  text-align: center;
+  object-fit: cover;
+}
+
+.popupText {
+  margin-bottom: 5px;
+}
+.popupHeader {
+  margin-bottom: 3px;
+}
+
+.mainPopup {
+  padding: 0;
+}

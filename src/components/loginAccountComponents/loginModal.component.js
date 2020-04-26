@@ -6,7 +6,7 @@ import '../../css/loginModal.css'
 
 import ShowDetails from './showDetails.component'
 import { loggingOut } from '../../Actions/authActions';
-import { Redirect, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 
 const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
   const [show, setShow] = useState(false);

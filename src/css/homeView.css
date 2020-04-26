@@ -2,6 +2,16 @@ html, body {
   height: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  .mapView {
+    width: 100vw !important;
+    height: 100vh;
+  }
+  .rationListView {
+    display: none;
+  }
+}
+
 #root {
   height: 100%;
   display: flex;

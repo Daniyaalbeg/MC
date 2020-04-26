@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 
-const BankingDetails = (props) => {
+export const BankingDetails = (props) => {
   const bankInfo = props.bankingDetails;
   if (bankInfo.bankName != null) {
     return (
@@ -48,7 +48,7 @@ const BankingDetails = (props) => {
   }
 }
 
-const EasyPaisaDetails = (props) => {
+export const EasyPaisaDetails = (props) => {
   if (props.easyPaisa != null) {
     return (
       <Fragment>
@@ -61,7 +61,7 @@ const EasyPaisaDetails = (props) => {
   }
 }
 
-const JazzCashDetails = (props) => {
+export const JazzCashDetails = (props) => {
   if (props.jazzCash != null) {
     return (
       <Fragment>
@@ -120,7 +120,7 @@ const SupplierInfoView = (props) => {
   )
 }
 
-const SocialMediaIcons = (props) => {
+export const SocialMediaIcons = (props) => {
   const socialMediaIcons = [props.supplier.facebookURL, props.supplier.twitterURL, props.supplier.instagramURL]
   let anyIcons = false
   socialMediaIcons.forEach((socialIcon) => {
@@ -140,8 +140,8 @@ const SocialMediaIcons = (props) => {
   };
 }
 
-const WhichLogo = (props) => {
-  if (props.icon === "") {
+export const WhichLogo = (props) => {
+  if (props.icon === "" || props.icon === undefined) {
     return null
   }
   if (props.icon.includes("facebook")) {
