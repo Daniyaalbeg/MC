@@ -29,7 +29,7 @@ const ResetPassword = (props) => {
   }
 
   return (
-    <Card bsPrefix='card' bg='light' text='dark'>
+    <Card bg='light' text='dark' className='signUpCard'>
     <Card.Header>Reset Password</Card.Header>
     <Card.Body>
     <Form noValidate onSubmit={null}>
