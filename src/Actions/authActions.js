@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API } from '../config'
 
 export const LOGIN_ATTEMPT = "LOGIN"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
@@ -29,7 +30,7 @@ export function login(auth) {
 
     axios({
       method: 'post',
-      url: 'http://localhost:8000/auth/login',
+      url: 'http://'+API+'/auth/login',
       data: {
         email: auth.email,
         password: auth.password

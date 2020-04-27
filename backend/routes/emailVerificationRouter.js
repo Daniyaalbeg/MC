@@ -70,7 +70,7 @@ const sendVerificationEmail = (user) => {
     subject: 'Verify Email',
     html: `
     <h3> Thank you for signingup </h3>
-    <p> Hi `+user.username+`. Please click this <a href="http://localhost:3000/verify/`+token+`"> link </a> to verify your account</p>
+    <p> Hi `+user.username+`. Please click this <a href="http://`+process.env.API+`/verify/`+token+`"> link </a> to verify your account</p>
     `
   };
 

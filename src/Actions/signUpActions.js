@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { loggingInSuccess } from '../Actions/authActions';
+import { API } from '../config'
 
 export const SIGNUP = "SIGNUP";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
@@ -40,7 +41,7 @@ export function signUp(data) {
     }
     let imageCategory = "orgImages"
     
-    axios.post('http://localhost:8000/imageUpload',{
+    axios.post('http://'+API+'/imageUpload',{
       fileName: fileName,
       fileType: fileType,
       fileSize: file.size,
@@ -65,7 +66,7 @@ export function signUp(data) {
 
         axios({
           method: 'post',
-          url: 'http://localhost:8000/auth/createUser',
+          url: 'http://'+API+'/auth/createUser',
           headers: {'Content-Type': 'application/json'},
           data: {
             email: data.email,

@@ -3,6 +3,8 @@ import { Card, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import '../css/form.css';
+import { API } from '../config'
+
 
 const ResetPassword = (props) => {
   const [email, setEmail] = useState("")
@@ -16,7 +18,7 @@ const ResetPassword = (props) => {
     e.preventDefault()
     axios({
       method: 'post',
-      url: 'http://localhost:8000/reset/password',
+      url: 'http://'+API+'/reset/password',
       headers: {'Content-Type': 'application/json'},
       data: {
         email: email

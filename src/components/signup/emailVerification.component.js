@@ -3,6 +3,8 @@ import { Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import '../../css/misc.css'
+import { API } from '../../config'
+
 
 const EmailVerification = (props) => {
   const [requested, setRequested] = useState(false)
@@ -13,7 +15,7 @@ const EmailVerification = (props) => {
     if (!requested) {
       setRequested(true)
       axios({
-        url: 'http://localhost:8000/emailVerification/verify',
+        url: 'http://'+API+'/emailVerification/verify',
         method: 'post',
         headers: { 'Content-Type': 'application/json', 'x-access-token': token}
       })

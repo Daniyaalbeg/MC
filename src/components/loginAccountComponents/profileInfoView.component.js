@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Row, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { API } from '../../config'
 
 const ProfileInfoView = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
@@ -41,7 +42,7 @@ const Verified = (props) => {
 const sendVerificationEmail = (token) => {
   axios({
     method: 'post',
-    url: 'http://localhost:8000/emailVerification',
+    url: 'http://'+API+'/emailVerification',
     headers: {'Content-Type': 'application/json', 'x-access-token': token}
   })
   .catch((error) => console.log(error.response))

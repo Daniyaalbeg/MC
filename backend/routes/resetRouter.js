@@ -9,13 +9,13 @@ var nodemailer = require('nodemailer');
 var User = require('../models/user.model');
 
 
-router.route('/').get((req, res) => {
-  res.status(200).send('<form action="http://localhost:8000/reset/password" method="POST">' +
-    '<input type="email" name="email" value="" placeholder="Enter your email address..." />' +
-    '<input type="submit" value="Reset Password" />' +
-    '</form>'
-  );
-})
+// router.route('/').get((req, res) => {
+//   res.status(200).send('<form action="http://localhost:8000/reset/password" method="POST">' +
+//     '<input type="email" name="email" value="" placeholder="Enter your email address..." />' +
+//     '<input type="submit" value="Reset Password" />' +
+//     '</form>'
+//   );
+// })
 
 function ValidateEmail(email) {
   return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
