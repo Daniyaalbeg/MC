@@ -59,13 +59,13 @@ const resetRouter = require('./routes/resetRouter');
 const s3Router = require('./routes/s3Controller');
 const emailVerificationRouter = require('./routes/emailVerificationRouter');
 
-app.use('/supplier', supplierRouter);
-app.use('/rationEvent', rationEventRouter);
-app.use('/user', userRouter);
-app.use('/auth', authRouter);
-app.use('/reset', resetRouter);
-app.use('/imageUpload', s3Router.sign_s3);
-app.use('/emailVerification', emailVerificationRouter.router);
+app.use('/api/supplier', supplierRouter);
+app.use('/api/rationEvent', rationEventRouter);
+app.use('/api/user', userRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/reset', resetRouter);
+app.use('/api/imageUpload', s3Router.sign_s3);
+app.use('/api/emailVerification', emailVerificationRouter.router);
 
 var httpsServer = https.createServer(options, app);
 
