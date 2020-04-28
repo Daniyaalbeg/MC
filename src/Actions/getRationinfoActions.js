@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from '../config'
+import { API, rootURL, production } from '../config'
 
 export const GET_RATION_INFO = "GET_RATION_INFO";
 export const GET_RATION_INFO_SUCCESS = "GET_RATION_INFO_SUCCESS";
@@ -30,7 +30,7 @@ export function getRationInfo() {
 
     axios({
       method: 'get',
-      url: 'http://'+API+'/rationEvent',
+      url: rootURL(production)+API+'/rationEvent',
       headers: {'Content-Type': 'application/json'}
     })
     .then((res) => {

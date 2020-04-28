@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from '../config'
+import { API, rootURL, production } from '../config'
 
 export const GET_USER_INFO = "GET_USER_INFO";
 export const GET_USER_INFO_SUCCESS = "GET_USER_INFO_SUCCESS";
@@ -26,7 +26,7 @@ export function getUserInfo() {
 
     axios({
       method: 'get',
-      url: 'http://'+API+'/auth/me',
+      url: rootURL(production)+API+'/auth/me',
       headers: {'Content-Type': 'application/json', 'x-access-token': token}
     })
     .then((res) => {

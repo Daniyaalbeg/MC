@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import '../../css/form.css';
-import { API } from '../../config'
+import { API, rootURL, production } from '../../config'
 
 
 import axios from 'axios';
@@ -57,7 +57,7 @@ const ResettingPassword = (props) => {
         setSending(true)
         axios({
           method: 'post',
-          url: 'http://'+API+'/reset/resetPassword',
+          url: rootURL(production)+API+'/reset/resetPassword',
           headers: {'Content-Type': 'application/json'},
           data: {
             password: values.password,

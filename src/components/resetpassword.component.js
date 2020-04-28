@@ -3,7 +3,7 @@ import { Card, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import '../css/form.css';
-import { API } from '../config'
+import { API, rootURL, production } from '../config'
 
 
 const ResetPassword = (props) => {
@@ -18,7 +18,7 @@ const ResetPassword = (props) => {
     e.preventDefault()
     axios({
       method: 'post',
-      url: 'http://'+API+'/reset/password',
+      url: rootURL(production)+API+'/reset/password',
       headers: {'Content-Type': 'application/json'},
       data: {
         email: email

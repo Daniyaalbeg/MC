@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from '../config'
+import { API, rootURL, production } from '../config'
 
 export const LOGIN_ATTEMPT = "LOGIN"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
@@ -30,7 +30,7 @@ export function login(auth) {
 
     axios({
       method: 'post',
-      url: 'http://'+API+'/auth/login',
+      url: rootURL(production)+API+'/auth/login',
       data: {
         email: auth.email,
         password: auth.password

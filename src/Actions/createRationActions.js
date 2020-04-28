@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from '../config'
+import { API, rootURL, production } from '../config'
 
 export const CREATE_RATION = "CREATE_RATION";
 export const CREATE_RATION_SUCCESS = "CREATE_RATION_SUCCESS";
@@ -18,7 +18,7 @@ export const creatingRationFailure = (error) => ({
   payload: error
 });
 
-const urlImage = 'http://'+API+'/imageUpload'
+const urlImage = rootURL(production)+API+'/imageUpload'
 
 export function creatingNewRation(data) {
   return async (dispatch, getState) => {
@@ -80,7 +80,7 @@ export function creatingNewRation(data) {
       .then((responses) => {
         axios({
           method: 'post',
-          url: 'http://'+API+'/rationEvent/create',
+          url: rootURL(production)+API+'/rationEvent/create',
           headers: {'Content-Type': 'application/json', 'x-access-token': token},
           data: {
             name: data.name,

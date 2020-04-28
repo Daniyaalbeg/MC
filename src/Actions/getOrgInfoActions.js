@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from '../config'
+import { API, rootURL, production } from '../config'
 
 export const GET_ORG_INFO = "GET_ORG_INFO";
 export const GET_ORG_INFO_SUCCESS = "GET_ORG_INFO_SUCCESS";
@@ -25,7 +25,7 @@ export function getOrgInfo() {
 
     axios({
       method: 'get',
-      url: 'http://'+API+'/supplier/',
+      url: rootURL(production)+API+'/supplier/',
       headers: {'Content-Type': 'application/json'}
     })
     .then((res) => {
