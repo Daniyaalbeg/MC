@@ -15,6 +15,8 @@ const RationItemInfo = (props) => {
       <h6 className="text-muted"> Descripiton of items </h6>
       <p> {ration.itemsDescription} </p>
       <hr />
+      <h6 className="text-muted"> Type of Rations </h6>
+      <p> {ration.typeOfRation === "ppe" ? "Personal Protection Equipment" : ration.typeOfRation} </p>      <hr />
       {ration.images.length !== 0 &&
           <div className="imageCarouselContainer">
           <h6 className="text-muted"> Images </h6>

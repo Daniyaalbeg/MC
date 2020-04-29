@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API, rootURL, production } from '../config'
+import { getUserInfo } from './userInfoActions'
 
 export const CREATE_RATION = "CREATE_RATION";
 export const CREATE_RATION_SUCCESS = "CREATE_RATION_SUCCESS";
@@ -87,6 +88,7 @@ export function creatingNewRation(data) {
             description: data.description,
             totalNumberOfItems: data.totalNumberOfItems,
             itemsDescription: data.itemsDescription,
+            typeOfRation: data.typeOfRation,
             images: imageUrlLocations,
             location: data.location,
             date: data.date
@@ -94,6 +96,7 @@ export function creatingNewRation(data) {
         })
         .then((res) => {
           dispatch(creatingRationSuccess())
+          dispatch(getUserInfo())
         })
         .catch((error) => {
           console.log(error.response)

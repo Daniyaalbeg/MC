@@ -3,6 +3,10 @@
   text-decoration: none;
 }
 
+.orgLink {
+  margin-right: 20px;
+}
+
 .navlink:active {
   color: white;
   text-decoration: none;

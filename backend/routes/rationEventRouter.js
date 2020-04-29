@@ -14,6 +14,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     const description = req.body.description;
     const totalNumberOfItems = req.body.totalNumberOfItems;
     const itemsDescription = req.body.itemsDescription;
+    const typeOfRation = req.body.typeOfRation;
     const images = req.body.images;
     const location = req.body.location;
     const date = req.body.date;
@@ -24,6 +25,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
       description,
       totalNumberOfItems,
       itemsDescription,
+      typeOfRation,
       images,
       location,
       date,
@@ -128,6 +130,7 @@ router.route('/update/:id').post(verifyToken, (req, res, next) => {
     rationEvent.description = req.body.description;
     rationEvent.totalNumberOfItems = req.body.totalNumberOfItems;
     rationEvent.itemsDescription = req.body.itemsDescription;
+    rationEvent.typeOfRation = req.body.typeOfRation;
     rationEvent.images = req.body.images;
     rationEvent.supplier = req.body.supplier;
     rationEvent.location = req.body.location;

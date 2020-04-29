@@ -19,6 +19,24 @@
   padding-right: 20px;
 }
 
+.list-view-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+
+.list-left {
+  flex-grow: 1;
+}
+
+.list-left-image {
+  height: 3.5em;
+}
+
+.list-right {
+  flex-grow: 3;
+}
 .searchIcon {
   border: none;
   font-size: 150;

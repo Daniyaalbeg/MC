@@ -9,7 +9,7 @@ import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
 import { selectingRationEvent } from '../../Actions/selectRationEventActions';
-import sack, { mapMarker, mapPin } from '../../assets/svg.js'
+import sack, { mapMarker, mapPin, shirt, coin, mask } from '../../assets/svg.js'
 import filterAndSearch from './filterAndSearch'
 
 mapboxgl.accessToken = token
@@ -22,9 +22,18 @@ const flyToOptions = {
   speed: 1
 }
 
-const image = new Image();
-image.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(mapPin);
-const images = ['mapIcon', image]
+const imageSack = new Image();
+imageSack.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(sack);
+const imageCoin = new Image();
+imageCoin.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(coin);
+const imageMask = new Image();
+imageMask.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(mask);
+const imageShirt = new Image();
+imageShirt.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(shirt);
+const imagesSack = ['mapSack', imageSack]
+const imagesCoin = ['mapCoin', imageCoin]
+const imagesShirt = ['mapShirt', imageShirt]
+const imagesMask = ['mapMask', imageMask]
 
 const StyledPopup = styled.div`
   background: white;
@@ -36,8 +45,17 @@ const StyledPopup = styled.div`
   text-align: center;
 `;
 
-const layoutLayer = {
-  'icon-image': 'mapIcon'
+const layoutLayerSack = {
+  'icon-image': 'mapSack'
+}
+const layoutLayerCoin = {
+  'icon-image': 'mapCoin'
+}
+const layoutLayerShirt = {
+  'icon-image': 'mapShirt'
+}
+const layoutLayerMask = {
+  'icon-image': 'mapMask'
 }
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
@@ -111,15 +129,13 @@ class MapView extends React.Component {
           )
         }}
       >
-        <Layer type="symbol" id="marker" layout={layoutLayer} images={images} >
-          {this.props.filteredEvents.map((rationEvent, index) => (
-            <Feature
-              key={rationEvent._id}
-              coordinates={rationEvent.location.coordinates}
-              onClick={() => {this.onMarkerClick(rationEvent._id)}}
-            />
-          ))}
-        </Layer>
+        <FeatureLayer layoutLayer={layoutLayerCoin} images={imagesCoin} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="money"/>
+        <FeatureLayer layoutLayer={layoutLayerShirt} images={imagesShirt} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="clothes"/>
+        <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="food"/>
+        <FeatureLayer layoutLayer={layoutLayerMask} images={imagesMask} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="ppe"/>
+        <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="ramadan"/>
+        <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="other"/>
+        <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType={undefined} />
         {this.props.selectedRation && (
           <WhichPopup className="mainPopup" screenWidth={this.state.screenWidth} selectedRation={this.props.selectedRation} />
         )
@@ -127,6 +143,36 @@ class MapView extends React.Component {
       </Map>
     )
   } 
+}
+
+const FeatureLayer = (props) => {
+  const {layoutLayer, images, filteredEvents, onMarkerClick, whichType} = props
+
+  const furtherFilteredEvents = filteredEvents.filter((rationEvent) => {
+    // console.log(rationEvent.typeOfRation + " " + whichType)
+    // console.log(rationEvent.typeOfRation === whichType)
+    // console.log("---------------")
+    return rationEvent.typeOfRation === whichType
+  })
+
+  if (furtherFilteredEvents.length === 0) {
+    return null
+  }
+
+  const returnEvents = furtherFilteredEvents.map((rationEvent) => {
+    return (
+      <Feature 
+        key={rationEvent._id}
+        coordinates={rationEvent.location.coordinates}
+        onClick={() => {onMarkerClick(rationEvent._id)}}
+      />
+    )
+  })
+  return (
+    <Layer type="symbol" id={whichType} layout={layoutLayer} images={images}>
+      {returnEvents}
+    </Layer>
+  )
 }
 
 const WhichPopup = (props) => {

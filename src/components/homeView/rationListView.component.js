@@ -6,20 +6,44 @@ import '../../css/rationlistView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons'
 import filterAndSearch from './filterAndSearch';
-
 import { searchRationEvents, filterRationEvents } from '../../Actions/filterSearchRatioEventAction';
-
 import RationInfoView from './rationInfoView.component';
+import sack from '../../assets/svg/sack.svg'
+import mask from '../../assets/svg/mask.svg'
+import coin from '../../assets/svg/coin.svg'
+import shirt from '../../assets/svg/shirt.svg'
 
 
 const RationListItem = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
   return (
-    <Fragment>
-      <h5> {props.rationEvent.name} </h5>
-      <h6 className="text-muted"> {new Date(props.rationEvent.date).toLocaleDateString("en-US", dateOptions)} </h6>
-    </Fragment>
+      <div className="list-view-container">
+      <div className="list-left">
+        <RationListImage type={props.rationEvent.typeOfRation} />
+      </div>
+      <div className="list-right">
+        <h5> {props.rationEvent.name} </h5>
+        <h6 className="text-muted"> {new Date(props.rationEvent.date).toLocaleDateString("en-US", dateOptions)} </h6>
+      </div>
+      </div>
   )
+}
+
+const RationListImage = (props) => {
+  switch (props.type) {
+    case "clothes":
+      return <img src={shirt} alt="error" className="list-left-image"/>
+    case "food":
+      return <img src={sack} alt="error" className="list-left-image"/>
+    case "money":
+      return <img src={coin} alt="error" className="list-left-image"/>
+    case "ppe":
+      return <img src={mask} alt="error" className="list-left-image"/>
+    case "ramadan":
+      return <img src={sack} alt="error" className="list-left-image"/>
+    default:
+      return <img src={sack} alt="error" className="list-left-image"/>
+  }
 }
 
 const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) => {
@@ -30,6 +54,11 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
 
   const onFilterChange = (event) => {
     dispatch(filterRationEvents(event.target.value))
+  }
+
+  const resetSearchAndFilter = () => {
+    dispatch(searchRationEvents(""))
+    dispatch(filterRationEvents("all"))
   }
 
 
@@ -59,6 +88,7 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
           return (
             <ListGroup.Item key={rationEvent._id} action onClick={() => {
               dispatch(selectingRationEvent(rationEvent))
+              resetSearchAndFilter()
             }}>
               <RationListItem rationEvent={rationEvent} />
             </ListGroup.Item>

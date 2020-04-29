@@ -43,6 +43,10 @@ const validationSchema = Yup.object().shape({
   .max(1000, "*Description  must be less than 1000 charachters"),
   // location: Yup.array(Yup.number())
   // .required("*Must add a location"),
+  typeOfRation: Yup.string()
+  .required("*Type of rations distributed is required")
+  .min(1, "*Must be longer than 1 charachter")
+  .max(100, "*Must be less than 1000 charachters"),
   agreedToTerms: Yup.bool()
   .oneOf([true], "*Must accept terms and conditions"),
   mapClicked: Yup.bool()
@@ -118,6 +122,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           description: "",
           numOfItems: "",
           descriptionOfItems: "",
+          typeOfRation: "",
           images: [],
           date: new Date(),
           agreedToTerms: false,
@@ -134,6 +139,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
             description: values.description,
             totalNumberOfItems: values.numOfItems,
             itemsDescription: values.descriptionOfItems,
+            typeOfRation: values.typeOfRation,
             images: values.images,
             location: newPoint,
             date: values.date
@@ -219,6 +225,24 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           <Form.Control.Feedback type="invalid">{errors.descriptionOfItems}</Form.Control.Feedback>
         </Form.Group>
 
+        <Form.Group controlId="formTypeOfRation">
+          <Form.Label>Type of Rations distributed</Form.Label>
+          <Form.Control
+            as="select"
+            name="typeOfRation"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.typeOfRation}
+          >
+            <option value="clothes">Clothes</option>
+            <option value="food">Food</option>
+            <option value="money">Money</option>
+            <option value="ppe">PPE</option>
+            <option value="ramadan">Ramadan</option>
+            <option value="other">Other</option>
+          </Form.Control>
+        </Form.Group>
+
         <Form.Group>
           <Form.Label> Images of Ration Drive (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
@@ -263,7 +287,9 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           <br />
           <DatePicker
             selected={values.date}
-            onChange={(date) => values.date = date}
+            onChange={(date) => {
+              setFieldValue('date', date);
+            }}
             name="date"
             className="datePicker"
           />

@@ -36,6 +36,10 @@ const RationInfoView = (props) => {
           <p> {ration.itemsDescription} </p>
         </div>
         <div className="smallBoi">
+          <h6 className="text-muted"> Type of Rations </h6>
+          <p> {ration.typeOfRation === "ppe" ? "Personal Protection Equipment" : ration.typeOfRation} </p>
+        </div>
+        <div className="smallBoi">
           <h6 className="text-muted"> Happened on </h6>
           <p> {new Date(ration.date).toLocaleDateString("en-US", dateOptions)} </p>
         </div>
