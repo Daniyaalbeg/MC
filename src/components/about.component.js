@@ -10,7 +10,7 @@ const About = () => {
         <Icon />
       </div>
       <hr className="logoSeperator"/>
-      <h1> About Us </h1>
+      <h1> <span className="aboutText">About</span> <span className="usText">Us</span> </h1>
       <p className="aboutBody">
         Ministry of Change is launching the first of its sites to serve the citizens of this world to make good work visible to everyone.
       </p>

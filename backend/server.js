@@ -69,13 +69,13 @@ app.use('/api/emailVerification', emailVerificationRouter.router);
 
 var httpsServer = https.createServer(options, app);
 
-if (local.environment === 'production') {
-  httpsServer.listen(local.port, () => {
-    console.log(`HTTPS server is running on port: ${local.port}`)
-  })
-} else {
+// if (local.environment === 'production') {
+//   httpsServer.listen(local.port, () => {
+//     console.log(`HTTPS server is running on port: ${local.port}`)
+//   })
+// } else {
   app.listen(local.port, () => {
     console.log(`HTTP server is running on port: ${local.port}`);
     console.log(local.environment);
   });
-}
+// }

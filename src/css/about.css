@@ -7,6 +7,14 @@
   }
 }
 
+/* 
+#4B5962
+#1489C9
+#4AB350
+#FFD819
+#F47E2E
+#EF2A30 */
+
 @media only screen and (min-width: 600px) {
   .aboutBody {
     width: 50%;
@@ -21,6 +29,18 @@
   align-items: center;
   text-align: center;
   flex-direction: column;
+  height: auto;
+  width: 100%;
+  background-color: white;
+}
+
+.aboutText {
+  color: #F47E2E
+  ;
+}
+
+.usText {
+  color: #FFD819;
 }
 
 .logoSeperator {
@@ -30,7 +50,8 @@
 }
 
 .aboutBody {
- font-family: sans-serif; 
+ font-family: sans-serif;
+ text-shadow: 2px 2px 5px 5px black;
 }
 
 .iconAbout {
@@ -41,11 +62,3 @@
   margin-top: 5em;
   margin-bottom: 30px;
 }
-/* 
-
-#4B5962
-#1489C9
-#4AB350
-#FFD819
-#F47E2E
-#EF2A30 */
