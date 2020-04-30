@@ -18,7 +18,7 @@ const ProfileInfoView = (props) => {
       <p> {props.approved ? "You have been approved" : "You have not been approved"} </p>
       <hr />
       <h6 className="text-muted"> Verified </h6>
-      <Verified verified={props.verified} />
+      <Verified verified={props.verified} token={props.token}/>
       <hr />
       <h6 className="text-muted"> You created this account on </h6>
       <p> {new Date(props.createdAt).toLocaleDateString("en-US", dateOptions)} </p>
@@ -45,7 +45,10 @@ const sendVerificationEmail = (token) => {
     url: rootURL(production)+API+'/emailVerification',
     headers: {'Content-Type': 'application/json', 'x-access-token': token}
   })
-  .catch((error) => console.log(error.response))
+  .catch((error) => {
+    console.log("this error")
+    console.log(error.response)
+  })
 }
 
 export default ProfileInfoView;

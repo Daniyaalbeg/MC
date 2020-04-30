@@ -3,6 +3,23 @@
   width: 100%;
 }
 
+.listGroupItem {
+  padding-left: 0 !important;
+}
+
+/* .listGroupItem {
+  padding-left: 0px;
+  display: block;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.listGroupItem:action {
+  width: 100%;
+  color: #495057;
+  text-align: inherit;
+} */
+
 .searchBarSpace {
   margin: 0;
 }
@@ -27,7 +44,9 @@
 }
 
 .list-left {
-  flex-grow: 1;
+  width: 64px;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .list-left-image {
@@ -35,7 +54,7 @@
 }
 
 .list-right {
-  flex-grow: 3;
+  flex: 1;
 }
 .searchIcon {
   border: none;

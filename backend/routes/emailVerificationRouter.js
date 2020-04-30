@@ -57,7 +57,9 @@ const sendVerificationEmail = (user) => {
   var token = jwt.sign({ id: userObject}, secret)
 
   var transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.stackmail.com',
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.EMAIL_USERNAME,
       pass: process.env.EMAIL_PASSWORD
@@ -69,8 +71,8 @@ const sendVerificationEmail = (user) => {
     to: user.email,
     subject: 'Verify Email',
     html: `
-    <h3> Thank you for signingup </h3>
-    <p> Hi `+user.username+`. Please click this <a href="http://`+process.env.API+`/verify/`+token+`"> link </a> to verify your account</p>
+    <h3> Thank you for signing up </h3>
+    <p> Hi `+user.username+`. Please click this <a href="https://`+process.env.EMAIL_REPLY_API+`/verify/`+token+`"> link </a> to verify your account</p>
     `
   };
 

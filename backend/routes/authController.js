@@ -85,7 +85,6 @@ router.route('/createUser').post([
     });
     
     // try {
-      email.sendVerificationEmail(newUser);
     // } catch {
     //   res.status(500).send("An error occured")
     // }
@@ -99,6 +98,7 @@ router.route('/createUser').post([
         auth: true,
         token, token
       });
+      email.sendVerificationEmail(newUser);
     })
     .catch((error) => {
       console.log(error);

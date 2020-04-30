@@ -9,7 +9,7 @@ import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
 import { selectingRationEvent } from '../../Actions/selectRationEventActions';
-import sack, { mapMarker, mapPin, shirt, coin, mask } from '../../assets/svg.js'
+import sack, { mapMarker, mapPin, shirt, coin, mask} from '../../assets/svg.js'
 import filterAndSearch from './filterAndSearch'
 
 mapboxgl.accessToken = token

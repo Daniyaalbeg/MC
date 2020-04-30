@@ -86,7 +86,7 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
       <ListGroup variant="flush" className="listGroup">
         {rationEvents.map((rationEvent) => {
           return (
-            <ListGroup.Item key={rationEvent._id} action onClick={() => {
+            <ListGroup.Item className="listGroupItem" key={rationEvent._id} action onClick={() => {
               dispatch(selectingRationEvent(rationEvent))
               resetSearchAndFilter()
             }}>
