@@ -1,0 +1,51 @@
+@media only screen and (max-width: 600px) {
+  .aboutBody {
+    width: 90%;
+  }
+  .mcLogoAbout {
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .aboutBody {
+    width: 50%;
+  }
+  .mcLogoAbout {
+    width: 50%;
+  }
+}
+
+.aboutContainer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.logoSeperator {
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.aboutBody {
+ font-family: sans-serif; 
+}
+
+.iconAbout {
+  width: 70%;
+}
+
+.mcLogoAbout {
+  margin-top: 5em;
+  margin-bottom: 30px;
+}
+/* 
+
+#4B5962
+#1489C9
+#4AB350
+#FFD819
+#F47E2E
+#EF2A30 */

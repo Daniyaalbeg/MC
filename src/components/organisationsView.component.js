@@ -124,9 +124,15 @@ const OrgInfo = (props) => {
 				<Card.Text>  </Card.Text>
 				<hr />
 				<h6 className="text-muted"> Donation Info </h6>
-				<BankingDetails bankingDetails={org.bankingDetails}/>
-				<EasyPaisaDetails easyPaisa={org.bankingDetails.easyPaisa} />
-				<JazzCashDetails jazzCash={org.bankingDetails.jazzCash}/>
+				{org.bankingDetails.accountNumber !== "" &&
+					<BankingDetails bankingDetails={org.bankingDetails}/>
+				}
+				{org.bankingDetails.easyPaisa !== "" &&
+					<EasyPaisaDetails easyPaisa={org.bankingDetails.easyPaisa} />
+				}
+				{org.bankingDetails.jazzCash !== "" &&
+					<JazzCashDetails jazzCash={org.bankingDetails.jazzCash}/>
+				}
 				<hr />
 				<h6 className="text-muted"> Point of Contact </h6>
 				<Card.Text> {org.contactName} </Card.Text>
