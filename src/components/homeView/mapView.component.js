@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature, Popup, MapContext } from 'react-mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { Carousel } from  'react-bootstrap';
@@ -11,6 +11,8 @@ import styled from 'styled-components';
 import { selectingRationEvent } from '../../Actions/selectRationEventActions';
 import sack, { mapMarker, mapPin, shirt, coin, mask} from '../../assets/svg.js'
 import filterAndSearch from './filterAndSearch'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import{ faGlobeAsia } from '@fortawesome/pro-regular-svg-icons';
 
 mapboxgl.accessToken = token
 
@@ -67,7 +69,8 @@ class MapView extends React.Component {
     this.state = {
       center: [69.3451, 30.3753],
       zoom: [4.7],
-      screenWidth: null
+      screenWidth: null,
+      styleSatellite: false 
     }
   }
 
@@ -85,7 +88,7 @@ class MapView extends React.Component {
 
   componentWillUpdate() {
     this.props.filteredEvents.map((event) => {
-      rationEventKeys[event._id] = {...event}
+      return rationEventKeys[event._id] = {...event}
     });
   }
 
@@ -93,7 +96,7 @@ class MapView extends React.Component {
     if (this.props.selectedRation) {
       this.setState = ({
         center: this.props.selectedRation.location.coordinates,
-        zoom: [14]
+        zoom: [14],
       })
       this.props.dispatch(selectingRationEvent(null))
     }
@@ -105,6 +108,15 @@ class MapView extends React.Component {
 
   render() {
     return (
+      <Fragment>
+      <button className="styleToggle" onClick={() => {
+        console.log("Ran once")
+        this.setState({
+          styleSatellite: !this.state.styleSatellite
+        })
+      }}>
+        <FontAwesomeIcon icon={faGlobeAsia} />
+      </button>
       <Map
         style='mapbox://styles/daniyaalbeg/ck8xf05we46ts1ipm9zqkoyya'
         containerStyle={{
@@ -127,8 +139,16 @@ class MapView extends React.Component {
               countries: 'pk'
             })
           )
+          map.addControl(
+            new mapboxgl.NavigationControl()
+          )
         }}
       >
+        <MapContext.Consumer>
+          {(map) => {
+            map.setStyle(this.state.styleSatellite ? "mapbox://styles/mapbox/satellite-v9" : "mapbox://styles/daniyaalbeg/ck8xf05we46ts1ipm9zqkoyya")
+          }}
+        </MapContext.Consumer>
         <FeatureLayer layoutLayer={layoutLayerCoin} images={imagesCoin} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="money"/>
         <FeatureLayer layoutLayer={layoutLayerShirt} images={imagesShirt} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="clothes"/>
         <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="food"/>
@@ -141,6 +161,7 @@ class MapView extends React.Component {
         )
         }
       </Map>
+      </Fragment>
     )
   } 
 }

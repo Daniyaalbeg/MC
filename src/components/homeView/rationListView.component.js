@@ -65,7 +65,7 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
   if (selectedRation == null) {
     return (
       <Fragment>
-      <form className="searchBarContainer">
+      <form className="searchBarContainer" onSubmit={(e) => {e.preventDefault()}}>
         <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
         <input type='text' className="searchBar" onChange={onSearchChange}/>
         <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
