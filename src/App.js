@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import NavigationBar from './components/navigationBar.component';
-import HomeView from './components/homeView/homeView.component';
+import HomeView from './components/homeView/homeView.component'
+import MainMap from './components/homeView/mainMap.component';
 import OrgView from './components/organisationsView.component';
 import SignUp from './components/signup/signUp.component';
 import ResetPassword from './components/resetPassword.component';
@@ -18,6 +19,7 @@ function App() {
       <NavigationBar />
       <Switch>
         <Route path="/" exact component={HomeView}/>
+        <Route path="/map" exact component={MainMap}/>
         <Route path="/organisations" component={OrgView}/>
         <Route path="/about" component={About} />
         <Route path="/signup" component={SignUp}/>

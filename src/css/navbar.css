@@ -1,9 +1,13 @@
 .navlink {
-  color: #B0D6FF;
+  color: rgb(190, 190, 190);
   text-decoration: none;
 }
 
-.orgLink {
+.mcLogo {
+  height: 2rem;
+}
+
+.spaceLink {
   margin-right: 20px;
 }
 

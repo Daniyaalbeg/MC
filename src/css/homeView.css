@@ -1,56 +1,101 @@
-html, body {
-  height: 100%;
+.homeImage {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  overflow: hidden;
 }
 
-@media only screen and (max-width: 600px) {
-  .mapView {
-    width: 100vw !important;
-    height: 100vh;
-  }
-  .rationListView {
-    display: none;
-  }
+.spinnerHomeView {
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-#root {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+.slideCaption {
+  vertical-align: middle;
 }
 
-.containerHome {
-  flex-grow: 1;
-  padding-left: 0 !important;
-  margin: 0 !important;
+.carouselImage {
+  height: 60vh;
+  overflow: hidden;
+}
+
+.projectInfoContainer {
   display: flex;
   flex-direction: row;
-  flex: 1 1 auto;
-  height: 93.5vh;
-  width: 100vw;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-/* .bottom {
+.projectInfoDetails {
   display: flex;
-  height: 33vh;
-  width: 100vw;
-  align-items: stretch;
-} */
-
-.mapView {
-  width: 70vw;
-  /* flex-grow: 1; */
+  flex-direction: column;
+  text-align: center;
 }
 
-.rationListView {
-  width: 30vw;
-  overflow-y: scroll;
-  flex-grow: 1;
+.featuredText {
+  font-size: small;
+}
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  /* margin-top: 2rem; */
+  margin-bottom: 2rem;
+}
+.separator::before, .separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #F2F2F2;
+}
+.separator::before {
+  margin-right: .25em;
+}
+.separator::after {
+  margin-left: .25em;
 }
 
-.rationListView::-webkit-scrollbar {
-  display: none;
+.featuredEvents {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+  width: 100%;
 }
 
-.rationInfoView {
-  flex-grow: inherit;
+.featuredEventCard {
+  width: 20%;
+  height: fit-content;
+  overflow: hidden;
+  text-align: center;
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  border: 1px solid rgb(228, 228, 228);
+  
+}
+
+.featuredEventImage {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.featuredEventText {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+}
+
+.featuredEventDivider {
+  margin: 0;
+}
+
+.featuredEventIcon {
+  height: 100px;
+  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

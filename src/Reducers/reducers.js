@@ -6,9 +6,11 @@ import signUpReducer from './signUpReducer';
 import rationInfoReducer from './rationInfoReducer';
 import createRationReducer from './createRationReducer';
 import orgInfoReducer from './orgInfoReducer';
+import homeViewReducer from './homeViewReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  info: homeViewReducer,
   userInfo: userInfoReducer,
   signUp: signUpReducer,
   createRation: createRationReducer,

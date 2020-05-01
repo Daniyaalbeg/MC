@@ -1,0 +1,56 @@
+html, body {
+  height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .mapView {
+    width: 100vw !important;
+    height: 100vh;
+  }
+  .rationListView {
+    display: none;
+  }
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerHome {
+  flex-grow: 1;
+  padding-left: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  height: 93.5vh;
+  width: 100vw;
+}
+
+/* .bottom {
+  display: flex;
+  height: 33vh;
+  width: 100vw;
+  align-items: stretch;
+} */
+
+.mapView {
+  width: 70vw;
+  /* flex-grow: 1; */
+}
+
+.rationListView {
+  width: 30vw;
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+
+.rationListView::-webkit-scrollbar {
+  display: none;
+}
+
+.rationInfoView {
+  flex-grow: inherit;
+}

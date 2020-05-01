@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import LoginModal from './loginAccountComponents/loginModal.component';
 import '../css/navbar.css'
+import MCMC from '../assets/svg/MCMC.svg';
 
 
 
@@ -19,12 +20,15 @@ const NavigationBar = () => {
 
   // render() {
     return (
-      <Navbar bg="primary" variant="dark" expand="lg">
-        <NavLink to="/"><Navbar.Brand>Ministry of Change</Navbar.Brand></NavLink>
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <NavLink to="/"><Navbar.Brand>
+          <img src={MCMC} alt="MC" className="mcLogo"/>
+          </Navbar.Brand></NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Item><NavLink className="navlink orgLink" to="/organisations"> Organisations </NavLink></Nav.Item>
+            <Nav.Item><NavLink className="navlink spaceLink" to="/map"> Map </NavLink></Nav.Item>
+            <Nav.Item><NavLink className="navlink spaceLink" to="/organisations"> Organisations </NavLink></Nav.Item>
             <Nav.Item><NavLink className="navlink" to="/about"> About </NavLink></Nav.Item>
           </Nav>
           {/* <NavLink to="/login"> Log in </NavLink> */}
