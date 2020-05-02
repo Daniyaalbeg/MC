@@ -1,7 +1,10 @@
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
 .homeImage {
   width: 100%;
   height: 60vh;
   object-fit: cover;
+  object-position: 50% 0;
   overflow: hidden;
 }
 
@@ -11,8 +14,21 @@
   margin-bottom: 2rem;
 }
 
+.slideCaptionContainer {
+
+}
 .slideCaption {
-  vertical-align: middle;
+  font-weight: bolder;
+  font-size: 6rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  color: white;
+  text-align: center;
+  margin: auto;
 }
 
 .carouselImage {
@@ -58,7 +74,16 @@
   margin-left: .25em;
 }
 
-.featuredEvents {
+.featuredLink {
+  all: unset
+}
+.featuredLink:hover {
+  all: unset
+}
+.featuredLink:active {
+  all: unset
+}
+.featuredOrgs {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -67,7 +92,7 @@
   margin-top: 2rem;
   margin-bottom: 4rem;
 }
-.featuredEventCard {
+.featuredOrgCard {
   width: 20%;
   height: fit-content;
   overflow: hidden;
@@ -77,17 +102,17 @@
   border: 1px solid rgb(228, 228, 228);
   box-shadow: 2px 2px 20px -10px gray;
 }
-.featuredEventImage {
+.featuredOrgImage {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
-.featuredEventText {
+.featuredOrgText {
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: sans-serif;
 }
-.featuredEventDivider {
+.featuredOrgDivider {
   margin: 0;
 }
 .featuredEventIcon {
@@ -116,17 +141,17 @@
 }
 
 .mapScreenshotContainer {
-  width: 100%;
+  display: block;
+  width: 80vw;
   height: 20%;
-  margin: 0 auto;
+  margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  object-fit: cover;
   border-radius: 5px;
   box-shadow: 2px 2px 25px -10px gray;
-  overflow: hidden;
 }
 .mapScreenshot {
-  margin: auto;
-  width: 80%;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }

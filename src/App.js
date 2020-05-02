@@ -5,6 +5,7 @@ import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component'
 import MainMap from './components/homeView/mainMap.component';
 import OrgView from './components/organisationsView.component';
+import OrgViewInfo from './components/organisationInfoView.component';
 import SignUp from './components/signup/signUp.component';
 import ResetPassword from './components/resetPassword.component';
 import ResettingPassword from './components/signup/resettingPassword.component';
@@ -20,6 +21,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomeView}/>
         <Route path="/map" exact component={MainMap}/>
+        <Route path="/organisations/:id" component={OrgViewInfo}/>
         <Route path="/organisations" component={OrgView}/>
         <Route path="/about" component={About} />
         <Route path="/signup" component={SignUp}/>

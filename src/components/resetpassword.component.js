@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { Redirect, Link } from 'react-router-dom';
 import '../css/form.css';
 import { API, rootURL, production } from '../config'
 

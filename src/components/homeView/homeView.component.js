@@ -1,16 +1,16 @@
 import React, { Fragment, useEffect } from 'react';
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
 import { getMainInfo } from '../../Actions/homeViewActions'
 
-import photo1 from '../../assets/Images/oldman.jpg'
-import photo2 from '../../assets/Images/chitralman.jpg'
-import photo3 from '../../assets/Images/doobi.jpg'
-import photo4 from '../../assets/Images/kalashgirls.jpg'
-import photo5 from '../../assets/Images/kalashkids.jpg'
-import photo6 from '../../assets/Images/smallkid.jpg'
+import photo0 from '../../assets/Images/oldman.jpg'
+import photo1 from '../../assets/Images/chitralman.jpg'
+import photo2 from '../../assets/Images/doobi.jpg'
+import photo3 from '../../assets/Images/kalashgirls.jpg'
+import photo4 from '../../assets/Images/kalashkids.jpg'
+import photo5 from '../../assets/Images/smallkid.jpg'
 import mapScreenshot from '../../assets/Images/mapScreenshot.png'
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
@@ -18,11 +18,10 @@ import sack from '../../assets/svg/sack.svg'
 import coin from '../../assets/svg/coin.svg'
 import mask from '../../assets/svg/mask.svg'
 import shirt from '../../assets/svg/shirt.svg'
-import { render } from '@testing-library/react';
-const images = [photo1, photo2, photo3, photo4, photo5, photo6]
+const images = [photo0, photo1, photo2, photo3, photo4, photo5]
+const captions = ["BE THE CHANGE", "STUFF", " OTHER STUFF", "SOME STUFF", "COOL", "HELLO"]
 
-const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numberOfUsers, featuredEvents }) => {
-
+const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
     if (!fetched && !loading) {
       dispatch(getMainInfo())
@@ -31,21 +30,21 @@ const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numb
 
   return (
     <Fragment>
-    <Carousel controls="false" fade indicators="false" interval="2000">
-      {images.map((image) => {
+    <Carousel controls={false} fade={true} indicators={false} interval={2000} >
+      {images.map((image, index) => {
         return (
           <Carousel.Item className="carouselImage" key={image}>
-            {/* <Carousel.Caption>
-              <h3 className="slideCaption">Be the Change</h3>
-            </Carousel.Caption> */}
+            <Carousel.Caption bsPrefix="slideCaptionContainer">
+              <p className="slideCaption">{captions[index]}</p>
+            </Carousel.Caption>
             <img className="homeImage" src={image} alt=""/>
           </Carousel.Item>
         )
       })}
     </Carousel>
-    <ProjectsInfo loading={loading} hasErrors={hasErrors} numberOfRations={numberOfRations} numberOfUsers={numberOfUsers} />
+    <ProjectsInfo loading={loading} hasErrors={hasErrors} numberOfRations={numberOfRations} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
     <div className="separator text-muted featuredText"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
-    <FeaturedOrganisation featuredEvents={featuredEvents} />
+    <FeaturedOrganisation featuredOrgs={featuredOrgs} />
     <div className="separator text-muted featuredText"> MAP TO ENGAGE WITH </div>
     <MapIconKey />
     <HomeViewMap />
@@ -55,10 +54,10 @@ const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numb
 
 const HomeViewMap = (props) => {
   return (
-    <div className="mapScreenshot">
-      <NavLink to="/map">
-        <img className="mapScreenshotContainer" src={mapScreenshot} alt={imagePlaceholder} />
-      </NavLink>
+    <div className="mapScreenshotContainer grow">
+      <Link to="/map">
+        <img className="mapScreenshot" src={mapScreenshot} alt={imagePlaceholder} />
+      </Link>
     </div>
   )
 }
@@ -98,17 +97,19 @@ const MapIconKey = (props) => {
 // }
 
 const FeaturedOrganisation = (props) => {
-  const { featuredEvents } = props
+  const { featuredOrgs } = props
   return (
     <Fragment>
-    <div className="featuredEvents">
-      {featuredEvents.map((event) => {
+    <div className="featuredOrgs">
+      {featuredOrgs.map((org) => {
         return (
-          <div className="featuredEventCard" key={event._id}>
-            <img src={event.images[0]} alt={imagePlaceholder} className="featuredEventImage" />
-            <p className="featuredEventText"> {event.name} </p>
-            <hr className="featuredEventDivider" />
+          <div className="featuredOrgCard grow" key={org._id}>
+          <Link className="featuredLink" to={'/organisations/'+org._id}>
+            <img src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt="image loading error" className="featuredOrgImage" />
+            <p className="featuredOrgText"> {org.supplierName} </p>
+            <hr className="featuredOrgDivider" />
             {/* <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} /> */}
+          </Link>
           </div>
         )
       })}
@@ -133,7 +134,7 @@ const whichIcon = (icon) => {
 }
 
 const ProjectsInfo = (props) => {
-  const { loading, hasErrors, numberOfRations, numberOfUsers } = props
+  const { loading, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations } = props
   if (loading) {
     return (
       <Spinner animation="border" role="status" className="spinnerHomeView">
@@ -146,6 +147,14 @@ const ProjectsInfo = (props) => {
         <div className="projectInfoDetails">
           <h4> {numberOfUsers} </h4>
           <p className="text-muted"> users </p>
+        </div>
+        <div className="projectInfoDetails">
+          <h4> {numberOfIndividuals} </h4>
+          <p className="text-muted"> individuals </p>
+        </div>
+        <div className="projectInfoDetails">
+          <h4> {numberOfOrganisations} </h4>
+          <p className="text-muted"> organisations </p>
         </div>
         <div className="projectInfoDetails">
           <h4> {numberOfRations} </h4>
@@ -162,7 +171,9 @@ const MapStateToProps = (state) => ({
   hasErrors: state.info.hasErrors,
   numberOfUsers: state.info.numberOfUsers,
   numberOfRations: state.info.numberOfRations,
-  featuredEvents: state.info.featuredEvents
+  numberOfIndividuals: state.info.numberOfIndividuals,
+  numberOfOrganisations: state.info.numberOfOrganisations,
+  featuredOrgs: state.info.featuredOrgs
 })
 
 export default connect(MapStateToProps)(HomeView);

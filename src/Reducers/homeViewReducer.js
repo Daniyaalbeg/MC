@@ -6,7 +6,9 @@ const initialState = {
   hasErrors: false,
   numberOfUsers: 0,
   numberOfRations: 0,
-  featuredEvents: [],
+  numberOfIndividuals: 0,
+  numberOfOrganisations: 0,
+  featuredOrgs: [],
 }
 
 export default function homeViewReducer(state = initialState, action) {
@@ -24,7 +26,9 @@ export default function homeViewReducer(state = initialState, action) {
         fetched: true,
         numberOfRations: action.payload.numberOfRations,
         numberOfUsers: action.payload.numberOfUsers,
-        featuredEvents: action.payload.featuredEvents
+        numberOfIndividuals: action.payload.numberOfIndividuals,
+        numberOfOrganisations: action.payload.numberOfOrganisations,
+        featuredOrgs: action.payload.featuredOrgs
       }
     case actions.GET_MAIN_INFO_FAILURE:
       return {

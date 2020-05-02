@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import '../../css/form.css';
 import { API, rootURL, production } from '../../config'
 
-
 import axios from 'axios';
 
 function equalTo(ref, msg) {

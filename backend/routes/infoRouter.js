@@ -8,8 +8,10 @@ const RationEvent = require('../models/rationEvent.model').RationEvent;
 
 router.route('/').get((req, res) => {
   let numberOfUsers = 0
+  let numberOfIndividuals = 0
+  let numberOfOrganisations = 0
   let numberOfRations = 0
-  let featuredEvents = []
+  let featuredOrgs = []
   User.find(null, (err, result) => {
     if (err) {
       return res.status(500).send("An error occured")
@@ -19,15 +21,16 @@ router.route('/').get((req, res) => {
     }
     result.forEach((user) => {
       numberOfUsers += 1
+      if (user.supplier.type === "Individual") {
+        numberOfIndividuals += 1
+      } else {
+        numberOfOrganisations += 1
+      }
       numberOfRations += user.supplier.rationEvents.length;
-      while (featuredEvents.length < 4) {
-        if (user.supplier.rationEvents !== undefined) {
-          for (let i = 0; i < user.supplier.rationEvents.length; i++) {
-            if (featuredEvents.length < 4) {
-              featuredEvents.push(user.supplier.rationEvents[i])
-            } else {
-              break
-            }
+      if (featuredOrgs.length < 4) {
+        if (user.supplier !== null) {
+          if (user.supplerImageURL !== null) {
+            featuredOrgs.push(user.supplier)
           }
         }
       }
@@ -36,7 +39,9 @@ router.route('/').get((req, res) => {
     res.status(200).json({
       numberOfRations: numberOfRations,
       numberOfUsers: numberOfUsers,
-      featuredEvents: featuredEvents
+      numberOfIndividuals: numberOfIndividuals,
+      numberOfOrganisations: numberOfOrganisations,
+      featuredOrgs: featuredOrgs
     })
   });
 });
