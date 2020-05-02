@@ -1,9 +1,20 @@
-const filterAndSearch = (rationEvents, filter, search) => {
+const filterAndSearch = (rationEvents, filterType, filter, search) => {
   search = search.toLowerCase();
   const approved = rationEvents.filter((rationEvent) => {
     return rationEvent.approved
   })
-  const filteredRationEvents = approved.filter((rationEvent) => {
+  const filteredRationEventsType = approved.filter((rationEvent) => {
+    if (filterType === "all") {
+      return true
+    } else {
+      if (filterType === rationEvent.typeOfRation) {
+        return true
+      } else {
+        return false
+      }
+    }
+  })
+  const filteredRationEvents = filteredRationEventsType.filter((rationEvent) => {
     if (filter === "all") {
       return true
     } else {

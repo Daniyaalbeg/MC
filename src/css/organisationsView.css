@@ -108,7 +108,7 @@
 .cardImage {
     height: 150px;
     object-fit: scale-down;
-    background-color: rgba(0,0,0,0.19);
+    background-color: #343A40;
 }
 
 .headerText {

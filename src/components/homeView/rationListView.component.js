@@ -6,7 +6,7 @@ import '../../css/rationlistView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons'
 import filterAndSearch from './filterAndSearch';
-import { searchRationEvents, filterRationEvents } from '../../Actions/filterSearchRatioEventAction';
+import { searchRationEvents, filterRationEvents, filterRationEventsType } from '../../Actions/filterSearchRatioEventAction';
 import RationInfoView from './rationInfoView.component';
 import sack from '../../assets/svg/sack.svg'
 import mask from '../../assets/svg/mask.svg'
@@ -51,6 +51,10 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
   const onSearchChange = (event) => {
     dispatch(searchRationEvents(event.target.value))
   }
+  
+  const onFilterChangeType = (event) => {
+    dispatch(filterRationEventsType(event.target.value))
+  }
 
   const onFilterChange = (event) => {
     dispatch(filterRationEvents(event.target.value))
@@ -68,6 +72,16 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
       <form className="searchBarContainer" onSubmit={(e) => {e.preventDefault()}}>
         <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
         <input type='text' className="searchBar" onChange={onSearchChange}/>
+        <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
+        <div className="filterSelect">
+          <select onChange={onFilterChangeType}>
+            <option value="all"> all </option>
+            <option value ="food">Food</option>
+            <option value="ppe">PPE</option>
+            <option value="money">Money</option>
+            <option value="clothes">Clothes</option>
+          </select>
+        </div>
         <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
         <div className="filterSelect">
           <select onChange={onFilterChange}>
@@ -105,7 +119,7 @@ const RationListView = ({dispatch, rationEvents, selectedRation, searchValue}) =
 }
 
 const MapStateToProps = (state) => ({
-    rationEvents: filterAndSearch(state.rationInfo.rationEvents, state.rationInfo.filter, state.rationInfo.search),
+    rationEvents: filterAndSearch(state.rationInfo.rationEvents, state.rationInfo.filterType, state.rationInfo.filter, state.rationInfo.search),
     selectedRation: state.rationInfo.selectedRation,
     searchValue: state.rationInfo.search
 });

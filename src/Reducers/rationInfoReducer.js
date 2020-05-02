@@ -8,6 +8,7 @@ const initialState = {
   fetched: false,
   rationEvents: [],
   selectedRation: null,
+  filterType: "all",
   filter: "all",
   search: ""
 }
@@ -49,6 +50,11 @@ export default function rationInfoReducer(state = initialState, action) {
       return {
         ...state,
         filter: action.payload
+      }
+    case filterSearchActions.FILTER_RATION_EVENT_TYPE:
+      return {
+        ...state,
+        filterType: action.payload
       }
     case filterSearchActions.SEARCH_RATION_EVENT:
       return {

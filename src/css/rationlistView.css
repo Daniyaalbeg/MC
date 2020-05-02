@@ -63,7 +63,7 @@
 }
 
 .searchBar {
-  flex-grow: 2;
+  flex-grow: 1;
   border: none;
   padding: 0;
   padding-left: 12px;
@@ -76,7 +76,7 @@
 }
 
 .filterSelect {
-  flex-grow: 2;
+  flex-grow: 1;
   border: none;
   padding: 0;
   padding-left: 12px;

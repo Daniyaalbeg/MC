@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
@@ -10,6 +11,7 @@ import photo3 from '../../assets/Images/doobi.jpg'
 import photo4 from '../../assets/Images/kalashgirls.jpg'
 import photo5 from '../../assets/Images/kalashkids.jpg'
 import photo6 from '../../assets/Images/smallkid.jpg'
+import mapScreenshot from '../../assets/Images/mapScreenshot.png'
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 import sack from '../../assets/svg/sack.svg'
@@ -42,28 +44,63 @@ const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numb
       })}
     </Carousel>
     <ProjectsInfo loading={loading} hasErrors={hasErrors} numberOfRations={numberOfRations} numberOfUsers={numberOfUsers} />
+    <div className="separator text-muted featuredText"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
     <FeaturedOrganisation featuredEvents={featuredEvents} />
+    <div className="separator text-muted featuredText"> MAP TO ENGAGE WITH </div>
+    <MapIconKey />
     <HomeViewMap />
     </Fragment>
   )
 }
 
-class HomeViewMap extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <p> MAP </p>
-    )
-  }
+const HomeViewMap = (props) => {
+  return (
+    <div className="mapScreenshot">
+      <NavLink to="/map">
+        <img className="mapScreenshotContainer" src={mapScreenshot} alt={imagePlaceholder} />
+      </NavLink>
+    </div>
+  )
 }
+
+const MapIconKey = (props) => {
+  return (
+    <div className="iconKeyContainer">
+      <div className="iconKey">
+        <img className="iconKeyImage" src={sack} alt={imagePlaceholder}/>
+        <p> Food </p>
+      </div>
+      <div className="iconKey">
+        <img className="iconKeyImage" src={coin} alt={imagePlaceholder}/>
+        <p> Money </p>
+      </div>
+      <div className="iconKey">
+        <img className="iconKeyImage" src={mask} alt={imagePlaceholder}/>
+        <p> PPE </p>
+      </div>
+      <div className="iconKey">
+        <img className="iconKeyImage" src={shirt} alt={imagePlaceholder}/>
+        <p> Clothes </p>
+      </div>
+    </div>
+  )
+}
+
+// class HomeViewMap extends React.Component {
+//   constructor(props) {
+//     super(props)
+//   }
+//   render() {
+//     return (
+//       <p> MAP </p>
+//     )
+//   }
+// }
 
 const FeaturedOrganisation = (props) => {
   const { featuredEvents } = props
   return (
     <Fragment>
-    <div className="separator text-muted featuredText"> FEATURED PROJECTS TO ENGAGE IN </div>
     <div className="featuredEvents">
       {featuredEvents.map((event) => {
         return (
@@ -71,7 +108,7 @@ const FeaturedOrganisation = (props) => {
             <img src={event.images[0]} alt={imagePlaceholder} className="featuredEventImage" />
             <p className="featuredEventText"> {event.name} </p>
             <hr className="featuredEventDivider" />
-            <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} />
+            {/* <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} /> */}
           </div>
         )
       })}

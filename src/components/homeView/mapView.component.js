@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { Layer, Feature, Popup, MapContext } from 'react-mapbox-gl';
+import ReactMapboxGl, { Cluster, Layer, Feature, Popup, MapContext } from 'react-mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { Carousel } from  'react-bootstrap';
@@ -9,7 +9,7 @@ import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
 import { selectingRationEvent } from '../../Actions/selectRationEventActions';
-import sack, { mapMarker, mapPin, shirt, coin, mask} from '../../assets/svg.js'
+import sack, { mapMarker, mapPin, shirt, coin, mask, MCRing} from '../../assets/svg.js'
 import filterAndSearch from './filterAndSearch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import{ faGlobeAsia } from '@fortawesome/pro-regular-svg-icons';
@@ -32,10 +32,13 @@ const imageMask = new Image();
 imageMask.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(mask);
 const imageShirt = new Image();
 imageShirt.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(shirt);
+const imageMCRing = new Image();
+imageMCRing.src = 'data:image/svg+xml;charset=utf-8;base64,'+btoa(MCRing);
 const imagesSack = ['mapSack', imageSack]
 const imagesCoin = ['mapCoin', imageCoin]
 const imagesShirt = ['mapShirt', imageShirt]
 const imagesMask = ['mapMask', imageMask]
+const imagesMCRing = ['mapMCRing', imageMCRing]
 
 const StyledPopup = styled.div`
   background: white;
@@ -58,6 +61,9 @@ const layoutLayerShirt = {
 }
 const layoutLayerMask = {
   'icon-image': 'mapMask'
+}
+const layoutLayerMCRing = {
+  'icon0image': 'mapMCRing'
 }
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
@@ -240,7 +246,7 @@ const WhichPopup = (props) => {
 
 const MapStateToProps = (state) => ({
   selectedRation: state.rationInfo.selectedRation,
-  filteredEvents: filterAndSearch(state.rationInfo.rationEvents, state.rationInfo.filter, state.rationInfo.search)
+  filteredEvents: filterAndSearch(state.rationInfo.rationEvents, state.rationInfo.filterType, state.rationInfo.filter, state.rationInfo.search)
 });
 
 export default connect(MapStateToProps)(MapView);
