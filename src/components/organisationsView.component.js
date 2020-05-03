@@ -8,13 +8,12 @@ import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons';
 import { filterAndSearchOrg } from '../components/homeView/filterAndSearch';
 import { filterOrgEvents, searchOrgEvents} from '../Actions/filterSearchOrgAction';
-import { selectingOrg } from '../Actions/selectOrgAction';
-import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from './loginAccountComponents/supplierInfoView.component';
+// import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from './loginAccountComponents/supplierInfoView.component';
 
 import imagePlaceholder from '../assets/Images/temp.jpg'
 import '../css/organisationsView.css';
 
-const OrganisationsView = ({dispatch, loading, hasErrors, fetched, orgInfo, selectedOrg}) => {
+const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) => {
 	const onSearchChange = (event) => {
     dispatch(searchOrgEvents(event.target.value))
   }
@@ -165,9 +164,6 @@ const OrgCards = (props) => {
 				<div className="cardContainer">
 					{props.orgs.map((org) => {
 						return (
-							<a className='invisButton' onClick={() => {
-								props.dispatch(selectingOrg(org))
-							}}>
 							<Link to={'/organisations/' + org._id} className="orgViewLink">
 							<Card className="cardOrg grow" key={org._id}>
 								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
@@ -179,7 +175,6 @@ const OrgCards = (props) => {
 								</Card.Footer>
 							</Card>
 							</Link>
-							</a>
 						)
 					})}
 				</div>
@@ -192,7 +187,6 @@ const MapStateToProps = (state) => ({
   loading: state.orgInfo.loading,
   hasErrors: state.orgInfo.hasErrors,
 	fetched: state.orgInfo.fetched,
-	selectedOrg: state.orgInfo.selectedOrg,
 	orgInfo: filterAndSearchOrg(state.orgInfo.orgInfo, state.orgInfo.filter, state.orgInfo.search)
 })
 

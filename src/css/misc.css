@@ -13,16 +13,54 @@
 }
 
 .Error404 {
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
+  width: 100vw;
+  background-color: #343A40;
+  /* background: #003973;  fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #E5E5BE, #003973);  Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #E5E5BE, #003973); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+@media only screen and (min-width: 600px) {
+  .Container404 {
+    font-size: 15rem;
+  }
+  .MCRing {
+    height: 200px;
+    width: 200px;
+  }
 }
 
-.Error404Sub {
-  height: 100%;
+@media only screen and (max-width: 600px) {
+  .Container404 {
+    font-size: 5rem;
+  }
+  .MCRing {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.Container404 {
+  width: fit-content;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center; 
+  justify-content: space-around;
+  color: white;
+  border: 0.5rem solid white;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 20px;
+}
+.notFound {
+  color: white;
+}
+
+.pHeight {
+  height: fit-content;
+  margin: 0;
 }

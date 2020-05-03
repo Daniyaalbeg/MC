@@ -108,7 +108,6 @@ const validationSchema = Yup.object().shape({
   .max(14, "*Number must be less than 14 charachters")
   .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*Only valid Pakistani mobile numbers"),
   contactInfo: Yup.string()
-  .required("*Contact info is required")
   .min(10, "*Contact info must be longer than 10 charachters")
   .max(100, "*Contact info must be less than 100 charachters"),
   supplierWebsite: Yup.string()
@@ -632,7 +631,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formContactInfo">
-          <Form.Label>Other contact info *</Form.Label>
+          <Form.Label>Other contact info</Form.Label>
           <Form.Control
             name="contactInfo"
             as="textarea" 
@@ -725,7 +724,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         {loading ? 'Signing up' : 'Sign up'}
         </Button>
 
-        <Button variant="primary" onClick={resetForm} disabled={loading}>
+        <Button variant="danger" onClick={resetForm} disabled={loading}>
           Reset
         </Button>
 

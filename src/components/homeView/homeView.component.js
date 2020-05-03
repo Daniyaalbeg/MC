@@ -19,7 +19,7 @@ import coin from '../../assets/svg/coin.svg'
 import mask from '../../assets/svg/mask.svg'
 import shirt from '../../assets/svg/shirt.svg'
 const images = [photo0, photo1, photo2, photo3, photo4, photo5]
-const captions = ["BE THE CHANGE", "STUFF", " OTHER STUFF", "SOME STUFF", "COOL", "HELLO"]
+const captions = ["TOGETHER WE CAN", "STUFF", " OTHER STUFF", "HONOURING OUR PAST", "COOL", "HELLO"]
 
 const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {

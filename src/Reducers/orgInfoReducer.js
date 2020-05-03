@@ -1,5 +1,4 @@
 import * as actions from '../Actions/getOrgInfoActions';
-import * as selectActions from '../Actions/selectOrgAction';
 import * as filterSearchActions from '../Actions/filterSearchOrgAction';
 
 const initialState = {
@@ -7,7 +6,6 @@ const initialState = {
   hasErros: false,
   fetched: false,
   orgInfo: [],
-  selectedOrg: null,
   filter: "all",
   search: ""
 }
@@ -32,11 +30,6 @@ export default function orgInfoReducer(state = initialState, action) {
         loading: false,
         hasErros: true,
         fetched: false
-      }
-    case selectActions.SELECT_ORG:
-      return {
-        ...state,
-        selectedOrg: action.payload,
       }
     case filterSearchActions.FILTER_ORG:
       return {

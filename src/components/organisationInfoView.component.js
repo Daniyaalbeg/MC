@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Card, Badge, Button, Spinner } from 'react-bootstrap';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from './loginAccountComponents/supplierInfoView.component';
 import { getOrgInfo } from '../Actions/getOrgInfoActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,7 +11,7 @@ import imagePlaceholder from '../assets/Images/temp.jpg'
 
 import '../css/organistaionInfoView.css'
 
-const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched }) => {
+const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, props }) => {
   const { id } = useParams();
   const [org, setOrg] = useState(null);  
 
@@ -39,10 +39,11 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched }) 
     return (
       <Card className="orgInfoCard">
         <Card.Body>
-          <NavLink to="/">
           <Button className="backButtonOrgView" onClick={() => {
-            // props.dispatch(selectingOrg(null))
-          }}> Back </Button></NavLink>
+            props.history.goBack()
+          }}>
+            Back 
+          </Button>
           <Card.Img className="orgInfoImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
           <hr />
           <Card.Title> {org.supplierName} </Card.Title>
@@ -101,11 +102,12 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched }) 
   }
 }
 
-const MapStateToProps = (state) => ({
+const MapStateToProps = (state, ownProps) => ({
   loading: state.orgInfo.loading,
   orgs: state.orgInfo.orgInfo,
   fetched: state.orgInfo.fetched,
   hasErrors: state.orgInfo.hasErrors,
+  props: ownProps
 })
 
 export default connect(MapStateToProps)(OrganisationsInfoView);

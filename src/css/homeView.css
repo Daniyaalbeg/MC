@@ -18,17 +18,19 @@
 
 }
 .slideCaption {
-  font-weight: bolder;
-  font-size: 6rem;
+  font-weight: bold;
+  font-size: 5rem;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 70%;
   width: 100%;
+  letter-spacing: 0.2em;
   transform: translate(-50%, -50%);
   z-index: 20;
   color: white;
   text-align: center;
   margin: auto;
+  text-shadow: 2px 2px 5px black;
 }
 
 .carouselImage {
