@@ -1,6 +1,7 @@
 .cardOrg {
     box-shadow: 0px 5px 7px 1px rgba(0,0,0,0.19);
     max-width: 210px;
+    height: 300px;
     float: left;
     margin: 12px;
 }
