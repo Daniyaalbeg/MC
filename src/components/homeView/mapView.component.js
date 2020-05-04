@@ -63,7 +63,7 @@ const layoutLayerMask = {
   'icon-image': 'mapMask'
 }
 const layoutLayerMCRing = {
-  'icon0image': 'mapMCRing'
+  'icon-image': 'mapMCRing'
 }
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
@@ -78,6 +78,7 @@ class MapView extends React.Component {
       screenWidth: null,
       styleSatellite: false 
     }
+    this.styleButtonClicked = this.styleButtonClicked.bind(this);
   }
 
   componentDidMount() {
@@ -112,15 +113,16 @@ class MapView extends React.Component {
     this.props.dispatch(selectingRationEvent(rationEventKeys[rationEventId]))
   }
 
+  styleButtonClicked() {
+    this.setState({
+      styleSatellite: !this.state.styleSatellite
+    })
+  }
+
   render() {
     return (
       <Fragment>
-      <button className="styleToggle" onClick={() => {
-        console.log("Ran once")
-        this.setState({
-          styleSatellite: !this.state.styleSatellite
-        })
-      }}>
+      <button className="styleToggle" onClick={this.styleButtonClicked}>
         <FontAwesomeIcon icon={faGlobeAsia} />
       </button>
       <Map

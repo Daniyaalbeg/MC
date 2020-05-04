@@ -115,7 +115,6 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           <Redirect push to="/" />
         }
         {success &&
-          // {dispatch(creatingRationRedirect())}
           <Redirect push to="/" /> 
         }
       </Fragment>

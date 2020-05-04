@@ -2,6 +2,7 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import '../../css/rationInfoView.css'
 import RationItemInfoMap from './rationitemInfoMap.component.js';
+import LazyLoad from 'react-lazyload'
 
 const RationItemInfo = (props) => {
   const ration = props.ration;
@@ -25,7 +26,7 @@ const RationItemInfo = (props) => {
               return (
                 <Carousel.Item key={image}>
                   <div className="imageContainer">
-                    <img className="img" src={image} alt="" />
+                      <img className="img" src={image} alt="" />
                   </div>
                 </Carousel.Item>
               )
@@ -35,7 +36,9 @@ const RationItemInfo = (props) => {
         }
       <hr />
       <h6 className="text-muted"> Location </h6>
-      <RationItemInfoMap ration={ration} />
+      <LazyLoad height={200}>
+        <RationItemInfoMap ration={ration} />
+      </LazyLoad>
     </div>
   )
 }
