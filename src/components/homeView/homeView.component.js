@@ -20,7 +20,9 @@ import coin from '../../assets/svg/coin.svg'
 import mask from '../../assets/svg/mask.svg'
 import shirt from '../../assets/svg/shirt.svg'
 const images = [photo0, photo1, photo2, photo3, photo4, photo5]
-const captions = ["TOGETHER WE CAN", "STUFF", " OTHER STUFF", "HONOURING OUR PAST", "COOL", "HELLO"]
+const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "OPENING OUR HEARTS", "HONOURING OUR PAST", "LIVING OUR TRUTH", "RESPECTING DIVERSITY"]
+const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5"]
+const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5"]
 
 const HomeView = ({ dispatch, auth, loading, fetched, checkedCookie, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
@@ -39,9 +41,9 @@ const HomeView = ({ dispatch, auth, loading, fetched, checkedCookie, hasErrors, 
         return (
           <Carousel.Item className="carouselImage" key={image}>
             <Carousel.Caption bsPrefix="slideCaptionContainer">
-              <p className="slideCaption">{captions[index]}</p>
+              <p className={"slideCaption " + styleCaptions[index]}>{captions[index]}</p>
             </Carousel.Caption>
-            <img className="homeImage" src={image} alt=""/>
+            <img className={"homeImage " + styleImages[index]} src={image} alt=""/>
           </Carousel.Item>
         )
       })}

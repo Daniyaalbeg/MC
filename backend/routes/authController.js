@@ -195,4 +195,11 @@ router.route('/login').post((req, res) => {
   })});
 });
 
+router.route('/logout').post(verifyToken, (req, res, next) => {
+  res.cookie('token', null, { maxAge: -10000000, httpOnly: true, secure: false })
+  res.status(200).json({
+    auth: false
+  });
+})
+
 module.exports = router

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import '../../css/loginModal.css'
 
 import ShowDetails from './showDetails.component'
-import { loggingOut } from '../../Actions/authActions';
+import { logout } from '../../Actions/authActions';
 
 const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
   const [show, setShow] = useState(false);
@@ -36,7 +36,7 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
         </Modal.Body>
         {auth && 
           <Modal.Footer className="logoutButton">
-            <Button variant="danger" className="logoutButton" onClick={() => dispatch(loggingOut())}> Log out </Button>
+            <Button variant="danger" className="logoutButton" onClick={() => dispatch(logout())}> Log out </Button>
           </Modal.Footer>
         }
       </Modal>

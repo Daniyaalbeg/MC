@@ -1,3 +1,8 @@
 #root {
   height: auto;
 }
+
+body {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: antialiased;
+}

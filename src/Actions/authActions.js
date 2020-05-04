@@ -24,8 +24,9 @@ export const loggingInFailure = () => ({
   type: LOGIN_FAILURE
 })
 
-export const loggingOut = () => ({
-  type: LOGOUT
+export const loggingOut = (auth) => ({
+  type: LOGOUT,
+  payload: auth
 })
 
 export const checkingCookie = () => ({
@@ -41,6 +42,23 @@ export const checkingCookieFailure = (error) => ({
   type: CHECK_COOKIE_ATTEMPT_FAILURE,
   payload: error
 })
+
+export function logout() {
+  return async dispatch => {
+    axios({
+      method: 'post',
+      url: rootURL(production)+API+'/auth/logout',
+      withCredentials: true, 
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(loggingOut(res.data));
+    })
+    .catch((error) => {
+      // console.log(error)
+    })
+  }
+}
 
 export function login(auth) {  
   return async dispatch => {
@@ -58,11 +76,9 @@ export function login(auth) {
       credentials: 'include'
     })
     .then((res) => {
-      console.log("success response")
       dispatch(loggingInSuccess(res.data));
     })
     .catch((error) => {
-      console.log("failed response")
       dispatch(loggingInFailure(error));
     });
   }
@@ -82,8 +98,7 @@ export function checkCookie() {
     .then((res) => {
       dispatch(checkingCookieSuccess(res.data))
     })
-    .catch((error) => {
-      console.log(error)
+    .catch(() => {
       dispatch(checkingCookieFailure())
     })
   }

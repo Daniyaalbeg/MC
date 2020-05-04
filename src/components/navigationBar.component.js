@@ -13,8 +13,6 @@ const NavigationBar = () => {
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
   let location = useLocation()
-  console.log(location)
-  console.log(location.pathname)
 
   if (location.pathname === "/") {
     return (

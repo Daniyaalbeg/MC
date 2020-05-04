@@ -44,7 +44,11 @@ export default function authReducer(state = initialState, action) {
         auth: false
       }
     case actions.LOGOUT:
-      return initialState
+      return {
+        ...initialState,
+        checkedCookie: true, 
+        auth: action.payload.auth
+      }
     default:
       return state
   }
