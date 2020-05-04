@@ -5,6 +5,7 @@ import { getUserInfo } from './userInfoActions'
 export const CREATE_RATION = "CREATE_RATION";
 export const CREATE_RATION_SUCCESS = "CREATE_RATION_SUCCESS";
 export const CREATE_RATION_FAILURE = "CREATE_RATION_FAILURE";
+export const CREATE_RATION_REDIRECT = "CREATE_RATION_REDIRECT"
 
 export const creatingRation = () => ({
   type: CREATE_RATION
@@ -18,6 +19,10 @@ export const creatingRationFailure = (error) => ({
   type: CREATE_RATION_FAILURE,
   payload: error
 });
+
+export const creatingRationRedirect = () => ({
+  type: CREATE_RATION_REDIRECT
+})
 
 const urlImage = rootURL(production)+API+'/imageUpload'
 

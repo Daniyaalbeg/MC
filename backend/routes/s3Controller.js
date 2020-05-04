@@ -7,7 +7,7 @@ aws.config.update({
   secretAccessKey: process.env.S3_SECRET
 });
 
-const S3_BUCKET = process.env.BUCKET_NAME;
+const S3_BUCKET = process.env.BUCKET_NAME_PROD;
 
 exports.sign_s3 = ((req, res) => {
   if (req.body.fileSize > 2100000) {
@@ -46,9 +46,11 @@ exports.sign_s3 = ((req, res) => {
         oldName: fileName,
         newName: uniqueFileName,
         signedRequest: data,
-        url: `https://${S3_BUCKET}.s3.amazonaws.com/${uniqueFileName}`,
+        url: `https://${S3_BUCKET}/${uniqueFileName}`,
         fileType: fileType
       };
+
+      console.log(returnData.url)
       res.status(200).json({ success: true, data: { returnData }})
     });
   }

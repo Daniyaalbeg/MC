@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
 import * as Yup from 'yup';
 import { Checkbox } from './Checkboxs.component';
-import { creatingNewRation } from '../../Actions/createRationActions';
+import { creatingNewRation, creatingRationRedirect } from '../../Actions/createRationActions';
 import SelectMap from './selectMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import Thumb from './thumb.component';
@@ -43,14 +43,14 @@ const validationSchema = Yup.object().shape({
   .max(1000, "*Description  must be less than 1000 charachters"),
   // location: Yup.array(Yup.number())
   // .required("*Must add a location"),
-  typeOfRation: Yup.string()
-  .required("*Type of rations distributed is required")
-  .min(1, "*Must be longer than 1 charachter")
-  .max(100, "*Must be less than 1000 charachters"),
+  // typeOfRation: Yup.string()
+  // .required("*Type of rations distributed is required")
+  // .min(1, "*Must be longer than 1 charachter")
+  // .max(100, "*Must be less than 1000 charachters"),
   agreedToTerms: Yup.bool()
   .oneOf([true], "*Must accept terms and conditions"),
   mapClicked: Yup.bool()
-  .oneOf([true], "*Must accept terms and conditions"),
+  .oneOf([true], "*Must select a location"),
 });
 
 const baseStyle = {
@@ -104,13 +104,18 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
     isDragReject
   ]);
 
+  if (success) {
+    dispatch(creatingRationRedirect())
+  }
+
   return (
     <Card bg="light" text="dark" className="signUpCard">
       <Fragment>
        {!auth &&
           <Redirect push to="/" />
         }
-        {success && 
+        {success &&
+          // {dispatch(creatingRationRedirect())}
           <Redirect push to="/" /> 
         }
       </Fragment>
@@ -265,10 +270,10 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
                 <input {...getInputProps()} />
                 <p>Drag 'n' images here, or click to select images</p>
                 <Row> {
-                  imageFiles.map((file) => {
-                    return <Thumb file={file} />
-                  })
-                } </Row>
+                imageFiles.map((file) => {
+                  return <Thumb file={file} key={file.name} />
+                })
+              } </Row>
               </div>
               {rejectedFilesState.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}
               </Fragment>
@@ -282,8 +287,10 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           </Dropzone>
         </Form.Group>
 
+      
+
         <Form.Group>
-          <Form.Label> Date of the Ration Drive (Can be in the future) </Form.Label>
+          <Form.Label> Date of the Ration Drive (Can be in the future or past) </Form.Label>
           <br />
           <DatePicker
             selected={values.date}
@@ -298,16 +305,17 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         <Form.Group>
           <Form.Label> Select Location of the Ration Drive </Form.Label>
           <SelectMap
-            id="location"
-            name="location"
+            id="mapClicked"
+            name="mapClicked"
             className="selectMap"
             callBack={(location) => {
               setLocation(location)
               setFieldValue("mapClicked", true)
             }}
           />
-          <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.location}</Form.Control.Feedback>
+          {!values.mapClicked &&
+            <p className="input-feedback"> *Must select a location on the map </p>
+          }
         </Form.Group>
 
         <Form.Group>
@@ -316,6 +324,8 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
             name="agreedToTerms"
             id="agreedToTerms"
             label="Agree to Terms & Conditions"
+            isValid={touched.agreedToTerms && !errors.agreedToTerms}
+            isInvalid={errors.agreedToTerms}
           />
         </Form.Group>
 

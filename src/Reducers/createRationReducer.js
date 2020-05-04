@@ -25,6 +25,11 @@ export default function createRationReducer(state = initialState, action) {
         success: false,
         hasErrors: true
       }
+    case actions.CREATE_RATION_REDIRECT:
+      return {
+        ...state,
+        success: false
+      }
     default:
       return state
   }

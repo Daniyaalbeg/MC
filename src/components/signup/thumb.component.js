@@ -8,16 +8,6 @@ class Thumb extends React.Component {
     file: undefined
   };
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (this.props.file == null || this.state.loading == true) {
-  //     return true
-  //   }
-  //   if (this.props.file.name === nextProps.file.name) {
-  //     return false
-  //   }
-  //   return true
-  // }
-
   componentWillReceiveProps(nextProps) {
     if (!nextProps.file) { return; }
 
@@ -30,6 +20,16 @@ class Thumb extends React.Component {
 
       reader.readAsDataURL(nextProps.file);
     });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { file } = this.props;
+    const { loading, thumb } = this.state;
+    if (file === null) { return true}
+    if (loading) { return true }
+    if (file.name === nextProps.file.name) {
+      return false
+    }
   }
 
   render() {
