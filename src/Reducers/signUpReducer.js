@@ -21,20 +21,11 @@ export default function signUpReducer(state = initialState, action) {
         success: true
       }
     case actions.SIGNUP_FAILURE:
-      if (typeof action.payload.data != 'undefined') {
-        return {
-          loading: false,
-          success: false,
-          error: action.payload.data.code,
-          hasErrors: true,
-        }
-      } else {
-        return {
-          loading: false,
-          success: false,
-          error: action.payload,
-          hasErrors: true,
-        }
+      return {
+        loading: false,
+        success: false,
+        error: action.payload.data.errorCode,
+        hasErrors: true,
       }
     case actions.SIGNUP_RESET:
       return initialState;

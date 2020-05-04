@@ -43,7 +43,9 @@ const sendVerificationEmail = (token) => {
   axios({
     method: 'post',
     url: rootURL(production)+API+'/emailVerification',
-    headers: {'Content-Type': 'application/json', 'x-access-token': token}
+    headers: {'Content-Type': 'application/json', 'x-access-token': token},
+    withCredentials: true,
+    credentials: 'include'
   })
   .catch((error) => {
     console.log("this error")

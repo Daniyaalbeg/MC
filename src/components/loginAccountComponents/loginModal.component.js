@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import { Modal, Button, Nav} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 import '../../css/loginModal.css'
 
 import ShowDetails from './showDetails.component'
 import { loggingOut } from '../../Actions/authActions';
-import {  Link } from 'react-router-dom';
 
 const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
   const [show, setShow] = useState(false);
@@ -16,9 +16,11 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
         {auth ? "My Account" : "Log in"}
-      </Button>
+      </Button> */}
+
+      <Nav.Item className="navlink" onClick={handleShow}> {auth ? "My Account" : "Log in"} </Nav.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

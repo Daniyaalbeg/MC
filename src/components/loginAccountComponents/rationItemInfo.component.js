@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Carousel } from 'react-bootstrap';
 import '../../css/rationInfoView.css'
 import RationItemInfoMap from './rationitemInfoMap.component.js';
-import LazyLoad from 'react-lazyload'
 
 const RationItemInfo = (props) => {
   const ration = props.ration;
+  // const MapViewLazy = React.lazy(() => import('./rationitemInfoMap.component.js'))
   return (
     <div>
       <p> {ration.description} </p>
@@ -34,11 +34,12 @@ const RationItemInfo = (props) => {
           </Carousel>
           </div>
         }
-      <hr />
+      {/* <hr />
       <h6 className="text-muted"> Location </h6>
-      <LazyLoad height={200}>
-        <RationItemInfoMap ration={ration} />
-      </LazyLoad>
+      <Suspense fallback={<div> Loading... </div>}>
+        <MapViewLazy ration={ration} />
+      </Suspense> */}
+      {/* <RationItemInfoMap ration={ration} /> */}
     </div>
   )
 }

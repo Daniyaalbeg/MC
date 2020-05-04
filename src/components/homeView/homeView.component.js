@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
-import { getMainInfo } from '../../Actions/homeViewActions'
+import { getMainInfo } from '../../Actions/homeViewActions';
+import { checkCookie } from '../../Actions/authActions';
 
 import photo0 from '../../assets/Images/oldman.jpg'
 import photo1 from '../../assets/Images/chitralman.jpg'
@@ -21,8 +22,11 @@ import shirt from '../../assets/svg/shirt.svg'
 const images = [photo0, photo1, photo2, photo3, photo4, photo5]
 const captions = ["TOGETHER WE CAN", "STUFF", " OTHER STUFF", "HONOURING OUR PAST", "COOL", "HELLO"]
 
-const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
+const HomeView = ({ dispatch, auth, loading, fetched, checkedCookie, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
+    if (!auth && !checkedCookie) {
+      dispatch(checkCookie())
+    }
     if (!fetched && !loading) {
       dispatch(getMainInfo())
     }
@@ -30,7 +34,7 @@ const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numb
 
   return (
     <Fragment>
-    <Carousel controls={false} fade={true} indicators={false} interval={2000} >
+    <Carousel controls={false} fade={true} indicators={false} interval={2000}>
       {images.map((image, index) => {
         return (
           <Carousel.Item className="carouselImage" key={image}>
@@ -168,6 +172,8 @@ const ProjectsInfo = (props) => {
 const MapStateToProps = (state) => ({
   loading: state.info.loading,
   fetched: state.info.fetched,
+  checkedCookie: state.auth.checkedCookie,
+  auth: state.auth.auth,
   hasErrors: state.info.hasErrors,
   numberOfUsers: state.info.numberOfUsers,
   numberOfRations: state.info.numberOfRations,

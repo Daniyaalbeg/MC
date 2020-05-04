@@ -27,7 +27,9 @@ export function getUserInfo() {
     axios({
       method: 'get',
       url: rootURL(production)+API+'/auth/me',
-      headers: {'Content-Type': 'application/json', 'x-access-token': token}
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include'
     })
     .then((res) => {
       dispatch(gettingUserInfoSuccess(res.data));

@@ -14,6 +14,8 @@ import CreateRation from './components/signup/createRation.component';
 import About from './components/about.component';
 import Error404 from './components/404.component'
 
+import './css/app.css'
+
 function App() {
   return (
     <Router>

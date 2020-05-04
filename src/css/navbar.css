@@ -3,6 +3,11 @@
   text-decoration: none;
 }
 
+.navBar {
+  background: rgba(76, 175, 80, 0);
+  z-index: 10;
+}
+
 .mcLogo {
   height: 2rem;
 }
@@ -14,9 +19,11 @@
 .navlink:active {
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .navlink:hover {
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }

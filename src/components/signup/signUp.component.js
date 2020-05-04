@@ -749,7 +749,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
 }
 
 const ErrorComponent = (props) => {
-  if (props.signUpError === 11000) {
+  if (props.signUpError === 200) {
     return (
       <Fragment>
         <br />

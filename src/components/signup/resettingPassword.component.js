@@ -62,7 +62,7 @@ const ResettingPassword = (props) => {
             password: values.password,
             id: params.id,
             token: params.token
-          }
+          },
         })
         .then((res) => {
           response = res.data;

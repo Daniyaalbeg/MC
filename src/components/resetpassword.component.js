@@ -21,7 +21,7 @@ const ResetPassword = (props) => {
       headers: {'Content-Type': 'application/json'},
       data: {
         email: email
-      }
+      },
     })
     .then((res) => setSuccess(true))
     .catch((error) => console.log(error));
