@@ -94,6 +94,7 @@ router.route('/createUser').post([
       var token = jwt.sign({ id: newUser._id }, process.env.SECRET, {
         expiresIn: 86400
       });
+      res.cookie('token', token, { maxAge: 60 * 60 * 24 * 1, httpOnly: true})
       res.status(200).json({
         auth: true,
         token, token
@@ -102,7 +103,11 @@ router.route('/createUser').post([
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).send("An error occured")
+      if (error.code === 11000) {
+        res.status(500).json({ errorCode: 200})
+      } else {
+        res.status(500).json({ errorCode: 100})
+      }
     });
   });
 });
@@ -128,8 +133,8 @@ router.route('/register').post((req, res) => {
         expiresIn: 86400
       });
       res.status(200).json({
-        auth: true,
-        token, token
+        // auth: true,
+        // token, token
       });
     })
     .catch((error) => res.status(500).send("An error occured"));
@@ -145,6 +150,12 @@ router.route('/me').get(verifyToken, (req, res, next) => {
     res.status(200).send(user);
   });
 });
+
+router.route('/checkCookie').post(verifyToken, (req, res, next) => {
+  res.status(200).json({
+    auth: true
+  })
+})
 
 router.route('/login').post((req, res) => {
   User.findOne({ email: req.body.email })
@@ -165,21 +176,23 @@ router.route('/login').post((req, res) => {
       var token = jwt.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 86400
       });
-
+      res.cookie('token', token, { maxAge: 60 * 60 * 24 * 1, httpOnly: true, secure: false})
       res.status(200).json({
         auth: true,
-        token: token
+        // token: token
       });
     })
     .catch((error) => {
       console.log(error)
-      res.status(500).json("An error occured")
+      res.status(500).json(error)
     });
   })
-  .catch((error) => res.status(401).json({
+  .catch((error) => {
+    console.log("error auth false token null")
+    res.status(401).json({
     auth: false,
     token: null
-  }));
+  })});
 });
 
 module.exports = router

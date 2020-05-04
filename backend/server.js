@@ -2,6 +2,7 @@ const https = require('https');
 const fs = require('fs');
 const rateLimit = require('express-rate-limit');
 const slowDown = require("express-slow-down");
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 var path = require('path')
 var rfs = require('rotating-file-stream')
@@ -45,7 +46,8 @@ const local = {
   environment: process.env.NODE_ENV
 };
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true}));
+app.use(cookieParser())
 app.use(express.json());
 app.use(limiter);
 app.use(speedLimiter);

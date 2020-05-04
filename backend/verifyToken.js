@@ -2,7 +2,12 @@ var jwt = require('jsonwebtoken');
 
 //Token verification middleware
 function verifyToken(req, res, next) {
-  var token = req.headers['x-access-token'];
+  // var token = req.headers['x-access-token'];
+  // console.log('Cookies: ', req.cookies)
+
+  // Cookies that have been signed
+  // console.log('Signed Cookies: ', req.signedCookies)
+  var token = req.cookies.token;
   if (!token) {
     return res.status(401).json({
       auth: false,
