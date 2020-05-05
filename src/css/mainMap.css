@@ -27,6 +27,7 @@ html, body {
   flex: 1 1 auto;
   height: 93.5vh;
   width: 100vw;
+  font-family: proximaNova;
 }
 
 /* .bottom {

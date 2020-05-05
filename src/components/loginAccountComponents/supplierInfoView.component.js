@@ -76,7 +76,7 @@ export const JazzCashDetails = (props) => {
 
 const SupplierInfoView = (props) => {
   return (
-    <div>
+    <div style={{ fontFamily: "proximaNova" }}>
       <br />
       <h6 className="text-muted"> {props.supplier.type} name </h6>
       <p> {props.supplier.supplierName} </p>

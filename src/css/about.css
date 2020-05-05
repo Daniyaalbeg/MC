@@ -7,14 +7,6 @@
   }
 }
 
-/* 
-#4B5962
-#1489C9
-#4AB350
-#FFD819
-#F47E2E
-#EF2A30 */
-
 @media only screen and (min-width: 600px) {
   .aboutBody {
     width: 50%;
@@ -34,25 +26,61 @@
   background-color: white;
 }
 
+.header {
+  font-family: proximaNova;
+  font-weight: bold;
+  color: #4B5962;
+}
 .aboutText {
-  color: #F47E2E
+  /* color: #F47E2E */
   ;
 }
-
 .usText {
-  color: #FFD819;
+  /* color: #FFD819; */
 }
-
 .logoSeperator {
   width: 70%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 .aboutBody {
- font-family: sans-serif;
+ font-family: proximaNova;
  text-shadow: 2px 2px 5px 5px black;
+ margin: auto;
+ margin-bottom: 20px;
+ /* font-weight: bold; */
+ /* color: white; */
 }
+.aboutDivShared {
+  width: 100%;
+}
+/* .aboutDiv1 {
+  background-color: #EF2A30;
+}
+.aboutDiv2 {
+  background-color: #F47E2E;
+}
+.aboutDiv3 {
+  background-color: #FFD819;
+}
+.aboutDiv4 {
+  background-color: #4AB350;  
+}
+.aboutDiv5 {
+  background-color: #1489C9;  
+}
+.aboutDiv6 {
+  background-color: #4B5962;  
+} */
+
+
+/* 
+#4B5962
+#1489C9
+#4AB350
+#FFD819
+#F47E2E
+#EF2A30 */
 
 .iconAbout {
   width: 70%;

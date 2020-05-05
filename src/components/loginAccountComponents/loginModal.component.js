@@ -22,7 +22,7 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
 
       <Nav.Item className="navlink" onClick={handleShow}> {auth ? "My Account" : "Log in"} </Nav.Item>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className="modalFont">
         <Modal.Header closeButton>
           <Modal.Title>
             {auth ? "My Account" : "Log in"}

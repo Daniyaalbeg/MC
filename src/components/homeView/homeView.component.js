@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
@@ -35,7 +35,7 @@ const HomeView = ({ dispatch, auth, loading, fetched, checkedCookie, hasErrors, 
   })
 
   return (
-    <Fragment>
+    <>
     <Carousel controls={false} fade={true} indicators={false} interval={2000}>
       {images.map((image, index) => {
         return (
@@ -49,12 +49,12 @@ const HomeView = ({ dispatch, auth, loading, fetched, checkedCookie, hasErrors, 
       })}
     </Carousel>
     <ProjectsInfo loading={loading} hasErrors={hasErrors} numberOfRations={numberOfRations} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
-    <div className="separator text-muted featuredText"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
+    <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
     <FeaturedOrganisation featuredOrgs={featuredOrgs} />
-    <div className="separator text-muted featuredText"> MAP TO ENGAGE WITH </div>
+    <div className="separator text-muted featuredText fontProxima"> MAP TO ENGAGE WITH </div>
     <MapIconKey />
     <HomeViewMap />
-    </Fragment>
+    </>
   )
 }
 
@@ -105,7 +105,7 @@ const MapIconKey = (props) => {
 const FeaturedOrganisation = (props) => {
   const { featuredOrgs } = props
   return (
-    <Fragment>
+    <>
     <div className="featuredOrgs">
       {featuredOrgs.map((org) => {
         return (
@@ -120,7 +120,7 @@ const FeaturedOrganisation = (props) => {
         )
       })}
     </div>
-    </Fragment>
+    </>
   )
 }
 
@@ -151,19 +151,19 @@ const ProjectsInfo = (props) => {
     return (
       <div className="projectInfoContainer">
         <div className="projectInfoDetails">
-          <h4> {numberOfUsers} </h4>
+          <h4 className="projectInfoHeading"> {numberOfUsers} </h4>
           <p className="text-muted"> users </p>
         </div>
         <div className="projectInfoDetails">
-          <h4> {numberOfIndividuals} </h4>
+          <h4 className="projectInfoHeading"> {numberOfIndividuals} </h4>
           <p className="text-muted"> individuals </p>
         </div>
         <div className="projectInfoDetails">
-          <h4> {numberOfOrganisations} </h4>
+          <h4 className="projectInfoHeading"> {numberOfOrganisations} </h4>
           <p className="text-muted"> organisations </p>
         </div>
         <div className="projectInfoDetails">
-          <h4> {numberOfRations} </h4>
+          <h4 className="projectInfoHeading"> {numberOfRations} </h4>
           <p className="text-muted"> events </p>
         </div>
       </div>

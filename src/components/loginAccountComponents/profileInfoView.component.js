@@ -6,7 +6,7 @@ import { API, rootURL, production } from '../../config'
 const ProfileInfoView = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
   return (
-    <div>
+    <div style={{ fontFamily: "proximaNova" }}>
       <br />
       <h6 className="text-muted"> Username </h6>
       <p> {props.username} </p>

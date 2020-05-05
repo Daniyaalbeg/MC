@@ -34,7 +34,7 @@ const NavigationBar = () => {
     );
   } else {
     return (
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar className="navBar" bg="dark" variant="dark" expand="lg">
         <Link to="/"><Navbar.Brand>
           <img src={MCMC} alt="MC" className="mcLogo"/>
           </Navbar.Brand></Link>

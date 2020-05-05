@@ -38,7 +38,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
           handleChange,
           handleBlur,
           handleSubmit }) => (
-        <Form noValidate onSubmit={handleSubmit}>
+        <Form noValidate onSubmit={handleSubmit} className="formContainer">
           <Form.Group controlId="formEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control

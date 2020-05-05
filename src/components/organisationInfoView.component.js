@@ -49,7 +49,7 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           <Card.Title> {org.supplierName} </Card.Title>
           <Card.Subtitle> {org.type} </Card.Subtitle>
           <hr />
-          <h6 className="text-muted"> Description </h6>
+          <h6 className="text-muted smallHeader"> Description </h6>
           <Card.Text> {org.description} </Card.Text>
           <hr />
           <h6 className="text-muted"> Type of Work </h6>
