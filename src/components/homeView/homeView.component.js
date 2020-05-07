@@ -139,9 +139,11 @@ const ProjectsInfo = (props) => {
   const { loading, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations } = props
   if (loading) {
     return (
-      <Spinner animation="border" role="status" className="spinnerHomeView">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
+      <div className="spinnerHomeView">
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
     )
   } else {
     return (

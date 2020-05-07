@@ -60,9 +60,11 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
       )
     } else {
       return(
-        <Spinner animation="border" role="status" className="loadingSpinner">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
+        <div className="loadingSpinner">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
       ) 
     }
   }
