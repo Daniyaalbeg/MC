@@ -5,6 +5,8 @@ export const GET_USER_INFO = "GET_USER_INFO";
 export const GET_USER_INFO_SUCCESS = "GET_USER_INFO_SUCCESS";
 export const GET_USER_INFO_FAILURE = "GET_USER_INFO_FAILURE";
 
+export const DELETE_USER_INFO_RATION = "DELETE_USER_INFO_RATION"
+
 export const gettingUserInfo = () => ({
   type: GET_USER_INFO
 });
@@ -18,6 +20,11 @@ export const gettingUserInfoFailure = (error) => ({
   type: GET_USER_INFO_FAILURE,
   payload: error
 });
+
+export const deleteUserInfoRation = (id) => ({
+  type: DELETE_USER_INFO_RATION,
+  payload: id
+})
 
 export function getUserInfo() {
   return async (dispatch, getState) => {

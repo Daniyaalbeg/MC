@@ -1,13 +1,33 @@
-import React, { Suspense } from 'react';
-import { Carousel } from 'react-bootstrap';
+import React, { useState, Suspense } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Modal, Carousel, Row, Button } from 'react-bootstrap';
 import '../../css/rationInfoView.css'
 import RationItemInfoMap from './rationitemInfoMap.component.js';
 
-const RationItemInfo = (props) => {
+import { deleteRation, resetDelete } from '../../Actions/deleteRationAction'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrashAlt } from '@fortawesome/pro-duotone-svg-icons'
+
+const RationItemInfo = ({ dispatch, hasErrors, deletedRation, deletingRation, props }) => {
+  const [showDeleteSure, setDeleteSure] = useState(false);
+  const handleClose = () => setDeleteSure(false);
+  const handleShow = () => setDeleteSure(true);
+
+  if (hasErrors) {
+    handleClose()
+    alert("An error occured. Cannot delete, please contact support.")
+    dispatch(resetDelete())
+  }
+  if (deletedRation) {
+    // handleClose()
+  }
+
   const ration = props.ration;
   // const MapViewLazy = React.lazy(() => import('./rationitemInfoMap.component.js'))
   return (
-    <div>
+    <>
       <p> {ration.description} </p>
       <hr />
       <h6 className="text-muted"> Number of rations distributed </h6>
@@ -40,8 +60,49 @@ const RationItemInfo = (props) => {
         <MapViewLazy ration={ration} />
       </Suspense> */}
       {/* <RationItemInfoMap ration={ration} /> */}
-    </div>
+
+      <Row className="updateDelete">
+      <Link to={"/updateRation/" + ration._id}>
+        <Button variant="primary" onClick={() => {
+          props.handleClose()
+        }}>
+          <FontAwesomeIcon icon={faEdit} />
+        </Button>
+        </Link>
+        <Button variant="danger" onClick={() => {
+          handleShow()
+        }}>
+        <FontAwesomeIcon icon={faTrashAlt} />
+        </Button>
+      </Row>
+
+      <Modal show={showDeleteSure} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Are you sure?</Modal.Title>
+        </Modal.Header>
+      <Modal.Body>
+        <Button variant="danger" className="rationModalDeleteButton" onClick={() => {
+          dispatch(deleteRation(ration._id))
+        }}>
+          {deletingRation ? "Deleting" : "Delete"}
+        </Button>
+        <Button variant="primary" onClick={() => {
+          handleClose()
+        }}>
+          Close
+        </Button>
+      </Modal.Body>
+      </Modal>
+
+    </>
   )
 }
 
-export default RationItemInfo;
+const MapStateToProps = (state, ownProps) => ({
+  deletingRation: state.deleteInfo.deletingRation,
+  hasErrors: state.deleteInfo.hasErrors,
+  deletedRation: state.deleteInfo.deletedRation,
+  props: ownProps
+})
+
+export default connect(MapStateToProps)(RationItemInfo);

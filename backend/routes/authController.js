@@ -48,7 +48,6 @@ router.route('/createUser').post([
 
   bcrypt.hash(password, 12)
   .then((hashedPassword) => {
-    console.log(req.body);
     const bankingDetails = new BankingDetails({
       bankName: req.body.bankingDetails.bankName,
       bankBranch: req.body.bankingDetails.bankBranch,
@@ -94,7 +93,7 @@ router.route('/createUser').post([
       var token = jwt.sign({ id: newUser._id }, process.env.SECRET, {
         expiresIn: 86400
       });
-      res.cookie('token', token, { maxAge: 60 * 60 * 24 * 1, httpOnly: true})
+      res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: false, sameSite: false})
       res.status(200).json({
         auth: true,
         token, token
@@ -176,7 +175,7 @@ router.route('/login').post((req, res) => {
       var token = jwt.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 86400
       });
-      res.cookie('token', token, { maxAge: 60 * 60 * 24 * 1, httpOnly: true, secure: false})
+      res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: false, sameSite: true})
       res.status(200).json({
         auth: true,
         // token: token

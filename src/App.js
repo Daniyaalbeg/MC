@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component'
@@ -11,12 +12,22 @@ import ResetPassword from './components/resetPassword.component';
 import ResettingPassword from './components/signup/resettingPassword.component';
 import EmailVerification from './components/signup/emailVerification.component'
 import CreateRation from './components/signup/createRation.component';
+import UpdateRation from './components/update/updateRation.component';
 import About from './components/about.component';
 import Error404 from './components/404.component'
 
+import { checkCookie } from './Actions/authActions';
+
 import './css/app.css'
 
-function App() {
+function App({ dispatch, checkedCookie, auth}) {
+  
+  useEffect(() => {
+    if (!auth && !checkedCookie) {
+      dispatch(checkCookie())
+    }
+  })
+
   return (
     <Router>
       <NavigationBar />
@@ -31,10 +42,16 @@ function App() {
         <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
         <Route path="/verify/:token" component={EmailVerification} />
         <Route path="/createRation" component={CreateRation} />
+        <Route path="/updateRation/:id" component={UpdateRation} />
         <Route component={Error404} />
       </Switch>
     </Router>
   );
 }
 
-export default App;
+const MapStateToProps = (state) => ({
+  checkedCookie: state.auth.checkedCookie,
+  auth: state.auth.auth,
+})
+
+export default connect(MapStateToProps)(App);

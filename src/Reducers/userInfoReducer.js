@@ -43,8 +43,20 @@ export default function userInfoReducer(state = initialState, action) {
         loading: false,
         error: action.payload
       }
-      case LOGOUT:
-        return initialState
+    case LOGOUT:
+      return initialState
+    case actions.DELETE_USER_INFO_RATION:
+      let newSupplier = {...state.supplier}
+      for (let i = 0; i<state.supplier.rationEvents.length; i++) {
+        if (state.supplier.rationEvents[i]._id === action.payload) {
+          newSupplier.rationEvents.splice(i, 1)
+          break;
+        }
+      }
+      return {
+        ...state,
+        supplier: newSupplier
+      }
     default:
       return state;
   }

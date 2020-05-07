@@ -2,25 +2,16 @@ import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { Row, Card, Form, Button } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
 import * as Yup from 'yup';
-import { Checkbox } from './Checkboxs.component';
-import { creatingNewRation, creatingRationRedirect } from '../../Actions/createRationActions';
-import SelectMap from './selectMap.component';
+import { Checkbox } from '../signup/Checkboxs.component';
+import { updateRation, updatingRationRedirect } from '../../Actions/updateActions';
+import UpdateMap from './updateMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
-import Thumb from './thumb.component';
+import Thumb from '../signup/thumb.component';
 
 import '../../css/form.css';
-
-// const dropzoneStyle = {
-//   width: "100%",
-//   height: "auto",
-//   borderWidth: 2,
-//   borderColor: "rgb(102, 102, 102)",
-//   borderStyle: "dashed",
-//   borderRadius: 5,
-// }
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -80,11 +71,12 @@ const acceptStyle = {
 const rejectStyle = {
   borderColor: '#ff1744'
 };
-
-const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
+const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpdate}) => {
   const [location, setLocation] = useState([])
-  const [imageFiles, setImageFiles] = useState([]);
+  const [imageFilesThumb, setImageFilesThumb] = useState([]);
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const [newImage, setNewImage] = useState(false)
   const {
     isDragActive,
     isDragAccept,
@@ -93,7 +85,6 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
     accept: 'image/jpeg, image/png, image/jpg, image/gif',
     maxSize: 2000000,
   });
-
   const style = useMemo(() => ({
     ...baseStyle,
     ...(isDragActive ? activeStyle : {}),
@@ -104,13 +95,26 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
     isDragReject
   ]);
 
+  if (!loaded) {  
+    if (rationToUpdate === null && !loaded) {
+      return <Redirect to="/" />
+    } else {
+      setImageFilesThumb(rationToUpdate.images)
+      setLocation(rationToUpdate.location.coordinates)
+    }
+    setLoaded(true)
+  }
+
   if (success) {
-    dispatch(creatingRationRedirect())
+    dispatch(updatingRationRedirect())
   }
 
   return (
     <Card bg="light" text="dark" className="signUpCard">
       <Fragment>
+        {rationToUpdate === null &&
+          <Redirect push to="/" />
+        }
        {!auth &&
           <Redirect push to="/" />
         }
@@ -118,37 +122,39 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           <Redirect push to="/" /> 
         }
       </Fragment>
-      <Card.Header> Create New Ration Drive </Card.Header>
+      <Card.Header> Update Ration Drive </Card.Header>
 
       <Formik
         initialValues={{
-          name: "",
-          description: "",
-          numOfItems: "",
-          descriptionOfItems: "",
-          typeOfRation: "",
-          images: [],
-          date: new Date(),
+          name: rationToUpdate.name,
+          description: rationToUpdate.description,
+          numOfItems: rationToUpdate.totalNumberOfItems,
+          descriptionOfItems: rationToUpdate.itemsDescription,
+          typeOfRation: rationToUpdate.typeOfRation,
+          images: rationToUpdate.images,
+          date: Date.parse(rationToUpdate.date),
           agreedToTerms: false,
-          mapClicked: false
+          mapClicked: true
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          const newPoint = {
+          const updatedPoint = {
             type: 'Point',
             coordinates: location
           }
-          const newRationDrive = {
+          const updatedRation = {
+            _id: rationToUpdate._id,
             name: values.name,
             description: values.description,
             totalNumberOfItems: values.numOfItems,
             itemsDescription: values.descriptionOfItems,
             typeOfRation: values.typeOfRation,
             images: values.images,
-            location: newPoint,
+            location: updatedPoint,
             date: values.date
           }
-          dispatch(creatingNewRation(newRationDrive))
+          if (setNewImage) { updatedRation.newImage = true }
+          dispatch(updateRation(updatedRation))
         }}
       >
       {({values,
@@ -260,7 +266,8 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
               if (rejectedFiles.length === 0) {
                 setRejectedFilesState([])
               }
-              setImageFiles(acceptedFiles);
+              setNewImage(true)
+              setImageFilesThumb(acceptedFiles);
               setFieldValue('images', acceptedFiles);
           }}>
             {({getRootProps, getInputProps}) => (
@@ -269,8 +276,8 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
                 <input {...getInputProps()} />
                 <p>Drag 'n' images here, or click to select images</p>
                 <Row> {
-                imageFiles.map((file) => {
-                  return <Thumb file={file} key={file.name} />
+                values.images.map((file) => {
+                  return <Thumb file={file} key={file} />
                 })
               } </Row>
               </div>
@@ -303,10 +310,11 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
 
         <Form.Group>
           <Form.Label> Select Location of the Ration Drive* </Form.Label>
-          <SelectMap
+          <UpdateMap
             id="mapClicked"
             name="mapClicked"
             className="selectMap"
+            location={rationToUpdate.location}
             callBack={(location) => {
               setLocation(location)
               setFieldValue("mapClicked", true)
@@ -329,12 +337,14 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Button variant="primary" type="submit" disabled={loading}>
-          {loading ? 'Creating Ration' : 'Create Ration'}
+          {loading ? 'Updating Ration' : 'Update Ration'}
         </Button>
 
-        <Form.Text className="text-muted">
-          Note: Once we have verified your information only then will you be able to add charity drives and become visible on the page.
-        </Form.Text>
+        <Link to="/" style={{marginLeft: "10px"}}>
+        <Button variant="danger" type="submit" disabled={loading}>
+          Cancel
+        </Button>
+        </Link>
 
         </Card.Body>
       </Form>
@@ -344,11 +354,21 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
   )
 }
 
-const MapStateToProps = (state) => ({
+const findChosenRation = (id, rations) => {
+  if (rations == null) { return null }
+  for (let i = 0; i < rations.length; i++) {
+    if (id === rations[i]._id) {
+      return rations[i]
+    }
+  }
+}
+
+const MapStateToProps = (state, ownProps) => ({
   auth: state.auth.auth,
-  loading: state.createRation.loading,
-  hasErrors: state.createRation.hasErrors,
-  success: state.createRation.success
+  loading: state.updateInfo.loading,
+  hasErrors: state.updateInfo.hasErrors,
+  success: state.updateInfo.success,
+  rationToUpdate: state.userInfo.supplier ? findChosenRation(ownProps.match.params.id, state.userInfo.supplier.rationEvents) : null,
 });
 
-export default connect(MapStateToProps)(CreateRation)
+export default connect(MapStateToProps)(UpdateRation)

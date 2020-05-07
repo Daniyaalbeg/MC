@@ -79,3 +79,17 @@ p {
   flex-direction: column;
   width: 100%;
 }
+
+.updateDelete {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.rationModalDeleteButton {
+  margin-right: 12px;
+}
+
+.editButtonRation {
+  text-decoration: none;
+}

@@ -11,7 +11,7 @@ const RationView = (props) => {
   const RenderRations = () => {
     if (Array.isArray(rations) && props.rations.length) {
       const listOfRations = rations.map((ration) =>
-        <RationItemCard ration={ration} key={ration._id} open={ration._id === selectedRationId}/>
+        <RationItemCard handleClose={props.handleClose} ration={ration} key={ration._id} open={ration._id === selectedRationId}/>
       )
       const list = 
         <Accordion onSelect={setSelectedRationId} className="rationListCard">

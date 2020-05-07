@@ -21,7 +21,7 @@ const RationItemCard = (props) => {
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={ration._id}>
         <Card.Body>
-          <RationItemInfo ration={ration}/>
+          <RationItemInfo ration={ration} handleClose={props.handleClose} />
         </Card.Body>
       </Accordion.Collapse>
     </Card>

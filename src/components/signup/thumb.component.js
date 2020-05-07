@@ -2,24 +2,45 @@ import React from 'react';
 
 
 class Thumb extends React.Component {
-  state = {
-    loading: false,
-    thumb: undefined,
-    file: undefined
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false,
+      thumb: undefined,
+      file: undefined
+    };
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.file) { return; }
-
-    this.setState({ loading: true }, () => {
+    console.log("a")
+    if (!props.file) { return; }
+    if (props.file instanceof String || typeof props.file === "string") {
+      this.state = { thumb: props.file}
+    }  else {
       let reader = new FileReader();
 
       reader.onloadend = () => {
-        this.setState({ loading: false, thumb: reader.result });
+        this.state = { loading: false, thumb: reader.result };
       };
 
-      reader.readAsDataURL(nextProps.file);
-    });
+      reader.readAsDataURL(props.file);
+    }
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.file) { return; }
+    if (nextProps.file instanceof String || typeof nextProps.file === "string") {
+      this.setState({ thumb: nextProps.file})
+    }  else {
+      this.setState({ loading: true }, () => {
+        let reader = new FileReader();
+  
+        reader.onloadend = () => {
+          this.setState({ loading: false, thumb: reader.result });
+        };
+  
+        reader.readAsDataURL(nextProps.file);
+      });
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {

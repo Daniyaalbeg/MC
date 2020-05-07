@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
 import { getMainInfo } from '../../Actions/homeViewActions';
-import { checkCookie } from '../../Actions/authActions';
 
 import photo0 from '../../assets/Images/oldman.jpg'
 import photo1 from '../../assets/Images/chitralman.jpg'
@@ -24,11 +23,8 @@ const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "OPENING OUR HEARTS",
 const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5"]
 const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5"]
 
-const HomeView = ({ dispatch, auth, loading, fetched, checkedCookie, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
+const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
-    if (!auth && !checkedCookie) {
-      dispatch(checkCookie())
-    }
     if (!fetched && !loading) {
       dispatch(getMainInfo())
     }
@@ -174,8 +170,6 @@ const ProjectsInfo = (props) => {
 const MapStateToProps = (state) => ({
   loading: state.info.loading,
   fetched: state.info.fetched,
-  checkedCookie: state.auth.checkedCookie,
-  auth: state.auth.auth,
   hasErrors: state.info.hasErrors,
   numberOfUsers: state.info.numberOfUsers,
   numberOfRations: state.info.numberOfRations,

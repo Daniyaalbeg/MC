@@ -11,7 +11,7 @@ import RationView from './rationView.component'
 import { getUserInfo } from '../../Actions/userInfoActions';
 import { Row, Col, Nav } from 'react-bootstrap';
 
-const AccountView = ({dispatch, fetched, loading, token, userId, username, email, supplier, approved, verified, createdAt, hasErrors, error}) => {
+const AccountView = ({dispatch, fetched, loading, token, userId, username, email, supplier, approved, verified, createdAt, hasErrors, error, props}) => {
   
   useEffect(() => {
     if (!fetched) { dispatch(getUserInfo()) }
@@ -52,7 +52,7 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
                 <SupplierInfoView supplier={supplier} />
               </Tab.Pane>
               <Tab.Pane eventKey="rations">
-                <RationView rations={supplier.rationEvents} />
+                <RationView rations={supplier.rationEvents} handleClose={props.handleClose}/>
               </Tab.Pane>
             </Tab.Content>
           </Col>
@@ -73,7 +73,7 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
   )
 }
 
-const MapStateToProps = state => ({
+const MapStateToProps = (state, ownProps) => ({
   token: state.auth.token,
   fetched: state.userInfo.fetched,
   loading: state.userInfo.loading,
@@ -85,7 +85,8 @@ const MapStateToProps = state => ({
   verified: state.userInfo.verified,
   createdAt: state.userInfo.createdAt,
   hasErrors: state.userInfo.hasErrors,
-  error: state.userInfo.error
+  error: state.userInfo.error,
+  props: ownProps
 })
 
 export default connect(MapStateToProps)(AccountView);

@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 const ShowDetails = ({auth, handleClose}) => {
   const isLoggedIn = auth
   if (isLoggedIn) {
-    return <AccountView />
+    return <AccountView handleClose={handleClose}/>
   } else {
     return <LoginForm handleClose={handleClose}/>
   }

@@ -97,7 +97,9 @@ export function creatingNewRation(data) {
             images: imageUrlLocations,
             location: data.location,
             date: data.date
-          }
+          },
+          withCredentials: true,
+          credentials: 'include'
         })
         .then((res) => {
           dispatch(creatingRationSuccess())

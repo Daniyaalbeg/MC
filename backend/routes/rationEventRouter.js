@@ -94,13 +94,31 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
     if (!user) res.status(500).json("There was a problem finding your user.")
 
     const rationEvents = user.supplier.rationEvents;
-    rationEvents.forEach((rationEvent, index, object) => {
-      if (rationEvent._id == req.params.id) {
-        object.splice(index, 1);
+    // rationEvents.forEach((rationEvent, index, object) => {
+    //   if (rationEvent._id === req.params.id) {
+    //     object.splice(index, 1);
+    //   }
+    // });
+    let rationEventFound = false
+    for ( let i = 0; i < rationEvents.length; i++) {
+      // console.log(rationEvents[i]._id+'-'+req.params.id)
+      if (rationEvents[i]._id.equals(req.params.id)) {
+        rationEventFound = true
+        rationEvents.splice(i, 1);
+        break
       }
-    });
+    }
+    if (!rationEventFound) {
+      return res.status(500).send("Ration Event not found")
+    }
     user.save()
-    .then(() => res.status(200).json("Delete succesful"))
+    .then(() => {
+      res.status(200).json("Delete succesful")
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(500).send("User could not be saved")
+    })
   })
   .catch((error) => {
     console.log(error)
@@ -114,36 +132,60 @@ router.route('/update/:id').post(verifyToken, (req, res, next) => {
   User.findById(req.id, { password: 0}, function (err, user) {
     if (err) return res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
-    
+  
+
     const supplier = user.supplier;
     const rationEvents = supplier.rationEvents;
-    rationEvents.forEach(rationEvent => {
-      if (rationEvent._id == req.params.id) {
-        return res.status(200).json(rationEvent);
-      }
-    });
-    return res.status(500).json("No ration event found");
-  });
-  RationEvent.findById(req.params.id)
-  .then((rationEvent) => {
-    rationEvent.name = req.body.name;
-    rationEvent.description = req.body.description;
-    rationEvent.totalNumberOfItems = req.body.totalNumberOfItems;
-    rationEvent.itemsDescription = req.body.itemsDescription;
-    rationEvent.typeOfRation = req.body.typeOfRation;
-    rationEvent.images = req.body.images;
-    rationEvent.supplier = req.body.supplier;
-    rationEvent.location = req.body.location;
-    rationEvent.date = req.body.date;
-    rationEvent.approved = req.body.approved;
+    for( let i =0; i< rationEvents.length; i++) {
+      if (rationEvents[i]._id.equals(req.params.id)) {
+        rationEvents[i].name = req.body.name;
+        rationEvents[i].description = req.body.description;
+        rationEvents[i].totalNumberOfItems = req.body.totalNumberOfItems;
+        rationEvents[i].itemsDescription = req.body.itemsDescription;
+        rationEvents[i].typeOfRation = req.body.typeOfRation;
+        rationEvents[i].images = req.body.images;
+        rationEvents[i].location = req.body.location;
+        rationEvents[i].date = req.body.date;
 
-    rationEvent.save()
-    .then(() => res.status(200).json("rationEvent updated succesfully"))
-    .catch((error) => {
-      console.log(error)
-      res.status(500).json("An error occured")
-    })
-  })
+        user.save()
+        .then(() => {
+          return res.status(200).json("rationEvent updated succesfully")
+        })
+        .catch((error) => {
+          console.log(error)
+          res.status(500).json("An error occured")
+        }) 
+      }
+    }
+    // return res.status(500).json("No ration event found");
+  });
+  
+  // RationEvent.findById(req.params.id)
+  // .then((rationEvent) => {
+  //   // rationEvent.name = req.body.name;
+  //   // rationEvent.description = req.body.description;
+  //   // rationEvent.totalNumberOfItems = req.body.totalNumberOfItems;
+  //   // rationEvent.itemsDescription = req.body.itemsDescription;
+  //   // rationEvent.typeOfRation = req.body.typeOfRation;
+  //   // rationEvent.images = req.body.images;
+  //   // rationEvent.supplier = req.body.supplier;
+  //   // rationEvent.location = req.body.location;
+  //   // rationEvent.date = req.body.date;
+  //   // rationEvent.approved = req.body.approved;
+
+  //   // rationEvent.save()
+  //   // .then(() => res.status(200).json("rationEvent updated succesfully"))
+  //   // .catch((error) => {
+  //   //   console.log(error)
+  //   //   res.status(500).json("An error occured")
+  //   // })
+  //   console.log('found ration event')
+  //   console.log(rationEvent.name)
+  // })
+  // .catch((error) => {
+  //   console.log(error)
+  //   res.status(500).send("Cannot find ration event")
+  // })
 })
 
 module.exports = router
