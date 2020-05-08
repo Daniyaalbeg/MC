@@ -56,7 +56,7 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           <div>
             {org.areaOfWork.map((area) => {
               return (
-                <Badge pill variant="primary" className="pillBadge">
+                <Badge pill variant="primary" className="pillBadge" key={area}>
                   {area}
                 </Badge>
               )

@@ -139,10 +139,12 @@ router.route('/register').post((req, res) => {
 
 router.route('/me').get(verifyToken, (req, res, next) => {
   User.findById(req.id, { password: 0})
-  .populate('user.supplier')
+  .populate('supplier.events')
   .exec((err, user) => {
     if (err) return res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
+
+    console.log(user)
     
     res.status(200).send(user);
   });

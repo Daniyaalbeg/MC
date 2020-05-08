@@ -55,7 +55,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
 //Get all suppliers
 router.route('/').get((req, res) => {
   const suppliersCollected = [];
-  User.find(null, { password: 0})
+  User.find({ approved: true }, { password: 0})
   .populate('supplier.events')
   .lean()
   .then((users) => {

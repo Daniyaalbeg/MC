@@ -35,11 +35,12 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     });
 
     newEvent.save((err, event) => {
-      if (err) res.status(500).send("Cound not save event");
+      if (err) return res.status(500).send("Cound not save event");
       user.supplier.events.push(event._id);
 
       user.save((err, user) => {
-        if (err) res.status(500).send("There was a problem saving the user.");
+        console.log(err)
+        if (err) return res.status(500).send("There was a problem saving the user.");
         res.json('new event created')
       })
     })
@@ -90,7 +91,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
 
 //Get all  events
 router.route('/').get((req, res) => {
-  Event.find({}, (err, events) => {
+  Event.find({ approved: true }, (err, events) => {
     if (err) { return res.status(500).send("Error getting events")}
     res.status(200).json(events);
   })

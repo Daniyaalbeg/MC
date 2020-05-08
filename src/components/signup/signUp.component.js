@@ -93,7 +93,7 @@ const validationSchema = Yup.object().shape({
   description: Yup.string()
   .required("*Description is required")
   .min(1, "*Description name must be longer than 1 charachter")
-  .max(1000, "*Description name must be less than 1000 charachters"),
+  .max(2000, "*Description name must be less than 1000 charachters"),
   addressInfo: Yup.string()
   .required("*Address is required")
   .min(10, "*Address name must be longer than 1 charachter")
@@ -108,7 +108,7 @@ const validationSchema = Yup.object().shape({
   .max(14, "*Number must be less than 14 charachters")
   .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*Only valid Pakistani mobile numbers"),
   contactInfo: Yup.string()
-  .min(10, "*Contact info must be longer than 10 charachters")
+  .min(1, "*Contact info must be longer than 10 charachters")
   .max(100, "*Contact info must be less than 100 charachters"),
   supplierWebsite: Yup.string()
   .url("*Please enter a valid URL e.g. http://www.google.com"),

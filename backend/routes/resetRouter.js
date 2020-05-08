@@ -27,10 +27,15 @@ router.route('/password').post((req, res) => {
       var token = jwt.sign(userObjectWithoutPassword, secret)
 
       var transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.stackmail.com',
+        port: 587,
+        secure: false,
         auth: {
           user: process.env.EMAIL_USERNAME,
           pass: process.env.EMAIL_PASSWORD
+        },
+        tls: {
+          rejectUnauthorized: false
         }
       });
 

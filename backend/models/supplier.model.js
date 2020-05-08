@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bankingDetailsSchema = require('./bankingDetails.model').bankingDetailSchema;
+const Event = require('./event.model').Event;
+
 
 const Schema = mongoose.Schema
 
@@ -14,11 +16,11 @@ const supplierSchema = new Schema({
       type: String,
       required: false
     },
-    events: {
-      type: [mongoose.Schema.Types.ObjectId],
+    events: [{
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Event',
       required: false
-    },
+    }],
     bankingDetails: {
       type: bankingDetailsSchema,
       required: false

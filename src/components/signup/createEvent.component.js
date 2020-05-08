@@ -138,7 +138,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             type: 'Point',
             coordinates: location
           }
-          const newEventDrive = {
+          const newEvent = {
             name: values.name,
             description: values.description,
             totalNumberOfItems: values.numOfItems,
@@ -148,7 +148,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             location: newPoint,
             date: values.date
           }
-          dispatch(creatingNewEvent(newEventDrive))
+          dispatch(creatingNewEvent(newEvent))
         }}
       >
       {({values,
@@ -164,7 +164,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
-          <Form.Label>Name of Event Drive*</Form.Label>
+          <Form.Label>Name of Event*</Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter name"
@@ -180,7 +180,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescription">
-          <Form.Label>Description of Event Drive*</Form.Label>
+          <Form.Label>Description of Event*</Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -213,7 +213,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescriptionOfItems">
-          <Form.Label>Content of Rations Given*</Form.Label>
+          <Form.Label>Contents of Event e.g. (Rations)*</Form.Label>
           <Form.Control
             as="textarea"
             rows="3"

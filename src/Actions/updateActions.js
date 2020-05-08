@@ -27,7 +27,6 @@ export const updatingEventRedirect = () => ({
 const urlImage = rootURL(production)+API+'/imageUpload'
 
 const updateEventCall = (dispatch, data) => {
-  console.log(JSON.stringify(data))
   axios({
     method: 'post',
     url: rootURL(production)+API+'/event/update/' + data._id,

@@ -46,7 +46,7 @@ const ResettingPassword = (props) => {
 
   return (
     <div>
-    <Card bsPrefix='card' bg='light' text='dark'>
+    <Card bsPrefix='card' bg='light' text='dark' className="signUpCard">
     <Card.Header>Reset Password</Card.Header>
     <Card.Body>
     <Formik
@@ -126,7 +126,7 @@ const ResettingPassword = (props) => {
 
     {hasErrors &&
       <div className="error">
-        <h2> Something went wrong. Please try again later or contact us. </h2>
+        <h4> Something went wrong. Please try again later or contact us. </h4>
         <p> {error} </p>
       </div>
     }

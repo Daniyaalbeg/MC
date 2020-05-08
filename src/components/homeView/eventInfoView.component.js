@@ -45,7 +45,7 @@ const EventInfoView = (props) => {
         </div>
         <div className="smallBoi">
           <h6 className="text-muted"> Charity </h6>
-          <p> {event.supplier.supplierName} </p>
+          <p> {event.supplierName} </p>
         </div>
         {event.images.length !== 0 &&
           <div className="smallBoi spaceBelow">

@@ -153,7 +153,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
             location: updatedPoint,
             date: values.date
           }
-          if (setNewImage) { updatedEvent.newImage = true }
+          if (newImage) { updatedEvent.newImage = true }
           dispatch(updateEvent(updatedEvent))
         }}
       >

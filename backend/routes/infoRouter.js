@@ -7,10 +7,13 @@ var Supplier = require('../models/supplier.model').Supplier;
 const Event = require('../models/event.model').Event;
 
 router.route('/featured').get((req, res) => {
-  Supplier.aggregate([{ $sample: { size: 4 } }])
-  .then((suppliers) => {
-    console.log(suppliers)
-    res.status(200).json(suppliers)
+  User.aggregate([{ $sample: { size: 4 } }])
+  .then((users) => {
+    const featuredSuppliers = []
+    users.forEach((user) => {
+      featuredSuppliers.push(user.supplier)
+    })
+    res.status(200).json(featuredSuppliers)
   })
   .catch((error) => {
     res.status(500).send("An error occurred")

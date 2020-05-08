@@ -52,7 +52,7 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
                 <SupplierInfoView supplier={supplier} />
               </Tab.Pane>
               <Tab.Pane eventKey="events">
-                <EventView evenets={supplier.events} handleClose={props.handleClose}/>
+                <EventView events={supplier.events} handleClose={props.handleClose}/>
               </Tab.Pane>
             </Tab.Content>
           </Col>

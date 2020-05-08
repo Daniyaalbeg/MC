@@ -173,7 +173,8 @@
 .featuredOrgImage {
   height: 200px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #343A40;
 }
 .featuredOrgText {
   margin-top: 10px;

@@ -12,7 +12,9 @@
 }
 
 .error {
-  border: 2px solid #FF6565;
+  color: #FF6565;
+  font-size: small;
+  text-align: center;
 }
 
 *:focus {
@@ -47,6 +49,7 @@
 .successReply {
   color: #4BB543;
   font-size: small;
+  text-align: center;
 }
 
 .datePicker {

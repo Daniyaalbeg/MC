@@ -84,7 +84,7 @@ const OrgCards = (props) => {
 				<div className="cardContainer">
 					{props.orgs.map((org) => {
 						return (
-							<Link to={'/organisations/' + org._id} className="orgViewLink">
+							<Link to={'/organisations/' + org._id} className="orgViewLink" key={org._id}>
 							<Card className="cardOrg grow" key={org._id}>
 								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
 								<Card.Body>

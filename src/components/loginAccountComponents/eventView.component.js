@@ -19,7 +19,7 @@ const EventView = (props) => {
         </Accordion>
       return list;
     } else {
-      return (<h6 className="text-muted, errorText"> No events drives to display </h6>)
+      return (<h6 className="text-muted, errorText"> No events to display </h6>)
     }
   }
 
