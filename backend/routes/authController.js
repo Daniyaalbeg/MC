@@ -48,6 +48,7 @@ router.route('/createUser').post([
 
   bcrypt.hash(password, 12)
   .then((hashedPassword) => {
+    console.log(req.body);
     const bankingDetails = new BankingDetails({
       bankName: req.body.bankingDetails.bankName,
       bankBranch: req.body.bankingDetails.bankBranch,
@@ -82,11 +83,6 @@ router.route('/createUser').post([
       approved: false,
       verified: false
     });
-    
-    // try {
-    // } catch {
-    //   res.status(500).send("An error occured")
-    // }
 
     newUser.save()
     .then(() => {
@@ -142,7 +138,9 @@ router.route('/register').post((req, res) => {
 })
 
 router.route('/me').get(verifyToken, (req, res, next) => {
-  User.findById(req.id, { password: 0}, function (err, user) {
+  User.findById(req.id, { password: 0})
+  .populate('user.supplier')
+  .exec((err, user) => {
     if (err) return res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
     

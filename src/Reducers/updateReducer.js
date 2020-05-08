@@ -8,24 +8,24 @@ export const initialState = {
 
 export default function updateReducer(state = initialState, action) {
   switch (action.type) {
-    case actions.UPDATE_RATION:
+    case actions.UPDATE_EVENT:
       return {
         ...state,
         loading: true
       }
-    case actions.UPDATE_RATION_SUCCESS:
+    case actions.UPDATE_EVENT_SUCCESS:
       return {
         ...state,
         loading: false,
         success: true
       }
-    case actions.UPDATE_RATION_FAILURE:
+    case actions.UPDATE_EVENT_FAILURE:
       return {
         loading: false,
         success: false,
         hasErrors: true
       }
-    case actions.UPDATE_RATION_REDIRECT:
+    case actions.UPDATE_EVENT_REDIRECT:
       return {
         ...state,
         success: false

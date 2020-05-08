@@ -86,10 +86,10 @@ p {
   align-items: center;
 }
 
-.rationModalDeleteButton {
+.eventModalDeleteButton {
   margin-right: 12px;
 }
 
-.editButtonRation {
+.editButtonEvent {
   text-decoration: none;
 }

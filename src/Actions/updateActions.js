@@ -2,35 +2,35 @@ import axios from 'axios';
 import { API, rootURL, production } from '../config'
 import { getUserInfo } from './userInfoActions'
 
-export const UPDATE_RATION = "UPDATE_RATION";
-export const UPDATE_RATION_SUCCESS = "UPDATE_RATION_SUCCESS";
-export const UPDATE_RATION_FAILURE = "UPDATE_RATION_FAILURE";
-export const UPDATE_RATION_REDIRECT = "UPDATE_RATION_REDIRECT"
+export const UPDATE_EVENT = "UPDATE_EVENT";
+export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
+export const UPDATE_EVENT_FAILURE = "UPDATE_EVENT_FAILURE";
+export const UPDATE_EVENT_REDIRECT = "UPDATE_EVENT_REDIRECT"
 
-export const updatingRation = () => ({
-  type: UPDATE_RATION
+export const updatingEvent = () => ({
+  type: UPDATE_EVENT
 });
 
-export const updatingRationSuccess = () => ({
-  type: UPDATE_RATION_SUCCESS
+export const updatingEventSuccess = () => ({
+  type: UPDATE_EVENT_SUCCESS
 });
 
-export const updatingRationFailure = (error) => ({
-  type: UPDATE_RATION_FAILURE,
+export const updatingEventFailure = (error) => ({
+  type: UPDATE_EVENT_FAILURE,
   payload: error
 });
 
-export const updatingRationRedirect = () => ({
-  type: UPDATE_RATION_REDIRECT
+export const updatingEventRedirect = () => ({
+  type: UPDATE_EVENT_REDIRECT
 })
 
 const urlImage = rootURL(production)+API+'/imageUpload'
 
-const updateRationCall = (dispatch, data) => {
+const updateEventCall = (dispatch, data) => {
   console.log(JSON.stringify(data))
   axios({
     method: 'post',
-    url: rootURL(production)+API+'/rationEvent/update/' + data._id,
+    url: rootURL(production)+API+'/event/update/' + data._id,
     headers: {'Content-Type': 'application/json'},
     data: {
       name: data.name,
@@ -46,18 +46,18 @@ const updateRationCall = (dispatch, data) => {
     credentials: 'include'
   })
   .then((res) => {
-    dispatch(updatingRationSuccess())
+    dispatch(updatingEventSuccess())
     dispatch(getUserInfo())
   })
   .catch((error) => {
     // console.log(error.response)
-    dispatch(updatingRationFailure(error))
+    dispatch(updatingEventFailure(error))
     return
   })
 }
 
 const withoutImageUpload = (dispatch, data) => {
-  updateRationCall(dispatch, data)
+  updateEventCall(dispatch, data)
 }
 
 const withImageUpload = (dispatch, data) => {
@@ -71,7 +71,7 @@ const withImageUpload = (dispatch, data) => {
         filesDict[name[0]] = file
       })
     } catch {
-      dispatch(updatingRationFailure("File name must have an extension"))
+      dispatch(updatingEventFailure("File name must have an extension"))
       console.log("File has no extension");
       return
     }
@@ -81,7 +81,7 @@ const withImageUpload = (dispatch, data) => {
       let fileName = key;
       let fileType = fullFileName[1];
 
-      const imageCategory = "rationImages"
+      const imageCategory = "EventImages"
 
       promises.push(axios.post(urlImage,{
         fileName: fileName,
@@ -115,23 +115,23 @@ const withImageUpload = (dispatch, data) => {
       Promise.all(putPromises)
       .then((responses) => {
         data.images = images
-        updateRationCall(dispatch, data)
+        updateEventCall(dispatch, data)
       })
       .catch((err) => {
-        dispatch(updatingRationFailure(err))
+        dispatch(updatingEventFailure(err))
         return
       });
 
     })
     .catch((err) => {
-      dispatch(updatingRationFailure(err));
+      dispatch(updatingEventFailure(err));
       return
     });
 }
 
-export function updateRation(data) {
+export function updateEvent(data) {
   return async (dispatch, getState) => {
-    dispatch(updatingRation());
+    dispatch(updatingEvent());
 
     if (data.newImage) {
       withImageUpload(dispatch, data)

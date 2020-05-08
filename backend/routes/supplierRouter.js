@@ -11,7 +11,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
 
     const supplierName = req.body.supplierName;
     const supplierImageURL = req.body.supplierImageURL;
-    const rationEvents = [];
+    const events = [];
     const bankingDetails = req.bankingDetails;
     const type = req.body.type;
     const areaOfWork = req.body.areaOfWork;
@@ -28,7 +28,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
     const supplier = new Supplier({
       supplierName: supplierName,
       supplierImageURL: supplierImageURL,
-      rationEvents: rationEvents,
+      events: events,
       bankingDetails: bankingDetails,
       type: type,
       areaOfWork: areaOfWork,
@@ -55,7 +55,9 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
 //Get all suppliers
 router.route('/').get((req, res) => {
   const suppliersCollected = [];
-  User.find(null, { password: 0}).lean()
+  User.find(null, { password: 0})
+  .populate('supplier.events')
+  .lean()
   .then((users) => {
     users.forEach((user) => {
       suppliersCollected.push(user.supplier);

@@ -7,7 +7,7 @@ import '../../css/accountView.css'
 
 import ProfileInfoView from './profileInfoView.component';
 import SupplierInfoView from './supplierInfoView.component';
-import RationView from './rationView.component'
+import EventView from './eventView.component'
 import { getUserInfo } from '../../Actions/userInfoActions';
 import { Row, Col, Nav } from 'react-bootstrap';
 
@@ -37,7 +37,7 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
                   </Col>
                   <Col>
                   <Nav.Item>
-                    <Nav.Link eventKey="rations" className="centreText"> Ration Info </Nav.Link>
+                    <Nav.Link eventKey="events" className="centreText"> Events Info </Nav.Link>
                   </Nav.Item>
                 </Col>
               </Row>
@@ -51,8 +51,8 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
               <Tab.Pane eventKey="supplierInfo">
                 <SupplierInfoView supplier={supplier} />
               </Tab.Pane>
-              <Tab.Pane eventKey="rations">
-                <RationView rations={supplier.rationEvents} handleClose={props.handleClose}/>
+              <Tab.Pane eventKey="events">
+                <EventView evenets={supplier.events} handleClose={props.handleClose}/>
               </Tab.Pane>
             </Tab.Content>
           </Col>

@@ -1,4 +1,3 @@
-const https = require('https');
 const fs = require('fs');
 const rateLimit = require('express-rate-limit');
 const slowDown = require("express-slow-down");
@@ -9,11 +8,6 @@ var rfs = require('rotating-file-stream')
 const Sentry = require('@sentry/node');
 
 Sentry.init({ dsn: 'https://ebe7cda610d24b159425f7f43c5d3662@o382800.ingest.sentry.io/5212202' });
-
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -54,7 +48,7 @@ app.use(speedLimiter);
 app.use(morgan('combined', { stream: accessLogStream }))
 
 const supplierRouter = require('./routes/supplierRouter');
-const rationEventRouter = require('./routes/rationEventRouter');
+const eventRouter = require('./routes/eventRouter');
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authController');
 const resetRouter = require('./routes/resetRouter');
@@ -63,7 +57,7 @@ const emailVerificationRouter = require('./routes/emailVerificationRouter');
 const infoRouter = require('./routes/infoRouter')
 
 app.use('/api/supplier', supplierRouter);
-app.use('/api/rationEvent', rationEventRouter);
+app.use('/api/event', eventRouter);
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/reset', resetRouter);
@@ -71,15 +65,7 @@ app.use('/api/imageUpload', s3Router.sign_s3);
 app.use('/api/emailVerification', emailVerificationRouter.router);
 app.use('/api/info', infoRouter);
 
-var httpsServer = https.createServer(options, app);
-
-// if (local.environment === 'production') {
-//   httpsServer.listen(local.port, () => {
-//     console.log(`HTTPS server is running on port: ${local.port}`)
-//   })
-// } else {
-  app.listen(local.port, () => {
-    console.log(`HTTP server is running on port: ${local.port}`);
-    console.log(local.environment);
-  });
-// }
+app.listen(local.port, () => {
+  console.log(`HTTP server is running on port: ${local.port}`);
+  console.log(local.environment);
+});

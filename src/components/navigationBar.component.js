@@ -22,10 +22,10 @@ const NavigationBar = () => {
           </Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="ml-auto">
             <Nav.Item><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
-            <Nav.Item><Link className="navlink" to="/about"> About </Link></Nav.Item>
+            <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item>
           </Nav>
           {/* <NavLink to="/login"> Log in </NavLink> */}
           <LoginModal openModal={openModal} closeModal={closeModal} show={show}/>
@@ -40,10 +40,10 @@ const NavigationBar = () => {
           </Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="ml-auto">
             <Nav.Item><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
-            <Nav.Item><Link className="navlink" to="/about"> About </Link></Nav.Item>
+            <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item>
           </Nav>
           {/* <NavLink to="/login"> Log in </NavLink> */}
           <LoginModal openModal={openModal} closeModal={closeModal} show={show}/>

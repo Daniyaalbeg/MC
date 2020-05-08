@@ -7,7 +7,7 @@ html, body {
     width: 100vw !important;
     height: 100vh;
   }
-  .rationListView {
+  .eventListView {
     display: none;
   }
 }
@@ -42,16 +42,16 @@ html, body {
   /* flex-grow: 1; */
 }
 
-.rationListView {
+.eventListView {
   width: 30vw;
   overflow-y: scroll;
   flex-grow: 1;
 }
 
-.rationListView::-webkit-scrollbar {
+.eventListView::-webkit-scrollbar {
   display: none;
 }
 
-.rationInfoView {
+.eventInfoView {
   flex-grow: inherit;
 }

@@ -1,62 +1,62 @@
-import * as actions from '../Actions/getRationinfoActions';
-import * as selectActions from '../Actions/selectRationEventActions';
-import * as filterSearchActions from '../Actions/filterSearchRatioEventAction';
+import * as actions from '../Actions/getEventInfoActions';
+import * as selectActions from '../Actions/selectEventActions';
+import * as filterSearchActions from '../Actions/filterSearchEventAction';
 
 const initialState = {
   loading: false,
   hasErros: false,
   fetched: false,
-  rationEvents: [],
-  selectedRation: null,
+  events: [],
+  selectedEvents: null,
   filterType: "all",
   filter: "all",
   search: ""
 }
 
-export default function rationInfoReducer(state = initialState, action) {
+export default function eventInfoReducer(state = initialState, action) {
   switch(action.type) {
-    case actions.GET_RATION_INFO:
+    case actions.GET_EVENT_INFO:
       return {
         ...state,
         loading: true
       }
-    case actions.GET_RATION_INFO_SUCCESS:
+    case actions.GET_EVENT_INFO_SUCCESS:
       return {
         ...state,
         loading: false,
         fetched: true,
-        rationEvents: action.payload
+        events: action.payload
       }
-    case actions.GET_RATION_INFO_FAILURE:
+    case actions.GET_EVENT_INFO_FAILURE:
       return {
         ...state,
         loading: false,
         hasErros: true,
         fetched: false
       }
-    case actions.GET_RATION_RESET_FETCH:
+    case actions.GET_EVENT_RESET_FETCH:
       return {
         ...state,
         fetched: false,
         hasErros: false,
         loading: false
       }
-    case selectActions.SELECT_RATION_EVENT:
+    case selectActions.SELECT_EVENT:
       return {
         ...state,
-        selectedRation: action.payload,
+        selectedEvent: action.payload,
       }
-    case filterSearchActions.FILTER_RATION_EVENT:
+    case filterSearchActions.FILTER_EVENT:
       return {
         ...state,
         filter: action.payload
       }
-    case filterSearchActions.FILTER_RATION_EVENT_TYPE:
+    case filterSearchActions.FILTER_EVENT_TYPE:
       return {
         ...state,
         filterType: action.payload
       }
-    case filterSearchActions.SEARCH_RATION_EVENT:
+    case filterSearchActions.SEARCH_EVENT:
       return {
         ...state,
         search: action.payload.toLowerCase()       

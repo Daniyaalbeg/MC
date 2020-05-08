@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
 import * as Yup from 'yup';
 import { Checkbox } from './Checkboxs.component';
-import { creatingNewRation, creatingRationRedirect } from '../../Actions/createRationActions';
+import { creatingNewEvent, creatingEventRedirect } from '../../Actions/createEventActions';
 import SelectMap from './selectMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import Thumb from './thumb.component';
@@ -24,10 +24,10 @@ import '../../css/form.css';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
-  .required("*Ration name is required")
-  .min(1, "*Ration name must be longer than 1 charachter")
-  .max(50, "*Ration name must be less than 50 charachters")
-  .matches(/^[a-zA-Z0-9_ ]*$/, "*Ration name must only contain letters or numbers"),
+  .required("*Event name is required")
+  .min(1, "*Event name must be longer than 1 charachter")
+  .max(50, "*Event name must be less than 50 charachters")
+  .matches(/^[a-zA-Z0-9_ ]*$/, "*Event name must only contain letters or numbers"),
   description: Yup.string()
   .required("*Description is required")
   .min(1, "*Description must be longer than 1 charachter")
@@ -43,7 +43,7 @@ const validationSchema = Yup.object().shape({
   .max(1000, "*Description  must be less than 1000 charachters"),
   // location: Yup.array(Yup.number())
   // .required("*Must add a location"),
-  // typeOfRation: Yup.string()
+  // typeOfEvent: Yup.string()
   // .required("*Type of rations distributed is required")
   // .min(1, "*Must be longer than 1 charachter")
   // .max(100, "*Must be less than 1000 charachters"),
@@ -81,7 +81,7 @@ const rejectStyle = {
   borderColor: '#ff1744'
 };
 
-const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
+const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
   const [location, setLocation] = useState([])
   const [imageFiles, setImageFiles] = useState([]);
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
@@ -105,7 +105,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
   ]);
 
   if (success) {
-    dispatch(creatingRationRedirect())
+    dispatch(creatingEventRedirect())
   }
 
   return (
@@ -118,7 +118,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           <Redirect push to="/" /> 
         }
       </Fragment>
-      <Card.Header> Create New Ration Drive </Card.Header>
+      <Card.Header> Create New Event </Card.Header>
 
       <Formik
         initialValues={{
@@ -126,7 +126,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           description: "",
           numOfItems: "",
           descriptionOfItems: "",
-          typeOfRation: "",
+          typeOfEvent: "",
           images: [],
           date: new Date(),
           agreedToTerms: false,
@@ -138,7 +138,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
             type: 'Point',
             coordinates: location
           }
-          const newRationDrive = {
+          const newEventDrive = {
             name: values.name,
             description: values.description,
             totalNumberOfItems: values.numOfItems,
@@ -148,7 +148,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
             location: newPoint,
             date: values.date
           }
-          dispatch(creatingNewRation(newRationDrive))
+          dispatch(creatingNewEvent(newEventDrive))
         }}
       >
       {({values,
@@ -164,7 +164,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
-          <Form.Label>Name of Ration Drive*</Form.Label>
+          <Form.Label>Name of Event Drive*</Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter name"
@@ -180,7 +180,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescription">
-          <Form.Label>Description of Ration Drive*</Form.Label>
+          <Form.Label>Description of Event Drive*</Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -229,7 +229,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
           <Form.Control.Feedback type="invalid">{errors.descriptionOfItems}</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="formTypeOfRation">
+        <Form.Group controlId="formTypeOfEvent">
           <Form.Label>Type of Rations distributed*</Form.Label>
           <Form.Control
             as="select"
@@ -248,7 +248,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Images of Ration Drive (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
+          <Form.Label> Images of Event (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
             accept = 'image/jpeg, image/png, image/jpg, image/gif'
             maxSize = {11000000}
@@ -274,7 +274,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
                 })
               } </Row>
               </div>
-              {rejectedFilesState.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}
+              {rejectedFilesState.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 1mb. </p>}
               </Fragment>
           )}
           {/* <div {...getRootProps({style})}>
@@ -282,14 +282,14 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
             <p>Drag 'n' images here, or click to select images</p>
             <Row> {thumbFiles} </Row>
           </div>
-          {rejectedFiles.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}     */}
+          {rejectedFiles.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 1mb. </p>}     */}
           </Dropzone>
         </Form.Group>
 
       
 
         <Form.Group>
-          <Form.Label> Date of the Ration Drive (Can be in the future or past)* </Form.Label>
+          <Form.Label> Date of the Event (Can be in the future or past)* </Form.Label>
           <br />
           <DatePicker
             selected={values.date}
@@ -302,7 +302,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Select Location of the Ration Drive* </Form.Label>
+          <Form.Label> Select Location of the Event* </Form.Label>
           <SelectMap
             id="mapClicked"
             name="mapClicked"
@@ -329,7 +329,7 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Button variant="primary" type="submit" disabled={loading}>
-          {loading ? 'Creating Ration' : 'Create Ration'}
+          {loading ? 'Creating Event' : 'Create Event'}
         </Button>
 
         <Form.Text className="text-muted">
@@ -346,9 +346,9 @@ const CreateRation = ({dispatch, loading, hasErrors, success, auth}) => {
 
 const MapStateToProps = (state) => ({
   auth: state.auth.auth,
-  loading: state.createRation.loading,
-  hasErrors: state.createRation.hasErrors,
-  success: state.createRation.success
+  loading: state.createEvent.loading,
+  hasErrors: state.createEvent.hasErrors,
+  success: state.createEvent.success
 });
 
-export default connect(MapStateToProps)(CreateRation)
+export default connect(MapStateToProps)(CreateEvent)

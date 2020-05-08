@@ -8,7 +8,7 @@ import { Carousel } from  'react-bootstrap';
 import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
-import { selectingRationEvent } from '../../Actions/selectRationEventActions';
+import { selectingEvent } from '../../Actions/selectEventActions';
 import sack, { mapMarker, mapPin, shirt, coin, mask, MCRing} from '../../assets/svg.js'
 import filterAndSearch from './filterAndSearch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -67,7 +67,7 @@ const layoutLayerMCRing = {
 }
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
-let rationEventKeys = {}
+let eventKeys = {}
 
 class MapView extends React.Component {
   constructor(props) {
@@ -95,22 +95,22 @@ class MapView extends React.Component {
 
   componentWillUpdate() {
     this.props.filteredEvents.map((event) => {
-      return rationEventKeys[event._id] = {...event}
+      return eventKeys[event._id] = {...event}
     });
   }
 
   onDrag = () => {
-    if (this.props.selectedRation) {
+    if (this.props.selectedEvent) {
       this.setState = ({
-        center: this.props.selectedRation.location.coordinates,
+        center: this.props.selectedEvent.location.coordinates,
         zoom: [14],
       })
-      this.props.dispatch(selectingRationEvent(null))
+      this.props.dispatch(selectingEvent(null))
     }
   }
 
-  onMarkerClick = (rationEventId) => {
-    this.props.dispatch(selectingRationEvent(rationEventKeys[rationEventId]))
+  onMarkerClick = (eventId) => {
+    this.props.dispatch(selectingEvent(eventKeys[eventId]))
   }
 
   styleButtonClicked() {
@@ -133,8 +133,8 @@ class MapView extends React.Component {
         }}
         
         fitBounds={startingBounds}
-        center={this.props.selectedRation == null ? this.state.center : this.props.selectedRation.location.coordinates}
-        zoom={this.props.selectedRation == null ? this.state.zoom : [14]}
+        center={this.props.selectedEvent == null ? this.state.center : this.props.selectedEvent.location.coordinates}
+        zoom={this.props.selectedEvent == null ? this.state.zoom : [14]}
         // onZoom={}
         // onMove={}
         onDrag={this.onDrag}
@@ -164,8 +164,8 @@ class MapView extends React.Component {
         <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="ramadan"/>
         <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType="other"/>
         <FeatureLayer layoutLayer={layoutLayerSack} images={imagesSack} onMarkerClick={this.onMarkerClick} filteredEvents={this.props.filteredEvents} whichType={undefined} />
-        {this.props.selectedRation && (
-          <WhichPopup className="mainPopup" screenWidth={this.state.screenWidth} selectedRation={this.props.selectedRation} />
+        {this.props.selectedEvent && (
+          <WhichPopup className="mainPopup" screenWidth={this.state.screenWidth} selectedEvent={this.props.selectedEvent} />
         )
         }
       </Map>
@@ -177,23 +177,20 @@ class MapView extends React.Component {
 const FeatureLayer = (props) => {
   const {layoutLayer, images, filteredEvents, onMarkerClick, whichType} = props
 
-  const furtherFilteredEvents = filteredEvents.filter((rationEvent) => {
-    // console.log(rationEvent.typeOfRation + " " + whichType)
-    // console.log(rationEvent.typeOfRation === whichType)
-    // console.log("---------------")
-    return rationEvent.typeOfRation === whichType
+  const furtherFilteredEvents = filteredEvents.filter((event) => {
+    return event.typeOfRation === whichType
   })
 
   if (furtherFilteredEvents.length === 0) {
     return null
   }
 
-  const returnEvents = furtherFilteredEvents.map((rationEvent) => {
+  const returnEvents = furtherFilteredEvents.map((event) => {
     return (
       <Feature 
-        key={rationEvent._id}
-        coordinates={rationEvent.location.coordinates}
-        onClick={() => {onMarkerClick(rationEvent._id)}}
+        key={event._id}
+        coordinates={event.location.coordinates}
+        onClick={() => {onMarkerClick(event._id)}}
       />
     )
   })
@@ -208,18 +205,18 @@ const WhichPopup = (props) => {
 
   if (props.screenWidth > 600) {
     return (
-      <Popup key={props.selectedRation._id} coordinates={props.selectedRation.location.coordinates}>
+      <Popup key={props.selectedEvent._id} coordinates={props.selectedEvent.location.coordinates}>
         <StyledPopup>
-          <div>{props.selectedRation.name}</div>
+          <div>{props.selectedEvent.name}</div>
         </StyledPopup>
       </Popup>
     )
   } else {
     return (
-      <Popup className="mainPopup" key={props.selectedRation._id} coordinates={props.selectedRation.location.coordinates}>
+      <Popup className="mainPopup" key={props.selectedEvent._id} coordinates={props.selectedEvent.location.coordinates}>
         <StyledPopup>
         <Carousel indicators={false}>
-            {props.selectedRation.images.map((image) => {
+            {props.selectedEvent.images.map((image) => {
               return (
                 <Carousel.Item>
                   <div className="imageContainerMap">
@@ -231,13 +228,13 @@ const WhichPopup = (props) => {
           </Carousel>
           <div className="popupContent">
             <hr />
-            <h4 className="text-muted popupHeader">{props.selectedRation.name}</h4>
+            <h4 className="text-muted popupHeader">{props.selectedEvent.name}</h4>
             <h6 className="text-muted popupHeader"> Description </h6>
-            <p className="popupText"> {props.selectedRation.description} </p>
+            <p className="popupText"> {props.selectedEvent.description} </p>
             <h6 className="text-muted popupHeader"> Total rations </h6>
-            <p className="popupText"> {props.selectedRation.totalNumberOfItems} </p>
+            <p className="popupText"> {props.selectedEvent.totalNumberOfItems} </p>
             <h6 className="text-muted popupHeader"> Ration description </h6>
-            <p className="popupText"> {props.selectedRation.itemsDescription} </p>
+            <p className="popupText"> {props.selectedEvent.itemsDescription} </p>
           </div>
         </StyledPopup>
       </Popup>
@@ -247,8 +244,8 @@ const WhichPopup = (props) => {
 
 
 const MapStateToProps = (state) => ({
-  selectedRation: state.rationInfo.selectedRation,
-  filteredEvents: filterAndSearch(state.rationInfo.rationEvents, state.rationInfo.filterType, state.rationInfo.filter, state.rationInfo.search)
+  selectedEvent: state.eventInfo.selectedEvent,
+  filteredEvents: filterAndSearch(state.eventInfo.events, state.eventInfo.filterType, state.eventInfo.filter, state.eventInfo.search)
 });
 
 export default connect(MapStateToProps)(MapView);

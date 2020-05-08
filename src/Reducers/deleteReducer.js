@@ -1,30 +1,30 @@
-import * as actions from '../Actions/deleteRationAction'
+import * as actions from '../Actions/deleteEventAction'
 
 export const initialState = {
-  deletingRation: false,
+  deletingEvent: false,
   hasErrors: false,
-  deletedRation: false
+  deletedEvent: false
 }
 
-export default function createDeleteRationReducer(state = initialState, action) {
+export default function createDeleteEventReducer(state = initialState, action) {
   switch(action.type) {
-    case actions.DELETE_RATION:
+    case actions.DELETE_EVENT:
       return {
         ...state,
-        deletedRation: false,
-        deletingRation: true
+        deletedEvent: false,
+        deletingEvent: true
       }
-    case actions.DELETE_RATION_SUCCES:
+    case actions.DELETE_EVENT_SUCCES:
       return {
         ...state,
-        deletingRation: false,
-        deletedRation: true
+        deletingEvent: false,
+        deletedEvent: true
       }
-    case actions.DELETE_RATION_FAILURE:
+    case actions.DELETE_EVENT_FAILURE:
       return {
-        deletingRation: false,
+        deletingEvent: false,
         hasErrors: true,
-        deletedRation: false
+        deletedEvent: false
       }
     case actions.RESET_DELETE:
       return initialState

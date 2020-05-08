@@ -5,7 +5,7 @@ import token from '../../config';
 
 mapboxgl.accessToken = token;
 
-class RationItemInfoMap extends Component {
+class EventItemInfoMap extends Component {
   constructor(props) {
     super(props)
   }
@@ -14,7 +14,7 @@ class RationItemInfoMap extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainerInfo,
       style: 'mapbox://styles/mapbox/outdoors-v9',
-      center: [this.props.ration.location.coordinates[0], this.props.ration.location.coordinates[1]],
+      center: [this.props.event.location.coordinates[0], this.props.event.location.coordinates[1]],
       zoom: 14
     });
 
@@ -27,11 +27,11 @@ class RationItemInfoMap extends Component {
             {
               'type': 'feature',
               'geometry': {
-                'type': this.props.ration.location.type,
-                'coordinates' : [this.props.ration.location.coordinates[0], this.props.ration.location.coordinates[1]]
+                'type': this.props.event.location.type,
+                'coordinates' : [this.props.event.location.coordinates[0], this.props.event.location.coordinates[1]]
               },
               'properties': {
-                'title': this.props.ration.name,
+                'title': this.props.event.name,
                 'icon': 'fast-food'
               }
             }
@@ -69,4 +69,4 @@ class RationItemInfoMap extends Component {
   }
 }
 
-export default RationItemInfoMap
+export default EventItemInfoMap

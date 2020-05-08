@@ -1,33 +1,33 @@
-const filterAndSearch = (rationEvents, filterType, filter, search) => {
+const filterAndSearch = (events, filterType, filter, search) => {
   search = search.toLowerCase();
-  const approved = rationEvents.filter((rationEvent) => {
-    return rationEvent.approved
+  const approved = events.filter((event) => {
+    return event.approved
   })
-  const filteredRationEventsType = approved.filter((rationEvent) => {
+  const filteredEventsType = approved.filter((event) => {
     if (filterType === "all") {
       return true
     } else {
-      if (filterType === rationEvent.typeOfRation) {
+      if (filterType === event.typeOfRation) {
         return true
       } else {
         return false
       }
     }
   })
-  const filteredRationEvents = filteredRationEventsType.filter((rationEvent) => {
+  const filteredEvents = filteredEventsType.filter((event) => {
     if (filter === "all") {
       return true
     } else {
-      if (filter === rationEvent.supplier.type) {
+      if (filter === event.supplier.type) {
         return true
       } else {
         return false;
       }
     }
   });
-  const searchedAndFilteredEvents = filteredRationEvents.filter((rationEvent) => {
+  const searchedAndFilteredEvents = filteredEvents.filter((event) => {
     try {
-      return (rationEvent.name.toLowerCase().includes(search) || rationEvent.supplier.supplierName.toLowerCase().includes(search) || rationEvent.supplier.description.toLowerCase().includes(search) || rationEvent.itemsDescription.toLowerCase().includes(search) || rationEvent.typeOfRation.toLowerCase().includes(search))
+      return (event.name.toLowerCase().includes(search) || event.supplier.supplierName.toLowerCase().includes(search) || event.supplier.description.toLowerCase().includes(search) || event.itemsDescription.toLowerCase().includes(search) || event.typeOfRation.toLowerCase().includes(search))
     } catch {
       return false
     }

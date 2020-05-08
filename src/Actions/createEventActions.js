@@ -2,34 +2,34 @@ import axios from 'axios';
 import { API, rootURL, production } from '../config'
 import { getUserInfo } from './userInfoActions'
 
-export const CREATE_RATION = "CREATE_RATION";
-export const CREATE_RATION_SUCCESS = "CREATE_RATION_SUCCESS";
-export const CREATE_RATION_FAILURE = "CREATE_RATION_FAILURE";
-export const CREATE_RATION_REDIRECT = "CREATE_RATION_REDIRECT"
+export const CREATE_EVENT = "CREATE_EVENT";
+export const CREATE_EVENT_SUCCESS = "CREATE_EVENT_SUCCESS";
+export const CREATE_EVENT_FAILURE = "CREATE_EVENT_FAILURE";
+export const CREATE_EVENT_REDIRECT = "CREATE_EVENT_REDIRECT"
 
-export const creatingRation = () => ({
-  type: CREATE_RATION
+export const creatingEvent = () => ({
+  type: CREATE_EVENT
 });
 
-export const creatingRationSuccess = () => ({
-  type: CREATE_RATION_SUCCESS
+export const creatingEventSuccess = () => ({
+  type: CREATE_EVENT_SUCCESS
 });
 
-export const creatingRationFailure = (error) => ({
-  type: CREATE_RATION_FAILURE,
+export const creatingEventFailure = (error) => ({
+  type: CREATE_EVENT_FAILURE,
   payload: error
 });
 
-export const creatingRationRedirect = () => ({
-  type: CREATE_RATION_REDIRECT
+export const creatingEventRedirect = () => ({
+  type: CREATE_EVENT_REDIRECT
 })
 
 const urlImage = rootURL(production)+API+'/imageUpload'
 
-export function creatingNewRation(data) {
+export function creatingNewEvent(data) {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
-    dispatch(creatingRation());
+    dispatch(creatingEvent());
 
     const promises = []
 
@@ -41,7 +41,7 @@ export function creatingNewRation(data) {
         filesDict[name[0]] = file
       })
     } catch {
-      dispatch(creatingRationFailure("File name must have an extension"))
+      dispatch(creatingEventFailure("File name must have an extension"))
       console.log("File has no extension");
       return
     }
@@ -51,7 +51,7 @@ export function creatingNewRation(data) {
       let fileName = key;
       let fileType = fullFileName[1];
 
-      const imageCategory = "rationImages"
+      const imageCategory = "eventImages"
 
       promises.push(axios.post(urlImage,{
         fileName: fileName,
@@ -86,7 +86,7 @@ export function creatingNewRation(data) {
       .then((responses) => {
         axios({
           method: 'post',
-          url: rootURL(production)+API+'/rationEvent/create',
+          url: rootURL(production)+API+'/event/create',
           headers: {'Content-Type': 'application/json', 'x-access-token': token},
           data: {
             name: data.name,
@@ -102,25 +102,25 @@ export function creatingNewRation(data) {
           credentials: 'include'
         })
         .then((res) => {
-          dispatch(creatingRationSuccess())
+          dispatch(creatingEventSuccess())
           dispatch(getUserInfo())
         })
         .catch((error) => {
           console.log(error.response)
-          dispatch(creatingRationFailure(error))
+          dispatch(creatingEventFailure(error))
           return
         })
       })
       .catch((err) => {
         console.log(JSON.stringify(err))
-        dispatch(creatingRationFailure(err))
+        dispatch(creatingEventFailure(err))
         return
       });
 
     })
     .catch((err) => {
       console.log(err);
-      dispatch(creatingRationFailure(err));
+      dispatch(creatingEventFailure(err));
       return
     });
   }

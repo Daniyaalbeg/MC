@@ -2,21 +2,21 @@
   text-align: center;
 }
 
-.rationNameText {
+.eventNameText {
   vertical-align: middle;
 }
 
-.rationListCard {
+.eventListCard {
   width: 100%;
 }
 
-.rationCardInfo {
+.eventCardInfo {
   text-align: left;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.rationCardButton {
+.eventCardButton {
   flex-shrink: 1;
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
-import { getMainInfo } from '../../Actions/homeViewActions';
+import { getStatInfo, getFeaturedInfo } from '../../Actions/homeViewActions';
 
 import photo0 from '../../assets/Images/oldman.jpg'
 import photo1 from '../../assets/Images/chitralman.jpg'
@@ -23,10 +23,13 @@ const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "OPENING OUR HEARTS",
 const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5"]
 const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5"]
 
-const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
+const HomeView = ({ dispatch, statLoading, statFetched, statHasErrors, featuredLoading, featuredFetched, featuredHasErrors, numberOfEvents, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
-    if (!fetched && !loading) {
-      dispatch(getMainInfo())
+    if (!statFetched && !statLoading) {
+      dispatch(getStatInfo())
+    }
+    if (!featuredFetched && !featuredLoading) {
+      dispatch(getFeaturedInfo())
     }
   })
 
@@ -44,9 +47,9 @@ const HomeView = ({ dispatch, loading, fetched, hasErrors, numberOfRations, numb
         )
       })}
     </Carousel>
-    <ProjectsInfo loading={loading} hasErrors={hasErrors} numberOfRations={numberOfRations} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
+    <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
     <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
-    <FeaturedOrganisation featuredOrgs={featuredOrgs} />
+    <FeaturedOrganisation loading={featuredLoading} hasErrors={featuredHasErrors} featuredOrgs={featuredOrgs} />
     <div className="separator text-muted featuredText fontProxima"> MAP TO ENGAGE WITH </div>
     <MapIconKey />
     <HomeViewMap />
@@ -99,25 +102,38 @@ const MapIconKey = (props) => {
 // }
 
 const FeaturedOrganisation = (props) => {
-  const { featuredOrgs } = props
-  return (
-    <>
-    <div className="featuredOrgs">
-      {featuredOrgs.map((org) => {
-        return (
-          <div className="featuredOrgCard grow" key={org._id}>
-          <Link className="featuredLink" to={'/organisations/'+org._id}>
-            <img src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt="image loading error" className="featuredOrgImage" />
-            <p className="featuredOrgText"> {org.supplierName} </p>
-            <hr className="featuredOrgDivider" />
-            {/* <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} /> */}
-          </Link>
-          </div>
-        )
-      })}
-    </div>
-    </>
-  )
+  const { featuredOrgs, loading, hasErrors } = props
+  if (hasErrors) {
+    return <p> error </p>
+  }
+  if (loading) {
+    return (
+      <div className="spinnerHomeView">
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  } else {
+    return (
+      <>
+      <div className="featuredOrgs">
+        {featuredOrgs.map((org) => {
+          return (
+            <div className="featuredOrgCard grow" key={org._id}>
+            <Link className="featuredLink" to={'/organisations/'+org._id}>
+              <img src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt="image loading error" className="featuredOrgImage" />
+              <p className="featuredOrgText"> {org.supplierName} </p>
+              <hr className="featuredOrgDivider" />
+              {/* <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} /> */}
+            </Link>
+            </div>
+          )
+        })}
+      </div>
+      </>
+    )
+  }
 }
 
 const whichIcon = (icon) => {
@@ -136,7 +152,7 @@ const whichIcon = (icon) => {
 }
 
 const ProjectsInfo = (props) => {
-  const { loading, hasErrors, numberOfRations, numberOfUsers, numberOfIndividuals, numberOfOrganisations } = props
+  const { loading, hasErrors, numberOfEvents, numberOfUsers, numberOfIndividuals, numberOfOrganisations } = props
   if (loading) {
     return (
       <div className="spinnerHomeView">
@@ -161,7 +177,7 @@ const ProjectsInfo = (props) => {
           <p className="text-muted"> organisations </p>
         </div>
         <div className="projectInfoDetails">
-          <h4 className="projectInfoHeading"> {numberOfRations} </h4>
+          <h4 className="projectInfoHeading"> {numberOfEvents} </h4>
           <p className="text-muted"> events </p>
         </div>
       </div>
@@ -170,11 +186,14 @@ const ProjectsInfo = (props) => {
 }
 
 const MapStateToProps = (state) => ({
-  loading: state.info.loading,
-  fetched: state.info.fetched,
-  hasErrors: state.info.hasErrors,
+  statLoading: state.info.statLoading,
+  statFetched: state.info.statFetched,
+  statHasErrors: state.info.statHasErrors,
+  featuredLoading: state.info.featuredLoading,
+  featuredFetched: state.info.featuredFetched,
+  featuredHasErrors: state.info.featuredHasErrors,
   numberOfUsers: state.info.numberOfUsers,
-  numberOfRations: state.info.numberOfRations,
+  numberOfEvents: state.info.numberOfEvents,
   numberOfIndividuals: state.info.numberOfIndividuals,
   numberOfOrganisations: state.info.numberOfOrganisations,
   featuredOrgs: state.info.featuredOrgs

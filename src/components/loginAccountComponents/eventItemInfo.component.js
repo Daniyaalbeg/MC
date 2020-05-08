@@ -2,15 +2,15 @@ import React, { useState, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Modal, Carousel, Row, Button } from 'react-bootstrap';
-import '../../css/rationInfoView.css'
-import RationItemInfoMap from './rationitemInfoMap.component.js';
+import '../../css/eventInfoView.css'
+import EventItemInfoMap from './eventItemInfoMap.component.js';
 
-import { deleteRation, resetDelete } from '../../Actions/deleteRationAction'
+import { deleteEvent, resetDelete } from '../../Actions/deleteEventAction'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/pro-duotone-svg-icons'
 
-const RationItemInfo = ({ dispatch, hasErrors, deletedRation, deletingRation, props }) => {
+const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props }) => {
   const [showDeleteSure, setDeleteSure] = useState(false);
   const handleClose = () => setDeleteSure(false);
   const handleShow = () => setDeleteSure(true);
@@ -20,29 +20,29 @@ const RationItemInfo = ({ dispatch, hasErrors, deletedRation, deletingRation, pr
     alert("An error occured. Cannot delete, please contact support.")
     dispatch(resetDelete())
   }
-  if (deletedRation) {
+  if (deletedEvent) {
     // handleClose()
   }
 
-  const ration = props.ration;
-  // const MapViewLazy = React.lazy(() => import('./rationitemInfoMap.component.js'))
+  const event = props.event;
+  // const MapViewLazy = React.lazy(() => import('./eventitemInfoMap.component.js'))
   return (
     <>
-      <p> {ration.description} </p>
+      <p> {event.description} </p>
       <hr />
       <h6 className="text-muted"> Number of rations distributed </h6>
-      <p> {ration.totalNumberOfItems} </p>
+      <p> {event.totalNumberOfItems} </p>
       <hr />
       <h6 className="text-muted"> Descripiton of items </h6>
-      <p> {ration.itemsDescription} </p>
+      <p> {event.itemsDescription} </p>
       <hr />
       <h6 className="text-muted"> Type of Rations </h6>
-      <p> {ration.typeOfRation === "ppe" ? "Personal Protection Equipment" : ration.typeOfRation} </p>      <hr />
-      {ration.images.length !== 0 &&
+      <p> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>      <hr />
+      {event.images.length !== 0 &&
           <div className="imageCarouselContainer">
           <h6 className="text-muted"> Images </h6>
           <Carousel className="imageCarousel">
-            {ration.images.map((image) => {
+            {event.images.map((image) => {
               return (
                 <Carousel.Item key={image}>
                   <div className="imageContainer">
@@ -57,12 +57,12 @@ const RationItemInfo = ({ dispatch, hasErrors, deletedRation, deletingRation, pr
       {/* <hr />
       <h6 className="text-muted"> Location </h6>
       <Suspense fallback={<div> Loading... </div>}>
-        <MapViewLazy ration={ration} />
+        <MapViewLazy event={event} />
       </Suspense> */}
-      {/* <RationItemInfoMap ration={ration} /> */}
+      {/* <EventItemInfoMap event={event} /> */}
 
       <Row className="updateDelete">
-      <Link to={"/updateRation/" + ration._id}>
+      <Link to={"/updateEvent/" + event._id}>
         <Button variant="primary" onClick={() => {
           props.handleClose()
         }}>
@@ -81,10 +81,10 @@ const RationItemInfo = ({ dispatch, hasErrors, deletedRation, deletingRation, pr
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
       <Modal.Body>
-        <Button variant="danger" className="rationModalDeleteButton" onClick={() => {
-          dispatch(deleteRation(ration._id))
+        <Button variant="danger" className="eventModalDeleteButton" onClick={() => {
+          dispatch(deleteEvent(event._id))
         }}>
-          {deletingRation ? "Deleting" : "Delete"}
+          {deletingEvent ? "Deleting" : "Delete"}
         </Button>
         <Button variant="primary" onClick={() => {
           handleClose()
@@ -99,10 +99,10 @@ const RationItemInfo = ({ dispatch, hasErrors, deletedRation, deletingRation, pr
 }
 
 const MapStateToProps = (state, ownProps) => ({
-  deletingRation: state.deleteInfo.deletingRation,
+  deletingEvent: state.deleteInfo.deletingEvent,
   hasErrors: state.deleteInfo.hasErrors,
-  deletedRation: state.deleteInfo.deletedRation,
+  deletedEvent: state.deleteInfo.deletedEvent,
   props: ownProps
 })
 
-export default connect(MapStateToProps)(RationItemInfo);
+export default connect(MapStateToProps)(EventItemInfo);

@@ -4,7 +4,12 @@ const pointSchema = require('./point.model')
 
 const Schema = mongoose.Schema
 
-const rationEventSchema = new Schema({
+const eventSchema = new Schema({
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
     name: { type: String, required: true },
     description: {type: String, required: true },
     totalNumberOfItems: {type: Number, required: true},
@@ -35,7 +40,6 @@ const rationEventSchema = new Schema({
     timestamps: true,
 });
 
-const RationEvent = mongoose.model('RationEvent', rationEventSchema);
+const Event = mongoose.model('Event', eventSchema);
 
-module.exports.RationEvent = RationEvent;
-module.exports.rationEventSchema = rationEventSchema;
+module.exports.Event = Event;

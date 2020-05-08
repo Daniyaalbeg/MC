@@ -3,8 +3,8 @@ import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import userInfoReducer from './userInfoReducer';
 import signUpReducer from './signUpReducer';
-import rationInfoReducer from './rationInfoReducer';
-import createRationReducer from './createRationReducer';
+import eventInfoReducer from './eventInfoReducer';
+import createEventReducer from './createEventReducer';
 import updateReducer from './updateReducer';
 import orgInfoReducer from './orgInfoReducer';
 import homeViewReducer from './homeViewReducer';
@@ -15,9 +15,9 @@ const rootReducer = combineReducers({
   info: homeViewReducer,
   userInfo: userInfoReducer,
   signUp: signUpReducer,
-  createRation: createRationReducer,
+  createEvent: createEventReducer,
   updateInfo: updateReducer,
-  rationInfo: rationInfoReducer,
+  eventInfo: eventInfoReducer,
   orgInfo: orgInfoReducer,
   deleteInfo: deleteReducer
 });

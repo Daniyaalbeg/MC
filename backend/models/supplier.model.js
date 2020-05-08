@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const rationEventSchema = require('./rationEvent.model').rationEventSchema;
 const bankingDetailsSchema = require('./bankingDetails.model').bankingDetailSchema;
 
 const Schema = mongoose.Schema
@@ -15,8 +14,9 @@ const supplierSchema = new Schema({
       type: String,
       required: false
     },
-    rationEvents: {
-      type: [rationEventSchema],
+    events: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Event',
       required: false
     },
     bankingDetails: {

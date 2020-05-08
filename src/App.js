@@ -11,8 +11,8 @@ import SignUp from './components/signup/signUp.component';
 import ResetPassword from './components/resetPassword.component';
 import ResettingPassword from './components/signup/resettingPassword.component';
 import EmailVerification from './components/signup/emailVerification.component'
-import CreateRation from './components/signup/createRation.component';
-import UpdateRation from './components/update/updateRation.component';
+import CreateEvent from './components/signup/createEvent.component';
+import UpdateEvent from './components/update/updateEvent.component';
 import About from './components/about.component';
 import Error404 from './components/404.component'
 
@@ -41,8 +41,8 @@ function App({ dispatch, checkedCookie, auth}) {
         <Route path="/reset" component={ResetPassword} />
         <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
         <Route path="/verify/:token" component={EmailVerification} />
-        <Route path="/createRation" component={CreateRation} />
-        <Route path="/updateRation/:id" component={UpdateRation} />
+        <Route path="/createEvent" component={CreateEvent} />
+        <Route path="/updateEvent/:id" component={UpdateEvent} />
         <Route component={Error404} />
       </Switch>
     </Router>

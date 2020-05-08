@@ -45,11 +45,11 @@ export default function userInfoReducer(state = initialState, action) {
       }
     case LOGOUT:
       return initialState
-    case actions.DELETE_USER_INFO_RATION:
+    case actions.DELETE_USER_INFO_EVENT:
       let newSupplier = {...state.supplier}
-      for (let i = 0; i<state.supplier.rationEvents.length; i++) {
-        if (state.supplier.rationEvents[i]._id === action.payload) {
-          newSupplier.rationEvents.splice(i, 1)
+      for (let i = 0; i<state.supplier.events.length; i++) {
+        if (state.supplier.events[i]._id === action.payload) {
+          newSupplier.events.splice(i, 1)
           break;
         }
       }

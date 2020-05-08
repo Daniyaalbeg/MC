@@ -1,4 +1,4 @@
-import * as actions from '../Actions/createRationActions';
+import * as actions from '../Actions/createEventActions';
 
 export const initialState = {
   loading: false,
@@ -6,26 +6,26 @@ export const initialState = {
   success: false
 }
 
-export default function createRationReducer(state = initialState, action) {
+export default function createEventReducer(state = initialState, action) {
   switch (action.type) {
-    case actions.CREATE_RATION:
+    case actions.CREATE_EVENT:
       return {
         ...state,
         loading: true
       }
-    case actions.CREATE_RATION_SUCCESS:
+    case actions.CREATE_EVENT_SUCCESS:
       return {
         ...state,
         loading: false,
         success: true
       }
-    case actions.CREATE_RATION_FAILURE:
+    case actions.CREATE_EVENT_FAILURE:
       return {
         loading: false,
         success: false,
         hasErrors: true
       }
-    case actions.CREATE_RATION_REDIRECT:
+    case actions.CREATE_EVENT_REDIRECT:
       return {
         ...state,
         success: false

@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
 import * as Yup from 'yup';
 import { Checkbox } from '../signup/Checkboxs.component';
-import { updateRation, updatingRationRedirect } from '../../Actions/updateActions';
+import { updateEvent, updatingEventRedirect } from '../../Actions/updateActions';
 import UpdateMap from './updateMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import Thumb from '../signup/thumb.component';
@@ -15,10 +15,10 @@ import '../../css/form.css';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
-  .required("*Ration name is required")
-  .min(1, "*Ration name must be longer than 1 charachter")
-  .max(50, "*Ration name must be less than 50 charachters")
-  .matches(/^[a-zA-Z0-9_ ]*$/, "*Ration name must only contain letters or numbers"),
+  .required("*Event name is required")
+  .min(1, "*Event name must be longer than 1 charachter")
+  .max(50, "*Event name must be less than 50 charachters")
+  .matches(/^[a-zA-Z0-9_ ]*$/, "*Event name must only contain letters or numbers"),
   description: Yup.string()
   .required("*Description is required")
   .min(1, "*Description must be longer than 1 charachter")
@@ -71,7 +71,7 @@ const acceptStyle = {
 const rejectStyle = {
   borderColor: '#ff1744'
 };
-const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpdate}) => {
+const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate}) => {
   const [location, setLocation] = useState([])
   const [imageFilesThumb, setImageFilesThumb] = useState([]);
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
@@ -96,23 +96,23 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
   ]);
 
   if (!loaded) {  
-    if (rationToUpdate === null && !loaded) {
+    if (eventToUpdate === null && !loaded) {
       return <Redirect to="/" />
     } else {
-      setImageFilesThumb(rationToUpdate.images)
-      setLocation(rationToUpdate.location.coordinates)
+      setImageFilesThumb(eventToUpdate.images)
+      setLocation(eventToUpdate.location.coordinates)
     }
     setLoaded(true)
   }
 
   if (success) {
-    dispatch(updatingRationRedirect())
+    dispatch(updatingEventRedirect())
   }
 
   return (
     <Card bg="light" text="dark" className="signUpCard">
       <Fragment>
-        {rationToUpdate === null &&
+        {eventToUpdate === null &&
           <Redirect push to="/" />
         }
        {!auth &&
@@ -122,17 +122,17 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
           <Redirect push to="/" /> 
         }
       </Fragment>
-      <Card.Header> Update Ration Drive </Card.Header>
+      <Card.Header> Update Event </Card.Header>
 
       <Formik
         initialValues={{
-          name: rationToUpdate.name,
-          description: rationToUpdate.description,
-          numOfItems: rationToUpdate.totalNumberOfItems,
-          descriptionOfItems: rationToUpdate.itemsDescription,
-          typeOfRation: rationToUpdate.typeOfRation,
-          images: rationToUpdate.images,
-          date: Date.parse(rationToUpdate.date),
+          name: eventToUpdate.name,
+          description: eventToUpdate.description,
+          numOfItems: eventToUpdate.totalNumberOfItems,
+          descriptionOfItems: eventToUpdate.itemsDescription,
+          typeOfRation: eventToUpdate.typeOfRation,
+          images: eventToUpdate.images,
+          date: Date.parse(eventToUpdate.date),
           agreedToTerms: false,
           mapClicked: true
         }}
@@ -142,8 +142,8 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
             type: 'Point',
             coordinates: location
           }
-          const updatedRation = {
-            _id: rationToUpdate._id,
+          const updatedEvent = {
+            _id: eventToUpdate._id,
             name: values.name,
             description: values.description,
             totalNumberOfItems: values.numOfItems,
@@ -153,8 +153,8 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
             location: updatedPoint,
             date: values.date
           }
-          if (setNewImage) { updatedRation.newImage = true }
-          dispatch(updateRation(updatedRation))
+          if (setNewImage) { updatedEvent.newImage = true }
+          dispatch(updateEvent(updatedEvent))
         }}
       >
       {({values,
@@ -170,7 +170,7 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
-          <Form.Label>Name of Ration Drive*</Form.Label>
+          <Form.Label>Name of Event*</Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter name"
@@ -254,7 +254,7 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Images of Ration Drive (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
+          <Form.Label> Images of Event (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
             accept = 'image/jpeg, image/png, image/jpg, image/gif'
             maxSize = {11000000}
@@ -296,7 +296,7 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
       
 
         <Form.Group>
-          <Form.Label> Date of the Ration Drive (Can be in the future or past)* </Form.Label>
+          <Form.Label> Date of the Event (Can be in the future or past)* </Form.Label>
           <br />
           <DatePicker
             selected={values.date}
@@ -309,12 +309,12 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Select Location of the Ration Drive* </Form.Label>
+          <Form.Label> Select Location of the Event Drive* </Form.Label>
           <UpdateMap
             id="mapClicked"
             name="mapClicked"
             className="selectMap"
-            location={rationToUpdate.location}
+            location={eventToUpdate.location}
             callBack={(location) => {
               setLocation(location)
               setFieldValue("mapClicked", true)
@@ -337,7 +337,7 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
         </Form.Group>
 
         <Button variant="primary" type="submit" disabled={loading}>
-          {loading ? 'Updating Ration' : 'Update Ration'}
+          {loading ? 'Updating Event' : 'Update Event'}
         </Button>
 
         <Link to="/" style={{marginLeft: "10px"}}>
@@ -354,11 +354,11 @@ const UpdateRation = ({dispatch, loading, hasErrors, success, auth, rationToUpda
   )
 }
 
-const findChosenRation = (id, rations) => {
-  if (rations == null) { return null }
-  for (let i = 0; i < rations.length; i++) {
-    if (id === rations[i]._id) {
-      return rations[i]
+const findChosenEvent = (id, events) => {
+  if (events == null) { return null }
+  for (let i = 0; i < events.length; i++) {
+    if (id === events[i]._id) {
+      return events[i]
     }
   }
 }
@@ -368,7 +368,7 @@ const MapStateToProps = (state, ownProps) => ({
   loading: state.updateInfo.loading,
   hasErrors: state.updateInfo.hasErrors,
   success: state.updateInfo.success,
-  rationToUpdate: state.userInfo.supplier ? findChosenRation(ownProps.match.params.id, state.userInfo.supplier.rationEvents) : null,
+  eventToUpdate: state.userInfo.supplier ? findChosenEvent(ownProps.match.params.id, state.userInfo.supplier.events) : null,
 });
 
-export default connect(MapStateToProps)(UpdateRation)
+export default connect(MapStateToProps)(UpdateEvent)
