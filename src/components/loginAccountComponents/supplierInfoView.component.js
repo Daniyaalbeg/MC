@@ -83,7 +83,7 @@ const SupplierInfoView = (props) => {
       <hr />
       <h6 className="text-muted"> {props.supplier.type} logo </h6>
       <div className="imageContainer">
-        <img src={props.supplier.supplierImageURL} className="supplerImage" alt=""/>
+        <img src={props.supplier.supplierImageURL} className="supplierImage" alt=""/>
       </div>
       <hr />
       <BankingDetails bankingDetails={props.supplier.bankingDetails} />

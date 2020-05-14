@@ -14,16 +14,18 @@ import EmailVerification from './components/signup/emailVerification.component'
 import CreateEvent from './components/signup/createEvent.component';
 import UpdateEvent from './components/update/updateEvent.component';
 import About from './components/about.component';
-import Error404 from './components/404.component'
+import CnicView from './components/cnic/cnicView.component';
+import Error404 from './components/404.component';
 
 import { checkCookie } from './Actions/authActions';
 
 import './css/app.css'
+import './css/general.css'
 
-function App({ dispatch, checkedCookie, auth}) {
+function App({ dispatch, checkedCookie, auth }) {
   
   useEffect(() => {
-    if (!auth && !checkedCookie) {
+    if (!checkedCookie) {
       dispatch(checkCookie())
     }
   })
@@ -43,6 +45,7 @@ function App({ dispatch, checkedCookie, auth}) {
         <Route path="/verify/:token" component={EmailVerification} />
         <Route path="/createEvent" component={CreateEvent} />
         <Route path="/updateEvent/:id" component={UpdateEvent} />
+        <Route path="/cnic" component={CnicView} />
         <Route component={Error404} />
       </Switch>
     </Router>

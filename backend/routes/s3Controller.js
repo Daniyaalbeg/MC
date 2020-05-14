@@ -9,9 +9,13 @@ aws.config.update({
 
 const S3_BUCKET = process.env.BUCKET_NAME_PROD;
 
+exports.uploadDocument = ((req, res) => {
+
+})
+
 exports.sign_s3 = ((req, res) => {
-  if (req.body.fileSize > 2100000) {
-    res.writeHead(200, {
+  if (req.body.fileSize > 1500000) {
+    res.writeHead(500, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache, no-store, must-revalidate',
       'Pragma': 'no-cache',
@@ -28,12 +32,16 @@ exports.sign_s3 = ((req, res) => {
     const fileName = req.body.fileName
     const uniqueFileName= imageCategory +'/'+ uuid.v4()
     const fileType = req.body.fileType;
+    const metadata = {'Cache-Control': 'max-age=31556926'}
     const s3Params = {
       Bucket: S3_BUCKET,
       Key: uniqueFileName,
       Expires: 500,
       ContentType: fileType,
-      ACL: 'public-read'
+      ACL: 'public-read',
+      Metadata: {
+        "Cache-Control" : "max-age=31556926"
+      }
     };
 
     s3.getSignedUrl('putObject', s3Params, (err, data) => {
@@ -41,6 +49,7 @@ exports.sign_s3 = ((req, res) => {
         console.log(err);
         res.status(500).json({success: false, error: err})
       }
+
 
       const returnData = {
         oldName: fileName,
@@ -50,7 +59,6 @@ exports.sign_s3 = ((req, res) => {
         fileType: fileType
       };
 
-      console.log(returnData.url)
       res.status(200).json({ success: true, data: { returnData }})
     });
   }

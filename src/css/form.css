@@ -12,7 +12,7 @@
 }
 
 .error {
-  color: #FF6565;
+  color: #EF2A30;
   font-size: small;
   text-align: center;
 }
@@ -37,17 +37,17 @@
 }
 
 .redError {
-  color: #dc3545;
+  color: #EF2A30;
   font-size: large;
 }
 
 .input-feedback {
   font-size: small;
-  color: #dc3545 !important;
+  color: #EF2A30 !important;
 }
 
 .successReply {
-  color: #4BB543;
+  color: #4BB250;
   font-size: small;
   text-align: center;
 }

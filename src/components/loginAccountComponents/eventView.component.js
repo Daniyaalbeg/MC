@@ -11,7 +11,7 @@ const EventView = (props) => {
   const RenderEvents = () => {
     if (Array.isArray(events) && props.events.length) {
       const listOfEvents = events.map((event) =>
-        <EventItemCard handleClose={props.handleClose} event={event} key={event._id} open={event._id === selectedEventId}/>
+        <EventItemCard isUser={true} handleClose={props.handleClose} event={event} key={event._id} open={event._id === selectedEventId}/>
       )
       const list = 
         <Accordion onSelect={setSelectedEventId} className="eventListCard">

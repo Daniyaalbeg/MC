@@ -40,6 +40,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
     "uuid": "^7.0.3",
+    "xlsx": "^0.16.0",
     "yup": "^0.28.3"
   },
   "scripts": {

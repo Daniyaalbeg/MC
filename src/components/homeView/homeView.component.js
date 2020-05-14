@@ -1,16 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
 import { getStatInfo, getFeaturedInfo } from '../../Actions/homeViewActions';
+import { getUserInfo } from '../../Actions/userInfoActions';
 
 import photo0 from '../../assets/Images/oldman.jpg'
-import photo1 from '../../assets/Images/chitralman.jpg'
+import photo3 from '../../assets/Images/chitralman.jpg'
 import photo2 from '../../assets/Images/doobi.jpg'
-import photo3 from '../../assets/Images/kalashgirls.jpg'
-import photo4 from '../../assets/Images/kalashkids.jpg'
+import photo9 from '../../assets/Images/kalashgirls.jpg'
+import photo6 from '../../assets/Images/kalashkids.jpg'
 import photo5 from '../../assets/Images/smallkid.jpg'
+import photo7 from '../../assets/Images/attentiveDude.jpg'
+import photo1 from '../../assets/Images/girlCamera.jpg'
+import photo4 from '../../assets/Images/presentation.jpg'
+import photo8 from '../../assets/Images/sindhLady.jpg';
 import mapScreenshot from '../../assets/Images/mapScreenshot.png'
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
@@ -18,12 +23,13 @@ import sack from '../../assets/svg/sack.svg'
 import coin from '../../assets/svg/coin.svg'
 import mask from '../../assets/svg/mask.svg'
 import shirt from '../../assets/svg/shirt.svg'
-const images = [photo0, photo1, photo2, photo3, photo4, photo5]
-const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "OPENING OUR HEARTS", "HONOURING OUR PAST", "LIVING OUR TRUTH", "RESPECTING DIVERSITY"]
-const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5"]
-const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5"]
+//together we can, change our destiny, by changing ourselves doobi, being in service chitral dude, doing good presentation, living our truth mother son, working together group boys, focusing solutions ather, respecting diversity sindhi, honoring past kalash, together we can defocus being humble
+const images = [photo0, photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9]
+const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "BY CHANGING OURSELVES", "BEING IN SERVICE", "DOING GOOD", "LIVING OUR TRUTH", "WORKING TOGETHER", "FOCUSING ON SOLUTIONS", "RESPECTING DIVERSITY", "HONOURING OUR PAST"]
+const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5", "caption6", "caption7", "caption8", "caption9"]
+const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5", "homeImage6", "homeImage7", "homeImage8", "homeImage9"]
 
-const HomeView = ({ dispatch, statLoading, statFetched, statHasErrors, featuredLoading, featuredFetched, featuredHasErrors, numberOfEvents, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
+const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading, statLoading, statFetched, statHasErrors, featuredLoading, featuredFetched, featuredHasErrors, numberOfEvents, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
     if (!statFetched && !statLoading) {
       dispatch(getStatInfo())
@@ -31,11 +37,14 @@ const HomeView = ({ dispatch, statLoading, statFetched, statHasErrors, featuredL
     if (!featuredFetched && !featuredLoading) {
       dispatch(getFeaturedInfo())
     }
+    if (!userInfoFetched && !userInfoHasError && !userInfoLoading) {
+      dispatch(getUserInfo())
+    }
   })
 
   return (
     <>
-    <Carousel controls={false} fade={true} indicators={false} interval={2000}>
+    <Carousel controls={true} fade={true} indicators={false} interval={20000}>
       {images.map((image, index) => {
         return (
           <Carousel.Item className="carouselImage" key={image}>
@@ -191,6 +200,9 @@ const MapStateToProps = (state) => ({
   statHasErrors: state.info.statHasErrors,
   featuredLoading: state.info.featuredLoading,
   featuredFetched: state.info.featuredFetched,
+  userInfoFetched: state.userInfo.fetched,
+  userInfoHasError: state.userInfo.hasErrors,
+  userInfoLoading: state.userInfo.loading,
   featuredHasErrors: state.info.featuredHasErrors,
   numberOfUsers: state.info.numberOfUsers,
   numberOfEvents: state.info.numberOfEvents,

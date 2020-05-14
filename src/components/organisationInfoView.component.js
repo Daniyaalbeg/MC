@@ -39,11 +39,11 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
     return (
       <Card className="orgInfoCard">
         <Card.Body>
-          <Button className="backButtonOrgView" onClick={() => {
+          <button  className="backButtonOrgView standardButton" onClick={() => {
             props.history.goBack()
           }}>
             Back 
-          </Button>
+          </button>
           <Card.Img className="orgInfoImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
           <hr />
           <Card.Title> {org.supplierName} </Card.Title>
@@ -56,9 +56,9 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           <div>
             {org.areaOfWork.map((area) => {
               return (
-                <Badge pill variant="primary" className="pillBadge" key={area}>
+                <p className="pillBadge" key={area}>
                   {area}
-                </Badge>
+                </p>
               )
             })}
           </div>

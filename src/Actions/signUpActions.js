@@ -57,7 +57,8 @@ export function signUp(data) {
       //create axios put request
       const options = {
         headers: {
-          'Content-Type' : fileType
+          'Content-Type' : fileType,
+          'Cache-Control': 'max-age=31556926'
         }
       };
 

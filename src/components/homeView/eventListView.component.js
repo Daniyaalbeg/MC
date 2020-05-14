@@ -69,31 +69,36 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
   if (selectedEvent == null) {
     return (
       <Fragment>
-      <form className="searchBarContainer" onSubmit={(e) => {e.preventDefault()}}>
-        <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
-        <input type='text' className="searchBar" onChange={onSearchChange}/>
-        <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
-        <div className="filterSelect">
-          <select onChange={onFilterChangeType}>
-            <option value="all"> all </option>
-            <option value ="food">Food</option>
-            <option value="ppe">PPE</option>
-            <option value="money">Money</option>
-            <option value="clothes">Clothes</option>
-          </select>
+      <form className="searchBarContainer" onSubmit={(e) => { e.preventDefault() }}>
+        <div className="searchBar">
+          <FontAwesomeIcon icon={faSearch} className="searchIcon" size="1x"/>
+          <input type='text' onChange={onSearchChange} className="textInput"/>
         </div>
-        <FontAwesomeIcon icon={faFilter} className="filterIcon"/>
-        <div className="filterSelect">
-          <select onChange={onFilterChange}>
-            <option value="all"> all </option>
-            <option value ="Armed Forces">Armed Forces</option>
-            <option value="Community">Community</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Civil Society">Civil Society</option>
-            <option value="Government">Government</option>
-            <option value="Individual">Individual</option>
-            <option value="NGO">NGO</option>
-          </select>
+        <hr className="searchBarMiddleGap"/>
+        <div className="filters">
+          <div className="filterSelect">
+            <FontAwesomeIcon icon={faFilter} className="filterIcon" size="1x"/>
+            <select onChange={onFilterChangeType}>
+              <option value="all"> all </option>
+              <option value ="food">Food</option>
+              <option value="ppe">PPE</option>
+              <option value="money">Money</option>
+              <option value="clothes">Clothes</option>
+            </select>
+          </div>
+          <div className="filterSelect">
+            <FontAwesomeIcon icon={faFilter} className="filterIcon" size="1x"/>
+            <select onChange={onFilterChange}>
+              <option value="all"> all </option>
+              <option value ="Armed Forces">Armed Forces</option>
+              <option value="Community">Community</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Civil Society">Civil Society</option>
+              <option value="Government">Government</option>
+              <option value="Individual">Individual</option>
+              <option value="NGO">NGO</option>
+            </select>
+          </div>
         </div>
       </form>
       <hr className="searchBarSpace"/>

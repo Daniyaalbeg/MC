@@ -61,20 +61,24 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
       </Suspense> */}
       {/* <EventItemInfoMap event={event} /> */}
 
-      <Row className="updateDelete">
-      <Link to={"/updateEvent/" + event._id}>
-        <Button variant="primary" onClick={() => {
-          props.handleClose()
-        }}>
-          <FontAwesomeIcon icon={faEdit} />
-        </Button>
-        </Link>
-        <Button variant="danger" onClick={() => {
-          handleShow()
-        }}>
-        <FontAwesomeIcon icon={faTrashAlt} />
-        </Button>
-      </Row>
+      {
+        props.isUser &&
+          <Row className="updateDelete">
+          <Link to={"/updateEvent/" + event._id}>
+            <Button variant="primary" onClick={() => {
+              props.handleClose()
+            }}>
+              <FontAwesomeIcon icon={faEdit} />
+            </Button>
+            </Link>
+            <Button variant="danger" onClick={() => {
+              handleShow()
+            }}>
+            <FontAwesomeIcon icon={faTrashAlt} />
+            </Button>
+          </Row>
+      }
+
 
       <Modal show={showDeleteSure} onHide={handleClose}>
         <Modal.Header closeButton>

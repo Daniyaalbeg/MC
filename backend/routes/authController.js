@@ -48,7 +48,6 @@ router.route('/createUser').post([
 
   bcrypt.hash(password, 12)
   .then((hashedPassword) => {
-    console.log(req.body);
     const bankingDetails = new BankingDetails({
       bankName: req.body.bankingDetails.bankName,
       bankBranch: req.body.bankingDetails.bankBranch,

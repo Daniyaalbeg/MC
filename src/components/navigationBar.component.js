@@ -25,6 +25,7 @@ const NavigationBar = () => {
           <Nav className="ml-auto">
             <Nav.Item><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
+            <Nav.Item><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item>
           </Nav>
           {/* <NavLink to="/login"> Log in </NavLink> */}
@@ -43,6 +44,7 @@ const NavigationBar = () => {
           <Nav className="ml-auto">
             <Nav.Item><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
+            <Nav.Item><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item>
           </Nav>
           {/* <NavLink to="/login"> Log in </NavLink> */}

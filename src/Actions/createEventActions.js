@@ -75,7 +75,8 @@ export function creatingNewEvent(data) {
 
         const options = {
           headers: {
-            'Content-Type': newFileType
+            'Content-Type': newFileType,
+            'Cache-Control': 'max-age=31556926'
           }
         }
         putPromises.push(axios.put(signedRequest, filesDict[oldName], options))

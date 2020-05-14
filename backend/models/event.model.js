@@ -30,11 +30,6 @@ const eventSchema = new Schema({
     approved: {
       type: Boolean,
       required: true
-    },
-    people: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: 'CNIC',
-      required: false
     }
 }, {
     timestamps: true,

@@ -5,29 +5,49 @@ const Schema = mongoose.Schema
 const cnicSchema = new Schema({
     cnicNumber: {
       type: String,
-      required: false
+      required: true
     },
     name: {
       type: String,
-      required: false
+      required: true
     },
     contactNumber: {
       type: String, 
+      required: true,
+    },
+    address: {
+      type: String,
+      required: false,
+    },
+    dob: {
+      type: String,
       required: false,
     },
     gender: {
       type: String,
-      enum: ['m', 'f', 'o'],
-      default: 'f',
       required: false
     },
     familySize: {
-      type: Number,
+      type: String,
       required: false
+    },
+    connectedEvents: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      required: true
+    }],
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
     },
     otherInfo: {
       type: String,
       required: false
+    },
+    approved: {
+      type: Boolean,
+      required: true
     }
 }, {
     timestamps: true,

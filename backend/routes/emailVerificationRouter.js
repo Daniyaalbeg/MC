@@ -41,9 +41,13 @@ router.route('/').post(verifyToken, (req, res, next) => {
     if (err) return res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
     
-    sendVerificationEmail(user)
+    sendVerificationEmail(user, () => {
+      res.status(200).send("successfully verified email")
+    }, () => {
+      res.status(500).send("An error occurred")
+    })
 
-    res.status(200);
+    // res.status(200);
   })
   .catch((error) => {
     console.log("Cant find user " + error)
@@ -51,7 +55,7 @@ router.route('/').post(verifyToken, (req, res, next) => {
   })
 });
 
-const sendVerificationEmail = (user) => {
+const sendVerificationEmail = (user, callback, errorCallback) => {
   const secret = process.env.VERIFY_EMAIL_SECRET;
   const userObject = user._id
   var token = jwt.sign({ id: userObject}, secret)
@@ -82,7 +86,9 @@ const sendVerificationEmail = (user) => {
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
+      errorCallback()
     } else {
+      callback()
       console.log('Email sent: ' + info.response);
     }
   });

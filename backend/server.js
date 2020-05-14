@@ -54,7 +54,8 @@ const authRouter = require('./routes/authController');
 const resetRouter = require('./routes/resetRouter');
 const s3Router = require('./routes/s3Controller');
 const emailVerificationRouter = require('./routes/emailVerificationRouter');
-const infoRouter = require('./routes/infoRouter')
+const infoRouter = require('./routes/infoRouter');
+const cnicRouter = require('./routes/cnicRouter');
 
 app.use('/api/supplier', supplierRouter);
 app.use('/api/event', eventRouter);
@@ -64,6 +65,7 @@ app.use('/api/reset', resetRouter);
 app.use('/api/imageUpload', s3Router.sign_s3);
 app.use('/api/emailVerification', emailVerificationRouter.router);
 app.use('/api/info', infoRouter);
+app.use('/api/cnic', cnicRouter);
 
 app.listen(local.port, () => {
   console.log(`HTTP server is running on port: ${local.port}`);

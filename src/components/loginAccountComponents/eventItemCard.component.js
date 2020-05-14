@@ -14,14 +14,14 @@ const EventItemCard = (props) => {
         <div>
           <Card.Title> {event.name} </Card.Title>
           <Card.Subtitle className="text-muted">
-            {new Date(event.date).toLocaleDateString("en-US", dateOptions)} <Badge variant={event.approved ? "success" : "danger"}> {event.approved ? "Approved" : "Pending Approval"} </Badge>
+            {new Date(event.date).toLocaleDateString("en-US", dateOptions)} {props.isUser ? <Badge variant={event.approved ? "success" : "danger"}> {event.approved ? "Approved" : "Pending Approval"} </Badge> : null}
           </Card.Subtitle>
         </div>
         <FontAwesomeIcon icon={props.open ? faAngleUp : faAngleDown}/>
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={event._id}>
         <Card.Body>
-          <EventItemInfo event={event} handleClose={props.handleClose} />
+          <EventItemInfo isUser={props.isUser} event={event} handleClose={props.handleClose} />
         </Card.Body>
       </Accordion.Collapse>
     </Card>

@@ -164,7 +164,14 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
 
     user.save()
     .then(() => {
-      res.status(200).json("Delete succesful")
+      Event.deleteOne({ _id: req.params.id}, (err) => {
+        if (err) {
+          res.status(200).json("delete successfull")
+          console.log("error deleting event + " + req.params.id)
+          res.status(200).json("Delete succesful")
+        }
+        res.status(200).json("Delete succesful") 
+      })
     })
     .catch((error) => {
       console.log(error)

@@ -1,0 +1,74 @@
+.standardButton {
+  background-color: #1589C9;
+  color: white;
+  border-color: #1589C9;
+  border-radius: 5px;
+  padding: 6px 12px;
+}
+.standardButton:hover {
+  background-color: rgb(18, 117, 170);
+  border-color: #1589C9;
+}
+
+.standardErrorMessage {
+
+}
+
+.largerErrorMessage {
+  color: #EF2A30;
+  font-size: 1rem;
+}
+
+
+.NavPill {
+
+}
+
+.NavLink {
+  display: block;
+  padding: .5rem 1rem;
+}
+
+.nav-pills{
+  color: #1589C9 !important;
+}
+
+
+
+
+
+
+.NavPillLink:active {
+  background-color: #1589C9 !important;
+}
+
+.NavPillLink {
+  display: block;
+  padding: .5rem 1rem;
+  color: #1589C9 !important;
+  border-radius: 5px;
+}
+
+.NavPillLink:focus {
+  background-color: #1589C9;
+  color: white;
+}
+.NavPillLink:hover {
+  text-decoration: none;
+}
+.NavPillLink:active {
+  background-color: #1589C9;
+  color: white;
+}
+/* .NavPillLink:hover:active {
+  text-decoration: none;
+  color: white;
+  background-color: #1589C9 !important;
+} */
+
+/* .NavPill:active {
+  background-color: red;
+}
+.NavPill:focus {
+  background-color: red;
+} */

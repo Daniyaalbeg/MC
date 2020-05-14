@@ -1,0 +1,160 @@
+.cnicHeading {
+  text-align: center;
+  margin-top: 45.75px;
+}
+
+.cnicMustBeLoggedIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.cnicLoggedInHeading {
+  /* height: fit-content; */
+}
+
+.cnicCard {
+  width: 80%;
+  text-align: center;
+  font-family: proximaNova;
+}
+
+.tabRow {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cnicSpinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchCnicContainer {
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.searchCnicBox {
+  border: 2px solid #1589C9;
+  border-radius: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 8px;
+  height: 38px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+/* .searchCnicBox:focus {
+  border-color: #017BFF;
+} */
+.cnicSearchIcon {
+  font-size: 1em;
+  cursor: pointer;
+}
+.cnicSearchInput {
+  margin-left: 8px;
+  margin-right: 8px;
+  border: none;
+}
+.cnicSearchButton {
+  height: 38px;
+}
+
+.cnicEventsList {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.cnicEvent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  /* grid-template-columns: minmax(300px, 0.8fr) minmax(200px, 100px); */
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 40px;
+  margin-bottom: 10px;
+}
+.cnicItemText {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.cnicItemButton {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.cnicEventSeperator {
+  width: 90%;
+}
+
+.headingCNIC {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.cnicAddContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.cnicAddOptionsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: center;
+  /* justify-content: center; */
+  grid-row-gap: 2em;
+}
+
+.sampleDownload {
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 2px solid #1589C9;
+  color: #1589C9;
+  border-radius: 5px;
+}
+.sampleDownload a {
+  color: #1589C9;
+}
+.sampleDownload:hover {
+  background-color: rgba(21, 138, 201, 0.185);
+}
+.sampleDownload a:hover {
+  color: #1589C9;
+  text-decoration: none;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.cnicFileInput{
+  color: #1589C9;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 2px solid #1589C9;
+  border-radius: 5px;
+  margin-left: 8px;
+}
+.cnicFileInput:hover {
+  background-color: rgba(21, 138, 201, 0.185);
+}
+
+.cnicUploadedCnicContainer {
+
+}
+
+.cnicNote {
+  margin-top: 20px;
+}
+.cnicSuccess {
+  color: #3EAC4A;
+  font-size: small;
+}

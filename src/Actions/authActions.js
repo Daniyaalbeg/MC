@@ -98,7 +98,8 @@ export function checkCookie() {
     .then((res) => {
       dispatch(checkingCookieSuccess(res.data))
     })
-    .catch(() => {
+    .catch((error) => {
+      // console.log(error)
       dispatch(checkingCookieFailure())
     })
   }

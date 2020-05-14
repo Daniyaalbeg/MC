@@ -8,22 +8,34 @@
   overflow: hidden;
 }
 .homeImage0 {
-  object-position: 50% 10%;
+  object-position: 50% 32%;
 }
 .homeImage1 {
-  object-position: 50% 40%;
+  object-position: 60% 30%;
 }
 .homeImage2 {
-  object-position: 50% 0;
+  object-position: 50% 30%;
 }
 .homeImage3 {
-  object-position: 50% 0;
+  object-position: 50% 40%;
 }
 .homeImage4 {
-  object-position: 50% 0;
+  object-position: 30% 30%;
 }
 .homeImage5 {
   object-position: 50% 50%;
+}
+.homeImage6 {
+  object-position: 50% 0%;
+}
+.homeImage7 {
+  object-position: 50% 30%;
+}
+.homeImage8 {
+  object-position: 50% 50%;
+}
+.homeImage9 {
+  object-position: 50% 0%;
 }
 
 .spinnerHomeView {
@@ -44,7 +56,7 @@
 
 @media only screen and (min-width: 1200px) {
   .slideCaption {
-    font-size: 3em;
+    font-size: 4em;
   }
   .iconKeyImage {
     height: 6rem;
@@ -69,24 +81,40 @@
   top: 65%;
 }
 .caption1 {
-  left: 75%;
+  left: 35%;
   top: 50%;
 }
 .caption2 {
-  left: 25%;
+  left: 30%;
   top: 50%;
 }
 .caption3 {
-  left: 50%;
-  top: 75%;
+  left: 75%;
+  top: 50%;
 }
 .caption4 {
-  left: 50%;
-  top: 75%;
+  left: 75%;
+  top: 50%;
 }
 .caption5 {
   left: 75%;
   top: 50%;
+}
+.caption6 {
+  left: 50%;
+  top: 75%;
+}
+.caption7 {
+  left: 30%;
+  top: 60%;
+}
+.caption8 {
+  left: 30%;
+  top: 70%;
+}
+.caption9 {
+  left: 50%;
+  top: 75%;
 }
 .carouselImage {
   height: 60vh;
