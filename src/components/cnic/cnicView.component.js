@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
-import { Card, Button, Tab, Nav, Row, Accordion, Spinner } from 'react-bootstrap'
+import { Card, Button, Nav, Row, Accordion, Spinner } from 'react-bootstrap'
+import { Tabs, useTabState, Panel } from '@bumaga/tabs'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../Actions/userInfoActions'
@@ -18,6 +19,18 @@ const MustBeLoggedIn = () => {
     <div className="cnicMustBeLoggedIn">
       <h4 className="cnicLoggedInHeading"> Must be logged in or verified to view </h4>
     </div>
+  )
+}
+
+const cn = (...args) => args.filter(Boolean).join(' ')
+
+const Tab = ({ children }) => {
+  const { isActive, onClick } = useTabState()
+
+  return (
+    <button className={cn('tab', isActive && 'active') + ' icon'} onClick={onClick}>
+      {children}
+    </button>
   )
 }
 
@@ -48,59 +61,50 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
     }
   }
 
-  
   return (
     <>
     <h1 className="cnicHeading"> Computerized National Identity Card </h1>
     <Card className="cnicCard">
-    <Tab.Container defaultActiveKey="search">
+    <Tabs>
       <Card.Header>
-      <Nav variant="pills" className="flex-column">
         <Row className="tabRow">
-          <Nav.Item>
-            <Nav.Link eventKey="search">
-              <FontAwesomeIcon icon={faSearchDuotone} style={{ marginRight: '8px' }} />
-              Search CNIC
-              </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="add">
-              <FontAwesomeIcon icon={faFilePlus} style={{ marginRight: '8px' }} />
-              Add CNIC
-            </Nav.Link>
-          </Nav.Item>
+          <Tab>
+            <FontAwesomeIcon icon={faSearchDuotone} style={{ marginRight: '8px' }} className="" />
+            Search CNIC
+          </Tab>
+          <Tab>
+            <FontAwesomeIcon icon={faFilePlus} style={{ marginRight: '8px' }} className="" />
+            Add CNIC
+          </Tab>
         </Row>
-        </Nav>
       </Card.Header>
       <Card.Body>
 
-        <Tab.Content>
-          <Tab.Pane eventKey="search">
-            <form onSubmit={
-              (e) => { e.preventDefault()
-              searchCnicChange()
-            }}>
-              <div className="searchCnicContainer">
-                <div className="searchCnicBox">
-                  <FontAwesomeIcon icon={faSearch} className="cnicSearchIcon" onClick={searchCnicChange} spin={getLoading}/>
-                  <input ref={searchInputRef} type="text" placeholder="CNIC number" className="cnicSearchInput" />
-                </div>
-                <button className="standardButton cnicSearchButton" onClick={searchCnicChange}> Search </button>
-              </div>
-            </form>
-            <CnicResult getHasError={getHasError} getHasErrorMessage={getHasErrorMessage} cnicInfo={cnicInfo} />
-          </Tab.Pane>
-          <Tab.Pane eventKey="add">
-            <CnicAddNew />
-          </Tab.Pane>
-        </Tab.Content>
+      <Panel>
+        <form onSubmit={
+          (e) => { e.preventDefault()
+          searchCnicChange()
+        }}>
+          <div className="searchCnicContainer">
+            <div className="searchCnicBox">
+              <FontAwesomeIcon icon={faSearch} className="cnicSearchIcon" onClick={searchCnicChange} spin={getLoading}/>
+              <input ref={searchInputRef} type="text" placeholder="CNIC number" className="cnicSearchInput" />
+            </div>
+            <button className="standardButton cnicSearchButton" onClick={searchCnicChange}> Search </button>
+          </div>
+        </form>
+        <CnicResult getHasError={getHasError} getHasErrorMessage={getHasErrorMessage} cnicInfo={cnicInfo} />
+      </Panel>
+      <Panel>
+        <CnicAddNew />
+      </Panel>
 
       </Card.Body>
       <Card.Footer className="text-muted">
         <h5> Note </h5>
         <p> Once CNIC information has been added it cannot be edit or retrieved, for any changes please email support. </p>
       </Card.Footer>
-      </Tab.Container>
+      </Tabs>
     </Card>
     </>
   )

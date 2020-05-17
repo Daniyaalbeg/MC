@@ -10,6 +10,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 
+    user.__v = parseInt(user.__v)
     const createdBy = user._id;
     const name = req.body.name;
     const description = req.body.description;

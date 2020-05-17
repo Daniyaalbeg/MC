@@ -22,8 +22,8 @@ const EventListItem = (props) => {
         <EventListImage type={props.event.typeOfRation} />
       </div>
       <div className="list-right">
-        <h5> {props.event.name} </h5>
-        <h6 className="text-muted"> {new Date(props.event.date).toLocaleDateString("en-US", dateOptions)} </h6>
+        <p className="eventListTitle"> {props.event.name} </p>
+        <p className="text-muted eventListDate"> {new Date(props.event.date).toLocaleDateString("en-US", dateOptions)} </p>
       </div>
       </div>
   )

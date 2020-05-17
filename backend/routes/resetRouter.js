@@ -43,7 +43,10 @@ router.route('/password').post((req, res) => {
         from: process.env.EMAIL_USERNAME,
         to: emailAddress,
         subject: 'Reset Password',
-        text: 'Please click this link to reset your password https://ministryofchange.org/resetPassword/'+user._id+'/'+token
+        html: `
+    <h3> Here is your password reset link </h3>
+    <p> Hi `+user.username+`. Please click this <a href="https://ministryofchange.org/resetPassword/`+ user._id +`/`+ token +`"> link </a> to reset your password</p>
+    `
       };
 
       transporter.sendMail(mailOptions, function(error, info){
@@ -65,6 +68,9 @@ router.route('/resetPassword').post((req, res) => {
   .then((user) => {
     const secret = process.env.PASSWORD_RESET_SECRET + user.createdAt + user.password
     jwt.verify(req.body.token, secret, (err, decoded) => {
+      if(err) {
+        console.log(err)
+      }
       if (!err) {
         bcrypt.hash(req.body.password, 12)
         .then((hashedPassword) => {

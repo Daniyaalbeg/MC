@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { Row, Card, Form, Button } from 'react-bootstrap';
+import { Row, Card, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
@@ -164,7 +164,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
-          <Form.Label>Name of Event*</Form.Label>
+          <Form.Label>Name of Event <span className="red">*</span></Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter name"
@@ -180,7 +180,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescription">
-          <Form.Label>Description of Event*</Form.Label>
+          <Form.Label>Description of Event <span className="red">*</span></Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -197,7 +197,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicNumberOfItems">
-          <Form.Label>Total Quantity of Rations*</Form.Label>
+          <Form.Label>Total Quantity of Rations <span className="red">*</span></Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter number of items"
@@ -213,7 +213,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescriptionOfItems">
-          <Form.Label>Contents of Event e.g. (Rations)*</Form.Label>
+          <Form.Label>Contents of Event e.g. (Rations) <span className="red">*</span></Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -230,7 +230,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formTypeOfEvent">
-          <Form.Label>Type of Rations distributed*</Form.Label>
+          <Form.Label>Type of Rations distributed <span className="red">*</span></Form.Label>
           <Form.Control
             as="select"
             name="typeOfRation"
@@ -289,7 +289,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
       
 
         <Form.Group>
-          <Form.Label> Date of the Event (Can be in the future or past)* </Form.Label>
+          <Form.Label> Date of the Event (Can be in the future or past) <span className="red">*</span> </Form.Label>
           <br />
           <DatePicker
             selected={values.date}
@@ -302,7 +302,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Select Location of the Event* </Form.Label>
+          <Form.Label> Select Location of the Event <span className="red">*</span> </Form.Label>
           <SelectMap
             id="mapClicked"
             name="mapClicked"
@@ -328,9 +328,9 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit" disabled={loading}>
+        <button className="standardButton" type="submit" disabled={loading}>
           {loading ? 'Creating Event' : 'Create Event'}
-        </Button>
+        </button>
 
         <Form.Text className="text-muted">
           Note: Once we have verified your information only then will you be able to add charity drives and become visible on the page.

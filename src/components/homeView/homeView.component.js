@@ -44,7 +44,7 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
 
   return (
     <>
-    <Carousel controls={true} fade={true} indicators={false} interval={20000}>
+    <Carousel controls={false} fade={true} indicators={false} interval={2000}>
       {images.map((image, index) => {
         return (
           <Carousel.Item className="carouselImage" key={image}>

@@ -4,7 +4,7 @@ import '../../css/cnic.css'
 import { Row, Button, Table, Spinner } from 'react-bootstrap';
 import { selectCnicEvent } from '../../Actions/cnicActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileUpload, faDownload, faUpload } from '@fortawesome/pro-duotone-svg-icons'
+import { faFileUpload, faDownload, faUpload, faPlusCircle} from '@fortawesome/pro-duotone-svg-icons'
 import xlsx from 'xlsx';
 
 import { uploadCnic, uploadCnicReset } from '../../Actions/cnicActions';
@@ -35,11 +35,13 @@ const CnicAddNew = ({ dispatch, events, selectedCnicEvent, currentUserID, upload
               <div key={event._id}>
                 <div className="cnicEvent">
                   <p className="cnicItemText"> {event.name} </p>
-                  <button className="cnicItemButton standardButton" variant="secondary" onClick={() => {
+                  <button className="cnicItemButton" variant="secondary" onClick={() => {
                     dispatch(selectCnicEvent(event))
                     dispatch(uploadCnicReset())
                   }
-                  }> Add CNIC </button>
+                  }>
+                    <FontAwesomeIcon icon={faPlusCircle} size="2x" swapOpacity style={{"--fa-secondary-opacity": 0 }} className="faSelectEventButton" />
+                  </button>
                 </div>
                 <hr className="cnicEventSeperator" />
               </div>

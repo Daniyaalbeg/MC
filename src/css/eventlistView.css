@@ -99,9 +99,14 @@
   vertical-align: middle;
   margin-right: 8px;
 }
-
-
 .filterSelect select {
   border: none;
 }
 
+.eventListTitle {
+  margin-bottom: 0;
+}
+.eventListDate {
+  margin-bottom: 0;
+  font-size: 0.9em;
+}

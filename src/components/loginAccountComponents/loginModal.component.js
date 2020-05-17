@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import { Modal, Button, Nav} from 'react-bootstrap';
+import { Modal, Nav} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import '../../css/loginModal.css'
@@ -27,7 +27,7 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
           <Modal.Title>
             {auth ? "My Account" : "Log in"}
             {auth &&
-              <Link className="linkButtonText" to="/createEvent"><Button onClick={handleClose} size="sm" className="createEventButton"> Create Event </Button></Link>
+              <Link className="linkButtonText" to="/createEvent"><button onClick={handleClose} size="sm" className="createEventButton standardButton smallVersion"> Create Event </button></Link>
             }
           </Modal.Title>
         </Modal.Header>
@@ -36,7 +36,7 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
         </Modal.Body>
         {auth && 
           <Modal.Footer className="logoutButton">
-            <Button variant="danger" className="logoutButton" onClick={() => dispatch(logout())}> Log out </Button>
+            <button className="logoutButton standardButton redVersion" onClick={() => dispatch(logout())}> Log out </button>
           </Modal.Footer>
         }
       </Modal>

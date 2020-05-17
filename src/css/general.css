@@ -3,11 +3,46 @@
   color: white;
   border-color: #1589C9;
   border-radius: 5px;
-  padding: 6px 12px;
+  padding: 0.3em 0.6em;
 }
 .standardButton:hover {
   background-color: rgb(18, 117, 170);
   border-color: #1589C9;
+}
+
+.smallVersion {
+  font-size: small;
+}
+
+.red {
+  color: #EF2A30
+}
+
+.muteVersion {
+  background-color: #4C5962;
+}
+.muteVersion:hover {
+  background-color: rgb(63, 74, 82);
+}
+
+.link {
+  color: #1589C9;
+}
+.link:hover {
+  color:  rgb(18, 117, 170);
+}
+
+.editIconVersion {
+  padding-right: 0.5em;
+}
+
+.redVersion {
+  background-color: #EF2A30;
+  border-color: #EF2A30;
+}
+.redVersion:hover {
+  background-color: rgb(206, 36, 41);
+  border-color: #EF2A30;
 }
 
 .standardErrorMessage {
@@ -16,59 +51,114 @@
 
 .largerErrorMessage {
   color: #EF2A30;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
-
-.NavPill {
-
+.pillBadge {
+  display: inline-block;
+  font-size: small;
+  font-weight: bold;
+  margin-right: 5px;
+  margin-left: 5px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: #1589C9;
+  width: fit-content;
+  color: white;
+  padding: .25em .4em;
+  border-radius: 10px;
 }
 
-.NavLink {
+.pillGreenVersion {
+  font-size: 0.7em;
+  background-color: green;
+  margin-bottom: 0px;
+}
+
+.pillRedVersion {
+  font-size: 0.7em;
+  background-color: red;
+  margin-bottom: 0px;
+}
+
+.tab {
   display: block;
   padding: .5rem 1rem;
-}
-
-.nav-pills{
-  color: #1589C9 !important;
-}
-
-
-
-
-
-
-.NavPillLink:active {
-  background-color: #1589C9 !important;
-}
-
-.NavPillLink {
-  display: block;
-  padding: .5rem 1rem;
-  color: #1589C9 !important;
-  border-radius: 5px;
-}
-
-.NavPillLink:focus {
+  color: #1589C9 ;
+  border-radius: 5px;}
+.tab.active {
   background-color: #1589C9;
   color: white;
 }
-.NavPillLink:hover {
-  text-decoration: none;
+.tab:hover:not(.active) {
+  color: rgb(16, 104, 151);
 }
-.NavPillLink:active {
-  background-color: #1589C9;
-  color: white;
-}
-/* .NavPillLink:hover:active {
-  text-decoration: none;
-  color: white;
-  background-color: #1589C9 !important;
-} */
 
-/* .NavPill:active {
-  background-color: red;
+.faSelectEventButton {
+  color: #1589C9 ;
+  -ms-transition: 1s ease-in-out;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
-.NavPill:focus {
-  background-color: red;
-} */
+.faSelectEventButton:hover {
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+.websiteIcon {
+  text-decoration: none;
+  color: #1589C9;
+}
+.websiteIcon:hover {
+  text-decoration: none;
+  color:  rgb(16, 104, 151);
+}
+
+
+.icon:focus .clickIcon  {
+  animation-name: bounce;
+  display: inline-block;
+  position: relative;
+  -moz-animation: bounce 0.4s linear;
+  -o-animation: bounce 0.4s linear;
+  -webkit-animation: bounce 0.4s linear;
+  animation: bounce 0.4s linear;
+}
+
+@-webkit-keyframes bounce {
+  0% { top: 0; }
+  50% { top: -0.2em; }
+  70% { top: -0.3em; }
+  100% { top: 0; }
+}
+@-moz-keyframes bounce {
+  0% { top: 0; }
+  50% { top: -0.2em; }
+  70% { top: -0.3em; }
+  100% { top: 0; }
+}
+@-o-keyframes bounce {
+  0% { top: 0; }
+  50% { top: -0.2em; }
+  70% { top: -0.3em; }
+  100% { top: 0; }
+}
+@-ms-keyframes bounce {
+  0% { top: 0; }
+  50% { top: -0.2em; }
+  70% { top: -0.3em; }
+  100% { top: 0; }
+}
+@keyframes bounce {
+  0% { top: 0; }
+  50% { top: -0.2em; }
+  70% { top: -0.3em; }
+  100% { top: 0; }
+}
+
+
+
+

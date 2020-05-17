@@ -24,10 +24,10 @@
   height: auto;
   width: 100%;
   background-color: white;
+  font-family: proximaNova;
 }
 
 .header {
-  font-family: proximaNova;
   font-weight: bold;
   color: #4B5962;
 }
@@ -54,6 +54,24 @@
 .aboutDivShared {
   width: 100%;
 }
+
+.seperator {
+  width: 80%;
+}
+
+.logoRow {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.logoImage {
+  width: 200px;
+  height: 100px;
+  object-fit: scale-down;
+  margin-bottom: 20px;
+}
+
 /* .aboutDiv1 {
   background-color: #EF2A30;
 }
@@ -82,6 +100,9 @@
 #F47E2E
 #EF2A30 */
 
+.aboutOurPartners {
+  color: #4B5962;
+}
 .iconAbout {
   width: 70%;
 }
@@ -89,4 +110,8 @@
 .mcLogoAbout {
   margin-top: 5em;
   margin-bottom: 30px;
+}
+
+.aboutBottomSpace {
+  margin: 50px;
 }

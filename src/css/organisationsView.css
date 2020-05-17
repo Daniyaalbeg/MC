@@ -11,9 +11,6 @@
     font-family: proximaNova;
 }
 
-.smallHeader {
-
-}
 
 @media only screen and (min-width: 600px) {
     .orgInfoCardContainer {
@@ -61,23 +58,6 @@
 }
 .orgViewLink:hover {
     all: unset
-}
-
-.pillBadge {
-    display: inline-block;
-    font-size: small;
-    font-weight: bold;
-    margin-right: 5px;
-    margin-left: 5px;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    background-color: #1589C9;
-    width: fit-content;
-    color: white;
-    padding: .25em .4em;
-    border-radius: 10px;
 }
 
 .backButtonOrgView {

@@ -3,8 +3,6 @@ import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-// import styled from 'styled-components';
 import '../../css/form.css';
 import { connect } from 'react-redux';
 
@@ -74,19 +72,19 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
             <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
             {hasErrors ? <Form.Text className="text-muted, red"> Wrong email or password, try again </Form.Text> : ""}
             <Form.Text className="text-muted">
-              <Link to='/reset' onClick={handleClose}>Forgot password?</Link>
+              <Link to='/reset' className="link" onClick={handleClose}>Forgot password?</Link>
             </Form.Text>
           </Form.Group>
 
           <Form.Group>
-            <Button variant="primary" type="submit" disabled={loading}>
+            <button className="standardButton" type="submit" disabled={loading}>
               {loading ? 'Logging in' : 'Log in'}
-            </Button>
-            <Button variant="secondary" onClick={handleClose} style={{marginLeft: "15px"}}>
+            </button>
+            <button className="standardButton muteVersion" onClick={handleClose} style={{marginLeft: "15px"}}>
               Close
-            </Button>
+            </button>
           </Form.Group>
-          <Form.Text className="text-muted"> Don't have an account? <Link to='/signup' onClick={() =>{
+          <Form.Text className="text-muted"> Don't have an account? <Link to='/signup' className="link" onClick={() =>{
               handleClose()
               dispatch(signupReset())
             }}> Sign up </Link></Form.Text>

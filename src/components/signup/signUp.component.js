@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
-import { Card, Col, Button, Form, Toast, Row } from 'react-bootstrap';
+import { Card, Col, Form, Row } from 'react-bootstrap';
 import { signUp } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from './Checkboxs.component';
 import Thumb from './thumb.component';
@@ -210,11 +210,11 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         <Form noValidate onSubmit={handleSubmit}>
         <Card.Body>
         <Form.Text className="text-muted">
-          * required fields
+        <span className="red">*</span> required fields
         </Form.Text>
         <Card.Title>Personal Info</Card.Title>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address *</Form.Label>
+          <Form.Label>Email address <span className="red">*</span></Form.Label>
           <Form.Control
             type="email" 
             placeholder="Enter email"
@@ -233,7 +233,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formUsername">
-          <Form.Label>Username *</Form.Label>
+          <Form.Label>Username <span className="red">*</span></Form.Label>
           <Form.Control
             name="username"
             type="text"
@@ -249,7 +249,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formPassword">
-          <Form.Label>Password *</Form.Label>
+          <Form.Label>Password <span className="red">*</span></Form.Label>
           <Form.Control
             name="password"
             type="password"
@@ -288,7 +288,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formsupplierName">
-          <Form.Label>Organisation name *</Form.Label>
+          <Form.Label>Organisation name <span className="red">*</span></Form.Label>
           <Form.Control
             name="supplierName"
             type="text"
@@ -304,7 +304,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formDescription">
-          <Form.Label>Description *</Form.Label>
+          <Form.Label>Description <span className="red">*</span></Form.Label>
           <Form.Control
             name="description"
             as="textarea"
@@ -582,7 +582,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formAddress">
-          <Form.Label>Address *</Form.Label>
+          <Form.Label>Address <span className="red">*</span></Form.Label>
           <Form.Control
             name="addressInfo"
             as="textarea" 
@@ -599,7 +599,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formContactName">
-          <Form.Label> Name of Point of Contact / Representative *</Form.Label>
+          <Form.Label> Name of Point of Contact / Representative <span className="red">*</span></Form.Label>
           <Form.Control
             name="contactName"
             type="text"
@@ -615,7 +615,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <Form.Group controlId="formContactNumber">
-          <Form.Label>Point of Contact Mobile Number *</Form.Label>
+          <Form.Label>Point of Contact Mobile Number <span className="red">*</span></Form.Label>
           <Form.Control
             name="contactNumber"
             type="text"
@@ -720,13 +720,13 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           />
         </Form.Group>
 
-        <Button variant="primary" className="signUpButton" type="submit" disabled={loading}>
+        <button className="standardButton signUpButton" type="submit" disabled={loading}>
         {loading ? 'Signing up' : 'Sign up'}
-        </Button>
+        </button>
 
-        <Button variant="danger" onClick={resetForm} disabled={loading}>
+        <button className="standardButton redVersion" onClick={resetForm} disabled={loading}>
           Reset
-        </Button>
+        </button>
 
         {success &&
           <p className="successReply"> Sign up successfull. A verification email has been sent to {values.email} </p>

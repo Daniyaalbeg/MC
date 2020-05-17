@@ -3,6 +3,10 @@ import '../css/about.css'
 import McLogo from '../assets/McLogo.png'
 import Icon from './icons.component.js/location.component'
 
+import akho from '../assets/logo/akho.svg'
+import badlde from '../assets/logo/badlde.png'
+import serendip from '../assets/logo/serendip.jpg'
+
 const About = () => {
   return (
     <div className="aboutContainer">
@@ -10,8 +14,11 @@ const About = () => {
         <Icon />
       </div> */}
       <img className="mcLogoAbout" src={McLogo} alt="Image not found" />
+
       <hr className="logoSeperator"/>
+
       <h1 className="header"> <span className="aboutText">About</span> <span className="usText">Us</span> </h1>
+
       <div className="aboutDiv1 aboutDivShared">
         <p className="aboutBody">
           Ministry of Change is launching the first of its sites to serve the citizens of this world to make good work visible to everyone.
@@ -42,6 +49,20 @@ const About = () => {
           This site maps locations, shows you who is the giver, what were the items and who received them. Apart from rations MC records cash, clothes and personal protective equipment PPEs.
         </p>
       </div>
+
+      <hr className="seperator" />
+
+      <div className="aboutLogo">
+        <h4 className="aboutOurPartners" > Our Partners </h4>
+        <div className="logoRow">
+          <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a>
+          <a href="https://badlde.org" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={badlde} alt="error" /></a>
+          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
+        </div>
+      </div>
+
+      <div className="aboutBottomSpace" />
+
     </div>
   )
 }

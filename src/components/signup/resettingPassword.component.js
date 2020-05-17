@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Card } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -70,7 +70,7 @@ const ResettingPassword = (props) => {
           setSuccess(true)
         })
         .catch((error) => {
-          error = error
+          console.log(error)
           setHasErrors(true)
         });
       }}
@@ -114,9 +114,9 @@ const ResettingPassword = (props) => {
         </Form.Group>
 
         <Form.Group>
-          <Button variant="primary" type="submit" disabled={sending}>
+          <button className="standardButton" type="submit" disabled={sending}>
             {sending ? 'Submiting' : 'Submit'}
-          </Button>
+          </button>
         </Form.Group>
       </Form>
     )}

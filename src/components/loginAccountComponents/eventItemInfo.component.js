@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Modal, Carousel, Row, Button } from 'react-bootstrap';
+import { Modal, Carousel, Row } from 'react-bootstrap';
 import '../../css/eventInfoView.css'
 import EventItemInfoMap from './eventItemInfoMap.component.js';
 
@@ -65,17 +65,17 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
         props.isUser &&
           <Row className="updateDelete">
           <Link to={"/updateEvent/" + event._id}>
-            <Button variant="primary" onClick={() => {
+            <button className="standardButton editIconVersion" onClick={() => {
               props.handleClose()
             }}>
               <FontAwesomeIcon icon={faEdit} />
-            </Button>
+            </button>
             </Link>
-            <Button variant="danger" onClick={() => {
+            <button className="standardButton redVersion" onClick={() => {
               handleShow()
             }}>
             <FontAwesomeIcon icon={faTrashAlt} />
-            </Button>
+            </button>
           </Row>
       }
 
@@ -85,16 +85,16 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
       <Modal.Body>
-        <Button variant="danger" className="eventModalDeleteButton" onClick={() => {
+        <button className="standardButton eventModalDeleteButton redVersion" onClick={() => {
           dispatch(deleteEvent(event._id))
         }}>
           {deletingEvent ? "Deleting" : "Delete"}
-        </Button>
-        <Button variant="primary" onClick={() => {
+        </button>
+        <button className="standardButton" onClick={() => {
           handleClose()
         }}>
           Close
-        </Button>
+        </button>
       </Modal.Body>
       </Modal>
 

@@ -14,7 +14,7 @@ const EventItemCard = (props) => {
         <div>
           <Card.Title> {event.name} </Card.Title>
           <Card.Subtitle className="text-muted">
-            {new Date(event.date).toLocaleDateString("en-US", dateOptions)} {props.isUser ? <Badge variant={event.approved ? "success" : "danger"}> {event.approved ? "Approved" : "Pending Approval"} </Badge> : null}
+            {new Date(event.date).toLocaleDateString("en-US", dateOptions)} {props.isUser ? <p className= {"pillBadge" + (event.approved ? " pillGreenVersion" : " pillRedVersion")}> {event.approved ? "Approved" : "Pending Approval"} </p> : null}
           </Card.Subtitle>
         </div>
         <FontAwesomeIcon icon={props.open ? faAngleUp : faAngleDown}/>

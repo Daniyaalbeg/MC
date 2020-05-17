@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Form } from 'react-bootstrap';
 import axios from 'axios';
 import '../css/form.css';
 import { API, rootURL, production } from '../config'
@@ -37,9 +37,9 @@ const ResetPassword = (props) => {
         <Form.Control type="email" value={email} placeholder="Enter email" onChange={handleChange}/>
       </Form.Group>
 
-      <Button variant="primary" type="submit" onClick={submit}>
+      <button className="standardButton" type="submit" onClick={submit}>
         Submit
-      </Button>
+      </button>
   </Form>
   {success &&
     <div>
