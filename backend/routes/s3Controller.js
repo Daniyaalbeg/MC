@@ -13,7 +13,42 @@ exports.uploadDocument = ((req, res) => {
 
 })
 
-exports.sign_s3 = ((req, res) => {
+ async function deleteFile(objectNames) {
+  const s3 = new aws.S3()
+  var params = {
+    Bucket: S3_BUCKET,
+    Delete: {
+      Objects: objectNames.map(o => ({Key: o.split('/')[4]}))
+    },
+  }
+
+  console.log('waited')
+
+  // s3.deleteObjects(params)
+  // .then((result) => {
+  //   console.log(result)
+  //   console.log("deleted")
+  //   return true
+  // })
+  // .catch((err) => {
+  //   console.log(err)
+  //   console.log("error deleting")
+  //   return false
+  // })
+
+  return await s3.deleteObjects(params, (err, data) => {
+    if (err) {
+      console.log(err)
+      return false
+    }
+    if (data) {
+      console.log(data)
+      return true
+    }
+  })
+}
+
+const sign_s3 = ((req, res) => {
   if (req.body.fileSize > 1500000) {
     res.writeHead(500, {
       'Content-Type': 'text/event-stream',
@@ -63,3 +98,6 @@ exports.sign_s3 = ((req, res) => {
     });
   }
 })
+
+module.exports.sign_s3 = sign_s3
+module.exports.deleteFile = deleteFile

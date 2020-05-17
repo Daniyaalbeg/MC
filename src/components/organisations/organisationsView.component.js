@@ -8,6 +8,7 @@ import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons';
 import { filterAndSearchOrg } from '../utilities/filterAndSearch';
 import { filterTypeOrg, filterProjectOrg,  searchOrg} from '../../Actions/filterSearchOrgAction';
+import createStarRing from '../utilities/starRing'
 
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 import '../../css/organisationsView.css';
@@ -108,6 +109,7 @@ const OrgCards = (props) => {
 						return (
 							<Link to={'/organisations/' + org._id} className="orgViewLink" key={org._id}>
 							<Card className="cardOrg grow" key={org._id}>
+								{createStarRing(Math.random() >= 0.5, Math.random() >= 0.5, Math.random() >= 0.5, Math.random() >= 0.5, Math.random() >= 0.5, Math.random() >= 0.5)}
 								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
 								<Card.Body>
 									<Card.Title className="headerText"> {org.supplierName} </Card.Title>

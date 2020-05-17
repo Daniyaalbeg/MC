@@ -3,6 +3,7 @@ const Supplier = require('../models/supplier.model');
 const User = require('../models/user.model');
 const Event = require('../models/event.model').Event;
 const verifyToken = require('../verifyToken');
+const s3 = require('./s3Controller')
 
 //Create a new event
 router.route('/create').post(verifyToken, (req, res, next) => {
@@ -145,21 +146,22 @@ router.route('/:id').get((req, res) => {
 
 //Delete a specific  event
 router.route('/:id').delete(verifyToken, (req, res, next) => {
-  User.findById(req.id, { password: 0}, (err, user) => {
+  User.findById(req.id, { password: 0})
+  .populate('supplier.events')
+  .exec((err, user) => {
     if (err) res.status(500).json("There was a problem finding the event/");
     if (!user) res.status(500).json("There was a problem finding your user.")
 
     const events = user.supplier.events
 
-    let eventFound = false
+    let foundEvent = null
     for ( let i = 0; i < events.length; i++) {
       if (events[i].equals(req.params.id)) {
-        eventFound = true
-        events.splice(i, 1);
+        foundEvent = events.splice(i, 1);
         break
       }
     }
-    if (!eventFound) {
+    if (!foundEvent) {
       return res.status(500).send("Event not found")
     }
 
@@ -171,7 +173,20 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
           console.log("error deleting event + " + req.params.id)
           res.status(200).json("Delete succesful")
         }
-        res.status(200).json("Delete succesful") 
+        console.log(foundEvent)
+        if (foundEvent) {
+          s3.deleteFile(foundEvent[0].images)
+          .then((result) => {
+            res.status(200).json("Delete succesful") 
+          })
+          .catch((error) => {
+            console.log(error)
+            res.status(200).json("Delete succesful not really") 
+          });
+        } else {
+          console.log('didnt wait')
+          res.status(200).json("Delete succesful") 
+        }
       })
     })
     .catch((error) => {

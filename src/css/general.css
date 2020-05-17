@@ -117,7 +117,6 @@
   color:  rgb(16, 104, 151);
 }
 
-
 .icon:focus .clickIcon  {
   animation-name: bounce;
   display: inline-block;
