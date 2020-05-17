@@ -10,7 +10,7 @@ import token from '../../config';
 import styled from 'styled-components';
 import { selectingEvent } from '../../Actions/selectEventActions';
 import sack, { mapMarker, mapPin, shirt, coin, mask, MCRing} from '../../assets/svg.js'
-import filterAndSearch from './filterAndSearch'
+import filterAndSearch from '../utilities/filterAndSearch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import{ faGlobeAsia } from '@fortawesome/pro-regular-svg-icons';
 

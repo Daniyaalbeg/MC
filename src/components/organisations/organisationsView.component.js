@@ -1,16 +1,16 @@
 import React, { useEffect, Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getOrgInfo } from '../Actions/getOrgInfoActions';
+import { getOrgInfo } from '../../Actions/getOrgInfoActions';
 import { Card, Spinner, Button, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons';
-import { filterAndSearchOrg } from '../components/homeView/filterAndSearch';
-import { filterTypeOrg, filterProjectOrg,  searchOrg} from '../Actions/filterSearchOrgAction';
+import { filterAndSearchOrg } from '../utilities/filterAndSearch';
+import { filterTypeOrg, filterProjectOrg,  searchOrg} from '../../Actions/filterSearchOrgAction';
 
-import imagePlaceholder from '../assets/Images/temp.jpg'
-import '../css/organisationsView.css';
+import imagePlaceholder from '../../assets/Images/temp.jpg'
+import '../../css/organisationsView.css';
 
 const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) => {
 	const onSearchChange = (event) => {

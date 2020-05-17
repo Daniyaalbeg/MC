@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
-import LoginModal from './loginAccountComponents/loginModal.component';
+import LoginModal from './account/loginModal.component';
 import '../css/navbar.css'
 import MCMC from '../assets/svg/MCMC.svg';
 import { useLocation } from 'react-router-dom';

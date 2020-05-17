@@ -9,7 +9,7 @@ import { Checkbox } from '../signup/Checkboxs.component';
 import { updateEvent, updatingEventRedirect } from '../../Actions/updateActions';
 import UpdateMap from './updateMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
-import Thumb from '../signup/thumb.component';
+import Thumb from '../utilities/thumb.component';
 
 import '../../css/form.css';
 

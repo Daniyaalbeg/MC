@@ -3,7 +3,6 @@ import token from '../../config';
 import mapboxgl, { MapContext } from 'react-mapbox-gl';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 import * as markers from '../../assets/svg.js';
-// import Geocoder from './Geocoder.component';
 import '../../css/map.css';
 
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';

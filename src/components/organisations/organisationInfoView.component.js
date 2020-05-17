@@ -2,14 +2,14 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Card, Badge, Button, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from './loginAccountComponents/supplierInfoView.component';
-import { getOrgInfo } from '../Actions/getOrgInfoActions';
+import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from '../account/supplierInfoView.component';
+import { getOrgInfo } from '../../Actions/getOrgInfoActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
-import imagePlaceholder from '../assets/Images/temp.jpg'
+import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 
-import '../css/organistaionInfoView.css'
+import '../../css/organistaionInfoView.css'
 
 const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, props }) => {
   const { id } = useParams();

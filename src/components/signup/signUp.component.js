@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { Card, Col, Form, Row } from 'react-bootstrap';
 import { signUp } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from './Checkboxs.component';
-import Thumb from './thumb.component';
+import Thumb from '../utilities/thumb.component';
 
 import '../../css/form.css';
 

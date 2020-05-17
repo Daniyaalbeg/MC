@@ -9,7 +9,7 @@ import { Checkbox } from './Checkboxs.component';
 import { creatingNewEvent, creatingEventRedirect } from '../../Actions/createEventActions';
 import SelectMap from './selectMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
-import Thumb from './thumb.component';
+import Thumb from '../utilities/thumb.component';
 
 import '../../css/form.css';
 

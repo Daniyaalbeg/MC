@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Card, Form } from 'react-bootstrap';
 import axios from 'axios';
-import '../css/form.css';
-import { API, rootURL, production } from '../config'
+import '../../css/form.css';
+import { API, rootURL, production } from '../../config'
 
 
 const ResetPassword = (props) => {

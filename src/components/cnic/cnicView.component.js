@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { getUserInfo } from '../../Actions/userInfoActions'
 import { getCnic } from '../../Actions/cnicActions';
 import CnicAddNew from './cnicAddNew.component'
-import EventItemCard from '../loginAccountComponents/eventItemCard.component'
+import EventItemCard from '../account/eventItemCard.component'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/pro-light-svg-icons'

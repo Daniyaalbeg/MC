@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
 
 var User = require('../models/user.model');
-var Supplier = require('../models/supplier.model').Supplier;
 const Event = require('../models/event.model').Event;
 
 router.route('/featured').get((req, res) => {

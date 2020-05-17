@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component'
-import MainMap from './components/homeView/mainMap.component';
-import OrgView from './components/organisationsView.component';
-import OrgViewInfo from './components/organisationInfoView.component';
+import MainMap from './components/map/mainMap.component';
+import OrgView from './components/organisations/organisationsView.component';
+import OrgViewInfo from './components/organisations/organisationInfoView.component';
 import SignUp from './components/signup/signUp.component';
-import ResetPassword from './components/resetPassword.component';
-import ResettingPassword from './components/signup/resettingPassword.component';
+import ResetPassword from './components/reset/resetPassword.component';
+import ResettingPassword from './components/reset/resettingPassword.component';
 import EmailVerification from './components/signup/emailVerification.component'
 import CreateEvent from './components/signup/createEvent.component';
 import UpdateEvent from './components/update/updateEvent.component';

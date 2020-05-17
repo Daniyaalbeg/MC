@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import '../../css/eventlistView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons'
-import filterAndSearch from './filterAndSearch';
+import filterAndSearch from '../utilities/filterAndSearch';
 import { searchEvents, filterEvents, filterEventsType } from '../../Actions/filterSearchEventAction';
 import EventInfoView from './eventInfoView.component';
 import sack from '../../assets/svg/sack.svg'
