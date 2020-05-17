@@ -35,21 +35,39 @@ const filterAndSearch = (events, filterType, filter, search) => {
   return searchedAndFilteredEvents
 }
 
-export const filterAndSearchOrg = (orgs, filter, search) => {
+export const filterAndSearchOrg = (orgs, filterType, filterProject, search) => {
   search = search.toLowerCase();
-  const filteredOrgEvents = orgs.filter((org) => {
-    if (filter === "all") {
+  const filteredOrgType = orgs.filter((org) => {
+    if (filterType === "all") {
       return true
     }
-    if (filter === org.type) {
+    if (filterType === org.type) {
       return true
     } else {
       return false;
     }
   });
-  const searchedAndFilteredEvents = filteredOrgEvents.filter((org) => {
+
+  const filteredOrgProject = filteredOrgType.filter((org) => {
+    if (filterProject === "all") {
+      return true
+    }
+    for (const work of org.areaOfWork) {
+      if (work === filterProject) {
+        return true
+      }
+    }
+    return false
+  })
+
+  const searchedAndFilteredEvents = filteredOrgProject.filter((org) => {
     return (org.supplierName.toLowerCase().includes(search) || org.description.toLowerCase().includes(search))
   });
+
+
+
+  //filter by project type here
+
   return searchedAndFilteredEvents
 }
 

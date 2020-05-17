@@ -7,18 +7,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons';
 import { filterAndSearchOrg } from '../components/homeView/filterAndSearch';
-import { filterOrgEvents, searchOrgEvents} from '../Actions/filterSearchOrgAction';
+import { filterTypeOrg, filterProjectOrg,  searchOrg} from '../Actions/filterSearchOrgAction';
 
 import imagePlaceholder from '../assets/Images/temp.jpg'
 import '../css/organisationsView.css';
 
 const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) => {
 	const onSearchChange = (event) => {
-    dispatch(searchOrgEvents(event.target.value))
+    dispatch(searchOrg(event.target.value))
   }
 
-  const onFilterChange = (event) => {
-    dispatch(filterOrgEvents(event.target.value))
+  const onFilterChangeType = (event) => {
+    dispatch(filterTypeOrg(event.target.value))
+	}
+	
+	const onFilterChangeProject = (event) => {
+    dispatch(filterProjectOrg(event.target.value))
   }
 
   useEffect(() => {
@@ -51,7 +55,7 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
         <input type='text' className="searchBar1" onChange={onSearchChange}/>
         <FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
         <div className="filterSelect1">
-          <select onChange={onFilterChange}>
+          <select onChange={onFilterChangeType}>
             <option value="all"> all </option>
             <option value ="Armed Forces">Armed Forces</option>
             <option value="Community">Community</option>
@@ -60,6 +64,24 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
             <option value="Government">Government</option>
             <option value="Individual">Individual</option>
             <option value="NGO">NGO</option>
+          </select>
+        </div>
+				<FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
+        <div className="filterSelect1">
+          <select onChange={onFilterChangeProject}>
+            <option value="all"> all </option>
+            <option value ="communication">Communication</option>
+            <option value="communityDevelopment">Community Development</option>
+            <option value="education">Education</option>
+            <option value="environment">Environment</option>
+            <option value="gender">Gender</option>
+            <option value="health">Health</option>
+            <option value="humanrights">Human Rights</option>
+						<option value="infrastructure">Infrastructure</option>
+						<option value="justice">Justice</option>
+						<option value="livelihood">Livelihood</option>
+						<option value="poverty">Poverty</option>
+						<option value="other">Other</option>
           </select>
         </div>
       </form>
@@ -107,7 +129,7 @@ const MapStateToProps = (state) => ({
   loading: state.orgInfo.loading,
   hasErrors: state.orgInfo.hasErrors,
 	fetched: state.orgInfo.fetched,
-	orgInfo: filterAndSearchOrg(state.orgInfo.orgInfo, state.orgInfo.filter, state.orgInfo.search)
+	orgInfo: filterAndSearchOrg(state.orgInfo.orgInfo, state.orgInfo.filterType, state.orgInfo.filterProject, state.orgInfo.search)
 })
 
 export default connect(MapStateToProps)(OrganisationsView);
