@@ -104,24 +104,31 @@
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.05); }
 
-
-.starRing {
+.starContainer {
     position: absolute;
-    height: 150px;
     width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in-out;
+    transition: background-color 0.4s;
+}
+.starRing {
+    height: 75px;
+    width: 75px;
     opacity: 0;
     transform: scale(0.9, 0.9);
-    transition: ease-out;
-    transition: opacity 0.6s, background-color 0.6s, transform 0.6s;
+    transition: ease-in-out;
+    transition: opacity 0.6s, transform 0.6s;
 }
 
-.cardOrg:hover > .starRing {
-    background-color: rgba(76, 89, 98, 0.877);
+.cardOrg:hover .starContainer > .starRing {
     opacity: 1;
     transform: scale(1, 1);
 }
-.cardOrg:hover > .cardImage {
-    
+.cardOrg:hover > .starContainer {
+    background-color: rgba(0, 0, 0, 0.596);
 }
 
 .spinnerThing {

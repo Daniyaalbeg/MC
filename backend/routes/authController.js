@@ -72,7 +72,12 @@ router.route('/createUser').post([
       supplierWebsite: req.body.supplierWebsite,
       facebookURL: req.body.facebookURL,
       twitterURL: req.body.twitterURL,
-      instagramURL: req.body.instagramURL
+      instagramURL: req.body.instagramURL,
+      approvedBy1: false,
+      approvedBy2: false,
+      approvedBy3: false,
+      approvedBy4: false,
+      approvedBy5: false,
     });
     const newUser = new User({
       email: req.body.email,

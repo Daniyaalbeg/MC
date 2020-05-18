@@ -69,6 +69,26 @@ const supplierSchema = new Schema({
     instagramURL: {
       type: String,
       required: false
+    },
+    approvedBy1: {
+      type: String,
+      required: true
+    },
+    approvedBy2: {
+      type: String,
+      required: true
+    },
+    approvedBy3: {
+      type: String,
+      required: true
+    },
+    approvedBy4: {
+      type: String,
+      required: true
+    },
+    approvedBy5: {
+      type: String,
+      required: true
     }
 }, {
     timestamps: true,
