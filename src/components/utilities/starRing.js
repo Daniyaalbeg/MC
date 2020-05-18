@@ -1,8 +1,8 @@
 import React from 'react'
 
 const createStarRing = (ring1, ring2, ring3, ring4, ring5, star) => {
-  const ring1C = '##2B495D'
-  const ring1CG = '##4C5962'
+  const ring1C = '#2B495D'
+  const ring1CG = '#4C5962'
   const ring1O = ring1 ? 1 : 0.25
   const ring2C = '#F5A26A'
   const ring2CG = '#F47E2E'
@@ -48,11 +48,11 @@ const createStarRing = (ring1, ring2, ring3, ring4, ring5, star) => {
             <stop offset="100%" stop-color={starCG} />
           </radialGradient>
         </defs>
-        <circle stroke={ring1C} stroke-opacity={ring1O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(0, 50, 50)"/>
-        <circle stroke={ring2C} stroke-opacity={ring2O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(75, 50, 50)"/>
-        <circle stroke={ring3C} stroke-opacity={ring3O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(145, 50, 50)"/>
-        <circle stroke={ring4C} stroke-opacity={ring4O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(215, 50, 50)"/>
-        <circle stroke={ring5C} stroke-opacity={ring5O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(285, 50, 50)"/>
+        <circle stroke="url(#c1)" stroke-opacity={ring1O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(0, 50, 50)"/>
+        <circle stroke="url(#c2)" stroke-opacity={ring2O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(75, 50, 50)"/>
+        <circle stroke="url(#c3)" stroke-opacity={ring3O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(145, 50, 50)"/>
+        <circle stroke="url(#c4)" stroke-opacity={ring4O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(215, 50, 50)"/>
+        <circle stroke="url(#c5)" stroke-opacity={ring5O} cx="50" cy="50" r="30" stroke-dasharray="30 170" stroke-width="12" fill="none" stroke-linecap="butt" transform="rotate(285, 50, 50)"/>
         <path fill="url(#starG)" fill-opacity={starO} d="
           M 50.000 60.000
           L 61.756 66.180
