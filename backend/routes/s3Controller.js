@@ -1,5 +1,6 @@
 var uuid = require('uuid');
 var aws = require('aws-sdk');
+const verifyToken = require('../verifyToken');
 
 aws.config.update({
   region: process.env.BUCKET_REGION,
@@ -8,12 +9,43 @@ aws.config.update({
 });
 
 const S3_BUCKET = process.env.BUCKET_NAME_PROD;
+const S3_BUCKET_CNIC_FILES = process.env.BUCKET_NAME_PROD_CNIC
 
-exports.uploadDocument = ((req, res) => {
+exports.uploadDocument = (verifyToken, (req, res, next) => {
+  const s3 = new aws.S3();
+    const fileName = req.body.fileName
+    const uniqueFileName= 'documents/'+ uuid.v4() +'.xlsx'
+    const fileType = req.body.fileType;
+    const s3Params = {
+      Bucket: S3_BUCKET_CNIC_FILES,
+      Key: uniqueFileName,
+      Expires: 500,
+      ContentType: fileType,
+      Metadata: {
+        "Cache-Control" : "max-age=31556926"
+      }
+    };
 
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({success: false, error: err})
+      }
+
+
+      const returnData = {
+        oldName: fileName,
+        newName: uniqueFileName,
+        signedRequest: data,
+        url: `https://${S3_BUCKET_CNIC_FILES}/${uniqueFileName}`,
+        fileType: fileType
+      };
+
+      res.status(200).json({ success: true, data: { returnData }})
+    });
 })
 
- async function deleteFile(objectNames) {
+async function deleteFile(objectNames) {
   const s3 = new aws.S3()
   var params = {
     Bucket: S3_BUCKET,
@@ -67,7 +99,6 @@ const sign_s3 = ((req, res) => {
     const fileName = req.body.fileName
     const uniqueFileName= imageCategory +'/'+ uuid.v4()
     const fileType = req.body.fileType;
-    const metadata = {'Cache-Control': 'max-age=31556926'}
     const s3Params = {
       Bucket: S3_BUCKET,
       Key: uniqueFileName,

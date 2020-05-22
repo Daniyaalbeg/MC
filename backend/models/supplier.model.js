@@ -70,23 +70,23 @@ const supplierSchema = new Schema({
       type: String,
       required: false
     },
-    approvedBy1: {
+    verifiedStepA: {
       type: String,
       required: true
     },
-    approvedBy2: {
+    verifiedStepB: {
       type: String,
       required: true
     },
-    approvedBy3: {
+    verifiedStepC: {
       type: String,
       required: true
     },
-    approvedBy4: {
+    verifiedStepD: {
       type: String,
       required: true
     },
-    approvedBy5: {
+    verifiedStepE: {
       type: String,
       required: true
     }

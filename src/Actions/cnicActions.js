@@ -48,15 +48,67 @@ export function uploadFileCnic(eventID, cnicFile) {
   return async dispatch => {
     dispatch(uploadingCnicFile())
 
-    axios({
+    const fileNameSplit = cnicFile.name.split('.')
+    const fileType = fileNameSplit[fileNameSplit.length - 1]
 
+    axios({
+      method: 'post',
+      url: rootURL(production) +API+ '/getCnicUpload',
+      withCredentials: true,
+      credentials: 'include',
+      data: {
+        fileName: cnicFile.name,
+        fileType: fileType
+      }
     })
     .then((res) => {
-      dispatch(uploadingCnicFileSuccess())
+      if (res.data.success) {
+        const returnData = res.data.data.returnData;
+        const signedRequest = returnData.signedRequest;
+        const url = returnData.url
+
+        const options = {
+          headers: {
+            'Content-Type' : fileType,
+            'Cache-Control': 'max-age=31556926'
+          }
+        };
+
+        axios.put(signedRequest, cnicFile, options)
+        .then((res) => {
+
+          axios({
+            method: 'post',
+            url: rootURL(production) +API+ '/cnic/uploadFile',
+            withCredentials: true,
+            credentials: 'include',
+            data: {
+              eventID,
+              fileURL: url
+            }
+          })
+          .then((res) => {
+            dispatch(uploadingCnicFileSuccess(null))
+          })
+          .catch((err) => {
+            console.log(err)
+            dispatch(uploadingCnicFileFailure(err))
+          }) 
+
+        })
+        .catch((err) => {
+          console.log(err)
+          dispatch(uploadingCnicFileFailure("An error uploading occurred"))
+        })
+      } else {
+        console.log("error here1")
+        dispatch(uploadingCnicFileFailure("An error occurred"))
+      }
     })
-    .catch((error) => {
-      dispatch(uploadingCnicFileFailure(error))
-    }) 
+    .catch((err) => {
+      console.log(err)
+      dispatch(uploadingCnicFileFailure(err))
+    })
   }
 }
 

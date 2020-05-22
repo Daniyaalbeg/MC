@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var verifyToken = require('../verifyToken');
 
 var CNIC = require('../models/cnic.model').CNIC;
+var CNICFile = require('../models/cnicFile.model').CNICFile;
 
 router.route('/:id').get(verifyToken, (req, res, next) => {
   console.log(req.params.id.toString().replace(/\D/g,''))
@@ -113,6 +114,29 @@ router.route('/upload').post(verifyToken, (req, res, next) => {
 })
 
 router.route('/uploadFile').post(verifyToken, (req, res, next) => {
+  const eventID = req.body.eventID
+  const createdByID = req.id
+  const fileURL = req.body.fileURL
+
+  const newCnicFile = new CNICFile({
+    event: eventID,
+    createdBy: createdByID,
+    fileURL: fileURL
+  })
+
+  newCnicFile.save(null, (error, file) => {
+    if (error) {
+      console.log(error)
+      return res.status(500).json({
+        success: false,
+        error: error
+      })
+    }
+    return res.status(200).json({
+      success: true
+    })
+  })
+  
 
 })
 

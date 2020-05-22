@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload, faDownload, faUpload, faPlusCircle} from '@fortawesome/pro-duotone-svg-icons'
 import xlsx from 'xlsx';
 
-import { uploadCnic, uploadCnicReset } from '../../Actions/cnicActions';
+import { uploadCnic, uploadFileCnic, uploadCnicReset } from '../../Actions/cnicActions';
 import sampleXlsx from '../../assets/cnic_sample.xlsx';
 
 const CnicAddNew = ({ dispatch, events, selectedCnicEvent, currentUserID, uploadLoading, uploadSuccess, uploadHasErrors, uploadErrorIDs }) => {
@@ -16,7 +16,7 @@ const CnicAddNew = ({ dispatch, events, selectedCnicEvent, currentUserID, upload
       <>
         <Row className="headingCNIC">
           <h4> Choose how to add CNIC information </h4>
-          <button className="standardButton" onClick={() => dispatch(selectCnicEvent(null))}> Back </button>
+          <button className="standardButton" disabled={uploadLoading} onClick={() => dispatch(selectCnicEvent(null))}> Back </button>
         </Row>
         <hr className="cnicEventSeperator" />
         <div className="cnicAddContainer">
@@ -123,7 +123,7 @@ const CnicAddOptions = (props) => {
             <CNICTableBody data={fileData} />
          </Table>
         }
-        <button className="standardButton" onClick={() => {
+        <button className="standardButton" disabled={uploadLoading} onClick={() => {
           dispatch(uploadCnic(selectedEvent._id, fileData, currentUserID))
         }}>
           {
@@ -132,7 +132,7 @@ const CnicAddOptions = (props) => {
             :
             <FontAwesomeIcon icon={faFileUpload} style={{ marginRight: '8px' }} />
           }
-           Upload
+           {uploadLoading ? "Uploading" : "Upload" }
          </button>
          {
            uploadErrorIDs.length !== 0 &&
@@ -152,7 +152,26 @@ const CnicAddOptions = (props) => {
   } else if (fileDataUploaded) {
     return (
       <div className="cnicUploadedContainer">
-        <p> sample uploaded </p>
+        <p> {file.name} </p>
+        <button className="standardButton" disabled={uploadLoading} onClick={() => {
+          dispatch(uploadFileCnic(selectedEvent._id, file))
+        }}>
+          {
+            uploadLoading ? 
+            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+            :
+            <FontAwesomeIcon icon={faFileUpload} style={{ marginRight: '8px' }} />
+          }
+           {uploadLoading ? "Uploading" : "Upload" }
+         </button>
+         {
+           uploadHasErrors &&
+           <p className="error"> An error occurred with the upload </p>
+         }
+         {
+           uploadSuccess &&
+           <p className="cnicSuccess cnicNote"> File was uploaded successfully and awaits review </p>
+         }
       </div>
     )
   } else {
@@ -160,13 +179,13 @@ const CnicAddOptions = (props) => {
       <div className="cnicAddOptionsContainer">
         <div>
           <p> Download this sample file and copy your CNIC info according to the given columns and then upload it. </p>
-          <label for="file-download" className="sampleDownload">
+          <label htmlFor="file-download" className="sampleDownload">
           <a id="file-download" href={sampleXlsx}> 
             <FontAwesomeIcon icon={faDownload} style={{marginRight: '8px'}} />
             Download Template
           </a>
           </label>
-          <label for="file-sample-upload" className="cnicFileInput">
+          <label htmlFor="file-sample-upload" className="cnicFileInput">
             <input onChange={(e) => {
               setFileSampleLoaded(true)
               parseExcelFile(e, setFileData)
@@ -180,10 +199,11 @@ const CnicAddOptions = (props) => {
         </div>
         <div>
           <p> Upload your file directly here and we shall add the information ourself </p>
-          <label for="file-Data-upload" className="cnicFileInput">
+          <label htmlFor="file-Data-upload" className="cnicFileInput">
             <input onChange={(e) => {
               setFileDataUploaded(true)
-              parseExcelFile(e, setFile)
+              setFile(e.currentTarget.files[0])
+              console.log(file)
             }} id="file-Data-upload" type="file" accept=".xlsx" />
             <FontAwesomeIcon icon={faUpload} style={{marginRight: '8px'}} />
             Upload File

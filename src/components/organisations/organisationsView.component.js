@@ -110,7 +110,8 @@ const OrgCards = (props) => {
 							<Link to={'/organisations/' + org._id} className="orgViewLink" key={org._id}>
 							<Card className="cardOrg grow" key={org._id}>
 								<div className="starContainer">
-									{createStarRing(Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4)}
+									{/* {createStarRing(Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4)} */}
+									{createStarRing(org.verifiedStepA, org.verifiedStepB, org.verifiedStepC, org.verifiedStepD, org.verifiedStepE, (org.verifiedStepA && org.verifiedStepB && org.verifiedStepC && org.verifiedStepD && org.verifiedStepE))}
 								</div>
 								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
 								<Card.Body>

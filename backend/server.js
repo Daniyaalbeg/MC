@@ -63,6 +63,7 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/reset', resetRouter);
 app.use('/api/imageUpload', s3Router.sign_s3);
+app.use('/api/getCnicUpload', s3Router.uploadDocument);
 app.use('/api/emailVerification', emailVerificationRouter.router);
 app.use('/api/info', infoRouter);
 app.use('/api/cnic', cnicRouter);

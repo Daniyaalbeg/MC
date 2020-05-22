@@ -16,7 +16,7 @@ const NavigationBar = () => {
 
   if (location.pathname === "/") {
     return (
-      <Navbar className="navBar" bg="dark" variant="dark" expand="lg">
+      <Navbar className="navBar" bg="black" variant="dark" expand="lg">
         <Link to="/"><Navbar.Brand>
           <img src={MCMC} alt="MC" className="mcLogo"/>
           </Navbar.Brand></Link>
@@ -35,7 +35,7 @@ const NavigationBar = () => {
     );
   } else {
     return (
-      <Navbar className="navBar" bg="dark" variant="dark" expand="lg">
+      <Navbar className="navBar" bg="black" variant="dark" expand="lg">
         <Link to="/"><Navbar.Brand>
           <img src={MCMC} alt="MC" className="mcLogo"/>
           </Navbar.Brand></Link>

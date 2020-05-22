@@ -52,7 +52,7 @@ export default function cnicReducer(state = initialState, action) {
         ...state,
         uploadLoading: false,
         uploadSuccess: true,
-        uploadErrorIDs: action.payload.failedIDs
+        uploadErrorIDs: (action.payload ? action.payload.failedIDs : [])
       }
     case actions.CNIC_FILE_UPLOAD_FAILURE:
       return {
