@@ -29,7 +29,7 @@ export const deleteUserInfoEvent = (id) => ({
 export function getUserInfo() {
   return async (dispatch, getState) => {
     dispatch(gettingUserInfo())
-    const token = getState().auth.token;
+    // const token = getState().auth.token;
 
     axios({
       method: 'get',

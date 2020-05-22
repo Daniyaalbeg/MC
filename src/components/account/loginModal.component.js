@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { Modal, Nav} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -20,7 +20,7 @@ const LoginModal = ({dispatch, loading, hasErrors, auth}) => {
         {auth ? "My Account" : "Log in"}
       </Button> */}
 
-      <Nav.Item className="navlink" onClick={handleShow}> {auth ? "My Account" : "Log in"} </Nav.Item>
+      <Nav.Item className="loginNav" onClick={handleShow}> {auth ? "My Account" : "Log in"} </Nav.Item>
 
       <Modal show={show} onHide={handleClose} className="modalFont">
         <Modal.Header closeButton>

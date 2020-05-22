@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import token from '../../config';
-import mapboxgl, { MapContext } from 'react-mapbox-gl';
-import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
+import mapboxgl from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import * as markers from '../../assets/svg.js';
 // import Geocoder from './Geocoder.component';
 import '../../css/map.css';
@@ -16,9 +16,6 @@ const Map = ReactMapboxGl({
   accessToken: token
 });
 
-const GeocodedMap = () => {
-
-}
 
 const layoutLayer = {
   'icon-image': 'marker'

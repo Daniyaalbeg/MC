@@ -103,9 +103,9 @@
   transition: 1s ease-in-out;
 }
 .faSelectEventButton:hover {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
 }
 
 .websiteIcon {

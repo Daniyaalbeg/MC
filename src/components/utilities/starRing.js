@@ -1,24 +1,24 @@
 import React from 'react'
 
 const createStarRing = (ring1, ring2, ring3, ring4, ring5, star) => {
-  const ring1C = '#2B495D'
-  const ring1CG = '#4C5962'
-  const ring1O = ring1 ? 1 : 0.2
+  const ring1C = '#f5f5f5'
+  const ring1CG = '#f5f5f5'
+  const ring1O = ring1 ? 1 : 0.4
   const ring2C = '#F5A26A'
   const ring2CG = '#F47E2E'
-  const ring2O = ring2 ? 1 : 0.2
+  const ring2O = ring2 ? 1 : 0.4
   const ring3C = '#F4DB68'
   const ring3CG = '#FFD71A'
-  const ring3O = ring3 ? 1 : 0.2
+  const ring3O = ring3 ? 1 : 0.4
   const ring4C = '#7EAF81'
   const ring4CG = '#4BB250'
-  const ring4O = ring4 ? 1 : 0.2
+  const ring4O = ring4 ? 1 : 0.4
   const ring5C = '#66A0BF'
   const ring5CG = '#1589C9'
-  const ring5O = ring5 ? 1 : 0.2
+  const ring5O = ring5 ? 1 : 0.4
   const starC ='#E75C5F'
   const starCG ='#EF2A30'
-  const starO = star ? 1 : 0.2
+  const starO = star ? 1 : 0.4
 
   const starSVG = (
       <svg className="starRing" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="200" width="200">

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
 import { getStatInfo, getFeaturedInfo } from '../../Actions/homeViewActions';
 import { getUserInfo } from '../../Actions/userInfoActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelopeSquare } from '@fortawesome/pro-solid-svg-icons'
 
 import photo0 from '../../assets/Images/oldman.jpg'
 import photo3 from '../../assets/Images/chitralman.jpg'
@@ -44,7 +47,7 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
 
   return (
     <>
-    <Carousel controls={false} fade={true} indicators={false} interval={2000}>
+    <Carousel controls={true} fade={true} indicators={false} interval={2000}>
       {images.map((image, index) => {
         return (
           <Carousel.Item className="carouselImage" key={image}>
@@ -59,10 +62,37 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
     <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
     <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
     <FeaturedOrganisation loading={featuredLoading} hasErrors={featuredHasErrors} featuredOrgs={featuredOrgs} />
-    <div className="separator text-muted featuredText fontProxima"> MAP TO ENGAGE WITH </div>
+    <div className="separator text-muted featuredText fontProxima"> MAP TO INFORM </div>
     <MapIconKey />
     <HomeViewMap />
+    <Footer />
     </>
+  )
+}
+
+const Footer = (props) => {
+  return (
+    <div className="homeViewFooter">
+      <div className ="homeViewFooterItem">
+        <h4> Connect </h4>
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookSquare} className="footerIcon" /></a>
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagramSquare} className="footerIcon" /></a>
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitterSquare} className="footerIcon" /></a>
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faEnvelopeSquare} className="footerIcon" /></a>
+      </div>
+      <div className ="homeViewFooterItem">
+        <Link to="/about" className="navlink aboutUsCustom"><h4> About Us </h4></Link>
+      </div>
+      <div className ="homeViewFooterItem">
+        <h4> Contact</h4>
+        <hr className="footerDash"/>
+        <p> Address: </p>
+        <p> 1A Park Road, Chakshahzad </p>
+        <p style={{marginBottom: '5px'}}> Islamabad, Pakistan </p>
+        <p style={{marginBottom: '5px'}}> 03028911883 </p>
+        <p> info@ministryofchange.org </p>
+      </div>
+    </div>
   )
 }
 
@@ -131,7 +161,7 @@ const FeaturedOrganisation = (props) => {
           return (
             <div className="featuredOrgCard grow" key={org._id}>
             <Link className="featuredLink" to={'/organisations/'+org._id}>
-              <img src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt="image loading error" className="featuredOrgImage" />
+              <img src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt="error" className="featuredOrgImage" />
               <p className="featuredOrgText"> {org.supplierName} </p>
               <hr className="featuredOrgDivider" />
               {/* <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} /> */}
@@ -142,21 +172,6 @@ const FeaturedOrganisation = (props) => {
       </div>
       </>
     )
-  }
-}
-
-const whichIcon = (icon) => {
-  switch(icon) {
-    case "food":
-      return sack
-    case "money":
-      return coin
-    case "clothes":
-      return shirt
-    case "ppe":
-      return mask
-    default:
-      return sack
   }
 }
 

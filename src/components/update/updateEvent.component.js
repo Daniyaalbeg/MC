@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Row, Card, Form } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Link, Redirect } from 'react-router-dom';
-import { Formik, Field, setFieldValue } from 'formik';
+import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Checkbox } from '../signup/Checkboxs.component';
 import { updateEvent, updatingEventRedirect } from '../../Actions/updateActions';
@@ -73,7 +73,6 @@ const rejectStyle = {
 };
 const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate}) => {
   const [location, setLocation] = useState([])
-  const [imageFilesThumb, setImageFilesThumb] = useState([]);
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [newImage, setNewImage] = useState(false)
@@ -99,7 +98,6 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
     if (eventToUpdate === null && !loaded) {
       return <Redirect to="/" />
     } else {
-      setImageFilesThumb(eventToUpdate.images)
       setLocation(eventToUpdate.location.coordinates)
     }
     setLoaded(true)
@@ -267,7 +265,6 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
                 setRejectedFilesState([])
               }
               setNewImage(true)
-              setImageFilesThumb(acceptedFiles);
               setFieldValue('images', acceptedFiles);
           }}>
             {({getRootProps, getInputProps}) => (

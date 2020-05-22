@@ -15,7 +15,7 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
   
   useEffect(() => {
     if (!fetched) { dispatch(getUserInfo()) }
-  }, [dispatch])
+  })
 
   const renderInfo = () => {
     if (hasErrors) return (<h1> Error occured, cannot get user info. Please accept our humblest apologies</h1>);

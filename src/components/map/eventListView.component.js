@@ -79,7 +79,7 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
           <div className="filterSelect">
             <FontAwesomeIcon icon={faFilter} className="filterIcon" size="1x"/>
             <select onChange={onFilterChangeType}>
-              <option value="all"> all </option>
+              <option value="all"> All </option>
               <option value ="food">Food</option>
               <option value="ppe">PPE</option>
               <option value="money">Money</option>
@@ -89,7 +89,7 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
           <div className="filterSelect">
             <FontAwesomeIcon icon={faFilter} className="filterIcon" size="1x"/>
             <select onChange={onFilterChange}>
-              <option value="all"> all </option>
+              <option value="all"> All </option>
               <option value ="Armed Forces">Armed Forces</option>
               <option value="Community">Community</option>
               <option value="Corporate">Corporate</option>

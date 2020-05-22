@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
-import { Card, Button, Nav, Row, Accordion, Spinner } from 'react-bootstrap'
+import { Card, Row, Accordion, Spinner } from 'react-bootstrap'
 import { Tabs, useTabState, Panel } from '@bumaga/tabs'
-import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../Actions/userInfoActions'
 import { getCnic } from '../../Actions/cnicActions';
@@ -17,7 +16,7 @@ import '../../css/cnic.css'
 const MustBeLoggedIn = () => {
   return (
     <div className="cnicMustBeLoggedIn">
-      <h4 className="cnicLoggedInHeading"> Must be logged in or verified to view </h4>
+      <h4 className="cnicLoggedInHeading"> Must be logged in and verified to view </h4>
     </div>
   )
 }
@@ -102,7 +101,7 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
       </Card.Body>
       <Card.Footer className="text-muted">
         <h5> Note </h5>
-        <p> Once CNIC information has been added it cannot be edit or retrieved, for any changes please email support. </p>
+        <p> Once CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
       </Card.Footer>
       </Tabs>
     </Card>

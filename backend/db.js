@@ -1,8 +1,15 @@
 const mongoose = require('mongoose');
 
-const uri = process.env.ATLAS_URI;
+let uri = null
+
+if (process.env.NODE_ENV) {
+    uri = process.env.ATLAS_URI_PROD;
+} else {
+    uri = process.env.ATLAS_URI_TEST;
+}
+
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
-    console.log("MongoDB database connection succesful");
+    console.log("MongoDB database connection succesful in " +process.env.NODE_ENV+ ' mode');
 });

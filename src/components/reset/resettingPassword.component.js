@@ -1,8 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Card } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
 import '../../css/form.css';
 import { API, rootURL, production } from '../../config'
 
@@ -12,12 +11,13 @@ function equalTo(ref, msg) {
 	return this.test({
 		name: 'equalTo',
 		exclusive: false,
+    // eslint-disable-next-line no-template-curly-in-string
     message: msg || '${path} must be the same as ${reference}',
 		params: {
 			reference: ref.path
 		},
 		test: function(value) {
-      return value == this.resolve(ref) 
+      return value === this.resolve(ref) 
 		}
 	})
 };
@@ -39,7 +39,6 @@ const validationSchema = Yup.object().shape({
 const ResettingPassword = (props) => {
   const [hasErrors, setHasErrors] = useState(false)
   var error = null
-  var response = null
   const [sending, setSending] = useState(false)
   const [success, setSuccess] = useState(false)
   const { match: { params } } = props;
@@ -65,7 +64,6 @@ const ResettingPassword = (props) => {
           },
         })
         .then((res) => {
-          response = res.data;
           setSending(false)
           setSuccess(true)
         })

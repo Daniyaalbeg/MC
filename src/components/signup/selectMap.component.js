@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import token from '../../config';
-import mapboxgl, { MapContext } from 'react-mapbox-gl';
-import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
+import mapboxgl from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import * as markers from '../../assets/svg.js';
 import '../../css/map.css';
 
@@ -15,9 +15,6 @@ const Map = ReactMapboxGl({
   accessToken: token
 });
 
-const GeocodedMap = () => {
-
-}
 
 const layoutLayer = {
   'icon-image': 'marker'
@@ -49,7 +46,7 @@ class SelectMap extends Component {
       <Fragment>
       {/* <input className="dontShow" name="location" id="location"/> */}
       <Map
-        style='mapbox://styles/daniyaalbeg/ck8xf05we46ts1ipm9zqkoyya'
+        style={'mapbox://styles/daniyaalbeg/ck8xf05we46ts1ipm9zqkoyya'}
         containerStyle={{
           height: '300px',
           width: '100%',
@@ -79,7 +76,7 @@ class SelectMap extends Component {
         }}
       >
         <Layer type="symbol" id="marker" layout={layoutLayer} images={images} >
-          {this.state.selectedPoint.length != 0 &&
+          {this.state.selectedPoint.length !== 0 &&
             <Feature
               key={'clickedMarker'}
               coordinates={this.state.selectedPoint}

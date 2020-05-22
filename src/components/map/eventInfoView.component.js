@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Button, Carousel } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import '../../css/eventInfoView.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,11 +14,14 @@ const EventInfoView = (props) => {
   } else {
     return (
       <Fragment>
-      <button onClick={props.onClick} className="backButton"> <FontAwesomeIcon className="backButtonIcon" icon={faChevronLeft} /> Back </button>
+      {/* <button onClick={props.onClick} className="backButton"> <FontAwesomeIcon className="backButtonIcon" icon={faChevronLeft} /> Back </button> */}
         
       <hr className="searchBarSpace"/>
 
       <div className="bigBoi">
+        <div className="smallBoi">
+          <button className="standardButton" onClick={props.onClick} style={{marginBottom: "12px"}}> Back </button>
+        </div>
         <div className="smallBoi">
           <h6 className="text-muted"> Name </h6>
           <p> {event.name} </p>
@@ -63,9 +66,6 @@ const EventInfoView = (props) => {
           </Carousel>
           </div>
         }
-        <div className="smallBoi">
-          <Button variant="primary" onClick={props.onClick}> Back </Button>
-        </div>
       </div>
       </Fragment>
     )

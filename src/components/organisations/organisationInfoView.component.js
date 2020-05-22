@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Card, Badge, Button, Spinner } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from '../account/supplierInfoView.component';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form';
+import React from 'react';
+import { Form, Spinner } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -78,7 +78,13 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
 
           <Form.Group>
             <button className="standardButton" type="submit" disabled={loading}>
-              {loading ? 'Logging in' : 'Log in'}
+            {
+              loading ? 
+              <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+              :
+              null
+            }
+            {loading ? 'Logging in' : 'Log in'}
             </button>
             <button className="standardButton muteVersion" onClick={handleClose} style={{marginLeft: "15px"}}>
               Close

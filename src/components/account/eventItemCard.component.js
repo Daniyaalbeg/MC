@@ -1,6 +1,5 @@
 import React from 'react';
 import { Accordion, Card } from 'react-bootstrap';
-import Badge from 'react-bootstrap/Badge';
 import EventItemInfo from './eventItemInfo.component';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

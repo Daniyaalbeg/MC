@@ -1,7 +1,6 @@
 import React from 'react';
 import '../css/about.css'
 import McLogo from '../assets/McLogo.png'
-import Icon from './icons.component.js/location.component'
 
 import akho from '../assets/logo/akho.svg'
 import badlde from '../assets/logo/badlde.png'
@@ -13,7 +12,7 @@ const About = () => {
       {/* <div className="iconAbout">
         <Icon />
       </div> */}
-      <img className="mcLogoAbout" src={McLogo} alt="Image not found" />
+      <img className="mcLogoAbout" src={McLogo} alt="Not found" />
 
       <hr className="logoSeperator"/>
 

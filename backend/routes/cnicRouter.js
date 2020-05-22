@@ -19,8 +19,6 @@ router.route('/:id').get(verifyToken, (req, res, next) => {
       code: 100,
       message: "That CNIC number does not exist in our system or has not recieved any ration"
     })}
-
-    console.log(cnic)
     return res.status(200).send(cnic)
   })
 })

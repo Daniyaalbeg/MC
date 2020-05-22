@@ -45,7 +45,7 @@ class Thumb extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     const { file } = this.props;
-    const { loading, thumb } = this.state;
+    const { loading } = this.state;
     if (file === null) { return true}
     if (loading) { return true }
     if (file.name === nextProps.file.name) {

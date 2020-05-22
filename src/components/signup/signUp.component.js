@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
-import { Card, Col, Form, Row } from 'react-bootstrap';
+import { Card, Col, Form, Spinner } from 'react-bootstrap';
 import { signUp } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from './Checkboxs.component';
 import Thumb from '../utilities/thumb.component';
@@ -721,6 +721,12 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         </Form.Group>
 
         <button className="standardButton signUpButton" type="submit" disabled={loading}>
+        {
+          loading ? 
+          <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+          :
+          null
+        }
         {loading ? 'Signing up' : 'Sign up'}
         </button>
 

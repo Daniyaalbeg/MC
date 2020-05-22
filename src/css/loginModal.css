@@ -19,3 +19,16 @@
 .modalFont {
   font-family: proximaNova;
 }
+
+.loginNav {
+  color: #BEBEBE;
+  cursor: pointer;
+  border: 1px solid #BEBEBE;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+.loginNav:hover {
+  color: white;
+  border-color: white;
+}

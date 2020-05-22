@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { connect } from 'react-redux';
-import ReactMapboxGl, { Cluster, Layer, Feature, Popup, MapContext } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature, Popup, MapContext } from 'react-mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { Carousel } from  'react-bootstrap';
@@ -9,7 +9,7 @@ import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
 import { selectingEvent } from '../../Actions/selectEventActions';
-import sack, { mapMarker, mapPin, shirt, coin, mask, MCRing} from '../../assets/svg.js'
+import sack, {  shirt, coin, mask, MCRing} from '../../assets/svg.js'
 import filterAndSearch from '../utilities/filterAndSearch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import{ faGlobeAsia } from '@fortawesome/pro-regular-svg-icons';
@@ -38,7 +38,7 @@ const imagesSack = ['mapSack', imageSack]
 const imagesCoin = ['mapCoin', imageCoin]
 const imagesShirt = ['mapShirt', imageShirt]
 const imagesMask = ['mapMask', imageMask]
-const imagesMCRing = ['mapMCRing', imageMCRing]
+// const imagesMCRing = ['mapMCRing', imageMCRing]
 
 const StyledPopup = styled.div`
   background: white;
@@ -62,9 +62,9 @@ const layoutLayerShirt = {
 const layoutLayerMask = {
   'icon-image': 'mapMask'
 }
-const layoutLayerMCRing = {
-  'icon-image': 'mapMCRing'
-}
+// const layoutLayerMCRing = {
+//   'icon-image': 'mapMCRing'
+// }
 
 const startingBounds = [[78.7393, 37.2946], [59.9632, 23.5181]];
 let eventKeys = {}

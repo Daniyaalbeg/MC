@@ -73,11 +73,11 @@ router.route('/createUser').post([
       facebookURL: req.body.facebookURL,
       twitterURL: req.body.twitterURL,
       instagramURL: req.body.instagramURL,
-      approvedBy1: false,
-      approvedBy2: false,
-      approvedBy3: false,
-      approvedBy4: false,
-      approvedBy5: false,
+      verifiedStepA: false,
+      verifiedStepB: false,
+      verifiedStepC: false,
+      verifiedStepD: false,
+      verifiedStepE: false,
     });
     const newUser = new User({
       email: req.body.email,

@@ -1,10 +1,9 @@
-import React, { useEffect, Fragment, useState } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';
-import { Card, Spinner, Button, Badge } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons';
 import { filterAndSearchOrg } from '../utilities/filterAndSearch';
 import { filterTypeOrg, filterProjectOrg,  searchOrg} from '../../Actions/filterSearchOrgAction';
@@ -57,7 +56,7 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
         <FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
         <div className="filterSelect1">
           <select onChange={onFilterChangeType}>
-            <option value="all"> all </option>
+            <option value="all"> All </option>
             <option value ="Armed Forces">Armed Forces</option>
             <option value="Community">Community</option>
             <option value="Corporate">Corporate</option>
@@ -70,7 +69,7 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
 				<FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
         <div className="filterSelect1">
           <select onChange={onFilterChangeProject}>
-            <option value="all"> all </option>
+            <option value="all"> All </option>
             <option value ="communication">Communication</option>
             <option value="communityDevelopment">Community Development</option>
             <option value="education">Education</option>

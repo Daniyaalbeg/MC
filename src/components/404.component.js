@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react'
-import Lottie from "react-lottie";
+import React from 'react'
 import MCRing from '../assets/svg/MCRing.svg'
 
 import '../css/misc.css'

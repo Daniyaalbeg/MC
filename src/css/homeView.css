@@ -202,7 +202,7 @@
   height: 200px;
   width: 100%;
   object-fit: contain;
-  background-color: #343A40;
+  background-color: #ffffff;
 }
 .featuredOrgText {
   margin-top: 10px;
@@ -252,4 +252,44 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
+}
+
+.homeViewFooter {
+  width: 100%;
+  height: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #222A2E;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #F2F2F2;
+  font-family: proximaNova;
+  font-size: 12px;
+}
+.homeViewFooterItem > p {
+  margin: 0;
+}
+.footerDash {
+  width: 200px;
+  border: 0.5px solid #ffffff;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.aboutUsCustom {
+  color: #F2F2F2;
+}
+.aboutUsCustom:hover {
+  text-decoration: underline;
+}
+.footerIcon {
+  color: #ffffff;
+  font-size: 3em;
+  margin: 5px;
+}
+.footerIcon:hover {
+  color: #F2F2F2;
+  cursor: pointer;
 }

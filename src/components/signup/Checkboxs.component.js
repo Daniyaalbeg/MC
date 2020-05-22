@@ -5,10 +5,6 @@ const InputFeedback = ({ error }) =>
   error ? <div className={classNames("input-feedback")}>{error}</div> : null;
 
 export default class CheckboxGroup extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleChange = event => {
     const target = event.currentTarget;
     let valueArray = [...this.props.value] || [];

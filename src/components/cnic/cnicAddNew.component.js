@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import '../../css/cnic.css'
-import { Row, Button, Table, Spinner } from 'react-bootstrap';
+import { Row, Table, Spinner } from 'react-bootstrap';
 import { selectCnicEvent } from '../../Actions/cnicActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload, faDownload, faUpload, faPlusCircle} from '@fortawesome/pro-duotone-svg-icons'

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Row, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { API, rootURL, production } from '../../config'
 
@@ -31,9 +30,9 @@ const Verified = (props) => {
     <Fragment>
       <p> {props.verified ? "You have been verified" : "You have not been verified"} </p>
       {!props.verified &&
-        <Button onClick={() => {
+        <button className="standardButton" onClick={() => {
           sendVerificationEmail(props.token);
-        }}> Verify </Button>
+        }}> Verify </button>
       }
     </Fragment>
   )

@@ -1,9 +1,9 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Modal, Carousel, Row } from 'react-bootstrap';
 import '../../css/eventInfoView.css'
-import EventItemInfoMap from './eventItemInfoMap.component.js';
+// import EventItemInfoMap from './eventItemInfoMap.component.js';
 
 import { deleteEvent, resetDelete } from '../../Actions/deleteEventAction'
 

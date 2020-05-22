@@ -71,23 +71,23 @@ const supplierSchema = new Schema({
       required: false
     },
     verifiedStepA: {
-      type: String,
+      type: Boolean,
       required: true
     },
     verifiedStepB: {
-      type: String,
+      type: Boolean,
       required: true
     },
     verifiedStepC: {
-      type: String,
+      type: Boolean,
       required: true
     },
     verifiedStepD: {
-      type: String,
+      type: Boolean,
       required: true
     },
     verifiedStepE: {
-      type: String,
+      type: Boolean,
       required: true
     }
 }, {

@@ -128,7 +128,7 @@
     transform: scale(1, 1);
 }
 .cardOrg:hover > .starContainer {
-    background-color: rgba(0, 0, 0, 0.596);
+    background-color: rgb(35, 42, 46);
 }
 
 .spinnerThing {
@@ -145,8 +145,9 @@
 
 .cardImage {
     height: 150px;
+    width: 100%;
     object-fit: scale-down;
-    background-color: #343A40;
+    background-color: #ffffff;
     overflow: hidden;
 }
 
