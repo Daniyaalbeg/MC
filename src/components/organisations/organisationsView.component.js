@@ -6,7 +6,8 @@ import { Card, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons';
 import { filterAndSearchOrg } from '../utilities/filterAndSearch';
-import { filterTypeOrg, filterProjectOrg,  searchOrg} from '../../Actions/filterSearchOrgAction';
+import { filterTypeOrg, filterProjectOrg, searchOrg} from '../../Actions/filterSearchOrgAction';
+import { FilterAreaOfWork, FilterOrgType } from '../utilities/filterOptions'
 import createStarRing from '../utilities/starRing'
 
 import imagePlaceholder from '../../assets/Images/temp.jpg'
@@ -55,34 +56,11 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
         <input type='text' className="searchBar1" onChange={onSearchChange}/>
         <FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
         <div className="filterSelect1">
-          <select onChange={onFilterChangeType}>
-            <option value="all"> All </option>
-            <option value ="Armed Forces">Armed Forces</option>
-            <option value="Community">Community</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Civil Society">Civil Society</option>
-            <option value="Government">Government</option>
-            <option value="Individual">Individual</option>
-            <option value="NGO">NGO</option>
-          </select>
+					<FilterOrgType onChange={onFilterChangeType} />
         </div>
 				<FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
         <div className="filterSelect1">
-          <select onChange={onFilterChangeProject}>
-            <option value="all"> All </option>
-            <option value ="communication">Communication</option>
-            <option value="communityDevelopment">Community Development</option>
-            <option value="education">Education</option>
-            <option value="environment">Environment</option>
-            <option value="gender">Gender</option>
-            <option value="health">Health</option>
-            <option value="humanrights">Human Rights</option>
-						<option value="infrastructure">Infrastructure</option>
-						<option value="justice">Justice</option>
-						<option value="livelihood">Livelihood</option>
-						<option value="poverty">Poverty</option>
-						<option value="other">Other</option>
-          </select>
+					<FilterAreaOfWork onChange={onFilterChangeProject} />
         </div>
       </form>
 			</div>

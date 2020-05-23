@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
 import { Card, Col, Form, Spinner } from 'react-bootstrap';
 import { signUp } from '../../Actions/signUpActions';
-import CheckboxGroup, { Checkbox } from './Checkboxs.component';
+import CheckboxGroup, { Checkbox } from '../utilities/Checkboxs.component';
 import Thumb from '../utilities/thumb.component';
 
 import '../../css/form.css';
@@ -509,14 +509,32 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             <Field
               component={Checkbox}
               name="areaOfWork"
-              id="communication"
-              label="Communication"
-            />  
+              id="animalWelfare"
+              label="Animal Welfare"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="artsAndCulture"
+              label="Arts and Culture"
+            /> 
             <Field
               component={Checkbox}
               name="areaOfWork"
               id="communityDevelopment"
               label="Community Development"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="disability"
+              label="Disability"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="disaster"
+              label="Disaster"
             />
             <Field
               component={Checkbox}
@@ -527,8 +545,68 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             <Field
               component={Checkbox}
               name="areaOfWork"
+              id="primary"
+              label=" - Primary"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="secondary"
+              label=" - Secondary"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="higher"
+              label=" - Higher"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="energy"
+              label="Energy"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
               id="environment"
               label="Environment"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="forest"
+              label=" - Forest"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="water"
+              label=" - Water"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="equality"
+              label="Equality"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="food"
+              label="Food"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="agriculture"
+              label=" - Agriculture"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="fisheries"
+              label=" - Fisheries"
             />
             <Field
               component={Checkbox}
@@ -539,13 +617,31 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             <Field
               component={Checkbox}
               name="areaOfWork"
+              id="womenEmpowerment"
+              label=" - Women Empowerment"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
               id="health"
               label="Health"
             />
             <Field
               component={Checkbox}
               name="areaOfWork"
-              id="humanrights"
+              id="motherAndChildHealth"
+              label=" - Mother and Child Health"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="elderlyHealth"
+              label=" - Elderly Health"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="humanRights"
               label="Human Rights"
             />
             <Field
@@ -554,12 +650,18 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
               id="infrastructure"
               label="Infrastructure"
             />
-              <Field
-                component={Checkbox}
-                name="areaOfWork"
-                id="justice"
-                label="Justice"
-              />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="it"
+              label="IT"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="justice"
+              label="Justice"
+            />
             <Field
               component={Checkbox}
               name="areaOfWork"
@@ -569,8 +671,44 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             <Field
               component={Checkbox}
               name="areaOfWork"
-              id="poverty"
-              label="Poverty"
+              id="peace"
+              label="Peace"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="povertyAlleviation"
+              label="Poverty Alleviation"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="recycling"
+              label="Recycling"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="sanitation"
+              label="Sanitation"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="sports"
+              label="Sports"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="terrorism"
+              label="Terrorism"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
+              id="waste"
+              label="Waste"
             />
             <Field
               component={Checkbox}

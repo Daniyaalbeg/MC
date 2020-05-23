@@ -40,6 +40,7 @@ let promises = [
         numberOfOrganisations += 1
       }
     })
+    return res.status(200)
   }),
   Event.countDocuments({})
     .then((count) => { numberOfEvents = count }),
@@ -47,6 +48,8 @@ let promises = [
 
 Promise.all(promises)
 .then(() => {
+  // console.log(numberOfEvents)
+  // console.log(numberOfUsers)
   res.status(200).json({
     numberOfEvents: numberOfEvents,
     numberOfUsers: numberOfUsers,

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons'
 import filterAndSearch from '../utilities/filterAndSearch';
 import { searchEvents, filterEvents, filterEventsType } from '../../Actions/filterSearchEventAction';
+import { FilterRationType, FilterOrgType } from '../utilities/filterOptions'
 import EventInfoView from './eventInfoView.component';
 import sack from '../../assets/svg/sack.svg'
 import mask from '../../assets/svg/mask.svg'
@@ -78,26 +79,11 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
         <div className="filters">
           <div className="filterSelect">
             <FontAwesomeIcon icon={faFilter} className="filterIcon" size="1x"/>
-            <select onChange={onFilterChangeType}>
-              <option value="all"> All </option>
-              <option value ="food">Food</option>
-              <option value="ppe">PPE</option>
-              <option value="money">Money</option>
-              <option value="clothes">Clothes</option>
-            </select>
+            <FilterRationType onChange={onFilterChangeType} />
           </div>
           <div className="filterSelect">
             <FontAwesomeIcon icon={faFilter} className="filterIcon" size="1x"/>
-            <select onChange={onFilterChange}>
-              <option value="all"> All </option>
-              <option value ="Armed Forces">Armed Forces</option>
-              <option value="Community">Community</option>
-              <option value="Corporate">Corporate</option>
-              <option value="Civil Society">Civil Society</option>
-              <option value="Government">Government</option>
-              <option value="Individual">Individual</option>
-              <option value="NGO">NGO</option>
-            </select>
+            <FilterOrgType onChange={onFilterChange} />
           </div>
         </div>
       </form>

@@ -18,7 +18,7 @@ const filterAndSearch = (events, filterType, filter, search) => {
     if (filter === "all") {
       return true
     } else {
-      if (filter === event.supplier.type) {
+      if (filter === event.createdBy.type) {
         return true
       } else {
         return false;
@@ -27,7 +27,7 @@ const filterAndSearch = (events, filterType, filter, search) => {
   });
   const searchedAndFilteredEvents = filteredEvents.filter((event) => {
     try {
-      return (event.name.toLowerCase().includes(search) || event.supplier.supplierName.toLowerCase().includes(search) || event.supplier.description.toLowerCase().includes(search) || event.itemsDescription.toLowerCase().includes(search) || event.typeOfRation.toLowerCase().includes(search))
+      return (event.name.toLowerCase().includes(search) || event.createdBy.supplierName.toLowerCase().includes(search) || event.createdBy.description.toLowerCase().includes(search) || event.itemsDescription.toLowerCase().includes(search) || event.typeOfRation.toLowerCase().includes(search))
     } catch {
       return false
     }

@@ -93,8 +93,15 @@ router.route('/create').post(verifyToken, (req, res, next) => {
 
 //Get all  events
 router.route('/').get((req, res) => {
-  Event.find({ approved: true }, (err, events) => {
+  Event.find({ approved: true })
+  .lean()
+  .populate('createdBy')
+  .exec((err, events) => {
     if (err) { return res.status(500).send("Error getting events")}
+    events.forEach((event) => {
+      event.createdBy = event.createdBy.supplier
+      event.createdBy.events = null
+    })
     res.status(200).json(events);
   })
 

@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import { Link, Redirect } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
-import { Checkbox } from '../signup/Checkboxs.component';
+import { Checkbox } from '../utilities/Checkboxs.component';
 import { updateEvent, updatingEventRedirect } from '../../Actions/updateActions';
 import UpdateMap from './updateMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';

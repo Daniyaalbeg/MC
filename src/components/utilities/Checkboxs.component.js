@@ -32,12 +32,16 @@ export default class CheckboxGroup extends React.Component {
         "is-success": value || (!error && touched), // handle prefilled or user-filled
         "is-error": !!error && touched
       },
-      className
+      className,
     );
 
     return (
       <div className={classes}>
-        <fieldset>
+        <fieldset  style={{
+        display: "flex",
+        width: "100%",
+        justifyContent: 'center'
+        }}>
           <legend>{label}</legend>
           {React.Children.map(children, child => {
             return React.cloneElement(child, {
@@ -64,7 +68,11 @@ export const Checkbox = ({
   ...props
 }) => {
   return (
-    <div>
+    <div style={{
+      display: 'flex',
+      alignItems: 'baseline',
+      // justifyContent: 'center'
+    }}>
       <input
         name={name}
         id={id}
@@ -75,7 +83,7 @@ export const Checkbox = ({
         onBlur={onBlur}
         className={classNames("radio-button")}
       />
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} style={{marginLeft: "5px"}}>{label}</label>
       {touched[name] && <InputFeedback className="checkboxError" error={errors[name]} />}
     </div>
   );
