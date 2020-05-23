@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelopeSquare } from '@fortawesome/pro-solid-svg-icons'
 
+import badlde from '../../assets/logo/badlde.png'
+import serendip from '../../assets/logo/serendip.jpg'
+
 import photo0 from '../../assets/Images/oldman.jpg'
 import photo3 from '../../assets/Images/chitralman.jpg'
 import photo2 from '../../assets/Images/doobi.jpg'
@@ -65,8 +68,22 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
     <div className="separator text-muted featuredText fontProxima"> MAP TO INFORM </div>
     <MapIconKey />
     <HomeViewMap />
+    <div className="separator text-muted featuredText fontProxima"> OUR PARTNERS </div>
+    <Partners />
     <Footer />
     </>
+  )
+}
+
+const Partners = () => {
+  return (
+    <div className="aboutLogo" style={{marginTop: '32px'}}>
+        <div className="logoRow" style={{justifyContent: 'center'}}>
+          {/* <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a> */}
+          <a href="https://badlde.org" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={badlde} alt="error" /></a>
+          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
+        </div>
+      </div>
   )
 }
 

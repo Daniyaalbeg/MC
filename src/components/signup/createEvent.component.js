@@ -118,7 +118,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
           <Redirect push to="/" /> 
         }
       </Fragment>
-      <Card.Header> Create New Event </Card.Header>
+      <Card.Header> Create New Ration Drive </Card.Header>
 
       <Formik
         initialValues={{
@@ -164,7 +164,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
-          <Form.Label>Name of Event <span className="red">*</span></Form.Label>
+          <Form.Label>Name of Ration Drive <span className="red">*</span></Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter name"
@@ -180,7 +180,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescription">
-          <Form.Label>Description of Event <span className="red">*</span></Form.Label>
+          <Form.Label>Description of Ration Drive <span className="red">*</span></Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -289,7 +289,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
       
 
         <Form.Group>
-          <Form.Label> Date of the Event (Can be in the future or past) <span className="red">*</span> </Form.Label>
+          <Form.Label> Date of the Drive (Can be in the future or past) <span className="red">*</span> </Form.Label>
           <br />
           <DatePicker
             selected={values.date}
@@ -302,7 +302,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Select Location of the Event <span className="red">*</span> </Form.Label>
+          <Form.Label> Select Location of the Drive <span className="red">*</span> </Form.Label>
           <SelectMap
             id="mapClicked"
             name="mapClicked"

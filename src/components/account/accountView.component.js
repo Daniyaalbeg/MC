@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Tab from 'react-bootstrap/Tab';
+import { Tabs, Panel } from '@bumaga/tabs'
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container'
 import '../../css/accountView.css'
@@ -9,7 +9,8 @@ import ProfileInfoView from './profileInfoView.component';
 import SupplierInfoView from './supplierInfoView.component';
 import EventView from './eventView.component'
 import { getUserInfo } from '../../Actions/userInfoActions';
-import { Row, Col, Nav } from 'react-bootstrap';
+import { Col, Nav } from 'react-bootstrap';
+import { Tab } from '../utilities/tabComponent';
 
 const AccountView = ({dispatch, fetched, loading, token, userId, username, email, supplier, approved, verified, createdAt, hasErrors, error, props}) => {
   
@@ -21,42 +22,32 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
     if (hasErrors) return (<h1> Error occured, cannot get user info. Please accept our humblest apologies</h1>);
     if (!loading && fetched) { 
       return (
-        <Tab.Container defaultActiveKey="userInfo">
+        <Tabs>
           <Nav variant="pills" className="flex-column">
             <Container>
-              <Row>
-                <Col>
-                  <Nav.Item>
-                    <Nav.Link eventKey="userInfo" className="centreText"> User Info </Nav.Link>
-                  </Nav.Item>
-                  </Col>
-                  <Col>
-                  <Nav.Item>
-                    <Nav.Link eventKey="supplierInfo" className="centreText"> Organisation </Nav.Link>
-                  </Nav.Item>
-                  </Col>
-                  <Col>
-                  <Nav.Item>
-                    <Nav.Link eventKey="events" className="centreText"> Events Info </Nav.Link>
-                  </Nav.Item>
-                </Col>
-              </Row>
+              <div className="accountTabHeaders">
+                <Tab>
+                  User Info
+                </Tab>
+                <Tab>
+                  Organisation
+                </Tab>
+                <Tab>
+                  Ration Info
+                </Tab>
+              </div>
             </Container>
           </Nav>
-          <Col>
-            <Tab.Content>
-              <Tab.Pane eventKey="userInfo">
-                <ProfileInfoView id={userId} token={token} username={username} email={email} approved={approved} createdAt={createdAt} verified={verified} />
-              </Tab.Pane>
-              <Tab.Pane eventKey="supplierInfo">
-                <SupplierInfoView supplier={supplier} />
-              </Tab.Pane>
-              <Tab.Pane eventKey="events">
-                <EventView events={supplier.events} handleClose={props.handleClose}/>
-              </Tab.Pane>
-            </Tab.Content>
-          </Col>
-        </Tab.Container>
+          <Panel className="accountViewPanel">
+            <ProfileInfoView id={userId} token={token} username={username} email={email} approved={approved} createdAt={createdAt} verified={verified} />
+          </Panel>
+          <Panel className="accountViewPanel">
+            <SupplierInfoView supplier={supplier} />
+          </Panel>
+          <Panel className="accountViewPanel">
+            <EventView events={supplier.events} handleClose={props.handleClose}/>
+          </Panel>
+        </Tabs>
       )
     } else {
       return(

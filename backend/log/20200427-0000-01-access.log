@@ -1,4 +1,0 @@
-::1 - - [26/Apr/2020:11:55:13 +0000] "GET /rationEvent HTTP/1.1" 200 19604 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
-::1 - - [26/Apr/2020:12:32:53 +0000] "GET /supplier/ HTTP/1.1" 200 22192 "http://localhost:3000/organisations" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
-::1 - - [26/Apr/2020:12:33:13 +0000] "POST /auth/login HTTP/1.1" 200 195 "http://localhost:3000/organisations" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
-::1 - - [26/Apr/2020:12:33:13 +0000] "GET /auth/me HTTP/1.1" 200 4267 "http://localhost:3000/organisations" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"

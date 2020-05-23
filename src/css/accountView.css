@@ -6,6 +6,15 @@
 .centreText {
   text-align: center;
 }
+.accountTabHeaders {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.accountViewPanel {
+  margin-right: 10px;
+  margin-left: 10px;
+}
 
 
 /* .red {

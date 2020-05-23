@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react'
 import { Card, Row, Accordion, Spinner } from 'react-bootstrap'
-import { Tabs, useTabState, Panel } from '@bumaga/tabs'
+import { Tabs, Panel } from '@bumaga/tabs'
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../Actions/userInfoActions'
 import { getCnic } from '../../Actions/cnicActions';
 import CnicAddNew from './cnicAddNew.component'
 import EventItemCard from '../account/eventItemCard.component'
+import { Tab } from '../utilities/tabComponent';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/pro-light-svg-icons'
@@ -18,18 +19,6 @@ const MustBeLoggedIn = () => {
     <div className="cnicMustBeLoggedIn">
       <h4 className="cnicLoggedInHeading"> Must be logged in and verified to view </h4>
     </div>
-  )
-}
-
-const cn = (...args) => args.filter(Boolean).join(' ')
-
-const Tab = ({ children }) => {
-  const { isActive, onClick } = useTabState()
-
-  return (
-    <button className={cn('tab', isActive && 'active') + ' icon'} onClick={onClick}>
-      {children}
-    </button>
   )
 }
 

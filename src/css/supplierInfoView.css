@@ -17,7 +17,6 @@
 
 .imageContainer {
   position: relative;
-
   height: 200px;
   width: auto;
   border-radius: 0.25rem;
@@ -26,6 +25,6 @@
   border-radius: 0.25rem;
   position: absolute;
   object-fit: scale-down;
-  width: auto;
+  width: 100%;
   height: 100%;
 }

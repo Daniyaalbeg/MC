@@ -26,7 +26,7 @@ const NavigationBar = () => {
             <Nav.Item><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
-            <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item>
+            {/* <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item> */}
           </Nav>
           {/* <NavLink to="/login"> Log in </NavLink> */}
           <LoginModal openModal={openModal} closeModal={closeModal} show={show}/>
@@ -45,7 +45,7 @@ const NavigationBar = () => {
             <Nav.Item><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
-            <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item>
+            {/* <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item> */}
           </Nav>
           {/* <NavLink to="/login"> Log in </NavLink> */}
           <LoginModal openModal={openModal} closeModal={closeModal} show={show}/>

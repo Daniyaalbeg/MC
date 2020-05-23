@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/about.css'
 import McLogo from '../assets/McLogo.png'
 
-import akho from '../assets/logo/akho.svg'
+// import akho from '../assets/logo/akho.svg'
 import badlde from '../assets/logo/badlde.png'
 import serendip from '../assets/logo/serendip.jpg'
 
@@ -54,7 +54,7 @@ const About = () => {
       <div className="aboutLogo">
         <h4 className="aboutOurPartners" > Our Partners </h4>
         <div className="logoRow">
-          <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a>
+          {/* <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a> */}
           <a href="https://badlde.org" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={badlde} alt="error" /></a>
           <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
         </div>
