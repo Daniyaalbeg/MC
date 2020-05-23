@@ -25,11 +25,10 @@ router.route('/').get((req, res) => {
   let numberOfEvents = 0
 
 let promises = [
-  User.find(null, (err, result) => {
-    if (err) {
-      return res.status(500).send("An error occured")
-    }
+  User.find(null)
+  .then((result) => {
     if (!result) {
+      console.log("Error finding user numbers")
       return res.status(500).send("Cannot find number of users")
     }
     result.forEach((user) => {
@@ -43,13 +42,11 @@ let promises = [
     return res.status(200)
   }),
   Event.countDocuments({})
-    .then((count) => { numberOfEvents = count }),
+  .then((count) => { numberOfEvents = count }),
 ]
 
 Promise.all(promises)
 .then(() => {
-  // console.log(numberOfEvents)
-  // console.log(numberOfUsers)
   res.status(200).json({
     numberOfEvents: numberOfEvents,
     numberOfUsers: numberOfUsers,

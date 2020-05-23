@@ -45,7 +45,6 @@ export default function homeViewReducer(state = initialState, action) {
         featuredLoading: true
       }
     case actions.GET_FEATURED_INFO_SUCCESS:
-      console.log(action.payload)
       return {
         ...state,
         featuredLoading: false,
