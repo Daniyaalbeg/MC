@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 let uri = null
 
-if (process.env.NODE_ENV) {
+if (process.env.NODE_ENV === "production") {
     uri = process.env.ATLAS_URI_PROD;
 } else {
     uri = process.env.ATLAS_URI_TEST;
