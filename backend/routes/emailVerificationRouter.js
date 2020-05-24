@@ -61,15 +61,15 @@ const sendVerificationEmail = (user, callback, errorCallback) => {
   var token = jwt.sign({ id: userObject}, secret)
 
   var transporter = nodemailer.createTransport({
-    host: 'smtp.stackmail.com',
-    port: 587,
-    secure: false,
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USERNAME,
       pass: process.env.EMAIL_PASSWORD
     },
     tls: {
-      rejectUnauthorized: false
+      rejectUnauthorized: true
     }
   });
 
