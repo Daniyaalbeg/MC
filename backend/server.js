@@ -25,6 +25,8 @@ var accessLogStream = rfs.createStream('access.log', {
   path: path.join(__dirname, 'log')
 })
 
+process.env.NODE_ENV = 'production';
+
 const express = require('express');
 const cors = require('cors');
 
@@ -33,7 +35,6 @@ require('dotenv').config();
 const app = express();
 const db = require('./db.js');
 
-process.env.NODE_ENV = 'development';
 
 const local = {
   port: process.env.PORT || 8000,
