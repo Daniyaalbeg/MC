@@ -8,7 +8,7 @@ const EventItemCard = (props) => {
   const event = props.event;
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" };
   return (
-    <Card className="eventListCard">
+    <Card style={{marginTop: "0px", marginBottom: "0px"}}>
       <Accordion.Toggle as={Card.Header} className="eventCardInfo justify-content-between" eventKey={event._id}>
         <div>
           <Card.Title> {event.name} </Card.Title>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Modal, Carousel, Row } from 'react-bootstrap';
+import { Modal, Carousel, Row, Spinner } from 'react-bootstrap';
 import '../../css/eventInfoView.css'
 // import EventItemInfoMap from './eventItemInfoMap.component.js';
 
@@ -88,6 +88,12 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
         <button className="standardButton eventModalDeleteButton redVersion" onClick={() => {
           dispatch(deleteEvent(event._id))
         }}>
+          {
+          deletingEvent ? 
+          <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+          :
+          null
+        }
           {deletingEvent ? "Deleting" : "Delete"}
         </button>
         <button className="standardButton" onClick={() => {

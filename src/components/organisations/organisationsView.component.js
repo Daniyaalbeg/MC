@@ -55,7 +55,7 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
         <FontAwesomeIcon icon={faSearch} className="searchIcon1"/>
         <input type='text' className="searchBar1" onChange={onSearchChange}/>
         <FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
-        <div className="filterSelect1">
+        <div className="filterSelect1" style={{marginRight: "10px"}}>
 					<FilterOrgType onChange={onFilterChangeType} />
         </div>
 				<FontAwesomeIcon icon={faFilter} className="filterIcon1"/>

@@ -194,15 +194,17 @@
   background-color: #F2F2F2;
   border: 1px solid rgb(228, 228, 228);
   border-radius: 5px;
-  box-shadow: 2px 2px 20px -10px gray;
+  box-shadow: 2px 2px 10px -5px gray;
   margin-bottom: 2rem;
   overflow: hidden;
+  cursor: pointer;
 }
 .featuredOrgImage {
   height: 200px;
   width: 100%;
   object-fit: contain;
   background-color: #ffffff;
+  padding: 5px;
 }
 .featuredOrgText {
   margin-top: 10px;
@@ -245,7 +247,7 @@
   margin-top: 20px;
   margin-bottom: 60px;
   border-radius: 5px;
-  box-shadow: 2px 2px 25px -10px gray;
+  box-shadow: 2px 2px 10px -5px gray;
 }
 .mapScreenshot {
   object-fit: cover;
@@ -264,7 +266,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: baseline;
   color: #F2F2F2;
   font-family: proximaNova;
   font-size: 12px;
@@ -278,6 +280,9 @@
   margin-top: 5px;
   margin-bottom: 10px;
 }
+.footHeader {
+  font-size: 20px;
+}
 .aboutUsCustom {
   color: #F2F2F2;
 }
@@ -285,11 +290,11 @@
   text-decoration: underline;
 }
 .footerIcon {
-  color: #ffffff;
+  color: #e7e7e7;
   font-size: 3em;
   margin: 5px;
 }
 .footerIcon:hover {
-  color: #F2F2F2;
+  color: #ffffff;
   cursor: pointer;
 }

@@ -28,6 +28,8 @@
   position: relative;
   height: 200px;
   width: auto;
+  background-color: rgb(228, 228, 228);
+  overflow: hidden;
   }
   .img {
   position: absolute;
@@ -38,6 +40,7 @@
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+
   }
 
 .carouselImage {
@@ -52,6 +55,7 @@ p {
 .imageCarouselContainer {
   width: 100%;
   margin-bottom: 12px;
+  overflow: hidden;
 }
 
 .imageCarousel {

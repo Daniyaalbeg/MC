@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { Row, Card, Form } from 'react-bootstrap';
+import { Row, Card, Form, Spinner } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
@@ -126,7 +126,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
           description: "",
           numOfItems: "",
           descriptionOfItems: "",
-          typeOfEvent: "",
+          typeOfEvent: "clothes",
           images: [],
           date: new Date(),
           agreedToTerms: false,
@@ -143,7 +143,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             description: values.description,
             totalNumberOfItems: values.numOfItems,
             itemsDescription: values.descriptionOfItems,
-            typeOfRation: values.typeOfRation,
+            typeOfRation: values.typeOfEvent,
             images: values.images,
             location: newPoint,
             date: values.date
@@ -233,16 +233,16 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
           <Form.Label>Type of Rations distributed <span className="red">*</span></Form.Label>
           <Form.Control
             as="select"
-            name="typeOfRation"
+            name="typeOfEvent"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.typeOfRation}
+            value={values.typeOfEvent}
           >
-            <option value="clothes">Clothes</option>
+            <option value="clothes" selected>Clothes</option>
             <option value="food">Food</option>
             <option value="money">Money</option>
-            <option value="ppe">PPE</option>
-            <option value="ramadan">Ramadan</option>
+            <option value="ppe">PPE (Personal Protection Equipment)</option>
+            {/* <option value="ramadan">Ramadan</option> */}
             <option value="other">Other</option>
           </Form.Control>
         </Form.Group>
@@ -329,6 +329,12 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <button className="standardButton" type="submit" disabled={loading}>
+          {
+            loading ? 
+            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+            :
+            null
+          }
           {loading ? 'Creating Event' : 'Create Event'}
         </button>
 

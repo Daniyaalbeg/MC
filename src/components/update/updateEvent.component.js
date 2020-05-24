@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { Row, Card, Form } from 'react-bootstrap';
+import { Row, Card, Form, Spinner } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Link, Redirect } from 'react-router-dom';
 import { Formik, Field } from 'formik';
@@ -274,7 +274,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
                 <p>Drag 'n' images here, or click to select images</p>
                 <Row> {
                 values.images.map((file) => {
-                  return <Thumb file={file} key={file} />
+                  return <Thumb file={file} key={file.name} />
                 })
               } </Row>
               </div>
@@ -334,6 +334,12 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
         </Form.Group>
 
         <button className="standardButton" type="submit" disabled={loading}>
+          {
+            loading ? 
+            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+            :
+            null
+          }
           {loading ? 'Updating Event' : 'Update Event'}
         </button>
 

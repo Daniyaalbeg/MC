@@ -7,7 +7,7 @@ import { getStatInfo, getFeaturedInfo } from '../../Actions/homeViewActions';
 import { getUserInfo } from '../../Actions/userInfoActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelopeSquare } from '@fortawesome/pro-solid-svg-icons'
+import { faEnvelopeSquare, faInfoSquare } from '@fortawesome/pro-solid-svg-icons'
 
 import badlde from '../../assets/logo/badlde.png'
 import serendip from '../../assets/logo/serendip.jpg'
@@ -90,23 +90,23 @@ const Partners = () => {
 const Footer = (props) => {
   return (
     <div className="homeViewFooter">
-      <div className ="homeViewFooterItem">
-        <h4> Connect </h4>
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookSquare} className="footerIcon" /></a>
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagramSquare} className="footerIcon" /></a>
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitterSquare} className="footerIcon" /></a>
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faEnvelopeSquare} className="footerIcon" /></a>
+      <div className ="homeViewFooterItem" style={{textAlign: "center"}}>
+        <p className="footHeader"> Connect </p>
+        <a href="https://www.facebook.com/ministryochange" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookSquare} className="footerIcon" /></a>
+        <a href="https://instagram.com/ministry.of.change" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagramSquare} className="footerIcon" /></a>
+        <a href="https://twitter.com/ministrychange" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitterSquare} className="footerIcon" /></a>
+        <a href="mailto:info@ministryofchange.org" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faEnvelopeSquare} className="footerIcon" /></a>
+      </div>
+      <div className ="homeViewFooterItem" style={{textAlign: "center"}}>
+        <p className="footHeader"> About Us </p>
+        <Link to="/about" className="navlink aboutUsCustom"><FontAwesomeIcon icon={faInfoSquare} className="footerIcon" /></Link>
       </div>
       <div className ="homeViewFooterItem">
-        <Link to="/about" className="navlink aboutUsCustom"><h4> About Us </h4></Link>
-      </div>
-      <div className ="homeViewFooterItem">
-        <h4> Contact</h4>
+        <p className="footHeader"> Contact</p>
         <hr className="footerDash"/>
         <p> Address: </p>
         <p> 1A Park Road, Chakshahzad </p>
         <p style={{marginBottom: '5px'}}> Islamabad, Pakistan </p>
-        <p style={{marginBottom: '5px'}}> 03028911883 </p>
         <p> info@ministryofchange.org </p>
       </div>
     </div>
