@@ -10,13 +10,13 @@ const Sentry = require('@sentry/node');
 Sentry.init({ dsn: 'https://ebe7cda610d24b159425f7f43c5d3662@o382800.ingest.sentry.io/5212202' });
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  windowMs: 1 * 60 * 1000, // 1 minutes
+  max: 500 // limit each IP to 1000 requests per windowMs
 });
 
 const speedLimiter = slowDown({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  delayAfter: 100, // allow 100 requests per 15 minutes, then...
+  windowMs: 1 * 60 * 1000, // 1 minutes
+  delayAfter: 500, // allow 100 requests per 15 minutes, then...
   delayMs: 500 // begin adding 500ms of delay per request above 100:
 });
 
@@ -25,7 +25,7 @@ var accessLogStream = rfs.createStream('access.log', {
   path: path.join(__dirname, 'log')
 })
 
-process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'development';
 
 const express = require('express');
 const cors = require('cors');
@@ -41,7 +41,12 @@ const local = {
   environment: process.env.NODE_ENV
 };
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true}));
+if (process.env.NODE_ENV === "production") {
+  app.use(cors({ origin: 'https://ministryofchange.org', credentials: true}));
+} else {
+  app.use(cors({ origin: 'http://localhost:3000', credentials: true}));
+}
+
 app.use(cookieParser())
 app.use(express.json());
 app.use(limiter);
