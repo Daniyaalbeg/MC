@@ -5,6 +5,8 @@ export const GET_USER_INFO = "GET_USER_INFO";
 export const GET_USER_INFO_SUCCESS = "GET_USER_INFO_SUCCESS";
 export const GET_USER_INFO_FAILURE = "GET_USER_INFO_FAILURE";
 
+export const RESET_USER_INFO_GET = "RESET_USER_INFO_GET"
+
 export const DELETE_USER_INFO_EVENT = "DELETE_USER_INFO_EVENT"
 
 export const gettingUserInfo = () => ({
@@ -19,6 +21,10 @@ export const gettingUserInfoSuccess = (userInfo) => ({
 export const gettingUserInfoFailure = (error) => ({
   type: GET_USER_INFO_FAILURE,
   payload: error
+});
+
+export const resetUserInfoGet = () => ({
+  type: RESET_USER_INFO_GET
 });
 
 export const deleteUserInfoEvent = (id) => ({

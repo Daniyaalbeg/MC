@@ -43,6 +43,13 @@ export default function userInfoReducer(state = initialState, action) {
         loading: false,
         error: action.payload
       }
+    case actions.RESET_USER_INFO_GET:
+      return {
+        ...state,
+        fetched: false,
+        loading: false,
+        hasErrors: false
+      }
     case LOGOUT:
       return initialState
     case actions.DELETE_USER_INFO_EVENT:

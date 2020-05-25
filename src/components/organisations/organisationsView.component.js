@@ -90,7 +90,7 @@ const OrgCards = (props) => {
 									{/* {createStarRing(Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4)} */}
 									{createStarRing(org.verifiedStepA, org.verifiedStepB, org.verifiedStepC, org.verifiedStepD, org.verifiedStepE, (org.verifiedStepA && org.verifiedStepB && org.verifiedStepC && org.verifiedStepD && org.verifiedStepE))}
 								</div>
-								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
+								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
 								<Card.Body>
 									<Card.Title className="headerText"> {org.supplierName} </Card.Title>
 								</Card.Body>

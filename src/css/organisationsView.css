@@ -147,10 +147,9 @@
 .cardImage {
     height: 150px;
     width: 100%;
-    object-fit: scale-down;
-    padding: 5px;
+    object-fit: cover;
     background-color: #ffffff;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .headerText {

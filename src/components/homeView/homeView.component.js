@@ -43,10 +43,10 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
     if (!featuredFetched && !featuredLoading) {
       dispatch(getFeaturedInfo())
     }
-    if (!userInfoFetched && !userInfoHasError && !userInfoLoading) {
+    if (!userInfoFetched && !userInfoLoading) {
       dispatch(getUserInfo())
     }
-  })
+  }, [])
 
   return (
     <>

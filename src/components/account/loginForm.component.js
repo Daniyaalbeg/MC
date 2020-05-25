@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 import { signupReset } from '../../Actions/signUpActions';
 import { login } from '../../Actions/authActions';
+import { resetUserInfoGet } from '../../Actions/userInfoActions'
 
 
 const validationSchema = Yup.object().shape({
@@ -25,6 +26,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
     initialValues={{ email: "", password: ""}}
     validationSchema={validationSchema}
     onSubmit={(values) => {
+      dispatch(resetUserInfoGet())
       dispatch(login({
         email: values.email,
         password: values.password
