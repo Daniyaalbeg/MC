@@ -41,8 +41,25 @@ const local = {
   environment: process.env.NODE_ENV
 };
 
+const allowedOrigins = [
+  'https://ministryofchange.org',
+  'https://www.ministryofchange.org'
+]
+
 if (process.env.NODE_ENV === "production") {
-  app.use(cors({ origin: 'https://ministryofchange.org', credentials: true}));
+  app.use(cors({ origin: (origin, callback) => {
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true 
+  }));
 } else {
   app.use(cors({ origin: 'http://localhost:3000', credentials: true}));
 }
