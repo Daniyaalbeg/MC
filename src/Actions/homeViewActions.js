@@ -35,6 +35,9 @@ export function getStatInfo() {
     })
     .catch((error) => {
       dispatch(gettingStatInfoFailure(error));
+      setTimeout(() => {
+        dispatch(getStatInfo())
+      }, 2000)
     });
   }
 }
@@ -73,6 +76,9 @@ export function getFeaturedInfo() {
     })
     .catch((error) => {
       dispatch(gettingFeaturedInfoFailure(error));
+      setTimeout(() => {
+        dispatch(getFeaturedInfo())
+      }, 2000)
     });
   }
 }

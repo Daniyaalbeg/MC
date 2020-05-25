@@ -44,7 +44,7 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           }}>
             Back 
           </button>
-          <Card.Img className="orgInfoImage" variant="top" src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt=""/>
+          <Card.Img className="orgInfoImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
           <hr />
           <Card.Title> {org.supplierName} </Card.Title>
           <Card.Subtitle> {org.type} </Card.Subtitle>

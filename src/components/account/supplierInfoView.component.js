@@ -5,6 +5,7 @@ import '../../css/supplierInfoView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
+import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 export const BankingDetails = (props) => {
   const bankInfo = props.bankingDetails;
@@ -83,7 +84,7 @@ const SupplierInfoView = (props) => {
       <hr />
       <h6 className="text-muted"> {props.supplier.type} logo </h6>
       <div className="imageContainer">
-        <img src={props.supplier.supplierImageURL} className="supplierImage" alt=""/>
+        <img src={props.supplier.supplierImageURL ? props.supplier.supplierImageURL : imagePlaceholder} className="supplierImage" alt=""/>
       </div>
       <hr />
       <BankingDetails bankingDetails={props.supplier.bankingDetails} />

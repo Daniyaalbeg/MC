@@ -43,6 +43,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
               type="email"
               name="email"
               placeholder="Email"
+              autoComplete="username"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
@@ -62,6 +63,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
               type="password"
               name="password"
               placeholder="Password"
+              autoComplete="current-password"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}

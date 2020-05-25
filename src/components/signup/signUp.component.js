@@ -219,6 +219,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             type="email" 
             placeholder="Enter email"
             name="email"
+            autoComplete="username"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
@@ -254,6 +255,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             name="password"
             type="password"
             placeholder="Password"
+            autoComplete="new-password"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.password}

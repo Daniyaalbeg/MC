@@ -160,7 +160,7 @@ const MapIconKey = (props) => {
 const FeaturedOrganisation = (props) => {
   const { featuredOrgs, loading, hasErrors } = props
   if (hasErrors) {
-    return <p> error </p>
+    return <p> Cannot load featured organisations </p>
   }
   if (loading) {
     return (
@@ -178,7 +178,7 @@ const FeaturedOrganisation = (props) => {
           return (
             <div className="featuredOrgCard grow" key={org._id}>
             <Link className="featuredLink" to={'/organisations/'+org._id}>
-              <img src={org.supplierImageURL !== undefined ? org.supplierImageURL : imagePlaceholder} alt="error" className="featuredOrgImage" />
+              <img src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt="error" className="featuredOrgImage" />
               <p className="featuredOrgText"> {org.supplierName} </p>
               <hr className="featuredOrgDivider" />
               {/* <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} /> */}

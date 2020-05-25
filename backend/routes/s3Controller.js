@@ -8,8 +8,8 @@ aws.config.update({
   secretAccessKey: process.env.S3_SECRET
 });
 
-const S3_BUCKET = process.env.BUCKET_NAME_PROD;
-const S3_BUCKET_CNIC_FILES = process.env.BUCKET_NAME_PROD_CNIC
+const S3_BUCKET = process.env.NODE_ENV === "production" ?  process.env.BUCKET_NAME_PROD : process.env.BUCKET_NAME_TEST;
+const S3_BUCKET_CNIC_FILES =  process.env.NODE_ENV === "production" ?  process.env.BUCKET_NAME_PROD_CNIC : process.env.BUCKET_NAME_TEST;
 
 exports.uploadDocument = (verifyToken, (req, res, next) => {
   const s3 = new aws.S3();
@@ -53,7 +53,6 @@ async function deleteFile(objectNames) {
       Objects: objectNames.map(o => ({Key: o.split('/')[4]}))
     },
   }
-
   console.log('waited')
 
   // s3.deleteObjects(params)

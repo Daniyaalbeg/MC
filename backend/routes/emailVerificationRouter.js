@@ -86,9 +86,9 @@ const sendVerificationEmail = (user, callback, errorCallback) => {
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
-      errorCallback()
+      // errorCallback()
     } else {
-      callback()
+      // callback()
       console.log('Email sent: ' + info.response);
     }
   });

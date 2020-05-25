@@ -217,15 +217,21 @@
   border-radius: 5px;
   box-shadow: 2px 2px 10px -5px gray;
   margin-bottom: 2rem;
-  overflow: hidden;
   cursor: pointer;
+  overflow: hidden;
 }
 .featuredOrgImage {
+  box-sizing: border-box;
   height: 200px;
   width: 100%;
-  object-fit: contain;
+  /* margin: 5px 5px 5px 5px;
+  width: -moz-calc(100% - 10px);
+  width: -webkit-calc(100% - 10px);
+  width: -o-calc(100% - 10px);
+  width: calc(100% - 10px); */
+  object-fit: cover;
   background-color: #ffffff;
-  padding: 5px;
+  /* border-radius: 5px; */
 }
 .featuredOrgText {
   margin-top: 10px;

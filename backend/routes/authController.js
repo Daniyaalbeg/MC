@@ -98,7 +98,9 @@ router.route('/createUser').post([
         auth: true,
         token, token
       });
-      email.sendVerificationEmail(newUser);
+      email.sendVerificationEmail(newUser,
+        () => {console.log("sending email")},
+        () => {console.log("failed sending email")});
     })
     .catch((error) => {
       console.log(error);
