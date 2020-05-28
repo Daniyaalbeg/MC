@@ -10,6 +10,7 @@
 
 .orgInfoCard {
     font-family: proximaNova;
+    margin: auto;
 }
 
 
@@ -154,6 +155,10 @@
 
 .headerText {
     text-align: center;
+    color: #212529;
+}
+.headerText:hover {
+    color: #212529;
 }
 
 .descText {
