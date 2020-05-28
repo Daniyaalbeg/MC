@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getUserInfo } from '../../Actions/userInfoActions'
 import { getCnic } from '../../Actions/cnicActions';
 import CnicAddNew from './cnicAddNew.component'
-import EventItemCard from '../account/eventItemCard.component'
+import EventItemCard from '../dashboard/eventItemCard.component'
 import { Tab } from '../utilities/tabComponent';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

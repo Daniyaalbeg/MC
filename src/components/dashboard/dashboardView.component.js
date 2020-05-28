@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Tabs, Panel } from '@bumaga/tabs'
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container'
-import '../../css/accountView.css'
+//css for this was moved to dashboard.css
 
 import ProfileInfoView from './profileInfoView.component';
 import SupplierInfoView from './supplierInfoView.component';
@@ -12,7 +12,9 @@ import { getUserInfo } from '../../Actions/userInfoActions';
 import { Col, Nav } from 'react-bootstrap';
 import { Tab } from '../utilities/tabComponent';
 
-const AccountView = ({dispatch, fetched, loading, token, userId, username, email, supplier, approved, verified, createdAt, hasErrors, error, props}) => {
+import { logout } from '../../Actions/authActions'
+
+const DashboardView = ({dispatch, fetched, loading, token, userId, username, email, supplier, approved, verified, createdAt, hasErrors, error, props}) => {
   
   useEffect(() => {
     if (!fetched) { dispatch(getUserInfo()) }
@@ -23,6 +25,7 @@ const AccountView = ({dispatch, fetched, loading, token, userId, username, email
     if (!loading && fetched) { 
       return (
         <Tabs>
+          <button onClick={() => { dispatch(logout()) }}> logout </button>
           <Nav variant="pills" className="flex-column">
             <Container>
               <div className="accountTabHeaders">
@@ -82,4 +85,4 @@ const MapStateToProps = (state, ownProps) => ({
   props: ownProps
 })
 
-export default connect(MapStateToProps)(AccountView);
+export default connect(MapStateToProps)(DashboardView);

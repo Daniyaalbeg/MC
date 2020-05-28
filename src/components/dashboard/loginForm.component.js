@@ -20,9 +20,9 @@ const validationSchema = Yup.object().shape({
   .required('No password provided.') 
 });
 
-const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
+const LoginForm = ({dispatch, loading, hasErrors}) => {
   return (
-  <Formik 
+  <Formik
     initialValues={{ email: "", password: ""}}
     validationSchema={validationSchema}
     onSubmit={(values) => {
@@ -38,7 +38,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
           handleChange,
           handleBlur,
           handleSubmit }) => (
-        <Form noValidate onSubmit={handleSubmit} className="formContainer">
+        <Form noValidate onSubmit={handleSubmit} className="loginFormBorder">
           <Form.Group controlId="formEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -76,7 +76,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
             <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
             {hasErrors ? <Form.Text className="text-muted, red"> Wrong email or password, try again </Form.Text> : ""}
             <Form.Text className="text-muted">
-              <Link to='/reset' className="link" onClick={handleClose}>Forgot password?</Link>
+              <Link to='/reset' className="link">Forgot password?</Link>
             </Form.Text>
           </Form.Group>
 
@@ -90,12 +90,8 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
             }
             {loading ? 'Logging in' : 'Log in'}
             </button>
-            <button className="standardButton muteVersion" onClick={handleClose} style={{marginLeft: "15px"}}>
-              Close
-            </button>
           </Form.Group>
           <Form.Text className="text-muted"> Don't have an account? <Link to='/signup' className="link" onClick={() =>{
-              handleClose()
               dispatch(signupReset())
             }}> Sign up </Link></Form.Text>
         </Form>
@@ -104,8 +100,7 @@ const LoginForm = ({dispatch, loading, hasErrors, handleClose}) => {
   );
 }
 
-const MapStateToProps = (state, ownProps) => ({
-  handleClose: ownProps.handleClose,
+const MapStateToProps = (state) => ({
   loading: state.auth.loading,
   hasErrors: state.auth.hasErrors,
 })

@@ -1,0 +1,72 @@
+.dashboardContainer {
+  height: 100%;
+  width: fit-content;
+}
+
+.loginFormContainer {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginFormBorder {
+  padding: 40px;
+  border: 4px solid rgba(21, 138, 201, 0.692);
+  border-radius: 25px;
+  background-color: rgba(21, 138, 201, 0.082);
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+}
+
+.centreText {
+  text-align: center;
+}
+.accountTabHeaders {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.accountViewPanel {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.logoutButton {
+  justify-content: flex-start !important;
+}
+
+.createEventButton {
+  margin-left: 12px;
+}
+
+.linkButtonText {
+  text-decoration: none;
+  color: white;
+}
+
+.linkButtonText:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.modalFont {
+  font-family: proximaNova;
+}
+
+.loginNav {
+  color: #222A2E;
+  background-color: #BEBEBE;
+  cursor: pointer;
+  border: 1px solid #222A2E;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  width: fit-content;
+}
+.loginNav:hover {
+  background-color: white;
+}

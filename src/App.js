@@ -15,6 +15,7 @@ import CreateEvent from './components/signup/createEvent.component';
 import UpdateEvent from './components/update/updateEvent.component';
 import About from './components/about.component';
 import CnicView from './components/cnic/cnicView.component';
+import Dashboard from './components/dashboard/dashboardContainer.component'
 import Error404 from './components/404.component';
 
 import { checkCookie } from './Actions/authActions';
@@ -35,6 +36,7 @@ function App({ dispatch, checkedCookie, auth }) {
       <NavigationBar />
       <Switch>
         <Route path="/" exact component={HomeView}/>
+        <Route path="/dashboard" exact component={Dashboard}/>
         <Route path="/map" exact component={MainMap}/>
         <Route path="/organisations/:id" component={OrgViewInfo}/>
         <Route path="/organisations" component={OrgView}/>

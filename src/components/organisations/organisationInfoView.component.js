@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Card, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from '../account/supplierInfoView.component';
+import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from '../dashboard/supplierInfoView.component';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'

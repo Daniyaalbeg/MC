@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
-import LoginModal from './account/loginModal.component';
 import '../css/navbar.css'
 import MCMC from '../assets/svg/MCMC.svg';
 import { useLocation } from 'react-router-dom';
 
 
-const NavigationBar = () => {
-
-  const [show, setShow] = useState(false);
-  const openModal = () => setShow(true);
-  const closeModal = () => setShow(false);
+const NavigationBar = ({ auth }) => {
   let location = useLocation()
 
   if (location.pathname === "/") {
@@ -27,9 +23,8 @@ const NavigationBar = () => {
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
             {/* <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item> */}
+            <Link className="loginNav" to="/dashboard"> { auth ? "My Dashboard" : "Log in"} </Link>
           </Nav>
-          {/* <NavLink to="/login"> Log in </NavLink> */}
-          <LoginModal openModal={openModal} closeModal={closeModal} show={show}/>
         </Navbar.Collapse>
       </Navbar>
     );
@@ -46,14 +41,18 @@ const NavigationBar = () => {
             <Nav.Item><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
             <Nav.Item><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
             {/* <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item> */}
+            <Link className="loginNav" to="/dashboard"> { auth ? "My Dashboard" : "Log in"} </Link>
           </Nav>
-          {/* <NavLink to="/login"> Log in </NavLink> */}
-          <LoginModal openModal={openModal} closeModal={closeModal} show={show}/>
+
         </Navbar.Collapse>
       </Navbar>
     );
   }
 }
 
-export default NavigationBar;
+const MapStateToProps = (state) => ({
+  auth: state.auth.auth
+})
+
+export default connect(MapStateToProps)(NavigationBar);
 
