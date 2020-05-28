@@ -83,7 +83,9 @@ router.route('/createUser').post([
       email: req.body.email,
       username: req.body.username,
       password: hashedPassword,
+      type: "supplier",
       supplier: supplier,
+      volunteer: null,
       approved: false,
       verified: false
     });

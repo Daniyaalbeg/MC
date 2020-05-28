@@ -237,6 +237,10 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: proximaNova;
+  color: #212529;
+}
+.featuredOrgText:hover {
+  color: #212529;
 }
 .featuredOrgDivider {
   margin: 0;

@@ -18,8 +18,18 @@ const userSchema = new Schema({
     required: true,
     // select: false
   },
+  type: {
+    type: String,
+    enum: ['supplier', 'volunteer', 'user'],
+    required: true
+  },
   supplier: {
     type: supplierSchema,
+    required: false
+  },
+  volunteer: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Volunteer',
     required: false
   },
   approved: {
