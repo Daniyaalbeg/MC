@@ -7,6 +7,7 @@ export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
 export const SIGNUP_RESET = "SINGUP_RESET"
 
+
 export const signingUp = () => ({
   type: SIGNUP
 });
@@ -24,9 +25,33 @@ export const signupReset = () => ({
   type: SIGNUP_RESET
 })
 
+export function signUpUser(data) {
+  return async dispatch => {
+    dispatch(signingUp())
 
-export function signUp(data) {
-  return async (dispatch, getState) => {
+    axios({
+      method: 'post',
+      url: rootURL(production) + API + '/user/create',
+      headers: { 'Content-Type': 'application/json'},
+      data: {
+        email: data.email,
+        username: data.username,
+        password: data.password
+      },
+    })
+    .then((res) => {
+      dispatch(singupSuccess())
+      dispatch(loggingInSuccess(res.data))
+    })
+    .catch((err) => {
+      dispatch(signupFailure(err.response))
+    })
+  }
+}
+
+
+export function signUpSupplier(data) {
+  return async dispatch => {
     dispatch(signingUp());
     if (data.imageFile) {
       signUpWithImage(data, dispatch)
@@ -39,12 +64,9 @@ export function signUp(data) {
 const signUpWithoutImage = (data, dispatch) => {
   axios({
     method: 'post',
-    url: rootURL(production)+API+'/auth/createUser',
+    url: rootURL(production)+API+'/supplier/create',
     headers: {'Content-Type': 'application/json'},
     data: {
-      email: data.email,
-      username: data.username,
-      password: data.password,
       supplierName: data.supplierName,
       supplierImageURL: null,
       bankingDetails: data.bankingDetails,
@@ -59,7 +81,9 @@ const signUpWithoutImage = (data, dispatch) => {
       facebookURL: data.facebookURL,
       twitterURL: data.twitterURL,
       instagramURL: data.instagramURL
-    }
+    },
+    withCredentials: true,
+    credentials: 'include'
   })
   .then((res) => {
     dispatch(singupSuccess())
@@ -110,12 +134,9 @@ const signUpWithImage = (data, dispatch) => {
 
       axios({
         method: 'post',
-        url: rootURL(production)+API+'/auth/createUser',
+        url: rootURL(production)+API+'/supplier/create',
         headers: {'Content-Type': 'application/json'},
         data: {
-          email: data.email,
-          username: data.username,
-          password: data.password,
           supplierName: data.supplierName,
           supplierImageURL: url,
           bankingDetails: data.bankingDetails,

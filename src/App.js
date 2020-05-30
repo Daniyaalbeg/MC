@@ -7,7 +7,8 @@ import HomeView from './components/homeView/homeView.component'
 import MainMap from './components/map/mainMap.component';
 import OrgView from './components/organisations/organisationsView.component';
 import OrgViewInfo from './components/organisations/organisationInfoView.component';
-import SignUp from './components/signup/signUp.component';
+import SignUpOrg from './components/signup/signUpOrg.component';
+import SignupUser from './components/signup/signupUser.component';
 import ResetPassword from './components/reset/resetPassword.component';
 import ResettingPassword from './components/reset/resettingPassword.component';
 import EmailVerification from './components/signup/emailVerification.component'
@@ -41,7 +42,8 @@ function App({ dispatch, checkedCookie, auth }) {
         <Route path="/organisations/:id" component={OrgViewInfo}/>
         <Route path="/organisations" component={OrgView}/>
         <Route path="/about" component={About} />
-        <Route path="/signup" component={SignUp}/>
+        <Route path="/signup" component={SignupUser}/>
+        <Route path="/signupOrg" component={SignUpOrg}/>
         <Route path="/reset" component={ResetPassword} />
         <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
         <Route path="/verify/:token" component={EmailVerification} />

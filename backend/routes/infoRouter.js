@@ -33,7 +33,7 @@ let promises = [
     }
     result.forEach((user) => {
       numberOfUsers += 1
-      if (user.supplier.type === "Individual") {
+      if (user.supplier && user.supplier.type === "Individual") {
         numberOfIndividuals += 1
       } else {
         numberOfOrganisations += 1

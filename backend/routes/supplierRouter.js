@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user.model');
 const Supplier = require('../models/supplier.model').Supplier;
+const BankingDetails = require('../models/bankingDetails.model').BankingDetails
 const verfiyToken = require('../verifyToken');
 
 //Create a supplier
@@ -9,38 +10,36 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 
-    const supplierName = req.body.supplierName;
-    const supplierImageURL = req.body.supplierImageURL;
-    const events = [];
-    const bankingDetails = req.bankingDetails;
-    const type = req.body.type;
-    const areaOfWork = req.body.areaOfWork;
-    const description = req.body.description;
-    const address = req.body.address;
-    const contactName = req.body.contactName
-    const contactNumber = req.body.contactNumber;
-    const contactInfo = req.body.contactInfo;
-    const supplierWebsite = req.body.supplierWebsite;
-    const facebookURL = req.body.facebookURL;
-    const twitterURL = req.body.twitterURL;
-    const instagramURL = req.body.instagramURL;
-
+    const bankingDetails = new BankingDetails({
+      bankName: req.body.bankingDetails.bankName,
+      bankBranch: req.body.bankingDetails.bankBranch,
+      accountTitle: req.body.bankingDetails.accountTitle,
+      accountNumber: req.body.bankingDetails.accountNumber,
+      IBAN: req.body.bankingDetails.IBAN,
+      swiftCode: req.body.bankingDetails.swiftCode,
+      jazzCash: req.body.bankingDetails.jazzCash,
+      easyPaisa: req.body.bankingDetails.easyPaisa
+    });
     const supplier = new Supplier({
-      supplierName: supplierName,
-      supplierImageURL: supplierImageURL,
-      events: events,
+      supplierName: req.body.supplierName,
+      supplierImageURL: req.body.supplierImageURL,
       bankingDetails: bankingDetails,
-      type: type,
-      areaOfWork: areaOfWork,
-      description: description,
-      address: address,
-      contactName: contactName,
-      contactNumber: contactNumber,
-      contactInfo: contactInfo,
-      supplierWebsite: supplierWebsite,
-      facebookURL: facebookURL,
-      twitterURL: twitterURL,
-      instagramURL: instagramURL
+      type: req.body.type,
+      areaOfWork: req.body.areaOfWork,
+      description: req.body.description,
+      address: req.body.address,
+      contactName: req.body.contactName,
+      contactNumber: req.body.contactNumber,
+      contactInfo: req.body.contactInfo,
+      supplierWebsite: req.body.supplierWebsite,
+      facebookURL: req.body.facebookURL,
+      twitterURL: req.body.twitterURL,
+      instagramURL: req.body.instagramURL,
+      verifiedStepA: false,
+      verifiedStepB: false,
+      verifiedStepC: false,
+      verifiedStepD: false,
+      verifiedStepE: false,
     });
 
     user.supplier = supplier;
@@ -60,7 +59,9 @@ router.route('/').get((req, res) => {
   .lean()
   .then((users) => {
     users.forEach((user) => {
-      suppliersCollected.push(user.supplier);
+      if (user.supplier) {
+        suppliersCollected.push(user.supplier);
+      }
     })
     res.status(200).json(suppliersCollected);
   })

@@ -15,7 +15,7 @@ var BankingDetails = require('../models/bankingDetails.model').BankingDetails;
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 
-router.route('/createUser').post([
+router.route('/createSupplier').post([
   check('email').isEmail().normalizeEmail(),
   check('username').trim().escape(),
   check('password').trim(),

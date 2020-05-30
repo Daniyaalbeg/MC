@@ -1,0 +1,15 @@
+.signupOptionsContainer {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.signupOptionButtons {
+  font-family: proximaNova;
+  font-size: xx-large;
+  border: 2px solid #1589C9;
+  border-radius: 10px;
+  padding: 40px;
+}

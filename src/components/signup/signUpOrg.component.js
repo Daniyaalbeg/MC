@@ -4,7 +4,7 @@ import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
 import { Card, Col, Form, Spinner } from 'react-bootstrap';
-import { signUp } from '../../Actions/signUpActions';
+import { signUpSupplier } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from '../utilities/Checkboxs.component';
 import Thumb from '../utilities/thumb.component';
 
@@ -19,21 +19,6 @@ const SUPPORTED_FORMATS = [
 ];
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string()
-  .required("*Email is required")
-  .email("*Must be a valid email")
-  .max(100, "*Email must be less than 100 charachters"),
-  username: Yup.string()
-  .required("*Username is required")
-  .min(5, "*Username must be longer than 5 charachters")
-  .max(20, "*Username must be less than 20 charachters")
-  .matches(/^[a-zA-Z0-9_ ]*$/, "*Username must be only letters or numbers"),
-  password: Yup.string()
-  .required("*Password is required")
-  .min(5, "*Password must be longer than 5 charachters")
-  .max(20, "*password must be less than 20 charachters")
-  .matches("", )
-  .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/, "*Password must contain an uppercase, lowercase letter, number and special charachter"),
   supplierName: Yup.string()
   .required("*Organisation name is required")
   .min(1, "*Organisation name must be longer than 1 charachter")
@@ -96,7 +81,7 @@ const validationSchema = Yup.object().shape({
   .max(2000, "*Description name must be less than 1000 charachters"),
   addressInfo: Yup.string()
   .required("*Address is required")
-  .min(10, "*Address name must be longer than 1 charachter")
+  .min(1, "*Address name must be longer than 1 charachter")
   .max(100, "*Address name must be less than 100 charachters"),
   contactName: Yup.string()
   .required("*Contact name is required")
@@ -127,19 +112,16 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
   return (
     <Card bsPrefix='card' bg='light' text='dark' className="signUpCard">
       <Fragment>
-        {/* {success &&
-          <Redirect push to="/" />
+        {/* {!auth &&
+          <Redirect push to="/dashboard" />
         } */}
-        {auth &&
-          <Redirect push to="/" />
+        {success &&
+          <Redirect push to="/dashboard" />
         }
       </Fragment>
       <Card.Header>Sign up form</Card.Header>
       <Formik 
         initialValues={{
-          email: "",
-          username: "",
-          password: "",
           supplierName: "",
           imageFile: null,
           bankName: "",
@@ -176,9 +158,6 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             easyPaisa: values.easyPaisa,
           }
           const data = {
-            email: values.email,
-            username: values.username,
-            password: values.password,
             supplierName: values.supplierName,
             imageFile: values.imageFile,
             bankingDetails: bankingDetails,
@@ -194,7 +173,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             twitterURL: values.twitterURL,
             instagramURL: values.instagramURL,
           }
-          dispatch(signUp(data))
+          dispatch(signUpSupplier(data))
         }}
       >
         {({values,
@@ -209,67 +188,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           resetForm, }) => (
         <Form noValidate onSubmit={handleSubmit}>
         <Card.Body>
-        <Form.Text className="text-muted">
         <span className="red">*</span> required fields
-        </Form.Text>
-        <Card.Title>Personal Info</Card.Title>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address <span className="red">*</span></Form.Label>
-          <Form.Control
-            type="email" 
-            placeholder="Enter email"
-            name="email"
-            autoComplete="username"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-            isValid={touched.email && !errors.email}
-            isInvalid={errors.email}
-          />
-          <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username <span className="red">*</span></Form.Label>
-          <Form.Control
-            name="username"
-            type="text"
-            placeholder="Enter username"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.username}
-            isValid={touched.username && !errors.username}
-            isInvalid={errors.username}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password <span className="red">*</span></Form.Label>
-          <Form.Control
-            name="password"
-            type="password"
-            placeholder="Password"
-            autoComplete="new-password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
-            isValid={touched.password && !errors.password}
-            isInvalid={errors.password}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
-        </Form.Group>
-        </Card.Body>
-
-        <hr></hr>
-
-        <Card.Body>
         <Card.Title>Organisation Info</Card.Title>
 
         <Form.Group controlId="imageUpload">
@@ -857,6 +776,8 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             name="agreedToTerms"
             id="agreedToTerms"
             label="Agree to Terms & Conditions"
+            isValid={touched.agreedToTerms && !errors.agreedToTerms}
+            isInvalid={errors.agreedToTerms}
           />
         </Form.Group>
 

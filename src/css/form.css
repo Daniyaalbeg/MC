@@ -11,6 +11,10 @@
   }
 }
 
+.signUpCard {
+  margin: auto;
+}
+
 .error {
   color: #EF2A30;
   font-size: small;

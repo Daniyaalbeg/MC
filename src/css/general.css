@@ -1,3 +1,23 @@
+.mcRed {
+ color: #EF2A30;
+}
+.mcOrange {
+  color: #F47E2E;
+}
+.mcYellow {
+  color: #FFD71A;
+}
+.mcGreen {
+  color: #4BB250;
+}
+.mcBlue {
+  color: #1589C9;
+}
+.mcGrey {
+  color: #4C5962;
+}
+
+
 .standardButton {
   background-color: #1589C9;
   color: white;

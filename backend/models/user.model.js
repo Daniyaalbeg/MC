@@ -19,8 +19,7 @@ const userSchema = new Schema({
     // select: false
   },
   type: {
-    type: String,
-    enum: ['supplier', 'volunteer', 'user'],
+    type: [String],
     required: true
   },
   supplier: {

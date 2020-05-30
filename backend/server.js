@@ -61,7 +61,11 @@ if (process.env.NODE_ENV === "production") {
   credentials: true 
   }));
 } else {
-  app.use(cors({ origin: 'http://localhost:3000', credentials: true}));
+  app.use(cors({ 
+    maxAge: 86400,
+    origin: 'http://localhost:3000', 
+    credentials: true
+  }));
 }
 
 app.use(cookieParser())

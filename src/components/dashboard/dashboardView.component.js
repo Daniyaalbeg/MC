@@ -48,7 +48,7 @@ const DashboardView = ({dispatch, fetched, loading, token, userId, username, ema
             <SupplierInfoView supplier={supplier} />
           </Panel>
           <Panel className="accountViewPanel">
-            <EventView events={supplier.events} handleClose={props.handleClose}/>
+            <EventView supplier={supplier} />
           </Panel>
         </Tabs>
       )

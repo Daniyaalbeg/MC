@@ -6,7 +6,7 @@ export const initialState = {
   success: false
 }
 
-export default function createEventReducer(state = initialState, action) {
+export default function createRationReducer(state = initialState, action) {
   switch (action.type) {
     case actions.CREATE_EVENT:
       return {

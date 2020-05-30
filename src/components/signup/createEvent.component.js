@@ -238,7 +238,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             onBlur={handleBlur}
             value={values.typeOfEvent}
           >
-            <option value="clothes" selected>Clothes</option>
+            <option value="clothes" defaultValue>Clothes</option>
             <option value="food">Food</option>
             <option value="money">Money</option>
             <option value="ppe">PPE (Personal Protection Equipment)</option>

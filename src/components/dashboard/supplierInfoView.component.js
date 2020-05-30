@@ -1,5 +1,6 @@
 import React, { Fragment} from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import '../../css/supplierInfoView.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -76,6 +77,15 @@ export const JazzCashDetails = (props) => {
 }
 
 const SupplierInfoView = (props) => {
+  if (!props.supplier) {
+    return (
+      <>
+        <p> No org </p>
+         <Link to="signupOrg"><button className="standardButton"> Create Organisation </button></Link>
+      </>
+    )
+  }
+
   return (
     <div style={{ fontFamily: "proximaNova" }}>
       <br />
