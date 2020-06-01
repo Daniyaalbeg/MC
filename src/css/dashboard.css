@@ -93,12 +93,11 @@
   font-size: 1.5em;
 }
 
-.dbIconBg1 {
+.dbIconBg {
   background-color: whitesmoke;
 }
-
-.dbIconBg2 {
-  background-color: whitesmoke;
+.dbIconBg:hover {
+  background-color: rgb(223, 223, 223);
 }
 
 .dbFaBell .fa-primary {
@@ -106,7 +105,7 @@
   opacity: 1;
 }
 .dbFaBell .fa-secondary {
-  fill: #F49C15;
+  fill: rgb(255, 182, 23);
   opacity: 1;
 }
 

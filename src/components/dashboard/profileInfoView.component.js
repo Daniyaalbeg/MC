@@ -5,22 +5,20 @@ import { API, rootURL, production } from '../../config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
+import '../../css/ProfileInfoView.css'
+
 const ProfileInfoView = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
   return (
-    <div style={{ fontFamily: "proximaNova" }}>
+    <div className="profileContainer" style={{ fontFamily: "proximaNova" }}>
       <h6 className="text-muted"> Username </h6>
       <p> {props.username} </p>
-      <hr />
       <h6 className="text-muted"> Email </h6>
       <p> {props.email} </p>
-      <hr />
       <h6 className="text-muted"> Approved </h6>
       <p> {props.approved ? "You have been approved" : "You have not been approved"} </p>
-      <hr />
       <h6 className="text-muted"> Verified </h6>
       <Verified verified={props.verified} token={props.token}/>
-      <hr />
       <h6 className="text-muted"> You created this account on </h6>
       <p> {new Date(props.createdAt).toLocaleDateString("en-US", dateOptions)} </p>
     </div>
@@ -30,7 +28,7 @@ const ProfileInfoView = (props) => {
 const Verified = (props) => {
   return (
     <Fragment>
-      <p> {props.verified ? "You have been verified" : "You have not been verified"} </p>
+      <p id="verifyButtonEmail"> {props.verified ? "You have been verified" : "You have not been verified"} </p>
       {!props.verified &&
         <button className="standardButton" onClick={() => {
           sendVerificationEmail(props.token);

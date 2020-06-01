@@ -115,7 +115,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
           <Redirect push to="/" />
         }
         {success &&
-          <Redirect push to="/" /> 
+          <Redirect push to="/dashboard" /> 
         }
       </Fragment>
       <Card.Header> Create New Ration Drive </Card.Header>

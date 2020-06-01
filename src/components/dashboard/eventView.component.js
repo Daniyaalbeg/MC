@@ -28,18 +28,18 @@ const EventView = (props) => {
         <EventItemCard isUser={true} event={event} key={event._id} open={event._id === selectedEventId}/>
       )
       const list =
-      <>
-        <Link to="createEvent"><button className="standardButton"> Create Ration </button></Link> 
+      <div style={{textAlign: "right"}}>
+        <Link to="createEvent" className="createRationButton"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Ration </button></Link> 
         <Accordion onSelect={setSelectedEventId} className="eventListCard">
             {listOfEvents}
         </Accordion>
-      </>
+      </div>
       return list;
     } else {
       return (
         <div className="emptyDBContainer">
           <h6 className="text-muted, errorText"> No events to display </h6>
-          <Link to="createEvent"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} />  Create Ration </button></Link>
+          <Link to="createEvent"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Ration </button></Link>
         </div>
       )
     }

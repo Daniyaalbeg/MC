@@ -1,0 +1,15 @@
+.profileContainer > h6 {
+  margin-bottom: 0;
+}
+
+.profileContainer > p {
+  margin-bottom: 1em;
+}
+
+.profileContainer > button {
+  margin-bottom: 1em;
+}
+
+#verifyButtonEmail {
+  margin-bottom: 0;
+}
