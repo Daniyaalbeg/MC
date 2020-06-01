@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import  ScrollToTop from './components/utilities/scrollToTop.component'
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component'
@@ -34,6 +35,7 @@ function App({ dispatch, checkedCookie, auth }) {
 
   return (
     <Router>
+      <ScrollToTop />
       <NavigationBar />
       <Switch>
         <Route path="/" exact component={HomeView}/>
