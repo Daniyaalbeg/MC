@@ -5,30 +5,29 @@ import { Carousel, Spinner } from 'react-bootstrap';
 import '../../css/homeView.css';
 import { getStatInfo, getFeaturedInfo } from '../../Actions/homeViewActions';
 import { getUserInfo } from '../../Actions/userInfoActions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelopeSquare, faInfoSquare } from '@fortawesome/pro-solid-svg-icons'
 
-import badlde from '../../assets/logo/badlde.png'
-import serendip from '../../assets/logo/serendip.jpg'
+import Footer from './mainFooter.component';
 
-import photo0 from '../../assets/Images/oldman.jpg'
-import photo3 from '../../assets/Images/chitralman.jpg'
-import photo2 from '../../assets/Images/doobi.jpg'
-import photo9 from '../../assets/Images/kalashgirls.jpg'
-import photo6 from '../../assets/Images/kalashkids.jpg'
-import photo5 from '../../assets/Images/smallkid.jpg'
-import photo7 from '../../assets/Images/attentiveDude.jpg'
-import photo1 from '../../assets/Images/girlCamera.jpg'
-import photo4 from '../../assets/Images/presentation.jpg'
+import badlde from '../../assets/logo/badlde.png';
+import serendip from '../../assets/logo/serendip.jpg';
+
+import photo0 from '../../assets/Images/oldman.jpg';
+import photo3 from '../../assets/Images/chitralman.jpg';
+import photo2 from '../../assets/Images/doobi.jpg';
+import photo9 from '../../assets/Images/kalashgirls.jpg';
+import photo6 from '../../assets/Images/kalashkids.jpg';
+import photo5 from '../../assets/Images/smallkid.jpg';
+import photo7 from '../../assets/Images/attentiveDude.jpg';
+import photo1 from '../../assets/Images/girlCamera.jpg';
+import photo4 from '../../assets/Images/presentation.jpg';
 import photo8 from '../../assets/Images/sindhLady.jpg';
-import mapScreenshot from '../../assets/Images/mapScreenshot.png'
-import imagePlaceholder from '../../assets/Images/temp.jpg'
+import mapScreenshot from '../../assets/Images/mapScreenshot.png';
+import imagePlaceholder from '../../assets/Images/temp.jpg';
 
-import sack from '../../assets/svg/sack.svg'
-import coin from '../../assets/svg/coin.svg'
-import mask from '../../assets/svg/mask.svg'
-import shirt from '../../assets/svg/shirt.svg'
+import sack from '../../assets/svg/sack.svg';
+import coin from '../../assets/svg/coin.svg';
+import mask from '../../assets/svg/mask.svg';
+import shirt from '../../assets/svg/shirt.svg';
 //together we can, change our destiny, by changing ourselves doobi, being in service chitral dude, doing good presentation, living our truth mother son, working together group boys, focusing solutions ather, respecting diversity sindhi, honoring past kalash, together we can defocus being humble
 const images = [photo0, photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9]
 const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "BY CHANGING OURSELVES", "BEING IN SERVICE", "DOING GOOD", "LIVING OUR TRUTH", "WORKING TOGETHER", "FOCUSING ON SOLUTIONS", "RESPECTING DIVERSITY", "HONOURING OUR PAST"]
@@ -84,32 +83,6 @@ const Partners = () => {
           <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
         </div>
       </div>
-  )
-}
-
-const Footer = (props) => {
-  return (
-    <div className="homeViewFooter">
-      <div className ="homeViewFooterItem" style={{textAlign: "center"}}>
-        <p className="footHeader"> Connect </p>
-        <a href="https://www.facebook.com/ministryochange" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookSquare} className="footerIcon" /></a>
-        <a href="https://instagram.com/ministry.of.change" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagramSquare} className="footerIcon" /></a>
-        <a href="https://twitter.com/ministrychange" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitterSquare} className="footerIcon" /></a>
-        <a href="mailto:info@ministryofchange.org" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faEnvelopeSquare} className="footerIcon" /></a>
-      </div>
-      <div className ="homeViewFooterItem" style={{textAlign: "center"}}>
-        <p className="footHeader"> About Us </p>
-        <Link to="/about" className="navlink aboutUsCustom"><FontAwesomeIcon icon={faInfoSquare} className="footerIcon" /></Link>
-      </div>
-      <div className ="homeViewFooterItem">
-        <p className="footHeader"> Contact</p>
-        <hr className="footerDash"/>
-        <p> Address: </p>
-        <p> 1A Park Road, Chakshahzad </p>
-        <p style={{marginBottom: '5px'}}> Islamabad, Pakistan </p>
-        <p> info@ministryofchange.org </p>
-      </div>
-    </div>
   )
 }
 

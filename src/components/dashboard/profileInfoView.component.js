@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import axios from 'axios';
 import { API, rootURL, production } from '../../config'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+
 const ProfileInfoView = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
   return (
     <div style={{ fontFamily: "proximaNova" }}>
-      <br />
       <h6 className="text-muted"> Username </h6>
       <p> {props.username} </p>
       <hr />
@@ -32,7 +34,10 @@ const Verified = (props) => {
       {!props.verified &&
         <button className="standardButton" onClick={() => {
           sendVerificationEmail(props.token);
-        }}> Verify </button>
+        }}> 
+          <FontAwesomeIcon icon={faEnvelope} style={{marginRight: "0.4em"}}></FontAwesomeIcon>
+          Verify
+        </button>
       }
     </Fragment>
   )

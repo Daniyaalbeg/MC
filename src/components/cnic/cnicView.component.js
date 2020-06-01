@@ -10,14 +10,17 @@ import { Tab } from '../utilities/tabComponent';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/pro-light-svg-icons'
-import { faFilePlus, faSearch as faSearchDuotone} from '@fortawesome/pro-duotone-svg-icons';
+import { faFilePlus, faSearch as faSearchDuotone, faExclamationTriangle} from '@fortawesome/pro-duotone-svg-icons';
 
 import '../../css/cnic.css'
 
 const MustBeLoggedIn = () => {
   return (
     <div className="cnicMustBeLoggedIn">
-      <h4 className="cnicLoggedInHeading"> Must be logged in and verified to view </h4>
+      <h4 className="cnicLoggedInHeading">
+        <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" />
+        Must be logged in and verified to view
+      </h4>
     </div>
   )
 }

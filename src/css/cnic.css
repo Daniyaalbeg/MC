@@ -7,11 +7,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 70%;
 }
 
 .cnicLoggedInHeading {
-  /* height: fit-content; */
+  background-color: #1589C9;
+  color: whitesmoke;
+  padding: 12px;
+  border-radius: 5px;
+}
+.cnicExclamationIcon {
+  margin-right: 8px;
+}
+.cnicExclamationIcon .fa-primary {
+  fill: whitesmoke;
+  opacity: 1;
+}
+.cnicExclamationIcon .fa-secondary {
+  fill: #EF2A30;
+  opacity: 1;
 }
 
 .cnicCard {

@@ -1,12 +1,14 @@
 import React, { Fragment} from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import '../../css/supplierInfoView.css';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
-import imagePlaceholder from '../../assets/Images/temp.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faGlobe } from '@fortawesome/pro-solid-svg-icons';
+import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import imagePlaceholder from '../../assets/Images/temp.jpg';
 
 export const BankingDetails = (props) => {
   const bankInfo = props.bankingDetails;
@@ -79,20 +81,19 @@ export const JazzCashDetails = (props) => {
 const SupplierInfoView = (props) => {
   if (!props.supplier) {
     return (
-      <>
-        <p> No org </p>
-         <Link to="signupOrg"><button className="standardButton"> Create Organisation </button></Link>
-      </>
+      <div className="emptyDBContainer">
+        <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You have not created an organisation yet. </p>
+         <Link to="signupOrg"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Create Organisation </button></Link>
+      </div>
     )
   }
 
   return (
     <div style={{ fontFamily: "proximaNova" }}>
-      <br />
-      <h6 className="text-muted"> {props.supplier.type} name </h6>
+      <h6 className="text-muted"> name </h6>
       <p> {props.supplier.supplierName} </p>
       <hr />
-      <h6 className="text-muted"> {props.supplier.type} logo </h6>
+      <h6 className="text-muted"> logo </h6>
       <div className="imageContainer">
         <img src={props.supplier.supplierImageURL ? props.supplier.supplierImageURL : imagePlaceholder} className="supplierImage" alt=""/>
       </div>
