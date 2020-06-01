@@ -30,7 +30,7 @@ const EventView = (props) => {
       const list =
       <div style={{textAlign: "right"}}>
         <Link to="createEvent" className="createRationButton"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Ration </button></Link> 
-        <Accordion onSelect={setSelectedEventId} className="eventListCard">
+        <Accordion style={{textAlign: "left"}} onSelect={setSelectedEventId} className="eventListCard">
             {listOfEvents}
         </Accordion>
       </div>
