@@ -15,7 +15,7 @@ import { Tab } from '../utilities/tabComponent';
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHomeLg, faUserCircle, faProjectDiagram, faUsers, faBox, faBoxOpen, faBoxFull, faSitemap, faPersonSign, faHandsHelping,  } from '@fortawesome/pro-solid-svg-icons'
+import { faHomeLg, faUserCircle, faProjectDiagram, faUsers, faBox, faBoxOpen, faBoxFull, faSitemap, faPersonSign, faHandsHelping, faClock } from '@fortawesome/pro-solid-svg-icons'
 import { faUser, faBell, faSignOut } from '@fortawesome/pro-duotone-svg-icons'
 
 import { logout } from '../../Actions/authActions'
@@ -101,7 +101,9 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
         </div>
         <div className="dbBody">
           <Panel>
-            <p> Notifications here </p>
+            <div className="comingSoonContainer">
+              <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            </div>
           </Panel>
           <Panel>
             <ProfileInfoView user={user} />
@@ -110,21 +112,27 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             <SupplierInfoView supplier={user.supplier} />
           </Panel>
           <Panel>
-            <p> Coming Soon </p>
+            <div className="comingSoonContainer">
+            <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            </div>
           </Panel>
           <Panel>
-          <p> Coming Soon </p>
+            <div className="comingSoonContainer">
+            <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            </div>
           </Panel>
           <Panel>
             <EventView supplier={user.supplier} />
           </Panel>
           <Panel>
-          <p> Coming Soon </p>
+            <div className="comingSoonContainer">
+            <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            </div>
           </Panel>
         </div>
-        <div className="dbFooter">
+        {/* <div className="dbFooter">
           <Footer />
-        </div>
+        </div> */}
         </Tabs>
       </div>
     )

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { API, rootURL, production } from '../../config';
 
@@ -6,6 +6,8 @@ import Address from '../shared/address.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle } from '@fortawesome/pro-solid-svg-icons'
+
 
 import '../../css/ProfileInfoView.css';
 
@@ -14,31 +16,35 @@ const ProfileInfoView = (props) => {
   const { user } = props
   return (
     <div className="profileContainer" style={{ fontFamily: "proximaNova" }}>
-      <h5 className="text-muted"> Username </h5>
-      <p> {user.username} </p>
-      <h5 className="text-muted"> Email </h5>
-      <p> {user.email} </p>
-      <h5 className="text-muted"> Mobile </h5>
-      <p> {user.mobile ? user.mobile: "Not addded"} </p>
-      <h5 className="text-muted"> CNIC </h5>
-      <p> {user.cnic ? user.cnic: "Not addded"} </p>
-      <h5 className="text-muted"> Address </h5>
-      <Address address={user.address} />
-      <h5 className="text-muted"> Email </h5>
-      <p> {user.email} </p>
-      <h5 className="text-muted"> Approved </h5>
-      <p> {user.approved ? "You have been approved" : "You have not been approved"} </p>
-      <h5 className="text-muted"> Verified </h5>
-      <Verified verified={user.verified}/>
-      <h5 className="text-muted"> You created this account on </h5>
-      <p> {new Date(user.createdAt).toLocaleDateString("en-US", dateOptions)} </p>
+      <div className="profileHeader">
+        <FontAwesomeIcon icon={faUserCircle} />
+        <p> Profile </p>
+      </div>
+      <div className="profileContent">
+        <p className="profileTitle"> Username </p>
+        <p className="profileText"> {user.username} </p>
+        <p className="profileTitle"> Email </p>
+        <p className="profileText"> {user.email} </p>
+        <p className="profileTitle"> Mobile </p>
+        <p className="profileText"> {user.mobile ? user.mobile: "Not addded"} </p>
+        <p className="profileTitle"> CNIC </p>
+        <p className="profileText"> {user.cnic ? user.cnic: "Not addded"} </p>
+        <p className="profileTitle"> Address </p>
+        <Address address={user.address} />
+        <p className="profileTitle"> Approved </p>
+        <p className="profileText"> {user.approved ? "You have been approved" : "You have not been approved"} </p>
+        <p className="profileTitle"> Verified </p>
+        <Verified verified={user.verified}/>
+        <p className="profileTitle"> You created this account on </p>
+        <p className="profileText"> {new Date(user.createdAt).toLocaleDateString("en-US", dateOptions)} </p>
+      </div>
     </div>
   )
 }
 
 const Verified = (props) => {
   return (
-    <Fragment>
+    <>
       <p id="verifyButtonEmail"> {props.verified ? "You have been verified" : "You have not been verified"} </p>
       {!props.verified &&
         <button className="standardButton" onClick={() => {
@@ -48,7 +54,7 @@ const Verified = (props) => {
           Verify
         </button>
       }
-    </Fragment>
+    </>
   )
 }
 

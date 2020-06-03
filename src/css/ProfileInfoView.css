@@ -1,15 +1,46 @@
-.profileContainer > h6 {
-  margin-bottom: 0;
+.profileContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
 }
 
-.profileContainer > p {
-  margin-bottom: 1em;
+.profileHeader {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgb(66, 134, 156);
+}
+.profileHeader > svg {
+  margin-left: 32px;
+  font-size: 2em;
+  color: whitesmoke;
+}
+.profileHeader > p {
+  margin: 0;
+  margin-left: 12px;
+  font-weight: bold;
+  color: whitesmoke;
 }
 
-.profileContainer > button {
-  margin-bottom: 1em;
+.profileContent {
+  border-radius: 8px;
+  padding: 32px;
 }
 
-#verifyButtonEmail {
-  margin-bottom: 0;
+.profileTitle {
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 0em;
+}
+.profileText {
+  
+}
+.profileContent > button {
+  margin-bottom: 1rem;
+}
+
+.pCreatedAccountOn {
+  margin-top: 1em; 
 }

@@ -118,12 +118,14 @@ p {
   color: whitesmoke;
   background-color: #222A2E;
 }
+/* #1589C9  */
 .tab.active {
-  background-color: #1589C9;
+  background-color: rgb(66, 134, 156);
   color: whitesmoke;
 }
+/* rgba(21, 138, 201, 0.185) */
 .tab:hover:not(.active) {
-  background-color: rgba(21, 138, 201, 0.185);
+  background-color: rgba(66, 134, 156, 0.24);
   color: whitesmoke;
 }
 
@@ -157,16 +159,30 @@ p {
 }
 
 .addressContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas: 
+  "topLeft top topRight"
+  "bottomLeft bottom bottomRight";
+}
+.addressTopLeft {
+  grid-area: topLeft;
 }
 .addressTop {
-  display: flex;
-  justify-content: space-evenly;
+  grid-area: top;
+}
+.addressTopRight {
+  grid-area: topRight;
+}
+.addressBottomLeft {
+  grid-area: bottomLeft;
 }
 .addressBottom {
-  display: flex;
-  justify-content: space-evenly;
+  grid-area: bottom;
+}
+.addressBottomRight {
+  grid-area: bottomRight;
 }
 
 .websiteIcon {
