@@ -15,7 +15,7 @@ const EventView = (props) => {
   if (!supplier) {
     return (
         <div className="emptyDBContainer">
-          <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You need to create an organisation before adding rations </p>
+          <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You need to create an organisation before adding distributions </p>
         </div>
     )
   }
@@ -38,8 +38,8 @@ const EventView = (props) => {
     } else {
       return (
         <div className="emptyDBContainer">
-          <h6 className="text-muted, errorText"> No events to display </h6>
-          <Link to="createEvent"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Ration </button></Link>
+          <h6 className="text-muted, errorText"> No distributions to display </h6>
+          <Link to="createEvent"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link>
         </div>
       )
     }

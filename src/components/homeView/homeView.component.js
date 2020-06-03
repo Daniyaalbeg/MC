@@ -192,7 +192,7 @@ const ProjectsInfo = (props) => {
         </div>
         <div className="projectInfoDetails">
           <h4 className="projectInfoHeading"> {numberOfEvents} </h4>
-          <p className="text-muted"> events </p>
+          <p className="text-muted"> distributions </p>
         </div>
       </div>
     )

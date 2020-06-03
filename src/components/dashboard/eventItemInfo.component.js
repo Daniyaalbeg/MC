@@ -30,13 +30,13 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
     <>
       <p> {event.description} </p>
       <hr />
-      <h6 className="text-muted"> Number of rations distributed </h6>
+      <h6 className="text-muted"> Number of items distributed </h6>
       <p> {event.totalNumberOfItems} </p>
       <hr />
       <h6 className="text-muted"> Descripiton of items </h6>
       <p> {event.itemsDescription} </p>
       <hr />
-      <h6 className="text-muted"> Type of Rations </h6>
+      <h6 className="text-muted"> Type of distribution </h6>
       <p> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>      <hr />
       {event.images.length !== 0 &&
           <div className="imageCarouselContainer">

@@ -65,7 +65,7 @@ const DashboardView = ({dispatch, fetched, loading, token, userId, username, ema
               <p> Groups </p>
             </Tab>
             <Tab>
-              <p> Rations </p>
+              <p> Distributions </p>
             </Tab>
             <Tab>
               <p> Volunteer </p>

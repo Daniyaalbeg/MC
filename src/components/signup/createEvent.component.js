@@ -118,7 +118,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
           <Redirect push to="/dashboard" /> 
         }
       </Fragment>
-      <Card.Header> Create New Ration Drive </Card.Header>
+      <Card.Header> Create New Distribution </Card.Header>
 
       <Formik
         initialValues={{
@@ -164,7 +164,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
         <Form.Group controlId="formBasicName">
-          <Form.Label>Name of Ration Drive <span className="red">*</span></Form.Label>
+          <Form.Label>Name of Distribution <span className="red">*</span></Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter name"
@@ -180,7 +180,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescription">
-          <Form.Label>Description of Ration Drive <span className="red">*</span></Form.Label>
+          <Form.Label>Description of Distribution <span className="red">*</span></Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -197,7 +197,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicNumberOfItems">
-          <Form.Label>Total Quantity of Rations <span className="red">*</span></Form.Label>
+          <Form.Label>Total Quantity of Distribution <span className="red">*</span></Form.Label>
           <Form.Control
             type="text" 
             placeholder="Enter number of items"
@@ -213,7 +213,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formBasicDescriptionOfItems">
-          <Form.Label>Contents of Event e.g. (Rations) <span className="red">*</span></Form.Label>
+          <Form.Label>Contents of Distribution e.g. (Rations) <span className="red">*</span></Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -230,7 +230,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group controlId="formTypeOfEvent">
-          <Form.Label>Type of Rations distributed <span className="red">*</span></Form.Label>
+          <Form.Label>Type of Distribution <span className="red">*</span></Form.Label>
           <Form.Control
             as="select"
             name="typeOfEvent"
@@ -248,7 +248,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Images of Event (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
+          <Form.Label> Images of Distribution (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
             accept = 'image/jpeg, image/png, image/jpg, image/gif'
             maxSize = {11000000}
@@ -289,7 +289,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
       
 
         <Form.Group>
-          <Form.Label> Date of the Drive (Can be in the future or past) <span className="red">*</span> </Form.Label>
+          <Form.Label> Date of the Distribution (Can be in the future or past) <span className="red">*</span> </Form.Label>
           <br />
           <DatePicker
             selected={values.date}
@@ -302,7 +302,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Select Location of the Drive <span className="red">*</span> </Form.Label>
+          <Form.Label> Location of the Distribution <span className="red">*</span> </Form.Label>
           <SelectMap
             id="mapClicked"
             name="mapClicked"
@@ -339,7 +339,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         </button>
 
         <Form.Text className="text-muted">
-          Note: Once we have verified your information only then will you be able to add charity drives and become visible on the page.
+          Note: Once we have verified your information only then will you be able to add distribution and become visible on the page.
         </Form.Text>
 
         </Card.Body>
