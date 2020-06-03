@@ -39,7 +39,7 @@ const EventInfoView = (props) => {
           <p> {event.itemsDescription} </p>
         </div>
         <div className="smallBoi">
-          <h6 className="text-muted"> Type of Rations </h6>
+          <h6 className="text-muted"> Type of Distribution </h6>
           <p> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>
         </div>
         <div className="smallBoi">

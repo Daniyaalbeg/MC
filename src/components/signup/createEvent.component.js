@@ -338,6 +338,13 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
           {loading ? 'Creating Event' : 'Create Event'}
         </button>
 
+        {hasErrors &&
+          <>
+            <br />
+            <p className="redError"> An error has occured please try again later or email support.</p>
+          </>
+        }
+
         <Form.Text className="text-muted">
           Note: Once we have verified your information only then will you be able to add distribution and become visible on the page.
         </Form.Text>

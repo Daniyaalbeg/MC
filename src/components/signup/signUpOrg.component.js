@@ -800,7 +800,10 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         }
 
         {hasErrors &&
-          <ErrorComponent signUpError={signUpError} />
+          <>
+            <br />
+            <p className="redError"> An error has occured please try again later or email support.</p>
+          </>
         }
 
         <Form.Text className="text-muted">
@@ -813,24 +816,6 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
     </Formik>
     </Card>
   )
-}
-
-const ErrorComponent = (props) => {
-  if (props.signUpError === 200) {
-    return (
-      <Fragment>
-        <br />
-        <p className="redError"> This email is already in use. Please use a different one</p>
-      </Fragment>
-    )
-  } else {
-    return (
-      <Fragment>
-        <br />
-        <p className="redError"> An error has occured please try again later or email support.</p>
-      </Fragment>
-    )
-  }
 }
 
 const MapStateToProps = (state) => ({

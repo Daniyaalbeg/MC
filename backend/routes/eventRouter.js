@@ -97,6 +97,7 @@ router.route('/').get((req, res) => {
   .lean()
   .populate('createdBy')
   .exec((err, events) => {
+    console.log(events)
     if (err) { return res.status(500).send("Error getting events")}
     events.forEach((event) => {
       event.createdBy = event.createdBy.supplier

@@ -14,6 +14,7 @@ import { Tab } from '../utilities/tabComponent';
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHomeLg, faUserCircle, faProjectDiagram, faUsers, faBox, faBoxOpen, faBoxFull, faSitemap, faPersonSign, faHandsHelping,  } from '@fortawesome/pro-solid-svg-icons'
 import { faUser, faBell, faSignOut } from '@fortawesome/pro-duotone-svg-icons'
 
 import { logout } from '../../Actions/authActions'
@@ -49,25 +50,31 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           </div>
           <div className="dbLeftBar">
             <Tab>
+              <FontAwesomeIcon icon={faHomeLg} />
               <p> Home </p>
             </Tab>
             <Tab>
-              {/* <FontAwesomeIcon icon={faUser} /> */}
+            <FontAwesomeIcon icon={faUserCircle} />
               <p> Profile </p> 
             </Tab>
             <Tab>
+              <FontAwesomeIcon icon={faSitemap} />
               <p> Organisation </p>
             </Tab>
             <Tab>
+              <FontAwesomeIcon icon={faProjectDiagram} />
               <p> Projects </p>
             </Tab>
             <Tab>
+              <FontAwesomeIcon icon={faUsers} />
               <p> Groups </p>
             </Tab>
             <Tab>
+              <FontAwesomeIcon icon={faBox} />
               <p> Distributions </p>
             </Tab>
             <Tab>
+              <FontAwesomeIcon icon={faHandsHelping} />
               <p> Volunteer </p>
             </Tab>
             {/* <button className="standardButton logoutButton" onClick={() => { dispatch(logout()) }}> logout </button> */}

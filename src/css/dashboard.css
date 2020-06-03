@@ -39,12 +39,12 @@
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  border-bottom: 1px solid #222B2E;
-  background-color: #4C5962;
+  /* border-bottom: 1px solid #222B2E; */
+  background-color: rgb(178, 188, 196);
 }
 .dbTopLeft {
   grid-area: topLeft;
-  background-color: rgb(44, 53, 58);
+  background-color: #222A2E;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,7 +58,7 @@
 }
 .dbLeftBar {
   grid-area: sidebar;
-  background-color: rgb(44, 53, 58);
+  background-color: #222A2E;
 }
 .dbBody {
   grid-area: body;

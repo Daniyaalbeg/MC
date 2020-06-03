@@ -29,7 +29,7 @@ const userSchema = new Schema({
   },
   address: {
     type: addressSchema,
-    required: true
+    required: false
   },
   supplier: {
     type: supplierSchema,
