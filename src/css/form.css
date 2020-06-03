@@ -51,8 +51,9 @@
 
 .successReply {
   color: #4BB250;
-  font-size: small;
+  font-size: medium;
   text-align: center;
+  margin-top: 24px;
 }
 
 .datePicker {

@@ -12,7 +12,7 @@ export const signingUp = () => ({
   type: SIGNUP
 });
 
-export const singupSuccess = () => ({
+export const signupSuccess = () => ({
   type: SIGNUP_SUCCESS
 });
 
@@ -29,6 +29,15 @@ export function signUpUser(data) {
   return async dispatch => {
     dispatch(signingUp())
 
+    const address = ({
+      addressLine1: data.addressLine1,
+      addressLine2: data.addressLine2,
+      city: data.city,
+      region: data.region,
+      postCode: data.postCode,
+      country: data.country,
+    })
+
     axios({
       method: 'post',
       url: rootURL(production) + API + '/user/create',
@@ -36,11 +45,16 @@ export function signUpUser(data) {
       data: {
         email: data.email,
         username: data.username,
-        password: data.password
+        password: data.password,
+        mobile: data.mobile,
+        cnic: data.cnic,
+        address: address
       },
+      withCredentials: true,
+      credentials: 'include'
     })
     .then((res) => {
-      dispatch(singupSuccess())
+      dispatch(signupSuccess())
       dispatch(loggingInSuccess(res.data))
     })
     .catch((err) => {
@@ -86,7 +100,7 @@ const signUpWithoutImage = (data, dispatch) => {
     credentials: 'include'
   })
   .then((res) => {
-    dispatch(singupSuccess())
+    dispatch(signupSuccess())
     dispatch(loggingInSuccess(res.data))
   })
   .catch((error) => {
@@ -154,7 +168,7 @@ const signUpWithImage = (data, dispatch) => {
         }
       })
       .then((res) => {
-        dispatch(singupSuccess())
+        dispatch(signupSuccess())
         dispatch(loggingInSuccess(res.data))
       })
       .catch((error) => {

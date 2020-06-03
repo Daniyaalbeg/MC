@@ -18,7 +18,7 @@ import { faUser, faBell, faSignOut } from '@fortawesome/pro-duotone-svg-icons'
 
 import { logout } from '../../Actions/authActions'
 
-const DashboardView = ({dispatch, fetched, loading, token, userId, username, email, supplier, approved, verified, createdAt, hasErrors, error, props}) => {
+const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, props}) => {
   
   useEffect(() => {
     if (!fetched) { dispatch(getUserInfo()) }
@@ -45,7 +45,7 @@ const DashboardView = ({dispatch, fetched, loading, token, userId, username, ema
           </div>
           <div className="dbTopLeft">
             <img src={imagePlaceholder} alt="" className="dbUserImage"/>
-            <p> {username} </p>
+            <p> {user.username} </p>
           </div>
           <div className="dbLeftBar">
             <Tab>
@@ -77,10 +77,10 @@ const DashboardView = ({dispatch, fetched, loading, token, userId, username, ema
               <p> Notifications here </p>
             </Panel>
             <Panel>
-              <ProfileInfoView id={userId} token={token} username={username} email={email} approved={approved} createdAt={createdAt} verified={verified} />
+              <ProfileInfoView user={user} />
             </Panel>
             <Panel>
-              <SupplierInfoView supplier={supplier} />
+              <SupplierInfoView supplier={user.supplier} />
             </Panel>
             <Panel>
               <p> Coming Soon </p>
@@ -89,7 +89,7 @@ const DashboardView = ({dispatch, fetched, loading, token, userId, username, ema
             <p> Coming Soon </p>
             </Panel>
             <Panel>
-              <EventView supplier={supplier} />
+              <EventView supplier={user.supplier} />
             </Panel>
             <Panel>
             <p> Coming Soon </p>
@@ -100,38 +100,6 @@ const DashboardView = ({dispatch, fetched, loading, token, userId, username, ema
           </div>
           </Tabs>
         </div>
-      )
-    }
-    
-    if (!loading && fetched) { 
-      return (
-        <Tabs>
-          <button onClick={() => { dispatch(logout()) }}> logout </button>
-          <Nav variant="pills" className="flex-column">
-            <Container>
-              <div className="accountTabHeaders">
-                <Tab>
-                  User Info
-                </Tab>
-                <Tab>
-                  Organisation
-                </Tab>
-                <Tab>
-                  Ration Info
-                </Tab>
-              </div>
-            </Container>
-          </Nav>
-          <Panel className="accountViewPanel">
-            <ProfileInfoView id={userId} token={token} username={username} email={email} approved={approved} createdAt={createdAt} verified={verified} />
-          </Panel>
-          <Panel className="accountViewPanel">
-            <SupplierInfoView supplier={supplier} />
-          </Panel>
-          <Panel className="accountViewPanel">
-            <EventView supplier={supplier} />
-          </Panel>
-        </Tabs>
       )
     } else {
       return(
@@ -151,16 +119,9 @@ const DashboardView = ({dispatch, fetched, loading, token, userId, username, ema
 }
 
 const MapStateToProps = (state, ownProps) => ({
-  token: state.auth.token,
   fetched: state.userInfo.fetched,
   loading: state.userInfo.loading,
-  userId: state.userInfo.userId,
-  username: state.userInfo.username,
-  email: state.userInfo.email,
-  supplier: state.userInfo.supplier,
-  approved: state.userInfo.approved,
-  verified: state.userInfo.verified,
-  createdAt: state.userInfo.createdAt,
+  user: state.userInfo.user,
   hasErrors: state.userInfo.hasErrors,
   error: state.userInfo.error,
   props: ownProps

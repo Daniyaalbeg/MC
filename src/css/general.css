@@ -134,6 +134,19 @@ p {
   transform: rotate(90deg);
 }
 
+.addressContainer {
+  display: flex;
+  flex-direction: column;
+}
+.addressTop {
+  display: flex;
+  justify-content: space-evenly;
+}
+.addressBottom {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .websiteIcon {
   text-decoration: none;
   color: #1589C9;

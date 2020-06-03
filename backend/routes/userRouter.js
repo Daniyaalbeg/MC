@@ -1,21 +1,56 @@
 const router = require('express').Router();
 const User = require('../models/user.model');
+const Address = require('../models/address.model').Address;
 
+var sendVerificationEmail = require('./emailVerificationRouter').sendVerificationEmail;
+
+const { check, validationResult } = require('express-validator');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 
 //Create a new user
-router.route('/create').post((req, res) => {
+router.route('/create').post([
+  check('email').isEmail().normalizeEmail(),
+  check('username').trim().escape(),
+  check('password').trim().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/),
+  check('mobile').isMobilePhone(["en-PK", "en-GB"]),
+  check('cnic').trim().matches(/^[0-9+]{5}-[0-9+]{7}-[0-9]{1}|[0-9+]{6}-[0-9+]{6}-[0-9]{1}|^$$/),
+  check('address.addressLine1'),
+  check('address.addressLine2'),
+  check('address.city').trim(),
+  check('address.region'),
+  check('address.postCode'),
+  check('address.country'),
+
+],(req, res) => {
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors)
+    return res.status(422).json({ errorCode: 300, errors: errors.array() });
+  }
+
   const email = req.body.email
   const password = req.body.password;
   bcrypt.hash(password, 12)
   .then((hashedPassword) => {
 
+    const address = new Address({
+      line1: req.body.address.line1,
+      line2: req.body.address.line2,
+      city: req.body.address.city,
+      region: req.body.address.region,
+      postCode: req.body.address.postCode,
+      country: req.body.address.country,
+    })
+
     const newUser = new User({
       email: email,
       username: req.body.username,
       password: hashedPassword,
-      type: [],
+      mobile: req.body.mobile,
+      cnic: req.body.cnic,
+      address: address,
       supplier: null,
       volunteer: null,
       approved: false,
@@ -24,24 +59,27 @@ router.route('/create').post((req, res) => {
 
     newUser.save()
     .then(() => {
+      sendVerificationEmail(newUser,
+        () => {console.log("sending email")},
+        () => {console.log("failed sending email")}
+      );
+      
       var token = jwt.sign({ id: newUser._id }, process.env.SECRET, {
         expiresIn: 86400
       });
-      res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: false, sameSite: false})
+      const isProduction = process.env.NODE_ENV === "production" ? true: false;
+      res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: isProduction, sameSite: isProduction})
       res.status(200).json({
         auth: true,
-        token, token
+        // token, token
       });
-      email.sendVerificationEmail(newUser,
-        () => {console.log("sending email")},
-        () => {console.log("failed sending email")});
     })
     .catch((error) => {
       console.log(error);
       if (error.code === 11000) {
-        res.status(500).json({ errorCode: 200})
+        return res.status(500).json({ errorCode: 200})
       } else {
-        res.status(500).json({ errorCode: 100})
+        return res.status(500).json({ errorCode: 100})
       }
     });
   })

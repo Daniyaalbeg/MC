@@ -184,7 +184,8 @@ router.route('/login').post((req, res) => {
       var token = jwt.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 86400
       });
-      res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: false, sameSite: true})
+      const isProduction = process.env.NODE_ENV === "production" ? true: false;
+      res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: isProduction, sameSite: isProduction})
       res.status(200).json({
         auth: true,
         // token: token

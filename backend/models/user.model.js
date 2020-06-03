@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const supplierSchema = require('./supplier.model').supplierSchema;
+const addressSchema = require('./address.model').addressSchema;
 
 const Schema = mongoose.Schema
 
@@ -18,8 +19,16 @@ const userSchema = new Schema({
     required: true,
     // select: false
   },
-  type: {
-    type: [String],
+  mobile: {
+    type: String,
+    required: false
+  },
+  cnic: {
+    type: String,
+    required: false
+  },
+  address: {
+    type: addressSchema,
     required: true
   },
   supplier: {

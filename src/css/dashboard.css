@@ -63,6 +63,7 @@
 .dbBody {
   grid-area: body;
   padding: 20px;
+  overflow-y: scroll;
 }
 .dbFooter {
   grid-area: footer;
