@@ -21,11 +21,23 @@
   background-color: rgba(21, 138, 201, 0.082);
 }
 
+@media only screen and (max-device-width: 1150px) {
+  .dbLayout {
+    grid-template-columns: 60px 70% auto;
+  }
+}
+
+@media only screen and (min-device-width: 1150px) {
+  .dbLayout {
+    grid-template-columns: 15% 70% auto;
+  }
+}
+
+
 .dbLayout {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 15% 70% 15% ;
   grid-template-rows: 80px auto 80px;
   grid-template-areas: 
   "topLeft header header"

@@ -9,6 +9,7 @@ import SupplierInfoView from './supplierInfoView.component';
 import EventView from './eventView.component'
 import Footer from '../homeView/mainFooter.component'
 import { getUserInfo } from '../../Actions/userInfoActions';
+import getWindowDimensions from '../utilities/windowDimension.component';
 import { Nav } from 'react-bootstrap';
 import { Tab } from '../utilities/tabComponent';
 import imagePlaceholder from '../../assets/Images/temp.jpg'
@@ -25,104 +26,117 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
     if (!fetched) { dispatch(getUserInfo()) }
   })
 
-  const renderInfo = () => {
-    if (hasErrors) return (<h1> Error occured, cannot get user info. Please accept our humblest apologies</h1>);
+  const { height, width } = getWindowDimensions();
     
-    if (!loading && fetched) { 
-      return (
-        <div className="dbLayout">
-          <Tabs>
-          <div className="dbHeader">
-            <button>
-              <div className="dbHeaderIcon dbIconBg">
-                <FontAwesomeIcon icon={faBell} className="dbFaBell dbIconFont" />
-              </div>
-            </button>
-            <button onClick={() => { dispatch(logout()) }}>
-              <div className="dbHeaderIcon dbIconBg">
-                <FontAwesomeIcon icon={faSignOut} className="dgFaSignOut dbIconFont" />
-              </div>
-            </button>
-          </div>
-          <div className="dbTopLeft">
-            <img src={imagePlaceholder} alt="" className="dbUserImage"/>
+  if (hasErrors) return (<h1> Error occured, cannot get user info. Please accept our humblest apologies</h1>);
+  
+  const renderSideBarText = width > 1150 ? true: false;
+
+  if (!loading && fetched) { 
+    return (
+      <div className="dbLayout">
+        <Tabs>
+        <div className="dbHeader">
+          <button>
+            <div className="dbHeaderIcon dbIconBg">
+              <FontAwesomeIcon icon={faBell} className="dbFaBell dbIconFont" />
+            </div>
+          </button>
+          <button onClick={() => { dispatch(logout()) }}>
+            <div className="dbHeaderIcon dbIconBg">
+              <FontAwesomeIcon icon={faSignOut} className="dgFaSignOut dbIconFont" />
+            </div>
+          </button>
+        </div>
+        <div className="dbTopLeft">
+          <img src={imagePlaceholder} alt="" className="dbUserImage"/>
+          {renderSideBarText &&
             <p> {user.username} </p>
-          </div>
-          <div className="dbLeftBar">
-            <Tab>
-              <FontAwesomeIcon icon={faHomeLg} />
+          }
+        </div>
+        <div className="dbLeftBar">
+          <Tab>
+            <FontAwesomeIcon icon={faHomeLg} />
+            {renderSideBarText &&
               <p> Home </p>
-            </Tab>
-            <Tab>
-            <FontAwesomeIcon icon={faUserCircle} />
-              <p> Profile </p> 
-            </Tab>
-            <Tab>
-              <FontAwesomeIcon icon={faSitemap} />
+            }
+          </Tab>
+          <Tab>
+          <FontAwesomeIcon icon={faUserCircle} />
+          {renderSideBarText &&
+              <p> Profile </p>
+            }
+          </Tab>
+          <Tab>
+            <FontAwesomeIcon icon={faSitemap} />
+            {renderSideBarText &&
               <p> Organisation </p>
-            </Tab>
-            <Tab>
-              <FontAwesomeIcon icon={faProjectDiagram} />
+            }
+          </Tab>
+          <Tab>
+            <FontAwesomeIcon icon={faProjectDiagram} />
+            {renderSideBarText &&
               <p> Projects </p>
-            </Tab>
-            <Tab>
-              <FontAwesomeIcon icon={faUsers} />
+            }
+          </Tab>
+          <Tab>
+            <FontAwesomeIcon icon={faUsers} />
+            {renderSideBarText &&
               <p> Groups </p>
-            </Tab>
-            <Tab>
-              <FontAwesomeIcon icon={faBox} />
+            }
+          </Tab>
+          <Tab>
+            <FontAwesomeIcon icon={faBox} />
+            {renderSideBarText &&
               <p> Distributions </p>
-            </Tab>
-            <Tab>
-              <FontAwesomeIcon icon={faHandsHelping} />
+            }
+          </Tab>
+          <Tab>
+            <FontAwesomeIcon icon={faHandsHelping} />
+            {renderSideBarText &&
               <p> Volunteer </p>
-            </Tab>
-            {/* <button className="standardButton logoutButton" onClick={() => { dispatch(logout()) }}> logout </button> */}
-          </div>
-          <div className="dbBody">
-            <Panel>
-              <p> Notifications here </p>
-            </Panel>
-            <Panel>
-              <ProfileInfoView user={user} />
-            </Panel>
-            <Panel>
-              <SupplierInfoView supplier={user.supplier} />
-            </Panel>
-            <Panel>
-              <p> Coming Soon </p>
-            </Panel>
-            <Panel>
-            <p> Coming Soon </p>
-            </Panel>
-            <Panel>
-              <EventView supplier={user.supplier} />
-            </Panel>
-            <Panel>
-            <p> Coming Soon </p>
-            </Panel>
-          </div>
-          <div className="dbFooter">
-            <Footer />
-          </div>
-          </Tabs>
+            }
+          </Tab>
+          {/* <button className="standardButton logoutButton" onClick={() => { dispatch(logout()) }}> logout </button> */}
         </div>
-      )
-    } else {
-      return(
-        <div className="loadingSpinner">
-          <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
+        <div className="dbBody">
+          <Panel>
+            <p> Notifications here </p>
+          </Panel>
+          <Panel>
+            <ProfileInfoView user={user} />
+          </Panel>
+          <Panel>
+            <SupplierInfoView supplier={user.supplier} />
+          </Panel>
+          <Panel>
+            <p> Coming Soon </p>
+          </Panel>
+          <Panel>
+          <p> Coming Soon </p>
+          </Panel>
+          <Panel>
+            <EventView supplier={user.supplier} />
+          </Panel>
+          <Panel>
+          <p> Coming Soon </p>
+          </Panel>
         </div>
-      ) 
-    }
+        <div className="dbFooter">
+          <Footer />
+        </div>
+        </Tabs>
+      </div>
+    )
+  } else {
+    return(
+      <div className="loadingSpinner">
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    ) 
   }
-
-
-  return (
-    renderInfo()
-  )
 }
 
 const MapStateToProps = (state, ownProps) => ({
