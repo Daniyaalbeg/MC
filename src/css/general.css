@@ -120,12 +120,12 @@ p {
 }
 /* #1589C9  */
 .tab.active {
-  background-color: rgb(66, 134, 156);
+  background-color: #1589C9;
   color: whitesmoke;
 }
 /* rgba(21, 138, 201, 0.185) */
 .tab:hover:not(.active) {
-  background-color: rgba(66, 134, 156, 0.24);
+  background-color: rgba(21, 138, 201, 0.233);
   color: whitesmoke;
 }
 
@@ -147,7 +147,7 @@ p {
 }
 
 .faSelectEventButton {
-  color: #1589C9 ;
+  color: #1589C9;
   -ms-transition: 1s ease-in-out;
   -webkit-transition: 1s ease-in-out;
   transition: 1s ease-in-out;

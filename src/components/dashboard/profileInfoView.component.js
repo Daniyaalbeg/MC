@@ -9,7 +9,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/pro-solid-svg-icons'
 
 
-import '../../css/ProfileInfoView.css';
+import '../../css/profileInfoView.css';
 
 const ProfileInfoView = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
