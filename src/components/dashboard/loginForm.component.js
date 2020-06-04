@@ -60,11 +60,11 @@ const LoginForm = ({dispatch, loading, hasErrors}) => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
-              isValid={touched.email && !errors.email}
-              isInvalid={errors.email}
+              // isValid={touched.email && !errors.email}
+              // isInvalid={errors.email}
             />
             {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
-            <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+            {/* <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback> */}
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -84,7 +84,7 @@ const LoginForm = ({dispatch, loading, hasErrors}) => {
               // isInvalid={errors.password}
             />
             {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
-            <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+            {/* <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> */}
             {hasErrors ? <Form.Text className="text-muted, red"> Wrong email or password, try again </Form.Text> : ""}
             <Form.Text className="text-muted">
               <Link to='/reset' className="link">Forgot password?</Link>

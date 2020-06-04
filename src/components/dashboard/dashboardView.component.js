@@ -37,13 +37,13 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
       <div className="dbLayout">
         <Tabs>
         <div className="dbHeader">
-          <button>
+          <button className="headerButton">
             <div className="dbHeaderIcon dbIconBg">
               <FontAwesomeIcon icon={faBell} className="dbFaBell dbIconFont" />
             </div>
           </button>
-          <button onClick={() => { dispatch(logout()) }}>
-            <div className="dbHeaderIcon dbIconBg">
+          <button className="headerButton" onClick={() => { dispatch(logout()) }}>
+            <div className="dbHeaderIcon dbIconBg logoutIcon">
               <FontAwesomeIcon icon={faSignOut} className="dgFaSignOut dbIconFont" />
             </div>
           </button>
