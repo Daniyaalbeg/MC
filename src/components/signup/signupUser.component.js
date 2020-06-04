@@ -85,7 +85,6 @@ const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }
           mobile: "",
           cnic: "",
           addressLine1: "",
-          addressLine2: "",
           city: "",
           region: "",
           postCode: "",
@@ -102,7 +101,6 @@ const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }
             mobile: values.mobile,
             cnic: values.cnic,
             addressLine1: values.addressLine1,
-            addressLine2: values.addressLine2,
             city: values.city,
             region: values.region,
             postCode: values.postCode,
@@ -229,22 +227,6 @@ const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.addressLine1}</Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId="formAddressLine2">
-          <Form.Label>Address Line 2</Form.Label>
-          <Form.Control
-            name="addressLine2"
-            type="text"
-            placeholder="Address Line 2"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.addressLine1}
-            isValid={touched.addressLine2 && !errors.addressLine2}
-            isInvalid={errors.addressLine2}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.addressLine2}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formCity">

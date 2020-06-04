@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { signupReset } from '../../Actions/signUpActions';
 import { login } from '../../Actions/authActions';
 import { resetUserInfoGet } from '../../Actions/userInfoActions';
+import getRandomColour from '../utilities/randomMCColour.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/pro-solid-svg-icons';
@@ -24,8 +25,7 @@ const validationSchema = Yup.object().shape({
 
 const LoginForm = ({dispatch, loading, hasErrors}) => {
 
-  const headerColours = ["#EF2A30", "#F47E2E", "#FFD71A", "#4BB250", "#1589C9", "#4C5962"]
-  const chosenColour = headerColours[Math.floor(Math.random() * headerColours.length)];
+  const chosenColour = getRandomColour();
 
   return (
   <Formik

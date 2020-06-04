@@ -29,7 +29,7 @@ const EventView = (props) => {
       )
       const list =
       <div style={{textAlign: "right"}}>
-        <Link to="createEvent" className="createRationButton"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Ration </button></Link> 
+        <Link to="createEvent" className="createRationButton"><button className="createEventButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link> 
         <Accordion style={{textAlign: "left"}} onSelect={setSelectedEventId} className="eventListCard">
             {listOfEvents}
         </Accordion>
@@ -39,7 +39,7 @@ const EventView = (props) => {
       return (
         <div className="emptyDBContainer">
           <h6 className="text-muted, errorText"> No distributions to display </h6>
-          <Link to="createEvent"><button className="standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link>
+          <Link to="createEvent"><button className="createEventButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link>
         </div>
       )
     }

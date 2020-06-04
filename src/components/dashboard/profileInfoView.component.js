@@ -47,7 +47,7 @@ const Verified = (props) => {
     <>
       <p id="verifyButtonEmail"> {props.verified ? "You have been verified" : "You have not been verified"} </p>
       {!props.verified &&
-        <button className="standardButton" onClick={() => {
+        <button className="standardButton profileVerifyButton" onClick={() => {
           sendVerificationEmail();
         }}> 
           <FontAwesomeIcon icon={faEnvelope} style={{marginRight: "0.4em"}}></FontAwesomeIcon>

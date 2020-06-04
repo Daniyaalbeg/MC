@@ -88,7 +88,7 @@ const SupplierInfoView = (props) => {
     return (
       <div className="emptyDBContainer">
         <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You have not created an organisation yet. </p>
-         <Link to="signupOrg"><button className="standardButton lightBlueColour"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Create Organisation </button></Link>
+         <Link to="signupOrg"><button className="createOrgButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Create Organisation </button></Link>
       </div>
     )
   }

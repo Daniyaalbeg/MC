@@ -11,13 +11,18 @@
 }
 
 .cnicLoggedInHeading {
-  background-color: #1589C9;
   color: whitesmoke;
   padding: 12px;
   border-radius: 5px;
+  font-weight: bold;
+  font-size: x-large;
 }
 .cnicExclamationIcon {
   margin-right: 8px;
+}
+.cnicExclamationIcon .fa-secondary {
+  stroke: white;
+  stroke-width: 20;
 }
 .cnicExclamationIcon .fa-primary {
   fill: whitesmoke;

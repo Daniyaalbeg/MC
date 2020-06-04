@@ -7,10 +7,6 @@ const addressSchema = new Schema({
     type: String,
     required: false
   },
-  line2: {
-    type: String,
-    required: false
-  },
   city: {
     type: String,
     required: true 

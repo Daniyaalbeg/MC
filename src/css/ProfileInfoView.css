@@ -44,3 +44,8 @@
 .pCreatedAccountOn {
   margin-top: 1em; 
 }
+
+.profileVerifyButton {
+  background-color: #F47E2E !important;
+  font-weight: bold;
+}

@@ -13,14 +13,17 @@ import { faSearch } from '@fortawesome/pro-light-svg-icons'
 import { faFilePlus, faSearch as faSearchDuotone, faExclamationTriangle} from '@fortawesome/pro-duotone-svg-icons';
 
 import '../../css/cnic.css'
+import getRandomColour from '../utilities/randomMCColour.component';
 
 const MustBeLoggedIn = () => {
+  const randomColour = getRandomColour()
+
   return (
     <div className="cnicMustBeLoggedIn">
-      <h4 className="cnicLoggedInHeading">
+      <p className="cnicLoggedInHeading" style={{backgroundColor: randomColour}}>
         <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" />
         Must be logged in and verified to view
-      </h4>
+      </p>
     </div>
   )
 }

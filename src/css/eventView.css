@@ -24,6 +24,9 @@
   flex-shrink: 1;
 }
 
-.lightBlueColour {
-  background-color: #41869C !important;
+.createEventButton {
+  background-color: #4C5962 !important;
+}
+.createEventButton:hover {
+  background-color: rgb(52, 61, 66) !important;
 }

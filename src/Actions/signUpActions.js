@@ -31,7 +31,6 @@ export function signUpUser(data) {
 
     const address = ({
       addressLine1: data.addressLine1,
-      addressLine2: data.addressLine2,
       city: data.city,
       region: data.region,
       postCode: data.postCode,

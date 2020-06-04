@@ -16,7 +16,6 @@ router.route('/create').post([
   check('mobile').isMobilePhone(["en-PK", "en-GB"]),
   check('cnic').trim().matches(/^[0-9+]{5}-[0-9+]{7}-[0-9]{1}|[0-9+]{6}-[0-9+]{6}-[0-9]{1}|^$$/),
   check('address.addressLine1'),
-  check('address.addressLine2'),
   check('address.city').trim(),
   check('address.region'),
   check('address.postCode'),
@@ -36,12 +35,11 @@ router.route('/create').post([
   .then((hashedPassword) => {
 
     const address = new Address({
-      line1: req.body.address.line1,
-      line2: req.body.address.line2,
-      city: req.body.address.city,
-      region: req.body.address.region,
-      postCode: req.body.address.postCode,
-      country: req.body.address.country,
+      line1: req.body.address.line1.toLowerCase(),
+      city: req.body.address.city.toLowerCase(),
+      region: req.body.address.region.toLowerCase(),
+      postCode: req.body.address.postCode.toLowerCase(),
+      country: req.body.address.country.toLowerCase(),
     })
 
     const newUser = new User({
