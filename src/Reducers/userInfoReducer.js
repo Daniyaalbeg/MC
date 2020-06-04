@@ -4,14 +4,7 @@ import { LOGOUT } from '../Actions/authActions'
 export const initialState = {
   fetched: false,
   loading: false,
-  user: null,
-  // userId: "",
-  // username: "",
-  // email: "",
-  // supplier: null,
-  // approved: false,
-  // verified: false,
-  // createdAt: "",
+  user: "",
   hasErrors: false,
   error: null
 }

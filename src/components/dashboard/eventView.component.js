@@ -1,54 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../../css/eventView.css';
-import { Accordion } from 'react-bootstrap';
-
-import EventItemCard from './eventItemCard.component';
-
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons'
+import { faBoxOpen } from '@fortawesome/pro-solid-svg-icons'
+
+import EventContainer from './eventsContainer.component';
 
 const EventView = (props) => {
-  const [selectedEventId, setSelectedEventId] = useState("");
-  const supplier = props.supplier;
-  if (!supplier) {
-    return (
-        <div className="emptyDBContainer">
-          <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You need to create an organisation before adding distributions </p>
-        </div>
-    )
-  }
-  
-  const events = supplier.events;
-
-  const RenderEvents = () => {
-    if (Array.isArray(events) && events.length) {
-      const listOfEvents = events.map((event) =>
-        <EventItemCard isUser={true} event={event} key={event._id} open={event._id === selectedEventId}/>
-      )
-      const list =
-      <div style={{textAlign: "right"}}>
-        <Link to="createEvent" className="createRationButton"><button className="createEventButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link> 
-        <Accordion style={{textAlign: "left"}} onSelect={setSelectedEventId} className="eventListCard">
-            {listOfEvents}
-        </Accordion>
-      </div>
-      return list;
-    } else {
-      return (
-        <div className="emptyDBContainer">
-          <h6 className="text-muted, errorText"> No distributions to display </h6>
-          <Link to="createEvent"><button className="createEventButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link>
-        </div>
-      )
-    }
-  }
-
   return (
-    RenderEvents()
+    <div className="eventViewContainer">
+      <div className="eventViewHeader">
+        <FontAwesomeIcon icon={faBoxOpen} />
+        <p> Distributions </p>
+      </div>
+      <div className="eventViewContent">
+        <EventContainer supplier={props.supplier} />
+      </div>
+    </div>
   )
 }
-
 
 export default EventView

@@ -7,7 +7,6 @@ var CNIC = require('../models/cnic.model').CNIC;
 var CNICFile = require('../models/cnicFile.model').CNICFile;
 
 router.route('/:id').get(verifyToken, (req, res, next) => {
-  console.log(req.params.id.toString().replace(/\D/g,''))
   CNIC.findOne({ cnicNumber: req.params.id.toString().replace(/\D/g,'')})
   .populate('connectedEvents')
   .exec((err, cnic) => {
@@ -26,7 +25,7 @@ router.route('/:id').get(verifyToken, (req, res, next) => {
 //create new cnic
 router.route('/upload').post(verifyToken, (req, res, next) => {
   const eventID = req.body.eventID
-  const createdByID = req.body.createdByID
+  const createdByID = req.id
   const newCnic = [...req.body.cnicInfo]
   newCnic.splice(0,1)
 
@@ -88,24 +87,20 @@ router.route('/upload').post(verifyToken, (req, res, next) => {
     Promise.allSettled(savePromises)
     .then((results) => {
       results.forEach((result, index) => {
-        console.log(result)
-        if (result === 'rejected') {
-          failedIDs.push(index) 
+        if (result.status === 'rejected') {
+          failedIDs.push(index + 1) 
         }
       })
-      console.log('successcnic')
       return res.status(200).json({
         failedIDs: failedIDs
       })
     })
     .catch((error) => {
       console.log(error)
-      console.log('second error')
       return res.status(500).send("error")
     });
   })
   .catch((error) => {
-    console.log('failure')
     console.log(error)
     return res.status(500).send("error")
   });

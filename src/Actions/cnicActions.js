@@ -112,7 +112,7 @@ export function uploadFileCnic(eventID, cnicFile) {
   }
 }
 
-export function uploadCnic(eventID, cnicData, userID) {
+export function uploadCnic(eventID, cnicData) {
   return async dispatch => {
     dispatch(uploadingCnicFile())
 
@@ -125,7 +125,6 @@ export function uploadCnic(eventID, cnicData, userID) {
       data: {
         eventID: eventID,
         cnicInfo: cnicData,
-        createdByID: userID
       },
       withCredentials: true,
       credentials: 'include'

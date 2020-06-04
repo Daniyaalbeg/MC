@@ -8,9 +8,10 @@ import { faFileUpload, faDownload, faUpload, faPlusCircle} from '@fortawesome/pr
 import xlsx from 'xlsx';
 
 import { uploadCnic, uploadFileCnic, uploadCnicReset } from '../../Actions/cnicActions';
+import getRandomColour from '../utilities/randomMCColour.component'
 import sampleXlsx from '../../assets/cnic_sample.xlsx';
 
-const CnicAddNew = ({ dispatch, events, selectedCnicEvent, currentUserID, uploadLoading, uploadSuccess, uploadHasErrors, uploadErrorIDs }) => {
+const CnicAddNew = ({ dispatch, events, selectedCnicEvent, uploadLoading, uploadSuccess, uploadHasErrors, uploadErrorIDs }) => {
   if (selectedCnicEvent) {
     return (
       <>
@@ -18,9 +19,8 @@ const CnicAddNew = ({ dispatch, events, selectedCnicEvent, currentUserID, upload
           <h4> Choose how to add CNIC information </h4>
           <button className="standardButton" disabled={uploadLoading} onClick={() => dispatch(selectCnicEvent(null))}> Back </button>
         </Row>
-        <hr className="cnicEventSeperator" />
         <div className="cnicAddContainer">
-          <CnicAddOptions dispatch={dispatch} selectedEvent={selectedCnicEvent} currentUserID={currentUserID} uploadLoading={uploadLoading} uploadSuccess={uploadSuccess} uploadHasErrors={uploadHasErrors} uploadErrorIDs={uploadErrorIDs}/>
+          <CnicAddOptions dispatch={dispatch} selectedEvent={selectedCnicEvent} uploadLoading={uploadLoading} uploadSuccess={uploadSuccess} uploadHasErrors={uploadHasErrors} uploadErrorIDs={uploadErrorIDs}/>
         </div>
       </>
     )
@@ -40,10 +40,9 @@ const CnicAddNew = ({ dispatch, events, selectedCnicEvent, currentUserID, upload
                     dispatch(uploadCnicReset())
                   }
                   }>
-                    <FontAwesomeIcon icon={faPlusCircle} size="2x" swapOpacity style={{"--fa-secondary-opacity": 0 }} className="faSelectEventButton" />
+                    <FontAwesomeIcon icon={faPlusCircle} size="2x" swapOpacity style={{"--fa-secondary-opacity": 0, color: getRandomColour() }} className="faSelectEventButton" />
                   </button>
                 </div>
-                <hr className="cnicEventSeperator" />
               </div>
             )
           })
@@ -64,7 +63,6 @@ const parseExcelFile = (e, setFile) => {
 
     const dataParse = xlsx.utils.sheet_to_json(workSheet, {header: 1})
     setFile(dataParse)
-    console.log(dataParse)
   }
   reader.readAsBinaryString(e.target.files[0])
 }
@@ -106,13 +104,12 @@ const CNICTableBody = (props) => {
 }
 
 const CnicAddOptions = (props) => {
-  const { dispatch, selectedEvent, currentUserID, uploadLoading, uploadSuccess, uploadHasErrors, uploadErrorIDs } = props
+  const { dispatch, selectedEvent, uploadLoading, uploadSuccess, uploadHasErrors, uploadErrorIDs } = props
 
   const [fileSampleLoaded, setFileSampleLoaded] = useState(false);
   const [fileDataUploaded, setFileDataUploaded] = useState(false);
   const [fileData, setFileData] = useState(null)
   const [file, setFile] = useState(null)
-
 
   if (fileSampleLoaded) {
     return (
@@ -124,7 +121,7 @@ const CnicAddOptions = (props) => {
          </Table>
         }
         <button className="standardButton" disabled={uploadLoading} onClick={() => {
-          dispatch(uploadCnic(selectedEvent._id, fileData, currentUserID))
+          dispatch(uploadCnic(selectedEvent._id, fileData))
         }}>
           {
             uploadLoading ? 
@@ -134,18 +131,9 @@ const CnicAddOptions = (props) => {
           }
            {uploadLoading ? "Uploading" : "Upload" }
          </button>
-         {
-           uploadErrorIDs.length !== 0 &&
-           <p className="error"> There was an issue uploading row number: {uploadErrorIDs.toString()} </p>
-         }
-         {
-           uploadHasErrors &&
-           <p className="error"> An error occurred with the upload </p>
-         }
-         {
-           uploadSuccess &&
-           <p className="cnicSuccess cnicNote"> File was uploaded successfully and awaits review </p>
-         }
+
+         <UploadedSuccessOrError uploadErrorIDs={uploadErrorIDs} uploadHasErrors={uploadHasErrors} uploadSuccess={uploadSuccess} />
+
          <p className="text-muted cnicNote"> Note: Please make sure all the columns in the file are filled, if any are empty type type null or empty intead of leaving them blank. </p>
       </div>
     )
@@ -203,7 +191,6 @@ const CnicAddOptions = (props) => {
             <input onChange={(e) => {
               setFileDataUploaded(true)
               setFile(e.currentTarget.files[0])
-              console.log(file)
             }} id="file-Data-upload" type="file" accept=".xlsx" />
             <FontAwesomeIcon icon={faUpload} style={{marginRight: '8px'}} />
             Upload File
@@ -214,10 +201,29 @@ const CnicAddOptions = (props) => {
   }
 }
 
+const UploadedSuccessOrError = ({ uploadErrorIDs, uploadHasErrors, uploadSuccess }) => {
+  if (uploadErrorIDs.length !== 0 ) {
+    return (
+      <p className="error" style ={{marginTop: "16px"}}> There was an issue uploading row number: {uploadErrorIDs.toString()} </p>    
+    )
+  } else if (uploadHasErrors) {
+    return (
+      <p className="error"> An error occurred with the upload </p>
+    )
+  } else if (uploadSuccess) {
+    return (
+      <p className="cnicSuccess cnicNote"> File was uploaded successfully and awaits review </p>
+    )
+  }
+
+  return (
+    null
+  )
+}
+
 const MapStateToProps = (state) => ({
-  events: state.userInfo.supplier.events,
+  events: state.userInfo.user.supplier.events,
   selectedCnicEvent: state.cnicInfo.selectedCnicEvent,
-  currentUserID: state.userInfo.userId,
   uploadLoading: state.cnicInfo.uploadLoading,
   uploadSuccess: state.cnicInfo.uploadSuccess,
   uploadHasErrors: state.cnicInfo.uploadHasErrors,

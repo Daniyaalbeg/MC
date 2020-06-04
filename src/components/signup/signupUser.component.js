@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
@@ -60,7 +60,9 @@ const validationSchema = Yup.object().shape({
 })
 
 const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }) => {
-  dispatch(signupReset())
+  useEffect(() => {
+    dispatch(signupReset())
+  }, [signupReset])
 
   if (auth) {
     return (
@@ -317,7 +319,7 @@ const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }
         {loading ? 'Signing up' : 'Sign up'}
         </button>
 
-        <button className="standardButton redVersion" onClick={resetForm} disabled={loading}>
+        <button type="button" className="standardButton redVersion" onClick={resetForm} disabled={loading}>
           Reset
         </button>
 

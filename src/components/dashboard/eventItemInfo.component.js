@@ -28,19 +28,21 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
   // const MapViewLazy = React.lazy(() => import('./eventitemInfoMap.component.js'))
   return (
     <>
+      <p className="eventTitle"> Description of distribution </p>
       <p> {event.description} </p>
-      <hr />
-      <h6 className="text-muted"> Number of items distributed </h6>
+
+      <p className="eventTitle"> Number of items distributed </p>
       <p> {event.totalNumberOfItems} </p>
-      <hr />
-      <h6 className="text-muted"> Descripiton of items </h6>
+
+      <p className="eventTitle"> Descripiton of items </p>
       <p> {event.itemsDescription} </p>
-      <hr />
-      <h6 className="text-muted"> Type of distribution </h6>
-      <p> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>      <hr />
+
+      <p className="eventTitle"> Type of distribution </p>
+      <p> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>
+
       {event.images.length !== 0 &&
           <div className="imageCarouselContainer">
-          <h6 className="text-muted"> Images </h6>
+          <p className="eventTitle"> Images </p>
           <Carousel className="imageCarousel">
             {event.images.map((image) => {
               return (
@@ -55,7 +57,7 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
           </div>
         }
       {/* <hr />
-      <h6 className="text-muted"> Location </h6>
+      <p className="eventTitle"> Location </p>
       <Suspense fallback={<div> Loading... </div>}>
         <MapViewLazy event={event} />
       </Suspense> */}

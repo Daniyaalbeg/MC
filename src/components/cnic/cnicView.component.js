@@ -6,7 +6,7 @@ import { getUserInfo } from '../../Actions/userInfoActions'
 import { getCnic } from '../../Actions/cnicActions';
 import CnicAddNew from './cnicAddNew.component'
 import EventItemCard from '../dashboard/eventItemCard.component'
-import { Tab } from '../utilities/tabComponent';
+import { TabCnic } from '../utilities/tabComponent';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/pro-light-svg-icons'
@@ -56,20 +56,59 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
   }
 
   return (
-    <>
+    <div className="cnicContainer">
     <h1 className="cnicHeading"> Computerized National Identity Card </h1>
-    <Card className="cnicCard">
+    <div className="cnicCard">
+      <Tabs>
+      <div className="cnicHeader">
+        <TabCnic addClass="cnicTab">
+          <FontAwesomeIcon icon={faSearchDuotone} style={{ marginRight: '8px' }} />
+          Search CNIC
+        </TabCnic>
+        <TabCnic addClass="cnicTab">
+          <FontAwesomeIcon icon={faFilePlus} style={{ marginRight: '8px' }} />
+          Add CNIC
+        </TabCnic>
+      </div>
+      <div className="cnicBody">
+      <Panel>
+        <form onSubmit={
+          (e) => { e.preventDefault()
+          searchCnicChange()
+        }}>
+          <div className="searchCnicContainer">
+            <div className="searchCnicBox">
+              <FontAwesomeIcon icon={faSearch} className="cnicSearchIcon" onClick={searchCnicChange} spin={getLoading}/>
+              <input ref={searchInputRef} type="text" placeholder="CNIC number" className="cnicSearchInput" />
+            </div>
+            <button className="standardButton cnicSearchButton" onClick={searchCnicChange}> Search </button>
+          </div>
+        </form>
+        <CnicResult getHasError={getHasError} getHasErrorMessage={getHasErrorMessage} cnicInfo={cnicInfo} />
+      </Panel>
+      <Panel>
+        <CnicAddNew />
+      </Panel>  
+      </div>
+      <div className="cnicFooter">
+      <h6> Note </h6>
+        <p> Once CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
+      </div>
+      </Tabs>
+    </div>
+
+    {/* <Card as="cnicCard">
     <Tabs>
       <Card.Header>
         <Row className="tabRow">
-          <Tab>
+          <TabCnic addClass="cnicTab">
             <FontAwesomeIcon icon={faSearchDuotone} style={{ marginRight: '8px' }} className="" />
             Search CNIC
-          </Tab>
-          <Tab>
+          </TabCnic>
+          <TabCnic addClass="cnicTab">
             <FontAwesomeIcon icon={faFilePlus} style={{ marginRight: '8px' }} className="" />
             Add CNIC
-          </Tab>
+          </TabCnic>
         </Row>
       </Card.Header>
       <Card.Body>
@@ -99,8 +138,8 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
         <p> Once CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
       </Card.Footer>
       </Tabs>
-    </Card>
-    </>
+    </Card> */}
+    </div>
   )
 }
 
@@ -135,7 +174,7 @@ const MapStateToProps = (state) => ({
   auth: state.auth.auth,
   authLoading: state.userInfo.loading,
   userDataFetched: state.userInfo.fetched,
-  verified: state.userInfo.verified,
+  verified: state.userInfo.user.verified,
   getLoading: state.cnicInfo.getLoading,
   getFetched: state.cnicInfo.getFetched,
   getHasError: state.cnicInfo.getHasError,

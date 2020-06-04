@@ -35,11 +35,11 @@ router.route('/create').post([
   .then((hashedPassword) => {
 
     const address = new Address({
-      line1: req.body.address.line1.toLowerCase(),
-      city: req.body.address.city.toLowerCase(),
-      region: req.body.address.region.toLowerCase(),
-      postCode: req.body.address.postCode.toLowerCase(),
-      country: req.body.address.country.toLowerCase(),
+      line1: req.body.address.line1 ? req.body.address.line1.toLowerCase() : "",
+      city: req.body.address.city ? req.body.address.city.toLowerCase() : "",
+      region: req.body.address.region ? req.body.address.region.toLowerCase() : "",
+      postCode: req.body.address.postCode ? req.body.address.postCode.toLowerCase() : "",
+      country: req.body.address.country ? req.body.address.country.toLowerCase() : "",
     })
 
     const newUser = new User({

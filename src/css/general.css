@@ -99,6 +99,7 @@ p {
   color: white;
   border-radius: 5px;
   padding: 0.3em 0.6em;
+  font-weight: bold;
 }
 .standardButton:hover {
   background-color: rgb(18, 117, 170);
@@ -218,7 +219,7 @@ p {
 }
 
 .faSelectEventButton {
-  color: #1589C9;
+  /* color: #1589C9; */
   -ms-transition: 1s ease-in-out;
   -webkit-transition: 1s ease-in-out;
   transition: 1s ease-in-out;

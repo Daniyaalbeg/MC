@@ -30,12 +30,14 @@ export function signUpUser(data) {
     dispatch(signingUp())
 
     const address = ({
-      addressLine1: data.addressLine1,
+      line1: data.addressLine1,
       city: data.city,
       region: data.region,
       postCode: data.postCode,
       country: data.country,
     })
+
+    console.log("hello")
 
     axios({
       method: 'post',

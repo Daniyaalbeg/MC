@@ -6,12 +6,11 @@ import { Spinner, Container} from 'react-bootstrap';
 
 import ProfileInfoView from './profileInfoView.component';
 import SupplierInfoView from './supplierInfoView.component';
-import EventView from './eventView.component'
+import EventView from './eventView.component';
 import Footer from '../homeView/mainFooter.component'
 import { getUserInfo } from '../../Actions/userInfoActions';
 import getWindowDimensions from '../utilities/windowDimension.component';
-import { Nav } from 'react-bootstrap';
-import { Tab } from '../utilities/tabComponent';
+import { TabDashboard } from '../utilities/tabComponent';
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -55,48 +54,48 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           }
         </div>
         <div className="dbLeftBar">
-          <Tab addClass="mcTabA">
+          <TabDashboard addClass="mcTabA">
             <FontAwesomeIcon icon={faHomeLg} />
             {renderSideBarText &&
               <p> Home </p>
             }
-          </Tab>
-          <Tab addClass="mcTabB">
+          </TabDashboard>
+          <TabDashboard addClass="mcTabB">
           <FontAwesomeIcon icon={faUserCircle} />
           {renderSideBarText &&
               <p> Profile </p>
             }
-          </Tab>
-          <Tab addClass="mcTabC">
+          </TabDashboard>
+          <TabDashboard addClass="mcTabC">
             <FontAwesomeIcon icon={faSitemap} />
             {renderSideBarText &&
               <p> Organisation </p>
             }
-          </Tab>
-          <Tab addClass="mcTabD">
+          </TabDashboard>
+          <TabDashboard addClass="mcTabD">
             <FontAwesomeIcon icon={faProjectDiagram} />
             {renderSideBarText &&
               <p> Projects </p>
             }
-          </Tab>
-          <Tab addClass="mcTabE">
+          </TabDashboard>
+          <TabDashboard addClass="mcTabE">
             <FontAwesomeIcon icon={faUsers} />
             {renderSideBarText &&
               <p> Groups </p>
             }
-          </Tab>
-          <Tab addClass="mcTabF">
+          </TabDashboard>
+          <TabDashboard addClass="mcTabF">
             <FontAwesomeIcon icon={faBoxOpen} />
             {renderSideBarText &&
               <p> Distributions </p>
             }
-          </Tab>
-          <Tab addClass="mcTabA">
+          </TabDashboard>
+          <TabDashboard addClass="mcTabA">
             <FontAwesomeIcon icon={faHandsHelping} />
             {renderSideBarText &&
               <p> Volunteer </p>
             }
-          </Tab>
+          </TabDashboard>
           {/* <button className="standardButton logoutButton" onClick={() => { dispatch(logout()) }}> logout </button> */}
         </div>
         <div className="dbBody">
