@@ -55,43 +55,43 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           }
         </div>
         <div className="dbLeftBar">
-          <Tab>
+          <Tab addClass="mcTabA">
             <FontAwesomeIcon icon={faHomeLg} />
             {renderSideBarText &&
               <p> Home </p>
             }
           </Tab>
-          <Tab>
+          <Tab addClass="mcTabB">
           <FontAwesomeIcon icon={faUserCircle} />
           {renderSideBarText &&
               <p> Profile </p>
             }
           </Tab>
-          <Tab>
+          <Tab addClass="mcTabC">
             <FontAwesomeIcon icon={faSitemap} />
             {renderSideBarText &&
               <p> Organisation </p>
             }
           </Tab>
-          <Tab>
+          <Tab addClass="mcTabD">
             <FontAwesomeIcon icon={faProjectDiagram} />
             {renderSideBarText &&
               <p> Projects </p>
             }
           </Tab>
-          <Tab>
+          <Tab addClass="mcTabE">
             <FontAwesomeIcon icon={faUsers} />
             {renderSideBarText &&
               <p> Groups </p>
             }
           </Tab>
-          <Tab>
-            <FontAwesomeIcon icon={faBox} />
+          <Tab addClass="mcTabF">
+            <FontAwesomeIcon icon={faBoxOpen} />
             {renderSideBarText &&
               <p> Distributions </p>
             }
           </Tab>
-          <Tab>
+          <Tab addClass="mcTabA">
             <FontAwesomeIcon icon={faHandsHelping} />
             {renderSideBarText &&
               <p> Volunteer </p>
@@ -102,7 +102,7 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
         <div className="dbBody">
           <Panel>
             <div className="comingSoonContainer">
-              <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+              <p className="mcRedBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
             </div>
           </Panel>
           <Panel>
@@ -113,12 +113,12 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           </Panel>
           <Panel>
             <div className="comingSoonContainer">
-            <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            <p className="mcGreenBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
             </div>
           </Panel>
           <Panel>
             <div className="comingSoonContainer">
-            <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            <p className="mcBlueBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
             </div>
           </Panel>
           <Panel>
@@ -126,7 +126,7 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           </Panel>
           <Panel>
             <div className="comingSoonContainer">
-            <p> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            <p className="mcRedBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
             </div>
           </Panel>
         </div>

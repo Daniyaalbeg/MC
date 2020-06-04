@@ -1,20 +1,93 @@
 .mcRed {
- color: #EF2A30;
+ color: #EF2A30 !important;
 }
 .mcOrange {
-  color: #F47E2E;
+  color: #F47E2E !important;
 }
 .mcYellow {
-  color: #FFD71A;
+  color: #FFD71A !important;
 }
 .mcGreen {
-  color: #4BB250;
+  color: #4BB250 !important;
 }
 .mcBlue {
-  color: #1589C9;
+  color: #1589C9 !important;
 }
 .mcGrey {
-  color: #4C5962;
+  color: #4C5962 !important;
+}
+
+.mcRedBG {
+  background-color: #EF2A30;
+ }
+ .mcOrangeBG {
+  background-color: #F47E2E;
+ }
+ .mcYellowBG {
+  background-color: #FFD71A;
+ }
+ .mcGreenBG {
+  background-color: #4BB250;
+ }
+ .mcBlueBG {
+  background-color: #1589C9;
+ }
+ .mcGreyBG {
+  background-color: #4C5962;
+ }
+
+.mcTabA {
+
+}
+.mcTabA:hover:not(.active) {
+  background-color: rgba(239, 42, 49, 0.25);
+}
+.mcTabA.active {
+  background-color: #EF2A30;
+}
+.mcTabB {
+
+}
+.mcTabB:hover:not(.active) {
+  background-color: rgba(244, 125, 46, 0.25);
+}
+.mcTabB.active {
+  background-color: #F47E2E;
+}
+.mcTabC {
+
+}
+.mcTabC:hover:not(.active) {
+  background-color: rgba(226, 188, 0, 0.25);
+}
+.mcTabC.active {
+  background-color: rgb(226, 188, 0);
+}
+.mcTabD {
+
+}
+.mcTabD:hover:not(.active) {
+  background-color: rgba(75, 178, 80, 0.25);
+}
+.mcTabD.active {
+  background-color: #4BB250;
+}
+.mcTabE {
+}
+.mcTabE:hover:not(.active) {
+  background-color: rgba(21, 138, 201, 0.25);
+}
+.mcTabE.active {
+  background-color: #1589C9;
+ }
+.mcTabF {
+
+}
+.mcTabF:hover:not(.active) {
+  background-color: rgba(76, 89, 98, 0.25);
+}
+.mcTabF.active {
+  background-color: #4C5962;
 }
 
 p {
@@ -117,16 +190,15 @@ p {
   padding: .5em 1em;
   color: whitesmoke;
   background-color: #222A2E;
+  font-weight: bold;
 }
 /* #1589C9  */
 .tab.active {
-  background-color: #1589C9;
-  color: whitesmoke;
+  /* background-color: #1589C9; */
 }
 /* rgba(21, 138, 201, 0.185) */
 .tab:hover:not(.active) {
-  background-color: rgba(21, 138, 201, 0.233);
-  color: whitesmoke;
+  /* background-color: rgba(21, 138, 201, 0.233); */
 }
 
 @media only screen and (max-device-width: 1150px) {

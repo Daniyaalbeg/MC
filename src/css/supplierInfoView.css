@@ -1,6 +1,54 @@
+.supplierInfoContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.supplierInfoHeader {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #FFD71A;
+}
+.supplierInfoHeader > svg {
+  margin-left: 32px;
+  font-size: 2em;
+  color: whitesmoke;
+}
+.supplierInfoHeader > p {
+  margin: 0;
+  margin-left: 12px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.supplierInfoContent {
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.supplierTitle {
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 0em;
+}
+.supplierTitleSmall {
+  font-weight: bold;
+  font-size: small;
+  margin-bottom: 0em;
+}
+.supplierText {
+
+}
+
 .bI {
   padding: 0 !important;
   margin: 0 !important;
+}
+.bI > p {
+  margin-bottom: 8px;
 }
 
 .iconSpecific {
@@ -19,13 +67,15 @@
   position: relative;
   height: 200px;
   width: auto;
+  background-color: white;
   border-radius: 0.25rem;
+  margin-bottom: 16px;
 }
 .supplierImage {
   border-radius: 0.25rem;
   position: absolute;
   object-fit: scale-down;
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
 }
 

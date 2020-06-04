@@ -5,7 +5,7 @@ import '../../css/supplierInfoView.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faGlobe } from '@fortawesome/pro-solid-svg-icons';
+import { faGlobe, faSitemap } from '@fortawesome/pro-solid-svg-icons';
 import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import imagePlaceholder from '../../assets/Images/temp.jpg';
@@ -14,38 +14,41 @@ export const BankingDetails = (props) => {
   const bankInfo = props.bankingDetails;
   if (bankInfo.bankName != null) {
     return (
+      <>
+      <p className="supplierTitle"> Banking Info </p>
       <Container className="bankingInfo">
         <Row>
           <Col className="bI">
-            <h6 className="text-muted"> Bank name </h6>
-            <p> {bankInfo.bankName} </p>
+            <p className="supplierTitleSmall"> Bank name </p>
+            {bankInfo.bankName ? <p> {bankInfo.bankName} </p> : "Not Added" }
           </Col>
           <Col className="bI">
-            <h6 className="text-muted"> Bank branch </h6>
-            <p> {bankInfo.bankBranch} </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="bI">
-            <h6 className="text-muted"> Account title </h6>
-            <p> {bankInfo.accountTitle} </p>
-          </Col>
-          <Col className="bI">
-            <h6 className="text-muted"> Account number </h6>
-            <p> {bankInfo.accountNumber} </p>
+            <p className="supplierTitleSmall"> Bank branch </p>
+            {bankInfo.bankBranch ? <p> {bankInfo.bankBranch} </p> : "Not Added" }
           </Col>
         </Row>
         <Row>
           <Col className="bI">
-            <h6 className="text-muted"> IBAN </h6>
-            <p> {bankInfo.IBAN} </p>
+            <p className="supplierTitleSmall"> Account title </p>
+            {bankInfo.accountTitle ? <p> {bankInfo.accountTitle} </p> : "Not Added" }
           </Col>
           <Col className="bI">
-            <h6 className="text-muted"> Swift </h6>
-            <p> {bankInfo.swiftCode} </p>
+            <p className="supplierTitleSmall"> Account number </p>
+            {bankInfo.accountNumber ? <p> {bankInfo.accountNumber} </p> : "Not Added" }
+          </Col>
+        </Row>
+        <Row>
+          <Col className="bI">
+            <p className="supplierTitleSmall"> IBAN </p>
+            {bankInfo.IBAN ? <p> {bankInfo.IBAN} </p> : "Not Added" }
+          </Col>
+          <Col className="bI">
+            <p className="supplierTitleSmall"> Swift </p>
+            {bankInfo.swiftCode ? <p> {bankInfo.swiftCode} </p> : "Not Added" }
           </Col>
         </Row>
       </Container>
+      </>
     )
   } else {
     return null;
@@ -56,8 +59,9 @@ export const EasyPaisaDetails = (props) => {
   if (props.easyPaisa != null) {
     return (
       <Fragment>
-        <h6 className="text-muted"> Easypaisa </h6>
+        <p className="supplierTitleSmall"> Easypaisa </p>
         <p> {props.easyPaisa} </p>
+        {props.easyPaisa ? <p> {props.easyPaisa} </p> : "Not Added" }
       </Fragment>
     )
   } else {
@@ -69,8 +73,9 @@ export const JazzCashDetails = (props) => {
   if (props.jazzCash != null) {
     return (
       <Fragment>
-        <h6 className="text-muted"> Jazzcash </h6>
+        <p className="supplierTitleSmall"> Jazzcash </p>
         <p> {props.jazzCash} </p>
+        {props.jazzCash ? <p> {props.jazzCash} </p> : "Not Added" }
       </Fragment>
     )
   } else {
@@ -89,45 +94,51 @@ const SupplierInfoView = (props) => {
   }
 
   return (
-    <div style={{ fontFamily: "proximaNova" }}>
-      <h6 className="text-muted"> name </h6>
-      <p> {props.supplier.supplierName} </p>
-      <hr />
-      <h6 className="text-muted"> logo </h6>
-      <div className="imageContainer">
-        <img src={props.supplier.supplierImageURL ? props.supplier.supplierImageURL : imagePlaceholder} className="supplierImage" alt=""/>
+    <div className="supplierInfoContainer">
+      <div className="supplierInfoHeader">
+        <FontAwesomeIcon icon={faSitemap} />
+        <p> Organisation </p>
       </div>
-      <hr />
-      <BankingDetails bankingDetails={props.supplier.bankingDetails} />
-      <EasyPaisaDetails easyPaisa={props.supplier.bankingDetails.easyPaisa} />
-      <JazzCashDetails jazzCash={props.supplier.bankingDetails.jazzCash} />
-      <hr />
-      <h6 className="text-muted"> Description </h6>
-      <p> {props.supplier.description} </p>
-      <hr />
-      <h6 className="text-muted"> Address </h6>
-      <p> {props.supplier.address} </p>
-      <hr />
-      <h6 className="text-muted"> Point of Contact </h6>
-      <p> {props.supplier.contactName} </p>
-      <hr />
-      <h6 className="text-muted"> Contact Number </h6>
-      <p> {props.supplier.contactNumber} </p>
-      <hr />
-      <h6 className="text-muted"> Other Info </h6>
-      <p> {props.supplier.contactInfo} </p>
-      <hr />
-      {props.supplierWebsite !== "" && (
-        <Fragment>
-        <h6 className="text-muted"> Website </h6>
-        <a href={props.supplier.supplierWebsite} key={props.supplier.supplierWebsite} target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faGlobe}/></a>
-        </Fragment>
-      )
-      }
-      <SocialMediaIcons supplier={props.supplier} />
-      <WhichLogo icon={props.supplier.facebookURL} />
-      <WhichLogo icon={props.supplier.twitterURL} />
-      <WhichLogo icon={props.supplier.instagramURL} />
+      <div className="supplierInfoContent">
+        <p className="supplierTitle"> Name </p>
+        <p> {props.supplier.supplierName} </p>
+
+        <p className="supplierTitle"> Logo </p>
+        <div className="imageContainer">
+          <img src={props.supplier.supplierImageURL ? props.supplier.supplierImageURL : imagePlaceholder} className="supplierImage" alt=""/>
+        </div>
+
+        <BankingDetails bankingDetails={props.supplier.bankingDetails} />
+        <EasyPaisaDetails easyPaisa={props.supplier.bankingDetails.easyPaisa} />
+        <JazzCashDetails jazzCash={props.supplier.bankingDetails.jazzCash} />
+
+        <p className="supplierTitle"> Description </p>
+        <p> {props.supplier.description} </p>
+
+        <p className="supplierTitle"> Address </p>
+        <p> {props.supplier.address} </p>
+
+        <p className="supplierTitle"> Point of Contact </p>
+        <p> {props.supplier.contactName} </p>
+
+        <p className="supplierTitle"> Contact Number </p>
+        <p> {props.supplier.contactNumber} </p>
+
+        <p className="supplierTitle"> Other Info </p>
+        <p> {props.supplier.contactInfo} </p>
+
+        {props.supplierWebsite !== "" && (
+          <Fragment>
+          <p className="supplierTitle"> Website </p>
+          <a href={props.supplier.supplierWebsite} key={props.supplier.supplierWebsite} target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faGlobe}/></a>
+          </Fragment>
+        )
+        }
+        <SocialMediaIcons supplier={props.supplier} />
+        <WhichLogo icon={props.supplier.facebookURL} />
+        <WhichLogo icon={props.supplier.twitterURL} />
+        <WhichLogo icon={props.supplier.instagramURL} />
+      </div>
     </div>
   )
 }
@@ -144,7 +155,7 @@ export const SocialMediaIcons = (props) => {
     return (
       <Fragment>
         <hr />
-        <h6 className="text-muted"> Social media </h6>
+        <p className="supplierTitle"> Social media </p>
       </Fragment>
     );
   } else {
