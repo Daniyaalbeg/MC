@@ -8,8 +8,10 @@ import { connect } from 'react-redux';
 
 import { signupReset } from '../../Actions/signUpActions';
 import { login } from '../../Actions/authActions';
-import { resetUserInfoGet } from '../../Actions/userInfoActions'
+import { resetUserInfoGet } from '../../Actions/userInfoActions';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/pro-solid-svg-icons';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -21,6 +23,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginForm = ({dispatch, loading, hasErrors}) => {
+
+  const headerColours = ["#EF2A30", "#F47E2E", "#FFD71A", "#4BB250", "#1589C9", "#4C5962"]
+  const chosenColour = headerColours[Math.floor(Math.random() * headerColours.length)];
+
   return (
   <Formik
     initialValues={{ email: "", password: ""}}
@@ -38,8 +44,13 @@ const LoginForm = ({dispatch, loading, hasErrors}) => {
           handleChange,
           handleBlur,
           handleSubmit }) => (
-        <Form noValidate onSubmit={handleSubmit} className="loginFormBorder">
-          <Form.Group controlId="formEmail">
+        <Form noValidate onSubmit={handleSubmit} className="loginForm">
+          <div className="loginFormHeader" style={{backgroundColor: chosenColour}}>
+            <FontAwesomeIcon icon={faUserCircle} />
+            <p> Log In </p>
+          </div>
+          <div className="loginFormContent">
+          <Form.Group controlId="formEmail" className="loginFormGroup">
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
@@ -52,14 +63,14 @@ const LoginForm = ({dispatch, loading, hasErrors}) => {
               isValid={touched.email && !errors.email}
               isInvalid={errors.email}
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
             <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
 
-          <Form.Group controlId="formPassword">
+          <Form.Group controlId="formPassword" className="loginFormGroup">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -81,7 +92,7 @@ const LoginForm = ({dispatch, loading, hasErrors}) => {
           </Form.Group>
 
           <Form.Group>
-            <button className="standardButton" type="submit" disabled={loading}>
+            <button className="standardButton" style={{backgroundColor: chosenColour, fontWeight: "bold"}} type="submit" disabled={loading}>
             {
               loading ? 
               <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
@@ -94,6 +105,7 @@ const LoginForm = ({dispatch, loading, hasErrors}) => {
           <Form.Text className="text-muted"> Don't have an account? <Link to='/signup' className="link" onClick={() =>{
               dispatch(signupReset())
             }}> Sign up </Link></Form.Text>
+          </div>
         </Form>
       )}
     </Formik>
