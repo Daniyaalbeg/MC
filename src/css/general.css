@@ -229,10 +229,14 @@ p {
   -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
   transform: rotate(90deg);
 }
-
+.addressTitle {
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 0em;
+}
 .addressContainer {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 33% 34% 33%;
   grid-template-rows: auto auto;
   grid-template-areas: 
   "topLeft top topRight"

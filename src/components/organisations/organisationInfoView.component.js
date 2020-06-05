@@ -4,10 +4,10 @@ import { Card, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from '../dashboard/supplierInfoView.component';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';
+import CheckOldOrNewAddress from '../shared/address.component'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 import imagePlaceholder from '../../assets/Images/temp.jpg'
-
 
 import '../../css/organistaionInfoView.css'
 
@@ -64,7 +64,9 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           </div>
           <hr />
           <h6 className="text-muted"> Address </h6>
-          <Card.Text> {org.address} </Card.Text>
+          <Card.Text>
+            <CheckOldOrNewAddress address={org.address} />
+          </Card.Text>
           <Card.Text>  </Card.Text>
           <hr />
           <h6 className="text-muted"> Donation Info </h6>

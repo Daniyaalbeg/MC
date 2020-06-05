@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../models/user.model');
 const Supplier = require('../models/supplier.model').Supplier;
 const BankingDetails = require('../models/bankingDetails.model').BankingDetails
+const Address = require('../models/address.model').Address;
 const verfiyToken = require('../verifyToken');
 
 //Create a supplier
@@ -20,6 +21,13 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
       jazzCash: req.body.bankingDetails.jazzCash,
       easyPaisa: req.body.bankingDetails.easyPaisa
     });
+    const address = new Address({
+      line1: req.body.address.line1,
+      city: req.body.address.city,
+      region: req.body.address.region,
+      postCode: req.body.address.postCode,
+      country: req.body.address.country,
+    })
     const supplier = new Supplier({
       supplierName: req.body.supplierName,
       supplierImageURL: req.body.supplierImageURL,
@@ -27,7 +35,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
       type: req.body.type,
       areaOfWork: req.body.areaOfWork,
       description: req.body.description,
-      address: req.body.address,
+      address: address,
       contactName: req.body.contactName,
       contactNumber: req.body.contactNumber,
       contactInfo: req.body.contactInfo,

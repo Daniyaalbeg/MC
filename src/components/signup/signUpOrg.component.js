@@ -79,10 +79,24 @@ const validationSchema = Yup.object().shape({
   .required("*Description is required")
   .min(1, "*Description name must be longer than 1 charachter")
   .max(2000, "*Description name must be less than 1000 charachters"),
-  addressInfo: Yup.string()
-  .required("*Address is required")
-  .min(1, "*Address name must be longer than 1 charachter")
-  .max(100, "*Address name must be less than 100 charachters"),
+  addressLine1: Yup.string()
+  .min(1, "*Address Line 1 must be longer than 1 charachter")
+  .max(50, "*Adderss Line 1 must be less than 50 charachters"),
+  city: Yup.string()
+  .required("*City is required")
+  .min(1, "*City name must be longer than 1 charachter")
+  .max(50, "*City name must be less than 50 charachters"),
+  region: Yup.string()
+  .required("*Region is required")
+  .min(1, "*Region name must be longer than 1 charachter")
+  .max(50, "*Region name must be less than 50 charachters"),
+  postCode: Yup.string()
+  .min(1, "*Post Code must be longer than 1 charachter")
+  .max(20, "*Post Code must be less than 20 charachters"),
+  country: Yup.string()
+  .required("*Country is required")
+  .min(1, "*Country name must be longer than 1 charachter")
+  .max(60, "*Country name must be less than 60 charachters"),
   contactName: Yup.string()
   .required("*Contact name is required")
   .min(1, "*Contact name must be longer than 1 charachter")
@@ -135,7 +149,11 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           type: "Individual",
           areaOfWork: [],
           description: "",
-          addressInfo: "",
+          addressLine1: "",
+          city: "",
+          region: "",
+          postCode: "",
+          country: "",
           contactName: "",
           contactNumber: "",
           contactInfo: "",
@@ -157,6 +175,13 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             jazzCash: values.jazzCash,
             easyPaisa: values.easyPaisa,
           }
+          const address = {
+            line1: values.addressLine1,
+            city: values.city,
+            region: values.region,
+            postCode: values.postCode,
+            country: values.country,
+          }
           const data = {
             supplierName: values.supplierName,
             imageFile: values.imageFile,
@@ -164,7 +189,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             type: values.type,
             areaOfWork: values.areaOfWork,
             description: values.description,
-            address: values.addressInfo,
+            address: address,
             contactName: values.contactName,
             contactNumber: values.contactNumber,
             contactInfo: values.contactInfo,
@@ -174,6 +199,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             instagramURL: values.instagramURL,
           }
           dispatch(signUpSupplier(data))
+          // alert(JSON.stringify(data))
         }}
       >
         {({values,
@@ -640,22 +666,89 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           </CheckboxGroup>
         </Form.Group>
 
-        <Form.Group controlId="formAddress">
-          <Form.Label>Address <span className="red">*</span></Form.Label>
+        <Card.Subtitle className="mb-2 text-muted" style={{marginTop: "24px"}}> Address </Card.Subtitle>
+
+        <Form.Group controlId="formAddressLine1">
+          <Form.Label>Address Line 1</Form.Label>
           <Form.Control
-            name="addressInfo"
-            as="textarea" 
-            rows="3" 
-            placeholder="Enter address"
+            name="addressLine1"
+            type="text"
+            placeholder="Address Line 1"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.addressInfo}
-            isValid={touched.addressInfo && !errors.addressInfo}
-            isInvalid={errors.addressInfo}
+            value={values.addressLine1}
+            isValid={touched.addressLine1 && !errors.addressLine1}
+            isInvalid={errors.addressLine1}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.addressInfo}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.addressLine1}</Form.Control.Feedback>
         </Form.Group>
+
+        <Form.Group controlId="formCity">
+          <Form.Label>City <span className="red">*</span></Form.Label>
+          <Form.Control
+            name="city"
+            type="text"
+            placeholder="City"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.city}
+            isValid={touched.city && !errors.city}
+            isInvalid={errors.city}
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.city}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Row>
+          <Form.Group as={Col} controlId="formRegion">
+            <Form.Label>Province / Region <span className="red">*</span></Form.Label>
+            <Form.Control
+              name="region"
+              type="text"
+              placeholder="Province / Region"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.region}
+              isValid={touched.region && !errors.region}
+              isInvalid={errors.region}
+            />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{errors.region}</Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formPostCode">
+          <Form.Label>Post Code / Zip Code</Form.Label>
+          <Form.Control
+            name="postCode"
+            type="text"
+            placeholder="Post Code / Zip Code"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.postCode}
+            isValid={touched.postCode && !errors.postCode}
+            isInvalid={errors.postCode}
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.postCode}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formCountry">
+          <Form.Label>Country <span className="red">*</span></Form.Label>
+          <Form.Control
+            name="country"
+            type="text"
+            placeholder="Country"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.country}
+            isValid={touched.country && !errors.country}
+            isInvalid={errors.country}
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.country}</Form.Control.Feedback>
+        </Form.Group>
+        </Form.Row>
 
         <Form.Group controlId="formContactName">
           <Form.Label> Name of Point of Contact / Representative <span className="red">*</span></Form.Label>

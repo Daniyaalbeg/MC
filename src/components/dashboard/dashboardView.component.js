@@ -14,7 +14,7 @@ import { TabDashboard } from '../utilities/tabComponent';
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHomeLg, faUserCircle, faProjectDiagram, faUsers, faBox, faBoxOpen, faBoxFull, faSitemap, faPersonSign, faHandsHelping, faClock } from '@fortawesome/pro-solid-svg-icons'
+import { faSignOutAlt, faHomeLg, faUserCircle, faProjectDiagram, faUsers, faBox, faBoxOpen, faBoxFull, faSitemap, faPersonSign, faHandsHelping, faClock, faExclamationTriangle } from '@fortawesome/pro-solid-svg-icons'
 import { faUser, faBell, faSignOut } from '@fortawesome/pro-duotone-svg-icons'
 
 import { logout } from '../../Actions/authActions'
@@ -23,11 +23,18 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
   
   useEffect(() => {
     if (!fetched) { dispatch(getUserInfo()) }
-  })
+  }, [fetched, dispatch])
 
   const { height, width } = getWindowDimensions();
     
-  if (hasErrors) return (<h1> Error occured, cannot get user info. Please accept our humblest apologies</h1>);
+  if (hasErrors) {
+    return (
+      <div className="erroruserInfoContainer">
+        <p className="errorUserInfo"> <FontAwesomeIcon className="errorIconUserInfo" icon={faExclamationTriangle} /> Cannot get user info </p>
+        <button className="standardButton" onClick={() => dispatch(logout())}> <FontAwesomeIcon icon={faSignOutAlt} /> Logout </button>
+      </div>
+    );
+  }
   
   const renderSideBarText = width > 1150 ? true: false;
 
@@ -41,7 +48,7 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
               <FontAwesomeIcon icon={faBell} className="dbFaBell dbIconFont" />
             </div>
           </button>
-          <button className="headerButton" onClick={() => { dispatch(logout()) }}>
+          <button className="headerButton" onClick={() => { dispatch(logout(logout())) }}>
             <div className="dbHeaderIcon dbIconBg logoutIcon">
               <FontAwesomeIcon icon={faSignOut} className="dgFaSignOut dbIconFont" />
             </div>

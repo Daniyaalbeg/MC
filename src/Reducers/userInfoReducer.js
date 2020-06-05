@@ -21,13 +21,6 @@ export default function userInfoReducer(state = initialState, action) {
         fetched: true,
         loading: false,
         user: action.payload,
-        // userId: action.payload._id,
-        // username: action.payload.username,
-        // email: action.payload.email,
-        // supplier: action.payload.supplier,
-        // approved: action.payload.approved,
-        // createdAt: action.payload.createdAt,
-        // verified: action.payload.verified,
         hasErrors: false
       }
     case actions.GET_USER_INFO_FAILURE:

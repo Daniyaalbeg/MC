@@ -1,31 +1,40 @@
 import React from 'react';
 //css in general
 
-const Address = (props) => {
-  const { address } = props
+
+const CheckOldOrNewAddress = ({ address }) => {
+  if (typeof address === "string") {
+    return address
+  } else {
+    return <Address address={address} />
+  }
+}
+
+
+const Address = ({ address }) => {
   if (!address) {
     return <p> Not added </p>
   } else {
     return (
       <div className="addressContainer">
           <div className="addressTopLeft">
-            <h6 className="text-muted"> Address Line 1 </h6>
+            <p className="addressTitle"> Address Line 1 </p>
             {address.addressLine1 ? <p> {address.addressLine1} </p> : "Not Added"}
           </div>
           <div className="addressTop">
-            <h6 className="text-muted"> City </h6>
+            <p className="addressTitle"> City </p>
             {address.city ? <p> {address.city} </p> : "Not Added"}
           </div>
           <div className="addressTopRight">
-            <h6 className="text-muted"> Region </h6>
+            <p className="addressTitle"> Region </p>
             {address.region ? <p> {address.region} </p> : "Not Added" }
           </div>
           <div className="addressBottomLeft">
-            <h6 className="text-muted"> Post Code / Zip Code </h6>
+            <p className="addressTitle"> Post Code / Zip Code </p>
             {address.postCode ? <p> {address.postCode} </p> : "Not Added" }
           </div>
           <div className="addressBottom">
-            <h6 className="text-muted"> Country </h6>
+            <p className="addressTitle"> Country </p>
             {address.country ? <p> {address.country} </p> : "Not Added"}
           </div>
       </div>
@@ -33,4 +42,4 @@ const Address = (props) => {
   }
 }
 
-export default Address;
+export default CheckOldOrNewAddress;

@@ -37,9 +37,6 @@ const validationSchema = Yup.object().shape({
   addressLine1: Yup.string()
   .min(1, "*Address Line 1 must be longer than 1 charachter")
   .max(50, "*Adderss Line 1 must be less than 50 charachters"),
-  addressLine2: Yup.string()
-  .min(1, "*Address Line 2 must be longer than 1 charachter")
-  .max(50, "*Adderss Line 2 must be less than 50 charachters"),
   city: Yup.string()
   .required("*City is required")
   .min(1, "*City name must be longer than 1 charachter")

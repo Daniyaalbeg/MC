@@ -1,7 +1,9 @@
-import React, { Fragment} from 'react';
+import React from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../css/supplierInfoView.css';
+
+import CheckOldOrNewAddress from '../shared/address.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -58,11 +60,10 @@ export const BankingDetails = (props) => {
 export const EasyPaisaDetails = (props) => {
   if (props.easyPaisa != null) {
     return (
-      <Fragment>
+      <>
         <p className="supplierTitleSmall"> Easypaisa </p>
-        <p> {props.easyPaisa} </p>
         {props.easyPaisa ? <p> {props.easyPaisa} </p> : "Not Added" }
-      </Fragment>
+      </>
     )
   } else {
     return null;
@@ -72,16 +73,17 @@ export const EasyPaisaDetails = (props) => {
 export const JazzCashDetails = (props) => {
   if (props.jazzCash != null) {
     return (
-      <Fragment>
+      <div style={{marginBottom: "16px"}}>
         <p className="supplierTitleSmall"> Jazzcash </p>
-        <p> {props.jazzCash} </p>
         {props.jazzCash ? <p> {props.jazzCash} </p> : "Not Added" }
-      </Fragment>
+      </div>
     )
   } else {
     return null;
   }
 }
+
+
 
 const SupplierInfoView = (props) => {
   if (!props.supplier) {
@@ -116,7 +118,7 @@ const SupplierInfoView = (props) => {
         <p> {props.supplier.description} </p>
 
         <p className="supplierTitle"> Address </p>
-        <p> {props.supplier.address} </p>
+        <CheckOldOrNewAddress address={props.supplier.address} />
 
         <p className="supplierTitle"> Point of Contact </p>
         <p> {props.supplier.contactName} </p>
@@ -128,10 +130,10 @@ const SupplierInfoView = (props) => {
         <p> {props.supplier.contactInfo} </p>
 
         {props.supplierWebsite !== "" && (
-          <Fragment>
+          <>
           <p className="supplierTitle"> Website </p>
           <a href={props.supplier.supplierWebsite} key={props.supplier.supplierWebsite} target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faGlobe}/></a>
-          </Fragment>
+          </>
         )
         }
         <SocialMediaIcons supplier={props.supplier} />
@@ -153,10 +155,10 @@ export const SocialMediaIcons = (props) => {
   });
   if (anyIcons) {
     return (
-      <Fragment>
+      <>
         <hr />
         <p className="supplierTitle"> Social media </p>
-      </Fragment>
+      </>
     );
   } else {
     return null

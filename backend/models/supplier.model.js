@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bankingDetailsSchema = require('./bankingDetails.model').bankingDetailSchema;
-const Event = require('./event.model').Event;
+const addressSchema = require('./address.model').addressSchema;
 
 
 const Schema = mongoose.Schema
@@ -39,7 +39,7 @@ const supplierSchema = new Schema({
       minlength: 1,
     },
     address: {
-      type: String,
+      type: addressSchema,
       required: true,
     },
     contactName: {

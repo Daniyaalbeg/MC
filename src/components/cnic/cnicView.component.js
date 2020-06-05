@@ -96,49 +96,6 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
       </div>
       </Tabs>
     </div>
-
-    {/* <Card as="cnicCard">
-    <Tabs>
-      <Card.Header>
-        <Row className="tabRow">
-          <TabCnic addClass="cnicTab">
-            <FontAwesomeIcon icon={faSearchDuotone} style={{ marginRight: '8px' }} className="" />
-            Search CNIC
-          </TabCnic>
-          <TabCnic addClass="cnicTab">
-            <FontAwesomeIcon icon={faFilePlus} style={{ marginRight: '8px' }} className="" />
-            Add CNIC
-          </TabCnic>
-        </Row>
-      </Card.Header>
-      <Card.Body>
-
-      <Panel>
-        <form onSubmit={
-          (e) => { e.preventDefault()
-          searchCnicChange()
-        }}>
-          <div className="searchCnicContainer">
-            <div className="searchCnicBox">
-              <FontAwesomeIcon icon={faSearch} className="cnicSearchIcon" onClick={searchCnicChange} spin={getLoading}/>
-              <input ref={searchInputRef} type="text" placeholder="CNIC number" className="cnicSearchInput" />
-            </div>
-            <button className="standardButton cnicSearchButton" onClick={searchCnicChange}> Search </button>
-          </div>
-        </form>
-        <CnicResult getHasError={getHasError} getHasErrorMessage={getHasErrorMessage} cnicInfo={cnicInfo} />
-      </Panel>
-      <Panel>
-        <CnicAddNew />
-      </Panel>
-
-      </Card.Body>
-      <Card.Footer className="text-muted">
-        <h5> Note </h5>
-        <p> Once CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
-      </Card.Footer>
-      </Tabs>
-    </Card> */}
     </div>
   )
 }

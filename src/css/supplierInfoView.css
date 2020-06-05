@@ -45,10 +45,9 @@
 
 .bI {
   padding: 0 !important;
-  margin: 0 !important;
+  margin-bottom: 8px;
 }
 .bI > p {
-  margin-bottom: 8px;
 }
 
 .iconSpecific {
