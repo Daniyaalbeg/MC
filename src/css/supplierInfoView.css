@@ -2,6 +2,7 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: white;
+  height: 100%;
 }
 
 .supplierInfoHeader {
@@ -25,8 +26,21 @@
 }
 
 .supplierInfoContent {
+  height: 90%;
   border-radius: 8px;
-  padding: 32px;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-device-width: 1150px) {
+  .supplierInfoContent {
+    padding: 12px;
+  }
+}
+
+@media only screen and (min-device-width: 1150px) {
+  .supplierInfoContent {
+    padding: 32px;
+  }
 }
 
 .supplierTitle {
@@ -42,6 +56,16 @@
 .supplierText {
 
 }
+
+.websiteIcon {
+  text-decoration: none;
+  color: #1589C9;
+}
+.websiteIcon:hover {
+  text-decoration: none;
+  color:  rgb(16, 104, 151);
+}
+
 
 .bI {
   padding: 0 !important;
@@ -84,6 +108,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .createOrgButton {

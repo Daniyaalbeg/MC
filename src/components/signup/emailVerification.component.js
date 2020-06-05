@@ -9,6 +9,7 @@ import { API, rootURL, production } from '../../config'
 const EmailVerification = (props) => {
   const [requested, setRequested] = useState(false)
   const [verified, setVerified] = useState(false)
+  const [hasErrors, setErrors] = useState(false)
   let { token } = useParams();
 
   useEffect(() => {
@@ -20,9 +21,17 @@ const EmailVerification = (props) => {
         headers: { 'Content-Type': 'application/json', 'x-access-token': token}
       })
       .then((res) => setVerified(true))
-      .catch((error) => console.log(error.response))
+      .catch((error) => {
+        console.log(error.response)
+      })
     }
   }, [requested, token])
+
+  if (hasErrors) {
+    return (
+      <h4 className="title"> There was an error verifying your email. Please contact support info@ministryofchange.org </h4>
+    )
+  }
 
   if (verified) {
     return (

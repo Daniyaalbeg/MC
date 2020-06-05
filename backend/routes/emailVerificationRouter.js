@@ -11,24 +11,28 @@ router.route('/verify').post((req, res) => {
   const token = req.headers['x-access-token'];
   jwt.verify(token, process.env.VERIFY_EMAIL_SECRET, (err, decoded) => {
     if (!err) {
+      console.log(decoded.id)
       User.findById(decoded.id)
       .then((user) => {
+        if (!user) {
+
+        }
         user.verified = true;
         user.save()
         .then(() => {
-          res.status(200).json("Succesfully Verified")
+          return res.status(200).json("Succesfully Verified")
         })
         .catch((error) => {
           console.log(error)
-          res.status(500).json("An error occured")
+          return res.status(500).json("An error occured")
         });
       })
       .catch((error) => {
         console.log(error)
-        res.status(500).json("User not found");
+        return res.status(500).json("User not found");
       });
     } else {
-      res.status(500).send("Not verified");
+      return res.status(500).send("Not verified");
     }
   })
 

@@ -9,7 +9,6 @@ function verifyToken(req, res, next) {
   // console.log('Signed Cookies: ', req.signedCookies)
   var token = req.cookies.token;
   if (!token) {
-    console.log("verify failed")
     return res.status(401).json({
       auth: false,
       message: "No token Provided"

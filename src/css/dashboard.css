@@ -113,9 +113,10 @@
 
 .dbLayout {
   width: 100%;
-  height: 100%;
+  height: 93.6vh;
+  overflow: hidden;
   display: grid;
-  grid-template-rows: 80px 100%;
+  grid-template-rows: 10% 90%;
   grid-template-areas: 
   "topLeft header header"
   "sidebar body body"
@@ -152,13 +153,25 @@
 .dbBody {
   grid-area: body;
   padding: 20px;
-  overflow-y: scroll;
+  /* overflow: hidden; */
   background-color: #EDF2F6;
 }
 .dbFooter {
   grid-area: footer;
   background-color: #4C5962;
   border-top: 1px solid #222B2E;
+}
+
+@media only screen and (max-device-width: 1150px) {
+  .dbBody {
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-device-width: 1150px) {
+  .dbBody {
+    padding: 20px;
+  }
 }
 
 .dbUserImage {

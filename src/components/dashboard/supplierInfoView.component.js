@@ -88,9 +88,17 @@ export const JazzCashDetails = (props) => {
 const SupplierInfoView = (props) => {
   if (!props.supplier) {
     return (
-      <div className="emptyDBContainer">
-        <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You have not created an organisation yet. </p>
-         <Link to="signupOrg"><button className="createOrgButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Create Organisation </button></Link>
+      <div className="supplierInfoContainer">
+        <div className="supplierInfoHeader">
+          <FontAwesomeIcon icon={faSitemap} />
+          <p> Organisation </p>
+        </div>
+        <div className="supplierInfoContent">
+          <div className="emptyDBContainer">
+            <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You have not created an organisation yet. </p>
+            <Link to="signupOrg"><button className="createOrgButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Create Organisation </button></Link>
+          </div>
+        </div>
       </div>
     )
   }
@@ -156,7 +164,6 @@ export const SocialMediaIcons = (props) => {
   if (anyIcons) {
     return (
       <>
-        <hr />
         <p className="supplierTitle"> Social media </p>
       </>
     );

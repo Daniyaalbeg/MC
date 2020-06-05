@@ -261,15 +261,6 @@ p {
   grid-area: bottomRight;
 }
 
-.websiteIcon {
-  text-decoration: none;
-  color: #1589C9;
-}
-.websiteIcon:hover {
-  text-decoration: none;
-  color:  rgb(16, 104, 151);
-}
-
 .icon:focus .clickIcon  {
   animation-name: bounce;
   display: inline-block;
