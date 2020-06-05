@@ -15,7 +15,7 @@ const EventContainer = (props) => {
   if (!supplier) {
     return (
         <div className="emptyDBContainer">
-          <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You need to create an organisation before adding distributions </p>
+          <p style={{margin: "0"}}> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You need to create an organisation before adding distributions </p>
         </div>
     )
   }

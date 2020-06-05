@@ -12,22 +12,28 @@ const CheckOldOrNewAddress = ({ address }) => {
 
 
 const Address = ({ address }) => {
+
+  const capitalise = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   if (!address) {
     return <p> Not added </p>
   } else {
     return (
       <div className="addressContainer">
           <div className="addressTopLeft">
-            <p className="addressTitle"> Address Line 1 </p>
-            {address.addressLine1 ? <p> {address.addressLine1} </p> : "Not Added"}
+            <p className="addressTitle"> Address Line </p>
+            {address.line1 ? <p> {capitalise(address.line1)} </p> : "Not Added"}
           </div>
           <div className="addressTop">
             <p className="addressTitle"> City </p>
-            {address.city ? <p> {address.city} </p> : "Not Added"}
+            {address.city ? <p> {capitalise(address.city)} </p> : "Not Added"}
           </div>
           <div className="addressTopRight">
             <p className="addressTitle"> Region </p>
-            {address.region ? <p> {address.region} </p> : "Not Added" }
+            {address.region ? <p> {capitalise(address.region)} </p> : "Not Added" }
           </div>
           <div className="addressBottomLeft">
             <p className="addressTitle"> Post Code / Zip Code </p>
@@ -35,7 +41,7 @@ const Address = ({ address }) => {
           </div>
           <div className="addressBottom">
             <p className="addressTitle"> Country </p>
-            {address.country ? <p> {address.country} </p> : "Not Added"}
+            {address.country ? <p> {capitalise(address.country)} </p> : "Not Added"}
           </div>
       </div>
     )

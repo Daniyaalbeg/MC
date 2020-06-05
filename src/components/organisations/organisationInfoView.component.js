@@ -64,10 +64,7 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           </div>
           <hr />
           <h6 className="text-muted"> Address </h6>
-          <Card.Text>
-            <CheckOldOrNewAddress address={org.address} />
-          </Card.Text>
-          <Card.Text>  </Card.Text>
+          <CheckOldOrNewAddress address={org.address} />
           <hr />
           <h6 className="text-muted"> Donation Info </h6>
           {org.bankingDetails.accountNumber !== "" &&

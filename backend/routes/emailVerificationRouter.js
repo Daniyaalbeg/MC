@@ -9,7 +9,6 @@ var nodemailer = require('nodemailer');
 
 router.route('/verify').post((req, res) => {
   const token = req.headers['x-access-token'];
-  console.log('found')
   jwt.verify(token, process.env.VERIFY_EMAIL_SECRET, (err, decoded) => {
     if (!err) {
       User.findById(decoded.id)

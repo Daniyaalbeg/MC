@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { loggingInSuccess } from '../Actions/authActions';
-import { API, rootURL, production } from '../config'
+import { getUserInfo } from '../Actions/userInfoActions';
+import { API, rootURL, production } from '../config';
 
 export const SIGNUP = "SIGNUP";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
@@ -37,8 +38,6 @@ export function signUpUser(data) {
       country: data.country,
     })
 
-    console.log("hello")
-
     axios({
       method: 'post',
       url: rootURL(production) + API + '/user/create',
@@ -69,14 +68,14 @@ export function signUpSupplier(data) {
   return async dispatch => {
     dispatch(signingUp());
     if (data.imageFile) {
-      signUpWithImage(data, dispatch)
+      signUpSupplierWithImage(data, dispatch)
     } else {
-      signUpWithoutImage(data, dispatch)
+      signUpSupplierWithoutImage(data, dispatch)
     }
   }
 }
 
-const signUpWithoutImage = (data, dispatch) => {
+const signUpSupplierWithoutImage = (data, dispatch) => {
   axios({
     method: 'post',
     url: rootURL(production)+API+'/supplier/create',
@@ -102,14 +101,14 @@ const signUpWithoutImage = (data, dispatch) => {
   })
   .then((res) => {
     dispatch(signupSuccess())
-    dispatch(loggingInSuccess(res.data))
+    dispatch(getUserInfo())
   })
   .catch((error) => {
     dispatch(signupFailure(error.response))
   })  
 }
 
-const signUpWithImage = (data, dispatch) => {
+const signUpSupplierWithImage = (data, dispatch) => {
   //Perform image file link request
   let file = data.imageFile
   let fileParts = file.name.split('.');
@@ -166,11 +165,13 @@ const signUpWithImage = (data, dispatch) => {
           facebookURL: data.facebookURL,
           twitterURL: data.twitterURL,
           instagramURL: data.instagramURL
-        }
+        },
+        withCredentials: true,
+        credentials: 'include'
       })
       .then((res) => {
         dispatch(signupSuccess())
-        dispatch(loggingInSuccess(res.data))
+        dispatch(getUserInfo())
       })
       .catch((error) => {
         dispatch(signupFailure(error.response))

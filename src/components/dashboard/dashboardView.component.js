@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Tabs, Panel } from '@bumaga/tabs'
-import { Spinner, Container} from 'react-bootstrap';
+import { Spinner} from 'react-bootstrap';
 //css for this was moved to dashboard.css
 
 import ProfileInfoView from './profileInfoView.component';
 import SupplierInfoView from './supplierInfoView.component';
 import EventView from './eventView.component';
-import Footer from '../homeView/mainFooter.component'
+// import Footer from '../homeView/mainFooter.component'
 import { getUserInfo } from '../../Actions/userInfoActions';
 import getWindowDimensions from '../utilities/windowDimension.component';
 import { TabDashboard } from '../utilities/tabComponent';
@@ -25,7 +25,7 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
     if (!fetched) { dispatch(getUserInfo()) }
   }, [fetched, dispatch])
 
-  const { height, width } = getWindowDimensions();
+  const { width } = getWindowDimensions();
     
   if (hasErrors) {
     return (

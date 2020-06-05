@@ -97,7 +97,6 @@ router.route('/').get((req, res) => {
   .lean()
   .populate('createdBy')
   .exec((err, events) => {
-    console.log(events)
     if (err) { return res.status(500).send("Error getting events")}
     events.forEach((event) => {
       event.createdBy = event.createdBy.supplier
@@ -181,7 +180,6 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
           console.log("error deleting event + " + req.params.id)
           res.status(200).json("Delete succesful")
         }
-        console.log(foundEvent)
         if (foundEvent) {
           s3.deleteFile(foundEvent[0].images)
           .then((result) => {
@@ -192,7 +190,6 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
             res.status(200).json("Delete succesful not really") 
           });
         } else {
-          console.log('didnt wait')
           res.status(200).json("Delete succesful") 
         }
       })

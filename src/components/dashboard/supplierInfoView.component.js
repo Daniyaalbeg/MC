@@ -169,8 +169,8 @@ export const WhichLogo = (props) => {
   if (props.icon === "" || props.icon === undefined) {
     return null
   }
-  if (props.icon.includes("facebook")) {
-    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faFacebook}/></a>
+  if (props.icon.toLowerCase().includes("facebook")) {
+    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faFacebook} /> </a>
   } else if (props.icon.includes('twitter')) {
     return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faTwitter} href={props.icon} /> </a>
   } else if (props.icon.includes('instagram')) {

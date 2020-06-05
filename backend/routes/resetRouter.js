@@ -45,7 +45,7 @@ router.route('/password').post((req, res) => {
         subject: 'Reset Password',
         html: `
     <h3> Here is your password reset link </h3>
-    <p> Hi `+user.username+`. Please click this <a href="https://ministryofchange.org/resetPassword/`+ user._id +`/`+ token +`"> link </a> to reset your password</p>
+    <p> Hi `+user.username+`. Please click this <a href="https://`+process.env.EMAIL_REPLY_API+`/resetPassword/`+ user._id +`/`+ token +`"> link </a> to reset your password</p>
     `
       };
 
