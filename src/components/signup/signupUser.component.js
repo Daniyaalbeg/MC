@@ -57,9 +57,13 @@ const validationSchema = Yup.object().shape({
 })
 
 const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }) => {
-  useEffect(() => {
+  // useEffect(() => {
+  //   dispatch(signupReset())
+  // }, [signupReset])
+
+  if (success) {
     dispatch(signupReset())
-  }, [signupReset])
+  }
 
   if (auth) {
     return (
@@ -69,12 +73,6 @@ const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }
 
   return (
     <Card bsPrefix='card' bg='light' text='dark' className="signUpCard">
-      {/* {success &&
-        <Redirect push to="/" />
-      } */}
-      {/* {auth &&
-        <Redirect push to="/dashboard" />
-      } */}
       <Card.Header>Sign up form</Card.Header>
       <Formik 
         initialValues={{

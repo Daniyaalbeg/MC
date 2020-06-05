@@ -123,15 +123,16 @@ const validationSchema = Yup.object().shape({
 
 const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) => {
 
+  if (success) {
+      return <Redirect push to="/dashboard" />
+  }
+
   return (
     <Card bsPrefix='card' bg='light' text='dark' className="signUpCard">
       <Fragment>
         {/* {!auth &&
           <Redirect push to="/dashboard" />
         } */}
-        {success &&
-          <Redirect push to="/dashboard" />
-        }
       </Fragment>
       <Card.Header>Sign up form</Card.Header>
       <Formik 
