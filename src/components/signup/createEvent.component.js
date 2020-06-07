@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Row, Card, Form, Spinner } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Redirect } from 'react-router-dom';
@@ -322,7 +323,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             component={Checkbox}
             name="agreedToTerms"
             id="agreedToTerms"
-            label="Agree to Terms & Conditions"
+            label={<p className="agreedTo"> Agreed to <Link to="/termsandconditions" target="_blank" > Terms & Conditions </Link></p>}
             isValid={touched.agreedToTerms && !errors.agreedToTerms}
             isInvalid={errors.agreedToTerms}
           />

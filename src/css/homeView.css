@@ -305,6 +305,13 @@
 .homeViewFooterItem > p {
   margin: 0;
 }
+.homeViewFooterItemMiddle > p {
+  margin: 0;
+}
+.homeViewFooterItemMiddle {
+  display: flex;
+  flex-direction: column;
+}
 .footerDash {
   width: 200px;
   border: 0.5px solid #ffffff;

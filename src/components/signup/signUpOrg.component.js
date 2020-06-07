@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Card, Col, Form, Spinner } from 'react-bootstrap';
 import { signUpSupplier } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from '../utilities/Checkboxs.component';
@@ -869,7 +869,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             component={Checkbox}
             name="agreedToTerms"
             id="agreedToTerms"
-            label="Agree to Terms & Conditions"
+            label={<p className="agreedTo"> Agreed to <Link to="/termsandconditions" target="_blank" > Terms & Conditions </Link></p>}
             isValid={touched.agreedToTerms && !errors.agreedToTerms}
             isInvalid={errors.agreedToTerms}
           />

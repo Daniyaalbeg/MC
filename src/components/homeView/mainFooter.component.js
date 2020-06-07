@@ -14,9 +14,11 @@ const Footer = (props) => {
         <a href="https://twitter.com/ministrychange" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitterSquare} className="footerIcon" /></a>
         <a href="mailto:info@ministryofchange.org" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faEnvelopeSquare} className="footerIcon" /></a>
       </div>
-      <div className ="homeViewFooterItem" style={{textAlign: "center"}}>
+      <div className ="homeViewFooterItemMiddle" style={{textAlign: "center"}}>
         <p className="footHeader"> About Us </p>
         <Link to="/about" className="navlink aboutUsCustom"><FontAwesomeIcon icon={faInfoSquare} className="footerIcon" /></Link>
+        <Link to="/privacypolicy" className="navlink aboutUsCustom"> Privacy Policy </Link>
+        <Link to="/termsandconditions" className="navlink aboutUsCustom"> Terms & Conditions </Link>
       </div>
       <div className ="homeViewFooterItem">
         <p className="footHeader"> Contact</p>

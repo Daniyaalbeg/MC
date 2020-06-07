@@ -17,7 +17,9 @@ import CreateEvent from './components/signup/createEvent.component';
 import UpdateEvent from './components/update/updateEvent.component';
 import About from './components/about.component';
 import CnicView from './components/cnic/cnicView.component';
-import Dashboard from './components/dashboard/dashboardContainer.component'
+import Dashboard from './components/dashboard/dashboardContainer.component';
+import PrivacyPolicy from './components/privacyPolicy.component';
+import TermsAndConditions from './components/termsAndConditions';
 import Error404 from './components/404.component';
 
 import { checkCookie } from './Actions/authActions';
@@ -52,6 +54,8 @@ function App({ dispatch, checkedCookie, auth }) {
         <Route path="/createEvent" component={CreateEvent} />
         <Route path="/updateEvent/:id" component={UpdateEvent} />
         <Route path="/cnic" component={CnicView} />
+        <Route path="/privacypolicy" component={PrivacyPolicy} />
+        <Route path="/termsandconditions" component={TermsAndConditions} />
         <Route component={Error404} />
       </Switch>
     </Router>
