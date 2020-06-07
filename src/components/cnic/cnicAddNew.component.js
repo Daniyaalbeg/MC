@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import '../../css/cnic.css'
 import { Row, Table, Spinner } from 'react-bootstrap';
 import { selectCnicEvent } from '../../Actions/cnicActions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileUpload, faDownload, faUpload, faPlusCircle} from '@fortawesome/pro-duotone-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
+import { faFileUpload, faDownload, faUpload, faPlusCircle} from '@fortawesome/pro-duotone-svg-icons';
 import xlsx from 'xlsx';
 
 import { uploadCnic, uploadFileCnic, uploadCnicReset } from '../../Actions/cnicActions';
 import getRandomColour from '../utilities/randomMCColour.component'
 import sampleXlsx from '../../assets/cnic_sample.xlsx';
 
-const CnicAddNew = ({ dispatch, events, selectedCnicEvent, uploadLoading, uploadSuccess, uploadHasErrors, uploadErrorIDs }) => {
+const CnicAddNew = ({ dispatch, events, supplier, selectedCnicEvent, uploadLoading, uploadSuccess, uploadHasErrors, uploadErrorIDs }) => {
   if (selectedCnicEvent) {
     return (
       <>
@@ -25,9 +26,14 @@ const CnicAddNew = ({ dispatch, events, selectedCnicEvent, uploadLoading, upload
       </>
     )
   } else {
+    if (!supplier) {
+       return (
+        <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> Please create an organisation in your dashboard to add CNIC information </p>
+       )
+    }
     return (
       <>
-        <h4> Choose an event to add CNIC numbers for </h4>
+        <h4> Choose a distribution to add CNIC numbers for </h4>
         <div className="cnicEventsList">
         {
           events.map((event) => {
@@ -186,7 +192,7 @@ const CnicAddOptions = (props) => {
           <h4> OR </h4>
         </div>
         <div>
-          <p> Upload your file directly here and we shall add the information ourself </p>
+          <p> Upload your file directly here and we shall add the information </p>
           <label htmlFor="file-Data-upload" className="cnicFileInput">
             <input onChange={(e) => {
               setFileDataUploaded(true)
@@ -222,7 +228,8 @@ const UploadedSuccessOrError = ({ uploadErrorIDs, uploadHasErrors, uploadSuccess
 }
 
 const MapStateToProps = (state) => ({
-  events: state.userInfo.user.supplier.events,
+  supplier: state.userInfo.user.supplier,
+  events: state.userInfo.user.supplier ? state.userInfo.user.supplier.events : null,
   selectedCnicEvent: state.cnicInfo.selectedCnicEvent,
   uploadLoading: state.cnicInfo.uploadLoading,
   uploadSuccess: state.cnicInfo.uploadSuccess,
