@@ -15,11 +15,14 @@ router.route('/verify').post((req, res) => {
       User.findById(decoded.id)
       .then((user) => {
         if (!user) {
-
+          console.log("User not found")
+          return res.status(500).json({ error: "cannot find user" })
         }
+        console.log("User found")
         user.verified = true;
         user.save()
         .then(() => {
+          console.log("user saved")
           return res.status(200).json("Succesfully Verified")
         })
         .catch((error) => {

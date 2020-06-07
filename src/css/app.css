@@ -2,6 +2,10 @@
   height: 100%;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-font-smoothing: antialiased;
@@ -12,11 +16,13 @@ body {
   font-family: proximaNova;
   font-weight: normal;
   src: url(../assets/fonts/Proxima-Nova-Regular.otf);
+  font-display: swap
 }
 @font-face {
   font-family: proximaNova;
   font-weight: bold;
   src: url(../assets/fonts/Proxima-Nova-Bold.otf);
+  font-display: swap
 }
 /* @font-face {
   font-family: proximaNova;
