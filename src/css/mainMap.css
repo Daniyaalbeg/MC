@@ -40,8 +40,6 @@
 
 .eventListView {
   width: 30vw;
-  overflow-y: scroll;
-  flex-grow: 1;
 }
 
 .eventListView::-webkit-scrollbar {

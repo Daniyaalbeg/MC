@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import { selectingEvent } from '../../Actions/selectEventActions';
+import { selectingEvent, toggleShowList } from '../../Actions/selectEventActions';
 import { connect } from 'react-redux';
 import '../../css/eventlistView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -47,7 +47,7 @@ const EventListImage = (props) => {
   }
 }
 
-const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
+const EventListView = ({dispatch, events, selectedEvent, searchValue, showList}) => {
   
   const onSearchChange = (event) => {
     dispatch(searchEvents(event.target.value))
@@ -67,7 +67,7 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
   }
 
 
-  if (selectedEvent == null) {
+  if (showList) {
     return (
       <Fragment>
       <form className="searchBarContainer" onSubmit={(e) => { e.preventDefault() }}>
@@ -93,6 +93,7 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
           return (
             <ListGroup.Item className="listGroupItem" key={event._id} action onClick={() => {
               dispatch(selectingEvent(event))
+              dispatch(toggleShowList())
               resetSearchAndFilter()
             }}>
               <EventListItem event={event} />
@@ -104,13 +105,17 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue}) => {
     )
   } else {
     return (
-      <EventInfoView event={selectedEvent} onClick={() => dispatch(selectingEvent(null))} />
+      <EventInfoView event={selectedEvent} onClick={() => {
+        dispatch(selectingEvent(null))
+        dispatch(toggleShowList())
+      }} />
     )
   }
 }
 
 const MapStateToProps = (state) => ({
     events: filterAndSearch(state.eventInfo.events, state.eventInfo.filterType, state.eventInfo.filter, state.eventInfo.search),
+    showList: state.eventInfo.showList,
     selectedEvent: state.eventInfo.selectedEvent,
     searchValue: state.eventInfo.search
 });

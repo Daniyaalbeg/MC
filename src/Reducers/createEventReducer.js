@@ -30,6 +30,10 @@ export default function createRationReducer(state = initialState, action) {
         ...state,
         success: false
       }
+    case actions.CREATE_EVENT_RESET:
+      return {
+        initialState
+      }
     default:
       return state
   }

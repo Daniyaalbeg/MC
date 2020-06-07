@@ -21,7 +21,7 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
     dispatch(resetDelete())
   }
   if (deletedEvent) {
-    // handleClose()
+    handleClose()
   }
 
   const event = props.event;
@@ -67,9 +67,7 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
         props.isUser &&
           <Row className="updateDelete">
           <Link to={"/updateEvent/" + event._id}>
-            <button className="standardButton editIconVersion" onClick={() => {
-              props.handleClose()
-            }}>
+            <button className="standardButton editIconVersion">
               <FontAwesomeIcon icon={faEdit} />
             </button>
             </Link>

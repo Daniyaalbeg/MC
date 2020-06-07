@@ -20,7 +20,7 @@ const EventItemCard = (props) => {
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={event._id}>
         <Card.Body>
-          <EventItemInfo isUser={props.isUser} event={event} handleClose={props.handleClose} />
+          <EventItemInfo isUser={props.isUser} event={event} />
         </Card.Body>
       </Accordion.Collapse>
     </Card>

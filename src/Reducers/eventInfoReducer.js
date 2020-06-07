@@ -7,7 +7,8 @@ const initialState = {
   hasErros: false,
   fetched: false,
   events: [],
-  selectedEvents: null,
+  selectedEvent: null,
+  showList: true,
   filterType: "all",
   filter: "all",
   search: ""
@@ -46,6 +47,12 @@ export default function eventInfoReducer(state = initialState, action) {
         ...state,
         selectedEvent: action.payload,
       }
+    case selectActions.TOGGLE_SHOW_LIST: {
+      return {
+        ...state,
+        showList: !state.showList
+      }
+    }
     case filterSearchActions.FILTER_EVENT:
       return {
         ...state,

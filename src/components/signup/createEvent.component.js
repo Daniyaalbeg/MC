@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
 import * as Yup from 'yup';
 import { Checkbox } from '../utilities/Checkboxs.component';
-import { creatingNewEvent, creatingEventRedirect } from '../../Actions/createEventActions';
+import { creatingNewEvent, creatingEventRedirect, creatingEventReset } from '../../Actions/createEventActions';
 import SelectMap from './selectMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import Thumb from '../utilities/thumb.component';
@@ -106,13 +106,14 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
   ]);
 
   if (success) {
+    dispatch(creatingEventReset())
     dispatch(creatingEventRedirect())
   }
 
   return (
     <Card bg="light" text="dark" className="signUpCard">
       <Fragment>
-       {!auth &&
+        {!auth &&
           <Redirect push to="/" />
         }
         {success &&

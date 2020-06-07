@@ -8,7 +8,7 @@ import { Carousel } from  'react-bootstrap';
 import '../../css/map.css';
 import token from '../../config';
 import styled from 'styled-components';
-import { selectingEvent } from '../../Actions/selectEventActions';
+import { selectingEvent, toggleShowList } from '../../Actions/selectEventActions';
 import sack, {  shirt, coin, mask, MCRing} from '../../assets/svg.js'
 import filterAndSearch from '../utilities/filterAndSearch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +21,7 @@ const Map = ReactMapboxGl({
 });
 
 const flyToOptions = {
-  speed: 1
+  speed: 0.5
 }
 
 const imageSack = new Image();
@@ -76,10 +76,17 @@ class MapView extends React.Component {
       center: [69.3451, 30.3753],
       zoom: [4.7],
       screenWidth: null,
-      styleSatellite: false 
+      styleSatellite: false,
+      computeDictionary: false
     }
     this.styleButtonClicked = this.styleButtonClicked.bind(this);
   }
+
+  // componentDidMount() {
+  //   this.props.filteredEvents.map((event) => {
+  //     return eventKeys[event._id] = {...event}
+  //   });
+  // }
 
   componentDidMount() {
     window.addEventListener("resize", this.updateWindowDimensions());
@@ -93,24 +100,28 @@ class MapView extends React.Component {
     this.setState({ screenWidth: window.innerWidth });
   }
 
-  componentWillUpdate() {
-    this.props.filteredEvents.map((event) => {
-      return eventKeys[event._id] = {...event}
-    });
+  componentDidUpdate() {
+    if (this.props.fetched && !this.state.computeDictionary) {
+      this.setState({
+        computeDictionary: true
+      })
+      this.props.filteredEvents.map((event) => {
+        return eventKeys[event._id] = {...event}
+      });
+    }
   }
 
   onDrag = () => {
-    if (this.props.selectedEvent) {
-      this.setState = ({
-        center: this.props.selectedEvent.location.coordinates,
-        zoom: [14],
-      })
-      this.props.dispatch(selectingEvent(null))
+    if(!this.props.showList) {
+      this.props.dispatch(toggleShowList())
     }
   }
 
   onMarkerClick = (eventId) => {
     this.props.dispatch(selectingEvent(eventKeys[eventId]))
+    if (this.props.showList) {
+      this.props.dispatch(toggleShowList())
+    }
   }
 
   styleButtonClicked() {
@@ -133,7 +144,7 @@ class MapView extends React.Component {
         }}
         
         fitBounds={startingBounds}
-        center={this.props.selectedEvent == null ? this.state.center : this.props.selectedEvent.location.coordinates}
+        // center={this.props.selectedEvent == null ? this.state.center : this.props.selectedEvent.location.coordinates}
         zoom={this.props.selectedEvent == null ? this.state.zoom : [14]}
         // onZoom={}
         // onMove={}
@@ -154,6 +165,13 @@ class MapView extends React.Component {
       >
         <MapContext.Consumer>
           {(map) => {
+            if (this.props.selectedEvent) {
+              map.flyTo({
+                center: this.props.selectedEvent.location.coordinates,
+                speed: 0.6,
+                zoom: 14
+              })
+            }
             map.setStyle(this.state.styleSatellite ? "mapbox://styles/mapbox/satellite-v9" : "mapbox://styles/daniyaalbeg/ck8xf05we46ts1ipm9zqkoyya")
           }}
         </MapContext.Consumer>
@@ -205,11 +223,12 @@ const WhichPopup = (props) => {
 
   if (props.screenWidth > 600) {
     return (
-      <Popup key={props.selectedEvent._id} coordinates={props.selectedEvent.location.coordinates}>
-        <StyledPopup>
-          <div>{props.selectedEvent.name}</div>
-        </StyledPopup>
-      </Popup>
+      // <Popup key={props.selectedEvent._id} coordinates={props.selectedEvent.location.coordinates}>
+      //   <StyledPopup>
+      //     <div>{props.selectedEvent.name}</div>
+      //   </StyledPopup>
+      // </Popup>
+      null
     )
   } else {
     return (
@@ -245,6 +264,8 @@ const WhichPopup = (props) => {
 
 const MapStateToProps = (state) => ({
   selectedEvent: state.eventInfo.selectedEvent,
+  showList: state.eventInfo.showList,
+  fetched: state.eventInfo.fetched,
   filteredEvents: filterAndSearch(state.eventInfo.events, state.eventInfo.filterType, state.eventInfo.filter, state.eventInfo.search)
 });
 

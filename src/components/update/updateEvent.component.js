@@ -107,19 +107,18 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
     dispatch(updatingEventRedirect())
   }
 
+  if (eventToUpdate === null) {
+    return <Redirect push to="/" />
+  }
+  if (!auth) {
+    return <Redirect push to="/" />
+  }
+  if (success) {
+    return <Redirect push to="/" /> 
+  }
+
   return (
     <Card bg="light" text="dark" className="signUpCard">
-      <Fragment>
-        {eventToUpdate === null &&
-          <Redirect push to="/" />
-        }
-       {!auth &&
-          <Redirect push to="/" />
-        }
-        {success &&
-          <Redirect push to="/" /> 
-        }
-      </Fragment>
       <Card.Header> Update Event </Card.Header>
 
       <Formik
@@ -343,7 +342,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
           {loading ? 'Updating Event' : 'Update Event'}
         </button>
 
-        <Link to="/" style={{marginLeft: "10px"}}>
+        <Link to="/dashboard" style={{marginLeft: "10px"}}>
         <button className="standardButton redVersion" type="submit" disabled={loading}>
           Cancel
         </button>
@@ -371,7 +370,7 @@ const MapStateToProps = (state, ownProps) => ({
   loading: state.updateInfo.loading,
   hasErrors: state.updateInfo.hasErrors,
   success: state.updateInfo.success,
-  eventToUpdate: state.userInfo.supplier ? findChosenEvent(ownProps.match.params.id, state.userInfo.supplier.events) : null,
+  eventToUpdate: state.userInfo.user.supplier ? findChosenEvent(ownProps.match.params.id, state.userInfo.user.supplier.events) : null,
 });
 
 export default connect(MapStateToProps)(UpdateEvent)

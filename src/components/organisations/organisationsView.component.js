@@ -92,7 +92,7 @@ const OrgCards = (props) => {
 								</div>
 								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
 								<Card.Body>
-									<Card.Title className="headerText"> {org.supplierName} </Card.Title>
+									<p className="headerText"> {org.supplierName} </p>
 								</Card.Body>
 								<Card.Footer className="footerText">
 									<small className="text-muted"> {org.type} </small>

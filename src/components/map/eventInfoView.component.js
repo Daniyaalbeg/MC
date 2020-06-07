@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Carousel } from 'react-bootstrap';
-import '../../css/eventInfoView.css'
+import {} from '../../Actions/selectEventActions';
+import '../../css/eventInfoView.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons'

@@ -27,7 +27,7 @@
 }
 @media only screen and (min-width: 600px) {
   .Container404 {
-    font-size: 10rem;
+    font-size: 8em;
   }
   .MCRing {
     height: 100px;
@@ -37,7 +37,7 @@
 
 @media only screen and (max-width: 600px) {
   .Container404 {
-    font-size: 4rem;
+    font-size: 4em;
   }
   .MCRing {
     height: 60px;
@@ -53,9 +53,9 @@
   justify-content: space-around;
   color: #232A2E;
   background-color: whitesmoke;
-  padding: 2rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding: 25px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   border-radius: 20px;
   line-height: 0em;
 }
@@ -64,8 +64,8 @@
 }
 
 .MCRing {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
 }
 
 .pHeight {

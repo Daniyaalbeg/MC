@@ -6,6 +6,7 @@ export const CREATE_EVENT = "CREATE_EVENT";
 export const CREATE_EVENT_SUCCESS = "CREATE_EVENT_SUCCESS";
 export const CREATE_EVENT_FAILURE = "CREATE_EVENT_FAILURE";
 export const CREATE_EVENT_REDIRECT = "CREATE_EVENT_REDIRECT"
+export const CREATE_EVENT_RESET = "CREATE_EVENT_RESET";
 
 export const creatingEvent = () => ({
   type: CREATE_EVENT
@@ -22,6 +23,10 @@ export const creatingEventFailure = (error) => ({
 
 export const creatingEventRedirect = () => ({
   type: CREATE_EVENT_REDIRECT
+})
+
+export const creatingEventReset = () => ({
+  type: CREATE_EVENT_RESET
 })
 
 const urlImage = rootURL(production)+API+'/imageUpload'
