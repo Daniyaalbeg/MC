@@ -22,7 +22,7 @@ const EmailVerification = (props) => {
       })
       .then((res) => setVerified(true))
       .catch((error) => {
-        console.log(error.response)
+        // console.log(error.response)
       })
     }
   }, [requested, token])

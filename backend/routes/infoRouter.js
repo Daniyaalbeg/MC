@@ -5,7 +5,7 @@ var User = require('../models/user.model');
 const Event = require('../models/event.model').Event;
 
 router.route('/featured').get((req, res) => {
-  User.aggregate([{ $match: { approved: true} }, { $sample: { size: 4 } }])
+  User.aggregate([{ $match: { supplier: {$ne: null}, approved: true } }, { $sample: { size: 4 } }])
   .then((users) => {
     const featuredSuppliers = []
     users.forEach((user) => {

@@ -116,7 +116,7 @@
   height: 93.6vh;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 80px auto;
   grid-template-areas: 
   "topLeft header header"
   "sidebar body body"

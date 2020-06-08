@@ -61,12 +61,12 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           }
         </div>
         <div className="dbLeftBar">
-          <TabDashboard addClass="mcTabA">
+          {/* <TabDashboard addClass="mcTabA">
             <FontAwesomeIcon icon={faHomeLg} />
             {renderSideBarText &&
               <p> Home </p>
             }
-          </TabDashboard>
+          </TabDashboard> */}
           <TabDashboard addClass="mcTabB">
           <FontAwesomeIcon icon={faUserCircle} />
           {renderSideBarText &&
@@ -106,11 +106,11 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           {/* <button className="standardButton logoutButton" onClick={() => { dispatch(logout()) }}> logout </button> */}
         </div>
         <div className="dbBody">
-          <Panel>
+          {/* <Panel>
             <div className="comingSoonContainer">
               <p className="mcRedBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
             </div>
-          </Panel>
+          </Panel> */}
           <Panel>
             <ProfileInfoView user={user} />
           </Panel>
