@@ -72,29 +72,29 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
       </div>
       <div className="cnicBody">
       <Panel>
-        <form onSubmit={
-          (e) => { e.preventDefault()
-          searchCnicChange()
-        }}>
-          <div className="searchCnicContainer">
-            <div className="searchCnicBox">
-              <FontAwesomeIcon icon={faSearch} className="cnicSearchIcon" onClick={searchCnicChange} spin={getLoading}/>
-              <input ref={searchInputRef} type="text" placeholder="CNIC number" className="cnicSearchInput" />
-            </div>
-            <button className="standardButton cnicSearchButton" onClick={searchCnicChange}> Search </button>
+      <form onSubmit={
+        (e) => { e.preventDefault()
+        searchCnicChange()
+      }}>
+        <div className="searchCnicContainer">
+          <div className="searchCnicBox">
+            <FontAwesomeIcon icon={faSearch} className="cnicSearchIcon" onClick={searchCnicChange} spin={getLoading}/>
+            <input ref={searchInputRef} type="text" placeholder="CNIC number" className="cnicSearchInput" />
           </div>
-        </form>
-        <CnicResult getHasError={getHasError} getHasErrorMessage={getHasErrorMessage} cnicInfo={cnicInfo} />
+          <button className="standardButton cnicSearchButton" onClick={searchCnicChange}> Search </button>
+        </div>
+      </form>
+      <CnicResult getHasError={getHasError} getHasErrorMessage={getHasErrorMessage} cnicInfo={cnicInfo} />  
       </Panel>
       <Panel>
         <CnicAddNew />
       </Panel>  
       </div>
-      <div className="cnicFooter">
-      <h6> Note </h6>
-        <p> Once CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
-      </div>
       </Tabs>
+    </div>
+    <div className="cnicFooter">
+    <h6> Note </h6>
+      <p> Once CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
     </div>
     </div>
   )

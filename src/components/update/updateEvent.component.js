@@ -326,7 +326,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
             component={Checkbox}
             name="agreedToTerms"
             id="agreedToTerms"
-            label="Agree to Terms & Conditions"
+            label={<p className="agreedTo"> Agreed to <Link to="/termsandconditions" target="_blank" > Terms & Conditions </Link></p>}
             isValid={touched.agreedToTerms && !errors.agreedToTerms}
             isInvalid={errors.agreedToTerms}
           />

@@ -24,9 +24,9 @@
 }
 
 .imageContainerEvent {
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
-  height: 200px;
+  height: 300px;
   width: 100%;
   background-color: rgb(180, 180, 180);
   overflow: hidden;
@@ -54,11 +54,12 @@ p {
 
 .imageCarouselContainer {
   width: 100%;
+  height: fit-content;
   margin-bottom: 12px;
-  overflow: hidden;
 }
 
 .imageCarousel {
+  height: fit-content;
   margin-top: 12px;
   border-radius: 12px;
   overflow: hidden;

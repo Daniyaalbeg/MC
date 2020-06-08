@@ -29,7 +29,7 @@ export const creatingEventReset = () => ({
   type: CREATE_EVENT_RESET
 })
 
-const urlImage = rootURL(production)+API+'/imageUpload'
+const imageUrl = rootURL(production)+API+'/imageUpload'
 
 export function creatingNewEvent(data) {
   return async (dispatch, getState) => {
@@ -58,7 +58,7 @@ export function creatingNewEvent(data) {
 
       const imageCategory = "eventImages"
 
-      promises.push(axios.post(urlImage,{
+      promises.push(axios.post(imageUrl,{
         fileName: fileName,
         fileType: fileType,
         fileSize: filesDict[key].size,
