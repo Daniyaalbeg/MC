@@ -1,33 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import  ScrollToTop from './components/utilities/scrollToTop.component'
 
-import NavigationBar from './components/navigationBar.component';
-import HomeView from './components/homeView/homeView.component'
-import MainMap from './components/map/mainMap.component';
-import OrgView from './components/organisations/organisationsView.component';
-import OrgViewInfo from './components/organisations/organisationInfoView.component';
-import SignUpOrg from './components/signup/signUpOrg.component';
-import SignupUser from './components/signup/signupUser.component';
-import ResetPassword from './components/reset/resetPassword.component';
-import ResettingPassword from './components/reset/resettingPassword.component';
-import EmailVerification from './components/signup/emailVerification.component'
-import CreateEvent from './components/signup/createEvent.component';
-import UpdateEvent from './components/update/updateEvent.component';
-import About from './components/about.component';
-import CnicView from './components/cnic/cnicView.component';
-import Dashboard from './components/dashboard/dashboardContainer.component';
-import PrivacyPolicy from './components/privacyPolicy.component';
-import TermsAndConditions from './components/termsAndConditions';
-import Error404 from './components/404.component';
-
 import { checkCookie } from './Actions/authActions';
+import { Spinner } from 'react-bootstrap';
+// import mcSpinner from './assets/svg/mcWhole3.svg';
 
 import './css/app.css'
 import './css/general.css'
 
-function App({ dispatch, checkedCookie, auth }) {
+import NavigationBar from './components/navigationBar.component';
+import HomeView from './components/homeView/homeView.component'
+import Error404 from './components/404.component';
+
+const MainMap = lazy(() => import('./components/map/mainMap.component')); 
+const Dashboard = lazy(() => import('./components/dashboard/dashboardContainer.component')); 
+const OrgView = lazy(() => import('./components/organisations/organisationsView.component'));
+const OrgViewInfo = lazy(() => import('./components/organisations/organisationInfoView.component'));
+const SignUpOrg = lazy(() => import('./components/signup/signUpOrg.component'));
+const SignupUser = lazy(() => import('./components/signup/signupUser.component'));
+const ResetPassword = lazy(() => import('./components/reset/resetPassword.component'));
+const ResettingPassword = lazy(() => import('./components/reset/resettingPassword.component'));
+const EmailVerification = lazy(() => import('./components/signup/emailVerification.component'));
+const CreateEvent = lazy(() => import('./components/signup/createEvent.component'));
+const UpdateEvent = lazy(() => import('./components/update/updateEvent.component'));
+const About = lazy(() => import('./components/about.component'));
+const CnicView = lazy(() => import('./components/cnic/cnicView.component'));
+const PrivacyPolicy = lazy(() => import('./components/privacyPolicy.component'));
+const TermsAndConditions = lazy(() => import('./components/termsAndConditions'));
+
+
+function App({ dispatch, checkedCookie }) {
   
   useEffect(() => {
     if (!checkedCookie) {
@@ -39,32 +43,39 @@ function App({ dispatch, checkedCookie, auth }) {
     <Router>
       <ScrollToTop />
       <NavigationBar />
-      <Switch>
-        <Route path="/" exact component={HomeView}/>
-        <Route path="/dashboard" exact component={Dashboard}/>
-        <Route path="/map" exact component={MainMap}/>
-        <Route path="/organisations/:id" component={OrgViewInfo}/>
-        <Route path="/organisations" component={OrgView}/>
-        <Route path="/about" component={About} />
-        <Route path="/signup" component={SignupUser}/>
-        <Route path="/signupOrg" component={SignUpOrg}/>
-        <Route path="/reset" component={ResetPassword} />
-        <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
-        <Route path="/verify/:token" component={EmailVerification} />
-        <Route path="/createEvent" component={CreateEvent} />
-        <Route path="/updateEvent/:id" component={UpdateEvent} />
-        <Route path="/cnic" component={CnicView} />
-        <Route path="/privacypolicy" component={PrivacyPolicy} />
-        <Route path="/termsandconditions" component={TermsAndConditions} />
-        <Route component={Error404} />
-      </Switch>
+      <Suspense fallback={
+        <div className="spinnerThing">
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+      }>
+        <Switch>
+          <Route path="/" exact component={HomeView}/>
+          <Route path="/dashboard" exact component={Dashboard}/>
+          <Route path="/map" exact component={MainMap}/>
+          <Route path="/organisations/:id" component={OrgViewInfo}/>
+          <Route path="/organisations" component={OrgView}/>
+          <Route path="/about" component={About} />
+          <Route path="/signup" component={SignupUser}/>
+          <Route path="/signupOrg" component={SignUpOrg}/>
+          <Route path="/reset" component={ResetPassword} />
+          <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
+          <Route path="/verify/:token" component={EmailVerification} />
+          <Route path="/createEvent" component={CreateEvent} />
+          <Route path="/updateEvent/:id" component={UpdateEvent} />
+          <Route path="/cnic" component={CnicView} />
+          <Route path="/privacypolicy" component={PrivacyPolicy} />
+          <Route path="/termsandconditions" component={TermsAndConditions} />
+          <Route component={Error404} />
+        </Switch>
+      </Suspense>
     </Router>
   );
 }
 
 const MapStateToProps = (state) => ({
   checkedCookie: state.auth.checkedCookie,
-  auth: state.auth.auth,
 })
 
 export default connect(MapStateToProps)(App);
