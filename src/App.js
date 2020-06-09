@@ -7,8 +7,26 @@ import { checkCookie } from './Actions/authActions';
 import { Spinner } from 'react-bootstrap';
 // import mcSpinner from './assets/svg/mcWhole3.svg';
 
-import './css/app.css'
-import './css/general.css'
+import './css/about.css';
+import './css/app.css';
+import './css/cnic.css';
+import './css/dashboard.css';
+import './css/eventInfoView.css';
+import './css/eventlistView.css';
+import './css/eventView.css';
+import './css/form.css';
+import './css/general.css';
+import './css/homeView.css';
+import './css/index.css';
+import './css/mainMap.css';
+import './css/map.css';
+import './css/misc.css';
+import './css/navbar.css';
+import './css/organisationsView.css';
+import './css/organisationInfoView.css';
+import './css/profileInfoView.css';
+import './css/signupUser.css';
+import './css/supplierInfoView.css';
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component'

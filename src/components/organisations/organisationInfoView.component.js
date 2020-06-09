@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
-import '../../css/organistaionInfoView.css'
+import '../../css/organisationInfoView.css'
 
 const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, props }) => {
   const { id } = useParams();
