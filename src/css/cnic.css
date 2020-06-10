@@ -25,12 +25,19 @@
   height: 70%;
 }
 
+
 .cnicLoggedInHeading {
   color: whitesmoke;
   padding: 12px;
   border-radius: 12px;
   font-weight: bold;
   font-size: x-large;
+  text-align: center;
+}
+@media only screen and (max-device-width: 1150px) {
+  .cnicLoggedInHeading {
+    width: 80%;
+  }
 }
 .cnicExclamationIcon {
   margin-right: 8px;
@@ -54,6 +61,7 @@
   overflow: hidden;
   background-color: whitesmoke;
 }
+
 .cnicCard {
   width: 80%;
   height: fit-content;
@@ -90,7 +98,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-
 }
 .cnicFooter > p {
   font-size: medium;
@@ -122,6 +129,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .searchCnicBox {
   border: 2px solid #1589C9;
   border-radius: 5px;
@@ -133,6 +141,7 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
 /* .searchCnicBox:focus {
   border-color: #017BFF;
 } */
@@ -172,6 +181,22 @@
 }
 .cnicEventSeperator {
   width: 90%;
+}
+
+@media only screen and (max-device-width: 1150px) {
+  .cnicCard {
+    width: 90%;
+  }
+  .searchCnicBox {
+    width: 80%;
+  }
+  .cnicSearchInput {
+    width: 80%;
+    margin: 0;
+  }
+  .cnicEvent {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 }
 
 .headingCNIC {

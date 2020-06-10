@@ -11,53 +11,18 @@
 .orgInfoCard {
     font-family: proximaNova;
     margin: auto;
+    margin-bottom: 32px;
 }
 
-
-@media only screen and (min-width: 600px) {
-    .orgInfoCardContainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-    }
-    
-    .orgInfoCard {
-        text-align: center;
-        width: 70%;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .orgInfoCard {
-        display: inline-block;
-        margin: 5px;
-        text-align: center;
-        width: 90%;
-    }   
-    .orgInfoCardContainer {
-        display: flex;
-        justify-content: center;
-    }
-
-    .cardContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-    }
-    .cardOrg {
-        max-width: 80vw;
-    }
-    .invisButton {
-        width: fit-content;
-    }
+.organisationViewContainer {
+    height: 100%;
+    width: 100%;
+    /* background-color: whitesmoke; */
 }
 
 .orgViewLink {
-    all: unset;
-    height: 100%;
+    /* all: unset; */
+    /* height: 100%; */
     width: 100%;
 }
 .orgViewLink:hover {
@@ -92,7 +57,7 @@
 }
 
 .heading {
-    margin-top: 12px;
+    margin-top: 45.75px;
     margin-bottom: 12px;
     font-family: proximaNova;
     font-weight: bold;
@@ -197,12 +162,14 @@
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.19);
     width: fit-content;
     font-family: proximaNova;
+    background-color: white;
 }
 
 .searchBar1 {
     border: none;
     font-size: 150;
     vertical-align: middle;
+    /* background-color: whitesmoke; */
 }
 
 .filterIcon1 {
@@ -226,9 +193,50 @@ select#xyz {
 .filterSelect1 select {
     border: none;
     width: 100%;
+    /* background-color: whitesmoke; */
 }
 
 .orgInfoImage {
     height: 300px;
     object-fit: scale-down;
+}
+
+.orgInfoCardContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+@media only screen and (min-width: 600px) {
+    .orgInfoCard {
+        text-align: center;
+        width: 70%;
+        margin-top: 32px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .orgInfoCard {
+        display: inline-block;
+        margin: auto;
+        margin-top: 8px;
+        text-align: center;
+        width: 90%;
+    }   
+
+    .cardContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .cardOrg {
+        max-width: 80vw;
+    }
+    .invisButton {
+        width: fit-content;
+    }
 }

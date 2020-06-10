@@ -44,11 +44,11 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
 
 	if(fetched && !loading){
 		return (
-			<Fragment>
+			<div className="organisationViewContainer">
 			<div className="headingContainer">
 				<h1 className="heading"> Organisations </h1>
 			</div>
-			<hr className="titleLine"/>
+			<br />
 			<div className="bars">
 
 			<form className="searchBarContainer1">
@@ -65,7 +65,7 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
       </form>
 			</div>
 			<OrgCards orgs={orgInfo} dispatch={dispatch} />
-			</Fragment>
+			</div>
 		)
 	}
 	

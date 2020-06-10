@@ -103,7 +103,7 @@ const TermsAndConditions = () => {
           <li> This Agreement shall be governed by and interpreted according to the law of England and Wales and all disputes arising under the Agreement (including non-contractual disputes or claims) shall be subject to the exclusive jurisdiction of the English and Welsh courts. </li>
         </ol>
         <p className="tcSubHeader"> Ministry of Change Limited details </p>
-        <p> Ministry of Change Limited is a company incorporated in England and Wales with registered number 9503195 whose registered address is 128, Cannon Worshops, Cannon Drive, London, E144AS and it operates the Website https://ministryofchange.org/. You can contact Ministry of Change by email on info@ministryofchange.org. </p>
+        <p className="makeSmallerText"> Ministry of Change Limited is a company incorporated in England and Wales with registered number 9503195 whose registered address is 128, Cannon Worshops, Cannon Drive, London, E144AS and it operates the Website https://ministryofchange.org/. You can contact Ministry of Change by email on info@ministryofchange.org. </p>
         <br />
       </div>
     </div>

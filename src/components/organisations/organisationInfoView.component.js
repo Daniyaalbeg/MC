@@ -37,6 +37,7 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
     )
   } else {
     return (
+      <div className="orgInfoCardContainer">
       <Card className="orgInfoCard">
         <Card.Body>
           <button  className="backButtonOrgView standardButton" onClick={() => {
@@ -45,13 +46,14 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
             Back 
           </button>
           <Card.Img className="orgInfoImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
-          <hr />
+          <br />
+          <br />
           <Card.Title> {org.supplierName} </Card.Title>
           <Card.Subtitle> {org.type} </Card.Subtitle>
-          <hr />
+          <br />
           <h6 className="text-muted smallHeader"> Description </h6>
           <Card.Text> {org.description} </Card.Text>
-          <hr />
+          <br />
           <h6 className="text-muted"> Type of Work </h6>
           <div>
             {org.areaOfWork.map((area) => {
@@ -62,10 +64,10 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
               )
             })}
           </div>
-          <hr />
+          <br />
           <h6 className="text-muted"> Address </h6>
           <CheckOldOrNewAddress address={org.address} />
-          <hr />
+          <br />
           <h6 className="text-muted"> Donation Info </h6>
           {org.bankingDetails.accountNumber !== "" &&
             <BankingDetails bankingDetails={org.bankingDetails}/>
@@ -76,18 +78,22 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           {org.bankingDetails.jazzCash !== "" &&
             <JazzCashDetails jazzCash={org.bankingDetails.jazzCash}/>
           }
-          <hr />
+          <br />
           <h6 className="text-muted"> Point of Contact </h6>
           <Card.Text> {org.contactName} </Card.Text>
           <Card.Text> {org.contactNumber} </Card.Text>
-          <hr />
-          <h6 className="text-muted"> Other Contact Info </h6>
-          <Card.Text> {org.contactInfo} </Card.Text>
-          <hr />
+          <br />
+         {org.contactInfo &&
+            <>
+            <h6 className="text-muted"> Other Contact Info </h6>
+            <Card.Text> {org.contactInfo} </Card.Text>
+            </>
+         }
+          <br />
           {org.supplierWebsite !== "" && (
           <Fragment>
           <h6 className="text-muted"> Website </h6>
-          <a href={org.supplierWebsite} key={org.supplierWebsite} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faGlobe}/></a>
+          <a bref={org.supplierWebsite} key={org.supplierWebsite} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faGlobe}/></a>
           </Fragment>
         )
         }
@@ -97,6 +103,7 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
         <WhichLogo icon={org.instagramURL} />
         </Card.Body>
       </Card>
+      </div>
     )
   }
 }

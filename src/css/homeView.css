@@ -160,6 +160,12 @@
   font-weight: bold;
 }
 
+@media only screen and (max-device-width: 1150px) {
+  .projectInfoDetails {
+    font-size: small;
+  }
+}
+
 .fontProxima {
   font-family: proximaNova;
 }
@@ -279,6 +285,11 @@
   margin-bottom: 60px;
   border-radius: 5px;
   box-shadow: 2px 2px 10px -5px gray;
+}
+@media only screen and (max-device-width: 1150px) {
+  .mapScreenshotContainer {
+    height: 8vh;
+  }
 }
 .mapScreenshot {
   object-fit: cover;
