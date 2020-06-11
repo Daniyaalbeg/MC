@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import token from '../../config';
+import { MAPBOX_API_KEY } from '../../config';
 import mapboxgl from 'react-mapbox-gl';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import * as markers from '../../assets/svg.js';
@@ -9,10 +9,10 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 
-mapboxgl.accessToken = token
+mapboxgl.accessToken = MAPBOX_API_KEY
 
 const Map = ReactMapboxGl({
-  accessToken: token
+  accessToken: MAPBOX_API_KEY
 });
 
 
@@ -68,7 +68,7 @@ class SelectMap extends Component {
         onStyleLoad={(map) => {
           map.addControl(
             new MapboxGeocoder({
-              accessToken: token,
+              accessToken: MAPBOX_API_KEY,
               mapboxgl: map,
               countries: 'pk'
             })

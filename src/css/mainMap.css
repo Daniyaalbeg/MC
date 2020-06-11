@@ -40,6 +40,8 @@
 
 .eventListView {
   width: 30vw;
+  height: 100%;
+  /* overflow-y: hidden; */
 }
 
 .eventListView::-webkit-scrollbar {

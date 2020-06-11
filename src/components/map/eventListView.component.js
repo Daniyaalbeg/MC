@@ -69,7 +69,7 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue, showList})
 
   if (showList) {
     return (
-      <Fragment>
+    <div className="eventListContainer">
       <form className="searchBarContainer" onSubmit={(e) => { e.preventDefault() }}>
         <div className="searchBar">
           <FontAwesomeIcon icon={faSearch} className="searchIcon" size="1x"/>
@@ -101,7 +101,7 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue, showList})
           )
         })}
       </ListGroup>
-      </Fragment>
+    </div>
     )
   } else {
     return (
