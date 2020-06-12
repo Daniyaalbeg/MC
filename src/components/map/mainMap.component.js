@@ -24,13 +24,8 @@ const HomeView = ({ dispatch, loading, fetched}) => {
     <div className="containerHome">
       {/* <div className="mapView"><MapView /></div> */}
       <div className="mapView">
-        <MapView
-          googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key="+GOOGLE_API_KEY}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `100%` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
-        </div>
+        <MapView />
+      </div>
       <div className="eventListView"><EventListView /></div>
     </div>
   )
