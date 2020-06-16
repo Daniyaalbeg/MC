@@ -278,17 +278,3 @@
 .modalFont {
   font-family: proximaNova;
 }
-
-.loginNav {
-  color: #222A2E;
-  background-color: #BEBEBE;
-  cursor: pointer;
-  border: 1px solid #222A2E;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 5px;
-  width: fit-content;
-}
-.loginNav:hover {
-  background-color: white;
-}

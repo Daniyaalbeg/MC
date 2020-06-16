@@ -1,0 +1,7 @@
+export const LSO = "LSO"
+export const UC = "UC"
+export const NATIONAL = "NATIONAL"
+export const PROVINCE = "PROVINCE"
+export const DISTRICT = "DISTRICT"
+export const TEHSIL = "TEHSIL"
+export const NONE = "NONE"

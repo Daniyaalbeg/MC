@@ -1,11 +1,14 @@
-.navlink {
-  color: rgb(190, 190, 190);
-  text-decoration: none;
-}
-
 .navBar {
   background-color: rgb(35, 42, 46);
+  font-family: proximaNova;
+  font-weight: bold;
+}
+
+.navBarHome {
+  /* background-color: rgba(35, 42, 46, 0.63); */
   z-index: 10;
+  padding: 50px 100px !important;
+  height: 8vh;
   font-family: proximaNova;
   font-weight: bold;
 }
@@ -13,28 +16,44 @@
 .mcLogo {
   height: 2rem;
 }
+.mcLogoHome {
+  height: 2.5rem;
+}
 
 .spaceLink {
   margin-right: 20px;
 }
 
+.navlink {
+  color: rgb(190, 190, 190);
+  text-decoration: none;
+}
+.navlinkHome {
+  color: white;
+  text-decoration: none;
+}
 .navlink:active {
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
-
 .navlink:hover {
   color: white;
   text-decoration: none;
   cursor: pointer;
+}
+.navlinkHome:active {
+  color: white;
+}
+.navlinkHome:hover {
+  color: white;
 }
 
 .loginNav {
   color: #222A2E;
   background-color: #BEBEBE;
   cursor: pointer;
-  border: 1px solid #222A2E;
+  /* border: 1px solid white; */
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 5px;
@@ -45,7 +64,16 @@
   color: #222A2E;
   text-decoration: none;
 }
+.loginNavHome {
+  background-color: white;
+}
 
 .loginNavLink:hover {
   text-decoration: none;
+}
+
+@media only screen and (max-width: 1150px) {
+  .navBarHome {
+    padding: 0.5em 1em !important;
+  }
 }

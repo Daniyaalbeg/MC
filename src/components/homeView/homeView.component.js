@@ -49,27 +49,29 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
 
   return (
     <>
-    <Carousel controls={true} fade={true} indicators={false} interval={2000}>
-      {images.map((image, index) => {
-        return (
-          <Carousel.Item className="carouselImage" key={image}>
-            <Carousel.Caption bsPrefix="slideCaptionContainer">
-              <p className={"slideCaption " + styleCaptions[index]}>{captions[index]}</p>
-            </Carousel.Caption>
-            <img className={"homeImage " + styleImages[index]} src={image} alt=""/>
-          </Carousel.Item>
-        )
-      })}
-    </Carousel>
-    <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
-    <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
-    <FeaturedOrganisation loading={featuredLoading} hasErrors={featuredHasErrors} featuredOrgs={featuredOrgs} />
-    <div className="separator text-muted featuredText fontProxima"> MAP TO INFORM </div>
-    <MapIconKey />
-    <HomeViewMap />
-    <div className="separator text-muted featuredText fontProxima"> OUR PARTNERS </div>
-    <Partners />
-    <Footer />
+    <div className="homeViewContainer">
+      <Carousel controls={true} fade={true} indicators={false} interval={2000}>
+        {images.map((image, index) => {
+          return (
+            <Carousel.Item className="carouselImage" key={image}>
+              <Carousel.Caption bsPrefix="slideCaptionContainer">
+                <p className={"slideCaption " + styleCaptions[index]}>{captions[index]}</p>
+              </Carousel.Caption>
+              <img className={"homeImage " + styleImages[index]} src={image} alt=""/>
+            </Carousel.Item>
+          )
+        })}
+      </Carousel>
+      <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
+      <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
+      <FeaturedOrganisation loading={featuredLoading} hasErrors={featuredHasErrors} featuredOrgs={featuredOrgs} />
+      <div className="separator text-muted featuredText fontProxima"> MAP TO INFORM </div>
+      <MapIconKey />
+      <HomeViewMap />
+      <div className="separator text-muted featuredText fontProxima"> OUR PARTNERS </div>
+      <Partners />
+      <Footer />
+    </div>
     </>
   )
 }
@@ -80,7 +82,7 @@ const Partners = () => {
         <div className="logoRow" style={{justifyContent: 'center'}}>
           {/* <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a> */}
           <a href="https://badlde.org" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={badlde} alt="error" /></a>
-          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
+          {/* <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a> */}
         </div>
       </div>
   )

@@ -66,6 +66,7 @@ export const FilterRationType = (props) => {
       <option value="ppe">PPE</option>
       <option value="money">Money</option>
       <option value="clothes">Clothes</option>
+      <option value="other">Other</option>
     </select>
   )
 }

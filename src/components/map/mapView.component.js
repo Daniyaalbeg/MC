@@ -263,10 +263,10 @@ const WhichPopup = (props) => {
 
 
 const MapStateToProps = (state) => ({
-  selectedEvent: state.eventInfo.selectedEvent,
-  showList: state.eventInfo.showList,
-  fetched: state.eventInfo.fetched,
-  filteredEvents: filterAndSearch(state.eventInfo.events, state.eventInfo.filterType, state.eventInfo.filter, state.eventInfo.search)
+  selectedEvent: state.mapInfo.selectedEvent,
+  showList: state.mapInfo.showList,
+  fetched: state.mapInfo.fetched,
+  filteredEvents: filterAndSearch(state.mapInfo.events, state.mapInfo.filterType, state.mapInfo.filter, state.mapInfo.search)
 });
 
 export default connect(MapStateToProps)(MapView);

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 // import MapView from './mapView.component';
 import MapView from './mapViewGoogle.component';
 import EventListView from './eventListView.component';
+import MapViewLayerList from './MapViewLayerList.component';
 import { connect } from 'react-redux';
 import { getEventInfo, getEventResetFetch } from '../../Actions/getEventInfoActions';
 import { GOOGLE_API_KEY } from '../../config';
@@ -23,6 +24,9 @@ const HomeView = ({ dispatch, loading, fetched}) => {
   return (
     <div className="containerHome">
       {/* <div className="mapView"><MapView /></div> */}
+      <div className="mapViewLayerList">
+        <MapViewLayerList />
+      </div>
       <div className="mapView">
         <MapView />
       </div>
@@ -32,8 +36,8 @@ const HomeView = ({ dispatch, loading, fetched}) => {
 }
 
 const MapStateToProps = (state) => ({
-  loading: state.eventInfo.loading,
-  fetched: state.eventInfo.fetched,
+  loading: state.mapInfo.loading,
+  fetched: state.mapInfo.fetched,
 })
 
 export default connect(MapStateToProps)(HomeView);
