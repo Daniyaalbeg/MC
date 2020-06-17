@@ -20,32 +20,48 @@ const About = () => {
 
       <div className="aboutDiv1 aboutDivShared">
         <p className="aboutBody">
-          Ministry of Change is launching the first of its sites to serve the citizens of this world to make good work visible to everyone.
+          Ministry of Change: Changing the World 
         </p>
       </div>
       <div className="aboutDiv2 aboutDivShared">
         <p className="aboutBody">
-          A lot is being done that never makes it on media or in the public sphere. People are doing good good everywhere. They do not wait for anyone. In disasters and now in this pandemic many people are getting on with doing the best they can for others. Ministry of change wants to track this good work and make it visible to show what is happening. Is is also crucial that we understand who is doing what and where. This will help decision makers and organizations to better their service as well as avoid duplication.
+          The future of activism is here. The Ministry of Change (MC) is a digital platform that match-makes those in need with those with resources, enabling a simpler way of doing good. When it comes to doing good work, we take out the “work”, so you can focus on the “good”. 
         </p>
       </div>
       <div className="aboutDiv3 aboutDivShared">
         <p className="aboutBody">
-        In this COVID 19 state of lockdown people have lost their livelihoods. Hunger is principally the biggest challenge. People have stepped up to give food rations to where they can reach. Some are documenting them whilst others are not. We need to use this opportunity to make sure we have identified the poor and the needy so they can be helped consistently.
+          Who are you? You could be an individual citizen, a government, a corporation, or a philanthropist.
         </p>
       </div>
       <div className="aboutDiv4 aboutDivShared">
         <p className="aboutBody">
-          Other items are being distributed as well including cash and PPEs.
+          Our platform enables you to crowdsource money, supplies, and volunteers through a highly engaged network of individuals who are interested in activism. Easily find and reach out to likeminded do-gooders through our social network. Our online database lets you connect, organise, and mobilise in just a few clicks to make a powerful impact on the causes you care about.
         </p>
       </div>
       <div className="aboutDiv5 aboutDivShared">
         <p className="aboutBody">
-          In many of the past disasters the beneficiaries were not documented nor a verified database formed. When the 2010 floods came we again repeated the same mistake and did not consolidate this data so that poverty can be attacked from all sides and not only in disasters.
+          Browse through development projects that inspire and excite you - from education and healthcare to justice and climate change. Find grassroots volunteers to help, donors to fund, and development organisations with training, resources, and expertise to move your work forward. 
         </p>
       </div>
       <div className="aboutDiv6 aboutDivShared">
         <p className="aboutBody">
-          This site maps locations, shows you who is the giver, what were the items and who received them. Apart from rations MC records cash, clothes and personal protective equipment PPEs.
+          Not only do we set you up for success, but donors get to work with trustworthy and accountable leaders whilst  making their impact visible. 
+          We’re here to disrupt the bureaucracy and roadblocks of getting good things done. We are improving the development services experience for everyone by providing a data-driven tool that’s more interactive,  inclusive, and transparent.
+        </p>
+      </div>
+      <div className="aboutDiv7 aboutDivShared">
+        <p className="aboutBody">
+          For example, in these challenging COVID 19 times, we are mapping donors who are donating food rations, PPE (Personal Protective Equipment), cash, and clothes to people who need them. Volunteers can use this information and engage with the action and provide support. By mapping volunteer locations, MC can help with disaster management and mitigate issues before they become issues.
+        </p>
+      </div>
+      <div className="aboutDiv8 aboutDivShared">
+        <p className="aboutBody">
+          While MC will initially be piloted in Pakistan, we plan to scale to countries interested in mobilising their citizens for collective action.
+        </p>
+      </div>
+      <div className="aboutDiv9 aboutDivShared">
+        <p className="aboutBody">
+          We’re ready to help you help others. Are you?
         </p>
       </div>
 
@@ -56,7 +72,7 @@ const About = () => {
         <div className="logoRow">
           {/* <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a> */}
           <a href="https://badlde.org" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={badlde} alt="error" /></a>
-          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
+          {/* <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a> */}
         </div>
       </div>
 

@@ -24,9 +24,9 @@ const HomeView = ({ dispatch, loading, fetched}) => {
   return (
     <div className="containerHome">
       {/* <div className="mapView"><MapView /></div> */}
-      <div className="mapViewLayerList">
+      {/* <div className="mapViewLayerList">
         <MapViewLayerList />
-      </div>
+      </div> */}
       <div className="mapView">
         <MapView />
       </div>

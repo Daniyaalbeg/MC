@@ -80,7 +80,7 @@ const withImageUpload = (dispatch, data) => {
       let fileName = key;
       let fileType = fullFileName[1];
 
-      const imageCategory = "EventImages"
+      const imageCategory = "eventImages"
 
       promises.push(axios.post(urlImage,{
         fileName: fileName,

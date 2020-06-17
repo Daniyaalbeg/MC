@@ -6,12 +6,11 @@ import filterAndSearch from '../utilities/filterAndSearch'
 import { selectingEvent, toggleShowList } from '../../Actions/selectEventActions';
 import * as MapLayerType from './mapLayerTypes';
 import { GOOGLE_API_KEY } from '../../config';
-import ucData from '../../assets/data/Union_Council_With_Average.json';
-import ucSimpleData from '../../assets/data/Union_Council_Simple_With_Average.json';
-import districtData from '../../assets/data/District_Boundary_With_Average.json';
-import nationalData from '../../assets/data/National_Boundary_With_Average.json';
-import provinceData from '../../assets/data/Provincial_Constituency_With_Average.json';
-import tehsilData from '../../assets/data/Tehsil_Boundary_With_Average.json';
+// import ucSimpleData from '../../assets/data/UC_Pak_Use_With_Average.min.json';
+// import districtData from '../../assets/data/District_Boundary_With_Average.min.json';
+// import nationalData from '../../assets/data/National_Boundary_With_Average.min.json';
+// import provinceData from '../../assets/data/Provincial_Constituency_With_Average.min.json';
+// import tehsilData from '../../assets/data/Tehsil_Boundary_With_Average.min.json';
 
 // import sack, { shirt, coin, mask, MCRing} from '../../assets/svg.js'
 import coin from '../../assets/svg/coin.svg';
@@ -191,14 +190,14 @@ const MapLayer = ({ mapLayer, events, onMarkerClick, showInfo, setShowInfo }) =>
     case MapLayerType.UC:
       return (
         <>
-          {ucSimpleData.features.map((feature) => {
+          {/* {ucSimpleData.features.map((feature) => {
             if (feature.geometry === undefined) {
               console.log('empty')
               return null
             }
             return <Polygon onMouseOver={() => showInfoBox()} onClick={(e) => {
               setShowInfo({ "feature": feature, latLng: e.latLng })
-            }} key={feature.properties.Shape_Leng+feature.properties.Shape_Area} paths={feature.geometry.coordinates} options={polyOptions}/>
+            }} key={feature.properties.OBJECTID} paths={feature.geometry.coordinates} options={polyOptions}/>
           })}
           {showInfo &&
             <InfoWindow
@@ -217,16 +216,16 @@ const MapLayer = ({ mapLayer, events, onMarkerClick, showInfo, setShowInfo }) =>
             </div>
           </InfoWindow>
 
-          }
+          } */}
         </>
       )
     case MapLayerType.DISTRICT:
       return (
         <>
-          {districtData.features.map((feature) => {
+          {/* {districtData.features.map((feature) => {
             return <Polygon onMouseOver={() => showInfoBox()} onClick={(e) => {
               setShowInfo({ "feature": feature, latLng: e.latLng })
-            }} key={feature.geometry.averageLatLng.lat} paths={feature.geometry.coordinates} options={polyOptions}/>
+            }} key={feature.properties.OBJECTID} paths={feature.geometry.coordinates} options={polyOptions}/>
           })}
           {showInfo &&
             <InfoWindow
@@ -241,16 +240,16 @@ const MapLayer = ({ mapLayer, events, onMarkerClick, showInfo, setShowInfo }) =>
             </div>
           </InfoWindow>
 
-          }
+          } */}
         </>
       )
     case MapLayerType.TEHSIL:
       return (
         <>
-          {tehsilData.features.map((feature) => {
+          {/* {tehsilData.features.map((feature) => {
             return <Polygon onMouseOver={() => showInfoBox()} onClick={(e) => {
               setShowInfo({ "feature": feature, latLng: e.latLng })
-            }} key={feature.properties.Shape_Leng+feature.properties.Shape_Area} paths={feature.geometry.coordinates} options={polyOptions}/>
+            }} key={feature.properties.OBJECTID} paths={feature.geometry.coordinates} options={polyOptions}/>
           })}
           {showInfo &&
             <InfoWindow
@@ -267,16 +266,16 @@ const MapLayer = ({ mapLayer, events, onMarkerClick, showInfo, setShowInfo }) =>
             </div>
           </InfoWindow>
 
-          }
+          } */}
         </>
       )
     case MapLayerType.PROVINCE:
       return (
         <>
-          {provinceData.features.map((feature) => {
+          {/* {provinceData.features.map((feature) => {
             return <Polygon onMouseOver={() => showInfoBox()} onClick={(e) => {
               setShowInfo({ "feature": feature, latLng: e.latLng })
-            }} key={feature.properties.Shape_Leng+feature.properties.Shape_Area} paths={feature.geometry.coordinates} options={polyOptions}/>
+            }} key={feature.properties.OBJECTID} paths={feature.geometry.coordinates} options={polyOptions}/>
           })}
           {showInfo &&
             <InfoWindow
@@ -291,17 +290,17 @@ const MapLayer = ({ mapLayer, events, onMarkerClick, showInfo, setShowInfo }) =>
             </div>
           </InfoWindow>
 
-          }
+          } */}
         </>
       )
     case MapLayerType.NATIONAL:
       return (
         <>
-          {nationalData.features.map((feature) => {
+          {/* {nationalData.features.map((feature) => {
             return <Polygon onMouseOver={() => showInfoBox()} onClick={(e) => {
               setShowInfo({ "feature": feature, latLng: e.latLng })
-            }} key={feature.properties.Shape_Leng+feature.properties.Shape_Area} paths={feature.geometry.coordinates} options={polyOptions}/>
-          })}
+            }} key={feature.properties.OBJECTID} paths={feature.geometry.coordinates} options={polyOptions}/>
+          })} */}
         </>
       )
     default:
