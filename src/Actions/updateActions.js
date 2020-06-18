@@ -65,9 +65,11 @@ const withImageUpload = (dispatch, data) => {
     let files = data.images;
     let filesDict = {}
     try {
+      let count = 0
       files.forEach((file) => {
-        const name = file.name.split('.')
-        filesDict[name[0]] = file
+        // const name = file.name.split('.')
+        filesDict[count] = file
+        count++
       })
     } catch {
       dispatch(updatingEventFailure("File name must have an extension"))

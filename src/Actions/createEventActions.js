@@ -43,7 +43,6 @@ export function creatingNewEvent(data) {
     try {
       let count = 0
       files.forEach((file) => {
-        const name = file.name.split('.')
         filesDict[count] = file
         count++
       })
