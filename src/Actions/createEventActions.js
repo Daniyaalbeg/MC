@@ -41,9 +41,11 @@ export function creatingNewEvent(data) {
     let files = data.images;
     let filesDict = {}
     try {
+      let count = 0
       files.forEach((file) => {
         const name = file.name.split('.')
-        filesDict[name[0]] = file
+        filesDict[count] = file
+        count++
       })
     } catch {
       dispatch(creatingEventFailure("File name must have an extension"))
@@ -51,10 +53,12 @@ export function creatingNewEvent(data) {
       return
     }
 
+    console.log(filesDict)
+
     Object.keys(filesDict).forEach((key) => {
       const fullFileName = filesDict[key].name.split('.');
       let fileName = key;
-      let fileType = fullFileName[1];
+      let fileType = fullFileName[fullFileName.length - 1];
 
       const imageCategory = "eventImages"
 
@@ -77,6 +81,7 @@ export function creatingNewEvent(data) {
         const oldName = returnData.oldName;
         const url = returnData.url;
         imageUrlLocations.push(url)
+        console.log(oldName + " image uploaded at " + url)
 
         const options = {
           headers: {

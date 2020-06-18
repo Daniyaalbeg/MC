@@ -60,6 +60,7 @@ function App({ dispatch, checkedCookie }) {
 
   return (
     <Router>
+      <GeneralError>
       <ScrollToTop />
       <NavigationBar />
       <Suspense fallback={
@@ -70,7 +71,6 @@ function App({ dispatch, checkedCookie }) {
       </div>
       }>
         <Switch>
-          <GeneralError>
           <Route path="/" exact component={HomeView}/>
           <Route path="/dashboard" exact component={Dashboard}/>
           <Route path="/map" exact component={MainMap}/>
@@ -88,9 +88,9 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/privacypolicy" component={PrivacyPolicy} />
           <Route path="/termsandconditions" component={TermsAndConditions} />
           <Route component={Error404} />
-          </GeneralError>
         </Switch>
       </Suspense>
+    </GeneralError>
     </Router>
   );
 }

@@ -35,9 +35,9 @@ const validationSchema = Yup.object().shape({
   .max(1000, "*Description must be less than 1000 charachters"),
   numOfItems: Yup.number()
   .required("*Number of items is required")
-  .integer("*Provided number must be an integer")
+  .typeError("*Provided number must be an integer")
   .min(1, "*You cannot have less than 1 item...")
-  .max(10000, "*You cannot have more than 1000 items... If you do please message danyaalbeg@gmail.com to get this added"),
+  .max(10000, "*You cannot have more than 10000 items... If you do please message info@ministryofchange.org to get this added"),
   descriptionOfItems: Yup.string()
   .required("*Description of items is required")
   .min(1, "*Description must be longer than 1 charachter")
