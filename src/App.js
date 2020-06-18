@@ -29,7 +29,8 @@ import './css/signupUser.css';
 import './css/supplierInfoView.css';
 
 import NavigationBar from './components/navigationBar.component';
-import HomeView from './components/homeView/homeView.component'
+import HomeView from './components/homeView/homeView.component';
+import GeneralError from './components/errors/generalError.component';
 import Error404 from './components/404.component';
 
 const MainMap = lazy(() => import('./components/map/mainMap.component')); 
@@ -69,6 +70,7 @@ function App({ dispatch, checkedCookie }) {
       </div>
       }>
         <Switch>
+          <GeneralError>
           <Route path="/" exact component={HomeView}/>
           <Route path="/dashboard" exact component={Dashboard}/>
           <Route path="/map" exact component={MainMap}/>
@@ -86,6 +88,7 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/privacypolicy" component={PrivacyPolicy} />
           <Route path="/termsandconditions" component={TermsAndConditions} />
           <Route component={Error404} />
+          </GeneralError>
         </Switch>
       </Suspense>
     </Router>
