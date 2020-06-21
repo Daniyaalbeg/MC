@@ -114,10 +114,10 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue, showList})
 }
 
 const MapStateToProps = (state) => ({
-    events: filterAndSearch(state.mapInfo.events, state.mapInfo.filterType, state.mapInfo.filter, state.mapInfo.search),
-    showList: state.mapInfo.showList,
-    selectedEvent: state.mapInfo.selectedEvent,
-    searchValue: state.mapInfo.search
+    events: filterAndSearch(state.mapInfo.mapActions.events, state.mapInfo.mapActions.filterType, state.mapInfo.mapActions.filter, state.mapInfo.mapActions.search),
+    showList: state.mapInfo.mapActions.showList,
+    selectedEvent: state.mapInfo.mapActions.selectedEvent,
+    searchValue: state.mapInfo.mapActions.search
 });
 
 export default connect(MapStateToProps)(EventListView);

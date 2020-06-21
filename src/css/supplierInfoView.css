@@ -16,13 +16,13 @@
 .supplierInfoHeader > svg {
   margin-left: 32px;
   font-size: 2em;
-  color: whitesmoke;
+  color: #444444;
 }
 .supplierInfoHeader > p {
   margin: 0;
   margin-left: 12px;
   font-weight: bold;
-  color: whitesmoke;
+  color: #444444;
 }
 
 .supplierInfoContent {

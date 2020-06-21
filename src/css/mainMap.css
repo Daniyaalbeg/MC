@@ -34,7 +34,7 @@
 } */
 
 .mapView {
-  width: 70vw;
+  width: 65vw;
   /* flex-grow: 1; */
 }
 
@@ -61,7 +61,8 @@
   width: 100%;
   height: 40px;
   color: whitesmoke;
-  font-size: small;
+  font-size: smaller;
+  font-weight: bold;
 }
 .MapLayerButton:hover {
   background-color: #2d383d;

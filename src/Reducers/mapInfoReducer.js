@@ -3,7 +3,11 @@ import * as mapActions from '../Actions/mapActions';
 import * as selectActions from '../Actions/selectEventActions';
 import * as filterSearchActions from '../Actions/filterSearchEventAction';
 
-const initialState = {
+import * as MapLayerType from '../components/map/mapLayerTypes';
+
+import { combineReducers } from 'redux';
+
+const mapActionInitialState = {
   loading: false,
   hasErros: false,
   fetched: false,
@@ -13,10 +17,115 @@ const initialState = {
   showList: true,
   filterType: "all",
   filter: "all",
-  search: ""
+  search: "",
 }
 
-export default function mapInfoReducer(state = initialState, action) {
+const mapDataInitialState = {
+  mapStoredData: {
+    "UC": null,
+    "TEHSIL": null,
+    "DISTRICT": null,
+    "PROVINCE": null
+  },
+  mapLayerToDisplay: MapLayerType.NONE,
+  loadingMapLayer: false,
+  mapLayerLoadedpercent: null,
+  // mapLayerButtonNumber: null,
+  hasErrorLoadingMapLayer: false,
+  fetchedMapLayer: false
+}
+
+function mapDataReducer(state = mapDataInitialState, action) {
+  switch(action.type) {
+    case mapActions.LOAD_LAYER:
+      return {
+        ...state,
+        loadingMapLayer: true,
+        hasErrorLoadingMapLayer: false,
+        fetchedMapLayer: false
+      }
+    case mapActions.LOAD_LAYER_UPDATE:
+      return {
+        ...state,
+        mapLayerLoadedpercent: (action) => {
+          if (action.payload.lengthComputable) {
+            console.log((action.payload.loaded - action.payload.total) * 100)
+            return (action.payload.loaded - action.payload.total) * 100  
+          } else {
+            return null
+          }
+        }
+      }
+    case mapActions.LOAD_LAYER_CACHED:
+      return {
+        ...state,
+        mapLayerToDisplay: action.payload
+      }
+    case mapActions.LOAD_LAYER_SUCCESS:
+      switch(action.payload.mapLayerType) {
+        case MapLayerType.NONE: 
+          return {
+            ...state,
+            mapLayerToDisplay: MapLayerType.NONE
+          }
+        case MapLayerType.UC:
+          return {
+            ...state,
+            mapStoredData: {
+              ...state.mapStoredData,
+              "UC": action.payload.layerData,
+            },
+            mapLayerToDisplay: action.payload.mapLayerType,
+            loadingMapLayer: false,
+            fetchedMapLayer: true
+          }
+        case MapLayerType.TEHSIL:
+          return {
+            ...state,
+            mapStoredData: {
+              ...state.mapStoredData,
+              "TEHSIL": action.payload.layerData,
+            },
+            mapLayerToDisplay: action.payload.mapLayerType,
+            loadingMapLayer: false,
+            fetchedMapLayer: true
+          }
+        case MapLayerType.DISTRICT:
+          return {
+            ...state,
+            mapStoredData: {
+              ...state.mapStoredData,
+              "DISTRICT": action.payload.layerData,
+            },
+            mapLayerToDisplay: action.payload.mapLayerType,
+            loadingMapLayer: false,
+            fetchedMapLayer: true
+          }
+        case MapLayerType.PROVINCE:
+          return {
+            ...state,
+            mapStoredData: {
+              ...state.mapStoredData,
+              "PROVINCE": action.payload.layerData,
+            },
+            mapLayerToDisplay: action.payload.mapLayerType,
+            loadingMapLayer: false,
+            fetchedMapLayer: true
+          }
+        default:
+          return state
+      }
+    case mapActions.LOAD_LAYER_FAILURE:
+      return {
+        ...state,
+        hasErrorLoadingMapLayer: true
+      }
+    default:
+      return state
+  }
+}
+
+function mapActionReducer(state = mapActionInitialState, action) {
   switch(action.type) {
     case actions.GET_EVENT_INFO:
       return {
@@ -70,12 +179,14 @@ export default function mapInfoReducer(state = initialState, action) {
         ...state,
         search: action.payload.toLowerCase()       
       }
-    case mapActions.CHANGE_MAP_LAYER:
-      return {
-        ...state,
-        mapLayer: action.payload
-      }
     default:
       return state;
   }
 }
+
+const mapInfoReducer = combineReducers({
+  mapActions: mapActionReducer,
+  mapData: mapDataReducer
+})
+
+export default mapInfoReducer

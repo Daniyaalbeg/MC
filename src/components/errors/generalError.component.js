@@ -21,7 +21,7 @@ class GeneralError extends React.Component {
       // You can render any custom fallback UI
       return (
         <div className="generalErrorContainer">
-          <h1> An error occurred, please try refreshing the page or email info@ministryofchange.org </h1>
+          <p> An error occurred, please try refreshing the page or email info@ministryofchange.org </p>
         </div>
       )
     }

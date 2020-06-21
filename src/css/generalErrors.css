@@ -4,4 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #222A2E;
+}
+
+.generalErrorContainer > p {
+  color: whitesmoke;
+  font-weight: bold;
+  border: 2px solid #222A2E;
+  padding: 20px;
 }

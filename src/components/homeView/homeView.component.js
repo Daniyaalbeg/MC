@@ -82,7 +82,7 @@ const Partners = () => {
         <div className="logoRow" style={{justifyContent: 'center'}}>
           {/* <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a> */}
           <a href="https://badlde.org" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={badlde} alt="error" /></a>
-          {/* <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a> */}
+          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
         </div>
       </div>
   )
@@ -120,17 +120,6 @@ const MapIconKey = (props) => {
     </div>
   )
 }
-
-// class HomeViewMap extends React.Component {
-//   constructor(props) {
-//     super(props)
-//   }
-//   render() {
-//     return (
-//       <p> MAP </p>
-//     )
-//   }
-// }
 
 const FeaturedOrganisation = (props) => {
   const { featuredOrgs, loading, hasErrors } = props
