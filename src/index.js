@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-datepicker/dist/react-datepicker.css' 
 import './css/index.css';
 
-Sentry.init({dsn: "https://5f0004b289e641d8bab375cd18e4eab4@o382800.ingest.sentry.io/5212206"});
+// Sentry.init({dsn: "https://5f0004b289e641d8bab375cd18e4eab4@o382800.ingest.sentry.io/5212206"});
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 render(

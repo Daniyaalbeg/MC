@@ -1,12 +1,3 @@
-@media only screen and (max-width: 600px) {
-  .mapView {
-    width: 100vw !important;
-    height: 100vh;
-  }
-  .eventListView {
-    display: none;
-  }
-}
 
 /* #root {
   height: 100%;
@@ -95,4 +86,18 @@
 }
 .gm-style .gm-style-iw-d::-webkit-scrollbar-track, .gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece  {
   background: #222A2E;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .mapView {
+    width: 100vw !important;
+    height: 100vh;
+  }
+  .eventListView {
+    display: none;
+  }
+  .mapViewLayerList {
+    display: none;    
+  }
 }

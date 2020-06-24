@@ -1,20 +1,11 @@
-import React, { createRef } from 'react';
-import { Polygon, InfoWindow } from '@react-google-maps/api'
+import React, { memo } from 'react';
+import { InfoWindow } from '@react-google-maps/api';
+
+import { connect } from 'react-redux';
 
 import * as MapLayerType from './mapLayerTypes';
-import randomMCColour from '../utilities/randomMCColour.component'
-
-const polyOptions = {
-  fillColor: "#4c59623f",
-  strokeColor: "#4C5962",
-  strokeOpacity: 0.5,
-  strokeWeight: 1,
-  clickable: true,
-  draggable: false,
-  editable: false,
-  geodesic: false,
-  zIndex: 1
-}
+import createPolygon from './createPolygon';
+// import randomMCColour from '../utilities/randomMCColour.component'
 
 const MapLayer = ({ mapBounds, zoomLevel, mapLayerToDisplay, mapLayerData, showInfo, setShowInfo }) => {
   switch(mapLayerToDisplay) {
@@ -33,7 +24,6 @@ const MapLayer = ({ mapBounds, zoomLevel, mapLayerToDisplay, mapLayerData, showI
             if (!mapBounds || !mapBounds.contains({ lat: feature.geometry.averageLatLng.lat, lng: feature.geometry.averageLatLng.lng })) {
               return null
             }
-
             return createPolygon(feature, setShowInfo, mapBounds)
           })}
           {showInfo &&
@@ -52,7 +42,6 @@ const MapLayer = ({ mapBounds, zoomLevel, mapLayerToDisplay, mapLayerData, showI
               <p>{showInfo.feature.properties.TEHSIL}</p>
             </div>
           </InfoWindow>
-
           }
         </>
       )
@@ -74,7 +63,6 @@ const MapLayer = ({ mapBounds, zoomLevel, mapLayerToDisplay, mapLayerData, showI
               <p>{showInfo.feature.properties.PROVINCE}</p>
             </div>
           </InfoWindow>
-
           }
         </>
       )
@@ -98,7 +86,6 @@ const MapLayer = ({ mapBounds, zoomLevel, mapLayerToDisplay, mapLayerData, showI
               <p>{showInfo.feature.properties.DISTRICT}</p>
             </div>
           </InfoWindow>
-
           }
         </>
       )
@@ -126,51 +113,19 @@ const MapLayer = ({ mapBounds, zoomLevel, mapLayerToDisplay, mapLayerData, showI
           }
         </>
       )
-    // case MapLayerType.NATIONAL:
-    //   return (
-    //     <>
-    //       {/* {nationalData.features.map((feature) => {
-    //         return <Polygon onMouseOver={() => showInfoBox()} onClick={(e) => {
-    //           setShowInfo({ "feature": feature, latLng: e.latLng })
-    //         }} key={feature.properties.OBJECTID} paths={feature.geometry.coordinates} options={polyOptions}/>
-    //       })} */}
-    //     </>
-    //   )
     default:
       return null
   }
 }
 
-const createPolygon = (feature, setShowInfo, mapBounds) => {
 
-  if (feature.geometry === undefined || feature.geometry.coordinates === undefined) {
-    return null
-  }
-  if (!mapBounds || !mapBounds.contains({ lat: feature.geometry.averageLatLng.lat, lng: feature.geometry.averageLatLng.lng })) {
-    return null
-  }
+const MapStateToProps = (state, ownProps) => ({
+  mapLayerToDisplay: state.mapInfo.mapData.mapLayerToDisplay,
+  mapLayerData: state.mapInfo.mapData.mapStoredData,
+  zoomLevel: ownProps.zoomLevel,
+  mapBounds: ownProps.mapBounds,
+  showInfo: ownProps.showInfo,
+  setShowInfo: ownProps.setShowInfo
+});
 
-  const polyRef = createRef()
-
-  return <Polygon
-    ref={polyRef}
-    onMouseOut={() => {
-      polyRef.current.state.polygon.setOptions({fillColor: "#4c59623f"});
-    }}
-    onMouseMove={() => {
-      polyRef.current.state.polygon.setOptions({fillColor: "#444444"});
-    }}
-    onMouseOver={() => showInfoBox()} onClick={(e) => {
-      setShowInfo({ "feature": feature, latLng: e.latLng })
-    }}
-    key={feature.id}
-    paths={feature.geometry.coordinates}
-    options={polyOptions}
-  />
-}
-
-const showInfoBox = () => {
-  
-}
-
-export default MapLayer
+export default memo(connect(MapStateToProps)(MapLayer))

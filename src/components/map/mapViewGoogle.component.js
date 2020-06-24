@@ -1,25 +1,29 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, memo, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 
+import * as MapLayerType from './mapLayerTypes';
 import MapMarkers from './mapMarkers.component';
 import MapLayer from './mapLayer.component';
+import MapLayerNational from './mapLayerNational.component';
 
-import filterAndSearch from '../utilities/filterAndSearch'
-import { selectingEvent, toggleShowList } from '../../Actions/selectEventActions';
+import filterAndSearch from '../utilities/filterAndSearch';
+import { selectingEvent, toggleShowList, justSelectedEvent } from '../../Actions/selectEventActions';
 import { GOOGLE_API_KEY } from '../../config';
+import { fal } from '@fortawesome/pro-light-svg-icons';
 
 // import circle from '../../assets/circle.png';
 
 const libraries = []
 let eventKeys = []
 
-const MapView = ({ dispatch, mapLayerData, mapLayerToDisplay, loadingMapLayer, selectedEvent, showList, fetched, filteredEvents, mapLayer }) => {
+const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, selectedEvent, showList, fetched, filteredEvents, mapLayer }) => {
   const [map, setMap] = useState(null)
   const [mapBounds, setMapBounds] =useState(null)
   const [zoomLevel, setZoomLevel] = useState(null)
   const [computeDict, setComputeDict] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
+  const [layerSelectedOnce, setLayerSelectedOnce] = useState(false)
 
   useEffect(() => {
     if (fetched && !computeDict) {
@@ -52,17 +56,18 @@ const MapView = ({ dispatch, mapLayerData, mapLayerToDisplay, loadingMapLayer, s
     rotateControl: true,
   }
 
-  const onLoad = React.useCallback(function callback(map) {
+  const onLoad = useCallback(function callback(map) {
     // const bounds = new window.google.maps.LatLngBounds();
     // map.fitBounds(bounds);
     setMap(map)
     setZoomLevel(6)
     map.setZoom(6)
     map.setCenter(center)
-    setMapBounds(map.getBounds())
+    let bounds = map.getBounds()
+    setMapBounds(bounds)
   }, [])
 
-  const onUnmount = React.useCallback(function callback(map) {
+  const onUnmount = useCallback(function callback(map) {
     setMap(null)
     setMapBounds(null)
     setZoomLevel(null)
@@ -80,7 +85,7 @@ const MapView = ({ dispatch, mapLayerData, mapLayerToDisplay, loadingMapLayer, s
   const onZoomChanged = () => {
     if (map) {
       setZoomLevel(map.zoom)
-      setMapBounds(map.getBounds())
+      setMapBounds(createExtendedBounds(map))
     }
   }
 
@@ -93,7 +98,7 @@ const MapView = ({ dispatch, mapLayerData, mapLayerToDisplay, loadingMapLayer, s
   }
 
   const onDragEnd = () => {
-    setMapBounds(map.getBounds())
+    setMapBounds(createExtendedBounds(map))
   }
 
   const onClick = () => {
@@ -103,39 +108,66 @@ const MapView = ({ dispatch, mapLayerData, mapLayerToDisplay, loadingMapLayer, s
   if (loadError) return <div> error </div>
   if (!isLoaded) return <div>  </div>
 
-  if (selectedEvent) {
-    // if (map.getCenter().lat !== selectedEvent.location.coordinates[1] && map.getCenter().lng !== selectedEvent.location.coordinates[0] && map.zoom !== 16) {
+  if (selectedEvent && justSelected) {
+    dispatch(justSelectedEvent())
     map.setCenter({ lat: selectedEvent.location.coordinates[1], lng: selectedEvent.location.coordinates[0] })
-    map.setZoom(16)
-    // }
+    // map.zoom = 16
+    setTimeout(() => {
+      map.setZoom(16)
+    }, 100);
   }
-  
+
+  if (mapLayerToDisplay !== MapLayerType.NONE && !layerSelectedOnce) {
+    setLayerSelectedOnce(true)
+    setMapBounds(createExtendedBounds(map))
+  }
   
   return (
     <GoogleMap
-    onClick={() => onClick()}
-    onDragEnd={() => onDragEnd()}
-    onZoomChanged={() => onZoomChanged()}
-    onDrag={() => onDrag()}
-    mapContainerStyle={containerStyle}
-    onLoad={onLoad}
-    onUnmount={onUnmount}
-    options={options}
+      onClick={() => onClick()}
+      onDragEnd={() => onDragEnd()}
+      onZoomChanged={() => onZoomChanged()}
+      onDrag={() => onDrag()}
+      mapContainerStyle={containerStyle}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+      options={options}
     >
       <MapMarkers events={filteredEvents} onMarkerClick={onMarkerClick} />
-      <MapLayer mapBounds={mapBounds} zoomLevel={zoomLevel} mapLayerToDisplay={mapLayerToDisplay} mapLayerData={mapLayerData} showInfo={showInfo} setShowInfo={setShowInfo} />
+      {mapLayerToDisplay !== MapLayerType.NONE &&
+        <MapLayer mapBounds={mapBounds} zoomLevel={zoomLevel} showInfo={showInfo} setShowInfo={setShowInfo} />
+      }
+      {mapLayerToDisplay === MapLayerType.UC &&
+        <MapLayerNational />
+      }
     </GoogleMap >
   );
 }
 
+
+const createExtendedBounds = (map) => {
+  //0.5 degress in lng roughly translates to 55,555m VERY ROUGH
+  //111,111 * cos(lat) is 11 degree of lat
+  //https://gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
+    let bounds = map.getBounds()
+    let NE = bounds.getNorthEast()
+    let SW = bounds.getSouthWest()
+    let newNE = { lat: NE.lat() + 0.2, lng: NE.lng() + 0.2}
+    let newSW = { lat: SW.lat() - 0.2, lng: SW.lng() - 0.2}
+    bounds.extend(newNE)
+    bounds.extend(newSW)
+    return bounds
+  }
+
+
 const MapStateToProps = (state) => ({
   selectedEvent: state.mapInfo.mapActions.selectedEvent,
+  justSelected: state.mapInfo.mapActions.justSelected,
   showList: state.mapInfo.mapActions.showList,
   fetched: state.mapInfo.mapActions.fetched,
   mapLayer: state.mapInfo.mapData.mapLayer,
-  mapLayerData: state.mapInfo.mapData.mapStoredData,
   mapLayerToDisplay: state.mapInfo.mapData.mapLayerToDisplay,
-  loadingMapLayer: state.mapInfo.mapData.loadingMapLayer,
+  mapLayerData: state.mapInfo.mapData.mapStoredData,
   filteredEvents: filterAndSearch(state.mapInfo.mapActions.events, state.mapInfo.mapActions.filterType, state.mapInfo.mapActions.filter, state.mapInfo.mapActions.search)
 });
 

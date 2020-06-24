@@ -1,5 +1,8 @@
-import React from 'react';
-import { Marker, MarkerClusterer } from '@react-google-maps/api'
+import React, { memo } from 'react';
+import { Marker, MarkerClusterer } from '@react-google-maps/api';
+import { connect } from 'react-redux';
+
+import filterAndSearch from '../utilities/filterAndSearch';
 
 // import sack, { shirt, coin, mask, MCRing} from '../../assets/svg.js'
 import coin from '../../assets/svg/coin.svg';
@@ -84,4 +87,8 @@ const whichIcon = (type) => {
   }
 }
 
-export default MapMarkers
+const MapStateToProps = (state) => ({
+  filteredEvents: filterAndSearch(state.mapInfo.mapActions.events, state.mapInfo.mapActions.filterType, state.mapInfo.mapActions.filter, state.mapInfo.mapActions.search)
+});
+
+export default memo(connect(MapStateToProps)(MapMarkers))

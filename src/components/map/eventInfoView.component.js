@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import {} from '../../Actions/selectEventActions';
 import '../../css/eventInfoView.css';
 
@@ -48,8 +49,8 @@ const EventInfoView = (props) => {
           <p> {new Date(event.date).toLocaleDateString("en-US", dateOptions)} </p>
         </div>
         <div className="smallBoi">
-          <h6 className="text-muted"> Charity </h6>
-          <p> {event.supplierName} </p>
+          <h6 className="text-muted"> Created by </h6>
+          <Link to={'/organisations/' + event.createdBy._id}> {event.createdBy.supplierName} </Link>
         </div>
         {event.images.length !== 0 &&
           <div className="smallBoi spaceBelow">
@@ -57,7 +58,7 @@ const EventInfoView = (props) => {
           <Carousel>
             {event.images.map((image) => {
               return (
-                <Carousel.Item>
+                <Carousel.Item key={image}>
                   <div className="imageContainer">
                     <img className="img" src={image} alt="" />
                   </div>

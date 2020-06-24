@@ -8,6 +8,12 @@ export const LOAD_LAYER_CACHED = "LOAD_LAYER_CACHED"
 export const LOAD_LAYER_SUCCESS = "LOAD_LAYER_SUCCESS"
 export const LOAD_LAYER_FAILURE = "LOAD_LAYER_FAILURE"
 
+export const LOAD_NATIONAL_LAYER = "LOAD_NATIONAL_LAYER"
+export const LOAD_NATIONAL_LAYER_SUCCESS = "LOAD_NATIONAL_LAYER_SUCCESS"
+export const LOAD_NATIONAL_LAYER_FAILURE = "LOAD_NATIONAL_LAYER_FAILURE"
+
+export const LOAD_LAYER_RESET = "LOAD_LAYER_RESET"
+
 export const loadLayer = () => ({
   type: LOAD_LAYER,
 })
@@ -27,6 +33,40 @@ export const loadLayerFailure = (error) => ({
   type: LOAD_LAYER_FAILURE,
   payload: error
 })
+
+export const loadNationalLayer = () => ({
+  type: LOAD_NATIONAL_LAYER
+})
+export const loadNationalLayerSuccess = (data) => ({
+  type: LOAD_NATIONAL_LAYER_SUCCESS,
+  payload: data
+})
+export const loadNationalLayerFailure = (error) => ({
+  type: LOAD_NATIONAL_LAYER_FAILURE,
+  payload: error
+})
+
+export const loadLayerReset = () => ({
+  type: LOAD_LAYER_RESET
+})
+
+export function loadingNationalLayer() {
+  return async dispatch => {
+    dispatch(loadNationalLayer())
+
+    axios({
+      method: 'get',
+      url: mapDataUrl(MapLayerType.NATIONAL),
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then((res) => {
+      dispatch(loadNationalLayerSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(loadNationalLayerFailure(error))
+    })
+  }
+}
 
 export function loadingLayer(mapLayerType) {
   return async (dispatch, getState) => {
@@ -74,6 +114,8 @@ const mapDataUrl = (mapLayerType) => {
       return 'data/District_Boundary_With_Average.min.json'
     case MapLayerType.PROVINCE:
       return 'data/Provincial_Constituency_With_Average.min.json'
+    case MapLayerType.NATIONAL:
+      return 'data/National_Boundary_With_Average.min.json'
     default:
       return ''
   }

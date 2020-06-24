@@ -90,6 +90,13 @@ p {
   flex-direction: column;
   width: 100%;
 }
+.smallBoi > a {
+  margin-bottom: 16px;
+  font-size: larger;
+}
+.smallBoi > a:hover {
+  text-decoration: none;
+}
 
 .updateDelete {
   display: flex;

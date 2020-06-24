@@ -13,6 +13,7 @@ const mapActionInitialState = {
   fetched: false,
   events: [],
   selectedEvent: null,
+  justSelected: false,
   mapLayer: "NONE",
   showList: true,
   filterType: "all",
@@ -25,7 +26,8 @@ const mapDataInitialState = {
     "UC": null,
     "TEHSIL": null,
     "DISTRICT": null,
-    "PROVINCE": null
+    "PROVINCE": null,
+    "NATIONAL": null,
   },
   mapLayerToDisplay: MapLayerType.NONE,
   loadingMapLayer: false,
@@ -37,6 +39,34 @@ const mapDataInitialState = {
 
 function mapDataReducer(state = mapDataInitialState, action) {
   switch(action.type) {
+    case mapActions.LOAD_LAYER_RESET:
+      return {
+        ...state,
+        //Do i even need this actually... check later
+      }
+    case mapActions.LOAD_NATIONAL_LAYER:
+      return {
+        ...state,
+        loadingMapLayer: true,
+        hasErrorLoadingMapLayer: false,
+        fetchedMapLayer: false
+      }
+    case mapActions.LOAD_NATIONAL_LAYER_SUCCESS:
+      return {
+        ...state,
+        loadingMapLayer: false,
+        fetchedMapLayer: true,
+        mapStoredData: {
+          ...state.mapStoredData,
+          "NATIONAL": action.payload,
+        }
+      }
+    case mapActions.LOAD_NATIONAL_LAYER_FAILURE:
+      return {
+        ...state,
+        hasErrorLoadingMapLayer: true,
+        loadingMapLayer: false
+      }
     case mapActions.LOAD_LAYER:
       return {
         ...state,
@@ -157,11 +187,18 @@ function mapActionReducer(state = mapActionInitialState, action) {
       return {
         ...state,
         selectedEvent: action.payload,
+        justSelected: true
       }
     case selectActions.TOGGLE_SHOW_LIST: {
       return {
         ...state,
         showList: !state.showList
+      }
+    }
+    case selectActions.JUST_SELECTED_EVENT: {
+      return {
+        ...state,
+        justSelected: false
       }
     }
     case filterSearchActions.FILTER_EVENT:
