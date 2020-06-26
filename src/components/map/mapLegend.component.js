@@ -7,7 +7,7 @@ import * as MapLayerType from './mapLayerTypes';
 const MapLegend = ({ mapLayerToDisplay }) => {
   return (
     <div className="mapLegend">
-      <p id="mapLegendHeader"> Legend </p>
+      <p id="mapLegendHeader"> Map Legend </p>
       <div className="mapLegendRow">
         <img className="mapLegendRoundIcons" src={mcWhole3} alt="asd"/>
         <p> Cluster of icons </p>

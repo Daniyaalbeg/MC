@@ -73,12 +73,10 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
             <div className="mapInfoBox">
               <p className="mapInfoBoxHeading"> UC </p>
               <h6>{showInfo.feature.properties.UC_NAME_EN}</h6>
-              <p className="mapInfoBoxHeading"> Province </p>
-              <p>{showInfo.feature.properties.PROVINCE}</p>
               <p className="mapInfoBoxHeading"> District </p>
-              <p>{showInfo.feature.properties.DISTRICT}</p>
+              <h6>{showInfo.feature.properties.DISTRICT}</h6>
               <p className="mapInfoBoxHeading"> Tehsil </p>
-              <p>{showInfo.feature.properties.TEHSIL}</p>
+              <h6>{showInfo.feature.properties.TEHSIL}</h6>
             </div>
           </InfoWindow>
           }
@@ -99,7 +97,7 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
               <p className="mapInfoBoxHeading"> District </p>
               <h6>{showInfo.feature.properties.DISTRICT}</h6>
               <p className="mapInfoBoxHeading"> Province </p>
-              <p>{showInfo.feature.properties.PROVINCE}</p>
+              <h6>{showInfo.feature.properties.PROVINCE}</h6>
             </div>
           </InfoWindow>
           }
@@ -120,9 +118,9 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
               <p className="mapInfoBoxHeading"> Tehsil </p>
               <h6>{showInfo.feature.properties.TEHSIL}</h6>
               <p className="mapInfoBoxHeading"> Province </p>
-              <p>{showInfo.feature.properties.PROVINCE}</p>
+              <h6>{showInfo.feature.properties.PROVINCE}</h6>
               <p className="mapInfoBoxHeading"> District </p>
-              <p>{showInfo.feature.properties.DISTRICT}</p>
+              <h6>{showInfo.feature.properties.DISTRICT}</h6>
             </div>
           </InfoWindow>
           }
@@ -143,9 +141,9 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
               <p className="mapInfoBoxHeading"> District </p>
               <h6>{showInfo.feature.properties.DISTRICT}</h6>
               <p className="mapInfoBoxHeading"> Province </p>
-              <p>{showInfo.feature.properties.PROVINCE}</p>
+              <h6>{showInfo.feature.properties.PROVINCE}</h6>
               <p className="mapInfoBoxHeading"> PA </p>
-              <p>{showInfo.feature.properties.PA}</p>
+              <h6>{showInfo.feature.properties.PA}</h6>
             </div>
           </InfoWindow>
 
