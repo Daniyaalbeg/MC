@@ -61,12 +61,6 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           }
         </div>
         <div className="dbLeftBar">
-          {/* <TabDashboard addClass="mcTabA">
-            <FontAwesomeIcon icon={faHomeLg} />
-            {renderSideBarText &&
-              <p> Home </p>
-            }
-          </TabDashboard> */}
           <TabDashboard addClass="mcTabB">
           <FontAwesomeIcon icon={faUserCircle} />
           {renderSideBarText &&

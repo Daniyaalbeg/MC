@@ -6,6 +6,10 @@ html, body {
   height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-font-smoothing: antialiased;

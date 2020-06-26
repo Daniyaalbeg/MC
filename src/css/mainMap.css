@@ -61,6 +61,32 @@
 .MapLayerButton.active {
   background-color: #1589C9;
 }
+.MapLayerButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.toolTip {
+  visibility: hidden;
+  color: white;
+  position: absolute;
+  display: inline;
+  text-align: center;
+  background-color: #222a2edc;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 0;
+  margin-left: 5.5vw;
+  border-radius: 8px;
+  z-index: 1;
+  font-weight: bold;
+  font-size: small;
+}
+.showToolTip {
+  visibility: visible;
+}
+
 .mapInfoBox {
   background: #222A2E;
   /* padding: 12; */
@@ -68,7 +94,7 @@
 }
 .mapInfoBox > p {
   margin: 0;
-  font-weight: bold;
+  font-weight: normal;
 }
 .mapInfoBox > .mapInfoBoxHeading {
   font-size: small;
@@ -100,4 +126,71 @@
   .mapViewLayerList {
     display: none;    
   }
+}
+
+.lsoHouseContainer {
+  display: flex;
+  flex-direction: row;
+}
+.lsoHouse {
+  height: 50px;
+  width: 50px;
+}
+.lsoHouseInfo p {
+  margin-bottom: 0;
+  font-size: smaller;
+  font-weight: bold;
+}
+.lsoHouseInfoBottom {
+  color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  height: 50px;
+  width: 50px;
+}
+.lsoHouseInfoTop {
+  color: whitesmoke;
+  position: absolute;
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+  object-fit: fill;
+  /* clip-path: inset(50% 0px 0px 0px); */
+}
+.lsoHouseInfo .mapInfoBoxHeading {
+  font-size: x-small;
+  font-weight: normal;
+}
+
+.mapLegend {
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  padding: 8px;
+  padding-right: 16px;
+  background-color: #222a2edc;
+  z-index: 2;
+  border-radius: 8px;
+}
+.mapLegend p {
+  margin: 0;
+  font-weight: bold;
+  color: whitesmoke;
+  font-size: medium;
+  margin-bottom: 4px;
+}
+.mapLegendRow p {
+  margin-left: 4px;
+}
+#mapLegendHeader {
+  font-size: large;
+}
+.mapLegendRow {
+  display: flex;
+  align-items: flex-start;
+}
+.mapLegendRoundIcons {
+  height: 24px;
+  width: 24px;
 }

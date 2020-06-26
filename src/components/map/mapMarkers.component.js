@@ -4,45 +4,43 @@ import { connect } from 'react-redux';
 
 import filterAndSearch from '../utilities/filterAndSearch';
 
-// import sack, { shirt, coin, mask, MCRing} from '../../assets/svg.js'
 import coin from '../../assets/svg/coin.svg';
 import sack from '../../assets/svg/sack.svg';
 import shirt from '../../assets/svg/shirt.svg';
 import mask from '../../assets/svg/mask.svg';
 
+
 const clusterOptions = {
-  imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
-  // imagePath: circle
-  // styles: [{
-  //   textColor: 'black',
-  //   height: 53,
-  //   url: circle,
-  //   width: 53
-  // },
-  // {
-  //   textColor: 'black',
-  //   height: 56,
-  //   url: circle,
-  //   width: 56
-  // },
-  // {
-  //   textColor: 'black',
-  //   height: 66,
-  //   url:circle,
-  //   width: 66
-  // },
-  // {
-  //   textColor: 'black',
-  //   height: 78,
-  //   url: circle,
-  //   width: 78
-  // },
-  // {
-  //   textColor: 'black',
-  //   height: 90,
-  //   url: circle,
-  //   width: 90
-  // }]
+  styles: [{
+    height: 40,
+    url: "m/m1.png",
+    width: 40,
+    textColor: "#f5f5f5"
+    },
+    {
+    height: 45,
+    url: "m/m2.png",
+    width: 45,
+    textColor: "#f5f5f5",
+    },
+    {
+    height: 55,
+    url: "m/m3.png",
+    width: 55,
+    textColor: "#f5f5f5"
+    },
+    {
+    height: 75,
+    url: "m/m4.png",
+    width: 75,
+    textColor: "#f5f5f5"
+    },
+    {
+    height: 90,
+    url: "m/m5.png",
+    width: 90,
+    textColor: "#f5f5f5"
+    }]
 }
 
 const MapMarkers = ({ events, onMarkerClick }) => {
@@ -82,6 +80,8 @@ const whichIcon = (type) => {
       return shirt
     case "ppe":
       return mask
+    case "money":
+      return coin
     default:
       return sack
   }

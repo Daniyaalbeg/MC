@@ -98,9 +98,11 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
         )
         }
         <SocialMediaIcons supplier={org} />
-        <WhichLogo icon={org.facebookURL} />
-        <WhichLogo icon={org.twitterURL} />
-        <WhichLogo icon={org.instagramURL} />
+        <div className="orgSocialMediaContainer">
+          <WhichLogo icon={org.facebookURL} />
+          <WhichLogo icon={org.twitterURL} />
+          <WhichLogo icon={org.instagramURL} />
+        </div>
         </Card.Body>
       </Card>
       </div>

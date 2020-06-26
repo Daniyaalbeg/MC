@@ -28,6 +28,7 @@ const mapDataInitialState = {
     "DISTRICT": null,
     "PROVINCE": null,
     "NATIONAL": null,
+    "LSO": null
   },
   mapLayerToDisplay: MapLayerType.NONE,
   loadingMapLayer: false,
@@ -44,6 +45,30 @@ function mapDataReducer(state = mapDataInitialState, action) {
         ...state,
         //Do i even need this actually... check later
       }
+    case mapActions.LOAD_LSO_LAYER:
+      return {
+        ...state,
+        loadingMapLayer: true,
+        hasErrorLoadingMapLayer: false,
+        fetchedMapLayer: false
+      }
+    case mapActions.LOAD_LSO_LAYER_SUCCESS:
+      return {
+        ...state, 
+        loadingMapLayer: false,
+        fetchedMapLayer: true,
+        mapStoredData: {
+          ...state.mapStoredData,
+          "LSO": action.payload,
+        },
+        mapLayerToDisplay: MapLayerType.LSO
+       }
+    case mapActions.LOAD_LSO_LAYER_FAILURE:
+      return {
+        ...state, 
+        hasErrorLoadingMapLayer: true,
+        loadingMapLayer: false
+       }
     case mapActions.LOAD_NATIONAL_LAYER:
       return {
         ...state,

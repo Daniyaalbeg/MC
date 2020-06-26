@@ -1,0 +1,5476 @@
+{
+  "LSOs": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.40460690027558,
+          "lng": 67.46513941694386
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Mirpur Sakro",
+        "UC": "Buhara",
+        "UC_C": 800547,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82206,
+        "UC_NAME": "Buhara",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Buhara",
+        "id": 35,
+        "dateOfFormation": "2018-06-20 00:00:00"
+      },
+      "id": 3810
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.491625293866434,
+          "lng": 67.63233292800982
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Mirpur Sakro",
+        "UC": "Sukhpur",
+        "UC_C": 800556,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82206,
+        "UC_NAME": "Sukhpur",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sukhpur",
+        "id": 40,
+        "dateOfFormation": "2018-11-08 00:00:00"
+      },
+      "id": 3819
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.620597682273207,
+          "lng": 67.72294591256593
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Mirpur Sakro",
+        "UC": "Ghulamullah",
+        "UC_C": 800551,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82206,
+        "UC_NAME": "Ghulamullah",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ghullamullah",
+        "id": 42,
+        "dateOfFormation": "2018-12-05 00:00:00"
+      },
+      "id": 3814
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.90955810470638,
+          "lng": 68.0832359184163
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Thatta",
+        "UC": "Sonda",
+        "UC_C": 800575,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82209,
+        "UC_NAME": "Sonda",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sonda",
+        "id": 45,
+        "dateOfFormation": "2019-01-26 00:00:00"
+      },
+      "id": 3838
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.639403588021395,
+          "lng": 67.58606181852358
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Mirpur Sakro",
+        "UC": "Choubandi",
+        "UC_C": 800548,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82206,
+        "UC_NAME": "Choubandi",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Chobandi",
+        "id": 46,
+        "dateOfFormation": "2019-01-28 00:00:00"
+      },
+      "id": 3811
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.814996007468654,
+          "lng": 67.97111834515657
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Thatta",
+        "UC": "Chato Chand",
+        "UC_C": 800567,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82209,
+        "UC_NAME": "Chato Chand",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Chato Chand",
+        "id": 47,
+        "dateOfFormation": "2019-01-29 00:00:00"
+      },
+      "id": 3830
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.699180942527224,
+          "lng": 67.72884418591116
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Mirpur Sakro",
+        "UC": "Gujjo",
+        "UC_C": 800552,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82206,
+        "UC_NAME": "Gujjo",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Gujjo",
+        "id": 49,
+        "dateOfFormation": "2019-02-08 00:00:00"
+      },
+      "id": 3815
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.54135755253266,
+          "lng": 67.74000319166248
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Mirpur Sakro",
+        "UC": "Karampur",
+        "UC_C": 800554,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82206,
+        "UC_NAME": "Karampur",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Karampur",
+        "id": 52,
+        "dateOfFormation": "2019-04-11 00:00:00"
+      },
+      "id": 3817
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.76831052467505,
+          "lng": 68.09081535929462
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Sujawal",
+        "UC": "Bijora",
+        "UC_C": 800564,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82208,
+        "UC_NAME": "Bijora",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Bijora",
+        "id": 54,
+        "dateOfFormation": "2019-05-09 00:00:00"
+      },
+      "id": 3827
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.070722093110394,
+          "lng": 67.41381608998951
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Keti Bunder",
+        "UC": "Keti Bundar",
+        "UC_C": 800536,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82203,
+        "UC_NAME": "Keti Bundar",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Keti Bunder",
+        "id": 58,
+        "dateOfFormation": "2019-05-23 00:00:00"
+      },
+      "id": 3799
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.624636250296696,
+          "lng": 67.92541344025516
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Thatta",
+        "UC": "Domani",
+        "UC_C": 800568,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82209,
+        "UC_NAME": "Domani",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Doomani",
+        "id": 59,
+        "dateOfFormation": "2019-06-12 00:00:00"
+      },
+      "id": 3831
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.221686238027523,
+          "lng": 68.30954570680656
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Thatta",
+        "UC": "Tando Hafiz Shah",
+        "UC_C": 800576,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82209,
+        "UC_NAME": "Tando Hafiz Shah",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Tando Hafiz Shah",
+        "id": 61,
+        "dateOfFormation": "2019-09-25 00:00:00"
+      },
+      "id": 3839
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.539425815393727,
+          "lng": 67.89068657445114
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Ghorabari",
+        "UC": "Khan",
+        "UC_C": 800526,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82201,
+        "UC_NAME": "Khan",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khann",
+        "id": 63,
+        "dateOfFormation": "2020-02-11 00:00:00"
+      },
+      "id": 3789
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.652167332886464,
+          "lng": 67.29140209596001
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Thatta",
+        "TEHSIL": "Mirpur Sakro",
+        "UC": "Dhabeji",
+        "UC_C": 800549,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 822,
+        "TEHSIL_C": 82206,
+        "UC_NAME": "Dhabeji",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Dhabeji",
+        "id": 64,
+        "dateOfFormation": "2020-02-10 00:00:00"
+      },
+      "id": 3812
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.487174075385987,
+          "lng": 68.79731032818009
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Badin",
+        "UC": "Serani",
+        "UC_C": 0,
+        "Flood": "SERANI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Seerani",
+        "id": 68,
+        "dateOfFormation": "2018-08-03 00:00:00"
+      },
+      "id": 2904
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.047988022603537,
+          "lng": 68.72439218817127
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Matli",
+        "UC": "Malhan",
+        "UC_C": 0,
+        "Flood": "MALHAN",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Malhan",
+        "id": 69,
+        "dateOfFormation": "2018-09-13 00:00:00"
+      },
+      "id": 2926
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.67680782302429,
+          "lng": 68.78061471409096
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Badin",
+        "UC": "Kadi Qazia",
+        "UC_C": 0,
+        "Flood": "KADI QAZIA",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Kadi Kazia",
+        "id": 74,
+        "dateOfFormation": "2018-10-03 00:00:00"
+      },
+      "id": 2910
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.737141633672938,
+          "lng": 69.08672069209025
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Tando Bago",
+        "UC": "Khalifa Qasim",
+        "UC_C": 0,
+        "Flood": "KHALIFA QASIM",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khalifo Qasim",
+        "id": 76,
+        "dateOfFormation": "2018-12-29 00:00:00"
+      },
+      "id": 2936
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.73205281024901,
+          "lng": 68.57181170794198
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Shaheed Fazil Rahu",
+        "UC": "Rahoki",
+        "UC_C": 0,
+        "Flood": "RAHOKI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Rahuki",
+        "id": 79,
+        "dateOfFormation": "2018-12-08 00:00:00"
+      },
+      "id": 2915
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.185259181704307,
+          "lng": 68.80805523344299
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Matli",
+        "UC": "Ghulam Shah Laghari",
+        "UC_C": 0,
+        "Flood": "GHULAM SHAH LAGHARI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ghulam Shah Legari",
+        "id": 91,
+        "dateOfFormation": "2019-04-29 00:00:00"
+      },
+      "id": 2923
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.066824102083576,
+          "lng": 68.90125248359755
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Matli",
+        "UC": "Thari",
+        "UC_C": 0,
+        "Flood": "THARI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Thari",
+        "id": 93,
+        "dateOfFormation": "2019-04-15 00:00:00"
+      },
+      "id": 2928
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.91280110914562,
+          "lng": 69.14143181228077
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Tando Bago",
+        "UC": "Dada",
+        "UC_C": 0,
+        "Flood": "DADA",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Dadha",
+        "id": 97,
+        "dateOfFormation": "2019-06-19 00:00:00"
+      },
+      "id": 2939
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.16394506496598,
+          "lng": 68.71020579747893
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Matli",
+        "UC": "Manak Laghari",
+        "UC_C": 0,
+        "Flood": "MANAK LAGHARI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Manik Leghari",
+        "id": 99,
+        "dateOfFormation": "2019-08-23 00:00:00"
+      },
+      "id": 2925
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.029641814107457,
+          "lng": 68.78625251205118
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Matli",
+        "UC": "Haji Sawan",
+        "UC_C": 0,
+        "Flood": "HAJI SAWAN",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Haji Sawan",
+        "id": 100,
+        "dateOfFormation": "2019-08-24 00:00:00"
+      },
+      "id": 2922
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.700982244540263,
+          "lng": 68.63282408889448
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Shaheed Fazil Rahu",
+        "UC": "Tarai",
+        "UC_C": 0,
+        "Flood": "TARAI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Tarai",
+        "id": 101,
+        "dateOfFormation": "2019-08-03 00:00:00"
+      },
+      "id": 2913
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.041015309493904,
+          "lng": 69.03088644704756
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Badin",
+        "TEHSIL": "Matli",
+        "UC": "Bhadhu Qambrani",
+        "UC_C": 0,
+        "Flood": "BHADHU QAMBRANI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Budho Qambrani",
+        "id": 107,
+        "dateOfFormation": "2019-10-31 00:00:00"
+      },
+      "id": 2920
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.424177235050514,
+          "lng": 68.59117135836482
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Khairpur",
+        "UC": "Tando Masti",
+        "UC_C": 800220,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80903,
+        "UC_NAME": "Tando Masti",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Tando Masti",
+        "id": 113,
+        "dateOfFormation": "2020-02-26 00:00:00"
+      },
+      "id": 3483
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.247668973615692,
+          "lng": 68.64961836187747
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kot Diji",
+        "UC": "Bapho",
+        "UC_C": 800232,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80905,
+        "UC_NAME": "Bapho",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Bapho",
+        "id": 115,
+        "dateOfFormation": "2019-10-21 00:00:00"
+      },
+      "id": 3495
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.534789258127475,
+          "lng": 68.63308620655874
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kingri",
+        "UC": "Manghanwari",
+        "UC_C": 800227,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80904,
+        "UC_NAME": "Manghanwari",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Manghanwari",
+        "id": 116,
+        "dateOfFormation": "2018-02-01 00:00:00"
+      },
+      "id": 3490
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.507526177623134,
+          "lng": 68.57570177051221
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kingri",
+        "UC": "Noorpur",
+        "UC_C": 800228,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80904,
+        "UC_NAME": "Noorpur",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Noorpur",
+        "id": 118,
+        "dateOfFormation": "2018-03-30 00:00:00"
+      },
+      "id": 3491
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.304308998198568,
+          "lng": 68.3332632839357
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Sobho Dero",
+        "UC": "Pir Hayat Shah",
+        "UC_C": 800263,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80908,
+        "UC_NAME": "Pir Hayat Shah",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Pir Hayat Shah",
+        "id": 129,
+        "dateOfFormation": "2018-10-31 00:00:00"
+      },
+      "id": 3526
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.26879405139519,
+          "lng": 68.2738173091949
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Sobho Dero",
+        "UC": "Sagyoon",
+        "UC_C": 800266,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80908,
+        "UC_NAME": "Sagyoon",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sagyoon",
+        "id": 130,
+        "dateOfFormation": "2018-11-29 00:00:00"
+      },
+      "id": 3529
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.357678919977605,
+          "lng": 68.61385751138398
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kot Diji",
+        "UC": "Fatehpur",
+        "UC_C": 800235,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80905,
+        "UC_NAME": "Fatehpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Fateh Pur",
+        "id": 136,
+        "dateOfFormation": "2018-12-31 00:00:00"
+      },
+      "id": 3498
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.23010179467059,
+          "lng": 68.3475667695117
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Sobho Dero",
+        "UC": "Sami",
+        "UC_C": 800267,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80908,
+        "UC_NAME": "Sami",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sami",
+        "id": 137,
+        "dateOfFormation": "2019-01-15 00:00:00"
+      },
+      "id": 3530
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.312013652570027,
+          "lng": 68.67093891019431
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kot Diji",
+        "UC": "Jeskani",
+        "UC_C": 800236,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80905,
+        "UC_NAME": "Jeskani",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jiskani",
+        "id": 141,
+        "dateOfFormation": "2019-01-31 00:00:00"
+      },
+      "id": 3499
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.63213136332331,
+          "lng": 68.5634479795925
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kingri",
+        "UC": "Hadal Shah",
+        "UC_C": 800224,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80904,
+        "UC_NAME": "Hadal Shah",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Hadal Shah",
+        "id": 143,
+        "dateOfFormation": "2019-02-27 00:00:00"
+      },
+      "id": 3487
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.4050105547279,
+          "lng": 68.43494467222266
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Gambat",
+        "UC": "Bhelaro",
+        "UC_C": 800205,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80902,
+        "UC_NAME": "Bhelaro",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Belharo",
+        "id": 144,
+        "dateOfFormation": "2019-02-28 00:00:00"
+      },
+      "id": 3468
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.162202293435637,
+          "lng": 68.3937904775639
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Sobho Dero",
+        "UC": "Rasoolabad",
+        "UC_C": 800265,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80908,
+        "UC_NAME": "Rasoolabad",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Rasool Abad",
+        "id": 145,
+        "dateOfFormation": "2019-02-28 00:00:00"
+      },
+      "id": 3528
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.50758295744064,
+          "lng": 68.67484650540196
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Khairpur",
+        "UC": "Khanpur",
+        "UC_C": 800214,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80903,
+        "UC_NAME": "Khanpur",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khanpur",
+        "id": 146,
+        "dateOfFormation": "2019-03-20 00:00:00"
+      },
+      "id": 3477
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.449904485726517,
+          "lng": 68.54415527653401
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kingri",
+        "UC": "Kolab Jial",
+        "UC_C": 800225,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80904,
+        "UC_NAME": "Kolab Jial",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Kolab Jail",
+        "id": 147,
+        "dateOfFormation": "2019-03-21 00:00:00"
+      },
+      "id": 3488
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.512431179692893,
+          "lng": 68.41385933201465
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Gambat",
+        "UC": "Khemta",
+        "UC_C": 800209,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80902,
+        "UC_NAME": "Khemta",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khemtia",
+        "id": 148,
+        "dateOfFormation": "2019-03-23 00:00:00"
+      },
+      "id": 3472
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.246682987500744,
+          "lng": 68.4452768307174
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Sobho Dero",
+        "UC": "Gadeji",
+        "UC_C": 800260,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80908,
+        "UC_NAME": "Gadeji",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Gadeji",
+        "id": 149,
+        "dateOfFormation": "2019-03-26 00:00:00"
+      },
+      "id": 3523
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.36850698010296,
+          "lng": 68.42422007177117
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Gambat",
+        "UC": "Jado Wahan",
+        "UC_C": 800207,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80902,
+        "UC_NAME": "Jado Wahan",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jadu Wahan",
+        "id": 151,
+        "dateOfFormation": "2019-05-16 00:00:00"
+      },
+      "id": 3470
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.53935729524192,
+          "lng": 68.45134796198639
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Gambat",
+        "UC": "Ripri",
+        "UC_C": 800211,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80902,
+        "UC_NAME": "Ripri",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ripri",
+        "id": 154,
+        "dateOfFormation": "2019-05-29 00:00:00"
+      },
+      "id": 3474
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.581243762624048,
+          "lng": 68.7426838222088
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Khairpur",
+        "UC": "Mehar Ali",
+        "UC_C": 800216,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80903,
+        "UC_NAME": "Mehar Ali",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Mehar Ali",
+        "id": 155,
+        "dateOfFormation": "2019-08-08 00:00:00"
+      },
+      "id": 3479
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.441522563668936,
+          "lng": 68.51564087839891
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kingri",
+        "UC": "Drib Mehar Shah",
+        "UC_C": 800223,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80904,
+        "UC_NAME": "Drib Mehar Shah",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Drib Mehar Shah",
+        "id": 157,
+        "dateOfFormation": "2019-06-01 00:00:00"
+      },
+      "id": 3486
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.262600491624152,
+          "lng": 68.55564428238485
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kot Diji",
+        "UC": "Jhando Mashaik",
+        "UC_C": 800237,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80905,
+        "UC_NAME": "Jhando Mashaik",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jhando Mashak",
+        "id": 161,
+        "dateOfFormation": "2019-09-29 00:00:00"
+      },
+      "id": 3500
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.648268423630373,
+          "lng": 68.68590883805058
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Khairpur",
+        "TEHSIL": "Kingri",
+        "UC": "Kot Mir Mohammad",
+        "UC_C": 800226,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 809,
+        "TEHSIL_C": 80904,
+        "UC_NAME": "Kot Mir Mohammad",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Kot Mir Mohammad",
+        "id": 162,
+        "dateOfFormation": "2019-12-13 00:00:00"
+      },
+      "id": 3489
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 26.77806211946793,
+          "lng": 68.12896552078485
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Naushahro Feroze",
+        "TEHSIL": "Naushahro Feroze",
+        "UC": "Phull",
+        "UC_C": 800362,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 813,
+        "TEHSIL_C": 81304,
+        "UC_NAME": "Phull",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Phull",
+        "id": 163,
+        "dateOfFormation": "2017-04-21 00:00:00"
+      },
+      "id": 3625
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 26.729095502518934,
+          "lng": 68.03355085532246
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Naushahro Feroze",
+        "TEHSIL": "Moro",
+        "UC": "Manahin",
+        "UC_C": 800351,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 813,
+        "TEHSIL_C": 81303,
+        "UC_NAME": "Manahin",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Manahi",
+        "id": 165,
+        "dateOfFormation": "2016-05-03 00:00:00"
+      },
+      "id": 3614
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.135272555965454,
+          "lng": 69.18162099212603
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kandh Kot",
+        "UC": "Haibat",
+        "UC_C": 800169,
+        "Flood": "HAIBAT",
+        "Area": 140.638699989,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80801,
+        "UC_NAME": "Haibat",
+        "Data_Sourc": "Alhasan",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Haibat",
+        "id": 168,
+        "dateOfFormation": "2011-10-06 00:00:00"
+      },
+      "id": 3106
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.259611764171215,
+          "lng": 69.18940399012236
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kandh Kot",
+        "UC": "Akhero",
+        "UC_C": 800166,
+        "Flood": "AKHERO",
+        "Area": 65.3198752202,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80801,
+        "UC_NAME": "Akhero",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Akhero",
+        "id": 169,
+        "dateOfFormation": "2011-06-21 00:00:00"
+      },
+      "id": 3137
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.44978136719039,
+          "lng": 69.51324304248111
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Gulanpur",
+        "UC_C": 800176,
+        "Flood": "GULLAN PUR",
+        "Area": 85.4372140483,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "888888888",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Gulanpur",
+        "id": 172,
+        "dateOfFormation": "2011-12-29 00:00:00"
+      },
+      "id": 3121
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.205938316198235,
+          "lng": 69.19841475461408
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kandh Kot",
+        "UC": "Maleer",
+        "UC_C": 800171,
+        "Flood": "MALHEER",
+        "Area": 52.3220598358,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80801,
+        "UC_NAME": "888888888",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Malheer",
+        "id": 173,
+        "dateOfFormation": "2011-12-24 00:00:00"
+      },
+      "id": 3114
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.297888005381058,
+          "lng": 69.30321417173081
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Zorgar",
+        "UC_C": 800184,
+        "Flood": "ZOOR GARH",
+        "Area": 62.2224375463,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "888888888",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Zorgarh",
+        "id": 174,
+        "dateOfFormation": "2011-12-26 00:00:00"
+      },
+      "id": 3118
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.408017809208385,
+          "lng": 69.1655024118412
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Risaldar",
+        "UC_C": 800193,
+        "Flood": "RISALDAR",
+        "Area": 95.8340629457,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Risaldar",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Rasaldar",
+        "id": 175,
+        "dateOfFormation": "2011-12-26 00:00:00"
+      },
+      "id": 3126
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.22564699324715,
+          "lng": 69.03257359216234
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Gulwali",
+        "UC_C": 800187,
+        "Flood": "GALWALI",
+        "Area": 53.6737515018,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Gulwali",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Gulwali",
+        "id": 176,
+        "dateOfFormation": "2011-12-16 00:00:00"
+      },
+      "id": 3128
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.392861252055074,
+          "lng": 69.44739475629862
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Sodhi",
+        "UC_C": 800183,
+        "Flood": "SODHI",
+        "Area": 87.2198407174,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "Sodhi",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sodhi",
+        "id": 177,
+        "dateOfFormation": "2011-12-16 00:00:00"
+      },
+      "id": 3119
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.313567332205384,
+          "lng": 69.20119857766693
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kandh Kot",
+        "UC": "Doulatpur",
+        "UC_C": 800169,
+        "Flood": "DAULAT PUR",
+        "Area": 70.5544885842,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80801,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Doulatpur",
+        "id": 178,
+        "dateOfFormation": "2011-12-29 00:00:00"
+      },
+      "id": 3112
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.32439775504107,
+          "lng": 69.50958722849157
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Gihalpur",
+        "UC_C": 800174,
+        "Flood": "GEHAIL PUR",
+        "Area": 129.533830345,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "888888888",
+        "Data_Sourc": "Alhasan",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Geehalpur",
+        "id": 179,
+        "dateOfFormation": "2012-05-28 00:00:00"
+      },
+      "id": 3122
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.379031430675763,
+          "lng": 69.63035527335005
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Khewali",
+        "UC_C": 800180,
+        "Flood": "KHEWALI",
+        "Area": 54.6677941931,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "Khewali",
+        "Data_Sourc": "Alhasan",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khawali",
+        "id": 180,
+        "dateOfFormation": "2012-06-08 00:00:00"
+      },
+      "id": 3135
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.280641698615806,
+          "lng": 68.95725405972127
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Suhliani",
+        "UC_C": 800195,
+        "Flood": "SEHLIANI",
+        "Area": 34.7395385563,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Suhliani",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Suhliani",
+        "id": 181,
+        "dateOfFormation": "2012-01-17 00:00:00"
+      },
+      "id": 3127
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.35063115223208,
+          "lng": 69.06031265699582
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Cheel",
+        "UC_C": 800185,
+        "Flood": "CHEEL",
+        "Area": 128.353407292,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Cheel",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Cheel",
+        "id": 182,
+        "dateOfFormation": "2012-04-26 00:00:00"
+      },
+      "id": 3129
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.274381343751244,
+          "lng": 69.04920583096057
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Tangwani",
+        "UC_C": 800196,
+        "Flood": "TANGWANI",
+        "Area": 57.4435031403,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Tangwani",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Tangwani",
+        "id": 183,
+        "dateOfFormation": "2012-04-14 00:00:00"
+      },
+      "id": 3141
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.328217334243714,
+          "lng": 69.1241858074143
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kandh Kot",
+        "UC": "Kajili",
+        "UC_C": 800169,
+        "Flood": "KAJLI",
+        "Area": 78.8452876375,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80801,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Kajli",
+        "id": 184,
+        "dateOfFormation": "2012-05-21 00:00:00"
+      },
+      "id": 3113
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.177665582294757,
+          "lng": 69.30611845403868
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Gublo",
+        "UC_C": 800175,
+        "Flood": "GUBLO",
+        "Area": 156.580748695,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "Gublo",
+        "Data_Sourc": "Alhasan",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Gublo",
+        "id": 186,
+        "dateOfFormation": "2012-05-24 00:00:00"
+      },
+      "id": 3120
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.14654596159448,
+          "lng": 68.93745678228069
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Karampur",
+        "UC_C": 800189,
+        "Flood": "",
+        "Area": 49.3247890432,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Karampur",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Karampur",
+        "id": 187,
+        "dateOfFormation": "2012-07-02 00:00:00"
+      },
+      "id": 3110
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.199319076534714,
+          "lng": 69.11718039014872
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Lalao",
+        "UC_C": 800190,
+        "Flood": "LILLA",
+        "Area": 41.191212099,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Lalao",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Lalao",
+        "id": 188,
+        "dateOfFormation": "2012-04-27 00:00:00"
+      },
+      "id": 3132
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.16044751787633,
+          "lng": 69.06108231255882
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Duniapur",
+        "UC_C": 800186,
+        "Flood": "DUNIAPUR",
+        "Area": 58.7094226983,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Duniapur",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Duniyapur",
+        "id": 189,
+        "dateOfFormation": "2012-03-04 00:00:00"
+      },
+      "id": 3108
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.222852224417686,
+          "lng": 68.95316376892727
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Tangwani",
+        "UC": "Saifal",
+        "UC_C": 800194,
+        "Flood": "SEGAL",
+        "Area": 68.2982751714,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80803,
+        "UC_NAME": "Saifal",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Saifal",
+        "id": 190,
+        "dateOfFormation": "2012-06-04 00:00:00"
+      },
+      "id": 3130
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.133417442614896,
+          "lng": 69.10464693552719
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kandh Kot",
+        "UC": "Ghouspur",
+        "UC_C": 800169,
+        "Flood": "GHUS PUR",
+        "Area": 19.2846809232,
+        "TOWN": "",
+        "U_R": "Urban",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80801,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ghouspur",
+        "id": 192,
+        "dateOfFormation": "2013-12-24 00:00:00"
+      },
+      "id": 3111
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.362946164119442,
+          "lng": 69.35444085385497
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Buxapur",
+        "UC_C": 800173,
+        "Flood": "BAKHSHA PUR",
+        "Area": 46.0021422358,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "888888888",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Buxapur",
+        "id": 193,
+        "dateOfFormation": "2013-11-18 00:00:00"
+      },
+      "id": 3115
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.242532278716993,
+          "lng": 69.43759157760027
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Kashmore",
+        "TEHSIL": "Kashmore",
+        "UC": "Badani",
+        "UC_C": 800172,
+        "Flood": "BADANI",
+        "Area": 137.474090497,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 808,
+        "TEHSIL_C": 80802,
+        "UC_NAME": "Badani",
+        "Data_Sourc": "Alhasan",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Badani",
+        "id": 194,
+        "dateOfFormation": "2011-11-14 00:00:00"
+      },
+      "id": 3116
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.69212066217575,
+          "lng": 68.88033485682523
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sukkur",
+        "TEHSIL": "Rohri",
+        "UC": "Loung Bhatti",
+        "UC_C": 800494,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 818,
+        "TEHSIL_C": 81802,
+        "UC_NAME": "Loung Bhatti",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Long Bhatti",
+        "id": 196,
+        "dateOfFormation": "2013-10-30 00:00:00"
+      },
+      "id": 3757
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.635139194500734,
+          "lng": 69.1475060080545
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sukkur",
+        "TEHSIL": "Rohri",
+        "UC": "Dhandhi",
+        "UC_C": 800492,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 818,
+        "TEHSIL_C": 81802,
+        "UC_NAME": "Dhandhi",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Dhandhi",
+        "id": 197,
+        "dateOfFormation": "2013-12-27 00:00:00"
+      },
+      "id": 3755
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.64507279671034,
+          "lng": 68.8687802522751
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sukkur",
+        "TEHSIL": "Rohri",
+        "UC": "Patni",
+        "UC_C": 800496,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 818,
+        "TEHSIL_C": 81802,
+        "UC_NAME": "Patni",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Patni ",
+        "id": 198,
+        "dateOfFormation": "2013-11-24 00:00:00"
+      },
+      "id": 3759
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.565883495093683,
+          "lng": 68.97046411062061
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sukkur",
+        "TEHSIL": "Rohri",
+        "UC": "Arore",
+        "UC_C": 800491,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 818,
+        "TEHSIL_C": 81802,
+        "UC_NAME": "Arore",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Arore ",
+        "id": 199,
+        "dateOfFormation": "2013-12-31 00:00:00"
+      },
+      "id": 3754
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.569012180286368,
+          "lng": 69.07932440346605
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sukkur",
+        "TEHSIL": "Rohri",
+        "UC": "Sangrar",
+        "UC_C": 800497,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 818,
+        "TEHSIL_C": 81802,
+        "UC_NAME": "Sangrar",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sangrar",
+        "id": 200,
+        "dateOfFormation": "2013-12-26 00:00:00"
+      },
+      "id": 3760
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.877863101499223,
+          "lng": 68.93167727383097
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sukkur",
+        "TEHSIL": "Pano Aqil",
+        "UC": "Tamachani",
+        "UC_C": 800489,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 818,
+        "TEHSIL_C": 81801,
+        "UC_NAME": "Tamachani",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Tamachani",
+        "id": 201,
+        "dateOfFormation": "2014-08-27 00:00:00"
+      },
+      "id": 3752
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.149791903877297,
+          "lng": 68.77766328704207
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Joungal",
+        "UC_C": 800127,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Joungal",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jongal",
+        "id": 202,
+        "dateOfFormation": "2013-11-12 00:00:00"
+      },
+      "id": 3421
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.125188161800615,
+          "lng": 68.1835347790822
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Garhi Khairo",
+        "UC": "Miranpur",
+        "UC_C": 800113,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80501,
+        "UC_NAME": "Miranpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Meranpur",
+        "id": 210,
+        "dateOfFormation": "2013-11-06 00:00:00"
+      },
+      "id": 3407
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.220466661741273,
+          "lng": 68.60804784980684
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Mubarakpur",
+        "UC_C": 800133,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Mubarakpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Mubarakpur",
+        "id": 204,
+        "dateOfFormation": "2013-11-22 00:00:00"
+      },
+      "id": 3427
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.19970804548565,
+          "lng": 68.67796127707703
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Ranjhapur",
+        "UC_C": 800134,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Ranjhapur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ranjhapur",
+        "id": 205,
+        "dateOfFormation": "2012-08-27 00:00:00"
+      },
+      "id": 3428
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.246360625515333,
+          "lng": 68.52258083266062
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Balochabad",
+        "UC_C": 800124,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Balochabad",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Baloch abad",
+        "id": 206,
+        "dateOfFormation": "2014-06-06 00:00:00"
+      },
+      "id": 3418
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.02642785789011,
+          "lng": 68.13021097036231
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Garhi Khairo",
+        "UC": "Khudabad",
+        "UC_C": 800112,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80501,
+        "UC_NAME": "Khudabad",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khuda Abad",
+        "id": 209,
+        "dateOfFormation": "2013-11-13 00:00:00"
+      },
+      "id": 3406
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.125188161800615,
+          "lng": 68.1835347790822
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Garhi Khairo",
+        "UC": "Miranpur",
+        "UC_C": 800113,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80501,
+        "UC_NAME": "Miranpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Meranpur",
+        "id": 210,
+        "dateOfFormation": "2013-11-06 00:00:00"
+      },
+      "id": 3407
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.28037058974779,
+          "lng": 68.66757983362227
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Bachro",
+        "UC_C": 800123,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Bachro",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Bachro",
+        "id": 211,
+        "dateOfFormation": "2013-11-08 00:00:00"
+      },
+      "id": 3417
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.214064370336335,
+          "lng": 68.80995123708668
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Dinpur",
+        "UC_C": 800125,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Dinpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Dinpur",
+        "id": 212,
+        "dateOfFormation": "2013-11-25 00:00:00"
+      },
+      "id": 3419
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.270413745566668,
+          "lng": 68.75360945480794
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Thul Nao",
+        "UC_C": 800138,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Thul Nao",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Thul Nao",
+        "id": 215,
+        "dateOfFormation": "2013-11-10 00:00:00"
+      },
+      "id": 3432
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.353078199546577,
+          "lng": 68.87039498200556
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Logi",
+        "UC_C": 800130,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Logi",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Logi",
+        "id": 216,
+        "dateOfFormation": "2013-11-23 00:00:00"
+      },
+      "id": 3424
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.398938830281104,
+          "lng": 68.897295687328
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Tajo Khoso",
+        "UC_C": 800137,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Tajo Khoso",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Tajo Khoso",
+        "id": 217,
+        "dateOfFormation": "2013-11-13 00:00:00"
+      },
+      "id": 3431
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.372610970091237,
+          "lng": 68.76367163616496
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Misripur",
+        "UC_C": 800132,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Misripur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Misri Pur",
+        "id": 218,
+        "dateOfFormation": "2013-11-11 00:00:00"
+      },
+      "id": 3426
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.333213194835547,
+          "lng": 68.76292602283915
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Garhi Hassan",
+        "UC_C": 800126,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Garhi Hassan",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Garhi Hassan",
+        "id": 219,
+        "dateOfFormation": "2014-05-28 00:00:00"
+      },
+      "id": 3420
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.15288135496032,
+          "lng": 68.27449830863321
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Jacobabad",
+        "UC": "Qadir Pur",
+        "UC_C": 800119,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80502,
+        "UC_NAME": "Qadir Pur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Qadir Pur",
+        "id": 221,
+        "dateOfFormation": "2013-11-01 00:00:00"
+      },
+      "id": 3413
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.168438908875903,
+          "lng": 68.38047655983874
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Jacobabad",
+        "UC": "Ramzanpur",
+        "UC_C": 800120,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80502,
+        "UC_NAME": "Ramzanpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ramzan Pur",
+        "id": 222,
+        "dateOfFormation": "2013-11-08 00:00:00"
+      },
+      "id": 3414
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.337463065952818,
+          "lng": 68.47697269289773
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Jacobabad",
+        "UC": "Ahmedpur",
+        "UC_C": 800115,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80502,
+        "UC_NAME": "Ahmedpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ahmed Pur",
+        "id": 223,
+        "dateOfFormation": "2013-11-07 00:00:00"
+      },
+      "id": 3409
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.293759496773916,
+          "lng": 68.41770443018765
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Jacobabad",
+        "UC": "Dasti",
+        "UC_C": 800116,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80502,
+        "UC_NAME": "Dasti",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Dasti",
+        "id": 224,
+        "dateOfFormation": "2013-10-31 00:00:00"
+      },
+      "id": 3410
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.26815242981255,
+          "lng": 68.40633523912418
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Jacobabad",
+        "UC": "Rind Wahi",
+        "UC_C": 800121,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80502,
+        "UC_NAME": "Rind Wahi",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Rind Wahi ",
+        "id": 226,
+        "dateOfFormation": "2013-11-22 00:00:00"
+      },
+      "id": 3415
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.355057995946396,
+          "lng": 68.55657426887167
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Karim Bux",
+        "UC_C": 800128,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Karim Bux",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Kareem Bux",
+        "id": 227,
+        "dateOfFormation": "2013-11-11 00:00:00"
+      },
+      "id": 3422
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.135555889365914,
+          "lng": 68.88415842388997
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Jacobabad",
+        "TEHSIL": "Thul",
+        "UC": "Toj",
+        "UC_C": 800140,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 805,
+        "TEHSIL_C": 80503,
+        "UC_NAME": "Toj",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Touj",
+        "id": 228,
+        "dateOfFormation": "2019-05-27 00:00:00"
+      },
+      "id": 3434
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.894388278235592,
+          "lng": 68.68578786286618
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Lakhi",
+        "UC": "Wazirabad",
+        "UC_C": 800472,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81703,
+        "UC_NAME": "Wazirabad",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Wazirabad",
+        "id": 252,
+        "dateOfFormation": "2011-08-22 00:00:00"
+      },
+      "id": 3735
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.92271424440715,
+          "lng": 68.7267714638894
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Lakhi",
+        "UC": "Taib",
+        "UC_C": 800471,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81703,
+        "UC_NAME": "Taib",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Taib",
+        "id": 254,
+        "dateOfFormation": "2011-10-01 00:00:00"
+      },
+      "id": 3734
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.887201289447713,
+          "lng": 68.81157454039568
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Lakhi",
+        "UC": "Sehwani",
+        "UC_C": 800470,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81703,
+        "UC_NAME": "Sehwani",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sewani",
+        "id": 255,
+        "dateOfFormation": "2011-10-15 00:00:00"
+      },
+      "id": 3733
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.843051031622995,
+          "lng": 68.76478950647466
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Lakhi",
+        "UC": "Bhirkan",
+        "UC_C": 800464,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81703,
+        "UC_NAME": "Bhirkan",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Bhirkan",
+        "id": 256,
+        "dateOfFormation": "2011-02-01 00:00:00"
+      },
+      "id": 3727
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.957904119056334,
+          "lng": 68.482640294036
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Bhambhir",
+        "UC_C": 800443,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Bhambhir",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Bhambhir",
+        "id": 258,
+        "dateOfFormation": "2011-10-12 00:00:00"
+      },
+      "id": 3706
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.110741216925902,
+          "lng": 68.6236706707797
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Khanpur",
+        "UC": "Mian Sahib",
+        "UC_C": 800457,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81702,
+        "UC_NAME": "Mian Sahib",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Mian Sahib",
+        "id": 259,
+        "dateOfFormation": "2011-10-28 00:00:00"
+      },
+      "id": 3720
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.931331539911053,
+          "lng": 68.7790893791019
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Lakhi",
+        "UC": "Rustam",
+        "UC_C": 800469,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81703,
+        "UC_NAME": "Rustam",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Rustam",
+        "id": 261,
+        "dateOfFormation": "2011-12-29 00:00:00"
+      },
+      "id": 3732
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.94310112649206,
+          "lng": 68.41278074377232
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Nim",
+        "UC_C": 800451,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Nim",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Nim",
+        "id": 263,
+        "dateOfFormation": "2012-01-18 00:00:00"
+      },
+      "id": 3714
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.890259427934552,
+          "lng": 68.34090822385163
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Waryaso",
+        "UC_C": 800453,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Waryaso",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Wariyaso",
+        "id": 264,
+        "dateOfFormation": "2012-02-04 00:00:00"
+      },
+      "id": 3716
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.997517254406784,
+          "lng": 68.83806401753594
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Khanpur",
+        "UC": "Shabira Abad",
+        "UC_C": 800460,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81702,
+        "UC_NAME": "Shabira Abad",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Shabirabad",
+        "id": 268,
+        "dateOfFormation": "2012-04-29 00:00:00"
+      },
+      "id": 3723
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.0557235385941,
+          "lng": 68.9074329308352
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Khanpur",
+        "UC": "Pir Bux Shujrah",
+        "UC_C": 800458,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81702,
+        "UC_NAME": "Pir Bux Shujrah",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Pir bux shujra",
+        "id": 269,
+        "dateOfFormation": "2012-04-29 00:00:00"
+      },
+      "id": 3721
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.962636071185337,
+          "lng": 68.59294392442807
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Shikarpur",
+        "UC": "Karan",
+        "UC_C": 800477,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81704,
+        "UC_NAME": "Karan",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Karan",
+        "id": 270,
+        "dateOfFormation": "2012-01-15 00:00:00"
+      },
+      "id": 3740
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.01358816426099,
+          "lng": 68.58093067599282
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Shikarpur",
+        "UC": "Sultan Kot",
+        "UC_C": 800479,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81704,
+        "UC_NAME": "Sultan Kot",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sultan kot",
+        "id": 271,
+        "dateOfFormation": "2012-04-28 00:00:00"
+      },
+      "id": 3742
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.94017839553381,
+          "lng": 68.63726087782348
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Shikarpur",
+        "UC": "Jano",
+        "UC_C": 800476,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81704,
+        "UC_NAME": "Jano",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Janno",
+        "id": 272,
+        "dateOfFormation": "2012-04-20 00:00:00"
+      },
+      "id": 3739
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.984703860625626,
+          "lng": 68.66130780946936
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Shikarpur",
+        "UC": "Lodra",
+        "UC_C": 800478,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81704,
+        "UC_NAME": "Lodra",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Lodra",
+        "id": 273,
+        "dateOfFormation": "2012-05-21 00:00:00"
+      },
+      "id": 3741
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.081450095015267,
+          "lng": 68.44741620003897
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Shikarpur",
+        "UC": "Jagan",
+        "UC_C": 800474,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81704,
+        "UC_NAME": "Jagan",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jagan",
+        "id": 274,
+        "dateOfFormation": "2012-05-23 00:00:00"
+      },
+      "id": 3737
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.82185926798281,
+          "lng": 68.59120318995394
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Amrote",
+        "UC_C": 800442,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Amrote",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Amrote",
+        "id": 275,
+        "dateOfFormation": "2010-12-12 00:00:00"
+      },
+      "id": 3705
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.832148488609644,
+          "lng": 68.41807277531538
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Dakhan",
+        "UC_C": 800444,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Dakhan",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Dakhan",
+        "id": 276,
+        "dateOfFormation": "2011-12-31 00:00:00"
+      },
+      "id": 3707
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.800515385619256,
+          "lng": 68.5035737810072
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Gaheja",
+        "UC_C": 800445,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Gaheja",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Gaheja",
+        "id": 277,
+        "dateOfFormation": "2012-01-19 00:00:00"
+      },
+      "id": 3708
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.798611497454765,
+          "lng": 68.37384812105698
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Shhato Mangi",
+        "UC_C": 800452,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Shhato Mangi",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Chatto Mangi",
+        "id": 278,
+        "dateOfFormation": "2012-02-27 00:00:00"
+      },
+      "id": 3715
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.75499903307944,
+          "lng": 68.43891924791964
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Jindo Dero",
+        "UC_C": 800447,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 810,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Jindo Dero",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jindo Dero",
+        "id": 279,
+        "dateOfFormation": "2012-03-26 00:00:00"
+      },
+      "id": 3710
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.765073094286993,
+          "lng": 68.56696527093293
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Garhi Yasin",
+        "UC": "Mirzapur",
+        "UC_C": 800449,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81701,
+        "UC_NAME": "Mirzapur",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Mirzapur",
+        "id": 280,
+        "dateOfFormation": "2012-03-26 00:00:00"
+      },
+      "id": 3712
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.823138465917584,
+          "lng": 68.80626378240261
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Lakhi",
+        "UC": "Chak",
+        "UC_C": 800465,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81703,
+        "UC_NAME": "Chak",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Chak",
+        "id": 283,
+        "dateOfFormation": "2012-06-19 00:00:00"
+      },
+      "id": 3728
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.823683625407845,
+          "lng": 68.68264430190987
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Lakhi",
+        "UC": "Lakhi",
+        "UC_C": 800467,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81703,
+        "UC_NAME": "Lakhi",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Lakhi",
+        "id": 285,
+        "dateOfFormation": "2013-11-11 00:00:00"
+      },
+      "id": 3730
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.956677403756753,
+          "lng": 68.90522139282979
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Khanpur",
+        "UC": "Mehmooda Bagh",
+        "UC_C": 800456,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81702,
+        "UC_NAME": "Mehmooda Bagh",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Mehmooda Bagh",
+        "id": 286,
+        "dateOfFormation": "2019-09-10 00:00:00"
+      },
+      "id": 3719
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 28.01617400223546,
+          "lng": 68.95061989336173
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Shikarpur",
+        "TEHSIL": "Khanpur",
+        "UC": "Garhi Tegho",
+        "UC_C": 800454,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 817,
+        "TEHSIL_C": 81702,
+        "UC_NAME": "Garhi Tegho",
+        "Data_Sourc": "PCO",
+        "Level": "1",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Garhi Tego",
+        "id": 287,
+        "dateOfFormation": "2019-09-12 00:00:00"
+      },
+      "id": 3717
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.39803862934618,
+          "lng": 67.65589590012793
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Warah",
+        "UC": "Mirpur",
+        "UC_C": 800395,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81505,
+        "UC_NAME": "Mirpur",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Mirpur",
+        "id": 292,
+        "dateOfFormation": "2018-07-28 00:00:00"
+      },
+      "id": 3658
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.517696502987132,
+          "lng": 67.78758638978289
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Warah",
+        "UC": "Khandu",
+        "UC_C": 800391,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81505,
+        "UC_NAME": "Khandu",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Khandu",
+        "id": 293,
+        "dateOfFormation": "2017-07-28 00:00:00"
+      },
+      "id": 3654
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.600079449368895,
+          "lng": 67.89172922141131
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Kambar Ali Khan",
+        "UC": "Kalar",
+        "UC_C": 800368,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81501,
+        "UC_NAME": "Kalar",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Kalar",
+        "id": 334,
+        "dateOfFormation": "2018-08-31 00:00:00"
+      },
+      "id": 3631
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.45460594307404,
+          "lng": 67.83338090740968
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Warah",
+        "UC": "Abad",
+        "UC_C": 800388,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81505,
+        "UC_NAME": "Abad",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Abad",
+        "id": 297,
+        "dateOfFormation": "2017-08-22 00:00:00"
+      },
+      "id": 3651
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.846522737237212,
+          "lng": 68.12810064985443
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Miro Khan",
+        "UC": "Dhingano Mahesar",
+        "UC_C": 800374,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81502,
+        "UC_NAME": "Dhingano Mahesar",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Dingano Mahesar",
+        "id": 298,
+        "dateOfFormation": "2018-05-30 00:00:00"
+      },
+      "id": 3637
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.94560040097691,
+          "lng": 67.82854897755466
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Qubo Saeed Khan",
+        "UC": "Jamali",
+        "UC_C": 800382,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81503,
+        "UC_NAME": "Jamali",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Jamali",
+        "id": 304,
+        "dateOfFormation": "2017-09-16 00:00:00"
+      },
+      "id": 3645
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.899036762089196,
+          "lng": 67.95156188873688
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Shahdad Kot",
+        "UC": "Aitbar Khan Chandio",
+        "UC_C": 800384,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81504,
+        "UC_NAME": "Aitbar Khan Chandio",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Atbar Khan Chandio",
+        "id": 308,
+        "dateOfFormation": "2017-12-30 00:00:00"
+      },
+      "id": 3647
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.81657154707141,
+          "lng": 67.6230491441154
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Qubo Saeed Khan",
+        "UC": "Bagodero",
+        "UC_C": 800380,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81503,
+        "UC_NAME": "Bagodero",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Bagodero",
+        "id": 310,
+        "dateOfFormation": "2017-09-26 00:00:00"
+      },
+      "id": 3643
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.34206385536815,
+          "lng": 67.90930821312159
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Warah",
+        "UC": "Miandad Chinjini",
+        "UC_C": 800394,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81505,
+        "UC_NAME": "Miandad Chinjini",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Miandad Chingni",
+        "id": 314,
+        "dateOfFormation": "2018-01-30 00:00:00"
+      },
+      "id": 3657
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.382786831477173,
+          "lng": 67.92366207492701
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Warah",
+        "UC": "Muradi",
+        "UC_C": 800396,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81505,
+        "UC_NAME": "Muradi",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Muradi",
+        "id": 316,
+        "dateOfFormation": "2017-06-15 00:00:00"
+      },
+      "id": 3659
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.412875006425466,
+          "lng": 67.99476223809893
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Warah",
+        "UC": "Dera",
+        "UC_C": 800389,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81505,
+        "UC_NAME": "Dera",
+        "Data_Sourc": "PCO",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Dera",
+        "id": 317,
+        "dateOfFormation": "2017-11-13 00:00:00"
+      },
+      "id": 3652
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.739735462730813,
+          "lng": 67.82711089282073
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Miro Khan",
+        "UC": "Khabar",
+        "UC_C": 800376,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81502,
+        "UC_NAME": "Khabar",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Khabar",
+        "id": 319,
+        "dateOfFormation": "2018-04-26 00:00:00"
+      },
+      "id": 3639
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.78432462242708,
+          "lng": 68.02254049719448
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Miro Khan",
+        "UC": "Tharo Wadho",
+        "UC_C": 800379,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81502,
+        "UC_NAME": "Tharo Wadho",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Tharo Wadho",
+        "id": 321,
+        "dateOfFormation": "2018-12-07 00:00:00"
+      },
+      "id": 3642
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.492179027704523,
+          "lng": 68.02309440791952
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Kambar Ali Khan",
+        "UC": "Khairpur Joso",
+        "UC_C": 800370,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81501,
+        "UC_NAME": "Khairpur Joso",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Khairpur Juso",
+        "id": 324,
+        "dateOfFormation": "2017-11-27 00:00:00"
+      },
+      "id": 3633
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.57457135000797,
+          "lng": 67.55560906758801
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Kambar Ali Khan",
+        "UC": "Gaibidero",
+        "UC_C": 800366,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81501,
+        "UC_NAME": "Gaibidero",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Ghaibidero",
+        "id": 329,
+        "dateOfFormation": "2017-10-31 00:00:00"
+      },
+      "id": 3629
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.65803620264443,
+          "lng": 67.86746988386994
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Kambar Ali Khan",
+        "UC": "Dost Ali",
+        "UC_C": 800365,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81501,
+        "UC_NAME": "Dost Ali",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Dost Ali",
+        "id": 331,
+        "dateOfFormation": "2018-06-28 00:00:00"
+      },
+      "id": 3628
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.600079449368895,
+          "lng": 67.89172922141131
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Kambar Ali Khan",
+        "UC": "Kalar",
+        "UC_C": 800368,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81501,
+        "UC_NAME": "Kalar",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Kalar",
+        "id": 334,
+        "dateOfFormation": "2018-08-31 00:00:00"
+      },
+      "id": 3631
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.59651892849427,
+          "lng": 68.0559741404425
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Kambar Ali Khan",
+        "UC": "Jian Abro",
+        "UC_C": 800367,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81501,
+        "UC_NAME": "Jian Abro",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Jian Abro",
+        "id": 337,
+        "dateOfFormation": "2019-01-15 00:00:00"
+      },
+      "id": 3630
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 27.75082928275291,
+          "lng": 67.91511204648965
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Qambar Shahdadkot",
+        "TEHSIL": "Miro Khan",
+        "UC": "Karira",
+        "UC_C": 800375,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 815,
+        "TEHSIL_C": 81502,
+        "UC_NAME": "Karira",
+        "Data_Sourc": "PCO",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": " Karira",
+        "id": 339,
+        "dateOfFormation": "2019-01-14 00:00:00"
+      },
+      "id": 3638
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.144884393788324,
+          "lng": 69.14902415975293
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Digri",
+        "UC": "Sofan Shah",
+        "UC_C": 0,
+        "Flood": "SOFAN SHAH",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sofan Shah",
+        "id": 387,
+        "dateOfFormation": "2018-08-29 00:00:00"
+      },
+      "id": 2947
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.36932615725105,
+          "lng": 69.15073703120963
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Kot Ghulam Muhammad",
+        "UC": "Mir Gulam Hussain Talpur",
+        "UC_C": 0,
+        "Flood": "MIR GULAM HUSSAIN TALPUR",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Mir Ghulam Hussain Talpur",
+        "id": 388,
+        "dateOfFormation": "2018-08-31 00:00:00"
+      },
+      "id": 2957
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.047666362434843,
+          "lng": 69.38391065320539
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Jhudo",
+        "UC": "Ahori",
+        "UC_C": 0,
+        "Flood": "AHORI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Ahori",
+        "id": 392,
+        "dateOfFormation": "2018-09-26 00:00:00"
+      },
+      "id": 2951
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.87532052490328,
+          "lng": 69.41176944294024
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Jhudo",
+        "UC": "Fazal Bhambro",
+        "UC_C": 0,
+        "Flood": "FAZAL BHAMBRO",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Fazal Bhambro",
+        "id": 401,
+        "dateOfFormation": "2019-01-27 00:00:00"
+      },
+      "id": 2952
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.402881221138205,
+          "lng": 69.02162201787203
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Mirpur Khas",
+        "UC": "Makhan Samon",
+        "UC_C": 0,
+        "Flood": "MAKHAN SAMON",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Makhan Samoon",
+        "id": 404,
+        "dateOfFormation": "2019-01-31 00:00:00"
+      },
+      "id": 2961
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.483315662493297,
+          "lng": 69.1199755380155
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Mirpur Khas",
+        "UC": "Jhaluri",
+        "UC_C": 0,
+        "Flood": "JHALURI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jhaluri-II",
+        "id": 416,
+        "dateOfFormation": "2019-04-28 00:00:00"
+      },
+      "id": 2966
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.246350057216894,
+          "lng": 69.07084002969678
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Digri",
+        "UC": "Kangoro",
+        "UC_C": 0,
+        "Flood": "KANGORO",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Kangoro",
+        "id": 418,
+        "dateOfFormation": "2019-04-30 00:00:00"
+      },
+      "id": 2945
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 24.937988731509655,
+          "lng": 69.38381369585719
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Jhudo",
+        "UC": "Roshanabad",
+        "UC_C": 0,
+        "Flood": "ROSHANABAD",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Roshanabad",
+        "id": 419,
+        "dateOfFormation": "2019-04-30 00:00:00"
+      },
+      "id": 2950
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.667908049151848,
+          "lng": 68.95585084749254
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Hussain Bux Muree",
+        "UC": "Khan",
+        "UC_C": 0,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khan",
+        "id": 422,
+        "dateOfFormation": "2019-06-28 00:00:00"
+      },
+      "id": 2968
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.177687689856196,
+          "lng": 69.24158681823535
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Mirpur Khas",
+        "TEHSIL": "Kot Ghulam Muhammad",
+        "UC": "Khudadad",
+        "UC_C": 0,
+        "Flood": "KHUDADAD",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khudadad",
+        "id": 429,
+        "dateOfFormation": "2020-01-08 00:00:00"
+      },
+      "id": 2955
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.84821591442428,
+          "lng": 69.24694334516931
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Khipro",
+        "UC": "Khori",
+        "UC_C": 0,
+        "Flood": "KHORI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khori",
+        "id": 434,
+        "dateOfFormation": "2018-10-30 00:00:00"
+      },
+      "id": 2981
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.681533648803548,
+          "lng": 69.50411931383364
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Khipro",
+        "UC": "Bilawal Hangorjo",
+        "UC_C": 0,
+        "Flood": "",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Bilawal Hingorjo",
+        "id": 435,
+        "dateOfFormation": "2018-10-30 00:00:00"
+      },
+      "id": 2974
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.824086963473395,
+          "lng": 68.55578819115867
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Tando Adam",
+        "UC": "Kumb Daron",
+        "UC_C": 0,
+        "Flood": "KUMB DARON",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Kumb Daro",
+        "id": 436,
+        "dateOfFormation": "2019-10-31 00:00:00"
+      },
+      "id": 3013
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.982594947869156,
+          "lng": 68.82517906761612
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Sinjhoro",
+        "UC": "Shah Mardan Abad",
+        "UC_C": 0,
+        "Flood": "SHAH MARDAN ABAD",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Shah Mardan Shah",
+        "id": 478,
+        "dateOfFormation": "2020-01-10 00:00:00"
+      },
+      "id": 3104
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 26.04713819823273,
+          "lng": 69.19445535080332
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Sanghar",
+        "UC": "Chotiyarion",
+        "UC_C": 0,
+        "Flood": "CHOTIYARION",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Chotyaryoun",
+        "id": 439,
+        "dateOfFormation": "2018-12-13 00:00:00"
+      },
+      "id": 2985
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.864694629213822,
+          "lng": 69.10534781024941
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Sanghar",
+        "UC": "Setharpir",
+        "UC_C": 0,
+        "Flood": "SETHARPIR",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Sethar Pir",
+        "id": 441,
+        "dateOfFormation": "2018-12-30 00:00:00"
+      },
+      "id": 2986
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 26.10858207762828,
+          "lng": 68.66059089007182
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Shahdadpur",
+        "UC": "Barhon",
+        "UC_C": 0,
+        "Flood": "BARHON",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Barhoon",
+        "id": 449,
+        "dateOfFormation": "2018-09-29 00:00:00"
+      },
+      "id": 2995
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 26.262999516743527,
+          "lng": 68.9314401847124
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Sanghar",
+        "UC": "Shah Sikandar Abad",
+        "UC_C": 0,
+        "Flood": "SHAH SIKANDAR ABAD",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Shah Sikandarabd",
+        "id": 454,
+        "dateOfFormation": "2019-02-03 00:00:00"
+      },
+      "id": 2987
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.609731934362813,
+          "lng": 69.39965122267631
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Khipro",
+        "UC": "Khai",
+        "UC_C": 0,
+        "Flood": "KHAI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Khahi",
+        "id": 458,
+        "dateOfFormation": "2019-03-20 00:00:00"
+      },
+      "id": 2980
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.9218144248613,
+          "lng": 68.51569062334869
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Shahdadpur",
+        "UC": "Malasi",
+        "UC_C": 0,
+        "Flood": "MALASI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "2",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Maldasi",
+        "id": 465,
+        "dateOfFormation": "2019-04-16 00:00:00"
+      },
+      "id": 3002
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 26.012680290801388,
+          "lng": 69.00241487464109
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Sanghar",
+        "UC": "Mian",
+        "UC_C": 0,
+        "Flood": "MIAN",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Mian",
+        "id": 466,
+        "dateOfFormation": "2019-06-09 00:00:00"
+      },
+      "id": 2988
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.986377507406758,
+          "lng": 68.55292406810781
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Shahdadpur",
+        "UC": "Somar Faqir Hangoru",
+        "UC_C": 0,
+        "Flood": "SOMAR FAQIR HANGORU",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Soomar Fakir Hingoro",
+        "id": 467,
+        "dateOfFormation": "2019-09-26 00:00:00"
+      },
+      "id": 2998
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.894940739587465,
+          "lng": 68.70921435057514
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Tando Adam",
+        "UC": "Manik Thahim",
+        "UC_C": 0,
+        "Flood": "MANIK THAHIM",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Manik Thaheem",
+        "id": 470,
+        "dateOfFormation": "2019-08-28 00:00:00"
+      },
+      "id": 3010
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 26.067388491466616,
+          "lng": 68.48428102958191
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Shahdadpur",
+        "UC": "Gul Muhammad Laghari",
+        "UC_C": 0,
+        "Flood": "GUL MUHAMMAD LAGHARI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Gull Muhammad Laghari",
+        "id": 476,
+        "dateOfFormation": "2019-11-28 00:00:00"
+      },
+      "id": 3001
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.982594947869156,
+          "lng": 68.82517906761612
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Sinjhoro",
+        "UC": "Shah Mardan Abad",
+        "UC_C": 0,
+        "Flood": "SHAH MARDAN ABAD",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Shah Mardan Shah",
+        "id": 478,
+        "dateOfFormation": "2020-01-10 00:00:00"
+      },
+      "id": 3104
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "averageLatLng": {
+          "lat": 25.985688213650622,
+          "lng": 68.75830493011856
+        }
+      },
+      "properties": {
+        "PROVINCE": "Sindh",
+        "DISTRICT": "Sanghar",
+        "TEHSIL": "Sinjhoro",
+        "UC": "Jaffar Khan Laghari",
+        "UC_C": 0,
+        "Flood": "JAFFAR KHAN LAGHARI",
+        "Area": 0,
+        "TOWN": "",
+        "U_R": "Rural",
+        "PROVINCE_C": 8,
+        "DISTRICT_C": 0,
+        "TEHSIL_C": 0,
+        "UC_NAME": "",
+        "Data_Sourc": "Alhasan",
+        "Level": "",
+        "School": 0,
+        "New_Name": "",
+        "lsoName": "Jaffar Khan Laghari",
+        "id": 488,
+        "dateOfFormation": "2020-02-20 00:00:00"
+      },
+      "id": 3005
+    }
+  ]
+}

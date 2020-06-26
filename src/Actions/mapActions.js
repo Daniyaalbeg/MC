@@ -12,6 +12,10 @@ export const LOAD_NATIONAL_LAYER = "LOAD_NATIONAL_LAYER"
 export const LOAD_NATIONAL_LAYER_SUCCESS = "LOAD_NATIONAL_LAYER_SUCCESS"
 export const LOAD_NATIONAL_LAYER_FAILURE = "LOAD_NATIONAL_LAYER_FAILURE"
 
+export const LOAD_LSO_LAYER = "LOAD_LSO_LAYER"
+export const LOAD_LSO_LAYER_SUCCESS = "LOAD_LSO_LAYER_SUCCESS"
+export const LOAD_LSO_LAYER_FAILURE = "LOAD_LSO_LAYER_FAILURE"
+
 export const LOAD_LAYER_RESET = "LOAD_LAYER_RESET"
 
 export const loadLayer = () => ({
@@ -46,9 +50,39 @@ export const loadNationalLayerFailure = (error) => ({
   payload: error
 })
 
+export const loadLsoLayer = () => ({
+  type: LOAD_LSO_LAYER
+})
+export const loadLsoLayerSuccess = (data) => ({
+  type: LOAD_LSO_LAYER_SUCCESS,
+  payload: data
+})
+export const loadLsoLayerFailure = (error) => ({
+  type: LOAD_LSO_LAYER_FAILURE,
+  payload: error
+})
+
 export const loadLayerReset = () => ({
   type: LOAD_LAYER_RESET
 })
+
+export function loadingLsoLayer() {
+  return async dispatch => {
+    dispatch(loadLsoLayer())
+
+    axios({
+      method: 'get',
+      url: mapDataUrl(MapLayerType.LSO),
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then((res) => {
+      dispatch(loadLsoLayerSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(loadLsoLayerFailure(error))
+    })
+  }
+}
 
 export function loadingNationalLayer() {
   return async dispatch => {
@@ -107,15 +141,17 @@ const mapDataUrl = (mapLayerType) => {
     case MapLayerType.UC:
       // return 'data/UC_Pak_Use_With_Average.min.json'
       // return 'data/UC_Pak_Simple_With_Average.min.json'
-      return 'data/UC_Pak_Use_With_Average.min.json'
+      return 'data/UC_Pak_Use_With_Average.min.json';
     case MapLayerType.TEHSIL:
-      return 'data/Tehsil_Boundary_With_Average.min.json'
+      return 'data/Tehsil_Boundary_With_Average.min.json';
     case MapLayerType.DISTRICT:
-      return 'data/District_Boundary_With_Average.min.json'
+      return 'data/District_Boundary_With_Average.min.json';
     case MapLayerType.PROVINCE:
-      return 'data/Provincial_Constituency_With_Average.min.json'
+      return 'data/Provincial_Constituency_With_Average.min.json';
     case MapLayerType.NATIONAL:
-      return 'data/National_Boundary_With_Average.min.json'
+      return 'data/National_Boundary_With_Average.min.json';
+    case MapLayerType.LSO:
+      return 'data/LSO_Sindh.json';
     default:
       return ''
   }

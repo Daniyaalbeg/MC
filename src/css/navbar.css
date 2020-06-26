@@ -72,8 +72,29 @@
   text-decoration: none;
 }
 
+.navBarLogo {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+.navBarLogo p {
+  margin-bottom: 0;
+  font-size: small;
+  font-weight: bold;
+  margin-left: 8px;
+  color: #222A2E;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+#betaBadge:hover {
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 1150px) {
   .navBarHome {
     padding: 0.5em 1em !important;
   }
 }
+

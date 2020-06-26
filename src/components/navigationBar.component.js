@@ -14,9 +14,12 @@ const NavigationBar = ({ auth }) => {
   if (location.pathname === "/") {
     return (
       <Navbar className="navBarHome" bg="black" variant="dark" expand="lg" expanded={dropDown} onToggle={() => setDropDown(!dropDown)}>
-        <Link to="/"><Navbar.Brand>
-          <img src={MCMC} alt="MC" className="mcLogoHome"/>
-          </Navbar.Brand></Link>
+        <Link to="/">
+          <Navbar.Brand className="navBarLogo">
+            <img src={MCMC} alt="MC" className="mcLogoHome"/>
+            <p id="betaBadge"> Beta </p>
+          </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
@@ -32,9 +35,12 @@ const NavigationBar = ({ auth }) => {
   } else {
     return (
       <Navbar className="navBar" bg="black" variant="dark" expand="lg" expanded={dropDown} onToggle={() => setDropDown(!dropDown)}>
-        <Link to="/"><Navbar.Brand>
-          <img src={MCMC} alt="MC" className="mcLogo"/>
-          </Navbar.Brand></Link>
+        <Link to="/">
+          <Navbar.Brand className="navBarLogo">
+            <img src={MCMC} alt="MC" className="mcLogoHome"/>
+            <p id="betaBadge"> Beta </p>
+          </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">

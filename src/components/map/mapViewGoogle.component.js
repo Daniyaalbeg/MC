@@ -6,11 +6,13 @@ import * as MapLayerType from './mapLayerTypes';
 import MapMarkers from './mapMarkers.component';
 import MapLayer from './mapLayer.component';
 import MapLayerNational from './mapLayerNational.component';
+import MapLegend from './mapLegend.component';
 
 import filterAndSearch from '../utilities/filterAndSearch';
 import { selectingEvent, toggleShowList, justSelectedEvent } from '../../Actions/selectEventActions';
+import { loadingLayer } from '../../Actions/mapActions';
 import { GOOGLE_API_KEY } from '../../config';
-import { fal } from '@fortawesome/pro-light-svg-icons';
+// import { fal } from '@fortawesome/pro-light-svg-icons';
 
 // import circle from '../../assets/circle.png';
 
@@ -32,7 +34,10 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
         eventKeys[event._id] = {...event}
       });
     }
-  })
+
+    dispatch(loadingLayer(MapLayerType.NONE))
+    console.log("run once")
+  }, [fetched, computeDict])
   
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: GOOGLE_API_KEY,
@@ -75,7 +80,7 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
 
   const onMarkerClick = (eventId) => {
     map.setCenter({ lat: eventKeys[eventId].location.coordinates[1], lng: eventKeys[eventId].location.coordinates[0] })
-    map.setZoom(16)
+    map.setZoom(15)
     dispatch(selectingEvent(eventKeys[eventId]))
     if (showList) {
       dispatch(toggleShowList())
@@ -111,18 +116,21 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
   if (selectedEvent && justSelected) {
     dispatch(justSelectedEvent())
     map.setCenter({ lat: selectedEvent.location.coordinates[1], lng: selectedEvent.location.coordinates[0] })
-    // map.zoom = 16
+    // map.zoom = 15
     setTimeout(() => {
-      map.setZoom(16)
+      map.setZoom(15)
     }, 100);
   }
 
   if (mapLayerToDisplay !== MapLayerType.NONE && !layerSelectedOnce) {
     setLayerSelectedOnce(true)
-    setMapBounds(createExtendedBounds(map))
+    if (map) {
+      setMapBounds(createExtendedBounds(map))
+    }
   }
   
   return (
+    <>
     <GoogleMap
       onClick={() => onClick()}
       onDragEnd={() => onDragEnd()}
@@ -133,6 +141,7 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
       onUnmount={onUnmount}
       options={options}
     >
+      <MapLegend mapLayerToDisplay={mapLayerToDisplay} />
       <MapMarkers events={filteredEvents} onMarkerClick={onMarkerClick} />
       {mapLayerToDisplay !== MapLayerType.NONE &&
         <MapLayer mapBounds={mapBounds} zoomLevel={zoomLevel} showInfo={showInfo} setShowInfo={setShowInfo} />
@@ -141,6 +150,7 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
         <MapLayerNational />
       }
     </GoogleMap >
+    </>
   );
 }
 
