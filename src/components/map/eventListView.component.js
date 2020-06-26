@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { ListGroup } from 'react-bootstrap';
 import { selectingEvent, toggleShowList } from '../../Actions/selectEventActions';
 import { connect } from 'react-redux';
 import '../../css/eventlistView.css'
@@ -19,13 +18,13 @@ const EventListItem = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 
   return (
       <div className="list-view-container">
-      <div className="list-left">
-        <EventListImage type={props.event.typeOfRation} />
-      </div>
-      <div className="list-right">
-        <p className="eventListTitle"> {props.event.name} </p>
-        <p className="text-muted eventListDate"> {new Date(props.event.date).toLocaleDateString("en-US", dateOptions)} </p>
-      </div>
+        <div className="list-left">
+          <EventListImage type={props.event.typeOfRation} />
+        </div>
+        <div className="list-right">
+          <p className="eventListTitle"> {props.event.name} </p>
+          <p className="text-muted eventListDate"> {new Date(props.event.date).toLocaleDateString("en-US", dateOptions)} </p>
+        </div>
       </div>
   )
 }
@@ -88,19 +87,19 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue, showList})
         </div>
       </form>
       <hr className="searchBarSpace"/>
-      <ListGroup variant="flush" className="listGroup">
+      <div className="eventItemList">
         {events.map((event) => {
           return (
-            <ListGroup.Item className="listGroupItem" key={event._id} action onClick={() => {
+            <div className="eventItem" key={event._id} action onClick={() => {
               dispatch(selectingEvent(event))
               dispatch(toggleShowList())
               resetSearchAndFilter()
             }}>
               <EventListItem event={event} />
-            </ListGroup.Item>
+            </div>
           )
         })}
-      </ListGroup>
+      </div>
     </div>
     )
   } else {

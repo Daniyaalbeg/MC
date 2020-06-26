@@ -196,15 +196,15 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
                       <FontAwesomeIcon icon={faHouse} size="3x" className="lsoHouseInfoTop" style={{ clipPath: "inset("+Math.abs((showInfo.feature.properties.OHH/showInfo.feature.properties.HH)*100-100)+"% 0px 0px 0px)"}} />
                     </div>
                     <div className="lsoHouseInfo">
-                      <p className="mapInfoBoxHeading"> HH </p>
+                      <p className="mapInfoBoxHeading"> Households </p>
                       <p>{showInfo.feature.properties.HH}</p>
-                      <p className="mapInfoBoxHeading"> OHH </p>
+                      <p className="mapInfoBoxHeading"> Organised Households </p>
                       <p>{showInfo.feature.properties.OHH}</p>
                     </div>
                   </div>
-                  <p className="mapInfoBoxHeading"> VDO </p>
+                  <p className="mapInfoBoxHeading"> Village District Org </p>
                   <h6>{showInfo.feature.properties.VDO}</h6>
-                  <p className="mapInfoBoxHeading"> VCO </p>
+                  <p className="mapInfoBoxHeading"> Village Community Org </p>
                   <h6>{showInfo.feature.properties.VCO}</h6>
                   <p className="mapInfoBoxHeading"> Data created </p>
                   <h6>{new Date(showInfo.feature.properties.dateOfFormation).toLocaleDateString("en-US", dateOptions)}</h6>

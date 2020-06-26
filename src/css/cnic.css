@@ -57,7 +57,7 @@
 
 .cnicContainer {
   width: 100%;
-  height: 93.5vh;
+  height: calc(100% - 66px);
   overflow: hidden;
   background-color: whitesmoke;
 }

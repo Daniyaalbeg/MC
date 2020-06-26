@@ -64,11 +64,13 @@ const MapViewLayerList = ({ dispatch, loading }) => {
 
   return (
     <div className="MapViewLayerListContainer">
-      <button className={"MapLayerButton " + checkActiveState(0)}
-      onClick={(e) => {
-        setActiveButton(0)
-        dispatch(loadingLayer(MapLayerType.NONE))
-      }}> {whichButton(0)} </button>
+      <div className="MapLayerButtonContainer">
+        <button className={"MapLayerButton " + checkActiveState(0)}
+        onClick={(e) => {
+          setActiveButton(0)
+          dispatch(loadingLayer(MapLayerType.NONE))
+        }}> {whichButton(0)} </button>
+      </div>
 
       <div className="MapLayerButtonContainer">
         <button className={"MapLayerButton " + checkActiveState(1)}
