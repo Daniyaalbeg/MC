@@ -44,20 +44,20 @@ const EventInfoView = (props) => {
         </div>
         <div className="smallBoi">
           <p className="eventTitle"> Created by </p>
-          <div>
+          <div className="orgLinkFromEvent">
             <FontAwesomeIcon icon={faLink} size="sm" />
             <Link to={'/organisations/' + event.createdBy._id}> {event.createdBy.supplierName} </Link>
           </div>
         </div>
         {event.images.length !== 0 &&
-          <div className="smallBoi spaceBelow">
+          <div className="spaceBelow">
           <p className="eventTitle"> Images </p>
           <Carousel>
             {event.images.map((image) => {
               return (
                 <Carousel.Item key={image}>
-                  <div className="imageContainer">
-                    <img className="img" src={image} alt="" />
+                  <div className="imageContainerEvent">
+                    <img className="imgEvent" src={image} alt="" />
                   </div>
                 </Carousel.Item>
               )

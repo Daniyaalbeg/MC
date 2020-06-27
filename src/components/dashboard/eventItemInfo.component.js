@@ -48,7 +48,7 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
               return (
                 <Carousel.Item key={image}>
                   <div className="imageContainerEvent">
-                      <img className="img" src={image} alt="" />
+                      <img className="imgEvent" src={image} alt="" />
                   </div>
                 </Carousel.Item>
               )

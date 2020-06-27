@@ -52,7 +52,7 @@ export function creatingNewEvent(data) {
       return
     }
 
-    console.log(filesDict)
+    // console.log(filesDict)
 
     Object.keys(filesDict).forEach((key) => {
       const fullFileName = filesDict[key].name.split('.');
@@ -80,7 +80,7 @@ export function creatingNewEvent(data) {
         const oldName = returnData.oldName;
         const url = returnData.url;
         imageUrlLocations.push(url)
-        console.log(oldName + " image uploaded at " + url)
+        // console.log(oldName + " image uploaded at " + url)
 
         const options = {
           headers: {
