@@ -12,6 +12,9 @@ import filterAndSearch from '../utilities/filterAndSearch';
 import { selectingEvent, toggleShowList, justSelectedEvent } from '../../Actions/selectEventActions';
 import { loadingLayer } from '../../Actions/mapActions';
 import { GOOGLE_API_KEY } from '../../config';
+
+/* global google */
+
 // import { fal } from '@fortawesome/pro-light-svg-icons';
 
 // import circle from '../../assets/circle.png';
@@ -36,7 +39,6 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
     }
 
     dispatch(loadingLayer(MapLayerType.NONE))
-    console.log("run once")
   }, [fetched, computeDict])
   
   const { isLoaded, loadError } = useLoadScript({
@@ -47,12 +49,12 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
   const containerStyle = {
     width: '100%',
     height: '100%'
-  };
+  }
   
   const center = {
-    lat: 30.3753,
-    lng:  69.3451,
-  };
+    lat: 31.04318239643529,
+    lng:  74.04074184374998
+  }
 
   const options = {
     disableDefaultUI: true,
@@ -70,6 +72,11 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
     map.setCenter(center)
     let bounds = map.getBounds()
     setMapBounds(bounds)
+    map.setOptions({
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.TOP_LEFT
+      }
+    })
   }, [])
 
   const onUnmount = useCallback(function callback(map) {

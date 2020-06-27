@@ -23,7 +23,7 @@ const EventListItem = (props) => {
         </div>
         <div className="list-right">
           <p className="eventListTitle"> {props.event.name} </p>
-          <p className="text-muted eventListDate"> {new Date(props.event.date).toLocaleDateString("en-US", dateOptions)} </p>
+          <p className="eventListDate"> {new Date(props.event.date).toLocaleDateString("en-US", dateOptions)} </p>
         </div>
       </div>
   )

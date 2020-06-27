@@ -3,6 +3,7 @@ import axios from 'axios';
 import { API, rootURL, production } from '../../config';
 
 import Address from '../shared/address.component';
+import HeaderIcons from './HeaderIcons.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -17,8 +18,11 @@ const ProfileInfoView = (props) => {
   return (
     <div className="profileContainer" style={{ fontFamily: "proximaNova" }}>
       <div className="profileHeader">
-        <FontAwesomeIcon icon={faUserCircle} />
-        <p> Profile </p>
+        <div className="profileTextIcon">
+          <FontAwesomeIcon icon={faUserCircle} />
+          <p> Profile </p>
+        </div>
+        <HeaderIcons />
       </div>
       <div className="profileContent">
         <p className="profileTitle"> Username </p>

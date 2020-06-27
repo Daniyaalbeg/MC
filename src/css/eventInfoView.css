@@ -17,6 +17,9 @@
   padding: 20px;
   padding-top: 12px;
   overflow-y: scroll;
+  background-color: var(--main-bg-color-transparent);
+  color: whitesmoke;
+  backdrop-filter: blur(6px);
 }
 
 .searchBarSpace {
@@ -28,7 +31,7 @@
   position: relative;
   height: 300px;
   width: 100%;
-  background-color: rgb(180, 180, 180);
+  background-color: var(--main-bg-color-transparent);
   overflow: hidden;
   }
   .img {
@@ -88,14 +91,37 @@ p {
 .smallBoi {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: fit;
 }
-.smallBoi > a {
+.smallBoi .eventTitle {
+  font-size: medium;
+  font-weight: normal;
+}
+.smallBoi .eventContent {
+  font-size: large;
+  font-weight: bold;
+}
+.smallBoi a {
+  display: inline-block;
+  margin-left: 8px;
   margin-bottom: 16px;
-  font-size: larger;
+  font-size: large;
+  color: whitesmoke;
+  font-weight: bold;
+  width: fit-content;
 }
-.smallBoi > a:hover {
+.smallBoi div:hover a {
   text-decoration: none;
+  color: #1589C9;
+}
+.smallBoi > div {
+  width: fit-content;
+}
+.smallBoi div svg {
+  display: inline-block;
+}
+.smallBoi div:hover svg {
+  color: #1589C9;
 }
 
 .updateDelete {

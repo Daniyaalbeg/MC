@@ -25,18 +25,20 @@
 } */
 
 .mapView {
-  width: 65vw;
+  width: 95vw;
   /* flex-grow: 1; */
 }
 
 .mapViewLayerList {
   width: 5vw;
-  background-color: #222A2E;
+  background-color: var(--main-bg-color);
 }
 
 .eventListView {
   width: 30vw;
-  height: 100%;
+  height: calc(100% - 66px);
+  position: absolute;
+  right: 0;
   /* overflow-y: hidden; */
 }
 
@@ -65,10 +67,10 @@
   font-weight: bold;
 }
 .MapLayerButton:hover {
-  background-color: #2d383d;
+  background-color: #37454b;
 }
 .MapLayerButton.active {
-  background-color: #1589C9;
+  background-color: #222a2e;
 }
 .toolTip {
   visibility: hidden;

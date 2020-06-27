@@ -88,7 +88,7 @@
   padding-left: 4px;
   padding-right: 4px;
 }
-#betaBadge:hover {
+.navBarLogo:hover > p {
   text-decoration: none;
 }
 

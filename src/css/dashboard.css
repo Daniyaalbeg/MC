@@ -122,29 +122,28 @@
   display: grid;
   grid-template-rows: 80px calc(100% - 80px);
   grid-template-areas: 
-  "topLeft header header"
+  "topLeft body body"
   "sidebar body body"
   /* "footer footer footer"; */
 }
-.dbHeader {
+/* .dbHeader {
   grid-area: header;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  /* border-bottom: 1px solid #222B2E; */
   background-color: #EDF2F6;
-}
+} */
 .dbTopLeft {
   grid-area: topLeft;
-  background-color: #222A2E;
+  background-color: var(--main-bg-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid #222B2E;
+  border-bottom: 1px solid var(--main-bg-color);
 }
 .dbTopLeft > p {
   margin-bottom: 0;
@@ -152,7 +151,7 @@
 }
 .dbLeftBar {
   grid-area: sidebar;
-  background-color: #222A2E;
+  background-color: var(--main-bg-color);
 }
 .dbBody {
   grid-area: body;
@@ -186,9 +185,12 @@
   border: 1px solid whitesmoke;
 }
 
+.headerIcons {
+  margin-right: 16px;
+}
 .headerButton {
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   margin-right: 8px;
   border-radius: 50%;
   overflow: hidden;
@@ -202,7 +204,7 @@
   padding: 5px;
 }
 .dbIconFont {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .dbIconBg {
   background-color: white;

@@ -1,3 +1,8 @@
+:root {
+  --main-bg-color-transparent: #222a2ec4;
+  --main-bg-color: #2b353a;
+}
+
 .mcRed {
  color: #EF2A30 !important;
 }
@@ -202,7 +207,7 @@ p {
   /* display: block; */
   padding: .5em 1em;
   color: whitesmoke;
-  background-color: #222A2E;
+  background-color: var(--main-bg-color);
   font-weight: bold;
 }
 /* #1589C9  */

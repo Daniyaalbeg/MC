@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../css/supplierInfoView.css';
 
 import CheckOldOrNewAddress from '../shared/address.component';
+import HeaderIcons from './HeaderIcons.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -90,8 +91,11 @@ const SupplierInfoView = (props) => {
     return (
       <div className="supplierInfoContainer">
         <div className="supplierInfoHeader">
-          <FontAwesomeIcon icon={faSitemap} />
-          <p> Organisation </p>
+          <div className="supplierTextIcon">
+            <FontAwesomeIcon icon={faSitemap} />
+            <p> Organisation </p>
+          </div>
+          <HeaderIcons />
         </div>
         <div className="supplierInfoContent">
           <div className="emptyDBContainer">
@@ -106,8 +110,11 @@ const SupplierInfoView = (props) => {
   return (
     <div className="supplierInfoContainer">
       <div className="supplierInfoHeader">
-        <FontAwesomeIcon icon={faSitemap} />
-        <p> Organisation </p>
+        <div className="supplierTextIcon">
+          <FontAwesomeIcon icon={faSitemap} />
+          <p> Organisation </p>
+        </div>
+        <HeaderIcons />
       </div>
       <div className="supplierInfoContent">
         <p className="supplierTitle"> Name </p>

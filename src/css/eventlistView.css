@@ -3,11 +3,12 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  background-color: var(--main-bg-color-transparent);
+  backdrop-filter: blur(6px);
 }
 
 .eventItemList {
   padding-top: 1em;
-  background-color: white;
 }
 .eventItem {
   padding: 0.5em;
@@ -16,11 +17,15 @@
   border-radius: 8px;
 }
 .eventItem:hover {
-  background-color: rgb(228, 228, 228);
+  background-color: #222a2e;
+}
+.eventItem:hover p {
+  color: whitesmoke;
 }
 
 .searchBarSpace {
   margin: 0;
+background-color: whitesmoke;
 }
 
 
@@ -29,6 +34,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  color: whitesmoke;
 }
 
 .list-left {
@@ -68,17 +74,22 @@
 .searchIcon {
   display: block;
   border: none;
+  color: whitesmoke;
 }
 .textInput {
   border: none;
   padding: 0;
   padding-left: 12px;
   width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  /* backdrop-filter: blur(2px); */
+  color: white;
 }
 
 .searchBarMiddleGap {
   margin: 0;
   width: 100%;
+  background-color: whitesmoke;
 }
 
 .filters {
@@ -97,13 +108,17 @@
   border: none;
   vertical-align: middle;
   margin-right: 8px;
+  color: whitesmoke;
 }
 .filterSelect select {
   border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: whitesmoke;
 }
 
 .eventListTitle {
   margin-bottom: 0;
+  font-weight: bold;
 }
 .eventListDate {
   margin-bottom: 0;

@@ -11,14 +11,20 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   background-color: #FFD71A;
 }
-.supplierInfoHeader > svg {
+.supplierTextIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.supplierInfoHeader > div > svg {
   margin-left: 32px;
   font-size: 2em;
   color: #444444;
 }
-.supplierInfoHeader > p {
+.supplierInfoHeader > div > p {
   margin: 0;
   margin-left: 12px;
   font-weight: bold;
