@@ -47,7 +47,7 @@ export function signUpUser(data) {
         username: data.username,
         password: data.password,
         mobile: data.mobile,
-        cnic: data.cnic,
+        cnic: data.cnic.replace('-',''),
         address: address
       },
       withCredentials: true,

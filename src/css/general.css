@@ -1,6 +1,7 @@
 :root {
   --main-bg-color-transparent: #222a2ec4;
   --main-bg-color: #2b353a;
+  --main-yellow-color: #FFD71A;
 }
 
 .mcRed {
@@ -30,6 +31,9 @@
  }
  .mcYellowBG {
   background-color: #FFD71A;
+ }
+ .mcYellowBG:hover {
+  background-color: #ddbc17;
  }
  .mcGreenBG {
   background-color: #4BB250;
@@ -121,15 +125,25 @@ p {
 }
 .standardButton:hover {
   background-color: rgb(18, 117, 170);
-  border-color: #1589C9;
+}
+
+.standardButtonWithoutColour {
+  color: white;
+  border-radius: 5px;
+  padding: 0.3em 0.6em;
+  font-weight: bold;
+}
+.standardButtonWithoutColour:hover {
+
 }
 
 .smallVersion {
   font-size: small;
 }
 
-.red {
-  color: #EF2A30
+.redStandardError {
+  color: #EF2A30;
+  font-size: smaller;
 }
 
 .muteVersion {
@@ -166,6 +180,15 @@ p {
 .largerErrorMessage {
   color: #EF2A30;
   font-size: 1em;
+}
+
+.rowThumb {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .pillBadge {

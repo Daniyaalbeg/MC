@@ -34,7 +34,7 @@ const validationSchema = Yup.object().shape({
   .max(14, "*Number must be less than 14 charachters")
   .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*This is not a valid Pakistani mobile numbers"),
   cnic: Yup.string()
-  .matches(/^[0-9+]{5}-[0-9+]{7}-[0-9]{1}|[0-9+]{6}-[0-9+]{6}-[0-9]{1}$/, "*This is not a valid CNIC, make sure it is in this format: 12345-1234567-1 or 123456-123456-1"),
+  .matches(/^(\d{13})?$|[0-9]{5}-[0-9]{7}-[0-9]{1}$|[0-9]{6}-[0-9]{6}-[0-9]{1}$/, "*This is not a valid CNIC, make sure it is in this format: 1234567891234 or 12345-1234567-1 or 123456-123456-1"),
   addressLine1: Yup.string()
   .min(1, "*Address Line 1 must be longer than 1 charachter")
   .max(50, "*Adderss Line 1 must be less than 50 charachters"),

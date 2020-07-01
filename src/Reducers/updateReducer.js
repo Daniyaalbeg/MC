@@ -30,6 +30,32 @@ export default function updateReducer(state = initialState, action) {
         ...state,
         success: false
       }
+    case actions.UPDATE_ORG:
+      return {
+        ...state,
+        loading: true,
+        success: false,
+        hasErrors: false
+      }
+    case actions.UPDATE_ORG_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        hasErrors: false
+      }
+    case actions.UPDATE_ORG_FAILURE:
+      return {
+        ...state,
+        hasErrors: false,
+        success: false,
+        loading: false
+      }
+    case actions.UPDATE_ORG_REDIRECT:
+      return {
+        ...state,
+        success: false
+      }
     default:
       return state
   }

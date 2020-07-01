@@ -10,11 +10,10 @@ class Thumb extends React.Component {
       file: undefined
     };
 
-    console.log("a")
     if (!props.file) { return; }
     if (props.file instanceof String || typeof props.file === "string") {
       this.state = { thumb: props.file}
-    }  else {
+    } else {
       let reader = new FileReader();
 
       reader.onloadend = () => {
@@ -24,6 +23,11 @@ class Thumb extends React.Component {
       reader.readAsDataURL(props.file);
     }
   }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log(props)
+  //   console.log(state)
+  // }
 
 
   componentWillReceiveProps(nextProps) {

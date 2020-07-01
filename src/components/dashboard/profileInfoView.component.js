@@ -32,7 +32,7 @@ const ProfileInfoView = (props) => {
         <p className="profileTitle"> Mobile </p>
         <p className="profileText"> {user.mobile ? user.mobile: "Not addded"} </p>
         <p className="profileTitle"> CNIC </p>
-        <p className="profileText"> {user.cnic ? user.cnic: "Not addded"} </p>
+        <p className="profileText"> {displayCNIC(user.cnic)} </p>
         <p className="profileTitle"> Address </p>
         <Address address={user.address} />
         <p className="profileTitle"> Approved </p>
@@ -44,6 +44,20 @@ const ProfileInfoView = (props) => {
       </div>
     </div>
   )
+}
+
+const displayCNIC = (cnic) => {
+  if (cnic) {
+    if (cnic.includes('-')) {
+      return cnic
+    } else {
+      const cnicPart1 = cnic.substring(0, 5)
+      const cnicPart2 = cnic.substring(5, 12)
+      const cnicPart3 = cnic.substring(12,13)
+
+      return cnicPart1 + '-' + cnicPart2 + '-' + cnicPart3
+    }
+  } else return "Not added"
 }
 
 const Verified = (props) => {

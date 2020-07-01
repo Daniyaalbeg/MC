@@ -80,26 +80,42 @@ router.route('/').get((req, res) => {
 })
 
 //Update a new supplier
-router.route('/update').post(verfiyToken, (req, res, next) => {
+router.route('/update/:id').post(verfiyToken, (req, res, next) => {
   User.findById(req.id, { password: 0}, (err, user) => {
     if (err) res.status(500).send("There was a problem finding the user.");
     if (!user) return res.status(404).send("No user found.");
 
-    let supplier = user.supplier;
-    supplier.supplierName = req.body.supplierName;
-    supplier.supplierImageURL = req.body.supplierImageURL;
-    supplier.bankingDetails = req.body.bankingDetails;
-    supplier.type = req.body.type;
-    supplier.areaOfWork = req.body.areaOfWork;
-    supplier.description = req.body.description;
-    supplier.address = req.body.address;
-    supplier.contactName = req.body.contactName;
-    supplier.contactNumber = req.body.contactNumber;
-    supplier.contactInfo = req.body.contactInfo;
-    supplier.supplierWebsite = req.body.supplierWebsite;
-    supplier.facebookURL = req.body.facebookURL;
-    supplier.twitterURL = req.body.twitterURL;
-    supplier.instagramURL = req.body.instagramURL;
+    let supplier = user.supplier
+
+    supplier.bankingDetails.bankName = req.body.bankingDetails.bankName
+    supplier.bankingDetails.bankBranch = req.body.bankingDetails.bankBranch
+    supplier.bankingDetails.accountTitle = req.body.bankingDetails.accountTitle
+    supplier.bankingDetails.accountNumber = req.body.bankingDetails.accountNumber
+    supplier.bankingDetails.IBAN = req.body.bankingDetails.IBAN
+    supplier.bankingDetails.swiftCode = req.body.bankingDetails.swiftCode
+    supplier.bankingDetails.jazzCash = req.body.bankingDetails.jazzCash
+    supplier.bankingDetails.easyPaisa = req.body.bankingDetails.easyPaisa
+
+    supplier.address.line1 = req.body.address.line1
+    supplier.address.city = req.body.address.city
+    supplier.address.region = req.body.address.region
+    supplier.address.postCode = req.body.address.postCode
+    supplier.address.country = req.body.address.country
+
+    supplier.supplierName = req.body.supplierName
+    supplier.supplierImageURL = req.body.supplierImageURL
+    supplier.type = req.body.type
+    supplier.areaOfWork = req.body.areaOfWork
+    supplier.description = req.body.description
+    supplier.contactName = req.body.contactName
+    supplier.contactNumber = req.body.contactNumber
+    supplier.contactInfo = req.body.contactInfo
+    supplier.supplierWebsite = req.body.supplierWebsite
+    supplier.facebookURL = req.body.facebookURL
+    supplier.twitterURL = req.body.twitterURL
+    supplier.instagramURL = req.body.instagramURL
+
+    user.supplier = supplier;
 
     user.save()
     .then(() => res.status(200).json("Successfully updated"))

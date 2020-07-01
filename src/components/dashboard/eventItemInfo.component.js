@@ -66,14 +66,14 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
       {
         props.isUser &&
           <Row className="updateDelete">
-          <Link to={"/updateEvent/" + event._id}>
-            <button className="standardButton editIconVersion">
-              <FontAwesomeIcon icon={faEdit} />
-            </button>
+            <Link to={"/updateEvent/" + event._id}>
+              <button className="standardButton editIconVersion">
+                <FontAwesomeIcon icon={faEdit} />
+              </button>
             </Link>
-            <button className="standardButton redVersion" onClick={() => {
-              handleShow()
-            }}>
+              <button className="standardButton redVersion" onClick={() => {
+                handleShow()
+              }}>
             <FontAwesomeIcon icon={faTrashAlt} />
             </button>
           </Row>

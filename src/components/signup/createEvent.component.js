@@ -300,6 +300,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             }}
             name="date"
             className="datePicker"
+            maxDate={new Date()}
           />
         </Form.Group>
 

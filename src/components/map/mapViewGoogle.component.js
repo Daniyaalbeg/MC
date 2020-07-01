@@ -122,7 +122,8 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
 
   if (selectedEvent && justSelected) {
     dispatch(justSelectedEvent())
-    map.setCenter({ lat: selectedEvent.location.coordinates[1], lng: selectedEvent.location.coordinates[0] })
+    //Hard code the moving map to centralise it. These values are pretty yolo only working for zoom level 15
+    map.setCenter({ lat: selectedEvent.location.coordinates[1] + 0.0002628164259, lng: selectedEvent.location.coordinates[0] + 0.009922714459})
     // map.zoom = 15
     setTimeout(() => {
       map.setZoom(15)

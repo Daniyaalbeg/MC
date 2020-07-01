@@ -32,6 +32,7 @@
 }
 
 .supplierInfoContent {
+  position: relative;
   height: 90%;
   border-radius: 8px;
   overflow-y: scroll;
@@ -63,6 +64,33 @@
 
 }
 
+.bankingInfoContainer {
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+  grid-template-rows: auto auto;
+  grid-template-areas: 
+  "topLeft top topRight"
+  "bottomLeft bottom bottomRight";
+}
+.bankingTopLeft {
+  grid-area: topLeft;
+}
+.bankingTop {
+  grid-area: top;
+}
+.bankingTopRight {
+  grid-area: topRight;
+}
+.bankingBottomLeft {
+  grid-area: bottomLeft;
+}
+.bankingBottom {
+  grid-area: bottom;
+}
+.bankingBottomRight {
+  grid-area: bottomRight;
+}
+
 .websiteIcon {
   text-decoration: none;
   color: #1589C9;
@@ -70,14 +98,6 @@
 .websiteIcon:hover {
   text-decoration: none;
   color:  rgb(16, 104, 151);
-}
-
-
-.bI {
-  padding: 0 !important;
-  margin-bottom: 8px;
-}
-.bI > p {
 }
 
 .iconSpecific {
@@ -123,4 +143,10 @@
 }
 .createOrgButton:hover {
   background-color: rgb(233, 198, 24) !important;
+}
+
+.supplierEditButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }

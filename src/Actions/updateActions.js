@@ -7,24 +7,53 @@ export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
 export const UPDATE_EVENT_FAILURE = "UPDATE_EVENT_FAILURE";
 export const UPDATE_EVENT_REDIRECT = "UPDATE_EVENT_REDIRECT"
 
+export const UPDATE_ORG = "UPDATE_ORG";
+export const UPDATE_ORG_SUCCESS = "UPDATE_ORG_SUCCESS";
+export const UPDATE_ORG_FAILURE = "UPDATE_ORG_FAILURE";
+export const UPDATE_ORG_REDIRECT = "UPDATE_ORG_REDIRECT"
+
 export const updatingEvent = () => ({
   type: UPDATE_EVENT
 });
-
 export const updatingEventSuccess = () => ({
   type: UPDATE_EVENT_SUCCESS
 });
-
 export const updatingEventFailure = (error) => ({
   type: UPDATE_EVENT_FAILURE,
   payload: error
 });
-
 export const updatingEventRedirect = () => ({
   type: UPDATE_EVENT_REDIRECT
 })
 
+export const updatingOrg = () => ({
+  type: UPDATE_ORG
+});
+export const updatingOrgSuccess = () => ({
+  type: UPDATE_ORG_SUCCESS
+});
+export const updatingOrgFailure = (error) => ({
+  type: UPDATE_ORG_FAILURE,
+  payload: error
+});
+export const updatingOrgRedirect = () => ({
+  type: UPDATE_ORG_REDIRECT
+})
+
 const urlImage = rootURL(production)+API+'/imageUpload'
+
+//Event update
+export function updateEvent(data) {
+  return async (dispatch) => {
+    dispatch(updatingEvent());
+
+    if (data.newImage) {
+      withImageUploadMulti(dispatch, data, "eventImages")
+    } else {
+      updateEventCall(dispatch, data)
+    }
+  }
+}
 
 const updateEventCall = (dispatch, data) => {
   axios({
@@ -55,11 +84,58 @@ const updateEventCall = (dispatch, data) => {
   })
 }
 
-const withoutImageUpload = (dispatch, data) => {
-  updateEventCall(dispatch, data)
+//Org update
+export function updateOrg(data) {
+  return async (dispatch) => {
+    dispatch(updatingOrg());
+
+    if (data.newImage) {
+      withImageUploadOrg(dispatch, data)
+    } else {
+      updateOrgCall(dispatch, data)
+    }
+  }
 }
 
-const withImageUpload = (dispatch, data) => {
+const updateOrgCall = (dispatch, data) => {
+  console.log(data)
+  axios({
+    method: 'post',
+    url: rootURL(production)+API+'/supplier/update/' + data._id,
+    headers: {'Content-Type': 'application/json'},
+    data: {
+      supplierName: data.supplierName,
+      supplierImageURL: data.supplierImageURL,
+      bankingDetails: data.bankingDetails,
+      type: data.type,
+      areaOfWork: data.areaOfWork,
+      description: data.description,
+      address: data.address,
+      contactName: data.contactName,
+      contactNumber: data.contactNumber,
+      contactInfo: data.contactInfo,
+      supplierWebsite: data.supplierWebsite,
+      facebookURL: data.facebookURL,
+      twitterURL: data.twitterURL,
+      instagramURL: data.instagramURL
+    },
+    withCredentials: true,
+    credentials: 'include'
+  })
+  .then((res) => {
+    dispatch(updatingOrgSuccess())
+    dispatch(getUserInfo())
+  })
+  .catch((error) => {
+    // console.log(error.response)
+    dispatch(updatingOrgFailure(error))
+    return
+  })
+}
+
+
+//Shared
+const withImageUploadMulti = (dispatch, data, typeOfUpload) => {
   const promises = []
 
     let files = data.images;
@@ -72,7 +148,11 @@ const withImageUpload = (dispatch, data) => {
         count++
       })
     } catch {
-      dispatch(updatingEventFailure("File name must have an extension"))
+      if (typeOfUpload === "eventImages") {
+        dispatch(updatingEventFailure("File name must have an extension"))
+      } else {
+        dispatch(updatingOrgFailure("File name must have an extension"))
+      }
       console.log("File has no extension");
       return
     }
@@ -82,7 +162,7 @@ const withImageUpload = (dispatch, data) => {
       let fileName = key;
       let fileType = fullFileName[1];
 
-      const imageCategory = "eventImages"
+      const imageCategory = typeOfUpload
 
       promises.push(axios.post(urlImage,{
         fileName: fileName,
@@ -116,28 +196,81 @@ const withImageUpload = (dispatch, data) => {
       Promise.all(putPromises)
       .then((responses) => {
         data.images = images
-        updateEventCall(dispatch, data)
+        if (typeOfUpload === "eventImages") {
+          updateEventCall(dispatch, data)
+        } else {
+          updateOrgCall(dispatch, data)
+        }
       })
       .catch((err) => {
-        dispatch(updatingEventFailure(err))
+        if (typeOfUpload === "eventImages") {
+          dispatch(updatingEventFailure(err))
+        } else {
+          dispatch(updatingOrgFailure(err))
+        }
         return
       });
 
     })
     .catch((err) => {
-      dispatch(updatingEventFailure(err));
+      if (typeOfUpload === "eventImages") {
+        dispatch(updatingEventFailure(err))
+      } else {
+        dispatch(updatingOrgFailure(err))
+      }
       return
     });
 }
 
-export function updateEvent(data) {
-  return async (dispatch, getState) => {
-    dispatch(updatingEvent());
 
-    if (data.newImage) {
-      withImageUpload(dispatch, data)
-    } else {
-      withoutImageUpload(dispatch, data)
-    }
+const withImageUploadOrg = (dispatch, data) => {
+  //Perform image file link request
+  let file = data.imageFile[0]
+  let fileParts = file.name.split('.');
+  let fileName
+  let fileType
+  try {
+    fileName = fileParts[0];
+    fileType = fileParts[1];
+  } catch {
+    dispatch(updatingOrgFailure("File name must end in an extension"))
+    return
   }
+
+  let imageCategory = "orgImages"
+  
+  axios.post(rootURL(production)+API+'/imageUpload',{
+    fileName: fileName,
+    fileType: fileType,
+    fileSize: file.size,
+    imageCategory: imageCategory
+  })
+  .then((res) => {
+    const returnData = res.data.data.returnData;
+    const signedRequest = returnData.signedRequest;
+    const url = returnData.url
+    // console.log("Recieved a signed request " + signedRequest);
+    // console.log(url)
+
+    //create axios put request
+    const options = {
+      headers: {
+        'Content-Type' : fileType,
+        'Cache-Control': 'max-age=31556926'
+      }
+    };
+
+    axios.put(signedRequest, file, options)
+    .then((res) => {
+      data.supplierImageURL = url
+      updateOrgCall(dispatch, data)
+    })
+    .catch((err) => {
+      dispatch(updatingOrgFailure(err))
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+    dispatch(updatingOrgFailure(err))
+  })
 }

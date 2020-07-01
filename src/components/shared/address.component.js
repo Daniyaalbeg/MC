@@ -23,26 +23,26 @@ const Address = ({ address }) => {
   } else {
     return (
       <div className="addressContainer">
-          <div className="addressTopLeft">
-            <p className="addressTitle"> Address Line </p>
-            {address.line1 ? <p> {capitalise(address.line1)} </p> : "Not Added"}
-          </div>
-          <div className="addressTop">
-            <p className="addressTitle"> City </p>
-            {address.city ? <p> {capitalise(address.city)} </p> : "Not Added"}
-          </div>
-          <div className="addressTopRight">
-            <p className="addressTitle"> Region </p>
-            {address.region ? <p> {capitalise(address.region)} </p> : "Not Added" }
-          </div>
-          <div className="addressBottomLeft">
-            <p className="addressTitle"> Post Code / Zip Code </p>
-            {address.postCode ? <p> {address.postCode} </p> : "Not Added" }
-          </div>
-          <div className="addressBottom">
-            <p className="addressTitle"> Country </p>
-            {address.country ? <p> {capitalise(address.country)} </p> : "Not Added"}
-          </div>
+        <div className="addressTopLeft">
+          <p className="addressTitle"> Address Line </p>
+          {address.line1 ? <p> {capitalise(address.line1)} </p> : "Not Added"}
+        </div>
+        <div className="addressTop">
+          <p className="addressTitle"> City </p>
+          {address.city ? <p> {capitalise(address.city)} </p> : "Not Added"}
+        </div>
+        <div className="addressTopRight">
+          <p className="addressTitle"> Region </p>
+          {address.region ? <p> {capitalise(address.region)} </p> : "Not Added" }
+        </div>
+        <div className="addressBottomLeft">
+          <p className="addressTitle"> Post Code / Zip Code </p>
+          {address.postCode ? <p> {address.postCode} </p> : "Not Added" }
+        </div>
+        <div className="addressBottom">
+          <p className="addressTitle"> Country </p>
+          {address.country ? <p> {capitalise(address.country)} </p> : "Not Added"}
+        </div>
       </div>
     )
   }

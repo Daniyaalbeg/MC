@@ -1,5 +1,4 @@
 import React from 'react';
-import { Col, Row, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../css/supplierInfoView.css';
 
@@ -9,7 +8,7 @@ import HeaderIcons from './HeaderIcons.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe, faSitemap } from '@fortawesome/pro-solid-svg-icons';
-import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
+import { faExclamationTriangle, faEdit } from '@fortawesome/pro-duotone-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import imagePlaceholder from '../../assets/Images/temp.jpg';
 
@@ -19,38 +18,32 @@ export const BankingDetails = (props) => {
     return (
       <>
       <p className="supplierTitle"> Banking Info </p>
-      <Container className="bankingInfo">
-        <Row>
-          <Col className="bI">
-            <p className="supplierTitleSmall"> Bank name </p>
-            {bankInfo.bankName ? <p> {bankInfo.bankName} </p> : "Not Added" }
-          </Col>
-          <Col className="bI">
-            <p className="supplierTitleSmall"> Bank branch </p>
-            {bankInfo.bankBranch ? <p> {bankInfo.bankBranch} </p> : "Not Added" }
-          </Col>
-        </Row>
-        <Row>
-          <Col className="bI">
-            <p className="supplierTitleSmall"> Account title </p>
-            {bankInfo.accountTitle ? <p> {bankInfo.accountTitle} </p> : "Not Added" }
-          </Col>
-          <Col className="bI">
-            <p className="supplierTitleSmall"> Account number </p>
-            {bankInfo.accountNumber ? <p> {bankInfo.accountNumber} </p> : "Not Added" }
-          </Col>
-        </Row>
-        <Row>
-          <Col className="bI">
-            <p className="supplierTitleSmall"> IBAN </p>
-            {bankInfo.IBAN ? <p> {bankInfo.IBAN} </p> : "Not Added" }
-          </Col>
-          <Col className="bI">
-            <p className="supplierTitleSmall"> Swift </p>
-            {bankInfo.swiftCode ? <p> {bankInfo.swiftCode} </p> : "Not Added" }
-          </Col>
-        </Row>
-      </Container>
+      <div className="bankingInfoContainer">
+        <div className="bankingTopLeft">
+          <p className="supplierTitleSmall"> Bank name </p>
+          {bankInfo.bankName ? <p> {bankInfo.bankName} </p> : "Not Added" }
+        </div>
+        <div className="bankingTop">
+          <p className="supplierTitleSmall"> Bank branch </p>
+          {bankInfo.bankBranch ? <p> {bankInfo.bankBranch} </p> : "Not Added" }
+        </div>
+        <div className="bankingTopRight">
+          <p className="supplierTitleSmall"> Account title </p>
+          {bankInfo.accountTitle ? <p> {bankInfo.accountTitle} </p> : "Not Added" }
+        </div>
+        <div className="bankingBottomLeft">
+          <p className="supplierTitleSmall"> Account number </p>
+          {bankInfo.accountNumber ? <p> {bankInfo.accountNumber} </p> : "Not Added" }
+        </div>
+        <div className="bankingBottom">
+          <p className="supplierTitleSmall"> IBAN </p>
+          {bankInfo.IBAN ? <p> {bankInfo.IBAN} </p> : "Not Added" }
+        </div>
+        <div className="bankingBottomRight">
+          <p className="supplierTitleSmall"> Swift </p>
+          {bankInfo.swiftCode ? <p> {bankInfo.swiftCode} </p> : "Not Added" }
+        </div>
+      </div>
       </>
     )
   } else {
@@ -117,6 +110,11 @@ const SupplierInfoView = (props) => {
         <HeaderIcons />
       </div>
       <div className="supplierInfoContent">
+        <Link to={"/updateOrg/" + props.supplier._id} className="supplierEditButton">
+          <button className="standardButtonWithoutColour editIconVersion mcYellowBG mcGrey">
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        </Link>
         <p className="supplierTitle"> Name </p>
         <p> {props.supplier.supplierName} </p>
 

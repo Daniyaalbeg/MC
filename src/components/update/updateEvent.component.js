@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { Row, Card, Form, Spinner } from 'react-bootstrap';
+import { Card, Form, Spinner } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { Link, Redirect } from 'react-router-dom';
 import { Formik, Field } from 'formik';
@@ -8,8 +8,11 @@ import * as Yup from 'yup';
 import { Checkbox } from '../utilities/Checkboxs.component';
 import { updateEvent, updatingEventRedirect } from '../../Actions/updateActions';
 import UpdateMap from './updateMap.component';
+import { activeStyle, rejectStyle, baseStyle, acceptStyle } from '../utilities/dropzoneStyles'
 import Dropzone, { useDropzone } from 'react-dropzone';
 import Thumb from '../utilities/thumb.component';
+
+import findChosenElement from '../utilities/searchUtilities';
 
 import '../../css/form.css';
 
@@ -44,38 +47,12 @@ const validationSchema = Yup.object().shape({
   .oneOf([true], "*Must select a location"),
 });
 
-const baseStyle = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
-  borderWidth: 2,
-  borderRadius: 2,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
-  backgroundColor: '#fafafa',
-  color: '#bdbdbd',
-  outline: 'none',
-  transition: 'border .24s ease-in-out'
-};
-
-const activeStyle = {
-  borderColor: '#2196f3'
-};
-
-const acceptStyle = {
-  borderColor: '#00e676'
-};
-
-const rejectStyle = {
-  borderColor: '#ff1744'
-};
 const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate}) => {
   const [location, setLocation] = useState([])
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [newImage, setNewImage] = useState(false)
+  const [imageNumberError, setImageNumberError] = useState("")
   const {
     isDragActive,
     isDragAccept,
@@ -84,6 +61,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
     accept: 'image/jpeg, image/png, image/jpg, image/gif',
     maxSize: 2000000,
   });
+
   const style = useMemo(() => ({
     ...baseStyle,
     ...(isDragActive ? activeStyle : {}),
@@ -96,7 +74,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
 
   if (!loaded) {  
     if (eventToUpdate === null && !loaded) {
-      return <Redirect to="/" />
+      return <Redirect to="/dashboard" />
     } else {
       setLocation(eventToUpdate.location.coordinates)
     }
@@ -108,13 +86,13 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
   }
 
   if (eventToUpdate === null) {
-    return <Redirect push to="/" />
+    return <Redirect push to="/dashboard" />
   }
   if (!auth) {
-    return <Redirect push to="/" />
+    return <Redirect push to="/dashboard" />
   }
   if (success) {
-    return <Redirect push to="/" /> 
+    return <Redirect push to="/dashboard" /> 
   }
 
   return (
@@ -251,10 +229,10 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
         </Form.Group>
 
         <Form.Group>
-          <Form.Label> Images of Event (Under 1mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
+          <Form.Label> Images of Event (Under 2mb, only 3 images, files must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
             accept = 'image/jpeg, image/png, image/jpg, image/gif'
-            maxSize = {11000000}
+            maxSize = {20000000}
             onDropRejected={(rejectedFiles) => {
               console.log('rejected')
               setRejectedFilesState(rejectedFiles)
@@ -263,22 +241,28 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
               if (rejectedFiles.length === 0) {
                 setRejectedFilesState([])
               }
-              setNewImage(true)
-              setFieldValue('images', acceptedFiles);
+              if (acceptedFiles.length > 3) {
+                setImageNumberError(true)
+              } else {
+                setImageNumberError(false)
+                setNewImage(true)
+                setFieldValue('images', acceptedFiles);
+              }
           }}>
             {({getRootProps, getInputProps}) => (
-              <Fragment>
+              <>
               <div {...getRootProps({style})}>
                 <input {...getInputProps()} />
                 <p>Drag 'n' images here, or click to select images</p>
-                <Row> {
+                <div className="rowThumb"> {
                 values.images.map((file) => {
                   return <Thumb file={file} key={file.name} />
                 })
-              } </Row>
+              } </div>
               </div>
-              {rejectedFilesState.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}
-              </Fragment>
+              {rejectedFilesState.length === 0 ? null : <p className="redStandardError"> Some files were rejected. make sure they are not more than 2mb. </p>}
+              {imageNumberError ? <p className="redStandardError"> Only 3 images are allowed </p> : null}
+              </>
           )}
           {/* <div {...getRootProps({style})}>
             <input {...getInputProps()} />
@@ -292,7 +276,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
       
 
         <Form.Group>
-          <Form.Label> Date of the Event (Can be in the future or past) <span className="red">*</span> </Form.Label>
+          <Form.Label> Date of the Event <span className="red">*</span> </Form.Label>
           <br />
           <DatePicker
             selected={values.date}
@@ -301,6 +285,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
             }}
             name="date"
             className="datePicker"
+            maxDate={new Date()}
           />
         </Form.Group>
 
@@ -356,21 +341,12 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
   )
 }
 
-const findChosenEvent = (id, events) => {
-  if (events == null) { return null }
-  for (let i = 0; i < events.length; i++) {
-    if (id === events[i]._id) {
-      return events[i]
-    }
-  }
-}
-
 const MapStateToProps = (state, ownProps) => ({
   auth: state.auth.auth,
   loading: state.updateInfo.loading,
   hasErrors: state.updateInfo.hasErrors,
   success: state.updateInfo.success,
-  eventToUpdate: state.userInfo.user.supplier ? findChosenEvent(ownProps.match.params.id, state.userInfo.user.supplier.events) : null,
+  eventToUpdate: state.userInfo.user.supplier ? findChosenElement(ownProps.match.params.id, state.userInfo.user.supplier.events) : null,
 });
 
 export default connect(MapStateToProps)(UpdateEvent)
