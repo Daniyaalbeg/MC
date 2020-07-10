@@ -35,11 +35,16 @@ const userSchema = new Schema({
     type: supplierSchema,
     required: false
   },
-  volunteer: {
-    type: [mongoose.Schema.Types.ObjectId],
+  createdGroups: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Group',
+    required: false
+  }],
+  volunteer: [{
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Volunteer',
     required: false
-  },
+  }],
   approved: {
     type: Boolean,
     required: true

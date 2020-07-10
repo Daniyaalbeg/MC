@@ -90,7 +90,7 @@ const EventListView = ({dispatch, events, selectedEvent, searchValue, showList})
       <div className="eventItemList">
         {events.map((event) => {
           return (
-            <div className="eventItem" key={event._id} action onClick={() => {
+            <div className="eventItem" key={event._id} onClick={() => {
               dispatch(selectingEvent(event))
               dispatch(toggleShowList())
               resetSearchAndFilter()

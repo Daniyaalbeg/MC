@@ -57,7 +57,7 @@
 }
 
 .heading {
-    margin-top: 45.75px;
+    margin-top: 8px;
     margin-bottom: 12px;
     font-family: proximaNova;
     font-weight: bold;
@@ -75,9 +75,6 @@
     width: 75%;
     margin-top: 0PX;
 }
-
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(1.05); }
 
 .starContainer {
     position: absolute;

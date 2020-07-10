@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Carousel, Spinner } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 import '../../css/homeView.css';
 import { getStatInfo, getFeaturedInfo } from '../../Actions/homeViewActions';
 import { getUserInfo } from '../../Actions/userInfoActions';
@@ -49,6 +50,10 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
 
   return (
     <>
+    <Helmet htmlAttributes>
+      <html lang="en" />
+      <meta name="description" content="A web portal for change makers." />
+    </Helmet>
     <div className="homeViewContainer">
       <Carousel controls={true} fade={true} indicators={false} interval={2000}>
         {images.map((image, index) => {
@@ -57,7 +62,7 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
               <Carousel.Caption bsPrefix="slideCaptionContainer">
                 <p className={"slideCaption " + styleCaptions[index]}>{captions[index]}</p>
               </Carousel.Caption>
-              <img className={"homeImage " + styleImages[index]} src={image} alt=""/>
+              <img className={"homeImage " + styleImages[index]} src={image} alt="Different people of Pakistan"/>
             </Carousel.Item>
           )
         })}

@@ -182,13 +182,13 @@ export const WhichLogo = (props) => {
     return null
   }
   if (props.icon.toLowerCase().includes("facebook")) {
-    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faFacebook} /> </a>
+    return <a href={props.icon} target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faFacebook} /> </a>
   } else if (props.icon.includes('twitter')) {
-    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faTwitter} href={props.icon} /> </a>
+    return <a href={props.icon} target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon"> <FontAwesomeIcon icon={faTwitter} href={props.icon} /> </a>
   } else if (props.icon.includes('instagram')) {
-    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon">< FontAwesomeIcon icon={faInstagram} href={props.icon} /> </a>
+    return <a href={props.icon} target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon">< FontAwesomeIcon icon={faInstagram} href={props.icon} /> </a>
   } else {
-    return <a href={props.icon}  target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon">< FontAwesomeIcon icon={faGlobe} href={props.icon} /> </a>
+    return <a href={props.icon} target="_blank" rel="noopener noreferrer" className="iconSpecific websiteIcon">< FontAwesomeIcon icon={faGlobe} href={props.icon} /> </a>
   }
 }
 

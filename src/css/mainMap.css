@@ -124,20 +124,6 @@
   background: #222A2E;
 }
 
-
-@media only screen and (max-width: 600px) {
-  .mapView {
-    width: 100vw !important;
-    height: 100vh;
-  }
-  .eventListView {
-    display: none;
-  }
-  .mapViewLayerList {
-    display: none;    
-  }
-}
-
 .lsoHouseContainer {
   display: flex;
   flex-direction: row;
@@ -204,4 +190,20 @@
 .mapLegendRoundIcons {
   height: 24px;
   width: 24px;
+}
+.lsoIconLegend {
+  
+} 
+
+@media only screen and (max-width: 600px) {
+  .mapView {
+    width: 100vw !important;
+    height: 100vh;
+  }
+  .eventListView {
+    display: none;
+  }
+  .mapViewLayerList {
+    display: none;    
+  }
 }

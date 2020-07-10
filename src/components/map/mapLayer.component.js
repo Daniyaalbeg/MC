@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as MapLayerType from './mapLayerTypes';
 import createPolygon from './createPolygon';
 // import randomMCColour from '../utilities/randomMCColour.component'
-import markerDuotone from '../../assets/svg/pin.svg';
+import lsoMarker from '../../assets/svg/LSO_Marker.svg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/pro-solid-svg-icons';
@@ -166,8 +166,8 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
                     lng: feature.geometry.averageLatLng.lng
                   }}
                   icon={{
-                    url: markerDuotone,
-                    scaledSize: new window.google.maps.Size(35, 35),
+                    url: lsoMarker,
+                    scaledSize: new window.google.maps.Size(56, 56),
                     origin: new window.google.maps.Point(0, 0),
                     anchor: new window.google.maps.Point(12, 12),
                   }}

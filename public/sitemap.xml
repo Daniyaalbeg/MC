@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://www.ministryofchange.org/</loc> </url>
+<url> <loc>https://www.ministryofchange.org/</loc> </url>
+<url> <loc>https://www.ministryofchange.org/</loc> </url>
+<url> <loc>https://www.ministryofchange.org/dashboard</loc> </url>
+<url> <loc>https://www.ministryofchange.org/map</loc> </url>
+<url> <loc>https://www.ministryofchange.org/organisations/:id</loc> </url>
+<url> <loc>https://www.ministryofchange.org/organisations</loc> </url>
+<url> <loc>https://www.ministryofchange.org/groups</loc> </url>
+<url> <loc>https://www.ministryofchange.org/about</loc> </url>
+<url> <loc>https://www.ministryofchange.org/signup</loc> </url>
+<url> <loc>https://www.ministryofchange.org/signupOrg</loc> </url>
+<url> <loc>https://www.ministryofchange.org/updateOrg/:id</loc> </url>
+<url> <loc>https://www.ministryofchange.org/reset</loc> </url>
+<url> <loc>https://www.ministryofchange.org/resetPassword/:id/:token</loc> </url>
+<url> <loc>https://www.ministryofchange.org/verify/:token</loc> </url>
+<url> <loc>https://www.ministryofchange.org/createEvent</loc> </url>
+<url> <loc>https://www.ministryofchange.org/updateEvent/:id</loc> </url>
+<url> <loc>https://www.ministryofchange.org/createGroup</loc> </url>
+<url> <loc>https://www.ministryofchange.org/cnic</loc> </url>
+<url> <loc>https://www.ministryofchange.org/privacypolicy</loc> </url>
+<url> <loc>https://www.ministryofchange.org/termsandconditions</loc> </url>
+</urlset>

@@ -27,7 +27,8 @@ const validationSchema = Yup.object().shape({
   .min(5, "*Password must be longer than 5 charachters")
   .max(20, "*password must be less than 20 charachters")
   .matches("", )
-  .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/, "*Password must contain an uppercase, lowercase letter, number and special charachter"),
+  // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/, "*Password must contain an uppercase, lowercase letter, number and special charachter"),
+  .matches(/(?=^.{5,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=(.*\d){1,}))((?!.*[",;&|'])|(?=(.*\W){1,}))(?!.*[",;&|'])^.*$/, "*Password must contain an uppercase, lowercase letter, and number"),
   mobile: Yup.string()
   .required("*Number is required")
   .min(7, "*Number must be longer than 7 charachters")

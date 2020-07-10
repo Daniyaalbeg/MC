@@ -40,7 +40,8 @@ export default class CheckboxGroup extends React.Component {
         <fieldset  style={{
         display: "flex",
         width: "100%",
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexDirection: "column"
         }}>
           <legend>{label}</legend>
           {React.Children.map(children, child => {

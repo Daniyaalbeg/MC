@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios from 'axios'
 import { API, rootURL, production } from '../config'
 import { getUserInfo } from './userInfoActions'
+import { withImageUploadSingle } from './imageUpload'
 
 export const UPDATE_EVENT = "UPDATE_EVENT";
 export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
@@ -90,7 +91,7 @@ export function updateOrg(data) {
     dispatch(updatingOrg());
 
     if (data.newImage) {
-      withImageUploadOrg(dispatch, data)
+      withImageUploadSingle(dispatch, data, updateOrgCall, updatingOrgFailure, "orgImages")
     } else {
       updateOrgCall(dispatch, data)
     }
@@ -98,14 +99,14 @@ export function updateOrg(data) {
 }
 
 const updateOrgCall = (dispatch, data) => {
-  console.log(data)
   axios({
     method: 'post',
     url: rootURL(production)+API+'/supplier/update/' + data._id,
     headers: {'Content-Type': 'application/json'},
     data: {
       supplierName: data.supplierName,
-      supplierImageURL: data.supplierImageURL,
+      //data.image is different from the model because a generic image upload function is used
+      supplierImageURL: data.image,
       bankingDetails: data.bankingDetails,
       type: data.type,
       areaOfWork: data.areaOfWork,
@@ -220,57 +221,4 @@ const withImageUploadMulti = (dispatch, data, typeOfUpload) => {
       }
       return
     });
-}
-
-
-const withImageUploadOrg = (dispatch, data) => {
-  //Perform image file link request
-  let file = data.imageFile[0]
-  let fileParts = file.name.split('.');
-  let fileName
-  let fileType
-  try {
-    fileName = fileParts[0];
-    fileType = fileParts[1];
-  } catch {
-    dispatch(updatingOrgFailure("File name must end in an extension"))
-    return
-  }
-
-  let imageCategory = "orgImages"
-  
-  axios.post(rootURL(production)+API+'/imageUpload',{
-    fileName: fileName,
-    fileType: fileType,
-    fileSize: file.size,
-    imageCategory: imageCategory
-  })
-  .then((res) => {
-    const returnData = res.data.data.returnData;
-    const signedRequest = returnData.signedRequest;
-    const url = returnData.url
-    // console.log("Recieved a signed request " + signedRequest);
-    // console.log(url)
-
-    //create axios put request
-    const options = {
-      headers: {
-        'Content-Type' : fileType,
-        'Cache-Control': 'max-age=31556926'
-      }
-    };
-
-    axios.put(signedRequest, file, options)
-    .then((res) => {
-      data.supplierImageURL = url
-      updateOrgCall(dispatch, data)
-    })
-    .catch((err) => {
-      dispatch(updatingOrgFailure(err))
-    })
-  })
-  .catch((err) => {
-    console.log(err);
-    dispatch(updatingOrgFailure(err))
-  })
 }

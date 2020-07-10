@@ -27,6 +27,7 @@
 .supplierInfoHeader > div > p {
   margin: 0;
   margin-left: 12px;
+  font-size: larger;
   font-weight: bold;
   color: #444444;
 }

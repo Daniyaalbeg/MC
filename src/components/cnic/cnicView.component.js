@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
-import { Card, Row, Accordion, Spinner } from 'react-bootstrap'
+import { Accordion, Spinner } from 'react-bootstrap'
+import { Helmet } from 'react-helmet'
 import { Tabs, Panel } from '@bumaga/tabs'
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../Actions/userInfoActions'
@@ -19,12 +20,18 @@ const MustBeLoggedIn = () => {
   const randomColour = getRandomColour()
 
   return (
+    <>
+    <Helmet htmlAttributes>
+      <html lang="en" />
+      <meta name="description" content="Search or add CNIC numbers to ration distributions" />
+    </Helmet>
     <div className="cnicMustBeLoggedIn">
       <p className="cnicLoggedInHeading" style={{backgroundColor: randomColour}}>
         <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" />
         Must be logged in and verified to view
       </p>
     </div>
+    </>
   )
 }
 

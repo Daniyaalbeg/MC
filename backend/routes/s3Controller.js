@@ -96,8 +96,8 @@ const sign_s3 = ((req, res) => {
     const s3 = new aws.S3();
     const imageCategory = req.body.imageCategory
     const fileName = req.body.fileName
-    const uniqueFileName= imageCategory +'/'+ uuid.v4()
     const fileType = req.body.fileType;
+    const uniqueFileName= imageCategory +'/'+ uuid.v4() +'.'+ fileType
     const s3Params = {
       Bucket: S3_BUCKET,
       Key: uniqueFileName,

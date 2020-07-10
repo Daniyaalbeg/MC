@@ -18,39 +18,8 @@ const EventInfoView = (props) => {
         <div className="smallBoi">
           <button className="standardButton" onClick={props.onClick} style={{marginBottom: "12px"}}> Back </button>
         </div>
-        <div className="smallBoi">
-          <p className="eventTitle"> Name </p>
-          <p className="eventContent"> {event.name} </p>
-        </div>
-        <div className="smallBoi">
-          <p className="eventTitle"> Description </p>
-          <p className="eventContent"> {event.description} </p>
-        </div>
-        <div className="smallBoi">
-          <p className="eventTitle"> Number of items </p>
-          <p className="eventContent"> {event.totalNumberOfItems} </p>
-        </div>
-        <div className="smallBoi">
-          <p className="eventTitle"> Descripiton of items </p>
-          <p className="eventContent"> {event.itemsDescription} </p>
-        </div>
-        <div className="smallBoi">
-          <p className="eventTitle"> Type of Distribution </p>
-          <p className="eventContent"> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>
-        </div>
-        <div className="smallBoi">
-          <p className="eventTitle"> Happened on </p>
-          <p className="eventContent"> {new Date(event.date).toLocaleDateString("en-US", dateOptions)} </p>
-        </div>
-        <div className="smallBoi">
-          <p className="eventTitle"> Created by </p>
-          <div className="orgLinkFromEvent">
-            <FontAwesomeIcon icon={faLink} size="sm" />
-            <Link to={'/organisations/' + event.createdBy._id}> {event.createdBy.supplierName} </Link>
-          </div>
-        </div>
         {event.images.length !== 0 &&
-          <div className="spaceBelow">
+          <div className="smallBoi spaceBelow">
           <p className="eventTitle"> Images </p>
           <Carousel>
             {event.images.map((image) => {
@@ -65,6 +34,37 @@ const EventInfoView = (props) => {
           </Carousel>
           </div>
         }
+        <div className="smallBoi">
+          <p className="eventInfoTitle"> Name </p>
+          <p className="eventContent"> {event.name} </p>
+        </div>
+        <div className="smallBoi">
+          <p className="eventInfoTitle"> Description </p>
+          <p className="eventContent"> {event.description} </p>
+        </div>
+        <div className="smallBoi">
+          <p className="eventInfoTitle"> Number of items </p>
+          <p className="eventContent"> {event.totalNumberOfItems} </p>
+        </div>
+        <div className="smallBoi">
+          <p className="eventInfoTitle"> Descripiton of items </p>
+          <p className="eventContent"> {event.itemsDescription} </p>
+        </div>
+        <div className="smallBoi">
+          <p className="eventInfoTitle"> Type of Distribution </p>
+          <p className="eventContent"> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>
+        </div>
+        <div className="smallBoi">
+          <p className="eventInfoTitle"> Happened on </p>
+          <p className="eventContent"> {new Date(event.date).toLocaleDateString("en-US", dateOptions)} </p>
+        </div>
+        <div className="smallBoi">
+          <p className="evenInfotTitle"> Created by </p>
+          <div className="orgLinkFromEvent">
+            <FontAwesomeIcon icon={faLink} size="sm" />
+            <Link to={'/organisations/' + event.createdBy._id}> {event.createdBy.supplierName} </Link>
+          </div>
+        </div>
       </div>
     )
   }

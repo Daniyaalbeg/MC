@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API, rootURL, production } from '../config'
+import { getUserInfo } from './userInfoActions'
 
 export const LOGIN_ATTEMPT = "LOGIN"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
@@ -53,6 +54,7 @@ export function logout() {
     })
     .then((res) => {
       dispatch(loggingOut(res.data));
+      dispatch(getUserInfo())
     })
     .catch((error) => {
       // console.log(error)

@@ -83,6 +83,7 @@ const s3Router = require('./routes/s3Controller');
 const emailVerificationRouter = require('./routes/emailVerificationRouter');
 const infoRouter = require('./routes/infoRouter');
 const cnicRouter = require('./routes/cnicRouter');
+const groupRouter = require('./routes/groupController');
 
 app.use('/api/supplier', supplierRouter);
 app.use('/api/event', eventRouter);
@@ -94,6 +95,7 @@ app.use('/api/getCnicUpload', s3Router.uploadDocument);
 app.use('/api/emailVerification', emailVerificationRouter.router);
 app.use('/api/info', infoRouter);
 app.use('/api/cnic', cnicRouter);
+app.use('/api/group', groupRouter);
 
 app.listen(local.port, () => {
   console.log(`HTTP server is running on port: ${local.port}`);

@@ -9,9 +9,6 @@
 }
 
 .bigBoi {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   height: 100%;
   width: 100%;
   padding: 20px;
@@ -21,80 +18,19 @@
   color: whitesmoke;
   backdrop-filter: blur(6px);
 }
-
-.searchBarSpace {
-  margin: 0;
-}
-
-/* Used on map */
-.imageContainerEvent {
-  position: relative;
-  height: 250px;
-  width: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  background-color: var(--main-bg-color-transparent);
-}
-.imgEvent {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  /* transform: translate(-50%,-50%); */
-}
-
-.carouselImage {
-  height: 100%;
-  width: 100%;
-}
-
-p {
-  font-size: larger;
-}
-
-.imageCarouselContainer {
-  width: 100%;
-  height: 300px;
-  height: fit-content;
-  margin-bottom: 12px;
-}
-
-.imageCarousel {
-  height: fit-content;
-  margin-top: 12px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.carousel-control-next-icon {
-
-}
-.carousel-control-prev-icon {
-}
-
-/* .backButtonIcon {
-  padding-right: 6px;
-} */
-.spaceBelow {
-  margin-bottom: 12px;
-}
-.backButton {
-  border: 0;
-  text-align: left;
-  padding-left: 0;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 12px;
-}
-
 .smallBoi {
   display: flex;
   flex-direction: column;
   width: fit;
+  height: fit-content;
 }
-.smallBoi .eventTitle {
+.smallBoi .eventInfoTitle {
+  display: block;
   font-size: medium;
   font-weight: normal;
 }
 .smallBoi .eventContent {
+  display: block;
   font-size: large;
   font-weight: bold;
 }
@@ -119,6 +55,64 @@ p {
 }
 .smallBoi div:hover svg {
   color: #1589C9;
+}
+
+.searchBarSpace {
+  margin: 0;
+}
+
+/* Used on map */
+.imageContainerEvent {
+  position: relative;
+  height: 250px;
+  width: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--main-bg-color-transparent);
+}
+.imgEvent {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  /* transform: translate(-50%,-50%); */
+}
+
+.carousel-control-next, .carousel-control-prev {
+  top: 50% !important;
+}
+
+.carouselImage {
+  height: 100%;
+  width: 100%;
+}
+
+.imageCarouselContainer {
+  width: 100%;
+  height: 300px;
+  height: fit-content;
+  margin-bottom: 12px;
+}
+
+.imageCarousel {
+  height: fit-content;
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* .backButtonIcon {
+  padding-right: 6px;
+} */
+.spaceBelow {
+  margin-bottom: 12px;
+}
+.backButton {
+  border: 0;
+  text-align: left;
+  padding-left: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
 }
 
 .updateDelete {

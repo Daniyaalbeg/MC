@@ -43,7 +43,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
       user.save((err, user) => {
         console.log(err)
         if (err) return res.status(500).send("There was a problem saving the user.");
-        res.json('new event created')
+        res.status(200).json('new event created')
       })
     })
   });

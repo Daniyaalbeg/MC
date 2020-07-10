@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Row, Card, Form, Spinner } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import { Redirect } from 'react-router-dom';
 import { Formik, Field, setFieldValue } from 'formik';
 import * as Yup from 'yup';
 import { Checkbox } from '../utilities/Checkboxs.component';
 import { creatingNewEvent, creatingEventRedirect, creatingEventReset } from '../../Actions/createEventActions';
+import { baseStyle, acceptStyle, activeStyle, rejectStyle } from '../utilities/dropzoneStyles';
 import SelectMap from './selectMap.component';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import Thumb from '../utilities/thumb.component';
@@ -53,34 +53,6 @@ const validationSchema = Yup.object().shape({
   mapClicked: Yup.bool()
   .oneOf([true], "*Must select a location"),
 });
-
-const baseStyle = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
-  borderWidth: 2,
-  borderRadius: 2,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
-  backgroundColor: '#fafafa',
-  color: '#bdbdbd',
-  outline: 'none',
-  transition: 'border .24s ease-in-out'
-};
-
-const activeStyle = {
-  borderColor: '#2196f3'
-};
-
-const acceptStyle = {
-  borderColor: '#00e676'
-};
-
-const rejectStyle = {
-  borderColor: '#ff1744'
-};
 
 const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
   const [location, setLocation] = useState([])

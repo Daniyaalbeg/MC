@@ -1,0 +1,265 @@
+.groupContainer {
+  min-height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.groupHeader {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--main-blue-color);
+}
+.groupTextIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.groupHeader > div > svg {
+  margin-left: 32px;
+  font-size: 2em;
+  color: whitesmoke;
+}
+.groupHeader > div > p {
+  margin: 0;
+  margin-left: 12px;
+  font-weight: bold;
+  color: whitesmoke;
+  font-size: larger;
+}
+
+.groupContent {
+  min-height: 90%;
+  border-radius: 8px;
+  padding: 32px;
+  overflow-y: scroll;
+}
+
+.groupCardContainer {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(5, 200px);
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+}
+.groupCard {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-blue-color);
+  border-radius: 8px;
+  height: 200px;
+  width: auto;
+}
+.groupCard > img {
+  /* padding: 8px; */
+  object-fit: cover;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border: 4px solid whitesmoke;
+}
+.groupCard > p {
+  font-weight: bold;
+  font-size: larger;
+  height: 20px;
+  color: whitesmoke;
+}
+
+.createGroupButton {
+  background-color: var(--main-blue-color) !important;
+  font-weight: bold;
+}
+
+.groupIconContainer > img {
+  margin: 4px;
+  height: 40px;
+  width: 40px;
+}
+
+.groupModalPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.groupModal {
+  /* background: #f47d2e !important; */
+  position: relative;
+  top: calc(50% - 300px);
+  left: calc(50% - 400px);
+  height: fit-content;
+  width: 800px;
+  border-radius: 8px;
+  padding: 80px;
+  overflow-y: scroll;
+  color: whitesmoke;
+  overflow-y: scroll;
+  background: linear-gradient(335deg, #3092c7b3, #1272a7b3);
+
+
+
+  /* background: linear-gradient(335deg, --main-blue-color, --main-blue-color); */
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 10s ease infinite;
+  -moz-animation: backgroundGradient 10s ease infinite;
+  animation: backgroundGradient 10s ease infinite;
+}
+.groupModal p {
+  margin: 0;
+}
+.groupModal h1 {
+  margin: 0;
+}
+.modalTop {
+
+}
+.modalTopTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80px;
+  padding-left: 40px;
+  /* background-color: rebeccapurple; */
+}
+.modalTopTop > img {
+  border-radius: 50%;
+  height: 128px;
+  width: 128px;
+  border: 6px solid whitesmoke;
+  object-fit: cover;
+}
+.modalTopTop > h1 {
+  margin-left: 32px;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+.modalTopBottom {
+  background-color: whitesmoke;
+  color: black;
+  padding: 32px;
+  height: fit-content;
+  border-radius: 8px;
+}
+.modalMiddle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: whitesmoke;
+  padding: 8px;
+  height: fit-content;
+  border-radius: 8px;
+}
+.modalBottom {
+  background-color: whitesmoke;
+  color: black;
+  padding: 32px;
+  height: fit-content;
+  border-radius: 8px;
+}
+.modalHeader {
+  font-size: medium;
+  font-weight: bold;
+}
+.groupModal > a {
+  display: inline-block;
+  margin-top: 8px;
+  width: 100%;
+  height: 40px;
+  background-color: whitesmoke;
+  font-size: larger;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.groupModal > a:hover {
+  text-decoration: none;
+  background-color: white;
+}
+.modalAffiliatedOrg {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.modalAffiliatedOrg > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 8px;
+}
+.modalAffiliatedOrg:hover {
+  cursor: pointer;
+  background-color: white;
+  border-radius: 8px;
+}
+.modalAffiliatedOrg > p {
+  color: #040404;
+  margin-left: 8px;
+  font-weight: bold;
+  font-size: large;
+}
+.modalAffiliatedOrg:hover > p {
+  color: #040404;
+  text-decoration: none;
+}
+
+.modalCloseButton {
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: whitesmoke;
+}
+.modalCloseButton:hover {
+  color: white;
+}
+
+
+
+
+@-webkit-keyframes backgroundGradient {
+  0%{background-position:61% 0%}
+  50%{background-position:40% 100%}
+  100%{background-position:61% 0%}
+}
+@-moz-keyframes backgroundGradient {
+  0%{background-position:61% 0%}
+  50%{background-position:40% 100%}
+  100%{background-position:61% 0%}
+}
+@keyframes backgroundGradient {
+  0%{background-position:61% 0%}
+  50%{background-position:40% 100%}
+  100%{background-position:61% 0%}
+}
+
+@media only screen and (max-device-width: 1150px) {
+  .groupContent {
+    padding: 12px;
+  }
+  .groupCardContainer {
+    grid-template-columns: auto;
+  }
+  .groupCard {
+    width: 100%;
+  }
+}

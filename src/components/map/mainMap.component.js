@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 // import MapView from './mapView.component';
+import { Helmet } from 'react-helmet';
 import MapView from './mapViewGoogle.component';
 import EventListView from './eventListView.component';
 import MapViewLayerList from './MapViewLayerList.component';
@@ -22,6 +23,11 @@ const HomeView = ({ dispatch, loading, fetched}) => {
   })
 
   return (
+    <>
+    <Helmet htmlAttributes>
+      <html lang="en" />
+      <meta name="description" content="Map that shows distribtuions, projects, layer data, etc all over Pakistan" />
+    </Helmet>
     <div className="containerHome">
       {/* <div className="mapView"><MapView /></div> */}
       <div className="mapViewLayerList">
@@ -32,6 +38,7 @@ const HomeView = ({ dispatch, loading, fetched}) => {
       </div>
       <div className="eventListView"><EventListView /></div>
     </div>
+    </>
   )
 }
 

@@ -2,6 +2,11 @@
   --main-bg-color-transparent: #222a2ec4;
   --main-bg-color: #2b353a;
   --main-yellow-color: #FFD71A;
+  --main-blue-color: #1589C9;
+  --main-red-color: #EF2A30;
+  --main-orange-color: #F47E2E;
+  --main-grey-color: #4C5962;
+  --main-green-color: #4BB250;
 }
 
 .mcRed {
@@ -59,7 +64,8 @@
 }
 
 .mcTabA {
-
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 .mcTabA:hover:not(.active) {
   background-color: rgba(239, 42, 49, 0.25);
@@ -68,7 +74,8 @@
   background-color: #EF2A30;
 }
 .mcTabB {
-
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 .mcTabB:hover:not(.active) {
   background-color: rgba(244, 125, 46, 0.25);
@@ -77,7 +84,8 @@
   background-color: #F47E2E;
 }
 .mcTabC {
-
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 .mcTabC:hover:not(.active) {
   background-color: rgba(226, 188, 0, 0.25);
@@ -86,7 +94,8 @@
   background-color: rgb(226, 188, 0);
 }
 .mcTabD {
-
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 .mcTabD:hover:not(.active) {
   background-color: rgba(75, 178, 80, 0.25);
@@ -95,6 +104,8 @@
   background-color: #4BB250;
 }
 .mcTabE {
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 .mcTabE:hover:not(.active) {
   background-color: rgba(21, 138, 201, 0.25);
@@ -103,7 +114,8 @@
   background-color: #1589C9;
  }
 .mcTabF {
-
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 .mcTabF:hover:not(.active) {
   background-color: rgba(76, 89, 98, 0.25);
@@ -122,6 +134,7 @@ p {
   border-radius: 5px;
   padding: 0.3em 0.6em;
   font-weight: bold;
+  height: fit-content;
 }
 .standardButton:hover {
   background-color: rgb(18, 117, 170);
@@ -228,10 +241,17 @@ p {
   height: 50px;
   width: 100%;
   /* display: block; */
-  padding: .5em 1em;
+  padding: 0 1em;
   color: whitesmoke;
   background-color: var(--main-bg-color);
   font-weight: bold;
+}
+.tab > svg {
+  font-size: 1.2em;
+  margin-right: .75em;
+}
+.tab > p {
+  margin: 0em;
 }
 /* #1589C9  */
 .tab.active {
@@ -243,19 +263,15 @@ p {
 }
 
 @media only screen and (max-device-width: 1150px) {
+  .tab {
+    padding: 0;
+  }
   .tab > svg {
     margin: auto;
     font-size: 1.2em;
   }
-}
-
-@media only screen and (min-device-width: 1150px) {
   .tab > p {
     margin: 0em;
-  }
-  .tab > svg {
-    margin-right: .75em;
-    font-size: 1.2em;
   }
 }
 
@@ -311,6 +327,17 @@ p {
   -webkit-animation: bounce 0.4s linear;
   animation: bounce 0.4s linear;
 }
+
+/* Animations */
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
+.growIcon { transition: all .3s ease-in-out; }
+.growIcon:hover { transform: scale(1.3); }
+
+.growSmall { transition: all .2s ease-in-out; }
+.growSmall:hover { transform: scale(1.02); }
 
 @-webkit-keyframes bounce {
   0% { top: 0; }

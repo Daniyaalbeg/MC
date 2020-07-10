@@ -1,7 +1,7 @@
 import React from 'react';
 
-import mcWhole3 from '../../assets/svg/mcWhole3.svg';
-import pin from '../../assets/svg/pin.svg'
+import target from '../../assets/target.png';
+import lsoMarker from '../../assets/svg/LSO_Marker.svg'
 import * as MapLayerType from './mapLayerTypes';
 
 const MapLegend = ({ mapLayerToDisplay }) => {
@@ -9,7 +9,7 @@ const MapLegend = ({ mapLayerToDisplay }) => {
     <div className="mapLegend">
       <p id="mapLegendHeader"> Map Legend </p>
       <div className="mapLegendRow">
-        <img className="mapLegendRoundIcons" src={mcWhole3} alt="asd"/>
+        <img className="mapLegendRoundIcons" src={target} alt="Marker Target"/>
         <p> Cluster of icons </p>
       </div>
       <LegendBasedOnLayer mapLayerToDisplay={mapLayerToDisplay} />
@@ -23,7 +23,7 @@ const LegendBasedOnLayer = ({ mapLayerToDisplay }) => {
       return (
         <>
         <div className="mapLegendRow">
-          <img className="mapLegendRoundIcons" src={pin} alt="asd"/>
+          <img className="mapLegendRoundIcons lsoIconLegend" src={lsoMarker} alt="asd"/>
           <p> Local Support Organisation (LSO) </p>
         </div>
         </>

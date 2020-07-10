@@ -9,11 +9,11 @@ import { faUser, faBell, faSignOut } from '@fortawesome/pro-duotone-svg-icons';
 const HeaderIcons = ({ dispatch }) => {  
   return (
     <div className="headerIconContainer">
-      <button className="headerButton">
+      {/* <button className="headerButton">
         <div className="dbHeaderIcon dbIconBg">
           <FontAwesomeIcon icon={faBell} className="dbFaBell dbIconFont" />
         </div>
-      </button>
+      </button> */}
       <button className="headerButton" onClick={() => { dispatch(logout()) }}>
         <div className="dbHeaderIcon dbIconBg logoutIcon">
           <FontAwesomeIcon icon={faSignOut} className="dgFaSignOut dbIconFont" />

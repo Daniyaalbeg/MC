@@ -1,6 +1,7 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';
 import { Card, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -44,6 +45,11 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
 
 	if(fetched && !loading){
 		return (
+			<>
+			<Helmet htmlAttributes>
+				<html lang="en" />
+				<meta name="description" content="List of all organisations signed up onto the MC portal" />
+    	</Helmet>
 			<div className="organisationViewContainer">
 			<div className="headingContainer">
 				<h1 className="heading"> Organisations </h1>
@@ -66,6 +72,7 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
 			</div>
 			<OrgCards orgs={orgInfo} dispatch={dispatch} />
 			</div>
+			</>
 		)
 	}
 	

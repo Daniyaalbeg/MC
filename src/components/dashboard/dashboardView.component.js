@@ -7,7 +7,8 @@ import { Spinner} from 'react-bootstrap';
 import ProfileInfoView from './profileInfoView.component';
 import SupplierInfoView from './supplierInfoView.component';
 import EventView from './eventView.component';
-// import Footer from '../homeView/mainFooter.component'
+import GroupInfoView from './groupInfoView.component';
+
 import { getUserInfo } from '../../Actions/userInfoActions';
 import getWindowDimensions from '../utilities/windowDimension.component';
 import { TabDashboard } from '../utilities/tabComponent';
@@ -105,22 +106,20 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             </div>
           </Panel>
           <Panel>
-            <div className="comingSoonContainer">
-            <p className="mcBlueBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
-            </div>
+            <GroupInfoView groups={user.createdGroups} />
+            {/* <div className="comingSoonContainer">
+              <p className="mcBlueBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            </div> */}
           </Panel>
           <Panel>
             <EventView supplier={user.supplier} />
           </Panel>
           <Panel>
             <div className="comingSoonContainer">
-            <p className="mcRedBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+              <p className="mcRedBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
             </div>
           </Panel>
         </div>
-        {/* <div className="dbFooter">
-          <Footer />
-        </div> */}
         </Tabs>
       </div>
     )

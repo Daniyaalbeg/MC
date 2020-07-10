@@ -53,11 +53,6 @@ background-color: whitesmoke;
 
 .searchBarContainer {
   height: fit-content;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* justify-content: center; */
-
   border: 1px darkblue;
   padding-left: 20px;
   padding-bottom: 12px;

@@ -40,6 +40,7 @@
   margin: 0;
   margin-left: 12px;
   font-weight: bold;
+  font-size: larger;
   color: whitesmoke;
 }
 .loginFormContent {
@@ -52,21 +53,6 @@
 
 .loginFormGroup {
   width: 100%;
-}
-
-@media only screen and (max-device-width: 1150px) {
-  .dbLayout {
-    grid-template-columns: 60px calc(100% - 60px);
-  }
-  .loginForm {
-    margin-bottom: 50%;
-  }
-}
-
-@media only screen and (min-device-width: 1150px) {
-  .dbLayout {
-    grid-template-columns: 15% 85%;
-  }
 }
 
 .erroruserInfoContainer {
@@ -152,6 +138,7 @@
 .dbLeftBar {
   grid-area: sidebar;
   background-color: var(--main-bg-color);
+  padding: 8px;
 }
 .dbBody {
   grid-area: body;
@@ -163,18 +150,6 @@
   grid-area: footer;
   background-color: #4C5962;
   border-top: 1px solid #222B2E;
-}
-
-@media only screen and (max-device-width: 1150px) {
-  .dbBody {
-    padding: 10px;
-  }
-}
-
-@media only screen and (min-device-width: 1150px) {
-  .dbBody {
-    padding: 20px;
-  }
 }
 
 .dbUserImage {
@@ -284,4 +259,28 @@
 
 .modalFont {
   font-family: proximaNova;
+}
+
+@media only screen and (max-device-width: 1150px) {
+  .dbBody {
+    padding: 10px;
+  }
+  .dbLayout {
+    grid-template-columns: 60px calc(100% - 60px);
+  }
+  .dbLeftBar {
+    padding: 4px;
+  }
+  .loginForm {
+    margin-bottom: 50%;
+  }
+}
+
+@media only screen and (min-device-width: 1150px) {
+  .dbBody {
+    padding: 20px;
+  }
+  .dbLayout {
+    grid-template-columns: 15% 85%;
+  }
 }

@@ -148,6 +148,7 @@ router.route('/register').post((req, res) => {
 router.route('/me').get(verifyToken, (req, res, next) => {
   User.findById(req.id, { password: 0})
   .populate('supplier.events')
+  .populate('createdGroups')
   .exec((err, user) => {
     if (err) {
       console.log(err)

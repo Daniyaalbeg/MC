@@ -553,6 +553,12 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             <Field
               component={Checkbox}
               name="areaOfWork"
+              id="livestock"
+              label=" - Livestock"
+            />
+            <Field
+              component={Checkbox}
+              name="areaOfWork"
               id="fisheries"
               label=" - Fisheries"
             />
@@ -565,12 +571,6 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             <Field
               component={Checkbox}
               name="areaOfWork"
-              id="womenEmpowerment"
-              label=" - Women Empowerment"
-            />
-            <Field
-              component={Checkbox}
-              name="areaOfWork"
               id="health"
               label="Health"
             />
@@ -579,12 +579,6 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
               name="areaOfWork"
               id="motherAndChildHealth"
               label=" - Mother and Child Health"
-            />
-            <Field
-              component={Checkbox}
-              name="areaOfWork"
-              id="elderlyHealth"
-              label=" - Elderly Health"
             />
             <Field
               component={Checkbox}

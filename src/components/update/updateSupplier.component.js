@@ -26,29 +26,6 @@ const validationSchema = Yup.object().shape({
   .min(1, "*Organisation name must be longer than 1 charachter")
   .max(50, "*Organisation name must be less than 50 charachters")
   .matches(/^[a-zA-Z0-9_ ]*$/, "*Organisation name must only contain letters or numbers"),
-  // imageFile: Yup.mixed()
-  // .test(
-  //   "fileFormat",
-  //   "*Unsupported Format",
-  //   (value) => {
-  //     if (value != null) {
-  //       return SUPPORTED_FORMATS.includes(value.type)
-  //     } else {
-  //       return true
-  //     }
-  //   }
-  // )
-  // .test(
-  //   "fileSize",
-  //   "*File too large, please keep files below 1MB. You can use an online image compressor to reudce the size",
-  //   (value) => {
-  //     if (value != null) {
-  //       return value.size <= FILE_SIZE
-  //     } else {
-  //       return true
-  //     }
-  //   }
-  // ),
   bankName: Yup.string()
   .min(1, "*Bank name must be longer than 1 charachter")
   .max(50, "*Bank name must be less than 50 charachter")
@@ -164,7 +141,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
       <Formik 
         initialValues={{
           supplierName: supplierToUpdate.supplierName,
-          imageFile: supplierToUpdate.supplierImageURL,
+          supplierImageURL: supplierToUpdate.supplierImageURL,
           bankName: supplierToUpdate.bankingDetails.bankName,
           bankBranch: supplierToUpdate.bankingDetails.bankBranch,
           accountTitle: supplierToUpdate.bankingDetails.accountTitle,
@@ -212,7 +189,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
           const updatedSupplier = {
             _id: supplierToUpdate._id,
             supplierName: values.supplierName,
-            imageFile: values.imageFile,
+            image: values.supplierImageURL,
             bankingDetails: updatedBankingDetails,
             type: values.type,
             areaOfWork: values.areaOfWork,
@@ -228,7 +205,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
           }
           if (newImage) { updatedSupplier.newImage = true }
           dispatch(updateOrg(updatedSupplier))
-          // console.log(updatedSupplier.imageFile)
+          // console.log(updatedSupplier.supplierImageURL)
           // alert(JSON.stringify(updatedSupplier))
         }
       }
@@ -265,7 +242,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
                 setImageNumberError(true)
               } else {
                 setNewImage(true)
-                setFieldValue('imageFile', acceptedFiles);
+                setFieldValue('supplierImageURL', acceptedFiles[0]);
               }
           }}>
             {({getRootProps, getInputProps}) => (
@@ -274,9 +251,9 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
                 <input {...getInputProps()} />
                 <p>Drag 'n' images here, or click to select images</p>
                 <div className="rowThumb">
-                  { values.imageFile &&
-                    // values.imageFile.map((file) => {
-                      <Thumb file={values.imageFile} key={values.imageFile.name} />
+                  { values.supplierImageURL &&
+                    // values.supplierImageURL.map((file) => {
+                      <Thumb file={values.supplierImageURL} key={values.supplierImageURL.name} />
                     // })
                   }
                 </div>
@@ -292,27 +269,8 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
           </div>
           {rejectedFiles.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}     */}
           </Dropzone>
-          <p className="redStandardError"> {errors.imageFile} </p>
+          <p className="redStandardError"> {errors.supplierImageURL} </p>
         </Form.Group>
-
-        {/* Old image stuff */}
-        {/* <Form.Group controlId="imageUpload">
-            <Form.Label> Icon / Logo of your organisation </Form.Label>
-            <Form.File 
-              id="imageFile"
-              name="imageFile"
-              type="file"
-              label={values.imageFile == null ? "Upload file here" : values.imageFile.name}
-              lang="en"
-              custom
-              onChange={(e) => {
-                setNewImage(true)
-                setFieldValue("imageFile", e.currentTarget.files[0])
-              }}
-            />
-            <Thumb file={values.imageFile}/>
-            <p className="red"> {errors.imageFile} </p>
-        </Form.Group> */}
 
         <Form.Group controlId="formsupplierName">
           <Form.Label>Organisation name <span className="red">*</span></Form.Label>

@@ -27,6 +27,8 @@ import './css/organisationInfoView.css';
 import './css/profileInfoView.css';
 import './css/signupUser.css';
 import './css/supplierInfoView.css';
+import './css/groupInfoView.css';
+import './css/groupMainView.css';
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component';
@@ -36,6 +38,7 @@ import Error404 from './components/404.component';
 const MainMap = lazy(() => import('./components/map/mainMap.component')); 
 const Dashboard = lazy(() => import('./components/dashboard/dashboardContainer.component')); 
 const OrgView = lazy(() => import('./components/organisations/organisationsView.component'));
+const GroupView = lazy(() => import('./components/groups/groupView.component'));
 const OrgViewInfo = lazy(() => import('./components/organisations/organisationInfoView.component'));
 const SignUpOrg = lazy(() => import('./components/signup/signUpOrg.component'));
 const EditOrg = lazy(() => import('./components/update/updateSupplier.component'));
@@ -49,6 +52,7 @@ const About = lazy(() => import('./components/about.component'));
 const CnicView = lazy(() => import('./components/cnic/cnicView.component'));
 const PrivacyPolicy = lazy(() => import('./components/privacyPolicy.component'));
 const TermsAndConditions = lazy(() => import('./components/termsAndConditions'));
+const CreateGroup = lazy(() => import('./components/signup/createGroup.component'));
 
 
 function App({ dispatch, checkedCookie }) {
@@ -77,6 +81,7 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/map" exact component={MainMap}/>
           <Route path="/organisations/:id" component={OrgViewInfo}/>
           <Route path="/organisations" component={OrgView}/>
+          <Route path="/groups" component={GroupView}/>
           <Route path="/about" component={About} />
           <Route path="/signup" component={SignupUser}/>
           <Route path="/signupOrg" component={SignUpOrg}/>
@@ -86,6 +91,7 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/verify/:token" component={EmailVerification} />
           <Route path="/createEvent" component={CreateEvent} />
           <Route path="/updateEvent/:id" component={UpdateEvent} />
+          <Route path="/createGroup" component={CreateGroup} />
           <Route path="/cnic" component={CnicView} />
           <Route path="/privacypolicy" component={PrivacyPolicy} />
           <Route path="/termsandconditions" component={TermsAndConditions} />

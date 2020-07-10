@@ -10,6 +10,7 @@ import orgInfoReducer from './orgInfoReducer';
 import homeViewReducer from './homeViewReducer';
 import deleteReducer from './deleteReducer';
 import cnicReducer from './cnicReducer';
+import groupReducer from './groupReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   mapInfo: mapInfoReducer,
   orgInfo: orgInfoReducer,
   deleteInfo: deleteReducer,
-  cnicInfo: cnicReducer
+  cnicInfo: cnicReducer,
+  groupInfo: groupReducer
 });
 
 export default rootReducer;
