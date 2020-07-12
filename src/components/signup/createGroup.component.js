@@ -9,19 +9,19 @@ import Dropzone, { useDropzone } from 'react-dropzone';
 import CheckboxGroup, { Checkbox } from '../utilities/Checkboxs.component';
 import Thumb from '../utilities/thumb.component';
 import { baseStyle, acceptStyle, activeStyle, rejectStyle } from '../utilities/dropzoneStyles';
-import { createGroup } from '../../Actions/groupActions';
+import { createGroup, resettingCreateGroup } from '../../Actions/groupActions';
 
 
 const validationSchema = Yup.object().shape({
   groupName: Yup.string()
   .required("*Group name is required")
   .min(1, "*Event name must be longer than 1 charachter")
-  .max(50, "*Event name must be less than 50 charachters")
+  .max(15, "*Event name must be less than 15 charachters")
   .matches(/^[a-zA-Z0-9_ ]*$/, "*Event name must only contain letters or numbers"),
   groupDescription: Yup.string()
   .required("*Group description is required")
   .min(1, "*Group description must be longer than 1 charachter")
-  .max(1000, "*Group description must be less than 1000 charachters"),
+  .max(600, "*Group description must be less than 600 charachters"),
   groupWhatsappLink: Yup.string()
   .required("*Whatsapp link is required")
   .url("*Please enter a valid whatsapp URL e.g. https://chat.whatsapp.com/HJa67a34sdGr2rYR"),
@@ -59,16 +59,14 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
     isDragReject
   ]);
 
+  if (!auth) return <Redirect push to="/dashboard" />
+  if (success) {
+    dispatch(resettingCreateGroup())
+    return <Redirect push to="/dashboard" />
+  } 
+
   return (
     <Card bg="light" text="dark" className="signUpCard">
-      <>
-        {!auth &&
-          <Redirect push to="/dashboard" />
-        }
-        {success &&
-          <Redirect push to="/dashboard" /> 
-        }
-      </>
       <Card.Header> Create Group </Card.Header>
 
       <Formik

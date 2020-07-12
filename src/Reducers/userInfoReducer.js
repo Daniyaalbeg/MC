@@ -55,6 +55,22 @@ export default function userInfoReducer(state = initialState, action) {
           supplier: newSupplier
         }
       }
+    case actions.DELETE_USER_INFO_GROUP:
+      console.log(state)
+      let newCreatedGroups = [...state.user.createdGroups]
+      for (let i = 0; i<state.user.createdGroups.length; i++) {
+        if (state.user.createdGroups[i]._id === action.payload) {
+          newCreatedGroups.splice(i, 1)
+          break;
+        }
+      }
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          createdGroups: [...newCreatedGroups]
+        }
+      }
     default:
       return state;
   }

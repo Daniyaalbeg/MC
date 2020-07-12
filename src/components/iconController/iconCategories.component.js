@@ -32,6 +32,7 @@ import Sports from '../../assets/icons/Sports.svg'
 import Terrorism from '../../assets/icons/Terrorism.svg'
 import Waste from '../../assets/icons/Waste.svg'
 import Water from '../../assets/icons/Water.svg'
+import { faHouseReturn } from '@fortawesome/pro-solid-svg-icons';
 
 
 export const WhatCategories = ({ group }) => {
@@ -40,8 +41,9 @@ export const WhatCategories = ({ group }) => {
     {group.groupType.map((type) => {
       return (
         <>
-        <div key={type} className="groupIconContainer growIcon">
+        <div key={type} className="groupIconContainer">
           {iconForType(type)}
+          <p className="hoverOn"> {iconForText(type)} </p>
         </div>
         </>
       )
@@ -50,74 +52,147 @@ export const WhatCategories = ({ group }) => {
   )
 }
 
+const iconForText = (type) => {
+  switch(type) {
+    case "animalWelfare":
+      return "Animal Welfare"
+    case "artsAndCulture":
+      return "Arts and Culture"
+    case "communityDevelopment":
+      return "Community Development"
+    case "disability":
+      return "Disability"
+    case "disaster":
+      return "Disaster"
+    case "education":
+      return "Education"
+    case "primary":
+      return "Primary Education"
+    case "secondary":
+      return "Secondary Education"
+    case "higher":
+      return "Higher Education"
+    case "energy":
+      return "Energy"
+    case "environment":
+      return "Environment"
+    case "forest":
+      return "Forest"
+    case "water":
+      return "Water"
+    case "equality":
+      return "Equality"
+    case "food":
+      return "Food"
+    case "agriculture":
+      return "Agriculture"
+    case "livestock":
+      return "Livestock"
+    case "fisheries":
+      return "Fisheries"
+    case "gender":
+      return "Gender"
+    case "health":
+      return "Health"
+    case "motherAndChildHealth":
+      return "Mother and Child Health"
+    case "humanRights":
+      return "Human Rights"
+    case "infrastructure":
+      return "Infrastructure"
+    case "it":
+      return "IT"
+    case "justice":
+      return "Justice"
+    case "livelihood":
+      return "Livelihood"
+    case "peace":
+      return "Peace"
+    case "povertyAlleviation":
+      return "Poverty Alleviation"
+    case "recycling": 
+      return "Recycling"
+    case "sanitation":
+      return "Sanitation"
+    case "sports":
+      return "Sports"
+    case "terrorism":
+      return "Terrorism"
+    case "waste":
+      return "Waste"
+    default:
+      return ""
+  }
+}
+
 const iconForType = (type) => {
   switch(type) {
     case "animalWelfare":
-      return <img src={AnimalWelfare} alt="Animal Welfare Icon" />
+      return <img className="growIcon" src={AnimalWelfare} alt="Animal Welfare Icon" />
     case "artsAndCulture":
-      return <img src={ArtandCulture} alt="Arts and Culture Icon" />
+      return <img className="growIcon" src={ArtandCulture} alt="Arts and Culture Icon" />
     case "communityDevelopment":
-      return <img src={Community} alt="Community Development Icon" />
+      return <img className="growIcon" src={Community} alt="Community Development Icon" />
     case "disability":
-      return <img src={Disability} alt="Disability Icon" />
+      return <img className="growIcon" src={Disability} alt="Disability Icon" />
     case "disaster":
-      return <img src={Disaster} alt="Disaster Icon" />
+      return <img className="growIcon" src={Disaster} alt="Disaster Icon" />
     case "education":
-      return <img src={Education} alt="Education Icon" />
+      return <img className="growIcon" src={Education} alt="Education Icon" />
     case "primary":
-      return <img src={PrimaryEdu} alt="Primary Education Icon" />
+      return <img className="growIcon" src={PrimaryEdu} alt="Primary Education Icon" />
     case "secondary":
-      return <img src={SecondaryEdu} alt="Secondary Education Icon" />
+      return <img className="growIcon" src={SecondaryEdu} alt="Secondary Education Icon" />
     case "higher":
-      return <img src={HigherEdu} alt="Higher Education Icon" />
+      return <img className="growIcon" src={HigherEdu} alt="Higher Education Icon" />
     case "energy":
-      return <img src={Energy} alt="Energy Icon" />
+      return <img className="growIcon" src={Energy} alt="Energy Icon" />
     case "environment":
-      return <img src={Enviroment} alt="Environment Icon" />
+      return <img className="growIcon" src={Enviroment} alt="Environment Icon" />
     case "forest":
-      return <img src={Forest} alt="Forest Icon" />
+      return <img className="growIcon" src={Forest} alt="Forest Icon" />
     case "water":
-      return <img src={Water} alt="Water Icon" />
+      return <img className="growIcon" src={Water} alt="Water Icon" />
     case "equality":
-      return <img src={Equality} alt="Equality Icon" />
+      return <img className="growIcon" src={Equality} alt="Equality Icon" />
     case "food":
-      return <img src={Food} alt="Food Icon" />
+      return <img className="growIcon" src={Food} alt="Food Icon" />
     case "agriculture":
-      return <img src={Agriculture} alt="Agriculture Icon" />
+      return <img className="growIcon" src={Agriculture} alt="Agriculture Icon" />
     case "livestock":
-      return <img src={Livestock} alt="Food Icon" />
+      return <img className="growIcon" src={Livestock} alt="Food Icon" />
     case "fisheries":
-      return <img src={Fisheries} alt="Fisheries Icon" />
+      return <img className="growIcon" src={Fisheries} alt="Fisheries Icon" />
     case "gender":
-      return <img src={Gender} alt="Gender Icon" />
+      return <img className="growIcon" src={Gender} alt="Gender Icon" />
     case "health":
-      return <img src={Health} alt="Health Icon" />
+      return <img className="growIcon" src={Health} alt="Health Icon" />
     case "motherAndChildHealth":
-      return <img src={Motherhood} alt="Mother and Child Health Icon" />
+      return <img className="growIcon" src={Motherhood} alt="Mother and Child Health Icon" />
     case "humanRights":
-      return <img src={HumanRights} alt="Human Rights Icon" />
+      return <img className="growIcon" src={HumanRights} alt="Human Rights Icon" />
     case "infrastructure":
-      return <img src={Infrastructure} alt="Infrastructure Icon" />
+      return <img className="growIcon" src={Infrastructure} alt="Infrastructure Icon" />
     case "it":
-      return <img src={IT} alt="IT Icon" />
+      return <img className="growIcon" src={IT} alt="IT Icon" />
     case "justice":
-      return <img src={Justice} alt="Justice Icon" />
+      return <img className="growIcon" src={Justice} alt="Justice Icon" />
     case "livelihood":
-      return <img src={Livelihood} alt="Livelihood Icon" />
+      return <img className="growIcon" src={Livelihood} alt="Livelihood Icon" />
     case "peace":
-      return <img src={Peace} alt="Peace Icon" />
+      return <img className="growIcon" src={Peace} alt="Peace Icon" />
     case "povertyAlleviation":
-      return <img src={Livelihood} alt="Poverty Alleviation Icon" />
+      return <img className="growIcon" src={Livelihood} alt="Poverty Alleviation Icon" />
     case "recycling": 
-      return <img src={Recycling} alt="Recycling Icon" />
+      return <img className="growIcon" src={Recycling} alt="Recycling Icon" />
     case "sanitation":
-      return <img src={Sanitation} alt="Sanitation Icon" />
+      return <img className="growIcon" src={Sanitation} alt="Sanitation Icon" />
     case "sports":
-      return <img src={Sports} alt="Sports Icon" />
+      return <img className="growIcon" src={Sports} alt="Sports Icon" />
     case "terrorism":
-      return <img src={Terrorism} alt="Terrorism Icon" />
+      return <img className="growIcon" src={Terrorism} alt="Terrorism Icon" />
     case "waste":
-      return <img src={Waste} alt="Waste Icon" />
+      return <img className="growIcon" src={Waste} alt="Waste Icon" />
     // case "other":
     //   return <img src={Oth} alt="Other Icon" />
     default:

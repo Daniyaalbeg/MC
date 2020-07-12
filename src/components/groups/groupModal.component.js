@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import { WhatCategories } from '../iconController/iconCategories.component';
 import getRandomColour from '../utilities/randomMCColour.component';
 import { LightenDarkenColor } from '../utilities/colourUtils';
+import { deleteGroup, resettingDeleteGroup } from '../../Actions/groupActions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle, faExternalLinkSquare } from '@fortawesome/pro-solid-svg-icons';
+import { faEdit, faTrashAlt } from '@fortawesome/pro-duotone-svg-icons'
 import imagePlaceholder from '../../assets/Images/temp.jpg';
 import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 
 
-const GroupModalDashboard = ({ group, setSelectedGroup }) => {
-  const randomColour = getRandomColour()
+const GroupModalDashboard = ({ dispatch, group, setSelectedGroup, deleting, deleted, hasErrors }) => {
+  const [randomColour] = useState(getRandomColour())
+  const [confirmDelete, setConfirmDelete] = useState(false)
+
+  if (deleted) {
+    dispatch(resettingDeleteGroup())
+    setSelectedGroup(null)
+  }
+
   return (
     <div className="groupModalPage" onClick={(e) => {
       setSelectedGroup(null)
@@ -20,8 +31,13 @@ const GroupModalDashboard = ({ group, setSelectedGroup }) => {
         <FontAwesomeIcon icon={faTimesCircle} size="2x" className="modalCloseButton" onClick={() => setSelectedGroup(null)} />
         <div className="modalTop">
           <div className="modalTopTop">
-            <img src={group.groupImage ? group.groupImage : imagePlaceholder} alt="Whatsapp group logo" />
-            <h1> {group.groupName} </h1>
+            {/* <div> */}
+              <img src={group.groupImage ? group.groupImage : imagePlaceholder} alt="Whatsapp group logo" />
+              <h1> {group.groupName} </h1>
+            {/* </div> */}
+            <button className="standardButton redVersion" disabled={deleting} onClick={() =>{
+              confirmDelete ? dispatch(deleteGroup(group._id)) : setConfirmDelete(true)
+            }}> {confirmDelete ? (deleting ? <Spinner animation="border" size="sm" />  : "Are you sure?") : <FontAwesomeIcon icon={faTrashAlt} /> } </button>
           </div>
           <div className="modalTopBottom">
             <p className="modalHeader"> Description </p>
@@ -87,7 +103,17 @@ const GroupModal = ({ group, setSelectedGroup }) => {
   )
 }
 
+const MapsStateToProps = (state, ownProps) => ({
+  deleted: state.deleteInfo.deleteGroup.deleted,
+  deleting: state.deleteInfo.deleteGroup.deleting,
+  hasErrors: state.deleteInfo.deleteGroup.hasErrors,
+  group: ownProps.group,
+  setSelectedGroup: ownProps.setSelectedGroup
+})
+
+const ConnectedGroupModalDashboard = connect(MapsStateToProps)(GroupModalDashboard)
+
 export {
-  GroupModalDashboard,
+  ConnectedGroupModalDashboard,
   GroupModal
 }

@@ -20,9 +20,9 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
     alert("An error occured. Cannot delete, please contact support.")
     dispatch(resetDelete())
   }
-  if (deletedEvent) {
-    handleClose()
-  }
+  // if (deletedEvent) {
+  //   handleClose()
+  // }
 
   const event = props.event;
   // const MapViewLazy = React.lazy(() => import('./eventitemInfoMap.component.js'))
@@ -85,7 +85,7 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
       <Modal.Body>
-        <button className="standardButton eventModalDeleteButton redVersion" onClick={() => {
+        <button className="standardButton eventModalDeleteButton redVersion" disabled={deletingEvent} onClick={() => {
           dispatch(deleteEvent(event._id))
         }}>
           {
@@ -109,9 +109,9 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
 }
 
 const MapStateToProps = (state, ownProps) => ({
-  deletingEvent: state.deleteInfo.deletingEvent,
-  hasErrors: state.deleteInfo.hasErrors,
-  deletedEvent: state.deleteInfo.deletedEvent,
+  deletingEvent: state.deleteInfo.deleteEvent.deleting,
+  hasErrors: state.deleteInfo.deleteEvent.hasErrors,
+  deletedEvent: state.deleteInfo.deleteEvent.deleted,
   props: ownProps
 })
 

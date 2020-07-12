@@ -16,7 +16,7 @@ function createGroupReducer(state = createGroupInitialState, action) {
         hasErrors: false,
         success: false
       }
-    case actions.CREATE_GROUP_SUCCES:
+    case actions.CREATE_GROUP_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -30,6 +30,8 @@ function createGroupReducer(state = createGroupInitialState, action) {
         hasErrors: true,
         success: false
       }
+    case actions.RESET_CREATE_GROUP:
+      return createGroupInitialState
     default:
       return state
   }

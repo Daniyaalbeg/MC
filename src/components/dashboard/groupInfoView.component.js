@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import HeaderIcons from './HeaderIcons.component';
 import '../../css/groupInfoView.css';
 import GroupCard from '../groups/groupCard.component';
-import { GroupModalDashboard } from '../groups/groupModal.component';
+import { ConnectedGroupModalDashboard } from '../groups/groupModal.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
@@ -48,7 +48,7 @@ const Groups = ({ groups }) => {
       }
     </div>
     {selectedGroup &&
-      <GroupModalDashboard group={selectedGroup} setSelectedGroup={setSelectedGroup} />
+      <ConnectedGroupModalDashboard group={selectedGroup} setSelectedGroup={setSelectedGroup} />
     }
     </>
   )

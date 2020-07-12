@@ -1,7 +1,7 @@
 .groupContainer {
-  min-height: 100%;
+  height: 100%;
   border-radius: 8px;
-  overflow: hidden;
+  overflow-y: scroll;
   background-color: white;
 }
 
@@ -76,11 +76,41 @@
   background-color: var(--main-blue-color) !important;
   font-weight: bold;
 }
-
+.groupIconContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .groupIconContainer > img {
   margin: 4px;
   height: 40px;
   width: 40px;
+}
+.hoverOn {
+  /* display: none; */
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  top: -24px;
+  font-size: x-small;
+}
+.groupIconContainer:hover p {
+  visibility: visible;
+  position: absolute;
+  display: inline-block;
+  color: whitesmoke;
+  background-color: var(--main-bg-color);
+  font-size: medium;
+  z-index: 10;
+  padding: 0.3em 0.6em;
+  border-radius: 8px;
+  font-weight: bold;
+  top: -36px;
+  opacity: 1;
+  white-space: nowrap;
+  transition: opacity 0.3s, top 0.3s, font-size 0.3s;
 }
 
 .groupModalPage {
@@ -106,13 +136,11 @@
   overflow-y: scroll;
   background: linear-gradient(335deg, #3092c7b3, #1272a7b3);
 
-
-
   /* background: linear-gradient(335deg, --main-blue-color, --main-blue-color); */
   background-size: 400% 400%;
 
-  -webkit-animation: backgroundGradient 10s ease infinite;
-  -moz-animation: backgroundGradient 10s ease infinite;
+  /* -webkit-animation: backgroundGradient 10s ease infinite;
+  -moz-animation: backgroundGradient 10s ease infinite; */
   animation: backgroundGradient 10s ease infinite;
 }
 .groupModal p {
@@ -144,6 +172,11 @@
   margin-left: 32px;
   font-size: 2.5em;
   font-weight: 600;
+}
+.modalTopTop > button {
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: 8px;
 }
 .modalTopBottom {
   background-color: whitesmoke;

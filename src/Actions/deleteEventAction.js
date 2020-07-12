@@ -3,7 +3,7 @@ import { API, rootURL, production } from '../config'
 import { deleteUserInfoEvent } from './userInfoActions'
 
 export const DELETE_EVENT = "DELETE_EVENT"
-export const DELETE_EVENT_SUCCES = "DELETE_EVENT_SUCCES"
+export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS"
 export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE"
 export const RESET_DELETE = "RESET_DELETE"
 
@@ -12,7 +12,7 @@ export const deletingEvent = () => ({
 })
 
 export const deletingEventSuccess = () => ({
-  type: DELETE_EVENT_SUCCES
+  type: DELETE_EVENT_SUCCESS
 })
 
 export const deletingEventFailure = (error) => ({

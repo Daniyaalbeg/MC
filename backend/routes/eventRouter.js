@@ -156,8 +156,8 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
   User.findById(req.id, { password: 0})
   .populate('supplier.events')
   .exec((err, user) => {
-    if (err) res.status(500).json("There was a problem finding the event/");
-    if (!user) res.status(500).json("There was a problem finding your user.")
+    if (err) return res.status(500).json("There was a problem finding the event/");
+    if (!user) return res.status(500).json("There was a problem finding your user.")
 
     const events = user.supplier.events
 
@@ -176,21 +176,21 @@ router.route('/:id').delete(verifyToken, (req, res, next) => {
     .then(() => {
       Event.deleteOne({ _id: req.params.id}, (err) => {
         if (err) {
-          res.status(200).json("delete successfull")
           console.log("error deleting event + " + req.params.id)
-          res.status(200).json("Delete succesful")
-        }
-        if (foundEvent) {
-          s3.deleteFile(foundEvent[0].images)
-          .then((result) => {
-            res.status(200).json("Delete succesful") 
-          })
-          .catch((error) => {
-            console.log(error)
-            res.status(200).json("Delete succesful not really") 
-          });
+          return res.status(500).json({ errorDesc: "Could not delete event" })
         } else {
-          res.status(200).json("Delete succesful") 
+          if (foundEvent) {
+            s3.deleteFile(foundEvent[0].images)
+            .then((result) => {
+              return res.status(200).json("Delete succesful") 
+            })
+            .catch((error) => {
+              console.log(error)
+              return res.status(200).json("Delete succesful not really") 
+            });
+          } else {
+            return res.status(200).json("Delete succesful") 
+          }
         }
       })
     })

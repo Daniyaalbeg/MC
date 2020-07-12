@@ -73,4 +73,41 @@ router.route('/create').post(verifyToken, (req, res, next) => {
   })
 })
 
+router.route('/delete/:id').delete(verifyToken, (req, res, next) => {
+  User.findById(req.id, { password: 0 })
+  .exec((err, user) => {
+    if (err) return res.status(500).json({ errorDesc: "An error occured" })
+    if (!user) return res.status(500).json({ errorDesc: "Cannot find user" })
+
+    let foundGroup = null
+
+    for ( let i = 0; i < user.createdGroups.length; i++) {
+      if (user.createdGroups[i].equals(req.params.id)) {
+        foundGroup = user.createdGroups.splice(i, 1);
+        break
+      }
+    }
+    if (!foundGroup) {
+      return res.status(500).send("Event not found")
+    }
+
+    user.save()
+    .then(() => {
+      Group.deleteOne({ _id: req.params.id }, (err, result) => {
+        if (err) {
+          console.log("error deleting event + " + req.params.id)
+          return res.status(500).json({ errorDesc: "Could not delete event" })
+        } else {
+          return res.status(200).json("Delete succesful")
+        }
+        //Delete group image here
+      })
+    })
+    .catch((err) => {
+      return res.status(500).json({ errorDesc: "Could not save User"})
+    })
+
+  })
+})
+
 module.exports = router
