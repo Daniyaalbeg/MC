@@ -27,6 +27,8 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     const groupImage = req.body.image
     const groupDescription = req.body.groupDescription
     const groupWhatsappLink = req.body.groupWhatsappLink
+    const groupAdmin = req.body.groupAdmin
+    const groupAdminContact = req.body.groupAdminContact
     const groupType = req.body.groupType
     const createdBy = user._id
     let affiliatedOrg = false
@@ -41,6 +43,8 @@ router.route('/create').post(verifyToken, (req, res, next) => {
       groupImage,
       groupDescription,
       groupWhatsappLink,
+      groupAdmin,
+      groupAdminContact,
       groupType,
       createdBy,
       affiliatedOrg,

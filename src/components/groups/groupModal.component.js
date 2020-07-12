@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { WhatCategories } from '../groups/groupCard.component';
+import { WhatCategories } from '../iconController/iconCategories.component';
 import getRandomColour from '../utilities/randomMCColour.component';
 import { LightenDarkenColor } from '../utilities/colourUtils';
 
@@ -26,6 +26,10 @@ const GroupModalDashboard = ({ group, setSelectedGroup }) => {
           <div className="modalTopBottom">
             <p className="modalHeader"> Description </p>
             <p> {group.groupDescription} </p>
+            <p className="modalHeader"> Admin </p>
+            <p> {group.groupAdmin} </p>
+            <p className="modalHeader"> Admin Contact </p>
+            <p> {group.groupAdminContact} </p>
           </div>
         </div>
         <div className="modalMiddle">
@@ -57,6 +61,10 @@ const GroupModal = ({ group, setSelectedGroup }) => {
           <div className="modalTopBottom">
             <p className="modalHeader"> Description </p>
             <p> {group.groupDescription} </p>
+            <p className="modalHeader"> Admin </p>
+            <p> {group.groupAdmin} </p>
+            <p className="modalHeader"> Admin Contact </p>
+            <p> {group.groupAdminContact} </p>
           </div>
         </div>
         <div className="modalMiddle">

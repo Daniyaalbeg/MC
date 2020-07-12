@@ -19,6 +19,14 @@ const groupSchema = new Schema({
     type: String,
     required: true
   },
+  groupAdmin: {
+    type: String,
+    required: true
+  },
+  groupAdminContact: {
+    type: String,
+    required: true
+  },
   groupType: {
     type: [String],
     required: false

@@ -40,7 +40,7 @@ const Groups = ({ groups }) => {
       {
         groups.map((group) => {
           return (
-            <div className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
+            <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
               <GroupCard group={group} />
             </div>
           )

@@ -25,6 +25,14 @@ const validationSchema = Yup.object().shape({
   groupWhatsappLink: Yup.string()
   .required("*Whatsapp link is required")
   .url("*Please enter a valid whatsapp URL e.g. https://chat.whatsapp.com/HJa67a34sdGr2rYR"),
+  groupAdmin: Yup.string()
+  .required("*Admin name is required")
+  .min(1, "*Admin name must be longer than 1 charachter")
+  .max(100, "*Admin name must be less than 100 charachters"),
+  groupAdminContact: Yup.string()
+  .required("*Admin Whatsapp number is required")
+  .min(1, "*Admin Whatsapp number must be longer than 1 charachter")
+  .max(20, "*Admin Whatsapp number must be less than 20 charachters"),
   agreedToTerms: Yup.bool()
   .oneOf([true], "*Must accept terms and conditions"),
 });
@@ -69,6 +77,8 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           groupImage: "",
           groupDescription: "",
           groupWhatsappLink: "",
+          groupAdmin: "",
+          groupAdminContact: "",
           groupType: [],
           affiliatedOrg: false,
           agreedToTerms: false,
@@ -80,6 +90,8 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
             image: values.groupImage,
             groupDescription: values.groupDescription,
             groupType: values.groupType,
+            groupAdmin: values.groupAdmin,
+            groupAdminContact: values.groupAdminContact,
             groupWhatsappLink: values.groupWhatsappLink,
             affiliatedOrg: values.affiliatedOrg
           }
@@ -171,7 +183,7 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           <p className="redStandardError"> {errors.imageFile} </p>
         </Form.Group>
 
-        <Form.Group controlId="formBasicNumberOfItems">
+        <Form.Group controlId="formBasicGroupWhatsappLink">
           <Form.Label>Group Whatsapp Invite Link <span className="red">*</span></Form.Label>
           <Form.Control
             type="text" 
@@ -185,6 +197,38 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           />
           <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.groupWhatsappLink}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicAdminName">
+          <Form.Label>Group Admin Name <span className="red">*</span></Form.Label>
+          <Form.Control
+            type="text" 
+            placeholder="Enter admin name"
+            name="groupAdmin"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.groupAdmin}
+            isValid={touched.groupAdmin && !errors.groupAdmin}
+            isInvalid={errors.groupAdmin}
+          />
+          <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.groupAdmin}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicGroupAdminContact">
+          <Form.Label>Group Admin Whatsapp Number <span className="red">*</span></Form.Label>
+          <Form.Control
+            type="text" 
+            placeholder="Enter admin whatsapp number"
+            name="groupAdminContact"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.groupAdminContact}
+            isValid={touched.groupAdminContact && !errors.groupAdminContact}
+            isInvalid={errors.groupAdminContact}
+          />
+          <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.groupAdminContact}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group>
