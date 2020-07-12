@@ -49,7 +49,7 @@ const GroupModalDashboard = ({ dispatch, group, setSelectedGroup, deleting, dele
           </div>
         </div>
         <div className="modalMiddle">
-          <WhatCategories group={group} />
+          <WhatCategories types={group.groupType} />
         </div>
         <div className="modalBottom">
           <p className="modalHeader"> Affiliated Organisation </p>

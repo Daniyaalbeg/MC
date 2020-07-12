@@ -332,6 +332,43 @@ p {
   animation: bounce 0.4s linear;
 }
 
+.iconContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.iconContainer > img {
+  margin: 4px;
+  height: 40px;
+  width: 40px;
+}
+.hoverOn {
+  /* display: none; */
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  top: -24px;
+  font-size: x-small;
+}
+.iconContainer:hover p {
+  visibility: visible;
+  position: absolute;
+  display: inline-block;
+  color: whitesmoke;
+  background-color: var(--main-bg-color);
+  font-size: medium;
+  z-index: 10;
+  padding: 0.3em 0.6em;
+  border-radius: 8px;
+  font-weight: bold;
+  top: -36px;
+  opacity: 1;
+  white-space: nowrap;
+  transition: opacity 0.3s, top 0.3s, font-size 0.3s;
+}
+
 /* Animations */
 
 .grow { transition: all .2s ease-in-out; }

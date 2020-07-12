@@ -4,12 +4,13 @@ import { Card, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from '../dashboard/supplierInfoView.component';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';
-import CheckOldOrNewAddress from '../shared/address.component'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGlobe } from '@fortawesome/pro-solid-svg-icons'
-import imagePlaceholder from '../../assets/Images/temp.jpg'
+import { WhatCategories } from '../iconController/iconCategories.component';
+import CheckOldOrNewAddress from '../shared/address.component';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe } from '@fortawesome/pro-solid-svg-icons';
+import imagePlaceholder from '../../assets/Images/temp.jpg';
 
-import '../../css/organisationInfoView.css'
+import '../../css/organisationInfoView.css';
 
 const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, props }) => {
   const { id } = useParams();
@@ -55,14 +56,15 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           <Card.Text> {org.description} </Card.Text>
           <br />
           <h6 className="text-muted"> Type of Work </h6>
-          <div>
-            {org.areaOfWork.map((area) => {
+          <div className="orgInfoIcons">
+          <WhatCategories types={org.areaOfWork} />
+            {/* {org.areaOfWork.map((area) => {
               return (
                 <p className="pillBadge" key={area}>
                   {area}
                 </p>
               )
-            })}
+            })} */}
           </div>
           <br />
           <h6 className="text-muted"> Address </h6>

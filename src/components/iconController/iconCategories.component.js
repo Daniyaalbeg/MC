@@ -35,13 +35,13 @@ import Water from '../../assets/icons/Water.svg'
 import { faHouseReturn } from '@fortawesome/pro-solid-svg-icons';
 
 
-export const WhatCategories = ({ group }) => {
+export const WhatCategories = ({ types }) => {
   return (
     <>
-    {group.groupType.map((type) => {
+    {types.map((type) => {
       return (
         <>
-        <div key={type} className="groupIconContainer">
+        <div key={type} className="iconContainer">
           {iconForType(type)}
           <p className="hoverOn"> {iconForText(type)} </p>
         </div>
