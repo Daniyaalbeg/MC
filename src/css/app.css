@@ -3,6 +3,8 @@
 }
 
 html, body {
+  margin: 0;
+  padding: 0;
   min-height: 100%;
 }
 
@@ -11,6 +13,7 @@ html, body {
 }
 
 body {
+  position: relative;
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-font-smoothing: antialiased;
   font-family: proximaNova;

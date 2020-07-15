@@ -40,12 +40,10 @@ export const WhatCategories = ({ types }) => {
     <>
     {types.map((type) => {
       return (
-        <>
         <div key={type} className="iconContainer">
           {iconForType(type)}
           <p className="hoverOn"> {iconForText(type)} </p>
         </div>
-        </>
       )
     })}
     </>

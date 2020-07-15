@@ -107,6 +107,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: 80px calc(100% - 80px);
+  grid-template-columns: 15% 85%;
   grid-template-areas: 
   "topLeft body body"
   "sidebar body body"
@@ -263,7 +264,7 @@
 
 @media only screen and (max-device-width: 1150px) {
   .dbBody {
-    padding: 10px;
+    padding: 6px;
   }
   .dbLayout {
     grid-template-columns: 60px calc(100% - 60px);
@@ -273,14 +274,5 @@
   }
   .loginForm {
     margin-bottom: 50%;
-  }
-}
-
-@media only screen and (min-device-width: 1150px) {
-  .dbBody {
-    padding: 20px;
-  }
-  .dbLayout {
-    grid-template-columns: 15% 85%;
   }
 }

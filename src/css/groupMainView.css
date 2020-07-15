@@ -1,6 +1,7 @@
 .groupMainContainer {
   height: calc(100% - 66px);
   width: calc(100%);
+  overflow-y: scroll;
   /* background-color: var(--main-bg-color); */
 }
 
@@ -56,6 +57,11 @@
   }
   .groupMainCardsContainer {
     grid-template-columns: auto auto;
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
     padding: 8px;
+  }
+  .groupMainContainer > p {
+    padding: 16px;
   }
 }

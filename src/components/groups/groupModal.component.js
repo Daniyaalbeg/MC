@@ -31,10 +31,8 @@ const GroupModalDashboard = ({ dispatch, group, setSelectedGroup, deleting, dele
         <FontAwesomeIcon icon={faTimesCircle} size="2x" className="modalCloseButton" onClick={() => setSelectedGroup(null)} />
         <div className="modalTop">
           <div className="modalTopTop">
-            {/* <div> */}
-              <img src={group.groupImage ? group.groupImage : imagePlaceholder} alt="Whatsapp group logo" />
-              <h1> {group.groupName} </h1>
-            {/* </div> */}
+            <img src={group.groupImage ? group.groupImage : imagePlaceholder} alt="Whatsapp group logo" />
+            <h1> {group.groupName} </h1>
             <button className="standardButton redVersion" disabled={deleting} onClick={() =>{
               confirmDelete ? dispatch(deleteGroup(group._id)) : setConfirmDelete(true)
             }}> {confirmDelete ? (deleting ? <Spinner animation="border" size="sm" />  : "Are you sure?") : <FontAwesomeIcon icon={faTrashAlt} /> } </button>
@@ -84,7 +82,7 @@ const GroupModal = ({ group, setSelectedGroup }) => {
           </div>
         </div>
         <div className="modalMiddle">
-          <WhatCategories group={group} />
+          <WhatCategories types={group.groupType} />
         </div>
         {group.affiliatedOrg &&
           <div className="modalBottom">

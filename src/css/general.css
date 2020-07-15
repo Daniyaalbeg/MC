@@ -357,7 +357,7 @@ p {
   position: absolute;
   display: inline-block;
   color: whitesmoke;
-  background-color: var(--main-bg-color);
+  background-color: var(--main-grey-color);
   font-size: medium;
   z-index: 10;
   padding: 0.3em 0.6em;
