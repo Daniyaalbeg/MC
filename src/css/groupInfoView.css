@@ -205,6 +205,20 @@
   text-decoration: none;
   background-color: white;
 }
+.groupModal > p {
+  display: inline-block;
+  margin-top: 8px;
+  width: 100%;
+  height: 40px;
+  background-color: whitesmoke;
+  color: #040404;
+  font-size: larger;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .modalAffiliatedOrg {
   width: 100%;
   display: flex;

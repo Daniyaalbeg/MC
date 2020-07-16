@@ -53,7 +53,7 @@ const GroupModalDashboard = ({ dispatch, group, setSelectedGroup, deleting, dele
           <p className="modalHeader"> Affiliated Organisation </p>
           <p> {group.affiliatedOrg ? "This group is affiliated with your organisation" : "This group is not affiliated with your organisation"} </p>
         </div>
-        <a href={group.groupWhatsappLink} style={{color: randomColour}} target="_blank" rel="noopener noreferrer"> <span> Join Group </span> </a>
+        <GroupJoinLink group={group} randomColour={randomColour} />
       </div>
     </div>
   )
@@ -95,10 +95,22 @@ const GroupModal = ({ group, setSelectedGroup }) => {
             </Link>
           </div>
         }
-        <a href={group.groupWhatsappLink} style={{color: randomColour}} target="_blank" rel="noopener noreferrer"> <span> Join Group </span> </a>
+        <GroupJoinLink group={group} randomColour={randomColour} />
       </div>
     </div>
   )
+}
+
+const GroupJoinLink = ({ group, randomColour }) => {
+  if (group.privateGroup) {
+    return (
+      <p> This is a private group. Contact the admin to join. </p>
+    )
+  } else {
+    return (
+      <a href={group.groupWhatsappLink} style={{color: randomColour}} target="_blank" rel="noopener noreferrer"> <span> Join Group </span> </a>
+    )
+  }
 }
 
 const MapsStateToProps = (state, ownProps) => ({

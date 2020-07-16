@@ -10,6 +10,13 @@ router.route('/').get((req, res) => {
   .lean()
   .exec((err, groups) => {
     if (err) return res.status(500).json({ errDesc: "An error occuredd"})
+    
+    groups.forEach((group) => {
+      if (group.privateGroup) {
+        group.groupWhatsappLink = null
+      }
+    })
+    
     return res.status(200).json(groups)
   })
 })

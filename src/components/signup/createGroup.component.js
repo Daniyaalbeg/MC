@@ -79,7 +79,7 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           groupAdminContact: "",
           groupType: [],
           affiliatedOrg: false,
-          privateGroup: false,
+          privateGroup: true,
           agreedToTerms: false,
         }}
         validationSchema={validationSchema}
