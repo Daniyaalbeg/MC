@@ -39,33 +39,10 @@ const Groups = ({ groups }) => {
     <div className="groupCardContainer">
       {
         groups.map((group) => {
-          return (<>
+          return (
             <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
               <GroupCard group={group} />
             </div>
-             <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-             <GroupCard group={group} />
-           </div>
-            <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-            <GroupCard group={group} />
-          </div>
-           <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-           <GroupCard group={group} />
-         </div>
-          <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-          <GroupCard group={group} />
-        </div>
-        <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-          <GroupCard group={group} />
-        </div>
-        <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-          <GroupCard group={group} />
-        </div>
-        <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-          <GroupCard group={group} />
-        </div>
-        
-        </>
           )
         })
       }

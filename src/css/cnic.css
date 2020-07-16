@@ -16,6 +16,7 @@
 .cnicHeading {
   text-align: center;
   margin-top: 45.75px;
+  font-weight: bold;
 }
 
 .cnicMustBeLoggedIn {
@@ -34,11 +35,7 @@
   font-size: x-large;
   text-align: center;
 }
-@media only screen and (max-device-width: 1150px) {
-  .cnicLoggedInHeading {
-    width: 80%;
-  }
-}
+
 .cnicExclamationIcon {
   margin-right: 8px;
 }
@@ -183,22 +180,6 @@
   width: 90%;
 }
 
-@media only screen and (max-device-width: 1150px) {
-  .cnicCard {
-    width: 90%;
-  }
-  .searchCnicBox {
-    width: 80%;
-  }
-  .cnicSearchInput {
-    width: 80%;
-    margin: 0;
-  }
-  .cnicEvent {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
-}
-
 .headingCNIC {
   width: 100%;
   display: flex;
@@ -262,4 +243,23 @@ input[type="file"] {
 .cnicSuccess {
   color: #3EAC4A;
   font-size: small;
+}
+
+@media only screen and (max-device-width: 1150px) {
+  .cnicCard {
+    width: 90%;
+  }
+  .searchCnicBox {
+    width: 80%;
+  }
+  .cnicSearchInput {
+    width: 80%;
+    margin: 0;
+  }
+  .cnicEvent {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .cnicLoggedInHeading {
+    width: 80%;
+  }
 }

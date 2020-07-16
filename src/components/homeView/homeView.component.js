@@ -68,6 +68,8 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
         })}
       </Carousel>
       <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
+      <div className="separator text-muted featuredText fontProxima"> WHO WE ARE </div>
+      <IntroText />
       <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
       <FeaturedOrganisation loading={featuredLoading} hasErrors={featuredHasErrors} featuredOrgs={featuredOrgs} />
       <div className="separator text-muted featuredText fontProxima"> MAP TO INFORM </div>
@@ -78,6 +80,16 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
       <Footer />
     </div>
     </>
+  )
+}
+
+const IntroText = () => {
+  return (
+    <section className="introText">
+      <p>
+        Dear Changemakers, we are finally launching the Ministry of Change Beta. Please click the sign up button to sign on. This is only the first phase of launch and a work in progress. I would love for you to ask your friends who are activists to get on board and give us feedback. It has been a labour of love of decades. We need to make sure we are doing it right. Please take some time to explore. A video of how to use the site is in production. Whilst there do go and like the <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/ministryochange"> facebook </a> page.
+      </p>
+    </section>
   )
 }
 

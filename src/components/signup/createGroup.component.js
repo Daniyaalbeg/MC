@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Spinner, Card } from 'react-bootstrap';
-import { Formik, Field } from 'formik';
+import { Formik, Field, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
 import Dropzone, { useDropzone } from 'react-dropzone';
 
@@ -23,7 +23,10 @@ const validationSchema = Yup.object().shape({
   .min(1, "*Group description must be longer than 1 charachter")
   .max(600, "*Group description must be less than 600 charachters"),
   groupWhatsappLink: Yup.string()
-  .required("*Whatsapp link is required")
+  .when('privateGroup', {
+    is: false,
+    then: Yup.string().required("*Whatsapp link is required")
+  })
   .url("*Please enter a valid whatsapp URL e.g. https://chat.whatsapp.com/HJa67a34sdGr2rYR"),
   groupAdmin: Yup.string()
   .required("*Admin name is required")

@@ -166,11 +166,15 @@
   font-weight: bold;
 }
 
-@media only screen and (max-device-width: 1150px) {
-  .projectInfoDetails {
-    font-size: small;
-  }
+
+.introText {
+  width: 70%;
+  text-align: center;
+  margin: auto;
+  margin-top: 64px;
+  margin-bottom: 64px;
 }
+
 
 .fontProxima {
   font-family: proximaNova;
@@ -352,4 +356,14 @@
 .footerIcon:hover {
   color: #ffffff;
   cursor: pointer;
+}
+
+
+@media only screen and (max-device-width: 1150px) {
+  .projectInfoDetails {
+    font-size: small;
+  }
+  .introText {
+    width: 85%;
+  }
 }

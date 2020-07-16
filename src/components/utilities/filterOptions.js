@@ -21,7 +21,7 @@ export const FilterAreaOfWork = (props) => {
             <option value ="food"> Food </option>
             <option value ="agriculture"> - Agriculture </option>
             <option value ="fisheries"> - Fisheries </option>
-            <option value ="gender"> gender </option>
+            <option value ="gender"> Gender </option>
             <option value ="womenEmpowerment"> - Women Empowerment </option>
             <option value ="health"> Health </option>
             <option value ="motherAndChildHealth"> - Mother and Child Health </option>

@@ -101,7 +101,7 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
     </div>
     <div className="cnicFooter">
     <h6> Note </h6>
-      <p> Once CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
+      <p> Once Computerised National identity Card / CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
     </div>
     </div>
   )

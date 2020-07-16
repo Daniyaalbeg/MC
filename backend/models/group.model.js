@@ -17,7 +17,7 @@ const groupSchema = new Schema({
   },
   groupWhatsappLink: {
     type: String,
-    required: true
+    required: false
   },
   groupAdmin: {
     type: String,
