@@ -24,7 +24,7 @@ const Address = ({ address }) => {
     return (
       <div className="addressContainer">
         <div className="addressTopLeft">
-          <p className="addressTitle"> Address Line </p>
+          <p className="addressTitle"> Line </p>
           {address.line1 ? <p> {capitalise(address.line1)} </p> : "Not Added"}
         </div>
         <div className="addressTop">
