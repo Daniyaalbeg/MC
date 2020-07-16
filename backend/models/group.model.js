@@ -40,6 +40,10 @@ const groupSchema = new Schema({
     type: Boolean,
     required: false
   },
+  privateGroup: {
+    type: Boolean,
+    required: true
+  },
   groupMembers: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: "User",

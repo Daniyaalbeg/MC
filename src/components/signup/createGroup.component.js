@@ -79,6 +79,7 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           groupAdminContact: "",
           groupType: [],
           affiliatedOrg: false,
+          privateGroup: false,
           agreedToTerms: false,
         }}
         validationSchema={validationSchema}
@@ -91,7 +92,8 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
             groupAdmin: values.groupAdmin,
             groupAdminContact: values.groupAdminContact,
             groupWhatsappLink: values.groupWhatsappLink,
-            affiliatedOrg: values.affiliatedOrg
+            affiliatedOrg: values.affiliatedOrg,
+            privateGroup: values.privateGroup
           }
           dispatch(createGroup(group))
           // alert(JSON.stringify(group))
@@ -444,6 +446,17 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
               label="Other"
             />
           </CheckboxGroup>
+        </Form.Group>
+
+        <Form.Group>
+          <Field
+            component={Checkbox}
+            name="privateGroup"
+            id="privateGroup"
+            label={<p className="agreedTo"> Is this a private Group? (Invite link is hidden) </p>}
+            isValid={touched.privateGroup && !errors.privateGroup}
+            isInvalid={errors.privateGroup}
+          />
         </Form.Group>
 
         <Form.Group>

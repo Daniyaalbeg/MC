@@ -9,7 +9,7 @@
 }
 
 .loginFormContainer {
-  height: 100%;
+  height: calc(100% - 66px);
   width: 100%;
   background-color: whitesmoke;
   display: flex;
@@ -21,7 +21,7 @@
   width: 350px;
   background-color: white;
   overflow: hidden;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
 }
 .loginFormHeader {
   width: 100%;
@@ -109,8 +109,8 @@
   grid-template-rows: 80px calc(100% - 80px);
   grid-template-columns: 15% 85%;
   grid-template-areas: 
-  "topLeft body body"
-  "sidebar body body"
+  "topLeft body"
+  "sidebar body"
   /* "footer footer footer"; */
 }
 /* .dbHeader {
@@ -271,8 +271,5 @@
   }
   .dbLeftBar {
     padding: 4px;
-  }
-  .loginForm {
-    margin-bottom: 50%;
   }
 }

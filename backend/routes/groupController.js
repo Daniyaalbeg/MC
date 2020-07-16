@@ -32,6 +32,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     const groupType = req.body.groupType
     const createdBy = user._id
     let affiliatedOrg = false
+    const privateGroup = req.body.privateGroup
     if (req.body.affiliatedOrg && user.supplier) {
       affiliatedOrg = true
     }
@@ -48,6 +49,7 @@ router.route('/create').post(verifyToken, (req, res, next) => {
       groupType,
       createdBy,
       affiliatedOrg,
+      privateGroup,
       approved
     })
 
