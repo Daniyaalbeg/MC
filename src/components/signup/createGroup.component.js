@@ -16,7 +16,7 @@ const validationSchema = Yup.object().shape({
   groupName: Yup.string()
   .required("*Group name is required")
   .min(1, "*Event name must be longer than 1 charachter")
-  .max(15, "*Event name must be less than 15 charachters")
+  .max(30, "*Event name must be less than 30 charachters")
   .matches(/^[a-zA-Z0-9_ ]*$/, "*Event name must only contain letters or numbers"),
   groupDescription: Yup.string()
   .required("*Group description is required")
