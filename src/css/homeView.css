@@ -171,8 +171,9 @@
   width: 70%;
   text-align: center;
   margin: auto;
-  margin-top: 64px;
+  margin-top: 32px;
   margin-bottom: 64px;
+  font-size: large;
 }
 
 
