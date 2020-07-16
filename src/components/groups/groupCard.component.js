@@ -5,7 +5,7 @@ const GroupCard = ({ group }) => {
   return (
     <div>
       {group.groupImage ? <img src={group.groupImage} alt="" /> : <img src={imagePlaceholder} alt="" /> }
-      <p> {group.groupName} </p>
+      <p> {group.groupName} dfghshjdfghjsdfgsdf </p>
     </div>
   )
 }

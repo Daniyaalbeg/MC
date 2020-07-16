@@ -57,9 +57,16 @@
   height: 200px;
   width: auto;
 }
+.groupCard > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .groupCard > div > img {
   /* padding: 8px; */
   object-fit: cover;
+  text-align: center;
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -69,7 +76,6 @@
   font-weight: bold;
   font-size: larger;
   text-align: center;
-  height: 20px;
   margin-top: 8px;
   margin-bottom: 0;
   color: whitesmoke;
