@@ -168,7 +168,9 @@ const FeaturedOrganisation = (props) => {
             <div className="featuredOrgCard grow" key={org._id}>
             <Link className="featuredLink" to={'/organisations/'+org._id}>
               <img src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt="error" className="featuredOrgImage" />
-              <span className="featuredOrgText"> {org.supplierName} </span>
+              <div className="featuredOrgText">
+                <span> {org.supplierName} </span>
+              </div>
             </Link>
             </div>
           )

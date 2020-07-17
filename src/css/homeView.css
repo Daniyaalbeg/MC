@@ -241,15 +241,17 @@
   background-color: #ffffff;
 }
 .featuredOrgText {
-  display: inline-block;
   padding-top: 8px;
   padding-bottom: 8px;
   margin-bottom: 0;
-  font-size: medium;
-  font-weight: bold;
-  color: whitesmoke;
   background-color: var(--main-bg-color);
   height: 100%;
+}
+.featuredOrgText > span {
+  color: whitesmoke;
+  font-size: medium;
+  font-weight: bold;
+  text-align: center;
 }
 .featuredOrgDivider {
   margin: 0;
