@@ -168,9 +168,7 @@ const FeaturedOrganisation = (props) => {
             <div className="featuredOrgCard grow" key={org._id}>
             <Link className="featuredLink" to={'/organisations/'+org._id}>
               <img src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt="error" className="featuredOrgImage" />
-              <p className="featuredOrgText"> {org.supplierName} </p>
-              <hr className="featuredOrgDivider" />
-              {/* <img className="featuredEventIcon" src={whichIcon(event.typeOfRation)} alt={imagePlaceholder} /> */}
+              <span className="featuredOrgText"> {org.supplierName} </span>
             </Link>
             </div>
           )

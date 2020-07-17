@@ -38,7 +38,7 @@ const EventContainer = (props) => {
     } else {
       return (
         <div className="emptyDBContainer">
-          <h6 className="text-muted, errorText"> No distributions to display </h6>
+          <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> No distributions to display </p>
           <Link to="createEvent"><button className="createEventButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link>
         </div>
       )

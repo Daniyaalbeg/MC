@@ -1,6 +1,6 @@
 .biggerCardContainer {
     text-align: center;
-    height: 100%;
+    height: fit-content;
     padding-left: 24px;
     padding-right: 24px;
 }
