@@ -95,7 +95,7 @@ const IntroText = () => {
         Many are already engaged in Whatsapp groups. Post your own and join others.
         <br />
         <br />
-        We are ready to change the world. Are you?
+        <span style={{fontWeight: "bold"}}>We are ready to change the world. Are you?</span>
       </p>
     </section>
   )

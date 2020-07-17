@@ -24,14 +24,17 @@ import Livelihood from '../../assets/icons/Livelihood.svg'
 import Livestock from '../../assets/icons/Livestock.svg'
 import Motherhood from '../../assets/icons/Motherhood.svg'
 import Peace from '../../assets/icons/Peace.svg'
+import PovertyAlleviation from '../../assets/icons/PovertyAlleviation.svg'
 import PrimaryEdu from '../../assets/icons/PrimaryEdu.svg'
 import Recycling from '../../assets/icons/Recycling.svg'
 import Sanitation from '../../assets/icons/Sanitation.svg'
 import SecondaryEdu from '../../assets/icons/SecondaryEdu.svg'
 import Sports from '../../assets/icons/Sports.svg'
 import Terrorism from '../../assets/icons/Terrorism.svg'
+import Virus from '../../assets/icons/Virus.svg'
 import Waste from '../../assets/icons/Waste.svg'
 import Water from '../../assets/icons/Water.svg'
+import Youth from '../../assets/icons/Youth.svg'
 import { faHouseReturn } from '@fortawesome/pro-solid-svg-icons';
 
 
@@ -116,8 +119,12 @@ const iconForText = (type) => {
       return "Sports"
     case "terrorism":
       return "Terrorism"
+    case "virus":
+      return "Virus"
     case "waste":
       return "Waste"
+    case "youth":
+      return "Youth"
     default:
       return ""
   }
@@ -180,7 +187,7 @@ const iconForType = (type) => {
     case "peace":
       return <img className="growIcon" src={Peace} alt="Peace Icon" />
     case "povertyAlleviation":
-      return <img className="growIcon" src={Livelihood} alt="Poverty Alleviation Icon" />
+      return <img className="growIcon" src={PovertyAlleviation} alt="Poverty Alleviation Icon" />
     case "recycling": 
       return <img className="growIcon" src={Recycling} alt="Recycling Icon" />
     case "sanitation":
@@ -189,8 +196,12 @@ const iconForType = (type) => {
       return <img className="growIcon" src={Sports} alt="Sports Icon" />
     case "terrorism":
       return <img className="growIcon" src={Terrorism} alt="Terrorism Icon" />
+    case "virus":
+      return <img className="growIcon" src={Virus} alt="Virus Icon" />
     case "waste":
       return <img className="growIcon" src={Waste} alt="Waste Icon" />
+    case "youth":
+      return <img className="growIcon" src={Youth} alt="Youth Icon" />
     // case "other":
     //   return <img src={Oth} alt="Other Icon" />
     default:

@@ -77,7 +77,8 @@
   flex-direction: row;
   align-items: center;
 }
-.navBarLogo p {
+.navBarLogo span {
+  display: inline-block;
   margin-bottom: 0;
   font-size: small;
   font-weight: bold;
@@ -87,9 +88,6 @@
   border-radius: 4px;
   padding-left: 4px;
   padding-right: 4px;
-}
-.navBarLogo:hover > p {
-  text-decoration: none;
 }
 
 @media only screen and (max-width: 1150px) {

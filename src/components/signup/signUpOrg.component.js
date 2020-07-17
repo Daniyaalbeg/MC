@@ -648,13 +648,25 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
+              id="virus"
+              label="Virus"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
               id="waste"
               label="Waste"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
+              id="youth"
+              label="Youth"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
               id="other"
               label="Other"
             />

@@ -6,20 +6,108 @@
 }
 
 .cardContainer {
-    /* overflow: hidden; */
-    /* width: fit-content; */
-    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-rows: min-content;
+    grid-column-gap: 16px;
+    grid-row-gap: 32px;
+    justify-content: center;
+    align-content: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    height: fit-content;
 }
 
 .cardOrg {
-    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.19);
+    position: static;
     width: 210px;
-    height: 300px;
-    float: left;
-    margin: 12px;
-    font-family: proximaNova;
-    cursor: pointer;
+    height: fit-content;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
+.cardOrg:hover .starContainer > .starRing {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+.cardOrg:hover > .starContainer {
+    background-color: rgb(35, 42, 46);
+}
+.cardImageContainer {
+    height: 150px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.cardImage {
+    height: calc(150px);
+    width: 100%;
+    object-fit: contain;
+}
+.cardBottom {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.headerText {
+    height: 4em;
+    padding: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerText > span {
+    display: inline-block;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    color: #040404;
+}
+.footerText {
+    text-align: center;
+}
+.footerText > span {
+    display: inline-block;
+    width: 100%;
+    font-size: small;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: var(--main-bg-color);
+    /* border-bottom-left-radius: 8px; */
+    /* border-bottom-right-radius: 8px; */
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 0;
+}
+
+.descText {
+    text-align: center;
+}
+
+.starContainer {
+    position: absolute;
+    width: 210px;
+    height: 150px;
+    /* border-radius: 8px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in-out;
+    transition: background-color 0.4s;
+}
+.starRing {
+    height: 75px;
+    width: 75px;
+    opacity: 0;
+    transform: scale(0.9, 0.9);
+    transition: ease-in-out;
+    transition: opacity 0.6s, transform 0.6s;
+}
+
 
 .orgInfoCard {
     font-family: proximaNova;
@@ -34,23 +122,22 @@
 }
 
 .orgInfoIcons {
-    width: 100%;
+    width: fit-content;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 .orgViewLink {
-    /* all: unset; */
-    /* height: 100%; */
-    width: 100%;
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
 }
 .orgViewLink:hover {
-    all: unset;
-    height: 100%;
-    width: 100%;
+    text-decoration: none;
 }
 
 .backButtonOrgView {
@@ -70,13 +157,6 @@
     margin-bottom: 12px;
     font-family: proximaNova;
     font-weight: bold;
-    /* border-radius: 1px rgba(0,0,0,0.19);
-    box-shadow: 0px 3px 7px 1px rgba(0,0,0,0.19);
-    border-radius: 5px;    
-    display: inline-block;
-    padding: 5px;
-    padding-left: 12px;
-    padding-right: 12px; */
 }
 
 .titleLine {
@@ -85,32 +165,6 @@
     margin-top: 0PX;
 }
 
-.starContainer {
-    position: absolute;
-    width: 100%;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: ease-in-out;
-    transition: background-color 0.4s;
-}
-.starRing {
-    height: 75px;
-    width: 75px;
-    opacity: 0;
-    transform: scale(0.9, 0.9);
-    transition: ease-in-out;
-    transition: opacity 0.6s, transform 0.6s;
-}
-
-.cardOrg:hover .starContainer > .starRing {
-    opacity: 1;
-    transform: scale(1, 1);
-}
-.cardOrg:hover > .starContainer {
-    background-color: rgb(35, 42, 46);
-}
 
 .spinnerThing {
     display: flex;
@@ -124,32 +178,7 @@
     margin-right: 12px;
 }
 
-.cardImage {
-    height: 150px;
-    width: 100%;
-    object-fit: contain;
-    background-color: #ffffff;
-    border-bottom: 1px solid #D8D8D8;
-    /* overflow: hidden; */
-}
 
-.headerText {
-    text-align: center;
-    font-size: larger;
-    font-weight: bold;
-    color: #212529;
-}
-.headerText:hover {
-    color: #212529;
-}
-
-.descText {
-    text-align: center;
-}
-
-.footerText {
-    text-align: center;
-}
 
 .searchIcon1 {
     margin-right: 4px;
@@ -165,7 +194,7 @@
     margin: auto;
     margin-bottom: 12px;
     padding: 12px;
-    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.19);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     width: fit-content;
     font-family: proximaNova;
     background-color: white;
@@ -231,14 +260,6 @@ select#xyz {
         text-align: center;
         width: 90%;
     }   
-
-    .cardContainer {
-        display: flex;
-        justify-content: center;
-        /* align-items: center; */
-        flex-direction: column;
-        width: 100%;
-    }
     .cardOrg {
         max-width: 80vw;
     }

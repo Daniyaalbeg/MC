@@ -92,19 +92,23 @@ const OrgCards = (props) => {
 					{props.orgs.map((org) => {
 						return (
 							<Link to={'/organisations/' + org._id} className="orgViewLink" key={org._id}>
-							<Card className="cardOrg grow" key={org._id}>
-								<div className="starContainer">
-									{/* {createStarRing(Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4)} */}
-									{createStarRing(org.verifiedStepA, org.verifiedStepB, org.verifiedStepC, org.verifiedStepD, org.verifiedStepE, (org.verifiedStepA && org.verifiedStepB && org.verifiedStepC && org.verifiedStepD && org.verifiedStepE))}
+								<div className="cardOrg grow" key={org._id}>
+									<div className="starContainer">
+										{/* {createStarRing(Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4, Math.random() > 0.4)} */}
+										{createStarRing(org.verifiedStepA, org.verifiedStepB, org.verifiedStepC, org.verifiedStepD, org.verifiedStepE, (org.verifiedStepA && org.verifiedStepB && org.verifiedStepC && org.verifiedStepD && org.verifiedStepE))}
+									</div>
+									<div className="cardImageContainer">
+										<img className="cardImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
+									</div>
+									<div className="cardBottom">
+										<div className="headerText">
+											<span> {org.supplierName} </span>
+										</div>
+										<div className="footerText">
+											<span> {org.type} </span>
+										</div>
+									</div>
 								</div>
-								<Card.Img className="cardImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
-								<Card.Body>
-									<p className="headerText"> {org.supplierName} </p>
-								</Card.Body>
-								<Card.Footer className="footerText">
-									<small className="text-muted"> {org.type} </small>
-								</Card.Footer>
-							</Card>
 							</Link>
 						)
 					})}

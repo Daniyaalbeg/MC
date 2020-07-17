@@ -17,7 +17,7 @@ const NavigationBar = ({ auth }) => {
         <Link to="/">
           <Navbar.Brand className="navBarLogo">
             <img src={MCMC} alt="MC" className="mcLogoHome"/>
-            <p> Beta </p>
+            <span> Beta </span>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -39,7 +39,7 @@ const NavigationBar = ({ auth }) => {
         <Link to="/">
           <Navbar.Brand className="navBarLogo">
             <img src={MCMC} alt="MC" className="mcLogoHome"/>
-            <p> Beta </p>
+            <span> Beta </span>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

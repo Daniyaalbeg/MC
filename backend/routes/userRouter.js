@@ -12,7 +12,7 @@ var bcrypt = require('bcryptjs');
 router.route('/create').post([
   check('email').isEmail().normalizeEmail(),
   check('username').trim().escape(),
-  check('password').trim().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/),
+  check('password').trim().matches(/(?=^.{5,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=(.*\d){1,}))((?!.*[",;&|'])|(?=(.*\W){1,}))(?!.*[",;&|'])^.*$/),
   check('mobile').isMobilePhone(["en-PK", "en-GB"]),
   check('cnic').trim().matches(/^(\d{13})?$|[0-9]{12}-[0-9]{1}$|[0-9]{5}-[0-9]{7}-[0-9]{1}$|[0-9]{6}-[0-9]{6}-[0-9]{1}$/),
   check('address.addressLine1'),

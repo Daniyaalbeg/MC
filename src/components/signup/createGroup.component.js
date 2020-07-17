@@ -439,8 +439,20 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
             <Field
               component={Checkbox}
               name="groupType"
+              id="virus"
+              label="Virus"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
               id="waste"
               label="Waste"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
+              id="youth"
+              label="Youth"
             />
             <Field
               component={Checkbox}
