@@ -3,7 +3,9 @@ import React from 'react';
 import mcLogo from '../assets/svg/MCMCGray.svg';
 import getRandomColour from './utilities/randomMCColour.component';
 import '../css/misc.css'
-import { Link } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/pro-solid-svg-icons'
 
 const PrivacyPolicy = () => {
   const randomColour = getRandomColour()
@@ -271,6 +273,8 @@ const PrivacyPolicy = () => {
         </ol>
         <br />
         <p className="tcSubHeader"> 7 JUNE 2020 </p>
+        <br />
+        <p> Made with <FontAwesomeIcon icon={faHeart} style={{color: "var(--main-red-color)"}} /> by Panpailin Jantarasombat </p>
         <br />
       </div>
     </div>

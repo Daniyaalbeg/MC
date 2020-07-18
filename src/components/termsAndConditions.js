@@ -4,6 +4,8 @@ import mcLogo from '../assets/svg/MCMCGray.svg';
 import getRandomColour from './utilities/randomMCColour.component';
 import '../css/misc.css'
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/pro-solid-svg-icons'
 
 const TermsAndConditions = () => {
   const randomColour = getRandomColour()
@@ -104,6 +106,8 @@ const TermsAndConditions = () => {
         </ol>
         <p className="tcSubHeader"> Ministry of Change Limited details </p>
         <p className="makeSmallerText"> Ministry of Change Limited is a company incorporated in England and Wales with registered number 9503195 whose registered address is 128, Cannon Worshops, Cannon Drive, London, E144AS and it operates the Website https://ministryofchange.org/. You can contact Ministry of Change by email on info@ministryofchange.org. </p>
+        <br />
+        <p> Made with <FontAwesomeIcon icon={faHeart} style={{color: "var(--main-red-color)"}} /> by Panpailin Jantarasombat </p>
         <br />
       </div>
     </div>
