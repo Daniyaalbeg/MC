@@ -8,6 +8,31 @@ export const initialState = {
 
 export default function updateReducer(state = initialState, action) {
   switch (action.type) {
+    case actions.UPDATE_USER:
+      return {
+        ...state,
+        loading: true,
+        success: false,
+        hasErrors: false
+      }
+    case actions.UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        hasErrors: false
+      }
+    case actions.UPDATE_USER_FAILURE:
+      return {
+        loading: false,
+        success: false,
+        hasErrors: true
+      }
+    case actions.UPDATE_USER_REDIRECT:
+      return {
+        ...state,
+        success: false
+      }
     case actions.UPDATE_EVENT:
       return {
         ...state,

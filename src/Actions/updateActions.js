@@ -3,6 +3,11 @@ import { API, rootURL, production } from '../config'
 import { getUserInfo } from './userInfoActions'
 import { withImageUploadSingle } from './imageUpload'
 
+export const UPDATE_USER = "UPDATE_USER";
+export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
+export const UPDATE_USER_FAILURE = "UPDATE_USER_FAILURE";
+export const UPDATE_USER_REDIRECT = "UPDATE_USER_REDIRECT"
+
 export const UPDATE_EVENT = "UPDATE_EVENT";
 export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
 export const UPDATE_EVENT_FAILURE = "UPDATE_EVENT_FAILURE";
@@ -12,6 +17,20 @@ export const UPDATE_ORG = "UPDATE_ORG";
 export const UPDATE_ORG_SUCCESS = "UPDATE_ORG_SUCCESS";
 export const UPDATE_ORG_FAILURE = "UPDATE_ORG_FAILURE";
 export const UPDATE_ORG_REDIRECT = "UPDATE_ORG_REDIRECT"
+
+export const updatingUser = () => ({
+  type: UPDATE_USER
+});
+export const updatingUserSuccess = () => ({
+  type: UPDATE_USER_SUCCESS
+});
+export const updatingUserFailure = (error) => ({
+  type: UPDATE_USER_FAILURE,
+  payload: error
+});
+export const updatingUserRedirect = () => ({
+  type: UPDATE_USER_REDIRECT
+})
 
 export const updatingEvent = () => ({
   type: UPDATE_EVENT
@@ -40,6 +59,31 @@ export const updatingOrgFailure = (error) => ({
 export const updatingOrgRedirect = () => ({
   type: UPDATE_ORG_REDIRECT
 })
+
+
+
+//User Update
+
+export function updateUser(data) {
+  return async dispatch => {
+    dispatch(updatingUser())
+
+    axios({
+      method: 'post',
+      url: rootURL(production) + API + '/user/edit',
+      data: data,
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(updatingUserSuccess(res.data))
+      dispatch(getUserInfo())
+    })
+    .catch((error) => {
+      dispatch(updatingUserFailure(error))
+    })
+  }
+}
 
 const urlImage = rootURL(production)+API+'/imageUpload'
 

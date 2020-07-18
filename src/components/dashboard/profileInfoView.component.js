@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { API, rootURL, production } from '../../config';
+import { Link } from 'react-router-dom';
 
 import Address from '../shared/address.component';
 import HeaderIcons from './HeaderIcons.component';
@@ -8,6 +9,7 @@ import HeaderIcons from './HeaderIcons.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/pro-solid-svg-icons'
+import { faEdit } from '@fortawesome/pro-duotone-svg-icons';
 
 
 import '../../css/profileInfoView.css';
@@ -25,6 +27,11 @@ const ProfileInfoView = (props) => {
         <HeaderIcons />
       </div>
       <div className="profileContent">
+        <Link to="/updateProfile" className="profileEditButton">
+          <button className="standardButtonWithoutColour editIconVersion mcOrangeBG">
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        </Link>
         <p className="profileTitle"> Username </p>
         <p className="profileText"> {user.username} </p>
         <p className="profileTitle"> Email </p>

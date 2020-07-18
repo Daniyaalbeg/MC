@@ -34,6 +34,9 @@
  .mcOrangeBG {
   background-color: #F47E2E;
  }
+ .mcOrangeBG:hover {
+  background-color: #da6f28;
+ }
  .mcYellowBG {
   background-color: #FFD71A;
  }

@@ -3,6 +3,7 @@ const User = require('../models/user.model');
 const Address = require('../models/address.model').Address;
 
 var sendVerificationEmail = require('./emailVerificationRouter').sendVerificationEmail;
+const verifyToken = require('../verifyToken');
 
 const { check, validationResult } = require('express-validator');
 var jwt = require('jsonwebtoken');
@@ -15,10 +16,10 @@ router.route('/create').post([
   check('password').trim().matches(/(?=^.{5,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=(.*\d){1,}))((?!.*[",;&|'])|(?=(.*\W){1,}))(?!.*[",;&|'])^.*$/),
   check('mobile').isMobilePhone(["en-PK", "en-GB"]),
   check('cnic').trim().matches(/^(\d{13})?$|[0-9]{12}-[0-9]{1}$|[0-9]{5}-[0-9]{7}-[0-9]{1}$|[0-9]{6}-[0-9]{6}-[0-9]{1}$/),
-  check('address.addressLine1'),
+  check('address.line1'),
   check('address.city').trim(),
   check('address.region'),
-  check('address.postCode'),
+  check('address.postCode').trim(),
   check('address.country'),
 
 ],(req, res) => {
@@ -98,19 +99,36 @@ router.route('/create').post([
 // });
 
 //Update a user
-router.route('/:id').post((req, res) => {
-  User.findById(req.params.id)
+router.route('/edit').post(verifyToken, (req, res, next) => {
+  User.findById(req.id, { password: 0 })
   .then((user) => {
-    user.username = req.body.username;
-    user.email = req.body.email;
-    // user.supplier = req.body.supplier;
-    user.approved = req.body.approved;
+    user.mobile = req.body.mobile
+    user.username = req.body.username
+    user.cnic = req.body.cnic
+
+    user.address.line1 = req.body.line1
+    user.address.city = req.body.city
+    user.address.region = req.body.region
+    user.address.postCode = req.body.postCode
+    user.address.country = req.body.country
+
+    console.log('here')
 
     user.save()
-    .then(() => res.status(200).json("Success"))
-    .catch((error) => res.status(500).json("Error: " + error));
+    .then((user) => {
+      console.log('here1')
+      return res.status(200).json({ success: "success" })
+    })
+    .catch((error) => {
+      console.log(error)
+      return res.status(500).json({ errorDesc: "Counld not save new user"})
+    })
+
   })
-  .catch((error) => res.status(500).json('Error: ' + error));
+  .catch((error) => {
+    console.log(error)
+    res.status(500).json({ errorDesc: "Could not find user" })
+  });
 });
 
 //Delete a user

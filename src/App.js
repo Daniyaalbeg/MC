@@ -43,6 +43,7 @@ const OrgViewInfo = lazy(() => import('./components/organisations/organisationIn
 const SignUpOrg = lazy(() => import('./components/signup/signUpOrg.component'));
 const EditOrg = lazy(() => import('./components/update/updateSupplier.component'));
 const SignupUser = lazy(() => import('./components/signup/signupUser.component'));
+const UpdateProfile = lazy(() => import('./components/update/updateProfile.component'));
 const ResetPassword = lazy(() => import('./components/reset/resetPassword.component'));
 const ResettingPassword = lazy(() => import('./components/reset/resettingPassword.component'));
 const EmailVerification = lazy(() => import('./components/signup/emailVerification.component'));
@@ -84,6 +85,7 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/groups" component={GroupView}/>
           <Route path="/about" component={About} />
           <Route path="/signup" component={SignupUser}/>
+          <Route path="/updateProfile" component={UpdateProfile}/>
           <Route path="/signupOrg" component={SignUpOrg}/>
           <Route path="/updateOrg/:id" component={EditOrg}/>
           <Route path="/reset" component={ResetPassword} />
