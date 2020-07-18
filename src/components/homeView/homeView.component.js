@@ -35,7 +35,7 @@ const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "BY CHANGING OURSELVE
 const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5", "caption6", "caption7", "caption8", "caption9"]
 const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5", "homeImage6", "homeImage7", "homeImage8", "homeImage9"]
 
-const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading, statLoading, statFetched, statHasErrors, featuredLoading, featuredFetched, featuredHasErrors, numberOfEvents, numberOfUsers, numberOfIndividuals, numberOfOrganisations, featuredOrgs }) => {
+const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading, statLoading, statFetched, statHasErrors, featuredLoading, featuredFetched, featuredHasErrors, numberOfEvents, numberOfUsers, numberOfGroups, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
     if (!statFetched && !statLoading) {
       dispatch(getStatInfo())
@@ -67,7 +67,7 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
           )
         })}
       </Carousel>
-      <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfIndividuals={numberOfIndividuals} numberOfOrganisations={numberOfOrganisations}/>
+      <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfGroups={numberOfGroups} numberOfOrganisations={numberOfOrganisations}/>
       <div className="separator text-muted featuredText fontProxima"> WHO WE ARE </div>
       <IntroText />
       <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
@@ -87,12 +87,7 @@ const IntroText = () => {
   return (
     <section className="introText">
       <p>
-        The future of activism is here. Ministry of Change (MC) is a digital platform that match-makes those in need and those with resources.
-        On MC you can map your impact, find others like you, build on each other's strength, mobilise people for action and crowdsource money, supplies and volunteers.
-        You could be an individual citizen, a government, a corporation, or a philanthropist.
-        Browse through development projects that inspire and excite you. 
-        In these challenging COVID 19 times, we are mapping donors who are donating food rations, PPE (Personal Protective Equipment), cash, and clothes to people who need them. 
-        Many are already engaged in Whatsapp groups. Post your own and join others.
+      The future of ‘Collective Action’ is here. Ministry of Change (MC) is a digital platform that match-makes those in need and those with resources. On MC you can map your impact, find others like you, build on each other's strength, mobilise people for action and crowdsource money, supplies and volunteers. You could be an individual citizen, a government, a corporation, or a philanthropist. Browse through development projects that inspire and excite you. In these challenging COVID 19 times, we are mapping donors who are donating food rations, PPE (Personal Protective Equipment), cash, and clothes to people who need them. Many are already engaged in Whatsapp groups. Post your own and join others.
         <br />
         <br />
         <span style={{fontWeight: "bold"}}>We are ready to change the world. Are you?</span>
@@ -182,7 +177,7 @@ const FeaturedOrganisation = (props) => {
 }
 
 const ProjectsInfo = (props) => {
-  const { loading, hasErrors, numberOfEvents, numberOfUsers, numberOfIndividuals, numberOfOrganisations } = props
+  const { loading, hasErrors, numberOfEvents, numberOfUsers, numberOfGroups, numberOfOrganisations } = props
   if (loading) {
     return (
       <div className="spinnerHomeView">
@@ -199,8 +194,8 @@ const ProjectsInfo = (props) => {
           <p className="text-muted"> users </p>
         </div>
         <div className="projectInfoDetails">
-          <h4 className="projectInfoHeading"> {numberOfIndividuals} </h4>
-          <p className="text-muted"> individuals </p>
+          <h4 className="projectInfoHeading"> {numberOfGroups} </h4>
+          <p className="text-muted"> groups </p>
         </div>
         <div className="projectInfoDetails">
           <h4 className="projectInfoHeading"> {numberOfOrganisations} </h4>
@@ -227,7 +222,7 @@ const MapStateToProps = (state) => ({
   featuredHasErrors: state.info.featuredHasErrors,
   numberOfUsers: state.info.numberOfUsers,
   numberOfEvents: state.info.numberOfEvents,
-  numberOfIndividuals: state.info.numberOfIndividuals,
+  numberOfGroups: state.info.numberOfGroups,
   numberOfOrganisations: state.info.numberOfOrganisations,
   featuredOrgs: state.info.featuredOrgs
 })

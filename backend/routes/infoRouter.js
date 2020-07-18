@@ -3,6 +3,7 @@ var router = express.Router();
 
 var User = require('../models/user.model');
 const Event = require('../models/event.model').Event;
+const Group = require('../models/group.model').Group;
 
 router.route('/featured').get((req, res) => {
   User.aggregate([{ $match: { supplier: {$ne: null}, approved: true } }, { $sample: { size: 4 } }])
@@ -20,7 +21,7 @@ router.route('/featured').get((req, res) => {
 
 router.route('/').get((req, res) => {
   let numberOfUsers = 0
-  let numberOfIndividuals = 0
+  let numberOfGroups = 0
   let numberOfOrganisations = 0
   let numberOfEvents = 0
 
@@ -36,16 +37,16 @@ let promises = [
       if (!user.supplier || !user.approved) {
         return
       }
-      if (user.supplier.type === "Individual") {
-        numberOfIndividuals += 1
-      } else {
-        numberOfOrganisations += 1
-      }
+      numberOfOrganisations += 1
     })
     return res.status(200)
   }),
   Event.countDocuments({})
-  .then((count) => { numberOfEvents = count }),
+  .then((count) => { numberOfEvents = count })
+  .catch((err) => { return res.status(500).json({ errorDesc: "Cannot fetch events" }) }),
+  Group.countDocuments({ approved: true })
+  .then((count) => { numberOfGroups = count })
+  .catch((err) => { return res.status(500).json({ errorDesc: "Cannot fetch events" }) }),
 ]
 
 Promise.all(promises)
@@ -53,7 +54,7 @@ Promise.all(promises)
   res.status(200).json({
     numberOfEvents: numberOfEvents,
     numberOfUsers: numberOfUsers,
-    numberOfIndividuals: numberOfIndividuals,
+    numberOfGroups: numberOfGroups,
     numberOfOrganisations: numberOfOrganisations
   });
 })

@@ -9,7 +9,7 @@ const initialState = {
   featuredHasErrors: false,
   numberOfUsers: 0,
   numberOfEvents: 0,
-  numberOfIndividuals: 0,
+  numberOfGroups: 0,
   numberOfOrganisations: 0,
   featuredOrgs: [],
 }
@@ -29,7 +29,7 @@ export default function homeViewReducer(state = initialState, action) {
         statFetched: true,
         numberOfEvents: action.payload.numberOfEvents,
         numberOfUsers: action.payload.numberOfUsers,
-        numberOfIndividuals: action.payload.numberOfIndividuals,
+        numberOfGroups: action.payload.numberOfGroups,
         numberOfOrganisations: action.payload.numberOfOrganisations
       }
     case actions.GET_STAT_INFO_FAILURE:
