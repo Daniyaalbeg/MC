@@ -165,14 +165,6 @@
     margin-top: 0PX;
 }
 
-
-.spinnerThing {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-}
-
 .column {
     margin-left: 12px;
     margin-right: 12px;

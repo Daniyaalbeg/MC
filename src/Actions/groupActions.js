@@ -94,7 +94,6 @@ export const getGroups = () => {
       url: rootURL(production) + API + '/group'
     })
     .then((res) => {
-      console.log(res.data)
       dispatch(gettingGroupSuccess(res.data))
     })
     .catch((err) => {

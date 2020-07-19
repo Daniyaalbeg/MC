@@ -190,6 +190,9 @@ const SignupUser = ({ dispatch, hasErrors, loading, success, auth, signUpError }
             isValid={touched.mobile && !errors.mobile}
             isInvalid={errors.mobile}
           />
+           <Form.Text id="passwordHelpBlock" muted>
+            Mobile number must be in the form: +92 123 4567890
+          </Form.Text>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.mobile}</Form.Control.Feedback>
         </Form.Group>
