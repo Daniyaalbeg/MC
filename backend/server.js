@@ -7,7 +7,9 @@ var path = require('path')
 var rfs = require('rotating-file-stream')
 const Sentry = require('@sentry/node');
 
-Sentry.init({ dsn: 'https://ebe7cda610d24b159425f7f43c5d3662@o382800.ingest.sentry.io/5212202' });
+if (process.env.NODE_ENV === 'production') {
+  Sentry.init({ dsn: 'https://ebe7cda610d24b159425f7f43c5d3662@o382800.ingest.sentry.io/5212202' });
+}
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minutes
@@ -58,6 +60,7 @@ if (process.env.NODE_ENV === "production") {
     }
     return callback(null, true);
   },
+  maxAge: 86400,
   credentials: true 
   }));
 } else {
