@@ -1,0 +1,16 @@
+.inspireContainer {
+  height: calc(100% - 66px);
+  width: 100%;
+}
+.inspireHeader {
+  padding: 64px;
+  padding-top: 32px;
+}
+.inspireHeader > p {
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center;
+}
+.inspireContent {
+
+}
