@@ -456,97 +456,103 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           >
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="animalWelfare"
               label="Animal Welfare"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="artsAndCulture"
               label="Arts and Culture"
-            /> 
+            />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
+              id="clothing"
+              label="Clothing"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
               id="communityDevelopment"
               label="Community Development"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="disability"
               label="Disability"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="disaster"
               label="Disaster"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="education"
               label="Education"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="primary"
               label=" - Primary"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="secondary"
               label=" - Secondary"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="higher"
               label=" - Higher"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="energy"
               label="Energy"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="environment"
               label="Environment"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="forest"
               label=" - Forest"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="water"
               label=" - Water"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="equality"
               label="Equality"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="food"
               label="Food"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="agriculture"
               label=" - Agriculture"
             />
@@ -558,91 +564,103 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="fisheries"
               label=" - Fisheries"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="gender"
               label="Gender"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="health"
               label="Health"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="motherAndChildHealth"
               label=" - Mother and Child Health"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="humanRights"
               label="Human Rights"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="infrastructure"
               label="Infrastructure"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="it"
               label="IT"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="justice"
               label="Justice"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="livelihood"
               label="Livelihood"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
+              id="money"
+              label="Money"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
               id="peace"
               label="Peace"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
+              id="ppe"
+              label="Protection Equipment"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
               id="povertyAlleviation"
               label="Poverty Alleviation"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="recycling"
               label="Recycling"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="sanitation"
               label="Sanitation"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="sports"
               label="Sports"
             />
             <Field
               component={Checkbox}
-              name="areaOfWork"
+              name="groupType"
               id="terrorism"
               label="Terrorism"
             />

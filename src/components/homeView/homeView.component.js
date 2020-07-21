@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import '../../css/homeView.css';
 import { getStatInfo, getFeaturedInfo } from '../../Actions/homeViewActions';
 import { getUserInfo } from '../../Actions/userInfoActions';
+import { WhatCategoriesHomeView } from '../iconController/iconCategories.component';
 
 import Footer from './mainFooter.component';
 
@@ -25,10 +26,6 @@ import photo8 from '../../assets/Images/sindhLady.jpg';
 import mapScreenshot from '../../assets/Images/mapScreenshot.png';
 import imagePlaceholder from '../../assets/Images/temp.jpg';
 
-import sack from '../../assets/svg/sack.svg';
-import coin from '../../assets/svg/coin.svg';
-import mask from '../../assets/svg/mask.svg';
-import shirt from '../../assets/svg/shirt.svg';
 //together we can, change our destiny, by changing ourselves doobi, being in service chitral dude, doing good presentation, living our truth mother son, working together group boys, focusing solutions ather, respecting diversity sindhi, honoring past kalash, together we can defocus being humble
 const images = [photo0, photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9]
 const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "BY CHANGING OURSELVES", "BEING IN SERVICE", "DOING GOOD", "LIVING OUR TRUTH", "WORKING TOGETHER", "FOCUSING ON SOLUTIONS", "RESPECTING DIVERSITY", "HONOURING OUR PAST"]
@@ -68,18 +65,25 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
         })}
       </Carousel>
       <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfGroups={numberOfGroups} numberOfOrganisations={numberOfOrganisations}/>
-      <div className="separator text-muted featuredText fontProxima"> WHO WE ARE </div>
+      <div className="separator text-muted featuredText"> WHO WE ARE </div>
       <IntroText />
-      <div className="separator text-muted featuredText fontProxima"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
+      <div className="separator text-muted featuredText"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
       <FeaturedOrganisation loading={featuredLoading} hasErrors={featuredHasErrors} featuredOrgs={featuredOrgs} />
-      <div className="separator text-muted featuredText fontProxima"> MAP TO INFORM </div>
-      <MapIconKey />
-      <HomeViewMap />
-      <div className="separator text-muted featuredText fontProxima"> OUR PARTNERS </div>
+      <div className="separator text-muted featuredText"> CATEGORIES TO EXPLORE </div>
+      <CategoriesIcons />
+      <div className="separator text-muted featuredText"> OUR PARTNERS </div>
       <Partners />
       <Footer />
     </div>
     </>
+  )
+}
+
+const CategoriesIcons = () => {
+  return (
+    <div className="iconListHomeViewContainer">
+      {WhatCategoriesHomeView()}
+    </div>
   )
 }
 
@@ -114,29 +118,6 @@ const HomeViewMap = (props) => {
       <Link to="/map">
         <img className="mapScreenshot" src={mapScreenshot} alt={imagePlaceholder} />
       </Link>
-    </div>
-  )
-}
-
-const MapIconKey = (props) => {
-  return (
-    <div className="iconKeyContainer">
-      <div className="iconKey">
-        <img className="iconKeyImage" src={sack} alt={imagePlaceholder}/>
-        <p> Food </p>
-      </div>
-      <div className="iconKey">
-        <img className="iconKeyImage" src={coin} alt={imagePlaceholder}/>
-        <p> Money </p>
-      </div>
-      <div className="iconKey">
-        <img className="iconKeyImage" src={mask} alt={imagePlaceholder}/>
-        <p> Protection Equipment </p>
-      </div>
-      <div className="iconKey">
-        <img className="iconKeyImage" src={shirt} alt={imagePlaceholder}/>
-        <p> Clothes </p>
-      </div>
     </div>
   )
 }

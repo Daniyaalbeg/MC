@@ -280,6 +280,15 @@
   margin-bottom: 12px;
 }
 
+.iconListHomeViewContainer {
+  padding: 32px 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-rows: auto;
+}
+
+
+
 .mapScreenshotContainer {
   display: block;
   width: 80vw;

@@ -6,6 +6,7 @@ export const FilterAreaOfWork = (props) => {
             <option value="all"> All </option>
             <option value ="animalWelfare"> Animal Welfare </option>
             <option value ="artsAndCulture"> Arts and Culture </option>
+            <option value ="clothing"> Clothing </option>
             <option value ="communityDevelopment"> Community Development </option>
             <option value ="disability"> Disability </option>
             <option value ="disaster"> Disaster </option>
@@ -31,7 +32,9 @@ export const FilterAreaOfWork = (props) => {
             <option value ="it"> IT </option>
             <option value ="justice"> Justice </option>
             <option value ="livelihood"> Livelihood </option>
+            <option value ="money"> Money </option>
             <option value ="peace"> Peace </option>
+            <option value ="ppe"> Protection Equipment </option>
             <option value ="povertyAlleviation"> Poverty Alleviation </option>
             <option value ="recycling"> Recycling </option>
             <option value ="sanitation"> Sanitation </option>

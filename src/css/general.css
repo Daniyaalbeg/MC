@@ -354,30 +354,37 @@ p, h1, h2, h3, h4, h5, h6 {
   height: 40px;
   width: 40px;
 }
+.iconLarge > img {
+  margin: 8px;
+  height: 56px;
+  width: 56px;
+}
 .hoverOn {
   /* display: none; */
+  box-shadow: none;
   visibility: hidden;
   position: absolute;
   opacity: 0;
   top: -24px;
   font-size: x-small;
-}
-.iconContainer:hover p {
-  visibility: visible;
-  position: absolute;
   display: inline-block;
   color: whitesmoke;
   background-color: var(--main-grey-color);
-  font-size: medium;
   z-index: 10;
   padding: 0.3em 0.6em;
   border-radius: 8px;
   font-weight: bold;
+}
+.iconImage:hover + .hoverOn {
+  visibility: visible;
+  position: absolute;
   top: -36px;
   opacity: 1;
+  font-size: medium;
   white-space: nowrap;
   transition: opacity 0.3s, top 0.3s, font-size 0.3s;
 }
+
 
 /* Animations */
 

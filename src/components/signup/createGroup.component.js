@@ -255,7 +255,13 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
               name="groupType"
               id="artsAndCulture"
               label="Arts and Culture"
-            /> 
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
+              id="clothing"
+              label="Clothing"
+            />
             <Field
               component={Checkbox}
               name="groupType"
@@ -403,8 +409,20 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
             <Field
               component={Checkbox}
               name="groupType"
+              id="money"
+              label="Money"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
               id="peace"
               label="Peace"
+            />
+            <Field
+              component={Checkbox}
+              name="groupType"
+              id="ppe"
+              label="Protection Equipment"
             />
             <Field
               component={Checkbox}
