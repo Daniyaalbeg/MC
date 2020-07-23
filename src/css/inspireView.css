@@ -139,7 +139,7 @@
   .videoModal {
     width: 95vw;
     height: fit-content;
-    top: 20%;
+    top: 10%;
     left: calc(50% - 47.5vw);
     padding: 8px;
     padding-top: 32px;
