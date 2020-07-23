@@ -1,8 +1,12 @@
 :root {
   --main-bg-color-transparent: #222a2ec4;
   --main-bg-color: #2b353a;
+  --main-bg-dark-color: #232b30;
+  --main-bg-light-color: #38454b;
   --main-yellow-color: #FFD71A;
   --main-blue-color: #1589C9;
+  --main-dark-blue-color: #157cb4;
+  --main-light-blue-color: #1592d4;
   --main-red-color: #EF2A30;
   --main-orange-color: #F47E2E;
   --main-grey-color: #4C5962;
@@ -149,7 +153,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .standardButtonWithoutColour {
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 0.3em 0.6em;
   font-weight: bold;
 }

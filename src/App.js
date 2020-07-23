@@ -29,6 +29,7 @@ import './css/signupUser.css';
 import './css/supplierInfoView.css';
 import './css/groupInfoView.css';
 import './css/groupMainView.css';
+import './css/inspireView.css'
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component';
@@ -49,7 +50,8 @@ const ResettingPassword = lazy(() => import('./components/reset/resettingPasswor
 const EmailVerification = lazy(() => import('./components/signup/emailVerification.component'));
 const CreateEvent = lazy(() => import('./components/signup/createEvent.component'));
 const UpdateEvent = lazy(() => import('./components/update/updateEvent.component'));
-const About = lazy(() => import('./components/about.component'));
+const AboutView = lazy(() => import('./components/about.component'));
+const InspireView = lazy(() => import('./components/inspire/inspireView.component'));
 const CnicView = lazy(() => import('./components/cnic/cnicView.component'));
 const PrivacyPolicy = lazy(() => import('./components/privacyPolicy.component'));
 const TermsAndConditions = lazy(() => import('./components/termsAndConditions'));
@@ -83,7 +85,8 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/organisations/:id" component={OrgViewInfo}/>
           <Route path="/organisations" component={OrgView}/>
           <Route path="/groups" component={GroupView}/>
-          <Route path="/about" component={About} />
+          <Route path="/about" component={AboutView} />
+          <Route path={["/inspire/:id", "/inspire"]} component={InspireView} />
           <Route path="/signup" component={SignupUser}/>
           <Route path="/updateProfile" component={UpdateProfile}/>
           <Route path="/signupOrg" component={SignUpOrg}/>

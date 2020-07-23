@@ -113,15 +113,6 @@
   "sidebar body"
   /* "footer footer footer"; */
 }
-/* .dbHeader {
-  grid-area: header;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #EDF2F6;
-} */
 .dbTopLeft {
   grid-area: topLeft;
   background-color: var(--main-bg-color);
@@ -130,6 +121,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  /* font-weight: bold; */
   border-bottom: 1px solid var(--main-bg-color);
 }
 .dbTopLeft > p {
@@ -144,8 +136,10 @@
 .dbBody {
   grid-area: body;
   padding: 20px;
+  padding-left: 0px;
   /* overflow: hidden; */
-  background-color: #EDF2F6;
+  /* background-color: whitesmoke; */
+  background-color: var(--main-bg-color);
 }
 .dbFooter {
   grid-area: footer;

@@ -26,6 +26,7 @@ const NavigationBar = ({ auth }) => {
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/groups"> Groups </Link></Nav.Item>
+            <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/inspire"> Inspire </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
             {/* <Nav.Item><Link className="navlinkHome spaceLink" to="/about"> About </Link></Nav.Item> */}
             <Link className="loginNav loginNavHome" to="/dashboard" onClick={() => setDropDown(false)}> { auth ? "My Dashboard" : "Log in"} </Link>
@@ -48,6 +49,7 @@ const NavigationBar = ({ auth }) => {
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/groups"> Groups </Link></Nav.Item>
+            <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/inspire"> Inspire </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
             {/* <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item> */}
             <Link className="loginNav" to="/dashboard" onClick={() => setDropDown(false)}> { auth ? "My Dashboard" : "Log in"} </Link>
