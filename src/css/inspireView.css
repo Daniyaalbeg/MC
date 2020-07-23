@@ -92,7 +92,7 @@
   position: absolute;
   top: calc(50% - 350px);
   left: calc(50% - 400px);
-  max-height: 80%;
+  /* max-height: 80%; */
   height: fit-content;
   width: 800px;
   border-radius: 8px;
@@ -101,7 +101,7 @@
   padding-bottom: 40px;
   color: whitesmoke;
   background: linear-gradient(to bottom right, var(--main-bg-light-color), var(--main-bg-dark-color));
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 .videoModalTitle {
   width: 100%;
@@ -138,14 +138,16 @@
   }
   .videoModal {
     width: 95vw;
-    top: 70px;
+    height: fit-content;
+    top: 20%;
     left: calc(50% - 47.5vw);
     padding: 8px;
     padding-top: 32px;
     max-height: 90%;
   }
   .videoModalVideo {
-    height: 100%;
+    width: 100%;
+    /* height: fit-content; */
   }
   .videoModal > p {
     font-size: small;
