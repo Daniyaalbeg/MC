@@ -55,7 +55,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--main-blue-color);
+  background: linear-gradient(to bottom right, var(--main-light-blue-color), var(--main-dark-blue-color));
   border-radius: 8px;
   height: 200px;
   width: auto;

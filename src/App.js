@@ -86,7 +86,7 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/organisations" component={OrgView}/>
           <Route path="/groups" component={GroupView}/>
           <Route path="/about" component={AboutView} />
-          <Route path="/inspire" component={InspireView} />
+          <Route path={["/inspire/:id", "/inspire"]} component={InspireView} />
           <Route path="/signup" component={SignupUser}/>
           <Route path="/updateProfile" component={UpdateProfile}/>
           <Route path="/signupOrg" component={SignUpOrg}/>
