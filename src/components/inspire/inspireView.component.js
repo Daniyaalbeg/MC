@@ -9,6 +9,9 @@ import image6 from '../../assets/video/placeholder/6.jpg';
 import image7 from '../../assets/video/placeholder/7.jpg';
 import { CLIENT, production, rootURL } from '../../config';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/pro-solid-svg-icons'
+
 
 const videos = [
   {
@@ -113,6 +116,8 @@ const VideoModal = ({ selectedVideo, setSelectedVideo }) => {
   return (
     <div className="videoModalBackground" onClick={() => setSelectedVideo(null)}>
       <div className="videoModal" onClick={(e) => e.stopPropagation()}>
+      <FontAwesomeIcon icon={faTimesCircle} size="2x" className="modalCloseButton" onClick={() => setSelectedVideo(null)} />
+
         <div className="videoModalTitle">
           <h1> {selectedVideo.name} </h1>
         </div>
