@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-const pointSchema = require('./point.model')
-
+const pointSchema = require('../point.model');
+const commentSchema = require('./comment.model').commentSchema;
+const supplySchema = require('./supply.model').supplySchema;
+const fundingSchema = require('./funding.model').fundingSchema;
+const updateSchema = require('./update.model').updateSchema;
 
 const Schema = mongoose.Schema
 
@@ -9,10 +12,10 @@ const projectSchema = new Schema({
     type: String,
     required: true
   },
-  imageURL: {
-    type: [String],
+  imageURL: [{
+    type: String,
     required: false
-  },
+  }],
   description: {
     type: String,
     required: true
@@ -37,32 +40,43 @@ const projectSchema = new Schema({
 
   //Volunteer
 
-  //Fundung
-
+  //Funding
+  funding: {
+    type: fundingSchema,
+    required: true
+  },
   //Supply
-
+  supplies: [{
+    type: supplySchema,
+    required: true
+  }],
   //Comments
+  comments: [{
+    type: commentSchema,
+    required: true
+  }],
 
   //Updates
-
-  //Backers who funded the project
-
+  updates: [{
+    type: updateSchema,
+    required: true
+  }],
   //FAQ
 
   //FollowedBy
-  followedBy: {
+  followedBy: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: false
-  },
+    required: true
+  }],
 
   createdBy: {
     //Store _id of the supplier
     type: String,
     required: true
-  },
-
-
+  }
+}, {
+  timestamps: true
 })
 
 const Project = mongoose.model('Project', projectSchema)
