@@ -44,6 +44,7 @@
     height: calc(150px);
     width: 100%;
     object-fit: contain;
+    padding-bottom: 1px;
 }
 .cardBottom {
     margin-top: 8px;
