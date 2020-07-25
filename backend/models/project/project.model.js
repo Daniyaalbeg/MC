@@ -4,6 +4,8 @@ const commentSchema = require('./comment.model').commentSchema;
 const supplySchema = require('./supply.model').supplySchema;
 const fundingSchema = require('./funding.model').fundingSchema;
 const updateSchema = require('./update.model').updateSchema;
+const faqSchema = require('./faq.model').faqSchema;
+const impactSchema = require('./impact.model').impactSchema;
 
 const Schema = mongoose.Schema
 
@@ -37,7 +39,10 @@ const projectSchema = new Schema({
     required: true
   },
   //Impact
-
+  impact: {
+    type: impactSchema,
+    required: true
+  },
   //Volunteer
 
   //Funding
@@ -55,13 +60,16 @@ const projectSchema = new Schema({
     type: commentSchema,
     required: true
   }],
-
   //Updates
   updates: [{
     type: updateSchema,
     required: true
   }],
   //FAQ
+  faq: [{
+    type: faqSchema,
+    required: true
+  }],
 
   //FollowedBy
   followedBy: [{
@@ -73,6 +81,14 @@ const projectSchema = new Schema({
   createdBy: {
     //Store _id of the supplier
     type: String,
+    required: true
+  },
+  published: {
+    type: Boolean,
+    required: true
+  },
+  approved: {
+    type: Boolean,
     required: true
   }
 }, {

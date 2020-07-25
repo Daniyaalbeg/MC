@@ -87,8 +87,11 @@ const emailVerificationRouter = require('./routes/emailVerificationRouter');
 const infoRouter = require('./routes/infoRouter');
 const cnicRouter = require('./routes/cnicRouter');
 const groupRouter = require('./routes/groupController');
+const projectRouter = require('./routes/projectRouter');
+
 
 app.use('/api/supplier', supplierRouter);
+app.use('/api/project', projectRouter);
 app.use('/api/event', eventRouter);
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
