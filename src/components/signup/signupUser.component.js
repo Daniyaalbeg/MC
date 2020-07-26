@@ -6,7 +6,7 @@ import SignupUserForm from './signupUserForm.component';
 import '../../css/form.css';
 
 const SignupUser = ({ dispatch, success, props }) => {
-  if (success) {
+  if (true) {
     return <SignedUpMessage props={props} dispatch={dispatch} success={success} />
   } else {
     return <SignupUserForm />
@@ -26,7 +26,10 @@ const SignedUpMessage = ({ props, dispatch, success }) => {
       <div className="userSignupWelcomeMessage">
         <h1> Congratulations! </h1>
         <p>
-          You are now a member of Ministry of Change. We welcome you to our family of changemakers. You can now create an organisation, map your impact or create a group. Your organisation and group will show up once they have been approved by our admins.
+          You are now a member of Ministry of Change. We welcome you to our family of changemakers. You can now create an organisation, map your impact or create a group.
+        </p>
+        <p>
+          You can now go to the dashboard to manage your account and create your organisation or group. They will show up for everyone else once you have been approved by our admins.
         </p>
         <button className="standardButton" onClick={() => {
           props.history.push('/dashboard')
