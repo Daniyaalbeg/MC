@@ -8,6 +8,7 @@ import ProfileInfoView from './profileInfoView.component';
 import SupplierInfoView from './supplierInfoView.component';
 import EventView from './eventView.component';
 import GroupInfoView from './groupInfoView.component';
+import ProjectView from './projects/projectView.component';
 
 import { getUserInfo } from '../../Actions/userInfoActions';
 import getWindowDimensions from '../utilities/windowDimension.component';
@@ -101,9 +102,7 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             <SupplierInfoView supplier={user.supplier} />
           </Panel>
           <Panel>
-            <div className="comingSoonContainer">
-            <p className="mcGreenBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
-            </div>
+            <ProjectView />
           </Panel>
           <Panel>
             <GroupInfoView groups={user.createdGroups} />
