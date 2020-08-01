@@ -4,12 +4,16 @@
   --main-bg-dark-color: #232b30;
   --main-bg-light-color: #38454b;
   --main-yellow-color: #FFD71A;
+  --main-light-yellow-color: #ffde3b;
+  --main-dark-yellow-color: #e6c213;
   --main-blue-color: #1589C9;
   --main-dark-blue-color: #157cb4;
   --main-light-blue-color: #1592d4;
   --main-red-color: #EF2A30;
   --main-orange-color: #F47E2E;
   --main-grey-color: #4C5962;
+  --main-dark-grey-color: #434f57;
+  --main-light-grey-color: #5c6a74;
   --main-green-color: #4BB250;
 }
 
@@ -31,6 +35,9 @@
 .mcGrey {
   color: #4C5962 !important;
 }
+.mcBlack {
+  color: #040404 !important;
+}
 
 .mcRedBG {
   background-color: #EF2A30;
@@ -42,10 +49,10 @@
   background-color: #da6f28;
  }
  .mcYellowBG {
-  background-color: #FFD71A;
+  background-color: #FFD71A !important;
  }
  .mcYellowBG:hover {
-  background-color: #ddbc17;
+  background-color: #ddbc17 !important;
  }
  .mcGreenBG {
   background-color: #4BB250;
@@ -53,8 +60,14 @@
  .mcBlueBG {
   background-color: #1589C9;
  }
+ .mcBlueBG:hover {
+  background-color: #1275aa;
+ }
  .mcGreyBG {
   background-color: #4C5962;
+ }
+ .mcGreyBG:hover {
+  background-color: rgb(52, 61, 66);
  }
 
  .fallBackContainer {
@@ -135,6 +148,14 @@
   color: #EF2A30;
 }
 
+.loadError {
+  width: 100%;
+  text-align: center;
+  margin: 16px;
+  color: var(--main-red-color);
+  font-weight: bold;
+}
+
 p, h1, h2, h3, h4, h5, h6 {
   font-family: proximaNova;
 }
@@ -146,9 +167,17 @@ p, h1, h2, h3, h4, h5, h6 {
   padding: 0.3em 0.6em;
   font-weight: bold;
   height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .standardButton:hover {
   background-color: rgb(18, 117, 170);
+}
+
+.squareButton {
+  padding: 0.6em 0.6em;
 }
 
 .standardButtonWithoutColour {
@@ -195,10 +224,6 @@ p, h1, h2, h3, h4, h5, h6 {
 .redVersion:hover {
   background-color: rgb(206, 36, 41);
   border-color: #EF2A30;
-}
-
-.standardErrorMessage {
-
 }
 
 .largerErrorMessage {

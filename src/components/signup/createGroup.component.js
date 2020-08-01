@@ -36,11 +36,13 @@ const validationSchema = Yup.object().shape({
   .required("*Admin Whatsapp number is required")
   .min(1, "*Admin Whatsapp number must be longer than 1 charachter")
   .max(20, "*Admin Whatsapp number must be less than 20 charachters"),
+  affiliatedOrg: Yup.array()
+  .max(1, "*Can only be affilated with one organisation"),
   agreedToTerms: Yup.bool()
   .oneOf([true], "*Must accept terms and conditions"),
 });
 
-const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, props }) => {
+const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, props, orgs, userInfoFetched }) => {
   const [imageNumberError, setImageNumberError] = useState(false)
   const [rejectedFilesState, setRejectedFilesState] = useState([])
   const {
@@ -62,7 +64,7 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
     isDragReject
   ]);
 
-  if (!auth) return <Redirect push to="/dashboard" />
+  if (!auth || !userInfoFetched) return <Redirect push to="/dashboard" />
   if (success) {
     dispatch(resettingCreateGroup())
     return <Redirect push to="/dashboard" />
@@ -81,7 +83,7 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           groupAdmin: "",
           groupAdminContact: "",
           groupType: [],
-          affiliatedOrg: false,
+          affiliatedOrg: [],
           privateGroup: true,
           agreedToTerms: false,
         }}
@@ -95,7 +97,7 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
             groupAdmin: values.groupAdmin,
             groupAdminContact: values.groupAdminContact,
             groupWhatsappLink: values.groupWhatsappLink,
-            affiliatedOrg: values.affiliatedOrg,
+            affiliatedOrg: values.affiliatedOrg ? values.affiliatedOrg[0] : null,
             privateGroup: values.privateGroup
           }
           dispatch(createGroup(group))
@@ -481,6 +483,35 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           </CheckboxGroup>
         </Form.Group>
 
+        {orgs &&
+          <Form.Group>
+          <Form.Label> Affiliated Organisation </Form.Label>
+          <Form.Text> Is your group affilated with one of your organisations? </Form.Text>
+            <CheckboxGroup
+              id="affiliatedOrg"
+              value={values.affiliatedOrg}
+              error={errors.affiliatedOrg}
+              touched={touched.affiliatedOrg}
+              onChange={setFieldValue}
+              onBlur={setFieldTouched}
+            >
+              {
+                orgs.map((org) => {
+                  return (
+                    <Field
+                      key={org._id}
+                      component={Checkbox}
+                      name="affilatedOrg"
+                      id={org._id}
+                      label={org.name}
+                    />
+                  )
+                })
+              }
+            </CheckboxGroup>
+          </Form.Group>
+        }
+
         <Form.Group>
           <Field
             component={Checkbox}
@@ -493,17 +524,6 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
         </Form.Group>
 
         <Form.Group>
-          {supplier &&
-            <Field
-              component={Checkbox}
-              name="affiliatedOrg"
-              id="affiliatedOrg"
-          label={<p className="agreedTo"> Is this group affiliated with your organisation <span style={{fontWeight: 'bold'}}>{supplier.supplierName}</span>? </p>}
-              isValid={touched.affiliatedOrg && !errors.affiliatedOrg}
-              isInvalid={errors.affiliatedOrg}
-            />
-          }
-
           <Field
             component={Checkbox}
             name="agreedToTerms"
@@ -514,21 +534,23 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
           />
         </Form.Group>
 
-        <button className="standardButton" type="submit" disabled={loading}>
-          {
-            loading ? 
-            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-            :
-            null
-          }
-          {loading ? 'Creating Group' : 'Create Group'}
-        </button>
+        <div className="formButtons">
+          <button className="standardButton" type="submit" disabled={loading}>
+            {
+              loading ? 
+              <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+              :
+              null
+            }
+            {loading ? 'Creating Group' : 'Create Group'}
+          </button>
 
-        <button className="standardButton redVersion" style={{marginLeft: "8px"}} onClick={() => {
-          props.history.goBack()
-        }} disabled={loading}>
-          Cancel
-        </button>
+          <button className="standardButton redVersion" style={{marginLeft: "8px"}} onClick={() => {
+            props.history.goBack()
+          }} disabled={loading}>
+            Cancel
+          </button>
+        </div>
 
         {hasErrors &&
           <>
@@ -551,10 +573,11 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, supplier, pr
 
 const MapStateToProps = (state, ownProps) => ({
   auth: state.auth.auth,
-  supplier: state.userInfo.user.supplier,
   loading: state.groupInfo.createGroup.loading,
   hasErrors: state.groupInfo.createGroup.hasErrors,
   success: state.groupInfo.createGroup.success,
+  orgs: state.userInfo.user.createdOrganisations,
+  userInfoFetched: state.userInfo.fetched,
   props: ownProps
 })
 

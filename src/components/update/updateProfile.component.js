@@ -225,19 +225,21 @@ if (!auth) {
         </Form.Group>
         </Form.Row>
 
-        <button className="standardButton signUpButton" type="submit" disabled={loading}>
-        {
-          loading ? 
-          <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-          :
-          null
-        }
-        {loading ? 'Updating' : 'Update'}
-        </button>
+        <div className="formButtons">
+          <button className="standardButton signUpButton" type="submit" disabled={loading}>
+          {
+            loading ? 
+            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+            :
+            null
+          }
+          {loading ? 'Updating' : 'Update'}
+          </button>
 
-        <button type="button" className="standardButton redVersion" onClick={resetForm} disabled={loading}>
-          Reset
-        </button>
+          <button type="button" className="standardButton redVersion" onClick={resetForm} disabled={loading}>
+            Reset
+          </button>
+        </div>
 
         {hasErrors &&
           <ErrorComponent signUpError={signUpError} />

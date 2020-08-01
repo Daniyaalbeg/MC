@@ -47,7 +47,7 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
 
   return (
     <>
-    <Helmet htmlAttributes>
+    <Helmet>
       <html lang="en" />
       <meta name="description" content="A web portal for change makers." />
     </Helmet>
@@ -125,7 +125,7 @@ const HomeViewMap = (props) => {
 const FeaturedOrganisation = (props) => {
   const { featuredOrgs, loading, hasErrors } = props
   if (hasErrors) {
-    return <p> Cannot load featured organisations </p>
+    return <p className="loadError" > Could not load featured organisations </p>
   }
   if (loading) {
     return (
@@ -143,9 +143,9 @@ const FeaturedOrganisation = (props) => {
           return (
             <div className="featuredOrgCard grow" key={org._id}>
             <Link className="featuredLink" to={'/organisations/'+org._id}>
-              <img src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt="error" className="featuredOrgImage" />
+              <img src={org.imageURL ? org.imageURL : imagePlaceholder} alt="error" className="featuredOrgImage" />
               <div className="featuredOrgText">
-                <span> {org.supplierName} </span>
+                <span> {org.name} </span>
               </div>
             </Link>
             </div>

@@ -296,19 +296,21 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
           />
         </Form.Group>
 
-        <button className="standardButton signUpButton" type="submit" disabled={loading}>
-        {
-          loading ? 
-          <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-          :
-          null
-        }
-        {loading ? 'Signing up' : 'Sign up'}
-        </button>
+        <div className="formButtons">
+          <button className="standardButton signUpButton" type="submit" disabled={loading}>
+          {
+            loading ? 
+            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+            :
+            null
+          }
+          {loading ? 'Signing up' : 'Sign up'}
+          </button>
 
-        <button type="button" className="standardButton redVersion" onClick={resetForm} disabled={loading}>
-          Reset
-        </button>
+          <button type="button" className="standardButton redVersion" onClick={resetForm} disabled={loading}>
+            Reset
+          </button>
+        </div>
 
         {success &&
           <p className="successReply"> Sign up successfull. A verification email has been sent to {values.email} </p>

@@ -1,15 +1,19 @@
+const mongoose = require('mongoose');
 const router = require('express').Router();
-const Supplier = require('../models/supplier.model');
+const { Organisation } = require('../models/organisation.model');
 const User = require('../models/user.model');
 const Group = require('../models/group.model').Group;
 const verifyToken = require('../verifyToken');
 
 router.route('/').get((req, res) => {
   Group.find({ approved: true })
-  .populate('createdBy', ['supplier.supplierImageURL', 'supplier._id', 'supplier.supplierName'])
+  .populate('affiliatedOrg', ['name', 'imageURL'])
   .lean()
   .exec((err, groups) => {
-    if (err) return res.status(500).json({ errDesc: "An error occuredd"})
+    if (err) {
+      console.log(err)
+      return res.status(500).json({ errDesc: "An error occuredd"})
+    }
     
     groups.forEach((group) => {
       if (group.privateGroup) {
@@ -21,13 +25,22 @@ router.route('/').get((req, res) => {
   })
 })
 
+const isOrg = (orgID, orgs) => {
+  for (let i = 0; i < orgs.length; i++) {
+    if (orgs[i]._id.toString() === orgID) {
+      return true
+    }
+  }
+  return false
+}
+
 router.route('/create').post(verifyToken, (req, res, next) => {
   User.findById(req.id, { password: 0 }, (err, user) => {
     if (err) {
       console.log('error 1')
-      res.status(500).send("There was a problem finding the user.");
+      res.status(500).json({ errorDesc: "There was a problem finding the user."});
     }
-    if (!user) return res.status(404).send("No user found.");
+    if (!user) return res.status(404).json({ errorDesc: "No user found." });
 
     const groupName = req.body.groupName
     //This is different from the model because a generic image upload function is used
@@ -38,10 +51,10 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     const groupAdminContact = req.body.groupAdminContact
     const groupType = req.body.groupType
     const createdBy = user._id
-    let affiliatedOrg = false
+    let affiliatedOrg = null
     const privateGroup = req.body.privateGroup
-    if (req.body.affiliatedOrg && user.supplier) {
-      affiliatedOrg = true
+    if (req.body.affiliatedOrg && isOrg(req.body.affiliatedOrg, user.createdOrganisations)) {
+      affiliatedOrg = mongoose.Types.ObjectId(req.body.affiliatedOrg)
     }
     const approved = false
 

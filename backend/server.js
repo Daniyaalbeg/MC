@@ -73,11 +73,16 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(cookieParser())
 app.use(express.json());
-app.use(limiter);
-app.use(speedLimiter);
-app.use(morgan('combined', { stream: accessLogStream }))
 
-const supplierRouter = require('./routes/supplierRouter');
+ if (process.env.NODE_ENV === 'production') {
+   app.use(limiter);
+   app.use(speedLimiter);
+   app.use(morgan('combined', { stream: accessLogStream }))
+ }
+
+
+// const supplierRouter = require('./routes/supplierRouter');
+const organisationRouter = require('./routes/organisationRouter');
 const eventRouter = require('./routes/eventRouter');
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authController');
@@ -88,7 +93,8 @@ const infoRouter = require('./routes/infoRouter');
 const cnicRouter = require('./routes/cnicRouter');
 const groupRouter = require('./routes/groupController');
 
-app.use('/api/supplier', supplierRouter);
+app.use('/api/organisation', organisationRouter)
+// app.use('/api/supplier', supplierRouter);
 app.use('/api/event', eventRouter);
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);

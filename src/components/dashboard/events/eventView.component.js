@@ -2,10 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxOpen } from '@fortawesome/pro-solid-svg-icons'
 
-import EventContainer from './eventsContainer.component';
-import HeaderIcons from './HeaderIcons.component';
+import EventsContainer from './eventsContainer.component';
+import HeaderIcons from '../HeaderIcons.component';
 
-const EventView = (props) => {
+const EventView = ({ orgs }) => {
   return (
     <div className="eventViewContainer">
       <div className="eventViewHeader">
@@ -16,10 +16,12 @@ const EventView = (props) => {
         <HeaderIcons />
       </div>
       <div className="eventViewContent">
-        <EventContainer supplier={props.supplier} />
+        <EventsContainer orgs={orgs} />
       </div>
     </div>
   )
 }
+
+// const Organisation
 
 export default EventView

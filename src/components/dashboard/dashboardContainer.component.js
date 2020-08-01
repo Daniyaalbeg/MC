@@ -17,7 +17,7 @@ const DashboardContainer = ({auth}) => {
   } else {
     return (
       <>
-      <Helmet htmlAttributes>
+      <Helmet>
         <html lang="en" />
         <meta name="description" content="Dashboard for your MC account where you can add, edit or delete all your information" />
       </Helmet>

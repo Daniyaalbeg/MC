@@ -123,8 +123,10 @@
 }
 .linkCopyButtonVideoModal {
   width: 100%;
-  text-align: center;
   margin: 8px;
+}
+.linkCopyButtonVideoModal > button {
+  margin: auto;
 }
 
 

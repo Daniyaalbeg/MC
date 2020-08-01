@@ -25,7 +25,7 @@ export function getOrgInfo() {
 
     axios({
       method: 'get',
-      url: rootURL(production)+API+'/supplier/',
+      url: rootURL(production)+API+'/organisation',
       headers: {'Content-Type': 'application/json'}
     })
     .then((res) => {

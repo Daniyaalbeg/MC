@@ -7,7 +7,7 @@ const Schema = mongoose.Schema
 const eventSchema = new Schema({
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'Organisation',
       required: true
     },
     name: { type: String, required: true },

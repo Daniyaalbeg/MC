@@ -113,7 +113,9 @@ const updateEventCall = (dispatch, data) => {
       typeOfRation: data.typeOfRation,
       images: data.images,
       location: data.location,
-      date: data.date
+      date: data.date,
+      _id: data._id,
+      createdBy: data.createdBy
     },
     withCredentials: true,
     credentials: 'include'
@@ -145,12 +147,12 @@ export function updateOrg(data) {
 const updateOrgCall = (dispatch, data) => {
   axios({
     method: 'post',
-    url: rootURL(production)+API+'/supplier/update/' + data._id,
+    url: rootURL(production)+API+'/organisation/update/' + data._id,
     headers: {'Content-Type': 'application/json'},
     data: {
-      supplierName: data.supplierName,
+      name: data.name,
       //data.image is different from the model because a generic image upload function is used
-      supplierImageURL: data.image,
+      imageURL: data.image,
       bankingDetails: data.bankingDetails,
       type: data.type,
       areaOfWork: data.areaOfWork,
@@ -159,7 +161,7 @@ const updateOrgCall = (dispatch, data) => {
       contactName: data.contactName,
       contactNumber: data.contactNumber,
       contactInfo: data.contactInfo,
-      supplierWebsite: data.supplierWebsite,
+      website: data.website,
       facebookURL: data.facebookURL,
       twitterURL: data.twitterURL,
       instagramURL: data.instagramURL

@@ -54,7 +54,7 @@ const validationSchema = Yup.object().shape({
   .oneOf([true], "*Must select a location"),
 });
 
-const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
+const CreateEvent = ({ dispatch, loading, hasErrors, success, auth, orgID }) => {
   const [location, setLocation] = useState([])
   const [imageFiles, setImageFiles] = useState([]);
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
@@ -76,6 +76,10 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
     isDragActive,
     isDragReject
   ]);
+
+  if (!orgID) {
+    return <Redirect to="/dashboard" />
+  }
 
   if (success) {
     dispatch(creatingEventReset())
@@ -122,7 +126,7 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             location: newPoint,
             date: values.date
           }
-          dispatch(creatingNewEvent(newEvent))
+          dispatch(creatingNewEvent(newEvent, orgID))
         }}
       >
       {({values,
@@ -133,7 +137,8 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
         handleSubmit,
         isSubmitting,
         setFieldValue,
-        setFieldTouched, }) => (
+        setFieldTouched,
+        resetForm, }) => (
       <Form noValidate onSubmit={handleSubmit}>
         <Card.Body>
         {/* <Card.Title>  </Card.Title> */}
@@ -302,16 +307,21 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
             isInvalid={errors.agreedToTerms}
           />
         </Form.Group>
-
-        <button className="standardButton" type="submit" disabled={loading}>
-          {
-            loading ? 
-            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-            :
-            null
-          }
-          {loading ? 'Creating Event' : 'Create Event'}
-        </button>
+        
+        <div className="formButtons">
+          <button className="standardButton" type="submit" disabled={loading}>
+            {
+              loading ? 
+              <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+              :
+              null
+            }
+            {loading ? 'Creating Event' : 'Create Event'}
+          </button>
+          <button type="button" className="standardButton redVersion" onClick={resetForm} disabled={loading}>
+            Reset
+          </button>
+        </div>
 
         {hasErrors &&
           <>
@@ -332,11 +342,12 @@ const CreateEvent = ({dispatch, loading, hasErrors, success, auth}) => {
   )
 }
 
-const MapStateToProps = (state) => ({
+const MapStateToProps = (state, ownProps) => ({
   auth: state.auth.auth,
   loading: state.createEvent.loading,
   hasErrors: state.createEvent.hasErrors,
-  success: state.createEvent.success
+  success: state.createEvent.success,
+  orgID: ownProps.match.params.orgID
 });
 
 export default connect(MapStateToProps)(CreateEvent)

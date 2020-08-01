@@ -12,7 +12,7 @@ import { activeStyle, rejectStyle, baseStyle, acceptStyle } from '../utilities/d
 import Dropzone, { useDropzone } from 'react-dropzone';
 import Thumb from '../utilities/thumb.component';
 
-import findChosenElement from '../utilities/searchUtilities';
+import { findEventInOrgs } from '../utilities/searchUtilities';
 
 import '../../css/form.css';
 
@@ -47,7 +47,7 @@ const validationSchema = Yup.object().shape({
   .oneOf([true], "*Must select a location"),
 });
 
-const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate}) => {
+const UpdateEvent = ({ dispatch, loading, hasErrors, success, auth, eventToUpdate , orgID }) => {
   const [location, setLocation] = useState([])
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -118,7 +118,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
             coordinates: location
           }
           const updatedEvent = {
-            _id: eventToUpdate._id,
+            ...eventToUpdate,
             name: values.name,
             description: values.description,
             totalNumberOfItems: values.numOfItems,
@@ -129,7 +129,7 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
             date: values.date
           }
           if (newImage) { updatedEvent.newImage = true }
-          dispatch(updateEvent(updatedEvent))
+          dispatch(updateEvent(updatedEvent, orgID))
         }}
       >
       {({values,
@@ -317,21 +317,30 @@ const UpdateEvent = ({dispatch, loading, hasErrors, success, auth, eventToUpdate
           />
         </Form.Group>
 
-        <button className="standardButton" type="submit" disabled={loading}>
-          {
-            loading ? 
-            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-            :
-            null
-          }
-          {loading ? 'Updating Event' : 'Update Event'}
-        </button>
+        <div className="formButtons">
+          <button className="standardButton" type="submit" disabled={loading}>
+            {
+              loading ? 
+              <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+              :
+              null
+            }
+            {loading ? 'Updating Event' : 'Update Event'}
+          </button>
 
-        <Link to="/dashboard" style={{marginLeft: "10px"}}>
-        <button className="standardButton redVersion" type="submit" disabled={loading}>
-          Cancel
-        </button>
-        </Link>
+          <Link to="/dashboard" style={{marginLeft: "10px"}}>
+            <button className="standardButton redVersion" type="submit" disabled={loading}>
+              Cancel
+            </button>
+          </Link>
+        </div>
+
+        {hasErrors &&
+          <>
+            <br />
+            <p className="redError"> An error has occured please try again later or email support.</p>
+          </>
+        }
 
         </Card.Body>
       </Form>
@@ -346,7 +355,7 @@ const MapStateToProps = (state, ownProps) => ({
   loading: state.updateInfo.loading,
   hasErrors: state.updateInfo.hasErrors,
   success: state.updateInfo.success,
-  eventToUpdate: state.userInfo.user.supplier ? findChosenElement(ownProps.match.params.id, state.userInfo.user.supplier.events) : null,
+  eventToUpdate: findEventInOrgs(state.userInfo.user, ownProps.match.params.orgID, ownProps.match.params.id)
 });
 
 export default connect(MapStateToProps)(UpdateEvent)

@@ -41,18 +41,20 @@ export default function userInfoReducer(state = initialState, action) {
     case LOGOUT:
       return initialState
     case actions.DELETE_USER_INFO_EVENT:
-      let newSupplier = {...state.user.supplier}
-      for (let i = 0; i<state.user.supplier.events.length; i++) {
-        if (state.user.supplier.events[i]._id === action.payload) {
-          newSupplier.events.splice(i, 1)
-          break;
+      let orgs = [...state.user.createdOrganisations]
+      for (let i = 0; i < orgs.length; i++) {
+        for (let j = 0; j < orgs[i].events.length; j++) {
+          if (orgs[i].events[j]._id === action.payload) {
+            orgs[i].events.splice(j, 1)
+            break
+          }
         }
       }
       return {
         ...state,
         user: {
           ...state.user,
-          supplier: newSupplier
+          createdOrganisations: [...orgs]
         }
       }
     case actions.DELETE_USER_INFO_GROUP:

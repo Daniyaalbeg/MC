@@ -61,7 +61,7 @@ export const filterAndSearchOrg = (orgs, filterType, filterProject, search) => {
   })
 
   const searchedAndFilteredEvents = filteredOrgProject.filter((org) => {
-    return (org.supplierName.toLowerCase().includes(search) || org.description.toLowerCase().includes(search))
+    return (org.name.toLowerCase().includes(search) || org.description.toLowerCase().includes(search))
   });
 
 

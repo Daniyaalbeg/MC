@@ -31,10 +31,11 @@ const userSchema = new Schema({
     type: addressSchema,
     required: false
   },
-  supplier: {
-    type: supplierSchema,
+  createdOrganisations: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Organisation',
     required: false
-  },
+  }],
   createdGroups: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Group',

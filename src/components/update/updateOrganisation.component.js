@@ -21,7 +21,7 @@ const SUPPORTED_FORMATS = [
 ];
 
 const validationSchema = Yup.object().shape({
-  supplierName: Yup.string()
+  name: Yup.string()
   .required("*Organisation name is required")
   .min(1, "*Organisation name must be longer than 1 charachter")
   .max(50, "*Organisation name must be less than 50 charachters")
@@ -83,12 +83,12 @@ const validationSchema = Yup.object().shape({
   contactNumber: Yup.string()
   .required("*Number is required")
   .min(7, "*Number must be longer than 7 charachters")
-  .max(14, "*Number must be less than 14 charachters")
-  .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*Only valid Pakistani mobile numbers"),
+  .max(14, "*Number must be less than 14 charachters"),
+  // .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*Only valid Pakistani mobile numbers"),
   contactInfo: Yup.string()
   .min(1, "*Contact info must be longer than 10 charachters")
   .max(100, "*Contact info must be less than 100 charachters"),
-  supplierWebsite: Yup.string()
+  websiteURL: Yup.string()
   .url("*Please enter a valid URL e.g. http://www.google.com"),
   facebookURL: Yup.string()
   .url("*Please enter a valid URL e.g. http://www.google.com"),
@@ -100,7 +100,7 @@ const validationSchema = Yup.object().shape({
   .oneOf([true], "*Must accept terms and conditions")
 });
 
-const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, success, auth, signUpError }) => {
+const UpdateSupplier = ({ dispatch, organisationToUpdate, hasErrors, loading, success, auth, signUpError }) => {
   const [newImage, setNewImage] = useState(false)
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
   const [imageNumberError, setImageNumberError] = useState("")
@@ -131,7 +131,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
     return <Redirect push to="/dashboard" />
   }
 
-  if (supplierToUpdate === null) {
+  if (organisationToUpdate === null) {
     return <Redirect push to="/dashboard" />
   }
 
@@ -140,31 +140,31 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
       <Card.Header>Update Organisation Info</Card.Header>
       <Formik 
         initialValues={{
-          supplierName: supplierToUpdate.supplierName,
-          supplierImageURL: supplierToUpdate.supplierImageURL,
-          bankName: supplierToUpdate.bankingDetails.bankName,
-          bankBranch: supplierToUpdate.bankingDetails.bankBranch,
-          accountTitle: supplierToUpdate.bankingDetails.accountTitle,
-          accountNumber: supplierToUpdate.bankingDetails.accountNumber,
-          IBAN: supplierToUpdate.bankingDetails.IBAN,
-          swiftCode: supplierToUpdate.bankingDetails.swiftCode,
-          jazzCash: supplierToUpdate.bankingDetails.jazzCash,
-          easyPaisa: supplierToUpdate.bankingDetails.easyPaisa,
-          type: supplierToUpdate.type,
-          areaOfWork: supplierToUpdate.areaOfWork,
-          description: supplierToUpdate.description,
-          addressLine1: supplierToUpdate.address.line1,
-          city: supplierToUpdate.address.city,
-          region: supplierToUpdate.address.region,
-          postCode: supplierToUpdate.address.postCode,
-          country: supplierToUpdate.address.country,
-          contactName: supplierToUpdate.contactName,
-          contactNumber: supplierToUpdate.contactNumber,
-          contactInfo: supplierToUpdate.contactInfo,
-          supplierWebsite: supplierToUpdate.supplierWebsite,
-          facebookURL: supplierToUpdate.facebookURL,
-          twitterURL: supplierToUpdate.twitterURL,
-          instagramURL: supplierToUpdate.instagramURL,
+          name: organisationToUpdate.name,
+          imageURL: organisationToUpdate.imageURL,
+          bankName: organisationToUpdate.bankingDetails.bankName,
+          bankBranch: organisationToUpdate.bankingDetails.bankBranch,
+          accountTitle: organisationToUpdate.bankingDetails.accountTitle,
+          accountNumber: organisationToUpdate.bankingDetails.accountNumber,
+          IBAN: organisationToUpdate.bankingDetails.IBAN,
+          swiftCode: organisationToUpdate.bankingDetails.swiftCode,
+          jazzCash: organisationToUpdate.bankingDetails.jazzCash,
+          easyPaisa: organisationToUpdate.bankingDetails.easyPaisa,
+          type: organisationToUpdate.type,
+          areaOfWork: organisationToUpdate.areaOfWork,
+          description: organisationToUpdate.description,
+          addressLine1: organisationToUpdate.address.line1,
+          city: organisationToUpdate.address.city,
+          region: organisationToUpdate.address.region,
+          postCode: organisationToUpdate.address.postCode,
+          country: organisationToUpdate.address.country,
+          contactName: organisationToUpdate.contactName,
+          contactNumber: organisationToUpdate.contactNumber,
+          contactInfo: organisationToUpdate.contactInfo,
+          websiteURL: organisationToUpdate.websiteURL,
+          facebookURL: organisationToUpdate.facebookURL,
+          twitterURL: organisationToUpdate.twitterURL,
+          instagramURL: organisationToUpdate.instagramURL,
           agreedToTerms: false,
         }}
         validationSchema={validationSchema}
@@ -187,9 +187,9 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
             country: values.country,
           }
           const updatedSupplier = {
-            _id: supplierToUpdate._id,
-            supplierName: values.supplierName,
-            image: values.supplierImageURL,
+            _id: organisationToUpdate._id,
+            name: values.name,
+            image: values.imageURL,
             bankingDetails: updatedBankingDetails,
             type: values.type,
             areaOfWork: values.areaOfWork,
@@ -198,7 +198,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
             contactName: values.contactName,
             contactNumber: values.contactNumber,
             contactInfo: values.contactInfo,
-            supplierWebsite: values.supplierWebsite,
+            websiteURL: values.websiteURL,
             facebookURL: values.facebookURL,
             twitterURL: values.twitterURL,
             instagramURL: values.instagramURL,
@@ -226,7 +226,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
         <Card.Title>Organisation Info</Card.Title>
 
         <Form.Group>
-          <Form.Label> Image of Supplier (Under 1mb, file must have extension of either .jpg, .jpeg or .png) </Form.Label>
+          <Form.Label> Image of Organisation (Under 1mb, file must have extension of either .jpg, .jpeg or .png) </Form.Label>
           <Dropzone 
             accept = 'image/jpeg, image/png, image/jpg, image/gif'
             maxSize = {11000000}
@@ -242,7 +242,7 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
                 setImageNumberError(true)
               } else {
                 setNewImage(true)
-                setFieldValue('supplierImageURL', acceptedFiles[0]);
+                setFieldValue('imageURL', acceptedFiles[0]);
               }
           }}>
             {({getRootProps, getInputProps}) => (
@@ -251,9 +251,9 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
                 <input {...getInputProps()} />
                 <p>Drag 'n' images here, or click to select images</p>
                 <div className="rowThumb">
-                  { values.supplierImageURL &&
+                  { values.imageURL &&
                     // values.supplierImageURL.map((file) => {
-                      <Thumb file={values.supplierImageURL} key={values.supplierImageURL.name} />
+                      <Thumb file={values.imageURL} key={values.imageURL.name} />
                     // })
                   }
                 </div>
@@ -269,20 +269,20 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
           </div>
           {rejectedFiles.length === 0 ? null : <p className="redError"> Some files were rejected. make sure they are not more than 2mb. </p>}     */}
           </Dropzone>
-          <p className="redStandardError"> {errors.supplierImageURL} </p>
+          <p className="redStandardError"> {errors.imageURL} </p>
         </Form.Group>
 
-        <Form.Group controlId="formsupplierName">
+        <Form.Group controlId="formName">
           <Form.Label>Organisation name <span className="red">*</span></Form.Label>
           <Form.Control
-            name="supplierName"
+            name="name"
             type="text"
             placeholder="Enter organisation name"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.supplierName}
-            isValid={touched.supplierName && !errors.supplierName}
-            isInvalid={errors.supplierName}
+            value={values.name}
+            isValid={touched.name && !errors.name}
+            isInvalid={errors.name}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.supplierName}</Form.Control.Feedback>
@@ -864,17 +864,17 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
         <Form.Group controlId="formWebsite">
           <Form.Label>Website</Form.Label>
           <Form.Control
-            name="supplierWebsite"
+            name="websiteURL"
             type="text"
             placeholder="Enter website"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.supplierWebsite}
-            isValid={touched.supplierWebsite && !errors.supplierWebsite}
-            isInvalid={errors.supplierWebsite}
+            value={values.websiteURL}
+            isValid={touched.websiteURL && !errors.websiteURL}
+            isInvalid={errors.websiteURL}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.supplierWebsite}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.websiteURL}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formFacebook">
@@ -973,13 +973,23 @@ const UpdateSupplier = ({ dispatch, supplierToUpdate, hasErrors, loading, succes
   )
 }
 
+const findOrgToEdit = (orgID, orgs) => {
+  if (!orgs) return null
+  for (var i = 0; i < orgs.length; i++) {
+    if (orgs[i]._id === orgID) {
+      return orgs[i]
+    }
+  }
+  return null
+}
+
 const MapStateToProps = (state, ownProps) => ({
   loading: state.updateInfo.loading,
   hasErrors: state.updateInfo.hasErrors,
   success: state.updateInfo.success,
   auth: state.auth.auth,
   signUpError: state.updateInfo.error,
-  supplierToUpdate: state.userInfo.user.supplier ? state.userInfo.user.supplier : null
+  organisationToUpdate: findOrgToEdit(ownProps.match.params.id, state.userInfo.user.createdOrganisations)
 });
 
 

@@ -33,7 +33,7 @@ const GroupModalDashboard = ({ dispatch, group, setSelectedGroup, deleting, dele
           <div className="modalTopTop">
             <img src={group.groupImage ? group.groupImage : imagePlaceholder} alt="Whatsapp group logo" />
             <h1> {group.groupName} </h1>
-            <button className="standardButton redVersion" disabled={deleting} onClick={() =>{
+            <button className="standardButton squareButton redVersion" disabled={deleting} onClick={() =>{
               confirmDelete ? dispatch(deleteGroup(group._id)) : setConfirmDelete(true)
             }}> {confirmDelete ? (deleting ? <Spinner animation="border" size="sm" />  : "Are you sure?") : <FontAwesomeIcon icon={faTrashAlt} /> } </button>
           </div>
@@ -87,10 +87,10 @@ const GroupModal = ({ group, setSelectedGroup }) => {
         {group.affiliatedOrg &&
           <div className="modalBottom">
             <p className="modalHeader"> Affiliated Organisation </p>
-            <Link to={"/organisations/" + group.createdBy.supplier._id}>
+            <Link to={"/organisations/" + group.affiliatedOrg._id}>
               <div className="modalAffiliatedOrg" style={{}}>
-                <img src={group.createdBy.supplier.supplierImageURL} alt="Organisation Logo" />
-                <p> <FontAwesomeIcon icon={faExternalLinkSquare} /> {group.createdBy.supplier.supplierName} </p>
+                <img src={group.affiliatedOrg.imageURL ? group.affiliatedOrg.imageURL: imagePlaceholder} alt="Organisation Logo" />
+                <p> <FontAwesomeIcon icon={faExternalLinkSquare} /> {group.affiliatedOrg.name} </p>
               </div>
             </Link>
           </div>

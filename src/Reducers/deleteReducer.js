@@ -24,12 +24,18 @@ function createDeleteEventReducer(state = initialDeleteEventState, action) {
       }
     case actions.DELETE_EVENT_FAILURE:
       return {
+        ...state,
         deleting: false,
         hasErrors: true,
         deleted: false
       }
     case actions.RESET_DELETE:
-      return initialDeleteEventState
+      return {
+        ...state,
+        deleting: false,
+        hasErrors: false,
+        deleted: false
+      }
     default:
       return state
   }
@@ -59,6 +65,7 @@ function createDeleteGroupReducer(state = initialDeleteGroupState, action) {
       }
     case groupActions.DELETE_GROUP_FAILURE:
       return {
+        ...state,
         deleting: false,
         hasErrors: true,
         deleted: false

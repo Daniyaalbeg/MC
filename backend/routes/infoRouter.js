@@ -2,20 +2,18 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('../models/user.model');
+const { Organisation } = require('../models/organisation.model');
 const Event = require('../models/event.model').Event;
 const Group = require('../models/group.model').Group;
 
 router.route('/featured').get((req, res) => {
-  User.aggregate([{ $match: { supplier: {$ne: null}, approved: true } }, { $sample: { size: 4 } }])
-  .then((users) => {
-    const featuredSuppliers = []
-    users.forEach((user) => {
-      featuredSuppliers.push(user.supplier)
-    })
-    res.status(200).json(featuredSuppliers)
+  Organisation.aggregate([{ $match: { approved: true }}, { $sample: { size: 4} }])
+  .then((orgs) => {
+    return res.status(200).json(orgs)
   })
   .catch((error) => {
-    res.status(500).send("An error occurred")
+    console.log(error)
+    return res.status(500).send("An error occurred")
   })
 })
 
@@ -26,21 +24,12 @@ router.route('/').get((req, res) => {
   let numberOfEvents = 0
 
 let promises = [
-  User.find(null)
-  .then((result) => {
-    if (!result) {
-      console.log("Error finding user numbers")
-      return res.status(500).send("Cannot find number of users")
-    }
-    result.forEach((user) => {
-      numberOfUsers += 1
-      if (!user.supplier || !user.approved) {
-        return
-      }
-      numberOfOrganisations += 1
-    })
-    return res.status(200)
-  }),
+  Organisation.countDocuments({})
+  .then((count) => { numberOfOrganisations = count })
+  .catch((err) => { return res.status(500).json({ errorDesc: "Cannot fetch organisations" }) }),
+  User.countDocuments({})
+  .then((count) => { numberOfUsers = count })
+  .catch((err) => { return res.status(500).json({ errorDesc: "Cannot fetch users" }) }),
   Event.countDocuments({})
   .then((count) => { numberOfEvents = count })
   .catch((err) => { return res.status(500).json({ errorDesc: "Cannot fetch events" }) }),

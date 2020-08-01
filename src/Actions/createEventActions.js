@@ -31,7 +31,7 @@ export const creatingEventReset = () => ({
 
 const imageUrl = rootURL(production)+API+'/imageUpload'
 
-export function creatingNewEvent(data) {
+export function creatingNewEvent(data, orgID) {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
     dispatch(creatingEvent());
@@ -96,7 +96,7 @@ export function creatingNewEvent(data) {
       .then((responses) => {
         axios({
           method: 'post',
-          url: rootURL(production)+API+'/event/create',
+          url: rootURL(production)+API+'/event/create/' + orgID,
           headers: {'Content-Type': 'application/json', 'x-access-token': token},
           data: {
             name: data.name,

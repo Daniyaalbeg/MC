@@ -8,7 +8,8 @@ import getRandomColour from '../utilities/randomMCColour.component';
 import { LightenDarkenColor } from '../utilities/colourUtils';
 import { GroupModal } from '../groups/groupModal.component';
 
-import GroupCard from './groupCard.component';
+import '../sharedComponents/standardCard.component';
+import StandardCard from '../sharedComponents/standardCard.component';
 
 const GroupView = ({ dispatch, loading, fetched, hasErrors, groups }) => {
   useEffect(() => {
@@ -64,11 +65,9 @@ const Groups = ({ groups, loading, hasErrors }) => {
       {groups.map((group) => {
         const randomColour = getRandomColour()
         return (
-          <>
           <div key={group._id} className="groupCard groupCardShadow growSmall" onClick={() => setSelectedGroup(group)} >
-            <GroupCard group={group} />
+            <StandardCard name={group.groupName} image={group.groupImage} />
           </div>
-          </>
         )
       })}
     </div>

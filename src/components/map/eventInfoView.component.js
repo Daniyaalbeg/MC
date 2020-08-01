@@ -62,7 +62,7 @@ const EventInfoView = (props) => {
           <p className="evenInfotTitle"> Created by </p>
           <div className="orgLinkFromEvent">
             <FontAwesomeIcon icon={faLink} size="sm" />
-            <Link to={'/organisations/' + event.createdBy._id}> {event.createdBy.supplierName} </Link>
+            <Link to={'/organisations/' + event.createdBy._id}> {event.createdBy.name} </Link>
           </div>
         </div>
       </div>

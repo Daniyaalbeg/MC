@@ -239,6 +239,7 @@
   width: 100%;
   object-fit: contain;
   background-color: #ffffff;
+  padding: 8px;
 }
 .featuredOrgText {
   padding-top: 8px;

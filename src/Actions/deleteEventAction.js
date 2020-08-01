@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API, rootURL, production } from '../config'
 import { deleteUserInfoEvent } from './userInfoActions'
+import { faGameConsoleHandheld } from '@fortawesome/pro-duotone-svg-icons';
 
 export const DELETE_EVENT = "DELETE_EVENT"
 export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS"
@@ -39,10 +40,9 @@ export function deleteEvent(eventID) {
       dispatch(deleteUserInfoEvent(eventID))
     })
     .catch((error) => {
-      console.log("error")
       console.log(error)
-      console.log(error.response)
       dispatch(deletingEventFailure(error))
+      console.log(error.response)
     });
   }
 }

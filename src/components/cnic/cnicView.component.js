@@ -1,19 +1,16 @@
-import React, { useState, useRef } from 'react'
-import { Accordion, Spinner } from 'react-bootstrap'
+import React, { useRef } from 'react'
+import { Spinner } from 'react-bootstrap'
 import { Helmet } from 'react-helmet'
 import { Tabs, Panel } from '@bumaga/tabs'
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../Actions/userInfoActions'
-import { getCnic } from '../../Actions/cnicActions';
 import CnicAddNew from './cnicAddNew.component'
-import EventItemCard from '../dashboard/eventItemCard.component'
 import { TabCnic } from '../utilities/tabComponent';
+import CnicSearch from './cnicSearch.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/pro-light-svg-icons'
 import { faFilePlus, faSearch as faSearchDuotone, faExclamationTriangle} from '@fortawesome/pro-duotone-svg-icons';
 
-import '../../css/cnic.css'
 import getRandomColour from '../utilities/randomMCColour.component';
 
 const MustBeLoggedIn = () => {
@@ -21,7 +18,7 @@ const MustBeLoggedIn = () => {
 
   return (
     <>
-    <Helmet htmlAttributes>
+    <Helmet>
       <html lang="en" />
       <meta name="description" content="Search or add CNIC numbers to ration distributions" />
     </Helmet>
@@ -35,9 +32,7 @@ const MustBeLoggedIn = () => {
   )
 }
 
-const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getLoading, getFetched, getHasError, getHasErrorMessage, cnicInfo }) => {
-  const searchInputRef = useRef();
-
+const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified }) => {
   if (auth && !userDataFetched) {
     dispatch(getUserInfo())
   }
@@ -54,12 +49,6 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
 
   if (!auth || !verified) {
     return <MustBeLoggedIn />
-  }
-
-  const searchCnicChange = () => {
-    if (searchInputRef.current.value !== "") {
-      dispatch(getCnic(searchInputRef.current.value))
-    }
   }
 
   return (
@@ -79,19 +68,7 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
       </div>
       <div className="cnicBody">
       <Panel>
-      <form onSubmit={
-        (e) => { e.preventDefault()
-        searchCnicChange()
-      }}>
-        <div className="searchCnicContainer">
-          <div className="searchCnicBox">
-            <FontAwesomeIcon icon={faSearch} className="cnicSearchIcon" onClick={searchCnicChange} spin={getLoading}/>
-            <input ref={searchInputRef} type="text" placeholder="CNIC number" className="cnicSearchInput" />
-          </div>
-          <button className="standardButton cnicSearchButton" onClick={searchCnicChange}> Search </button>
-        </div>
-      </form>
-      <CnicResult getHasError={getHasError} getHasErrorMessage={getHasErrorMessage} cnicInfo={cnicInfo} />  
+        <CnicSearch />
       </Panel>
       <Panel>
         <CnicAddNew />
@@ -104,33 +81,6 @@ const CnicView = ({ dispatch, auth, userDataFetched, authLoading, verified, getL
       <p> Once Computerised National identity Card / CNIC information has been added it cannot be edited or retrieved, for any changes please email support. </p>
     </div>
     </div>
-  )
-}
-
-const CnicResult = (props) => {
-  const { getHasError, getHasErrorMessage, cnicInfo } = props
-  const [selectedEventId, setSelectedEventId] = useState("");
-
-
-  if (getHasError) {
-    return <ErrorMessage getHasErrorMessage={getHasErrorMessage} />
-  } else if (cnicInfo !== null && Array.isArray(cnicInfo.connectedEvents) && cnicInfo.connectedEvents.length) {
-    const listOfCnic = cnicInfo.connectedEvents.map((event) =>
-        <EventItemCard isUser={false} handleClose={props.handleClose} event={event} key={event._id} open={event._id === selectedEventId}/>
-      )
-      const list = 
-        <Accordion onSelect={setSelectedEventId} className="eventListCard">
-            {listOfCnic}
-        </Accordion>
-      return list;
-  } else {
-    return null
-  }
-}
-
-const ErrorMessage = (props) => {
-  return (
-    <h4 className='largerErrorMessage'> {props.getHasErrorMessage} </h4>
   )
 }
 

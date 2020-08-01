@@ -37,7 +37,8 @@ const groupSchema = new Schema({
     required: true
   },
   affiliatedOrg: {
-    type: Boolean,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Organisation',
     required: false
   },
   privateGroup: {

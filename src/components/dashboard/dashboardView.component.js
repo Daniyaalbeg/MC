@@ -4,10 +4,10 @@ import { Tabs, Panel } from '@bumaga/tabs'
 import { Spinner} from 'react-bootstrap';
 //css for this was moved to dashboard.css
 
-import ProfileInfoView from './profileInfoView.component';
-import SupplierInfoView from './supplierInfoView.component';
-import EventView from './eventView.component';
-import GroupInfoView from './groupInfoView.component';
+import ProfileInfoView from './profile/profileInfoView.component';
+import OrganisationInfoViewDash from './organisations/organisationInfoViewDash.component';
+import EventView from './events/eventView.component';
+import GroupInfoView from './groups/groupInfoView.component';
 
 import { getUserInfo } from '../../Actions/userInfoActions';
 import getWindowDimensions from '../utilities/windowDimension.component';
@@ -16,7 +16,6 @@ import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt, faHomeLg, faUserCircle, faProjectDiagram, faUsers, faBox, faBoxOpen, faBoxFull, faSitemap, faPersonSign, faHandsHelping, faClock, faExclamationTriangle } from '@fortawesome/pro-solid-svg-icons'
-import { faUser, faBell, faSignOut } from '@fortawesome/pro-duotone-svg-icons'
 
 import { logout } from '../../Actions/authActions'
 
@@ -98,7 +97,7 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             <ProfileInfoView user={user} />
           </Panel>
           <Panel>
-            <SupplierInfoView supplier={user.supplier} />
+            <OrganisationInfoViewDash orgs={user.createdOrganisations} />
           </Panel>
           <Panel>
             <div className="comingSoonContainer">
@@ -107,12 +106,9 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           </Panel>
           <Panel>
             <GroupInfoView groups={user.createdGroups} />
-            {/* <div className="comingSoonContainer">
-              <p className="mcBlueBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
-            </div> */}
           </Panel>
           <Panel>
-            <EventView supplier={user.supplier} />
+            <EventView orgs={user.createdOrganisations} />
           </Panel>
           <Panel>
             <div className="comingSoonContainer">

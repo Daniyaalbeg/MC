@@ -50,8 +50,9 @@ router.route('/create').post([
       mobile: req.body.mobile,
       cnic: req.body.cnic,
       address: address,
-      supplier: null,
-      volunteer: null,
+      createdOrganisations: [],
+      createdGroups: [],
+      volunteer: [],
       approved: false,
       verified: false
     });
@@ -132,11 +133,11 @@ router.route('/edit').post(verifyToken, (req, res, next) => {
 });
 
 //Delete a user
-router.route('/:id').delete((req, res) => {
-  User.findByIdAndDelete(req.params.id)
-  .then(() => res.status(200).json("User was deleted"))
-  .catch((error) => res.status(500).json("Error: " + error))
-})
+// router.route('/:id').delete((req, res) => {
+//   User.findByIdAndDelete(req.params.id)
+//   .then(() => res.status(200).json("User was deleted"))
+//   .catch((error) => res.status(500).json("Error: " + error))
+// })
 
 
 module.exports = router;

@@ -6,114 +6,115 @@ const { check, validationResult } = require('express-validator');
 
 var email = require('./emailVerificationRouter');
 
-// router.use(bodyParser.urlencoded({ extended: false }));
-// router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
 var User = require('../models/user.model');
-var Supplier = require('../models/supplier.model').Supplier;
-var BankingDetails = require('../models/bankingDetails.model').BankingDetails;
+// var Supplier = require('../models/supplier.model').Supplier;
+// var Organisation = require('../models/organisation.model').Organisation;
+// var BankingDetails = require('../models/bankingDetails.model').BankingDetails;
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 
-router.route('/createSupplier').post([
-  check('email').isEmail().normalizeEmail(),
-  check('username').trim().escape(),
-  check('password').trim(),
-  check('supplierName'),
-  check('supplierImageURL').isURL(),
-  check('type'),
-  check('areaOfWork'),
-  check('description'),
-  check('address'),
-  check('contactName'),
-  check('contactNumber'),
-  check('contactInfo'),
-  check('supplierWebsite').isURL(),
-  check('facebookURL').isURL(),
-  check('twitterURL').isURL(),
-  check('instagramURL').isURL(),
-  check('bankName'),
-  check('bankBranch'),
-  check('accountTitle'),
-  check('accountNumber'),
-  check('IBAN'),
-  check('swiftCode'),
-  check('jazzCash'),
-  check('easyPaisa')
+// router.route('/createOrg').post([
+//   check('email').isEmail().normalizeEmail(),
+//   check('username').trim().escape(),
+//   check('password').trim(),
+//   check('name'),
+//   check('imageURL').isURL(),
+//   check('type'),
+//   check('areaOfWork'),
+//   check('description'),
+//   check('address'),
+//   check('contactName'),
+//   check('contactNumber'),
+//   check('contactInfo'),
+//   check('website').isURL(),
+//   check('facebookURL').isURL(),
+//   check('twitterURL').isURL(),
+//   check('instagramURL').isURL(),
+//   check('bankName'),
+//   check('bankBranch'),
+//   check('accountTitle'),
+//   check('accountNumber'),
+//   check('IBAN'),
+//   check('swiftCode'),
+//   check('jazzCash'),
+//   check('easyPaisa')
 
-],(req, res) => {
+// ],(req, res) => {
 
 
-  const password = req.body.password;
+//   const password = req.body.password;
 
-  bcrypt.hash(password, 12)
-  .then((hashedPassword) => {
-    const bankingDetails = new BankingDetails({
-      bankName: req.body.bankingDetails.bankName,
-      bankBranch: req.body.bankingDetails.bankBranch,
-      accountTitle: req.body.bankingDetails.accountTitle,
-      accountNumber: req.body.bankingDetails.accountNumber,
-      IBAN: req.body.bankingDetails.IBAN,
-      swiftCode: req.body.bankingDetails.swiftCode,
-      jazzCash: req.body.bankingDetails.jazzCash,
-      easyPaisa: req.body.bankingDetails.easyPaisa
-    });
-    const supplier = new Supplier({
-      supplierName: req.body.supplierName,
-      supplierImageURL: req.body.supplierImageURL,
-      bankingDetails: bankingDetails,
-      type: req.body.type,
-      areaOfWork: req.body.areaOfWork,
-      description: req.body.description,
-      address: req.body.address,
-      contactName: req.body.contactName,
-      contactNumber: req.body.contactNumber,
-      contactInfo: req.body.contactInfo,
-      supplierWebsite: req.body.supplierWebsite,
-      facebookURL: req.body.facebookURL,
-      twitterURL: req.body.twitterURL,
-      instagramURL: req.body.instagramURL,
-      verifiedStepA: false,
-      verifiedStepB: false,
-      verifiedStepC: false,
-      verifiedStepD: false,
-      verifiedStepE: false,
-    });
-    const newUser = new User({
-      email: req.body.email,
-      username: req.body.username,
-      password: hashedPassword,
-      type: "supplier",
-      supplier: supplier,
-      volunteer: null,
-      approved: false,
-      verified: false
-    });
+//   bcrypt.hash(password, 12)
+//   .then((hashedPassword) => {
+//     const bankingDetails = new BankingDetails({
+//       bankName: req.body.bankingDetails.bankName,
+//       bankBranch: req.body.bankingDetails.bankBranch,
+//       accountTitle: req.body.bankingDetails.accountTitle,
+//       accountNumber: req.body.bankingDetails.accountNumber,
+//       IBAN: req.body.bankingDetails.IBAN,
+//       swiftCode: req.body.bankingDetails.swiftCode,
+//       jazzCash: req.body.bankingDetails.jazzCash,
+//       easyPaisa: req.body.bankingDetails.easyPaisa
+//     });
+//     const organisation = new Organisation({
+//       name: req.body.name,
+//       imageURL: req.body.imageURL,
+//       bankingDetails: bankingDetails,
+//       type: req.body.type,
+//       areaOfWork: req.body.areaOfWork,
+//       description: req.body.description,
+//       address: req.body.address,
+//       contactName: req.body.contactName,
+//       contactNumber: req.body.contactNumber,
+//       contactInfo: req.body.contactInfo,
+//       website: req.body.website,
+//       facebookURL: req.body.facebookURL,
+//       twitterURL: req.body.twitterURL,
+//       instagramURL: req.body.instagramURL,
+//       verifiedStepA: false,
+//       verifiedStepB: false,
+//       verifiedStepC: false,
+//       verifiedStepD: false,
+//       verifiedStepE: false,
+//     });
+//     const newUser = new User({
+//       email: req.body.email,
+//       username: req.body.username,
+//       password: hashedPassword,
+//       type: "supplier",
+//       supplier: supplier,
+//       volunteer: null,
+//       approved: false,
+//       verified: false
+//     });
 
-    newUser.save()
-    .then(() => {
-      var token = jwt.sign({ id: newUser._id }, process.env.SECRET, {
-        expiresIn: 86400
-      });
-      res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: false, sameSite: false})
-      res.status(200).json({
-        auth: true,
-        token, token
-      });
-      email.sendVerificationEmail(newUser,
-        () => {console.log("sending email")},
-        () => {console.log("failed sending email")});
-    })
-    .catch((error) => {
-      console.log(error);
-      if (error.code === 11000) {
-        res.status(500).json({ errorCode: 200})
-      } else {
-        res.status(500).json({ errorCode: 100})
-      }
-    });
-  });
-});
+//     newUser.save()
+//     .then(() => {
+//       var token = jwt.sign({ id: newUser._id }, process.env.SECRET, {
+//         expiresIn: 86400
+//       });
+//       res.cookie('token', token, { maxAge: new Date(Date.now() + 6*60*60*1000), httpOnly: true, secure: false, sameSite: false})
+//       res.status(200).json({
+//         auth: true,
+//         token, token
+//       });
+//       email.sendVerificationEmail(newUser,
+//         () => {console.log("sending email")},
+//         () => {console.log("failed sending email")});
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       if (error.code === 11000) {
+//         res.status(500).json({ errorCode: 200})
+//       } else {
+//         res.status(500).json({ errorCode: 100})
+//       }
+//     });
+//   });
+// });
 
 //register
 router.route('/register').post((req, res) => {
@@ -147,7 +148,10 @@ router.route('/register').post((req, res) => {
 
 router.route('/me').get(verifyToken, (req, res, next) => {
   User.findById(req.id, { password: 0})
-  .populate('supplier.events')
+  .populate({
+    path: 'createdOrganisations',
+    populate: { path: 'events'}
+  })
   .populate('createdGroups')
   .exec((err, user) => {
     if (err) {

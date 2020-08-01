@@ -12,7 +12,6 @@ import { FilterAreaOfWork, FilterOrgType } from '../utilities/filterOptions'
 import createStarRing from '../utilities/starRing'
 
 import imagePlaceholder from '../../assets/Images/temp.jpg'
-import '../../css/organisationsView.css';
 
 const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) => {
 	const onSearchChange = (event) => {
@@ -46,32 +45,31 @@ const OrganisationsView = ({ dispatch, loading, hasErrors, fetched, orgInfo }) =
 	if(fetched && !loading){
 		return (
 			<>
-			<Helmet htmlAttributes>
+			<Helmet>
 				<html lang="en" />
 				<meta name="description" content="List of all organisations signed up onto the MC portal" />
     	</Helmet>
 			<div className="organisationViewContainer">
-			<div className="headingContainer">
-				<h1 className="heading"> Organisations </h1>
-			</div>
-			<br />
-			<div className="bars">
-
-			<form className="searchBarContainer1">
-        <FontAwesomeIcon icon={faSearch} className="searchIcon1"/>
-        <input type='text' className="searchBar1" onChange={onSearchChange}/>
-        <FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
-        <div className="filterSelect1" style={{marginRight: "10px"}}>
-					<FilterOrgType onChange={onFilterChangeType} />
-        </div>
-				<FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
-        <div className="filterSelect1">
-					<FilterAreaOfWork onChange={onFilterChangeProject} />
-        </div>
-      </form>
-			</div>
-			<OrgCards orgs={orgInfo} dispatch={dispatch} />
-			</div>
+				<div className="headingContainer">
+					<h1 className="heading"> Organisations </h1>
+				</div>
+				<br />
+				<div className="bars">
+					<form className="searchBarContainer1">
+						<FontAwesomeIcon icon={faSearch} className="searchIcon1"/>
+						<input type='text' className="searchBar1" onChange={onSearchChange}/>
+						<FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
+						<div className="filterSelect1" style={{marginRight: "10px"}}>
+							<FilterOrgType onChange={onFilterChangeType} />
+						</div>
+						<FontAwesomeIcon icon={faFilter} className="filterIcon1"/>
+						<div className="filterSelect1">
+							<FilterAreaOfWork onChange={onFilterChangeProject} />
+						</div>
+					</form>
+				</div>
+					<OrgCards orgs={orgInfo} dispatch={dispatch} />
+				</div>
 			</>
 		)
 	}
@@ -98,11 +96,11 @@ const OrgCards = (props) => {
 										{createStarRing(org.verifiedStepA, org.verifiedStepB, org.verifiedStepC, org.verifiedStepD, org.verifiedStepE, (org.verifiedStepA && org.verifiedStepB && org.verifiedStepC && org.verifiedStepD && org.verifiedStepE))}
 									</div>
 									<div className="cardImageContainer">
-										<img className="cardImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
+										<img className="cardImage" variant="top" src={org.imageURL ? org.imageURL : imagePlaceholder} alt=""/>
 									</div>
 									<div className="cardBottom">
 										<div className="headerText">
-											<span> {org.supplierName} </span>
+											<span> {org.name} </span>
 										</div>
 										<div className="footerText">
 											<span> {org.type} </span>

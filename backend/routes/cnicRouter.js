@@ -7,18 +7,18 @@ var CNIC = require('../models/cnic.model').CNIC;
 var CNICFile = require('../models/cnicFile.model').CNICFile;
 
 router.route('/:id').get(verifyToken, (req, res, next) => {
-  CNIC.findOne({ cnicNumber: req.params.id.toString().replace(/\D/g,'')})
+  CNIC.findOne({ cnicNumber: req.params.id.toString().replace(/\D/g,'')}, 'connectedEvents')
   .populate('connectedEvents')
   .exec((err, cnic) => {
     if (err) {
       console.log(err)
       return res.status(500).send('An error occurred')
     }
-    if (!cnic) { return res.status(500).json({
-      code: 100,
+    if (!cnic) { return res.status(200).json({
+      success: false,
       message: "That CNIC number does not exist in our system or has not recieved any ration"
     })}
-    return res.status(200).send(cnic)
+    return res.status(200).send({ success: true, cnic: cnic })
   })
 })
 

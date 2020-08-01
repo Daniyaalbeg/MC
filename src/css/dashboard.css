@@ -252,6 +252,15 @@
   font-family: proximaNova;
 }
 
+.cardsDashContainer {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+  margin-bottom: 32px;
+}
+
 @media only screen and (max-device-width: 1150px) {
   .dbBody {
     padding: 6px;

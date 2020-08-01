@@ -2,15 +2,17 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Card, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { BankingDetails, EasyPaisaDetails, JazzCashDetails, SocialMediaIcons, WhichLogo } from '../dashboard/supplierInfoView.component';
+import MoneyNumberDetails from '../sharedComponents/numberMoneyDetails.component';
+import WhichLogo from '../sharedComponents/whichLogo.component';
+import SocialMediaIcons from '../sharedComponents/socialMediaIcons.component';
+import BankingDetails from '../sharedComponents/bankingDetails.component';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';
 import { WhatCategories } from '../iconController/iconCategories.component';
-import CheckOldOrNewAddress from '../shared/address.component';
+import CheckOldOrNewAddress from '../sharedComponents/address.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/pro-solid-svg-icons';
 import imagePlaceholder from '../../assets/Images/temp.jpg';
 
-import '../../css/organisationInfoView.css';
 
 const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, props }) => {
   const { id } = useParams();
@@ -26,9 +28,15 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
       })
       setOrg(chosenOrg)
     }
-  }, [fetched, loading, org, dispatch, orgs, id])
+  }, [fetched])
 
-	if (org === null || org === undefined ) {
+  if (hasErrors) {
+    return (
+      <p> Error </p>
+    )
+  }
+
+	if (!org || loading) {
     return (
       <div className="orgInfoLoading">
       <Spinner animation="border" role="status">
@@ -46,10 +54,10 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           }}>
             Back 
           </button>
-          <Card.Img className="orgInfoImage" variant="top" src={org.supplierImageURL ? org.supplierImageURL : imagePlaceholder} alt=""/>
+          <Card.Img className="orgInfoImage" variant="top" src={org.imageURL ? org.imageURL : imagePlaceholder} alt=""/>
           <br />
           <br />
-          <Card.Title> {org.supplierName} </Card.Title>
+          <Card.Title> {org.name} </Card.Title>
           <Card.Subtitle> {org.type} </Card.Subtitle>
           <br />
           <h6 className="text-muted smallHeader"> Description </h6>
@@ -58,28 +66,18 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           <h6 className="text-muted"> Type of Work </h6>
           <div className="orgInfoIcons">
           <WhatCategories types={org.areaOfWork} />
-            {/* {org.areaOfWork.map((area) => {
-              return (
-                <p className="pillBadge" key={area}>
-                  {area}
-                </p>
-              )
-            })} */}
           </div>
           <br />
           <h6 className="text-muted"> Address </h6>
           <CheckOldOrNewAddress address={org.address} />
           <br />
           <h6 className="text-muted"> Donation Info </h6>
-          {org.bankingDetails.accountNumber !== "" &&
-            <BankingDetails bankingDetails={org.bankingDetails}/>
-          }
-          {org.bankingDetails.easyPaisa !== "" &&
-            <EasyPaisaDetails easyPaisa={org.bankingDetails.easyPaisa} />
-          }
-          {org.bankingDetails.jazzCash !== "" &&
-            <JazzCashDetails jazzCash={org.bankingDetails.jazzCash}/>
-          }
+          <BankingDetails bankingDetails={org.bankingDetails}  />
+          <br />
+          <MoneyNumberDetails name="EasyPaisa" number={org.bankingDetails.easyPaisa} />
+          <br />
+          <MoneyNumberDetails name="JazzCash" number={org.bankingDetails.jazzCash} />
+          <br />
           <br />
           <h6 className="text-muted"> Point of Contact </h6>
           <Card.Text> {org.contactName} </Card.Text>
@@ -92,14 +90,15 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
             </>
          }
           <br />
-          {org.supplierWebsite !== "" && (
-          <Fragment>
-          <h6 className="text-muted"> Website </h6>
-          <a href={org.supplierWebsite} key={org.supplierWebsite} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faGlobe}/></a>
-          </Fragment>
-        )
-        }
-        <SocialMediaIcons supplier={org} />
+          {
+            org.websiteURL && (
+              <>
+                <h6 className="text-muted"> Website </h6>
+                <a href={org.websiteURL} key={org.websiteURL} target="_blank" rel="noopener noreferrer" className="icon"> <FontAwesomeIcon icon={faGlobe}/></a>
+              </>
+            )
+          }
+        <SocialMediaIcons org={org} />
         <div className="orgSocialMediaContainer">
           <WhichLogo icon={org.facebookURL} />
           <WhichLogo icon={org.twitterURL} />

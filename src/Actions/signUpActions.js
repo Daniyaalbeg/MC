@@ -64,38 +64,23 @@ export function signUpUser(data) {
 }
 
 
-export function signUpSupplier(data) {
+export function signUpOrg(data) {
   return async dispatch => {
     dispatch(signingUp());
     if (data.imageFile) {
-      signUpSupplierWithImage(data, dispatch)
+      signUpOrgWithImage(data, dispatch)
     } else {
-      signUpSupplierWithoutImage(data, dispatch)
+      signUpOrgWithoutImage(data, dispatch)
     }
   }
 }
 
-const signUpSupplierWithoutImage = (data, dispatch) => {
+const signUpOrgWithoutImage = (data, dispatch) => {
   axios({
     method: 'post',
-    url: rootURL(production)+API+'/supplier/create',
+    url: rootURL(production)+API+'/organisation/create',
     headers: {'Content-Type': 'application/json'},
-    data: {
-      supplierName: data.supplierName,
-      supplierImageURL: null,
-      bankingDetails: data.bankingDetails,
-      type: data.type,
-      areaOfWork: data.areaOfWork,
-      description: data.description,
-      address: data.address,
-      contactName: data.contactName,
-      contactNumber: data.contactNumber,
-      contactInfo: data.contactInfo,
-      supplierWebsite: data.supplierWebsite,
-      facebookURL: data.facebookURL,
-      twitterURL: data.twitterURL,
-      instagramURL: data.instagramURL
-    },
+    data: data,
     withCredentials: true,
     credentials: 'include'
   })
@@ -108,7 +93,7 @@ const signUpSupplierWithoutImage = (data, dispatch) => {
   })  
 }
 
-const signUpSupplierWithImage = (data, dispatch) => {
+const signUpOrgWithImage = (data, dispatch) => {
   //Perform image file link request
   let file = data.imageFile
   let fileParts = file.name.split('.');
@@ -146,26 +131,13 @@ const signUpSupplierWithImage = (data, dispatch) => {
     axios.put(signedRequest, file, options)
     .then((res) => {
 
+      data.imageURL = url
+
       axios({
         method: 'post',
-        url: rootURL(production)+API+'/supplier/create',
+        url: rootURL(production)+API+'/organisation/create',
         headers: {'Content-Type': 'application/json'},
-        data: {
-          supplierName: data.supplierName,
-          supplierImageURL: url,
-          bankingDetails: data.bankingDetails,
-          type: data.type,
-          areaOfWork: data.areaOfWork,
-          description: data.description,
-          address: data.address,
-          contactName: data.contactName,
-          contactNumber: data.contactNumber,
-          contactInfo: data.contactInfo,
-          supplierWebsite: data.supplierWebsite,
-          facebookURL: data.facebookURL,
-          twitterURL: data.twitterURL,
-          instagramURL: data.instagramURL
-        },
+        data: data,
         withCredentials: true,
         credentials: 'include'
       })

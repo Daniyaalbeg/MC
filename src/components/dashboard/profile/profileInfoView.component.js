@@ -1,18 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import { API, rootURL, production } from '../../config';
+import { API, rootURL, production } from '../../../config';
 import { Link } from 'react-router-dom';
 
-import Address from '../shared/address.component';
-import HeaderIcons from './HeaderIcons.component';
+import Address from '../../sharedComponents/address.component';
+import HeaderIcons from '../HeaderIcons.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/pro-solid-svg-icons'
 import { faEdit } from '@fortawesome/pro-duotone-svg-icons';
-
-
-import '../../css/profileInfoView.css';
 
 const ProfileInfoView = (props) => {
   const dateOptions = { weekday: "long", year: "numeric", month: "short", day: "numeric" }; 

@@ -37,6 +37,35 @@
   overflow-y: auto;
 }
 
+.eventCardDash {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, var(--main-light-grey-color), var(--main-dark-grey-color));
+  border-radius: 8px;
+  height: 200px;
+  width: auto;
+}
+.eventCardDash > img {
+  /* padding: 8px; */
+  object-fit: cover;
+  text-align: center;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 4px solid whitesmoke;
+}
+.eventCardDash > p {
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: whitesmoke;
+}
+
 
 @media only screen and (max-device-width: 1150px) {
   .eventViewContent {

@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Modal, Carousel, Row, Spinner } from 'react-bootstrap';
-import '../../css/eventInfoView.css'
 // import EventItemInfoMap from './eventItemInfoMap.component.js';
 
-import { deleteEvent, resetDelete } from '../../Actions/deleteEventAction'
+import { deleteEvent, resetDelete } from '../../../Actions/deleteEventAction'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/pro-duotone-svg-icons'
@@ -14,15 +13,18 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
   const [showDeleteSure, setDeleteSure] = useState(false);
   const handleClose = () => setDeleteSure(false);
   const handleShow = () => setDeleteSure(true);
+  const [dispatchedReset, setDispatchedReset] = useState(false)
 
-  if (hasErrors) {
+  if (hasErrors && !dispatchedReset) {
+    setDispatchedReset(true)
+    dispatch(resetDelete())
     handleClose()
-    alert("An error occured. Cannot delete, please contact support.")
+    console.log("Error deleting")
+  }
+  if (deletedEvent && showDeleteSure) {
+    handleClose()
     dispatch(resetDelete())
   }
-  // if (deletedEvent) {
-  //   handleClose()
-  // }
 
   const event = props.event;
   // const MapViewLazy = React.lazy(() => import('./eventitemInfoMap.component.js'))
@@ -40,7 +42,7 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
       <p className="eventTitle"> Type of distribution </p>
       <p> {event.typeOfRation === "ppe" ? "Personal Protection Equipment" : event.typeOfRation} </p>
 
-      {event.images.length !== 0 &&
+      {event.images &&
           <div className="imageCarouselContainer">
           <p className="eventTitle"> Images </p>
           <Carousel className="imageCarousel">
@@ -66,12 +68,12 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
       {
         props.isUser &&
           <Row className="updateDelete">
-            <Link to={"/updateEvent/" + event._id}>
-              <button className="standardButton editIconVersion">
+            <Link to={"/updateEvent/" + event.createdBy + '/' + event._id}>
+              <button className="standardButton squareButton editIconVersion">
                 <FontAwesomeIcon icon={faEdit} />
               </button>
             </Link>
-              <button className="standardButton redVersion" onClick={() => {
+              <button className="standardButton squareButton redVersion" onClick={() => {
                 handleShow()
               }}>
             <FontAwesomeIcon icon={faTrashAlt} />
@@ -101,6 +103,9 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
         }}>
           Close
         </button>
+        {hasErrors &&
+          <p className="redError"> An error occurred trying to delete this. Please contact support info@ministryofchange.org</p>
+        }
       </Modal.Body>
       </Modal>
 

@@ -7,4 +7,18 @@ const findChosenElement = (id, array) => {
   }
 }
 
+export const findEventInOrgs = (user, orgID, eventID) => {
+  const createdOrgs = user.createdOrganisations
+  for (let i = 0; i < createdOrgs.length; i++) {
+    if (createdOrgs[i]._id.toString() !== orgID) continue
+    for (let j = 0; j < createdOrgs[i].events.length; j++) {
+      if (createdOrgs[i].events[j]._id.toString() === eventID) {
+        return createdOrgs[i].events[j]
+      }
+    }
+  }
+
+  return false
+}
+
 export default findChosenElement

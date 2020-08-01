@@ -26,7 +26,7 @@ import './css/organisationsView.css';
 import './css/organisationInfoView.css';
 import './css/profileInfoView.css';
 import './css/signupUser.css';
-import './css/supplierInfoView.css';
+import './css/organisationDashInfoView.css';
 import './css/groupInfoView.css';
 import './css/groupMainView.css';
 import './css/inspireView.css'
@@ -42,7 +42,7 @@ const OrgView = lazy(() => import('./components/organisations/organisationsView.
 const GroupView = lazy(() => import('./components/groups/groupView.component'));
 const OrgViewInfo = lazy(() => import('./components/organisations/organisationInfoView.component'));
 const SignUpOrg = lazy(() => import('./components/signup/signUpOrg.component'));
-const EditOrg = lazy(() => import('./components/update/updateSupplier.component'));
+const EditOrg = lazy(() => import('./components/update/updateOrganisation.component'));
 const SignupUser = lazy(() => import('./components/signup/signupUser.component'));
 const UpdateProfile = lazy(() => import('./components/update/updateProfile.component'));
 const ResetPassword = lazy(() => import('./components/reset/resetPassword.component'));
@@ -94,8 +94,8 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/reset" component={ResetPassword} />
           <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
           <Route path="/verify/:token" component={EmailVerification} />
-          <Route path="/createEvent" component={CreateEvent} />
-          <Route path="/updateEvent/:id" component={UpdateEvent} />
+          <Route path="/createEvent/:orgID" component={CreateEvent} />
+          <Route path="/updateEvent/:orgID/:id" component={UpdateEvent} />
           <Route path="/createGroup" component={CreateGroup} />
           <Route path="/cnic" component={CnicView} />
           <Route path="/privacypolicy" component={PrivacyPolicy} />

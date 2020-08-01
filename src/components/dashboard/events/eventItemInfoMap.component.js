@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import mapboxgl, { Point } from 'mapbox-gl';
 import '../../css/map.css';
-import token from '../../config';
+import token from '../../../config';
 
 mapboxgl.accessToken = token;
 

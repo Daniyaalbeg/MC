@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import HeaderIcons from './HeaderIcons.component';
-import '../../css/groupInfoView.css';
-import GroupCard from '../groups/groupCard.component';
-import { ConnectedGroupModalDashboard } from '../groups/groupModal.component';
+import HeaderIcons from '../HeaderIcons.component';
+import StandardCard from '../../sharedComponents/standardCard.component';
+import { ConnectedGroupModalDashboard } from '../../groups/groupModal.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
@@ -34,14 +33,14 @@ const Groups = ({ groups }) => {
   return (
     <>
     <div style={{textAlign: "right"}}>
-      <Link to="createGroup"><button className="createGroupButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Create Group </button></Link>
+      <Link to="createGroup"><button className="standardButtonWithoutColour mcBlueBG"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Create Group </button></Link>
     </div>
     <div className="groupCardContainer">
       {
         groups.map((group) => {
           return (
             <div key={group._id} className="groupCard growSmall" style={{backgroundColor: "#1589C9"}} onClick={() => setSelectedGroup(group)}>
-              <GroupCard group={group} />
+              <StandardCard name={group.groupName} image={group.imageName} />
             </div>
           )
         })

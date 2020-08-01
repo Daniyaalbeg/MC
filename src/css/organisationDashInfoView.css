@@ -12,7 +12,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #FFD71A;
+  background-color: var(--main-yellow-color);
 }
 .supplierTextIcon {
   display: flex;
@@ -29,7 +29,7 @@
   margin-left: 12px;
   font-size: larger;
   font-weight: bold;
-  color: #444444;
+  color: #040404;
 }
 
 .supplierInfoContent {
@@ -37,18 +37,7 @@
   height: 90%;
   border-radius: 8px;
   overflow-y: scroll;
-}
-
-@media only screen and (max-device-width: 1150px) {
-  .supplierInfoContent {
-    padding: 12px;
-  }
-}
-
-@media only screen and (min-device-width: 1150px) {
-  .supplierInfoContent {
-    padding: 32px;
-  }
+  padding: 32px;
 }
 
 .supplierTitle {
@@ -138,16 +127,53 @@
   text-align: center;
 }
 
-.createOrgButton {
-  background-color: #FFD71A !important;
-  font-weight: bold;
-}
-.createOrgButton:hover {
-  background-color: rgb(233, 198, 24) !important;
-}
-
 .supplierEditButton {
   position: absolute;
   top: 8px;
   right: 8px;
+}
+
+.createNewOrganisationButton {
+  width: 100%;
+  text-align: end;
+}
+.createNewOrganisationButton > a > button {
+  background-color: var(--main-yellow-color);
+  color: #040404;
+}
+
+.orgCardDash {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, var(--main-light-yellow-color), var(--main-dark-yellow-color));
+  border-radius: 8px;
+  height: 200px;
+  width: auto;
+}
+.orgCardDash > img {
+  /* padding: 8px; */
+  object-fit: cover;
+  text-align: center;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 4px solid whitesmoke;
+}
+.orgCardDash > p {
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: #040404;
+}
+
+
+@media only screen and (max-device-width: 1150px) {
+  .supplierInfoContent {
+    padding: 12px;
+  }
 }

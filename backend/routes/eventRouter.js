@@ -1,18 +1,25 @@
 const router = require('express').Router();
 const Supplier = require('../models/supplier.model');
+const { Organisation } = require('../models/organisation.model');
 const User = require('../models/user.model');
 const Event = require('../models/event.model').Event;
 const verifyToken = require('../verifyToken');
-const s3 = require('./s3Controller')
+const s3 = require('./s3Controller');
 
 //Create a new event
-router.route('/create').post(verifyToken, (req, res, next) => {
-  User.findById(req.id, { password: 0}, (err, user) => {
-    if (err) res.status(500).send("There was a problem finding the user.");
-    if (!user) return res.status(404).send("No user found.");
+router.route('/create/:orgID').post(verifyToken, (req, res, next) => {
+  Organisation.findById(req.params.orgID, (err, org) => {
+    if (err) {
+      console.log(err)
+      return res.status(500).json({ errorDesc: "There was a problem finding the org."})
+    }
+    if (!org) return res.status(404).json({ errorDesc: "No user found." });
 
-    user.__v = parseInt(user.__v)
-    const createdBy = user._id;
+    if (org.createdBy.toString() !== req.id) {
+      return res.status(500).json({ errorDesc: "This org was not created by this user" })
+    }
+
+    const createdBy = org._id;
     const name = req.body.name;
     const description = req.body.description;
     const totalNumberOfItems = req.body.totalNumberOfItems;
@@ -37,71 +44,34 @@ router.route('/create').post(verifyToken, (req, res, next) => {
     });
 
     newEvent.save((err, event) => {
-      if (err) return res.status(500).send("Cound not save event");
-      user.supplier.events.push(event._id);
-
-      user.save((err, user) => {
+      if (err) {
         console.log(err)
-        if (err) return res.status(500).send("There was a problem saving the user.");
+        return res.status(500).json({ errorDesc: "Cound not save event" });
+      }
+      
+      org.events.push(event._id)
+
+      org.save((err, org) => {
+        if (err) {
+          console.log(err)
+          return res.status(500).json({ errorDesc: "There was a problem saving the user." });
+        }
         res.status(200).json('new event created')
       })
     })
-  });
 
-
-
-
-  // User.findById(req.id, { password: 0}, (err, user) => {
-  //   if (err) res.status(500).send("There was a problem finding the user.");
-  //   if (!user) return res.status(404).send("No user found.");
-
-  //   const name = req.body.name;
-  //   const description = req.body.description;
-  //   const totalNumberOfItems = req.body.totalNumberOfItems;
-  //   const itemsDescription = req.body.itemsDescription;
-  //   const typeOfRation = req.body.typeOfRation;
-  //   const images = req.body.images;
-  //   const location = req.body.location;
-  //   const date = req.body.date;
-  //   const approved = false;
-
-  //   const newEvent = new Event({
-  //     name,
-  //     description,
-  //     totalNumberOfItems,
-  //     itemsDescription,
-  //     typeOfRation,
-  //     images,
-  //     location,
-  //     date,
-  //     approved
-  //   });
-
-  //   user.supplier.events.push(newEvent);
-
-  //   user.save()
-  //   .then(() => {
-  //     res.json('New event created')
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //     res.status(500).json("An error occured")
-  //   });
-  // });
+  })
 
 });
 
 //Get all  events
 router.route('/').get((req, res) => {
   Event.find({ approved: true })
-  .lean()
   .populate('createdBy')
+  .lean()
   .exec((err, events) => {
-    if (err) { return res.status(500).send("Error getting events")}
-    events.forEach((event) => {
-      event.createdBy = event.createdBy.supplier
-      event.createdBy.events = null
-    })
+    if (err) { return res.status(500).json({ errorDesc: "Error getting events" })}
+  
     res.status(200).json(events);
   })
 
@@ -126,193 +96,91 @@ router.route('/').get((req, res) => {
 });
 
 //Get specific event by id
-router.route('/:id').get((req, res) => {
-  Event.findById(req.params.id)
-  .populate('createdBy', 'supplier')
-  .exec((err, event) => {
-    res.status(200).json(event)
-  })
-
-  // User.find(null, { password: 0})
-  // .then((users) => {
-  //   users.forEach((user) => {
-  //     const events = user.supplier.events;
-  //     events.forEach((event) => {
-  //       if (event._id === req.params.id) {
-  //         return res.status(200).send(event);
-  //       }
-  //     });
-  //   });
-  //   // return res.status(404).json("Requested resource not found");
-  // })
-  // .catch((error) => {
-  //   console.log(error)
-  //   res.status(500).send("An error occured")
-  // });
-})
+// router.route('/:id').get((req, res) => {
+//   Event.findById(req.params.id)
+//   .populate('createdBy', 'supplier')
+//   .exec((err, event) => {
+//     res.status(200).json(event)
+//   })
+// })
 
 //Delete a specific  event
 router.route('/:id').delete(verifyToken, (req, res, next) => {
-  User.findById(req.id, { password: 0})
-  .populate('supplier.events')
-  .exec((err, user) => {
-    if (err) return res.status(500).json("There was a problem finding the event/");
-    if (!user) return res.status(500).json("There was a problem finding your user.")
+  const eventID = req.params.id
+  Event.findById(eventID, (err, event) => {
+    if (err) return res.status(500).json({ errorDesc: "There was a problem finding the event" });
+    if (!event) return res.status(500).json({ errorDesc: "There was a problem finding your event." })
 
-    const events = user.supplier.events
+    Organisation.findById(event.createdBy, (err, org) => {
+      if (err) return res.status(500).json({ errorDesc: "There was a problem finding the org" });
+      if (!org) return res.status(500).json({ errorDesc: "There was a problem finding your org." })
+      
+      if (org.createdBy.toString() !== req.id) return res.status(500).json({ errorDesc: "You cannot delete this as you are not the creator"})
 
-    let foundEvent = null
-    for ( let i = 0; i < events.length; i++) {
-      if (events[i].equals(req.params.id)) {
-        foundEvent = events.splice(i, 1);
-        break
-      }
-    }
-    if (!foundEvent) {
-      return res.status(500).send("Event not found")
-    }
+      event.deleted = true
 
-    user.save()
-    .then(() => {
-      Event.deleteOne({ _id: req.params.id}, (err) => {
-        if (err) {
-          console.log("error deleting event + " + req.params.id)
-          return res.status(500).json({ errorDesc: "Could not delete event" })
-        } else {
-          if (foundEvent) {
-            s3.deleteFile(foundEvent[0].images)
-            .then((result) => {
-              return res.status(200).json("Delete succesful") 
-            })
-            .catch((error) => {
-              console.log(error)
-              return res.status(200).json("Delete succesful not really") 
-            });
-          } else {
-            return res.status(200).json("Delete succesful") 
+      event.save()
+      .then((event) => {
+        let foundEvent = null
+        for (let i = 0; i < org.events.length; i++) {
+          if (org.events[i].toString() === eventID) {
+            foundEvent = org.events.splice(i, 1);
+            break
           }
         }
+        if (!foundEvent) {
+          return res.status(500).json({ errorDesc: "Event not found"})
+        }
+
+        org.save((err, org) => {
+          if (err) return res.status(500).json({ errorDesc: "There was a problem saving the org" });
+          if (!org) return res.status(500).json({ errorDesc: "There was a problem finding your org." })
+
+          return res.status(200).send('successfully deleted')
+        })
       })
+      .catch((error) => { 
+        console.log(error)
+        return res.status(500).json({ errorDesc: "Could not save event" }) })
     })
-    .catch((error) => {
-      console.log(error)
-      res.status(500).send("User could not be saved")
-    })
-
-
   })
-  
-  
-  // User.findById(req.id, { password: 0}, (err, user) => {
-  //   if (err) res.status(500).json("There was a problem finding the event/");
-  //   if (!user) res.status(500).json("There was a problem finding your user.")
-
-  //   const events = user.supplier.events;
-
-  //   let eventFound = false
-  //   for ( let i = 0; i < events.length; i++) {
-  //     if (events[i]._id.equals(req.params.id)) {
-  //       eventFound = true
-  //       events.splice(i, 1);
-  //       break
-  //     }
-  //   }
-  //   if (!eventFound) {
-  //     return res.status(500).send("Event not found")
-  //   }
-  //   user.save()
-  //   .then(() => {
-  //     res.status(200).json("Delete succesful")
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //     res.status(500).send("User could not be saved")
-  //   })
-  // })
-  // .catch((error) => {
-  //   console.log(error)
-  //   res.status(500).json("An error occured")
-  // });
 })
 
 
 //Update a  event
 router.route('/update/:id').post(verifyToken, (req, res, next) => {
-  Event.findById(req.params.id, { password: 0}, function (err, event) {
-    if (err) return res.status(500).send("There was a problem finding the event.");
-    if (!event) return res.status(404).send("No user found.");
+  Organisation.findById(req.body.createdBy, (err, org) => {
+    if (err) return res.status(500).json({ errorDesc: "There was a problem finding the org."});
+    if (!org) return res.status(404).json({ errorDesc: "No org found." });
+    
+    if (org.createdBy.toString() !== req.id) {
+      return res.status(500).json({ errorDesc: "You are not auuthorised to edit this event"});
+    }
 
-    event.name = req.body.name;
-    event.description = req.body.description;
-    event.totalNumberOfItems = req.body.totalNumberOfItems;
-    event.itemsDescription = req.body.itemsDescription;
-    event.typeOfRation = req.body.typeOfRation;
-    event.images = req.body.images;
-    event.location = req.body.location;
-    event.date = req.body.date;
+    Event.findById(req.params.id, { password: 0}, function (err, event) {
+      if (err) return res.status(500).json({ errorDesc: "There was a problem finding the event."});
+      if (!event) return res.status(404).json({ errorDesc: "No user found." });
+  
+      console.log(req.body)
 
-    event.save((err, event) => {
-      if (err) return res.status(500).send("There was a problem saving the event");
-      res.status(200).send("Event succesfully saved")
+      event.name = req.body.name;
+      event.description = req.body.description;
+      event.totalNumberOfItems = req.body.totalNumberOfItems;
+      event.itemsDescription = req.body.itemsDescription;
+      event.typeOfRation = req.body.typeOfRation;
+      event.images = req.body.images;
+      event.location = req.body.location;
+      event.date = req.body.date;
+  
+      event.save((err, event) => {
+        if (err) return res.status(500).json({ errorDesc: "There was a problem saving the event."});
+        if (!event) return res.status(404).json({ errorDesc: "No event saved." });
+        
+        res.status(200).send("Event succesfully saved")
+      })
     })
+
   })
-
-  // User.findById(req.id, { password: 0}, function (err, user) {
-  //   if (err) return res.status(500).send("There was a problem finding the user.");
-  //   if (!user) return res.status(404).send("No user found.");
-  
-
-  //   const supplier = user.supplier;
-  //   const events = supplier.events;
-  //   for( let i =0; i< events.length; i++) {
-  //     if (events[i]._id.equals(req.params.id)) {
-  //       events[i].name = req.body.name;
-  //       events[i].description = req.body.description;
-  //       events[i].totalNumberOfItems = req.body.totalNumberOfItems;
-  //       events[i].itemsDescription = req.body.itemsDescription;
-  //       events[i].typeOfRation = req.body.typeOfRation;
-  //       events[i].images = req.body.images;
-  //       events[i].location = req.body.location;
-  //       events[i].date = req.body.date;
-
-  //       user.save()
-  //       .then(() => {
-  //         return res.status(200).json("Event updated succesfully")
-  //       })
-  //       .catch((error) => {
-  //         console.log(error)
-  //         res.status(500).json("An error occured")
-  //       }) 
-  //     }
-  //   }
-  // });
-  
-  // RationEvent.findById(req.params.id)
-  // .then((rationEvent) => {
-  //   // rationEvent.name = req.body.name;
-  //   // rationEvent.description = req.body.description;
-  //   // rationEvent.totalNumberOfItems = req.body.totalNumberOfItems;
-  //   // rationEvent.itemsDescription = req.body.itemsDescription;
-  //   // rationEvent.typeOfRation = req.body.typeOfRation;
-  //   // rationEvent.images = req.body.images;
-  //   // rationEvent.supplier = req.body.supplier;
-  //   // rationEvent.location = req.body.location;
-  //   // rationEvent.date = req.body.date;
-  //   // rationEvent.approved = req.body.approved;
-
-  //   // rationEvent.save()
-  //   // .then(() => res.status(200).json("rationEvent updated succesfully"))
-  //   // .catch((error) => {
-  //   //   console.log(error)
-  //   //   res.status(500).json("An error occured")
-  //   // })
-  //   console.log('found ration event')
-  //   console.log(rationEvent.name)
-  // })
-  // .catch((error) => {
-  //   console.log(error)
-  //   res.status(500).send("Cannot find ration event")
-  // })
 })
 
 module.exports = router

@@ -31,7 +31,8 @@ export default function updateReducer(state = initialState, action) {
     case actions.UPDATE_USER_REDIRECT:
       return {
         ...state,
-        success: false
+        success: false,
+        hasErrors: false
       }
     case actions.UPDATE_EVENT:
       return {
@@ -53,7 +54,8 @@ export default function updateReducer(state = initialState, action) {
     case actions.UPDATE_EVENT_REDIRECT:
       return {
         ...state,
-        success: false
+        success: false,
+        hasErrors: false
       }
     case actions.UPDATE_ORG:
       return {
@@ -79,7 +81,8 @@ export default function updateReducer(state = initialState, action) {
     case actions.UPDATE_ORG_REDIRECT:
       return {
         ...state,
-        success: false
+        success: false,
+        hasErrors: false
       }
     default:
       return state

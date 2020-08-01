@@ -6,7 +6,7 @@ import SignupUserForm from './signupUserForm.component';
 import '../../css/form.css';
 
 const SignupUser = ({ dispatch, success, props }) => {
-  if (true) {
+  if (success) {
     return <SignedUpMessage props={props} dispatch={dispatch} success={success} />
   } else {
     return <SignupUserForm />

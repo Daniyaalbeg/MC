@@ -22,7 +22,6 @@
     position: static;
     width: 210px;
     height: fit-content;
-    border-radius: 8px;
     overflow: hidden;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -38,13 +37,18 @@
 .cardImageContainer {
     height: 150px;
     width: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding: 4px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .cardImage {
-    height: calc(150px);
+    height: 100%;
     width: 100%;
     object-fit: contain;
-    padding-bottom: 1px;
+    /* border-radius: 8px; */
+    /* overflow: hidden; */
 }
 .cardBottom {
     margin-top: 8px;
@@ -65,7 +69,7 @@
     display: inline-block;
     text-align: center;
     font-size: larger;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: #040404;
 }
 .footerText {
@@ -142,6 +146,7 @@
 }
 
 .backButtonOrgView {
+    margin: auto;
     margin-bottom: 20px;
 }
 

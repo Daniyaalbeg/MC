@@ -20,14 +20,25 @@ export default function cnicReducer(state = initialState, action) {
       ...state, 
       getLoading: true,
       getHasError: false,
-      getFetched: false
+      getFetched: false,
+      cnicInfo: null
     }
     case actions.GETTING_CNIC_SUCCESS:
+      let cnicInfo
+      let message
+      if (action.payload.success) {
+        cnicInfo = action.payload.cnic
+      } else {
+        message = action.payload.message
+      }
+      console.log(action.payload)
       return {
         ...state, 
         getLoading: false,
         getFetched: true,
-        cnicInfo: action.payload
+        getHasError: !action.payload.success,
+        cnicInfo: cnicInfo,
+        getHasErrorMessage: message
       }
     case actions.GETTING_CNIC_FAILURE:
       return {

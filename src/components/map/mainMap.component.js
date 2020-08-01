@@ -24,7 +24,7 @@ const HomeView = ({ dispatch, loading, fetched}) => {
 
   return (
     <>
-    <Helmet htmlAttributes>
+    <Helmet>
       <html lang="en" />
       <meta name="description" content="Map that shows distribtuions, projects, layer data, etc all over Pakistan" />
     </Helmet>

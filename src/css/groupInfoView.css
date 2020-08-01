@@ -68,7 +68,7 @@
   padding-left: 8px;
   padding-right: 8px;
 }
-.groupCard > div > img {
+.groupCard > img {
   /* padding: 8px; */
   object-fit: cover;
   text-align: center;
@@ -77,18 +77,13 @@
   border-radius: 50%;
   border: 4px solid whitesmoke;
 }
-.groupCard > div > p {
+.groupCard > p {
   font-weight: bold;
   font-size: larger;
   text-align: center;
   margin-top: 8px;
   margin-bottom: 0;
   color: whitesmoke;
-}
-
-.createGroupButton {
-  background-color: var(--main-blue-color) !important;
-  font-weight: bold;
 }
 
 .groupModalPage {

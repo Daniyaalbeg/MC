@@ -52,6 +52,37 @@
   opacity: 1;
 }
 
+
+.orgCnicCard {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--main-blue-color);
+  border-radius: 8px;
+  height: 200px;
+  width: auto;
+}
+.orgCnicCard > img {
+  /* padding: 8px; */
+  object-fit: cover;
+  text-align: center;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 4px solid whitesmoke;
+}
+.orgCnicCard > p {
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: whitesmoke;
+}
+
+
 .cnicContainer {
   width: 100%;
   height: calc(100% - 66px);
@@ -261,5 +292,9 @@ input[type="file"] {
   }
   .cnicLoggedInHeading {
     width: 80%;
+  }
+  .cnicHeading {
+    font-size: large;
+    margin-top: 16px;
   }
 }

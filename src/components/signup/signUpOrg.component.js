@@ -4,7 +4,7 @@ import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { Redirect, Link } from 'react-router-dom';
 import { Card, Col, Form, Spinner } from 'react-bootstrap';
-import { signUpSupplier } from '../../Actions/signUpActions';
+import { signUpOrg } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from '../utilities/Checkboxs.component';
 import Thumb from '../utilities/thumb.component';
 
@@ -19,7 +19,7 @@ const SUPPORTED_FORMATS = [
 ];
 
 const validationSchema = Yup.object().shape({
-  supplierName: Yup.string()
+  name: Yup.string()
   .required("*Organisation name is required")
   .min(1, "*Organisation name must be longer than 1 charachter")
   .max(50, "*Organisation name must be less than 50 charachters")
@@ -104,12 +104,12 @@ const validationSchema = Yup.object().shape({
   contactNumber: Yup.string()
   .required("*Number is required")
   .min(7, "*Number must be longer than 7 charachters")
-  .max(14, "*Number must be less than 14 charachters")
-  .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*Only valid Pakistani mobile numbers"),
+  .max(14, "*Number must be less than 14 charachters"),
+  // .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*Only valid Pakistani mobile numbers"),
   contactInfo: Yup.string()
   .min(1, "*Contact info must be longer than 10 charachters")
   .max(100, "*Contact info must be less than 100 charachters"),
-  supplierWebsite: Yup.string()
+  websiteURL: Yup.string()
   .url("*Please enter a valid URL e.g. http://www.google.com"),
   facebookURL: Yup.string()
   .url("*Please enter a valid URL e.g. http://www.google.com"),
@@ -137,7 +137,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
       <Card.Header>Sign up form</Card.Header>
       <Formik 
         initialValues={{
-          supplierName: "",
+          name: "",
           imageFile: null,
           bankName: "",
           bankBranch: "",
@@ -158,7 +158,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           contactName: "",
           contactNumber: "",
           contactInfo: "",
-          supplierWebsite: "",
+          websiteURL: "",
           facebookURL: "",
           twitterURL: "",
           instagramURL: "",
@@ -184,7 +184,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             country: values.country,
           }
           const data = {
-            supplierName: values.supplierName,
+            name: values.name,
             imageFile: values.imageFile,
             bankingDetails: bankingDetails,
             type: values.type,
@@ -194,12 +194,12 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             contactName: values.contactName,
             contactNumber: values.contactNumber,
             contactInfo: values.contactInfo,
-            supplierWebsite: values.supplierWebsite,
+            websiteURL: values.websiteURL,
             facebookURL: values.facebookURL,
             twitterURL: values.twitterURL,
             instagramURL: values.instagramURL,
           }
-          dispatch(signUpSupplier(data))
+          dispatch(signUpOrg(data))
           // alert(JSON.stringify(data))
         }}
       >
@@ -235,20 +235,20 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             <p className="red"> {errors.imageFile} </p>
         </Form.Group>
 
-        <Form.Group controlId="formsupplierName">
+        <Form.Group controlId="formName">
           <Form.Label>Organisation name <span className="red">*</span></Form.Label>
           <Form.Control
-            name="supplierName"
+            name="name"
             type="text"
             placeholder="Enter organisation name"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.supplierName}
-            isValid={touched.supplierName && !errors.supplierName}
-            isInvalid={errors.supplierName}
+            value={values.name}
+            isValid={touched.name && !errors.name}
+            isInvalid={errors.name}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.supplierName}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formDescription">
@@ -827,17 +827,17 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
         <Form.Group controlId="formWebsite">
           <Form.Label>Website</Form.Label>
           <Form.Control
-            name="supplierWebsite"
+            name="websiteURL"
             type="text"
             placeholder="Enter website"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.supplierWebsite}
-            isValid={touched.supplierWebsite && !errors.supplierWebsite}
-            isInvalid={errors.supplierWebsite}
+            value={values.websiteURL}
+            isValid={touched.websiteURL && !errors.websiteURL}
+            isInvalid={errors.websiteURL}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.supplierWebsite}</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.websiteURL}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formFacebook">
@@ -899,19 +899,21 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           />
         </Form.Group>
 
-        <button className="standardButton signUpButton" type="submit" disabled={loading}>
-        {
-          loading ? 
-          <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-          :
-          null
-        }
-        {loading ? 'Signing up' : 'Sign up'}
-        </button>
+        <div className="formButtons">
+          <button className="standardButton signUpButton" type="submit" disabled={loading}>
+          {
+            loading ? 
+            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+            :
+            null
+          }
+          {loading ? 'Signing up' : 'Sign up'}
+          </button>
 
-        <button className="standardButton redVersion" onClick={resetForm} disabled={loading}>
-          Reset
-        </button>
+          <button className="standardButton redVersion" onClick={resetForm} disabled={loading}>
+            Reset
+          </button>
+        </div>
 
         {success &&
           <p className="successReply"> Sign up successfull. A verification email has been sent to {values.email} </p>
