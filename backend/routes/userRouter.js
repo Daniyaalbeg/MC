@@ -117,7 +117,6 @@ router.route('/edit').post(verifyToken, (req, res, next) => {
 
     user.save()
     .then((user) => {
-      console.log('here1')
       return res.status(200).json({ success: "success" })
     })
     .catch((error) => {

@@ -101,7 +101,6 @@ export function uploadFileCnic(eventID, cnicFile) {
           dispatch(uploadingCnicFileFailure("An error uploading occurred"))
         })
       } else {
-        console.log("error here1")
         dispatch(uploadingCnicFileFailure("An error occurred"))
       }
     })

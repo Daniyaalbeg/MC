@@ -21,6 +21,11 @@ const supplierSchema = new Schema({
       ref: 'Event',
       required: false
     }],
+    projects: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Project',
+      required: false
+    }],
     bankingDetails: {
       type: bankingDetailsSchema,
       required: false
