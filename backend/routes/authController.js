@@ -152,7 +152,12 @@ router.route('/me').get(verifyToken, (req, res, next) => {
     path: 'createdOrganisations',
     populate: { path: 'events'}
   })
+  .populate({
+    path: 'createdOrganisations',
+    populate: { path: 'projects'}
+  })
   .populate('createdGroups')
+  .lean()
   .exec((err, user) => {
     if (err) {
       console.log(err)

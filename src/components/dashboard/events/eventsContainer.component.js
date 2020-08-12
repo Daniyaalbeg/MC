@@ -24,7 +24,7 @@ const EventsContainer = ({ orgs }) => {
   } else {
     return (
       <>
-        <h2> Select an org to add events </h2>
+        <h2 className="eventHeadingSelect"> Select an organisation to add events </h2>
         <div className="cardsDashContainer">
           {
             orgs.map((org) =>{

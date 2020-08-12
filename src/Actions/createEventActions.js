@@ -33,7 +33,6 @@ const imageUrl = rootURL(production)+API+'/imageUpload'
 
 export function creatingNewEvent(data, orgID) {
   return async (dispatch, getState) => {
-    const token = getState().auth.token;
     dispatch(creatingEvent());
 
     const promises = []
@@ -97,7 +96,7 @@ export function creatingNewEvent(data, orgID) {
         axios({
           method: 'post',
           url: rootURL(production)+API+'/event/create/' + orgID,
-          headers: {'Content-Type': 'application/json', 'x-access-token': token},
+          headers: {'Content-Type': 'application/json'},
           data: {
             name: data.name,
             description: data.description,

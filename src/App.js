@@ -30,16 +30,19 @@ import './css/organisationDashInfoView.css';
 import './css/groupInfoView.css';
 import './css/groupMainView.css';
 import './css/inspireView.css'
+import './css/projectView.css'
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component';
 import GeneralError from './components/errors/generalError.component';
 import Error404 from './components/404.component';
+import { faAmazonPay } from '@fortawesome/free-brands-svg-icons';
 
 const MainMap = lazy(() => import('./components/map/mainMap.component')); 
 const Dashboard = lazy(() => import('./components/dashboard/dashboardContainer.component')); 
 const OrgView = lazy(() => import('./components/organisations/organisationsView.component'));
 const GroupView = lazy(() => import('./components/groups/groupView.component'));
+const CreateProject = lazy(() => import('./components/signup/createProject.component'));
 const OrgViewInfo = lazy(() => import('./components/organisations/organisationInfoView.component'));
 const SignUpOrg = lazy(() => import('./components/signup/signUpOrg.component'));
 const EditOrg = lazy(() => import('./components/update/updateOrganisation.component'));
@@ -91,6 +94,7 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/updateProfile" component={UpdateProfile}/>
           <Route path="/signupOrg" component={SignUpOrg}/>
           <Route path="/updateOrg/:id" component={EditOrg}/>
+          <Route path="/createProject/:orgID" component={CreateProject}/>
           <Route path="/reset" component={ResetPassword} />
           <Route path="/resetPassword/:id/:token" component={ResettingPassword} />
           <Route path="/verify/:token" component={EmailVerification} />

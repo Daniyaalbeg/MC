@@ -14,7 +14,7 @@ const projectSchema = new Schema({
     type: String,
     required: true
   },
-  imageURL: [{
+  images: [{
     type: String,
     required: false
   }],
@@ -41,34 +41,34 @@ const projectSchema = new Schema({
   //Impact
   impact: {
     type: impactSchema,
-    required: true
+    required: false
   },
   //Volunteer
 
   //Funding
   funding: {
     type: fundingSchema,
-    required: true
+    required: false
   },
   //Supply
   supplies: [{
     type: supplySchema,
-    required: true
+    required: false
   }],
   //Comments
   comments: [{
     type: commentSchema,
-    required: true
+    required: false
   }],
   //Updates
   updates: [{
     type: updateSchema,
-    required: true
+    required: false
   }],
   //FAQ
   faq: [{
     type: faqSchema,
-    required: true
+    required: false
   }],
 
   //FollowedBy
@@ -78,9 +78,14 @@ const projectSchema = new Schema({
     required: true
   }],
 
-  createdBy: {
-    //Store _id of the supplier
-    type: String,
+  createdByUser: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  createdByOrganisation: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   published: {

@@ -87,22 +87,24 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
       <Modal.Body>
-        <button className="standardButton eventModalDeleteButton redVersion" disabled={deletingEvent} onClick={() => {
-          dispatch(deleteEvent(event._id))
-        }}>
-          {
-          deletingEvent ? 
-          <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-          :
-          null
-        }
-          {deletingEvent ? "Deleting" : "Delete"}
-        </button>
-        <button className="standardButton" onClick={() => {
-          handleClose()
-        }}>
-          Close
-        </button>
+        <div className="formButtons">
+          <button className="standardButton eventModalDeleteButton redVersion" disabled={deletingEvent} onClick={() => {
+            dispatch(deleteEvent(event._id))
+          }}>
+            {
+            deletingEvent ? 
+            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
+            :
+            null
+          }
+            {deletingEvent ? "Deleting" : "Delete"}
+          </button>
+          <button className="standardButton" onClick={() => {
+            handleClose()
+          }}>
+            Close
+          </button>
+        </div>
         {hasErrors &&
           <p className="redError"> An error occurred trying to delete this. Please contact support info@ministryofchange.org</p>
         }

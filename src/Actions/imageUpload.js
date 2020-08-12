@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { rootURL, API, production } from '../config';
 
+const urlImage = rootURL(production)+API+'/imageUpload'
+
 const withImageUploadSingle = (dispatch, data, uploadingSuccess, uploadingFailure, typeOfImage) => {
   //Perform image file link request
   let file = data.image
@@ -53,6 +55,81 @@ const withImageUploadSingle = (dispatch, data, uploadingSuccess, uploadingFailur
   })
 }
 
-export {
-  withImageUploadSingle
+
+const withImageUploadMulti = (dispatch, data, typeOfUpload, callSuccess, callFail) => {
+  const promises = []
+
+    let files = data.images;
+    let filesDict = {}
+    try {
+      let count = 0
+      files.forEach((file) => {
+        // const name = file.name.split('.')
+        filesDict[count] = file
+        count++
+      })
+    } catch {
+      dispatch(callFail("File name must have an extension"))
+      console.log("File has no extension");
+      return
+    }
+
+    Object.keys(filesDict).forEach((key) => {
+      const fullFileName = filesDict[key].name.split('.');
+      let fileName = key;
+      let fileType = fullFileName[1];
+
+      const imageCategory = typeOfUpload
+
+      promises.push(axios.post(urlImage,{
+        fileName: fileName,
+        fileType: fileType,
+        fileSize: filesDict[key].size,
+        imageCategory: imageCategory
+      }));
+    });
+
+    let putPromises = []
+    let images = []
+    Promise.all(promises)
+    .then((responses) => {
+      responses.forEach((response) => {
+        const returnData = response.data.data.returnData;
+        const newFileType = response.data.data.returnData.fileType
+        const signedRequest = returnData.signedRequest;
+        const oldName = returnData.oldName;
+        const url = returnData.url;
+        images.push(url)
+
+        const options = {
+          headers: {
+            'Content-Type': newFileType
+          }
+        }
+        putPromises.push(axios.put(signedRequest, filesDict[oldName], options))
+        
+      });
+      
+      Promise.all(putPromises)
+      .then((responses) => {
+        data.images = images
+        callSuccess(dispatch, data)
+      })
+      .catch((err) => {
+        dispatch(callFail(err))
+        return
+      });
+
+    })
+    .catch((err) => {
+      dispatch(callFail(err))
+      return
+    });
 }
+
+export {
+  withImageUploadSingle,
+  withImageUploadMulti
+}
+
+

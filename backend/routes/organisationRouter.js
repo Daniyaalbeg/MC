@@ -32,6 +32,8 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
       country: req.body.address.country,
     })
     const organisation = new Organisation({
+      events: [],
+      projects: [],
       createdBy: user._id,
       name: req.body.name,
       imageURL: req.body.imageURL,

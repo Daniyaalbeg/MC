@@ -21,6 +21,11 @@ const organisationSchema = new Schema({
       ref: 'Event',
       required: false
     }],
+    projects: [{
+      type: mongoose.Schema.Types.ObjectId,
+      required: false,
+      ref: 'Project',
+    }],
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

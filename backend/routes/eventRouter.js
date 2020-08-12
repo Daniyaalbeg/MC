@@ -161,8 +161,6 @@ router.route('/update/:id').post(verifyToken, (req, res, next) => {
       if (err) return res.status(500).json({ errorDesc: "There was a problem finding the event."});
       if (!event) return res.status(404).json({ errorDesc: "No user found." });
   
-      console.log(req.body)
-
       event.name = req.body.name;
       event.description = req.body.description;
       event.totalNumberOfItems = req.body.totalNumberOfItems;

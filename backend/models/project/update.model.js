@@ -9,6 +9,10 @@ const updateSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  date: {
+    type: Date,
+    required: true
+  },
   images: [{
     type: String,
     required: false

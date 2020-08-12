@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { API, rootURL, production } from '../config'
 import { getUserInfo } from './userInfoActions'
-import { withImageUploadSingle } from './imageUpload'
+import { withImageUploadSingle, withImageUploadMulti } from './imageUpload'
 
 export const UPDATE_USER = "UPDATE_USER";
 export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
@@ -85,15 +85,13 @@ export function updateUser(data) {
   }
 }
 
-const urlImage = rootURL(production)+API+'/imageUpload'
-
 //Event update
 export function updateEvent(data) {
   return async (dispatch) => {
     dispatch(updatingEvent());
 
     if (data.newImage) {
-      withImageUploadMulti(dispatch, data, "eventImages")
+      withImageUploadMulti(dispatch, data, "eventImages", updateEventCall, updatingEventFailure)
     } else {
       updateEventCall(dispatch, data)
     }
@@ -178,93 +176,4 @@ const updateOrgCall = (dispatch, data) => {
     dispatch(updatingOrgFailure(error))
     return
   })
-}
-
-
-//Shared
-const withImageUploadMulti = (dispatch, data, typeOfUpload) => {
-  const promises = []
-
-    let files = data.images;
-    let filesDict = {}
-    try {
-      let count = 0
-      files.forEach((file) => {
-        // const name = file.name.split('.')
-        filesDict[count] = file
-        count++
-      })
-    } catch {
-      if (typeOfUpload === "eventImages") {
-        dispatch(updatingEventFailure("File name must have an extension"))
-      } else {
-        dispatch(updatingOrgFailure("File name must have an extension"))
-      }
-      console.log("File has no extension");
-      return
-    }
-
-    Object.keys(filesDict).forEach((key) => {
-      const fullFileName = filesDict[key].name.split('.');
-      let fileName = key;
-      let fileType = fullFileName[1];
-
-      const imageCategory = typeOfUpload
-
-      promises.push(axios.post(urlImage,{
-        fileName: fileName,
-        fileType: fileType,
-        fileSize: filesDict[key].size,
-        imageCategory: imageCategory
-      }));
-    });
-
-    let putPromises = []
-    let images = []
-    Promise.all(promises)
-    .then((responses) => {
-      responses.forEach((response) => {
-        const returnData = response.data.data.returnData;
-        const newFileType = response.data.data.returnData.fileType
-        const signedRequest = returnData.signedRequest;
-        const oldName = returnData.oldName;
-        const url = returnData.url;
-        images.push(url)
-
-        const options = {
-          headers: {
-            'Content-Type': newFileType
-          }
-        }
-        putPromises.push(axios.put(signedRequest, filesDict[oldName], options))
-        
-      });
-      
-      Promise.all(putPromises)
-      .then((responses) => {
-        data.images = images
-        if (typeOfUpload === "eventImages") {
-          updateEventCall(dispatch, data)
-        } else {
-          updateOrgCall(dispatch, data)
-        }
-      })
-      .catch((err) => {
-        if (typeOfUpload === "eventImages") {
-          dispatch(updatingEventFailure(err))
-        } else {
-          dispatch(updatingOrgFailure(err))
-        }
-        return
-      });
-
-    })
-    .catch((err) => {
-      if (typeOfUpload === "eventImages") {
-        dispatch(updatingEventFailure(err))
-      } else {
-        dispatch(updatingOrgFailure(err))
-      }
-      return
-    });
 }

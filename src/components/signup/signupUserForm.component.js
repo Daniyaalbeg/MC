@@ -36,20 +36,20 @@ const validationSchema = Yup.object().shape({
   // .matches(/^(?:(([+]|00)92)|0)((3[0-6][0-9]))(\d{7})$/, "*This is not a valid Pakistani mobile numbers"),
   cnic: Yup.string()
   .matches(/^(\d{13})?$|[0-9]{12}-[0-9]{1}$|[0-9]{5}-[0-9]{7}-[0-9]{1}$|[0-9]{6}-[0-9]{6}-[0-9]{1}$/, "*This is not a valid CNIC, make sure it is in this format: 1234567891234 or 12345-1234567-1 or 123456-123456-1"),
-  addressLine1: Yup.string()
-  .min(1, "*Address Line 1 must be longer than 1 charachter")
-  .max(50, "*Adderss Line 1 must be less than 50 charachters"),
+  // addressLine1: Yup.string()
+  // .min(1, "*Address Line 1 must be longer than 1 charachter")
+  // .max(50, "*Adderss Line 1 must be less than 50 charachters"),
   city: Yup.string()
   .required("*City is required")
   .min(1, "*City name must be longer than 1 charachter")
   .max(50, "*City name must be less than 50 charachters"),
-  region: Yup.string()
-  .required("*Region is required")
-  .min(1, "*Region name must be longer than 1 charachter")
-  .max(50, "*Region name must be less than 50 charachters"),
-  postCode: Yup.string()
-  .min(1, "*Post Code must be longer than 1 charachter")
-  .max(20, "*Post Code must be less than 20 charachters"),
+  // region: Yup.string()
+  // .required("*Region is required")
+  // .min(1, "*Region name must be longer than 1 charachter")
+  // .max(50, "*Region name must be less than 50 charachters"),
+  // postCode: Yup.string()
+  // .min(1, "*Post Code must be longer than 1 charachter")
+  // .max(20, "*Post Code must be less than 20 charachters"),
   country: Yup.string()
   .required("*Country is required")
   .min(1, "*Country name must be longer than 1 charachter")
@@ -184,7 +184,7 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
           <Form.Control.Feedback type="invalid">{errors.mobile}</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="formCnic">
+        {/* <Form.Group controlId="formCnic">
           <Form.Label>CNIC</Form.Label>
           <Form.Control
             name="cnic"
@@ -198,11 +198,11 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.cnic}</Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> */}
 
         <Card.Subtitle className="mb-2 text-muted" style={{marginTop: "24px"}}> Address </Card.Subtitle>
 
-        <Form.Group controlId="formAddressLine1">
+        {/* <Form.Group controlId="formAddressLine1">
           <Form.Label>Address Line 1</Form.Label>
           <Form.Control
             name="addressLine1"
@@ -216,7 +216,7 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.addressLine1}</Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group controlId="formCity">
           <Form.Label>City <span className="red">*</span></Form.Label>
@@ -234,7 +234,7 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
           <Form.Control.Feedback type="invalid">{errors.city}</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Row>
+        {/* <Form.Row>
           <Form.Group as={Col} controlId="formRegion">
             <Form.Label>Province / Region <span className="red">*</span></Form.Label>
             <Form.Control
@@ -265,9 +265,9 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.postCode}</Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formCountry">
+        </Form.Group> */}
+         {/* //removed as={Col} */}
+        <Form.Group controlId="formCountry">
           <Form.Label>Country <span className="red">*</span></Form.Label>
           <Form.Control
             name="country"
@@ -282,7 +282,7 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">{errors.country}</Form.Control.Feedback>
         </Form.Group>
-        </Form.Row>
+        {/* </Form.Row> */}
 
         <Form.Group>
           <Field

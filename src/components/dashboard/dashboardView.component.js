@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Tabs, Panel } from '@bumaga/tabs'
 import { Spinner} from 'react-bootstrap';
-//css for this was moved to dashboard.css
 
-import ProfileInfoView from './profileInfoView.component';
-import SupplierInfoView from './supplierInfoView.component';
-import EventView from './eventView.component';
-import GroupInfoView from './groupInfoView.component';
+import ProfileInfoView from './profile/profileInfoView.component';
+import OrganisationInfoViewDash from './organisations/organisationInfoViewDash.component';
+import EventView from './events/eventView.component';
+import GroupInfoView from './groups/groupInfoView.component';
 import ProjectView from './projects/projectView.component';
 
 import { getUserInfo } from '../../Actions/userInfoActions';
@@ -101,7 +100,10 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             <OrganisationInfoViewDash orgs={user.createdOrganisations} />
           </Panel>
           <Panel>
-            <ProjectView />
+            {/* <ProjectView orgs={user.createdOrganisations} /> */}
+            <div className="comingSoonContainer">
+              <p className="mcGreenBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
+            </div>
           </Panel>
           <Panel>
             <GroupInfoView groups={user.createdGroups} />

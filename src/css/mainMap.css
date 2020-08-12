@@ -109,6 +109,9 @@
 .mapInfoBox > .mapInfoBoxHeading {
   font-size: small;
 }
+.mapInfoBox h6 {
+  font-weight: bold;
+}
 
 .gm-ui-hover-effect {
   /* background-color: whitesmoke !important; */

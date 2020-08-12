@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const Supplier = require('../models/supplier.model');
+const { Organisation } = require('../models/organisation.model');
 const User = require('../models/user.model');
 const verifyToken = require('../verifyToken');
 const { Project } = require('../models/project/project.model');
+const mongoose = require('mongoose');
 
 //Fetch all projects
 router.route('/').get((req, res) => {
@@ -10,36 +11,46 @@ router.route('/').get((req, res) => {
 })
 
 //Create a project
-router.route('/').post(verifyToken, (req, res, next) => {
-  User.findById(req.id, { password: 0 }, (err, user) => {
-    if (err) return res.status(400).json({ errorDesc: "Error finding user", error: err })
-    if (!user) return res.status(400).json({ errorDesc: "User found but missing" })
+router.route('/:id').post(verifyToken, (req, res, next) => {
+  Organisation.findById(req.params.id, (err, org) => {
+    if (err) {
+      console.log(err)
+      return res.status(400).json({ errorDesc: "Error finding org" })
+    }
+    if (!org) return res.status(400).json({ errorDesc: "Org found but missing" })
 
-    if (!user.supplier) return res.status(400).json({ errorDesc: "You must have created an organistion before adding projects" })
+    if (org.createdBy.toString() !== req.id) {
+      return res.status(401).json({ errorDesc: "Not authorised to perform this action." })
+    }
+
+    if (req.body.orgID !== org._id.toString()) {
+      return res.status(400).json({ errorDesc: "Org id's do not match" })
+    }
 
     const name = req.body.name
-    const imageURL = req.body.imageURL
+    const images = req.body.images
     const description = req.body.description
     const problem = req.body.problem
     const solution = req.body.solution
     const completionDate = req.body.completionDate
     const location = req.body.location
 
-    const impact = []
-    const funding = []
+    const impact = null
+    const funding = null
     const supplies = []
     const updates = []
     const followedBy = []
     const comments = []
     const faq = []
 
-    const createdBy = user._id
+    const createdByUser = mongoose.Types.ObjectId(req._id)
+    const createdByOrganisation = org._id
     const published = false
     const approved = false
 
     const project = new Project({
       name,
-      imageURL,
+      images,
       description,
       problem,
       solution,
@@ -52,7 +63,8 @@ router.route('/').post(verifyToken, (req, res, next) => {
       followedBy,
       comments,
       faq,
-      createdBy,
+      createdByUser,
+      createdByOrganisation,
       published,
       approved
     })
@@ -64,19 +76,18 @@ router.route('/').post(verifyToken, (req, res, next) => {
       }
       if (!project) return res.status(500).json({ errDesc: "Project saved but not returned" })
 
-      user.supplier.projects.append(project._id)
-      user.save((err, user) => {
+      org.projects.push(project._id)
+      org.save((err, org) => {
         if (err) {
           console.log(err)
-          return res.status(500).json({ errDesc: "Problem saving the user", error: err })
+          return res.status(500).json({ errDesc: "Problem saving the org", error: err })
         }
 
-        return res.status(200).json({ project })
+        return res.status(200).json(project)
       })
-
     })
-
   })
+
 })
 
 module.exports = router

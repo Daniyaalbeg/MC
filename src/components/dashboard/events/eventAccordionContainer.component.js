@@ -19,7 +19,7 @@ const EventAccordionContainer = ({ org, setSelectedOrg }) => {
       )
       const list =
       <>
-      <div className="eventButtonsContainer">
+      <div className="headerButtonsContainer">
         <button className="standardButtonWithoutColour mcGreyBG" onClick={() => setSelectedOrg(null)}> <FontAwesomeIcon icon={faChevronCircleLeft} style={{textAlign: 'left', marginRight: "0.3em"}}/> Back </button>
         <Link to={"createEvent/" + org._id}><button className="createEventButton standardButton"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}}/>  Create Distribution </button></Link>
       </div>
@@ -31,7 +31,7 @@ const EventAccordionContainer = ({ org, setSelectedOrg }) => {
     } else {
       return (
         <>
-          <div className="eventButtonsContainer">
+          <div className="headerButtonsContainer">
             <button className="standardButtonWithoutColour mcGreyBG" onClick={() => setSelectedOrg(null)}> <FontAwesomeIcon icon={faChevronCircleLeft} style={{textAlign: 'left', marginRight: "0.3em"}}/> Back </button>
           </div>
           <div className="emptyDBContainer">

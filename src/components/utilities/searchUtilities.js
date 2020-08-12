@@ -8,6 +8,10 @@ const findChosenElement = (id, array) => {
 }
 
 export const findEventInOrgs = (user, orgID, eventID) => {
+  if (!user) {
+    return null
+  }
+
   const createdOrgs = user.createdOrganisations
   for (let i = 0; i < createdOrgs.length; i++) {
     if (createdOrgs[i]._id.toString() !== orgID) continue

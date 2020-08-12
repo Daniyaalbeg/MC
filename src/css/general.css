@@ -39,6 +39,7 @@
   color: #040404 !important;
 }
 
+/* For Buttons */
 .mcRedBG {
   background-color: #EF2A30;
  }
@@ -56,6 +57,9 @@
  }
  .mcGreenBG {
   background-color: #4BB250;
+ }
+ .mcGreenBG:hover {
+  background-color: #419e46;
  }
  .mcBlueBG {
   background-color: #1589C9;
@@ -424,7 +428,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .growIcon:hover { transform: scale(1.3); }
 
 .growSmall { transition: all .2s ease-in-out; }
-.growSmall:hover { transform: scale(1.02); }
+.growSmall:hover { transform: scale(1.01); }
 
 @-webkit-keyframes bounce {
   0% { top: 0; }

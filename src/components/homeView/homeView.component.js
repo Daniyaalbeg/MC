@@ -91,7 +91,7 @@ const IntroText = () => {
   return (
     <section className="introText">
       <p>
-      The future of ‘Collective Action’ is here. Ministry of Change (MC) is a digital platform that provides activists with tools for action. On MC you can map your impact, find others like you, build on each other's strength, mobilise people for action and crowdsource money, supplies and volunteers. You could be an individual citizen, a government, a corporation, or a philanthropist. Browse through development projects that inspire and excite you. In these challenging COVID 19 times, we are mapping donors who are donating food rations, PPE (Personal Protective Equipment), cash, and clothes to people who need them. Many are already engaged in Whatsapp groups. Post your own and join others.
+      The future of ‘Collective Action’ is here. Ministry of Change (MC) is a community of activists. Map your impact, volunteer, and crowdsource money, supplies and help. You could be an individual citizen, a government, a corporation, or a philanthropist. Browse through projects that inspire and excite you. In these challenging COVID 19 times, we are mapping donors who are donating food rations, PPE (Personal Protective Equipment), cash, and clothes to people who need them. Many are already engaged in Whatsapp groups. Post your own and join others.
         <br />
         <br />
         <span style={{fontWeight: "bold"}}>We are ready to change the world. Are you?</span>

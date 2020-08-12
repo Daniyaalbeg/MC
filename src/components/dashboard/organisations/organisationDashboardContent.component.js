@@ -28,7 +28,7 @@ const OrganisationCards = ({ orgs, setSelectedOrg }) => {
     <div className="cardsDashContainer">
       {
         orgs.map((org) => {
-          return <OrganisationCard org={org} key={org._id} setSelectedOrg={setSelectedOrg} />
+          return <OrganisationCard org={org} key={org._id} setSelectedOrg={setSelectedOrg} orgBGColour="orgCardYellow" orgTextColour="orgTextBlack" />
         })
       }
     </div>

@@ -66,17 +66,11 @@
   color: whitesmoke;
 }
 
-
-@media only screen and (max-device-width: 1150px) {
-  .eventViewContent {
-    padding: 12px;
-  }
-}
-
-@media only screen and (min-device-width: 1150px) {
-  .eventViewContent {
-    padding: 32px;
-  }
+.eventHeadingSelect {
+  width: 100%;
+  height: 33.59px;
+  text-align: center;
+  font-size: 1.8em;
 }
 
 .eventTitle {
@@ -119,4 +113,14 @@
 }
 .createEventButton:hover {
   background-color: rgb(52, 61, 66) !important;
+}
+
+
+@media only screen and (max-device-width: 1150px) {
+  .eventViewContent {
+    padding: 12px;
+  }
+  .eventHeadingSelect {
+    font-size: 1em;
+  }
 }
