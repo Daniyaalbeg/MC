@@ -85,7 +85,7 @@ const projectSchema = new Schema({
   },
   createdByOrganisation: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Organisation',
     required: true
   },
   published: {

@@ -15,6 +15,10 @@
   --main-dark-grey-color: #434f57;
   --main-light-grey-color: #5c6a74;
   --main-green-color: #4BB250;
+  --main-light-green-color: rgba(82, 197, 88, 0.514);
+  --main-dark-green-color: #329137;
+  --main-text-dark: #040404;
+  --main-text-light: whitesmoke;
 }
 
 .mcRed {
@@ -74,7 +78,11 @@
   background-color: rgb(52, 61, 66);
  }
 
- .fallBackContainer {
+a, a:focus, a:active, a:hover, a:visited {
+  text-decoration: none !important;
+}
+
+.fallBackContainer {
    width: 100%;
    height: 100%;
    display: flex;
@@ -165,6 +173,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .standardButton {
+  cursor: pointer;
   background-color: #1589C9;
   color: white;
   border-radius: 8px;
@@ -185,13 +194,11 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .standardButtonWithoutColour {
+  cursor: pointer;
   color: white;
   border-radius: 8px;
   padding: 0.3em 0.6em;
   font-weight: bold;
-}
-.standardButtonWithoutColour:hover {
-
 }
 
 .smallVersion {
@@ -278,48 +285,6 @@ p, h1, h2, h3, h4, h5, h6 {
   font-size: 0.7em;
   background-color: red;
   margin-bottom: 0px;
-}
-
-.tab {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  height: 50px;
-  width: 100%;
-  /* display: block; */
-  padding: 0 1em;
-  color: whitesmoke;
-  background-color: var(--main-bg-color);
-  font-weight: bold;
-}
-.tab > svg {
-  font-size: 1.2em;
-  margin-right: .75em;
-}
-.tab > p {
-  margin: 0em;
-}
-/* #1589C9  */
-.tab.active {
-  /* background-color: #1589C9; */
-}
-/* rgba(21, 138, 201, 0.185) */
-.tab:hover:not(.active) {
-  /* background-color: rgba(21, 138, 201, 0.233); */
-}
-
-@media only screen and (max-device-width: 1150px) {
-  .tab {
-    padding: 0;
-  }
-  .tab > svg {
-    margin: auto;
-    font-size: 1.2em;
-  }
-  .tab > p {
-    margin: 0em;
-  }
 }
 
 .faSelectEventButton {

@@ -1,30 +1,30 @@
 const mongoose = require('mongoose')
+const supplyAmountReceivedSchema = require('./userSupplyAmountRecieved.model').supplyAmountReceivedSchema;
 
 const supplySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
+  category: {
+    type: String,
+    required: false
+  },
   amountNeeded: {
     type: Number,
     required: true
   },
-  amountAquired: {
+  amountReceived: {
     type: Number,
     required: true
-  },
-  aquired: {
-    type: Boolean,
-    required: false
   },
   supplyReceived: {
     type: Boolean,
     required: false
   },
   suppliedBy: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: false
+    type: supplyAmountReceivedSchema,
+    required: true
   }]
 }, {
   timestamps: true

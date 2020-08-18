@@ -11,7 +11,7 @@ import ProjectView from './projects/projectView.component';
 
 import { getUserInfo } from '../../Actions/userInfoActions';
 import getWindowDimensions from '../utilities/windowDimension.component';
-import { TabDashboard } from '../utilities/tabComponent';
+import { Tab } from '../utilities/tabComponent';
 import imagePlaceholder from '../../assets/Images/temp.jpg'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -49,42 +49,42 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
           }
         </div>
         <div className="dbLeftBar">
-          <TabDashboard addClass="mcTabB">
+          <Tab tabType="dashboardTab" addClass="mcTabB">
           <FontAwesomeIcon icon={faUserCircle} />
           {renderSideBarText &&
               <p> Profile </p>
             }
-          </TabDashboard>
-          <TabDashboard addClass="mcTabC">
+          </Tab>
+          <Tab tabType="dashboardTab" addClass="mcTabC">
             <FontAwesomeIcon icon={faSitemap} />
             {renderSideBarText &&
               <p> Organisation </p>
             }
-          </TabDashboard>
-          <TabDashboard addClass="mcTabD">
+          </Tab>
+          <Tab tabType="dashboardTab" addClass="mcTabD">
             <FontAwesomeIcon icon={faProjectDiagram} />
             {renderSideBarText &&
               <p> Projects </p>
             }
-          </TabDashboard>
-          <TabDashboard addClass="mcTabE">
+          </Tab>
+          <Tab tabType="dashboardTab" addClass="mcTabE">
             <FontAwesomeIcon icon={faUsers} />
             {renderSideBarText &&
               <p> Groups </p>
             }
-          </TabDashboard>
-          <TabDashboard addClass="mcTabF">
+          </Tab>
+          <Tab tabType="dashboardTab" addClass="mcTabF">
             <FontAwesomeIcon icon={faBoxOpen} />
             {renderSideBarText &&
               <p> Distributions </p>
             }
-          </TabDashboard>
-          <TabDashboard addClass="mcTabA">
+          </Tab>
+          <Tab tabType="dashboardTab" addClass="mcTabA">
             <FontAwesomeIcon icon={faHandsHelping} />
             {renderSideBarText &&
               <p> Volunteer </p>
             }
-          </TabDashboard>
+          </Tab>
           {/* <button className="standardButton logoutButton" onClick={() => { dispatch(logout()) }}> logout </button> */}
         </div>
         <div className="dbBody">
@@ -100,10 +100,10 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             <OrganisationInfoViewDash orgs={user.createdOrganisations} />
           </Panel>
           <Panel>
-            {/* <ProjectView orgs={user.createdOrganisations} /> */}
-            <div className="comingSoonContainer">
+            <ProjectView orgs={user.createdOrganisations} />
+            {/* <div className="comingSoonContainer">
               <p className="mcGreenBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
-            </div>
+            </div> */}
           </Panel>
           <Panel>
             <GroupInfoView groups={user.createdGroups} />

@@ -58,7 +58,6 @@ export default function userInfoReducer(state = initialState, action) {
         }
       }
     case actions.DELETE_USER_INFO_GROUP:
-      console.log(state)
       let newCreatedGroups = [...state.user.createdGroups]
       for (let i = 0; i<state.user.createdGroups.length; i++) {
         if (state.user.createdGroups[i]._id === action.payload) {
@@ -71,6 +70,27 @@ export default function userInfoReducer(state = initialState, action) {
         user: {
           ...state.user,
           createdGroups: [...newCreatedGroups]
+        }
+      }
+    case actions.ADD_NEW_SUPPLY_ITEM:
+      const { supplyItem, orgID, projectID } = action.payload
+      let orgsNew = [...state.user.createdOrganisations]
+      for (let i = 0; i<state.user.createdOrganisations.length; i++) {
+        if (state.user.createdOrganisations[i]._id.toString() === orgID) {
+          for (let j = 0; j<orgsNew[i].projects.length; j++) {
+            if (orgsNew[i].projects[j]._id === projectID) {
+              orgsNew[i].projects[j].supplies.push(supplyItem)
+              break;
+            }
+          }   
+          break;
+        }
+      }
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          createdOrganisations: [...orgsNew]
         }
       }
     default:

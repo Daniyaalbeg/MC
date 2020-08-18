@@ -9,13 +9,13 @@ import { faProjectDiagram } from '@fortawesome/pro-solid-svg-icons'
 const ProjectView = ({ orgs }) => {
   return (
     <div className="projectViewContainer">
-      <div className="projectViewHeader">
+      {/* <div className="projectViewHeader">
         <div className="projectViewTextIcon">
           <FontAwesomeIcon icon={faProjectDiagram} />
           <p> Projects </p>
         </div>
         <HeaderIcons />
-      </div>
+      </div> */}
       <div className="projectViewContent">
         <ProjectContentView orgs={orgs} />
       </div>

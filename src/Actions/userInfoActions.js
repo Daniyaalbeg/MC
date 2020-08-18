@@ -11,6 +11,8 @@ export const DELETE_USER_INFO_EVENT = "DELETE_USER_INFO_EVENT"
 
 export const DELETE_USER_INFO_GROUP = "DELETE_USER_INFO_GROUP"
 
+export const ADD_NEW_SUPPLY_ITEM = "ADD_NEW_SUPPLY_ITEM"
+
 export const gettingUserInfo = () => ({
   type: GET_USER_INFO
 });
@@ -37,6 +39,11 @@ export const deleteUserInfoEvent = (id) => ({
 export const deleteUserInfoGroup = (id) => ({
   type: DELETE_USER_INFO_GROUP,
   payload: id
+})
+
+export const addNewSupplyItem = (supplyItem, orgID, projectID) => ({
+  type: ADD_NEW_SUPPLY_ITEM,
+  payload: { supplyItem, orgID, projectID }
 })
 
 export function getUserInfo() {

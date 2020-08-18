@@ -67,6 +67,9 @@ const SingleOrganisationInfo = ({ org, setSelectedOrg }) => {
       <WhichLogo icon={org.facebookURL} />
       <WhichLogo icon={org.twitterURL} />
       <WhichLogo icon={org.instagramURL} />
+
+      <p className="profileTitle"> Approved </p>
+      <p className="profileText"> {org.approved ? "Your organisation has been approved" : "Your organisation has not been approved"} </p>
     </>
   )
 }

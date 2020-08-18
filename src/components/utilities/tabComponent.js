@@ -2,12 +2,15 @@ import React from 'react'
 import { useTabState } from '@bumaga/tabs'
 
 
-export const TabDashboard = ({ children, addClass }) => {
+export const Tab = ({ children, tabType, addClass, passedOnClick }) => {
   const { isActive, onClick } = useTabState()
   const cn = (...args) => args.filter(Boolean).join(' ')
 
   return (
-    <button className={cn('tab', isActive && 'active') + ' icon ' + cn(addClass, isActive && 'active')} onClick={onClick}>
+    <button className={cn(tabType, isActive && 'active') + ' icon ' + cn(addClass, isActive && 'active')} onClick={() => {
+      onClick()
+      if (passedOnClick) passedOnClick()
+     }}>
       {children}
     </button>
   )

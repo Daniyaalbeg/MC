@@ -107,7 +107,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: 80px calc(100% - 80px);
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 180px calc(100% - 180px);
   grid-template-areas: 
   "topLeft body"
   "sidebar body"
@@ -258,6 +258,27 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 8px;
+}
+.headerButtonsContainerSingle {
+  width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+}
+.headerButtonsContainerSingle > h3 {
+  margin: 0;
+  margin-left: 16px;
+}
+.headerButtonsContainerSingleRight {
+  width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
 }
 
 .cardsDashContainer {
@@ -307,6 +328,35 @@
   color: #404040;
 }
 
+.dashboardTab {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  /* display: block; */
+  padding: 0 1em;
+  color: whitesmoke;
+  background-color: var(--main-bg-color);
+  font-weight: bold;
+}
+.dashboardTab > svg {
+  font-size: 1.2em;
+  margin-right: .75em;
+}
+.dashboardTab > p {
+  margin: 0em;
+}
+/* #1589C9  */
+.dashboardTab.active {
+  /* background-color: #1589C9; */
+}
+/* rgba(21, 138, 201, 0.185) */
+.dashboardTab:hover:not(.active) {
+  /* background-color: rgba(21, 138, 201, 0.233); */
+}
+
 @media only screen and (max-device-width: 1150px) {
   .dbBody {
     padding: 6px;
@@ -316,5 +366,15 @@
   }
   .dbLeftBar {
     padding: 4px;
+  }
+  .dashboardTab {
+    padding: 0;
+  }
+  .dashboardTab > svg {
+    margin: auto;
+    font-size: 1.2em;
+  }
+  .dashboardTab > p {
+    margin: 0em;
   }
 }

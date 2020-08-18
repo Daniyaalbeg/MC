@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import '../../css/dashboard.css'
 
 
-const DashboardContainer = ({auth}) => {
+const DashboardContainer = ({ auth }) => {
   const isLoggedIn = auth
   if (isLoggedIn) {
     return (

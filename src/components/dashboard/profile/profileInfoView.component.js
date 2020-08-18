@@ -39,8 +39,6 @@ const ProfileInfoView = (props) => {
         <p className="profileText"> {displayCNIC(user.cnic)} </p>
         <p className="profileTitle"> Address </p>
         <Address address={user.address} />
-        <p className="profileTitle"> Approved </p>
-        <p className="profileText"> {user.approved ? "You have been approved" : "You have not been approved"} </p>
         <p className="profileTitle"> Verified </p>
         <Verified verified={user.verified}/>
         <p className="profileTitle"> You created this account on </p>
@@ -67,7 +65,7 @@ const displayCNIC = (cnic) => {
 const Verified = (props) => {
   return (
     <>
-      <p id="verifyButtonEmail"> {props.verified ? "You have been verified" : "You have not been verified"} </p>
+      <p id="verifyButtonEmail"> {props.verified ? "You have verified your account" : "You have not verified your account"} </p>
       {!props.verified &&
         <button className="standardButton profileVerifyButton" onClick={() => {
           sendVerificationEmail();
