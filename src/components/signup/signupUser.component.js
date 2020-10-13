@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { signupReset } from '../../Actions/signUpActions';
 
 import SignupUserForm from './signupUserForm.component';
-import '../../css/form.css';
 
 const SignupUser = ({ dispatch, success, props }) => {
   if (success) {
@@ -16,7 +15,6 @@ const SignupUser = ({ dispatch, success, props }) => {
 const SignedUpMessage = ({ props, dispatch, success }) => {
   useEffect(() => {
     return function cleanup() {
-      console.log('reset signup')
       dispatch(signupReset())
     }
   }, [success])
@@ -26,14 +24,13 @@ const SignedUpMessage = ({ props, dispatch, success }) => {
       <div className="userSignupWelcomeMessage">
         <h1> Congratulations! </h1>
         <p>
-          You are now a member of Ministry of Change. We welcome you to our family of changemakers. You can now create an organisation, map your impact or create a group.
+          You are now a member of Ministry of Change. We welcome you to our family of changemakers. You can now create an organisation, create a project, map your impact or create a group.
         </p>
         <p>
           You can now go to the dashboard to manage your account and create your organisation or group. They will show up for everyone else once you have been approved by our admins.
         </p>
         <button className="standardButton" onClick={() => {
           props.history.push('/dashboard')
-          console.log(props)
         }} > Go to Dashboard </button>
       </div>
     </div>

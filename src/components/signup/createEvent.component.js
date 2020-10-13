@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Row, Card, Form, Spinner } from 'react-bootstrap';
@@ -14,14 +14,6 @@ import Thumb from '../utilities/thumb.component';
 
 import '../../css/form.css';
 
-// const dropzoneStyle = {
-//   width: "100%",
-//   height: "auto",
-//   borderWidth: 2,
-//   borderColor: "rgb(102, 102, 102)",
-//   borderStyle: "dashed",
-//   borderRadius: 5,
-// }
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -77,18 +69,21 @@ const CreateEvent = ({ dispatch, loading, hasErrors, success, auth, orgID }) => 
     isDragReject
   ]);
 
+  useEffect(() => {
+    if (success) {
+      dispatch(creatingEventReset())
+      dispatch(creatingEventRedirect())
+      return <Redirect push to="/dashboard" /> 
+    }
+  }, [success])
+
   if (!orgID || !auth) {
     return <Redirect to="/dashboard" />
   }
 
-  if (success) {
-    dispatch(creatingEventReset())
-    dispatch(creatingEventRedirect())
-    return <Redirect push to="/dashboard" /> 
-  }
 
   return (
-    <Card bg="light" text="dark" className="signUpCard">
+    <Card bg="light" text="dark" className="oldForm">
       <Card.Header> Create New Distribution </Card.Header>
 
       <Formik

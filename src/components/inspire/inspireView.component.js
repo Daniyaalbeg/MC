@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet'
+// import { FacebookShareButton, FacebookIcon } from 'react-share'
 
 import image1 from '../../assets/video/placeholder/1.jpg';
 import image2 from '../../assets/video/placeholder/2.jpg';
@@ -115,6 +117,14 @@ const VideoModal = ({ selectedVideo, setSelectedVideo }) => {
 
   return (
     <div className="videoModalBackground" onClick={() => setSelectedVideo(null)}>
+      <Helmet>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={selectedVideo.name} />
+        <meta property="og:description" content="Watch their story" />
+        <meta property="og:image" content={selectedVideo.image} />
+        {/* <meta property="og:image:width" content="400" /> */}
+        {/* <meta property="og:image:height" content="400" /> */}
+      </Helmet>
       <div className="videoModal" onClick={(e) => e.stopPropagation()}>
       <FontAwesomeIcon icon={faTimesCircle} size="2x" className="modalCloseButton" onClick={() => setSelectedVideo(null)} />
 
@@ -129,6 +139,13 @@ const VideoModal = ({ selectedVideo, setSelectedVideo }) => {
             navigator.clipboard.writeText(rootURL(production) + CLIENT + '/inspire/' + selectedVideo.id)
             setCopiedLink(true)
           }}> {copiedLink ? "Copied link": "Copy link"} </button>
+          {/* <FacebookShareButton
+            url={rootURL(true) + "ministryofchange.org" + '/inspire/' + selectedVideo.id}
+            quote={selectedVideo.name}
+            hashtag="#inspire #mc #ministryofchange"
+          >
+            <FacebookIcon size={36} round={true} />
+          </FacebookShareButton> */}
         </div>
       </div>
     </div>

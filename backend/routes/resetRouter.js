@@ -5,6 +5,8 @@ var verifyToken = require('../verifyToken');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var nodemailer = require('nodemailer');
+const Email = require('email-templates');
+const path = require('path');
 
 var User = require('../models/user.model');
 
@@ -39,25 +41,71 @@ router.route('/password').post((req, res) => {
         }
       });
 
-      var mailOptions = {
-        from: process.env.EMAIL_USERNAME,
-        to: emailAddress,
-        subject: 'Reset Password',
-        html: `
-    <h3> Here is your password reset link </h3>
-    <p> Hi `+user.username+`. Please click this <a href="https://`+process.env.EMAIL_REPLY_API+`/resetPassword/`+ user._id +`/`+ token +`"> link </a> to reset your password</p>
-    `
-      };
+      let email = null
+      if (process.env.NODE_ENV === 'development') {
+        email = new Email({
+          message: {
+            from: process.env.EMAIL_USERNAME
+          },
+          send: false,
+          // transport: transporter,
+          juice: true,
+          juiceSettings: {
+            tableElements: ['TABLE']
+          },
+          juiceResources: {
+            preserveImportant: true,
+            webResources: {
+              relativeTo: path.join(__dirname, '..', 'assets')
+            }
+          },
+          preview: {
+            open: {
+              app: 'google chrome',
+              wait: false
+            }
+          }
+        })
+      } else {
+        email = new Email({
+          message: {
+            from: process.env.EMAIL_USERNAME
+          },
+          send: true,
+          transport: transporter,
+          juice: true,
+          juiceSettings: {
+            tableElements: ['TABLE']
+          },
+          juiceResources: {
+            preserveImportant: true,
+            webResources: {
+              relativeTo: path.join(__dirname, '..', 'assets')
+            }
+          },
+          preview: false
+        })
+      }
 
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
+      email
+      .send({
+        template: 'forgotten-password',
+        message: {
+          to: 'danyaalbeg@gmail.com'
+        },
+        locals: {
+          username: user.username,
+          url: `https://${process.env.EMAIL_REPLY_API}/resetPassword/${user._id}/${token}`
         }
-      });
+      })
+      .then(() => {
+        return res.status(200).send("OK")
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).send("Error Occurred")
+      })
     });
-    res.status(200).send("OK")
   } else {
     res.status(404).send("Cannot find that email");
   }

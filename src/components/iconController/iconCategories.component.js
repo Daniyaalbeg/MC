@@ -30,11 +30,12 @@ import Peace from '../../assets/icons/Peace.svg'
 import PovertyAlleviation from '../../assets/icons/PovertyAlleviation.svg'
 import PrimaryEdu from '../../assets/icons/PrimaryEdu.svg'
 import Recycling from '../../assets/icons/Recycling.svg'
+import Religion from '../../assets/icons/Candle.svg'
 import Sanitation from '../../assets/icons/Sanitation.svg'
 import SecondaryEdu from '../../assets/icons/SecondaryEdu.svg'
 import Sports from '../../assets/icons/Sports.svg'
 import Terrorism from '../../assets/icons/Terrorism.svg'
-import Virus from '../../assets/icons/Virus.svg'
+import Covid from '../../assets/icons/Virus.svg'
 import Waste from '../../assets/icons/Waste.svg'
 import Water from '../../assets/icons/Water.svg'
 import Youth from '../../assets/icons/Youth.svg'
@@ -73,14 +74,18 @@ export const listOfIcons = [
   "ppe",
   "povertyAlleviation",
   "recycling",
+  "religion",
   "sanitation",
   "sports",
   "terrorism",
-  "virus",
+  "covid",
   "waste",
   "youth"
 ]
 
+export const getSpecificIcon = () => {
+
+}
 
 export const WhatCategoriesHomeView = () => {
   return (
@@ -88,12 +93,21 @@ export const WhatCategoriesHomeView = () => {
     {listOfIcons.map((icon) => {
       return (
         <div key={icon} className="iconContainer iconLarge">
-          {iconForType(icon)}
+          {getIcon(icon, "iconImage growIcon")}
           <p className="hoverOn"> {iconForText(icon)} </p>
         </div>
       )
     })}
     </>
+  )
+}
+
+export const PrimaryCategory = ({ category }) => {
+  return (
+    <div className="iconContainer">
+      {getIcon(category, "iconImage growIcon")}
+      <p className="hoverOn"> {iconForText(category)} </p>
+    </div>
   )
 }
 
@@ -103,7 +117,7 @@ export const WhatCategories = ({ types }) => {
     {types.map((type) => {
       return (
         <div key={type} className="iconContainer">
-          {iconForType(type)}
+          {getIcon(type, "iconImage growIcon")}
           <p className="hoverOn"> {iconForText(type)} </p>
         </div>
       )
@@ -112,7 +126,7 @@ export const WhatCategories = ({ types }) => {
   )
 }
 
-const iconForText = (type) => {
+export const iconForText = (type) => {
   switch(type) {
     case "animalWelfare":
       return "Animal Welfare"
@@ -178,14 +192,16 @@ const iconForText = (type) => {
       return "Poverty Alleviation"
     case "recycling": 
       return "Recycling"
+    case "religion": 
+      return "Religion"
     case "sanitation":
       return "Sanitation"
     case "sports":
       return "Sports"
     case "terrorism":
       return "Terrorism"
-    case "virus":
-      return "Virus"
+    case "covid":
+      return "Covid"
     case "waste":
       return "Waste"
     case "youth":
@@ -195,84 +211,90 @@ const iconForText = (type) => {
   }
 }
 
-const iconForType = (type) => {
+export const getIcon = (type, classNames) => {
+  return <img className={classNames} src={getIconSource(type)} alt={`${iconForText(type)} Icon`} />
+}
+
+export const getIconSource = (type) => {
   switch(type) {
     case "animalWelfare":
-      return <img className="iconImage growIcon" src={AnimalWelfare} alt="Animal Welfare Icon" />
+      return AnimalWelfare
     case "artsAndCulture":
-      return <img className="iconImage growIcon" src={ArtandCulture} alt="Arts and Culture Icon" />
+      return ArtandCulture
     case "clothing":
-      return <img className="iconImage growIcon" src={Clothes} alt="Clothing Icon" />
+      return Clothes
     case "communityDevelopment":
-      return <img className="iconImage growIcon" src={Community} alt="Community Development Icon" />
+      return Community
     case "disability":
-      return <img className="iconImage growIcon" src={Disability} alt="Disability Icon" />
+      return Disability
     case "disaster":
-      return <img className="iconImage growIcon" src={Disaster} alt="Disaster Icon" />
+      return Disaster
     case "education":
-      return <img className="iconImage growIcon" src={Education} alt="Education Icon" />
+      return Education
     case "primary":
-      return <img className="iconImage growIcon" src={PrimaryEdu} alt="Primary Education Icon" />
+      return PrimaryEdu
     case "secondary":
-      return <img className="iconImage growIcon" src={SecondaryEdu} alt="Secondary Education Icon" />
+      return SecondaryEdu
     case "higher":
-      return <img className="iconImage growIcon" src={HigherEdu} alt="Higher Education Icon" />
+      return HigherEdu
     case "energy":
-      return <img className="iconImage growIcon" src={Energy} alt="Energy Icon" />
+      return Energy
     case "environment":
-      return <img className="iconImage growIcon" src={Enviroment} alt="Environment Icon" />
+      return Enviroment
     case "forest":
-      return <img className="iconImage growIcon" src={Forest} alt="Forest Icon" />
+      return Forest
     case "water":
-      return <img className="iconImage growIcon" src={Water} alt="Water Icon" />
+      return Water
     case "equality":
-      return <img className="iconImage growIcon" src={Equality} alt="Equality Icon" />
+      return Equality
     case "food":
-      return <img className="iconImage growIcon" src={Food} alt="Food Icon" />
+      return Food
     case "agriculture":
-      return <img className="iconImage growIcon" src={Agriculture} alt="Agriculture Icon" />
+      return Agriculture
     case "livestock":
-      return <img className="iconImage growIcon" src={Livestock} alt="Food Icon" />
+      return Livestock
     case "fisheries":
-      return <img className="iconImage growIcon" src={Fisheries} alt="Fisheries Icon" />
+      return Fisheries
     case "gender":
-      return <img className="iconImage growIcon" src={Gender} alt="Gender Icon" />
+      return Gender
     case "health":
-      return <img className="iconImage growIcon" src={Health} alt="Health Icon" />
+      return Health
     case "motherAndChildHealth":
-      return <img className="iconImage growIcon" src={Motherhood} alt="Mother and Child Health Icon" />
+      return Motherhood
     case "humanRights":
-      return <img className="iconImage growIcon" src={HumanRights} alt="Human Rights Icon" />
+      return HumanRights
     case "infrastructure":
-      return <img className="iconImage growIcon" src={Infrastructure} alt="Infrastructure Icon" />
+      return Infrastructure
     case "it":
-      return <img className="iconImage growIcon" src={IT} alt="IT Icon" />
+      return IT
     case "justice":
-      return <img className="iconImage growIcon" src={Justice} alt="Justice Icon" />
+      return Justice
     case "livelihood":
-      return <img className="iconImage growIcon" src={Livelihood} alt="Livelihood Icon" />
+      return Livelihood
     case "money":
-      return <img className="iconImage growIcon" src={Money} alt="Money Icon" />
+      return Money
     case "peace":
-      return <img className="iconImage growIcon" src={Peace} alt="Peace Icon" />
+      return Peace
     case "ppe":
-      return <img className="iconImage growIcon" src={PPE} alt="Personal Protection Equipment Icon" />
+      return PPE
     case "povertyAlleviation":
-      return <img className="iconImage growIcon" src={PovertyAlleviation} alt="Poverty Alleviation Icon" />
+      return PovertyAlleviation
     case "recycling": 
-      return <img className="iconImage growIcon" src={Recycling} alt="Recycling Icon" />
+      return Recycling
+    case "religion":
+      return Religion
     case "sanitation":
-      return <img className="iconImage growIcon" src={Sanitation} alt="Sanitation Icon" />
+      return Sanitation
     case "sports":
-      return <img className="iconImage growIcon" src={Sports} alt="Sports Icon" />
+      return Sports
     case "terrorism":
-      return <img className="iconImage growIcon" src={Terrorism} alt="Terrorism Icon" />
-    case "virus":
-      return <img className="iconImage growIcon" src={Virus} alt="Virus Icon" />
+      return Terrorism
+    case "covid":
+      return Covid
     case "waste":
-      return <img className="iconImage growIcon" src={Waste} alt="Waste Icon" />
+      return Waste
     case "youth":
-      return <img className="iconImage growIcon" src={Youth} alt="Youth Icon" />
+      return Youth
     // case "other":
     //   return <img src={Oth} alt="Other Icon" />
     default:

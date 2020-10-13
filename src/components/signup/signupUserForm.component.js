@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Formik, Field } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Redirect } from 'react-router-dom';
-import { Card, Col, Form, Spinner } from 'react-bootstrap';
-import { signUpUser, signupReset } from '../../Actions/signUpActions';
-import { Checkbox } from '../utilities/Checkboxs.component';
+import Spinner from 'react-bootstrap/Spinner';
+import { signUpUser } from '../../Actions/signUpActions';
 
-
-import '../../css/form.css';
-import '../../css/signupUser.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/pro-solid-svg-icons";
 
 const validationSchema = Yup.object().shape({
+  firstname: Yup.string()
+  .required("*First name is required")
+  .max(100, "*First name must be less than 100 charachters"),
+  lastname: Yup.string()
+  .required("*Last name is required")
+  .max(100, "*Last name must be less than 100 charachters"),
   email: Yup.string()
   .required("*Email is required")
   .email("*Must be a valid email")
@@ -60,275 +63,317 @@ const validationSchema = Yup.object().shape({
 
 const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpError }) => {
 
+  const formik = useFormik({
+    initialValues: {
+      firstname: "",
+      lastname: "",
+      email: "",
+      username: "",
+      password: "",
+      mobile: "",
+      cnic: "",
+      addressLine1: "",
+      city: "",
+      region: "",
+      postCode: "",
+      country: "",
+      agreedToTerms: false
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      const data = {
+        firstname: values.firstname,
+        lastname: values.lastname,
+        email: values.email,
+        username: values.username,
+        password: values.password,
+        mobile: values.mobile,
+        cnic: values.cnic,
+        addressLine1: values.addressLine1,
+        city: values.city,
+        region: values.region,
+        postCode: values.postCode,
+        country: values.country,
+      }
+      dispatch(signUpUser(data))
+    },
+  });
+
   return (
-    <Card bsPrefix='card' bg='light' text='dark' className="signUpCard">
-      <Card.Header>Sign up form</Card.Header>
-      <Formik 
-        initialValues={{
-          email: "",
-          username: "",
-          password: "",
-          mobile: "",
-          cnic: "",
-          addressLine1: "",
-          city: "",
-          region: "",
-          postCode: "",
-          country: "",
-          agreedToTerms: false
-        }}
-        validationSchema={validationSchema}
-        onSubmit={(values) => {
-         
-          const data = {
-            email: values.email,
-            username: values.username,
-            password: values.password,
-            mobile: values.mobile,
-            cnic: values.cnic,
-            addressLine1: values.addressLine1,
-            city: values.city,
-            region: values.region,
-            postCode: values.postCode,
-            country: values.country,
-          }
-          // alert(JSON.stringify(data))
-          dispatch(signUpUser(data))
-        }}
-      >
-        {({values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          resetForm, }) => (
-        <Form noValidate onSubmit={handleSubmit}>
-        <Card.Body>
-        <Form.Text className="text-muted">
-          required fields <span className="red"> *</span>
-        </Form.Text>
-        {/* <Card.Title>Personal Info</Card.Title> */}
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address <span className="red">*</span></Form.Label>
-          <Form.Control
-            type="email" 
-            placeholder="Enter email"
-            name="email"
-            autoComplete="username"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-            isValid={touched.email && !errors.email}
-            isInvalid={errors.email}
-          />
-          <Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+    <div className="formCardContainer">
+      <div className="standardForm">
+        <form noValidate onSubmit={formik.handleSubmit}>
+          <div className="formMainHeader">
+            <FontAwesomeIcon icon={faUser} size="2x" />
+            <h2> Sign Up </h2>
+          </div>
+          <div className="formMainBody">
 
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username <span className="red">*</span></Form.Label>
-          <Form.Control
-            name="username"
-            type="text"
-            placeholder="Enter username"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.username}
-            isValid={touched.username && !errors.username}
-            isInvalid={errors.username}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
-        </Form.Group>
+            <div className="formRow">
+              <div className="formGroup">
+                <p className="formGroupHeader">First Name <span className="red">*</span> </p>
+                <input
+                  autoFocus
+                  autoComplete="given-name"
+                  type="text"
+                  name="firstname"
+                  placeholder="Enter first name"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.firstname}
+                />
+                {formik.errors.firstname && (
+                  <p className="formInputError"> {formik.errors.firstname} </p>
+                )}
+              </div>
 
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password <span className="red">*</span></Form.Label>
-          <Form.Control
-            name="password"
-            type="password"
-            placeholder="Password"
-            autoComplete="new-password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
-            isValid={touched.password && !errors.password}
-            isInvalid={errors.password}
-          />
-          <Form.Text id="passwordHelpBlock" muted>
-            Your password must be 5-20 characters long, contain an uppercase letter, lowercase letter and number. It must not contain spaces or emoji.
-          </Form.Text>
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
-        </Form.Group>
+              <div className="formGroup">
+                <p className="formGroupHeader">Last Name <span className="red">*</span> </p>
+                <input
+                  autoComplete="family-name"
+                  type="text"
+                  name="lastname"
+                  placeholder="Enter last name"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.lastname}
+                />
+                {formik.errors.lastname && (
+                  <p className="formInputError"> {formik.errors.lastname} </p>
+                )}
+              </div>
+            </div>
 
-        <Form.Group controlId="formMobile">
-          <Form.Label>Mobile <span className="red">*</span></Form.Label>
-          <Form.Control
-            name="mobile"
-            type="tel"
-            placeholder="Mobile no."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.mobile}
-            isValid={touched.mobile && !errors.mobile}
-            isInvalid={errors.mobile}
-          />
-           <Form.Text id="passwordHelpBlock" muted>
-            Mobile number must be in the form: +92 123 4567890
-          </Form.Text>
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.mobile}</Form.Control.Feedback>
-        </Form.Group>
+            <div className="formGroup">
+              <p className="formGroupHeader">Email <span className="red">*</span> </p>
+              <input
+                autoComplete="email"
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+              {formik.errors.email && (
+                <p className="formInputError"> {formik.errors.email} </p>
+              )}
+            </div>
 
-        {/* <Form.Group controlId="formCnic">
-          <Form.Label>CNIC</Form.Label>
-          <Form.Control
-            name="cnic"
-            type="tel"
-            placeholder="CNIC no."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.cnic}
-            isValid={touched.cnic && !errors.cnic}
-            isInvalid={errors.cnic}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.cnic}</Form.Control.Feedback>
-        </Form.Group> */}
+            <div className="formGroup">
+              <p className="formGroupHeader">Username <span className="red">*</span> </p>
+              <input
+                autoComplete="username"
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.username}
+              />
+              {formik.errors.username && (
+                <p className="formInputError"> {formik.errors.username} </p>
+              )}
+            </div>
 
-        <Card.Subtitle className="mb-2 text-muted" style={{marginTop: "24px"}}> Address </Card.Subtitle>
+            <div className="formGroup">
+              <p className="formGroupHeader">Password <span className="red">*</span> </p>
+              <input
+                autoComplete="new-password"
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+              {formik.errors.password && (
+                <p className="formInputError"> {formik.errors.password} </p>
+              )}
+            </div>
 
-        {/* <Form.Group controlId="formAddressLine1">
-          <Form.Label>Address Line 1</Form.Label>
-          <Form.Control
-            name="addressLine1"
-            type="text"
-            placeholder="Address Line 1"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.addressLine1}
-            isValid={touched.addressLine1 && !errors.addressLine1}
-            isInvalid={errors.addressLine1}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.addressLine1}</Form.Control.Feedback>
-        </Form.Group> */}
+            <div className="formGroup">
+              <p className="formGroupHeader">Mobile <span className="red">*</span> </p>
+              <input
+                autoComplete="tel"
+                type="text"
+                name="mobile"
+                placeholder="Enter mobile number"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.mobile}
+              />
+              {formik.errors.mobile && (
+                <p className="formInputError"> {formik.errors.mobile} </p>
+              )}
+            </div>
 
-        <Form.Group controlId="formCity">
-          <Form.Label>City <span className="red">*</span></Form.Label>
-          <Form.Control
-            name="city"
-            type="text"
-            placeholder="City"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.city}
-            isValid={touched.city && !errors.city}
-            isInvalid={errors.city}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.city}</Form.Control.Feedback>
-        </Form.Group>
+            <div className="formGroup">
+              <p className="formGroupHeader">CNIC Number</p>
+              <input
+                type="text"
+                name="cnic"
+                placeholder="Enter CNIC"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.cnic}
+              />
+              {formik.errors.cnic && (
+                <p className="formInputError"> {formik.errors.cnic} </p>
+              )}
+            </div>
 
-        {/* <Form.Row>
-          <Form.Group as={Col} controlId="formRegion">
-            <Form.Label>Province / Region <span className="red">*</span></Form.Label>
-            <Form.Control
-              name="region"
-              type="text"
-              placeholder="Province / Region"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.region}
-              isValid={touched.region && !errors.region}
-              isInvalid={errors.region}
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">{errors.region}</Form.Control.Feedback>
-          </Form.Group>
+            {/* <div className="formGroup">
+              <p className="formGroupHeader">Address Line <span className="red">*</span> </p>
+              <input
+              autoComplete="street-address"
+                type="text"
+                name="addressLine1"
+                placeholder="Enter address line"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.addressLine1}
+              />
+              {formik.errors.addressLine1 && (
+                <p className="formInputError"> {formik.errors.addressLine1} </p>
+              )}
+            </div> */}
 
-          <Form.Group as={Col} controlId="formPostCode">
-          <Form.Label>Post Code / Zip Code</Form.Label>
-          <Form.Control
-            name="postCode"
-            type="text"
-            placeholder="Post Code / Zip Code"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.postCode}
-            isValid={touched.postCode && !errors.postCode}
-            isInvalid={errors.postCode}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.postCode}</Form.Control.Feedback>
-        </Form.Group> */}
-         {/* //removed as={Col} */}
-        <Form.Group controlId="formCountry">
-          <Form.Label>Country <span className="red">*</span></Form.Label>
-          <Form.Control
-            name="country"
-            type="text"
-            placeholder="Country"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.country}
-            isValid={touched.country && !errors.country}
-            isInvalid={errors.country}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">{errors.country}</Form.Control.Feedback>
-        </Form.Group>
-        {/* </Form.Row> */}
+            <div className="formRow">
+              <div className="formGroup">
+                <p className="formGroupHeader">City <span className="red">*</span> </p>
+                <input
+                  autoComplete="address-level2"
+                  type="text"
+                  name="city"
+                  placeholder="Enter city"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.city}
+                />
+                {formik.errors.city && (
+                  <p className="formInputError"> {formik.errors.city} </p>
+                )}
+              </div>
 
-        <Form.Group>
-          <Field
-            style={{ width: "100%" }}
-            component={Checkbox}
-            name="agreedToTerms"
-            id="agreedToTerms"
-            label={<p className="agreedTo"> Agreed to <Link to="/termsandconditions" target="_blank" > Terms & Conditions </Link></p>}
-            isValid={touched.agreedToTerms && !errors.agreedToTerms}
-            isInvalid={errors.agreedToTerms}
-          />
-        </Form.Group>
+              {/* <div className="formGroup">
+                <p className="formGroupHeader">Region</p>
+                <input
+                  autoComplete="address-level1"
+                  type="text"
+                  name="region"
+                  placeholder="Enter region"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.region}
+                />
+                {formik.errors.region && (
+                  <p className="formInputError"> {formik.errors.region} </p>
+                )}
+              </div>
 
-        <div className="formButtons">
-          <button className="standardButton signUpButton" type="submit" disabled={loading}>
-          {
-            loading ? 
-            <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-            :
-            null
-          }
-          {loading ? 'Signing up' : 'Sign up'}
-          </button>
+              <div className="formGroup">
+                <p className="formGroupHeader">Postal Code</p>
+                <input
+                  autoComplete="postal-code"
+                  type="text"
+                  name="postCode"
+                  placeholder="Enter postcode / zipcode"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.postCode}
+                />
+                {formik.errors.postCode && (
+                  <p className="formInputError"> {formik.errors.postCode} </p>
+                )}
+              </div> */}
+            </div>
 
-          <button type="button" className="standardButton redVersion" onClick={resetForm} disabled={loading}>
-            Reset
-          </button>
-        </div>
+            <div className="formGroup">
+              <p className="formGroupHeader">Country <span className="red">*</span> </p>
+              <input
+                autoComplete="country-name"
+                type="text"
+                name="country"
+                placeholder="Enter country"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.country}
+              />
+              {formik.errors.country && (
+                <p className="formInputError"> {formik.errors.country} </p>
+              )}
+            </div>
 
-        {success &&
-          <p className="successReply"> Sign up successfull. A verification email has been sent to {values.email} </p>
-        }
+            <div className="formGroup">
+              <div className="formGroupCheckBox">
+                <input
+                  type="checkbox"
+                  name="agreedToTerms"
+                  id="formCheckbox"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.agreedToTerms}
+                />
+                <p className="agreedTo">
+                  {" "}
+                  Agreed to{" "}
+                  <Link to="/termsandconditions" target="_blank">
+                    {" "}
+                    Terms & Conditions{" "}
+                  </Link>
+                </p>
+              </div>
+              {formik.errors.agreedToTerms && (
+                <p className="formInputError">
+                  {" "}
+                  {formik.errors.agreedToTerms}{" "}
+                </p>
+              )}
+            </div>
 
-        {hasErrors &&
-          <ErrorComponent signUpError={signUpError} />
-        }
+            <div className="formButtons">
+              <button
+                className="standardButtonWithoutColour mcGreenBG"
+                type="submit"
+                disabled={loading}
+                style={{ marginRight: "8px" }}
+              >
+                {loading ? (
+                  <Spinner
+                    animation="grow"
+                    size="sm"
+                    style={{ marginRight: "8px" }}
+                  />
+                ) : null}
+                {loading ? "Signing Up" : "Sign Up"}
+              </button>
+              <button
+                type="button"
+                className="standardButton redVersion"
+                onClick={formik.resetForm}
+                disabled={loading}
+              >
+                Reset
+              </button>
+            </div>
 
-        <Form.Text className="text-muted">
-          Note: Only once we have verified your information will you be able to add charity drives and appear on the page.
-        </Form.Text>
+            {success &&
+              <p className="successReply"> Sign up successfull. A verification email has been sent to {formik.values.email} </p>
+            }
 
-      </Card.Body>
-      </Form>
-    )}
-    </Formik>
-    </Card>
+            {hasErrors &&
+              <ErrorComponent signUpError={signUpError} />
+            }
+            
+            <p className="text-muted" style={{marginTop: '8px'}}>
+              Note: Only once we have verified your information will you be able to add charity drives and appear on the page.
+            </p>
+
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
 

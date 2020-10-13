@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import {} from '../../Actions/selectEventActions';
+import {} from '../../Actions/mapSelectActions';
 import '../../css/eventInfoView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/pro-duotone-svg-icons'

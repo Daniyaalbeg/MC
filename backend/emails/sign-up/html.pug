@@ -1,0 +1,10 @@
+link(rel="stylesheet", type="text/css", href="css/email.css", data-inline)
+link(rel="stylesheet", type="text/css", href="//fonts.googleapis.com/css?family=Open+Sans")
+
+div(class="email-container")
+  div(class="email-body")
+    //- img(class="email-header-image" src="/images/McLogo.png")
+    h1 Welcome to MC!
+    p Hi #{username}
+    p Please click the button below to verify your account.
+    a(class="btn" href=`${url}` target="_blank" rel="noopener noreferrer") Verify Account

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef} from 'react';
 
-const ProgressCircle = ({ size, progress, strokeWidth, circleStrokeBg, circleStroke, initalOffset }) => {
+const ProgressCircle = ({ size, progress, strokeWidth, circleStrokeBg, circleStroke, initalOffset, displayPercentLabel = false }) => {
   const [offset, setOffset] = useState(initalOffset);
   const circleRef = useRef(null);
+  if (progress > 100) progress = 99.9
   
   const center = size / 2
   const radius = size / 2 - strokeWidth / 2;
@@ -36,9 +37,11 @@ const ProgressCircle = ({ size, progress, strokeWidth, circleStrokeBg, circleStr
         strokeDasharray={circumference}
         strokeDashoffset={offset}
       />
-      {/* <text className="svgCircleText" x={center}  y={center}>
-        {progress}
-      </text> */}
+      {/* {displayPercentLabel &&
+        <text className="svgCircleText" x={center - 12}  y={-center + 4}>
+          {progress}%
+        </text>
+      } */}
     </svg>
   )
 }

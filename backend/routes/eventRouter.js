@@ -5,6 +5,11 @@ const User = require('../models/user.model');
 const Event = require('../models/event.model').Event;
 const verifyToken = require('../verifyToken');
 const s3 = require('./s3Controller');
+var bodyParser = require('body-parser');
+
+
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
 //Create a new event
 router.route('/create/:orgID').post(verifyToken, (req, res, next) => {
@@ -66,33 +71,31 @@ router.route('/create/:orgID').post(verifyToken, (req, res, next) => {
 
 //Get all  events
 router.route('/').get((req, res) => {
-  Event.find({ approved: true })
+  const searchOptions = {
+    approved: true
+  }
+
+  if (req.query.filterCategory !== "all" && req.query.search !== "") {
+    searchOptions.typeOfRation = req.query.filterCategory
+    searchOptions.$text = {
+      $search: req.query.search
+    }
+  } else if (req.query.filterCategory !== "all") {
+    searchOptions.typeOfRation = req.query.filterCategory
+  } else if (req.query.search !== "") {
+    searchOptions.$text = {
+      $search: req.query.search
+    }
+  }
+
+  Event.find(searchOptions)
   .populate('createdBy')
   .lean()
   .exec((err, events) => {
     if (err) { return res.status(500).json({ errorDesc: "Error getting events" })}
-  
     res.status(200).json(events);
   })
-
-  // const eventsCollected = [];
-  // User.find(null, { username: 0, email: 0, password: 0})
-  // .then((users) => {
-  //   users.forEach((user) => {
-  //     var events = user.supplier.events;
-  //     events.forEach((event) => {
-  //       var newEvent = {...event.toObject()} //Convert mongoose model to JS object
-  //       newEvent.supplier = user.supplier;
-  //       newEvent.supplier.events = null;
-  //       eventsCollected.push(newEvent);
-  //     });
-  //   });
-  //   res.status(200).json(eventsCollected);
-  // })
-  // .catch((error) => {
-  //   console.log(error)
-  //   res.status(500).json("An error occured")
-  // });
+  
 });
 
 //Get specific event by id

@@ -1,7 +1,51 @@
 import axios from 'axios';
 import { API, rootURL, production } from '../config'
-import { getUserInfo, addNewSupplyItem } from './userInfoActions'
+import { getUserInfo, getUserInfoBackground,addSupplyItem, addFaqItem, deleteFaqItem, addUpdateItem } from './userInfoActions'
 import { withImageUploadMulti } from './imageUpload';
+
+
+export const PUBLISH_PROJECT = "PUBLISH_PROJECT"
+export const PUBLISH_PROJECT_SUCCESS = "PUBLISH_PROJECT_SUCCESS"
+export const PUBLISH_PROJECT_FAILURE = "PUBLISH_PROJECT_FAILURE"
+
+export const publishProject = () => ({
+  type: PUBLISH_PROJECT
+})
+export const publishProjectSuccess = (data) => ({
+  type: PUBLISH_PROJECT_SUCCESS,
+  payload: data
+})
+export const publishProjectFailure = (error) => ({
+  type: PUBLISH_PROJECT_FAILURE,
+  payload: error
+})
+
+export function publishingProject(id) {
+  return async dispatch => {
+    dispatch(publishProject())
+
+    axios({
+      method: 'post',
+      url: rootURL(production) + API + '/project/publish/' + id,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      include: 'credentials'
+    })
+    .then((res) => {
+      dispatch(publishProjectSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(publishProjectFailure(error))
+    })
+  }
+}
+
+
+export const GET_PROJECT_RESET = "GET_PROJECT_RESET"
+
+export const resetProjectGet = () => ({
+  type: GET_PROJECT_RESET
+})
 
 export const GET_PROJECT = "GET_PROJECT"
 export const GET_PROJECT_SUCCESS = "GET_PROJECT_SUCCESS"
@@ -19,13 +63,14 @@ export const gettingProjectFailure = (error) => ({
   payload: error
 })
 
-export function getProject() {
+
+export function getProject(id) {
   return async dispatch => {
     dispatch(gettingProject())
 
     axios({
       method: 'get',
-      url: rootURL(production) + API + '/project',
+      url: rootURL(production) + API + '/project/' + id,
       headers: {'Content-Type': 'application/json'},
     })
     .then((res) => {
@@ -33,6 +78,83 @@ export function getProject() {
     })
     .catch((error) => {
       dispatch(gettingProjectFailure(error))
+    })
+  }
+}
+
+
+
+
+
+export const GET_PROJECTS = "GET_PROJECTS"
+export const GET_PROJECTS_SUCCESS = "GET_PROJECTS_SUCCESS"
+export const GET_PROJECTS_FAILURE = "GET_PROJECTS_FAILURE"
+
+export const gettingProjects = () => ({
+  type: GET_PROJECTS
+})
+export const gettingProjectsSuccess = (data) => ({
+  type: GET_PROJECTS_SUCCESS,
+  payload: data
+})
+export const gettingProjectsFailure = (error) => ({
+  type: GET_PROJECTS_FAILURE,
+  payload: error
+})
+
+
+export function getProjects() {
+  return async dispatch => {
+    dispatch(gettingProjects())
+
+    axios({
+      method: 'get',
+      url: rootURL(production) + API + '/project',
+      headers: {'Content-Type': 'application/json'},
+    })
+    .then((res) => {
+      dispatch(gettingProjectsSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(gettingProjectsFailure(error))
+    })
+  }
+}
+
+
+
+
+export const GET_PROJECT_BACKGROUND = "GET_PROJECT_BACKGROUND"
+export const GET_PROJECT_BACKGROUND_SUCCESS = "GET_PROJECT_BACKGROUND_SUCCESS"
+export const GET_PROJECT_BACKGROUND_FAILURE = "GET_PROJECT_BACKGROUND_FAILURE"
+
+export const gettingProjectBackground = () => ({
+  type: GET_PROJECT_BACKGROUND
+})
+export const gettingProjectBackgroundSuccess = (data) => ({
+  type: GET_PROJECT_BACKGROUND_SUCCESS,
+  payload: data
+})
+export const gettingProjectBackgroundFailure = (error) => ({
+  type: GET_PROJECT_BACKGROUND_FAILURE,
+  payload: error
+})
+
+
+export function getProjectBackground(projectID) {
+  return async dispatch => {
+    dispatch(gettingProjectBackground())
+
+    axios({
+      method: 'get',
+      url: rootURL(production) + API + '/project/' + projectID,
+      headers: {'Content-Type': 'application/json'},
+    })
+    .then((res) => {
+      dispatch(gettingProjectBackgroundSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(gettingProjectBackgroundFailure(error))
     })
   }
 }
@@ -92,47 +214,266 @@ const sendCreateProjectRequest = (dispatch, data) => {
 }
 
 
+export const SELECT_PROJECT_DASHBOARD = "SELECT_PROJECT_DASHBOARD"
+export const SELECT_PROJECT_DASHBOARD_SUPPLY = "SELECT_PROJECT_DASHBOARD_SUPPLY"
 
-
-export const CREATE_SUPPLY = "CREATE_SUPPLY"
-export const CREATE_SUPPLY_SUCCESS = "CREATE_SUPPLY_SUCCESS"
-export const CREATE_SUPPLY_FAILURE = "CREATE_SUPPLY_FAILURE"
-export const CREATE_SUPPLY_RESET = "CREATE_SUPPLY_RESET"
-
-export const creatingSupply = () => ({
-  type: CREATE_SUPPLY
+export const selectProjectDash = (project) => ({
+  type: SELECT_PROJECT_DASHBOARD,
+  payload: project
 })
-export const creatingSupplySuccess = (data) => ({
-  type: CREATE_SUPPLY_SUCCESS,
+export const selectProjectDashSupply = (supply) => ({
+  type: SELECT_PROJECT_DASHBOARD_SUPPLY,
+  payload: supply
+})
+
+
+
+export const CHANGE_PROJECT_ITEM = "CHANGE_PROJECT_ITEM"
+export const CHANGE_PROJECT_ITEM_SUCCESS = "CHANGE_PROJECT_ITEM_SUCCESS"
+export const CHANGE_PROJECT_ITEM_FAILURE = "CHANGE_PROJECT_ITEM_FAILURE"
+export const CHANGE_PROJECT_ITEM_RESET = "CHANGE_PROJECT_ITEM_RESET"
+
+export const changeProjectItem = () => ({
+  type: CHANGE_PROJECT_ITEM
+})
+export const changeProjectItemSuccess = (data) => ({
+  type: CHANGE_PROJECT_ITEM_SUCCESS,
   payload: data
 })
-export const creatingSupplyFailure = (error) => ({
-  type: CREATE_SUPPLY_FAILURE,
+export const changeProjectItemFailure = (error) => ({
+  type: CHANGE_PROJECT_ITEM_FAILURE,
   payload: error
 })
-export const creatingSupplyReset = (error) => ({
-  type: CREATE_SUPPLY_RESET,
+export const changeProjectItemReset = (error) => ({
+  type: CHANGE_PROJECT_ITEM_RESET,
   payload: error
 })
 
-export const createSupply = (data, project) => {
+
+export const createFunding = (data) => {
   return async dispatch => {
-    dispatch(creatingSupply())
+    dispatch(changeProjectItem())
 
     axios({
       method: 'post',
-      url: rootURL(production) + API + '/project/supply/' + project._id ,
+      url: rootURL(production) + API + '/project/funding/' + data.project._id ,
       headers: {'Content-Type': 'application/json'},
       withCredentials: true,
       credentials: 'include',
       data: data
     })
     .then((res) => {
-      dispatch(creatingSupplySuccess(res.data))
-      dispatch(addNewSupplyItem(res.data, project.createdByOrganisation, project._id))
+      dispatch(changeProjectItemSuccess(res.data))
+      dispatch(getUserInfoBackground())
     })
     .catch((error) => {
-      dispatch(creatingSupplyFailure(error))
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
+
+export const createSupply = (data) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    axios({
+      method: 'post',
+      url: rootURL(production) + API + '/project/supply/' + data.project._id ,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include',
+      data: data
+    })
+    .then((res) => {
+      dispatch(changeProjectItemSuccess(res.data))
+      dispatch(addSupplyItem(res.data, data.project.createdByOrganisation, data.project._id))
+    })
+    .catch((error) => {
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
+export const acceptSupplyRequest = (projectID, supplyID, supplyRequestID) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    axios({
+      method: 'post',
+      url: rootURL(production) + API + '/project/acceptSupplyRequest/' + projectID +'/'+ supplyID +'/'+ supplyRequestID ,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(changeProjectItemSuccess(res.data))
+      dispatch(getUserInfoBackground())
+    })
+    .catch((error) => {
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
+export const createFaq = (data) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    axios({
+      method: 'post',
+      url: rootURL(production) + API + '/project/faq/' + data.project._id ,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include',
+      data: data
+    })
+    .then((res) => {
+      dispatch(changeProjectItemSuccess(res.data))
+      dispatch(addFaqItem(res.data, data.project.createdByOrganisation, data.project._id))
+    })
+    .catch((error) => {
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
+export const deleteFaq = (project, faqID) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    axios({
+      method: 'delete',
+      url: `${rootURL(production) + API}/project/faq/${project._id}/${faqID}`,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(changeProjectItemSuccess())
+      dispatch(deleteFaqItem(res.data, project.createdByOrganisation, project._id))
+    })
+    .catch((error) => {
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
+export const createUpdate = (data) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    if (data.images && data.images.length > 0) {
+      withImageUploadMulti(dispatch, data, 'updateImages', sendCreateUpdateRequest, changeProjectItemFailure)
+    } else {
+      sendCreateUpdateRequest(dispatch, data)
+    }
+  }
+}
+
+const sendCreateUpdateRequest = (dispatch, data) => {
+  axios({
+    method: 'post',
+    url: `${rootURL(production) + API}/project/update/${data.project._id}`,
+    data: data,
+    headers: {'Content-Type': 'application/json'},
+    withCredentials: true,
+    credentials: 'include'
+  })
+  .then((res) => {
+    dispatch(changeProjectItemSuccess())
+    dispatch(addUpdateItem(res.data, data.project.createdByOrganisation, data.project._id))
+  })
+  .catch((error) => {
+    dispatch(changeProjectItemFailure(error))
+  })
+}
+
+
+
+
+
+
+
+
+
+
+export const CREATE_PUBLIC_PROJECT_ITEM = "CREATE_PUBLIC_PROJECT_ITEM"
+export const CREATE_PUBLIC_PROJECT_ITEM_SUCCESS = "CREATE_PUBLIC_PROJECT_ITEM_SUCCESS"
+export const CREATE_PUBLIC_PROJECT_ITEM_FAILURE = "CREATE_PUBLIC_PROJECT_ITEM_FAILURE"
+export const CREATE_PUBLIC_PROJECT_ITEM_RESET = "CREATE_PUBLIC_PROJECT_ITEM_RESET"
+
+export const createPublicProjectItem = () => ({
+  type: CREATE_PUBLIC_PROJECT_ITEM
+})
+export const createPublicProjectItemSuccess = (data) => ({
+  type: CREATE_PUBLIC_PROJECT_ITEM_SUCCESS,
+  payload: data
+})
+export const createPublicProjectItemFailure = (error) => ({
+  type: CREATE_PUBLIC_PROJECT_ITEM_FAILURE,
+  payload: error
+})
+export const createPublicProjectItemReset = () => ({
+  type: CREATE_PUBLIC_PROJECT_ITEM_RESET
+})
+
+export const creatingPublicProjectItem = (data, projectID, supplyID) => {
+  return async dispatch => {
+    dispatch(createPublicProjectItem())
+
+    axios({
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      data: data,
+      url: `${rootURL(production) + API}/project/supplyRequest/${projectID}/${supplyID}`,
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(createPublicProjectItemSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(createPublicProjectItemFailure())
+    })
+  }
+}
+
+export const CREATE_COMMENT = "CREATE_COMMENT"
+export const CREATE_COMMENT_SUCCESS = "CREATE_COMMENT_SUCCESS"
+export const CREATE_COMMENT_FAILURE = "CREATE_COMMENT_FAILURE"
+
+export const createComment = () => ({
+  type: CREATE_COMMENT
+})
+export const createCommentSuccess = (data) => ({
+  type: CREATE_COMMENT_SUCCESS,
+  payload: data
+})
+export const createCommentFailure = (error) => ({
+  type: CREATE_COMMENT_FAILURE,
+  payload: error
+})
+
+export const creatingComment = (comment, projectID) => {
+  return async dispatch => {
+    dispatch(createComment())
+
+    axios({
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      data: comment,
+      url: `${rootURL(production) + API}/project/${projectID}/comment`,
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(createCommentSuccess(res.data))
+      dispatch(getProjectBackground(projectID))
+      dispatch(createPublicProjectItemReset())
+    })
+    .catch((error) => {
+      dispatch(createCommentFailure())
     })
   }
 }

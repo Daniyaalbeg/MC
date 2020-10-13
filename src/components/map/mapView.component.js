@@ -266,7 +266,7 @@ const MapStateToProps = (state) => ({
   selectedEvent: state.mapInfo.selectedEvent,
   showList: state.mapInfo.showList,
   fetched: state.mapInfo.fetched,
-  filteredEvents: filterAndSearch(state.mapInfo.events, state.mapInfo.filterType, state.mapInfo.filter, state.mapInfo.search)
+  filteredEvents: filterAndSearch(state.mapInfo.events, state.mapInfo.filterCategory, state.mapInfo.filter, state.mapInfo.search)
 });
 
 export default connect(MapStateToProps)(MapView);

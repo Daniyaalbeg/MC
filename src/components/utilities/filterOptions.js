@@ -1,71 +1,66 @@
 import React from 'react';
 
+import { filterCategoryType } from '../../Actions/filterSearchMapAction';
+import { selectedProjectMarker } from '../../Actions/mapSelectActions';
+import { categoryOptionValues } from './categoryOptionValues';
+import { getIcon } from '../iconController/iconCategories.component'
+
+export const FilterProjectCategory = ({ dispatch, filterCategory, showModal }) => {
+  return (
+    <div className="projectMapFilterContainer">
+      {
+        categoryOptionValues.map((option) => {
+          return (
+            <div key={option.value} className={"projectMapFilter" + (filterCategory === option.value ? " active": "")} onClick={() => {
+              if (filterCategory === option.value) {
+                dispatch(filterCategoryType("all"))  
+              } else {
+                dispatch(filterCategoryType(option.value))
+                dispatch(selectedProjectMarker(null))
+                showModal()
+              }
+            }}>
+              {getIcon(option.value, "")}
+              <p> {option.name} </p>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
 export const FilterAreaOfWork = (props) => {
   return (
     <select onChange={props.onChange}>
-            <option value="all"> All </option>
-            <option value ="animalWelfare"> Animal Welfare </option>
-            <option value ="artsAndCulture"> Arts and Culture </option>
-            <option value ="clothing"> Clothing </option>
-            <option value ="communityDevelopment"> Community Development </option>
-            <option value ="disability"> Disability </option>
-            <option value ="disaster"> Disaster </option>
-            <option value ="education"> Education </option>
-            <option value ="primary"> - Primary </option>
-            <option value ="secondary"> - Secondary </option>
-            <option value ="higher"> - Higher </option>
-            <option value ="energy"> Energy </option>
-            <option value ="environment"> Environment </option>
-            <option value ="forest"> - Forest </option>
-            <option value ="water"> - Water </option>
-            <option value ="equality"> Equality </option>
-            <option value ="food"> Food </option>
-            <option value ="agriculture"> - Agriculture </option>
-            <option value ="fisheries"> - Fisheries </option>
-            <option value ="gender"> Gender </option>
-            <option value ="womenEmpowerment"> - Women Empowerment </option>
-            <option value ="health"> Health </option>
-            <option value ="motherAndChildHealth"> - Mother and Child Health </option>
-            <option value ="elderlyHealth"> - Elderly Health </option>
-            <option value ="humanRights"> Human Rights </option>
-            <option value ="infrastructure"> Infrastructure </option>
-            <option value ="it"> IT </option>
-            <option value ="justice"> Justice </option>
-            <option value ="livelihood"> Livelihood </option>
-            <option value ="money"> Money </option>
-            <option value ="peace"> Peace </option>
-            <option value ="ppe"> Protection Equipment </option>
-            <option value ="povertyAlleviation"> Poverty Alleviation </option>
-            <option value ="recycling"> Recycling </option>
-            <option value ="sanitation"> Sanitation </option>
-            <option value ="sports"> Sports </option>
-            <option value ="terrorism"> Terrorism </option>
-            <option value ="virus"> Virus </option>
-            <option value ="waste"> Waste </option>
-            <option value ="youth"> Youth </option>
-            <option value ="other"> Other </option>
-          </select>
+      <option key="all" value="all"> All </option>
+      {
+        categoryOptionValues.map((option) => {
+          return <option key={option.value} value={option.value}> {option.name} </option>
+        })
+      }
+    </select>
   )
 }
 
 export const FilterOrgType = (props) => {
   return (
-    <select onChange={props.onChange}>
-            <option value="all"> All </option>
-            <option value ="Armed Forces">Armed Forces</option>
-            <option value="Community">Community</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Civil Society">Civil Society</option>
-            <option value="Government">Government</option>
-            <option value="Individual">Individual</option>
-            <option value="NGO">NGO</option>
-          </select>
+    <select onChange={props.onChange} value={props.value}>
+      <option value="all"> All </option>
+      <option value="Armed Forces">Armed Forces</option>
+      <option value="Community">Community</option>
+      <option value="Corporate">Corporate</option>
+      <option value="Civil Society">Civil Society</option>
+      <option value="Government">Government</option>
+      <option value="Individual">Individual</option>
+      <option value="NGO">NGO</option>
+    </select>
   )
 }
 
 export const FilterRationType = (props) => {
   return (
-    <select onChange={props.onChange}>
+    <select onChange={props.onChange} value={props.value}>
       <option value="all"> All </option>
       <option value ="food">Food</option>
       <option value="ppe">PPE</option>

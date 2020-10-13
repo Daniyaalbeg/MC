@@ -10,7 +10,7 @@ const faqSchema = new mongoose.Schema({
     required: true
   }
 }, {
-  _id : false
+  timestamps : true
 })
 
 const FAQ = mongoose.model('FAQ', faqSchema)

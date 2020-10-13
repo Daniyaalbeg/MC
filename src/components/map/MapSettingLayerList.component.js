@@ -5,20 +5,20 @@ import { Spinner } from 'react-bootstrap';
 
 import * as MapLayerType from './mapLayerTypes';
 
-const MapViewLayerList = ({ dispatch, loading }) => {
-  const [activeButton, setActiveButton] = useState(0)
+const MapSettingLayerList = ({ dispatch, loading, mapLayer}) => {
+  const [activeButton, setActiveButton] = useState(mapLayer)
   const [activeToolTip, setActiveToolTip] = useState(null)
 
   const checkActiveState = (type) => {
     if (type === activeButton) {
       return "active"
-    }
+    } else return ""
   }
 
   const checkActiveToolTip = (type) => {
     if (type === activeToolTip) {
       return "showToolTip"
-    }
+    } else return ""
   }
 
   const whichButton = (type) => {
@@ -26,29 +26,10 @@ const MapViewLayerList = ({ dispatch, loading }) => {
       if (type === activeButton) {
         return <LoadingSpinner />
       } else {
-        return label(type)
+        return type
       }
     } else {
-      return label(type)
-    }
-  }
-
-  const label = (type) => {
-    switch(type) {
-      case 0:
-        return "None"
-      case 1:
-        return "UC"
-      case 2:
-        return "TEHSIL"
-      case 3:
-        return "DISTRICT"
-      case 4:
-        return "PROVINCE"
-      case 5:
-        return "LSO"
-      default:
-        return "error"
+      return type
     }
   }
 
@@ -63,68 +44,72 @@ const MapViewLayerList = ({ dispatch, loading }) => {
   }
 
   return (
+    <>
+    <h6 className="mapModalLayerTitle"> Map Layers </h6>
     <div className="MapViewLayerListContainer">
       <div className="MapLayerButtonContainer">
-        <button className={"MapLayerButton " + checkActiveState(0)}
+        <button className={"MapLayerButton " + checkActiveState(MapLayerType.NONE)}
         onClick={(e) => {
-          setActiveButton(0)
+          setActiveButton(MapLayerType.NONE)
           dispatch(loadingLayer(MapLayerType.NONE))
-        }}> {whichButton(0)} </button>
+        }}> {whichButton(MapLayerType.NONE)} </button>
       </div>
 
       <div className="MapLayerButtonContainer">
-        <button className={"MapLayerButton " + checkActiveState(1)}
+        <button className={"MapLayerButton " + checkActiveState(MapLayerType.UC)}
           onClick={(e) => {
-            setActiveButton(1)
+            setActiveButton(MapLayerType.UC)
             dispatch(loadingLayer(MapLayerType.UC))
           }}
-          onMouseOver={() => setActiveToolTip(0)}
+          onMouseOver={() => setActiveToolTip(MapLayerType.UC)}
           onMouseLeave={() => setActiveToolTip(null)}
-        > {whichButton(1)} </button>
-        <p className={"toolTip " + checkActiveToolTip(0)}> Union Council </p>
+        > {whichButton(MapLayerType.UC)} </button>
+        <p className={"toolTip " + checkActiveToolTip(MapLayerType.UC)}> Union Council </p>
       </div>
 
       <div className="MapLayerButtonContainer">
-        <button className={"MapLayerButton " + checkActiveState(2)}
+        <button className={"MapLayerButton " + checkActiveState(MapLayerType.TEHSIL)}
           onClick={(e) => {
-            setActiveButton(2)
+            setActiveButton(MapLayerType.TEHSIL)
             dispatch(loadingLayer(MapLayerType.TEHSIL))
           }}
-          onMouseOver={() => setActiveToolTip(1)}
+          onMouseOver={() => setActiveToolTip(MapLayerType.TEHSIL)}
           onMouseLeave={() => setActiveToolTip(null)}
-        > {whichButton(2)} </button>
-        <p className={"toolTip " + checkActiveToolTip(1)}> Tehsils </p>
+        > {whichButton(MapLayerType.TEHSIL)} </button>
+        <p className={"toolTip " + checkActiveToolTip(MapLayerType.TEHSIL)}> Tehsils </p>
       </div>
 
       <div className="MapLayerButtonContainer">
-        <button className={"MapLayerButton " + checkActiveState(3)}
+        <button className={"MapLayerButton " + checkActiveState(MapLayerType.DISTRICT)}
           onClick={(e) => {
-            setActiveButton(3)
+            setActiveButton(MapLayerType.DISTRICT)
             dispatch(loadingLayer(MapLayerType.DISTRICT))
           }}
-          onMouseOver={() => setActiveToolTip(2)}
+          onMouseOver={() => setActiveToolTip(MapLayerType.DISTRICT)}
           onMouseLeave={() => setActiveToolTip(null)}
-        > {whichButton(3)} </button>
-        <p className={"toolTip " + checkActiveToolTip(2)}> Districts </p>
+        > {whichButton(MapLayerType.DISTRICT)} </button>
+        <p className={"toolTip " + checkActiveToolTip(MapLayerType.DISTRICT)}> Districts </p>
       </div>
 
       <div className="MapLayerButtonContainer">
-        <button className={"MapLayerButton " + checkActiveState(5)}
+        <button className={"MapLayerButton " + checkActiveState("LSO")}
           onClick={(e) => {
-            setActiveButton(5)
+            setActiveButton("LSO")
             dispatch(loadingLsoLayer())
           }}
-          onMouseOver={() => setActiveToolTip(3)}
+          onMouseOver={() => setActiveToolTip("LSO")}
           onMouseLeave={() => setActiveToolTip(null)}
-        > {whichButton(5)} </button>
-        <p className={"toolTip " + checkActiveToolTip(3)}> Local Support Organisations </p>
+        > {whichButton("LSO")} </button>
+        <p className={"toolTip " + checkActiveToolTip("LSO")}> Local Support Organisations </p>
       </div>
     </div>
+    </>
   )
 }
 
 const MapStateToProps = (state) => ({
-  loading: state.mapInfo.mapData.loadingMapLayer
+  loading: state.mapInfo.mapData.loadingMapLayer,
+  mapLayer: state.mapInfo.mapData.mapLayerToDisplay
 })
 
-export default connect(MapStateToProps)(MapViewLayerList);
+export default connect(MapStateToProps)(MapSettingLayerList);

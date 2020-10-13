@@ -73,10 +73,10 @@ const EventItemInfo = ({ dispatch, hasErrors, deletedEvent, deletingEvent, props
                 <FontAwesomeIcon icon={faEdit} />
               </button>
             </Link>
-              <button className="standardButton squareButton redVersion" onClick={() => {
-                handleShow()
-              }}>
-            <FontAwesomeIcon icon={faTrashAlt} />
+            <button className="standardButton squareButton redVersion" onClick={() => {
+              handleShow()
+            }}>
+              <FontAwesomeIcon icon={faTrashAlt} />
             </button>
           </Row>
       }

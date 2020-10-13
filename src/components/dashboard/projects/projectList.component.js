@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import SelectedProjectView from './selectedProjectView.component';
 import ProjectCard from './projectCard/projectCard.component';
+
+import { selectProjectDash } from '../../../Actions/projectActions'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from '@fortawesome/pro-solid-svg-icons';
 
-const ProjectList = ({ org, setSelectedOrg }) => {
-  const [selectedProject, setSelectedProject] = useState(null)
-  
+const ProjectList = ({ dispatch, org, setSelectedOrg, selectedProject }) => {
   if (selectedProject) {
-    return <SelectedProjectView project={selectedProject} setSelectedProject={setSelectedProject} />
+    return <SelectedProjectView project={selectedProject} />
   } else {
     return (
       <>
@@ -23,7 +24,7 @@ const ProjectList = ({ org, setSelectedOrg }) => {
         <div className="cardsDashContainer">
           {
             org.projects.map((project) => {
-              return <ProjectCard key={project._id} project={project} setSelectedProject={setSelectedProject} />
+              return <ProjectCard key={project._id} project={project} onClick={() => dispatch(selectProjectDash(project))} />
             })
           }
         </div>
@@ -32,4 +33,8 @@ const ProjectList = ({ org, setSelectedOrg }) => {
   }
 }
 
-export default ProjectList
+const MapStateToProps = (state) => ({
+  selectedProject: state.projectInfo.createProject.selectedProjectDashBoard
+})
+
+export default connect(MapStateToProps)(ProjectList)

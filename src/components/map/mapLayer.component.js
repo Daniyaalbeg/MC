@@ -49,7 +49,7 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
 
   switch(mapLayerToDisplay) {
     case MapLayerType.NONE:
-      return (null)
+      return null
     case MapLayerType.UC:
       return (
         <>
@@ -160,7 +160,7 @@ const MapLayer = ({ mapBounds, zoomLevel, lsoLocations, mapLayerToDisplay, mapLa
             {(clusterer) =>
               lsoLocations.LSOs.map((feature) => {
                 return <Marker 
-                  key={feature.properties.id+feature.geometry.averageLatLng.lat+feature.geometry.averageLatLng.lng}
+                  key={feature.id}
                   position={{
                     lat: feature.geometry.averageLatLng.lat,
                     lng: feature.geometry.averageLatLng.lng

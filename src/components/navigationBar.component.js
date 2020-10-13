@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
 import '../css/navbar.css'
 import MCMC from '../assets/svg/MCMC.svg';
 import { useLocation } from 'react-router-dom';
@@ -25,6 +26,7 @@ const NavigationBar = ({ auth }) => {
           <Nav className="ml-auto">
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
+            <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/projects"> Projects </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/groups"> Groups </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/inspire"> Inspire </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink navlinkHome spaceLink" to="/cnic"> CNIC </Link></Nav.Item>
@@ -48,6 +50,7 @@ const NavigationBar = ({ auth }) => {
           <Nav className="ml-auto">
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/map"> Map </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/organisations"> Organisations </Link></Nav.Item>
+            <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/projects"> Projects </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/groups"> Groups </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/inspire"> Inspire </Link></Nav.Item>
             <Nav.Item onClick={() => setDropDown(false)}><Link className="navlink spaceLink" to="/cnic"> CNIC </Link></Nav.Item>

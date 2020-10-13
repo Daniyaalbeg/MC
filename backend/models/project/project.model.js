@@ -18,6 +18,14 @@ const projectSchema = new Schema({
     type: String,
     required: false
   }],
+  tagline: {
+    type: String,
+    required: false
+  },
+  hashtags: [{
+    type: String,
+    required: false
+  }],
   description: {
     type: String,
     required: true
@@ -38,6 +46,14 @@ const projectSchema = new Schema({
     type: pointSchema,
     required: true
   },
+  primaryCategory: {
+    type: String,
+    required: true
+  },
+  secondaryCategories: [{
+    type: String,
+    required: true
+  }],
   //Impact
   impact: {
     type: impactSchema,
@@ -66,7 +82,7 @@ const projectSchema = new Schema({
     required: false
   }],
   //FAQ
-  faq: [{
+  faqs: [{
     type: faqSchema,
     required: false
   }],
@@ -99,6 +115,8 @@ const projectSchema = new Schema({
 }, {
   timestamps: true
 })
+
+projectSchema.index({ name: 'text', tagline: 'text', description: 'text' })
 
 const Project = mongoose.model('Project', projectSchema)
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { getOrgInfo } from '../../Actions/getOrgInfoActions';
-import { Card, Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter } from '@fortawesome/pro-light-svg-icons';
 import { filterAndSearchOrg } from '../utilities/filterAndSearch';
@@ -120,7 +120,7 @@ const MapStateToProps = (state) => ({
   loading: state.orgInfo.loading,
   hasErrors: state.orgInfo.hasErrors,
 	fetched: state.orgInfo.fetched,
-	orgInfo: filterAndSearchOrg(state.orgInfo.orgInfo, state.orgInfo.filterType, state.orgInfo.filterProject, state.orgInfo.search)
+	orgInfo: filterAndSearchOrg(state.orgInfo.orgInfo, state.orgInfo.filterCategory, state.orgInfo.filterProject, state.orgInfo.search)
 })
 
 export default connect(MapStateToProps)(OrganisationsView);

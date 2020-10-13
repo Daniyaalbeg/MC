@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { render } from 'react-dom';
-import * as Sentry from '@sentry/browser';
+// import * as Sentry from '@sentry/browser';
 
 import App from './App';
 import rootReducer from './Reducers/reducers.js'
@@ -16,7 +16,6 @@ import './css/index.css';
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 render(
-  
   <Provider store={store}>
     <App className="app" />
   </Provider>,

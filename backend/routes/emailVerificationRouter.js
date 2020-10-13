@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const path = require('path');
 var bodyParser = require('body-parser');
 var verifyToken = require('../verifyToken');
 
 var User = require('../models/user.model');
 var jwt = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
+const Email = require('email-templates');
 
 router.route('/verify').post((req, res) => {
   const token = req.headers['x-access-token'];
@@ -57,6 +59,7 @@ router.route('/').post(verifyToken, (req, res, next) => {
   })
 });
 
+
 const sendVerificationEmail = (user, callback, errorCallback) => {
   const secret = process.env.VERIFY_EMAIL_SECRET;
   const userObject = user._id
@@ -73,29 +76,114 @@ const sendVerificationEmail = (user, callback, errorCallback) => {
     tls: {
       rejectUnauthorized: true
     }
-  });
+  });  
+  
+  let email = null
+  if (process.env.NODE_ENV === 'development') {
+    email = new Email({
+      message: {
+        from: process.env.EMAIL_USERNAME
+      },
+      send: false,
+      // transport: transporter,
+      juice: true,
+      juiceSettings: {
+        tableElements: ['TABLE']
+      },
+      juiceResources: {
+        preserveImportant: true,
+        webResources: {
+          relativeTo: path.join(__dirname, '..', 'assets')
+        }
+      },
+      preview: {
+        open: {
+          app: 'google chrome',
+          wait: false
+        }
+      }
+    })
+  } else {
+    email = new Email({
+      message: {
+        from: process.env.EMAIL_USERNAME
+      },
+      send: true,
+      transport: transporter,
+      juice: true,
+      juiceSettings: {
+        tableElements: ['TABLE']
+      },
+      juiceResources: {
+        preserveImportant: true,
+        webResources: {
+          relativeTo: path.join(__dirname, '..', 'assets')
+        }
+      },
+      preview: false
+    })
+  }
 
-  var mailOptions = {
-    from: process.env.EMAIL_USERNAME,
-    to: user.email,
-    subject: 'Verify Email',
-    html: `
-    <h3> Thank you for signing up </h3>
-    <p> Hi `+user.username+`. Please click this <a href="https://`+process.env.EMAIL_REPLY_API+`/verify/`+token+`"> link </a> to verify your account</p>
-    `
-  };
-
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-      // errorCallback()
-    } else {
-      // callback()
-      console.log('Email sent: ' + info.response);
-    }
-  });
-
+  email
+   .send({
+     template: 'sign-up',
+     message: {
+       to: 'danyaalbeg@gmail.com'
+     },
+     locals: {
+       username: user.username,
+       url: `https://${process.env.EMAIL_REPLY_API}/verify/${token}`
+     }
+   })
+   .then(() => {
+    return callback()
+   })
+   .catch((err) => {
+     console.log(err);
+     return errorCallback()
+   })
 };
+
+
+// const sendVerificationEmail2 = (user, callback, errorCallback) => {
+//   const secret = process.env.VERIFY_EMAIL_SECRET;
+//   const userObject = user._id
+//   var token = jwt.sign({ id: userObject}, secret)
+
+//   var transporter = nodemailer.createTransport({
+//     host: 'smtp.zoho.com',
+//     port: 465,
+//     secure: true,
+//     auth: {
+//       user: process.env.EMAIL_USERNAME,
+//       pass: process.env.EMAIL_PASSWORD
+//     },
+//     tls: {
+//       rejectUnauthorized: true
+//     }
+//   });
+
+//   var mailOptions = {
+//     from: process.env.EMAIL_USERNAME,
+//     to: user.email,
+//     subject: 'Verify Email',
+//     html: `
+//     <h3> Thank you for signing up </h3>
+//     <p> Hi `+user.username+`. Please click this <a href="https://`+process.env.EMAIL_REPLY_API+`/verify/`+token+`"> link </a> to verify your account</p>
+//     `
+//   };
+
+//   transporter.sendMail(mailOptions, function(error, info){
+//     if (error) {
+//       console.log(error);
+//       // errorCallback()
+//     } else {
+//       // callback()
+//       console.log('Email sent: ' + info.response);
+//     }
+//   });
+
+// };
 
 
 module.exports = {

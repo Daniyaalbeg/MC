@@ -10,18 +10,27 @@
 .eventItemList {
   padding-top: 1em;
 }
+.eventItemList:last-child {
+  margin-bottom: 8px;
+}
 .eventItem {
   cursor: pointer;
   padding: 0.5em;
   margin-left: 0.5em;
   margin-right: 0.5em;
+  margin: 4px 0.5em;
   border-radius: 8px;
+  height: 72px;
 }
-.eventItem:hover {
-  background-color: #222a2e;
+.eventItem:hover:not(.active) {
+  background-color: var(--main-bg-light-color) !important;
 }
 .eventItem:hover p {
   color: whitesmoke;
+}
+.eventItem.active {
+  transition: background-color ease 0.5s;
+  background-color: var(--main-bg-dark-color);
 }
 
 .searchBarSpace {
@@ -54,18 +63,18 @@ background-color: whitesmoke;
 
 .searchBarContainer {
   height: fit-content;
-  border: 1px darkblue;
-  padding-left: 20px;
-  padding-bottom: 12px;
-  padding-top: 12px;
-  padding-right: 20px;
+  padding-left: 16px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-right: 8px;
+  width: auto;
 }
 
 .searchBar {
   display: flex;
   flex-direction: row;
-  margin-bottom: 8px;
   align-items: center;
+  justify-content: center;
 }
 .searchIcon {
   display: block;
@@ -74,9 +83,9 @@ background-color: whitesmoke;
 }
 .textInput {
   border: none;
+  flex: 1;
   padding: 0;
   padding-left: 12px;
-  width: 100%;
   background-color: rgba(255, 255, 255, 0);
   /* backdrop-filter: blur(2px); */
   color: white;
@@ -88,17 +97,67 @@ background-color: whitesmoke;
   background-color: whitesmoke;
 }
 
-.filters {
+.mapModeButton {
   display: flex;
-  flex-direction: row;
-  padding-top: 12px;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  flex-direction: row;
+}
+.mapModeButton > button {
+  font-weight: bold;
+  color: whitesmoke;
+  margin-left: 16px;
+  margin-right: 4px;
+}
+.mapModeButton > button:hover {
+  background-color: var(--main-bg-color-transparent);
+}
+.mapModeButton > button.active {
+  background-color: var(--main-bg-dark-color);
+}
+
+
+.mapSettingsButton {
+  color: whitesmoke;
+  height: 40px;
+  padding: 0 0.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.mapSettingsButton > * {
+  margin: 0;
+}
+.mapSettingsButton > svg {
+  margin-right: 8px;
+}
+.mapSettingsButton > svg .fa-primary {
+  color: var(--main-yellow-color);
+  opacity: 0.8;
+}
+.mapSettingsButton > svg .fa-secondary {
+  color: var(--main-blue-color);
+  opacity: 1;
+}
+.mapSettingsButton:hover {
+  color: white;
+  border-radius: 8px;
+  background-color: var(--main-bg-dark-color);
+}
+
+.filters {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+  justify-content: center;
+  align-items: flex-start;
 }
 .filterSelect {
   border: none;
   padding: 0;
-  width:  auto;
+  width: 100%;
 }
 .filterIcon {
   border: none;
@@ -107,9 +166,14 @@ background-color: whitesmoke;
   color: whitesmoke;
 }
 .filterSelect select {
-  border: none;
+  appearance: none;
+  border: 1px solid whitesmoke;
   background-color: rgba(255, 255, 255, 0);
   color: whitesmoke;
+  border-radius: 8px;
+  padding: 0.2em 0.8em;
+  margin-bottom: 8px;
+  width: 100%;
 }
 
 .eventListTitle {

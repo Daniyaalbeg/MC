@@ -328,8 +328,10 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: baseline;
-  color: #F2F2F2;
   font-size: 12px;
+}
+.homeViewFooter p {
+  color: whitesmoke;
 }
 .homeViewFooterItem > p {
   margin: 0;

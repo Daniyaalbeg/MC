@@ -60,7 +60,7 @@ const withImageUploadMulti = (dispatch, data, typeOfUpload, callSuccess, callFai
   const promises = []
 
     let files = data.images;
-    let filesDict = {}
+    let filesDict = []
     try {
       let count = 0
       files.forEach((file) => {
@@ -75,9 +75,10 @@ const withImageUploadMulti = (dispatch, data, typeOfUpload, callSuccess, callFai
     }
 
     Object.keys(filesDict).forEach((key) => {
+      console.log(filesDict);
       const fullFileName = filesDict[key].name.split('.');
       let fileName = key;
-      let fileType = fullFileName[1];
+      let fileType = fullFileName[fullFileName.length-1];
 
       const imageCategory = typeOfUpload
 

@@ -1,19 +1,44 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import SelectedProjectSupply from './selectedProjectSupply.component';
-import AddSupplyModal from './addSupplyModal.component';
+import GenericModal from '../../../sharedComponents/genericModal.component';
+import AddSupplyForm from './addSupplyForm.component';
+import { selectProjectDashSupply } from '../../../../Actions/projectActions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-const ProjectSupplies = ({ project }) => {
-  const [selectedSupply, setSelectedSupply] = useState(null)
-  const [addSupplyModal, setAddSupplyModal] = useState(false)
-
+const ProjectSupplies = ({ project, selectedSupply }) => {
   if (selectedSupply) {
     return (
-      <SelectedProjectSupply supply={selectedSupply} setSelectedSupply={setSelectedSupply} />
+      <SelectedProjectSupply project={project} supply={selectedSupply} />
+    )
+  } else {
+    return (
+      <ProjectSupplyContent project={project} selectedSupply={selectedSupply} />
+    )
+  }
+}
+
+const ProjectSupplyContent = ({ project }) => {
+  const [addSupplyModal, setAddSupplyModal] = useState(false)
+  const dispatch = useDispatch()
+
+  if (!project.supplies || project.supplies.length === 0) {
+    return (
+      <>
+      <div className="emptyDBContainer">
+        <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" style={{color: 'red'}} /> You have not created any supplies yet. </p>
+        <button onClick={() => setAddSupplyModal(true)} className="standardButtonWithoutColour mcGreenBG"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Add Supply </button>
+      </div>
+      {addSupplyModal &&
+        <GenericModal showModal={setAddSupplyModal}>
+          <AddSupplyForm project={project} showModal={setAddSupplyModal} />
+        </GenericModal>
+      }
+      </>
     )
   } else {
     return (
@@ -24,12 +49,14 @@ const ProjectSupplies = ({ project }) => {
       <div className="projectDashSupplyContainerGrid">
         {
           project.supplies.map((supply) => {
-            return <ProjectSupplyListItem key={supply._id} onClick={() => setSelectedSupply(supply)} supply={supply} />
+            return <ProjectSupplyListItem key={supply._id} onClick={() => dispatch(selectProjectDashSupply(supply))} supply={supply} />
           })
         }
       </div>
       {addSupplyModal &&
-        <AddSupplyModal project={project} setAddSupplyModal={setAddSupplyModal} />
+        <GenericModal showModal={setAddSupplyModal}>
+          <AddSupplyForm project={project} showModal={setAddSupplyModal} />
+        </GenericModal>
       }
       </>
     )
@@ -48,4 +75,8 @@ const ProjectSupplyListItem = ({ onClick, supply }) => {
   )
 }
 
-export default ProjectSupplies
+const MapStateToProps = (state) => ({
+  selectedSupply: state.projectInfo.createProject.selectedProjectDashBoardSupply
+})
+
+export default connect(MapStateToProps)(ProjectSupplies)

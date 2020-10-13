@@ -3,6 +3,9 @@
   --main-bg-color: #2b353a;
   --main-bg-dark-color: #232b30;
   --main-bg-light-color: #38454b;
+  --main-bg-lightDark-color: #313d42;
+  --main-bg-lighter-color: #767e81;
+  --main-bg-lighterDark-color: #8e9ba1;
   --main-yellow-color: #FFD71A;
   --main-light-yellow-color: #ffde3b;
   --main-dark-yellow-color: #e6c213;
@@ -17,12 +20,15 @@
   --main-green-color: #4BB250;
   --main-light-green-color: rgba(82, 197, 88, 0.514);
   --main-dark-green-color: #329137;
-  --main-text-dark: #040404;
+  --main-text-dark: #0f0f0f;
+  --main-text-mid: #696969;
   --main-text-light: whitesmoke;
+
+  --main-light-border-color: rgb(228, 228, 228);
 }
 
 .mcRed {
- color: #EF2A30 !important;
+ color: #c05c3d !important;
 }
 .mcOrange {
   color: #F47E2E !important;
@@ -47,6 +53,15 @@
 .mcRedBG {
   background-color: #EF2A30;
  }
+ .mcRedBG:hover {
+  background-color: #ac2328;
+ }
+ .mcRedOrange {
+   background-color: #d6542d;
+ }
+ .mcRedOrange:hover {
+  background-color: #b64928;
+}
  .mcOrangeBG {
   background-color: #F47E2E;
  }
@@ -76,6 +91,18 @@
  }
  .mcGreyBG:hover {
   background-color: rgb(52, 61, 66);
+ }
+ .mcLightBG {
+   background-color: var(--main-bg-light-color);
+ }
+ .mcLightBG:hover {
+   background-color: var(--main-bg-lightDark-color);
+ }
+ .mcLighterBG {
+  background-color: var(--main-bg-lighter-color);
+ }
+ .mcLighterBG:hover {
+  background-color: var(--main-bg-lighterDark-color);
  }
 
 a, a:focus, a:active, a:hover, a:visited {
@@ -160,6 +187,27 @@ a, a:focus, a:active, a:hover, a:visited {
   color: #EF2A30;
 }
 
+.loading-spinner {
+  min-height: 200px;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-spinner > svg {
+  height: auto;
+  width: auto;
+}
+.loading-spinner > svg .fa-primary {
+  color: whitesmoke;
+  opacity: 1;
+}
+.loading-spinner > svg .fa-secondary {
+  color: var(--main-bg-color);
+  opacity: 1;
+}
+
 .loadError {
   width: 100%;
   text-align: center;
@@ -170,6 +218,7 @@ a, a:focus, a:active, a:hover, a:visited {
 
 p, h1, h2, h3, h4, h5, h6 {
   font-family: proximaNova;
+  color: #040404;
 }
 
 .standardButton {
@@ -280,11 +329,23 @@ p, h1, h2, h3, h4, h5, h6 {
   background-color: green;
   margin-bottom: 0px;
 }
-
 .pillRedVersion {
   font-size: 0.7em;
   background-color: red;
   margin-bottom: 0px;
+}
+
+.comingSoonText {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.filterSearchBarStandard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .faSelectEventButton {
@@ -384,6 +445,83 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+/* Image Carousel */
+.imageCarouselContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.imageCarouselContainer > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: contain;
+  transition: opacity 0.5s ease;
+}
+.imageCarouselButton {
+  position: absolute;
+  top: calc(50% - 15px);
+  z-index: 6;
+  color: whitesmoke;
+}
+.imageCarouselButton .fa-primary {
+  fill: white;
+}
+.imageCarouselButton .fa-secondary {
+  fill: #040404;
+}
+.imageCarouselNextButton {
+  left: 8px;
+}
+.imageCarouselNextButton:hover {
+  color: white;
+}
+.imageCarouselPreviousButton {
+  right: 8px;
+}
+.imageCarouselPreviousButton:hover {
+  color: white;
+}
+
+/* Progress Circle */
+.svgProgressCircle {
+  display: block;
+  max-width: 100%;
+  transform: rotate(-90deg);
+}
+.svgCircle {
+  fill: none;
+}
+.svgCircleBG {
+  fill: none;
+}
+.svgCircleText {
+  font-size: 0.5em;
+  /* text-anchor: middle; */
+  fill: #000000;
+  font-weight: bold;
+  transform: rotate(90deg);
+}
+.progressCircleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.progressCircleContainer > p {
+  font-weight: bold;
+  font-size: small;
+  margin: 0;
+}
+
+
 /* Animations */
 
 .grow { transition: all .2s ease-in-out; }
@@ -425,7 +563,3 @@ p, h1, h2, h3, h4, h5, h6 {
   70% { top: -0.3em; }
   100% { top: 0; }
 }
-
-
-
-

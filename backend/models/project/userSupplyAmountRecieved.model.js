@@ -1,30 +1,52 @@
 const mongoose = require('mongoose')
 
+const pointSchema = require('../point.model');
+
 const supplyAmountReceivedSchema = new mongoose.Schema({
+  description: {
+    type: String,
+    required: true
+  },
   suppliedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: false
   },
-  userName: {
+  projectCreator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  username: {
     type: String,
     required: true
   },
-  userMobile: {
+  mobile: {
     type: String,
     required: true,
   },
-  amount: {
+  contactDetails: {
     type: String,
+    required: false
+  },
+  amount: {
+    type: Number,
     required: true
+  },
+  canDeliver: {
+    type: Boolean,
+    required: false
+  },
+  location: {
+    type: pointSchema,
+    required: false
   },
   accepted: {
     type: Boolean,
     required: true
   }
 }, {
-  timestamps: true,
-  _id: false
+  timestamps: true
 })
 
 const SupplyAmountReceived = mongoose.model('SupplyAmountReceived', supplyAmountReceivedSchema)

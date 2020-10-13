@@ -1,25 +1,11 @@
-import * as actions from '../Actions/getEventInfoActions';
+import * as actions from '../Actions/mapInfoActions';
 import * as mapActions from '../Actions/mapActions';
-import * as selectActions from '../Actions/selectEventActions';
-import * as filterSearchActions from '../Actions/filterSearchEventAction';
+import * as selectActions from '../Actions/mapSelectActions';
+import * as filterSearchActions from '../Actions/filterSearchMapAction';
 
 import * as MapLayerType from '../components/map/mapLayerTypes';
 
 import { combineReducers } from 'redux';
-
-const mapActionInitialState = {
-  loading: false,
-  hasErros: false,
-  fetched: false,
-  events: [],
-  selectedEvent: null,
-  justSelected: false,
-  mapLayer: "NONE",
-  showList: true,
-  filterType: "all",
-  filter: "all",
-  search: "",
-}
 
 const mapDataInitialState = {
   mapStoredData: {
@@ -180,61 +166,97 @@ function mapDataReducer(state = mapDataInitialState, action) {
   }
 }
 
+
+
+
+const mapActionInitialState = {
+  loading: false,
+  hasErros: false,
+  fetched: false,
+  mapMode: "PROJECTS",
+  objects: [],
+  selectedObject: null,
+  justSelected: false,
+  mapLayer: "NONE",
+  showList: true,
+  filterCategory: "all",
+  filter: "all",
+  search: "",
+  showModal: false,
+  selectedProject: null
+}
+
+
 function mapActionReducer(state = mapActionInitialState, action) {
   switch(action.type) {
-    case actions.GET_EVENT_INFO:
+    case actions.GET_MAP_INFO:
       return {
         ...state,
         loading: true
       }
-    case actions.GET_EVENT_INFO_SUCCESS:
+    case actions.GET_MAP_INFO_SUCCESS:
       return {
         ...state,
         loading: false,
         fetched: true,
-        events: action.payload
+        objects: action.payload
       }
-    case actions.GET_EVENT_INFO_FAILURE:
+    case actions.GET_MAP_INFO_FAILURE:
       return {
         ...state,
         loading: false,
         hasErros: true,
         fetched: false
       }
-    case actions.GET_EVENT_RESET_FETCH:
+    case actions.GET_MAP_RESET_FETCH:
       return {
         ...state,
         fetched: false,
         hasErros: false,
         loading: false
       }
-    case selectActions.SELECT_EVENT:
+    case selectActions.SELECT_OBJECT:
       return {
         ...state,
-        selectedEvent: action.payload,
+        selectedObject: action.payload,
         justSelected: true
       }
-    case selectActions.TOGGLE_SHOW_LIST: {
+    case selectActions.TOGGLE_SHOW_LIST:
       return {
         ...state,
         showList: !state.showList
       }
-    }
-    case selectActions.JUST_SELECTED_EVENT: {
+    case selectActions.JUST_SELECTED_OBJECT:
       return {
         ...state,
         justSelected: false
       }
-    }
+    case selectActions.SELECTED_PROJECT_MARKER:
+      return {
+        ...state,
+        selectedProject: action.payload
+      }
+    case selectActions.CHANGE_MAP_MODE:
+      return {
+        ...state,
+        mapMode: action.payload,
+        filter: "all",
+        filterCategory: "all"
+      }
+    case selectActions.TOGGLE_MAP_MODAL:
+      return {
+        ...state,
+        showModal: !state.showModal
+      }
     case filterSearchActions.FILTER_EVENT:
       return {
         ...state,
         filter: action.payload
       }
-    case filterSearchActions.FILTER_EVENT_TYPE:
+    case filterSearchActions.FILTER_CATEGORY_TYPE:
       return {
         ...state,
-        filterType: action.payload
+        filterCategory: action.payload
       }
     case filterSearchActions.SEARCH_EVENT:
       return {

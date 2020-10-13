@@ -9,7 +9,7 @@ import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectContentView = ({ orgs }) => {
-  if (!orgs) {
+  if (!orgs || orgs.length === 0) {
     return (
       <div className="emptyDBContainer">
         <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" /> You have not created any organisations yet. </p>

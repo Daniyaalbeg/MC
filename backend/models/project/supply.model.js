@@ -6,6 +6,10 @@ const supplySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
   category: {
     type: String,
     required: false
@@ -23,8 +27,9 @@ const supplySchema = new mongoose.Schema({
     required: false
   },
   suppliedBy: [{
-    type: supplyAmountReceivedSchema,
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'SupplyAmountReceived',
+    required: false
   }]
 }, {
   timestamps: true

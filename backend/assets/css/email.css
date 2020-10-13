@@ -1,0 +1,35 @@
+h1 { font-family: "Open Sans"; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: "Open Sans"; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: "Open Sans"; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Open Sans"; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Open Sans"; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+
+.btn {
+  padding: .4em .6em;
+  background-color: #4BB250;
+  color: whitesmoke;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: "Open Sans";
+}
+.btn:hover {
+  background-color: #419b45;
+  text-decoration: none;
+}
+
+.email-container {
+  width: calc(100% - 128px);
+  height: calc(100% - 128px);
+  padding: 64px;
+  background-color: whitesmoke;
+}
+.email-body {
+  width: calc(100% - 64px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.07);
+}
+

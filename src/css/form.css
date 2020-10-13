@@ -5,10 +5,6 @@
   flex-direction: row;
 }
 
-.signUpCard {
-  margin: auto;
-}
-
 .error {
   color: #EF2A30;
   font-size: small;
@@ -61,9 +57,20 @@
   /* border: 2px #cccccc; */
 }
 
+.thumbnailRow {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.thumbnailRow > img {
+  max-height: 200px;
+}
+
 .agreedTo {
   font-size: medium;
   margin-bottom: 0;
+  margin-left: 8px;
 }
 .selectMap {
   width: 100%;
@@ -79,6 +86,12 @@
 }
 .text-muted {
   font-family: proximaNova;
+}
+.wrongPassword {
+  margin-bottom: 0;
+  margin-top: 4px;
+  color: red;
+  font-size: medium;
 }
 
 .userSignupWelcomeMessageContainer {
@@ -99,7 +112,35 @@
   border-radius: 8px;
 }
 
-/* ADD SUPPLY FORM */
+
+
+/* MAIN FORMS */
+.oldForm {
+  height: fit-content;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+.standardForm {
+  height: fit-content;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.05);
+  background-color: white;
+}
+.createProjectForm {
+  height: fit-content;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0px 8px 10px 2px rgba(0, 0, 0, 0.05);
+  background-color: white;
+}
 .addSupplyForm {
   height: 100%;
   width: 100%;
@@ -109,34 +150,203 @@
   flex-direction: column;
 }
 
+.addFaqForm {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} 
+
+.addUpdateForm {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addFundingForm {
+  height: 100%;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.loginFormModalContainer {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.createSupplyAmountForm {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* New form classes */
+.formCardContainer {
+  height: auto;
+  min-height: 100%;
+  margin: auto;
+  background-color: whitesmoke;
+  padding: 64px 32px;
+}
+.formMainHeader {
+  background-color: var(--main-bg-light-color);
+  width: 100%;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+.formMainHeader > h2 {
+  color: whitesmoke;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-left: 16px;
+}
+.formMainHeader > svg {
+  color: whitesmoke;
+  margin-left: 64px;
+}
+.formMainBody {
+  padding: 32px 64px;
+}
+.formHeader {
+  margin-top: 16px;
+}
 .formGroup {
   display: flex;
-  width: 300px;
-  /* justify-content: center; */
-  /* align-items: center; */
+  width: 100%;
   flex-direction: column;
   margin-bottom: 16px;
 }
 .formGroupHeader {
-  margin-bottom: 0;
+  margin-bottom: 4px;
   font-size: larger;
 }
+.formGroupHeader, .login {
+  font-size: medium;
+}
+.formRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.formRow > * {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.formRow > :first-child {
+  margin-left: 0;
+}
+.formRow > :last-child {
+  margin-right: 0;
+}
+.formGroupCheckBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
 .formInputError {
+  color: var(--main-red-color);
   position: relative;
   margin-bottom: -12px;
 }
-.formGroup > input {
+.formGroup textarea {
+  margin-bottom: 4px;
+}
+.formGroup input {
+  margin-bottom: 4px;
+}
+.formGroup select {
+  margin-bottom: 4px;
+}
+.formGroup input, textarea {
+  width: 100%;
   border: 2px solid white;
-  height: 2.4em;
+  height: 2.1em;
+  color: #040404;
   border-radius: 8px;
   padding-left: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.07);
   transition: box-shadow ease 0.2s;
 }
-.formGroup > input:focus {
+.formGroup select {
+  -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  border-radius: 8px;
+  height: 2.1em;
+  padding-left: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.07);
+}
+.formGroup textarea {
+  height: auto;
+}
+.formGroup button {
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.07);
+}
+.formGroup.login input:focus {
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.05) !important;
+}
+.formGroup input:focus, textarea:focus {
   /* border: 2px solid whitesmoke; */
   box-shadow: 0px 0px 2px 1px var(--main-green-color);
   border-radius: 8px;
+}
+
+.categoryBadgeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.categoryBadgeContainer > span {
+  cursor: pointer;
+  padding: 0.2em 0.4em;
+  margin: 0.2em;
+  border: 2px solid whitesmoke;
+  /* background-color: whitesmoke; */
+  border-radius: 8px;
+  user-select: none;
+}
+.categoryBadgeContainer > span:hover {
+  background-color: whitesmoke;
+}
+.categoryBadgeContainer > span.active {
+  background-color: var(--main-green-color);
+  border: 2px solid var(--main-green-color);
+  color: whitesmoke;
+}
+
+#formCheckbox {
+  width: fit-content !important;
+  padding: 0;
+  box-shadow: none;
+}
+
+.formText {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 @media only screen and (max-width: 1150px) {
@@ -146,15 +356,36 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .signUpCard {
-    width: 90vw;
-    margin: 5px;
+@media only screen and (max-device-width: 768px) {
+  /* Form Container */
+  .addFundingForm {
+    width: fit-content;
   }
-}
+  .oldForm {
+    width: 90%;
+  }
 
-@media only screen and (min-width: 600px) {
-  .signUpCard {
-    width: 70vw;
+
+  /* Form General */
+  .formCardContainer {
+    padding: 16px 8px;
+    margin: 0;
+    width: 100%;
+  }
+  .standardForm, .createProjectForm {
+    padding: 0;
+    width: 95%;
+  }
+  .formHeader {
+    text-align: center;
+  }
+  .formMainHeader > svg {
+    margin-left: 32px;
+  }
+  .formMainBody {
+    padding: 24px 24px;
+  }
+  .categoryBadgeContainer > span {
+    font-size: small;
   }
 }

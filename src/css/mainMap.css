@@ -14,7 +14,6 @@
   flex: 1 1 auto;
   height: calc(100% - 66px);
   width: 100vw;
-  font-family: proximaNova;
 }
 
 /* .bottom {
@@ -25,13 +24,9 @@
 } */
 
 .mapView {
-  width: 95vw;
+  width: 70vw;
+  height: calc(100%);
   /* flex-grow: 1; */
-}
-
-.mapViewLayerList {
-  width: 5vw;
-  background-color: var(--main-bg-color);
 }
 
 .eventListView {
@@ -40,6 +35,9 @@
   position: absolute;
   right: 0;
   /* overflow-y: hidden; */
+}
+.eventListView p {
+  color: whitesmoke;
 }
 
 .eventListView::-webkit-scrollbar {
@@ -50,27 +48,94 @@
   flex-grow: inherit;
 }
 
-.MapLayerButtonContainer {
+.filterProjectCategoryTitle {
+  text-align: center;
+  font-weight: bold;
+  color: whitesmoke;
+}
+.projectMapFilterContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.projectMapFilterContainer > * {
+  margin: 8px;
+}
+.projectMapFilter {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 100px;
+  padding: 8px;
+  background-color: var(--main-bg-light-color);
+  border-radius: 8px;
+}
+.projectMapFilter:hover {
+  background-color: var(--main-bg-dark-color);
+}
+.projectMapFilter.active {
+  background-color: var(--main-bg-dark-color);
+}
+.projectMapFilter > img {
+  height: 44px;
+  width: 44px;
+  margin-bottom: 4px;
+}
+.projectMapFilter > p {
+  color: whitesmoke;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  font-size: small;
+}
+
+.mapModalLayerTitle {
+  margin: 0;
+  color: whitesmoke;
+  font-weight: bold;
+  /* font-size: small; */
+  text-align: center;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+.MapViewLayerListContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.MapViewLayerListContainer > * {
+  margin: 8px;
+}
+.MapLayerButtonContainer {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   margin: 2px 4px;
   text-align: center;
   border-radius: 8px;
   overflow: hidden;
+  background-color: var(--main-bg-light-color);
 }
 .MapLayerButton {
   width: 100%;
   height: 32px;
   color: whitesmoke;
-  font-size: x-small;
+  font-size: small;
   font-weight: bold;
+  padding: 0.2em 0.8em;
 }
 .MapLayerButton:hover {
   background-color: #37454b;
 }
 .MapLayerButton.active {
-  background-color: #222a2e;
+  background-color: var(--main-bg-dark-color);
 }
 .toolTip {
   visibility: hidden;
@@ -83,38 +148,74 @@
   padding-left: 8px;
   padding-right: 8px;
   margin: 0;
-  margin-left: 5vw;
+  margin-top: 32px;
   border-radius: 8px;
   z-index: 1;
   font-weight: bold;
   font-size: small;
   opacity: 0;
-  transition: opacity 0.2s, margin-left 0.2s;
+  transition: opacity 0.2s, margin-top 0.2s;
 }
 .showToolTip {
   visibility: visible;
   opacity: 1;
-  margin-left: 5.5vw;
+  margin-top: 40px;
 }
 
 .mapInfoBox {
   background: #222A2E;
   /* padding: 12; */
-  color: whitesmoke
 }
 .mapInfoBox > p {
   margin: 0;
   font-weight: normal;
+  color: whitesmoke
 }
 .mapInfoBox > .mapInfoBoxHeading {
   font-size: small;
+  color: whitesmoke
 }
 .mapInfoBox h6 {
   font-weight: bold;
+  color: whitesmoke
 }
 
-.gm-ui-hover-effect {
-  /* background-color: whitesmoke !important; */
+.mapInfoProject {
+  width: 300px;
+  margin: auto;
+}
+.mapInfoProject > .mainProjectCardContainer > .mainProjectCard {
+  border: none;
+  cursor: default;
+}
+.mapInfoProject > .mainProjectCardContainer:hover img {
+  transform: none;
+}
+.mapInfoProject > .mainProjectCardContainer > .mainProjectCard {
+  box-shadow: none;
+  padding-bottom: 0;
+}
+.mapInfoProject button {
+  width: 100%;
+  background-color: white;
+  height: 44px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: medium;
+}
+.mapInfoProject button:hover {
+  background-color: whitesmoke;
+}
+
+.gm-ui-hover-effect > img {
+  background-color: white !important;
+  border-radius: 50%;
+}
+.gm-style-iw-d {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
 }
 .gm-style .gm-style-iw-c {
   background: #222A2E;
@@ -140,6 +241,7 @@
   margin-bottom: 0;
   font-size: smaller;
   font-weight: bold;
+  color: whitesmoke
 }
 .lsoHouseInfoBottom {
   color: rgba(255, 255, 255, 0.3);
@@ -199,14 +301,7 @@
 } 
 
 @media only screen and (max-width: 600px) {
-  .mapView {
-    width: 100vw !important;
-    height: 100vh;
-  }
   .eventListView {
     display: none;
-  }
-  .mapViewLayerList {
-    display: none;    
   }
 }

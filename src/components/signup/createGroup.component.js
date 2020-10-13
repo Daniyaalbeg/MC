@@ -71,7 +71,7 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, props, orgs,
   } 
 
   return (
-    <Card bg="light" text="dark" className="signUpCard">
+    <Card bg="light" text="dark" className="oldForm">
       <Card.Header> Create Group </Card.Header>
 
       <Formik

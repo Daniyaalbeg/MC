@@ -54,7 +54,7 @@ router.route('/create').post(verfiyToken, (req, res, next) => {
       verifiedStepC: false,
       verifiedStepD: false,
       verifiedStepE: false,
-      approved: true //CHANGE TO FALSE!!!
+      approved: false
     });
 
     organisation.save((err, org) => {

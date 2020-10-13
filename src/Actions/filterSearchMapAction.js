@@ -1,4 +1,4 @@
-export const FILTER_EVENT_TYPE = "FILTER_EVENT_TYPE";
+export const FILTER_CATEGORY_TYPE = "FILTER_CATEGORY_TYPE";
 export const FILTER_EVENT = "FILTER_EVENT";
 export const SEARCH_EVENT = "SEARCH_EVENT";
 
@@ -7,9 +7,9 @@ export const filterEvents = (filter) => ({
   payload: filter
 });
 
-export const filterEventsType = (filterType) => ({
-  type: FILTER_EVENT_TYPE,
-  payload: filterType
+export const filterCategoryType = (filterCategory) => ({
+  type: FILTER_CATEGORY_TYPE,
+  payload: filterCategory
 })
 
 export const searchEvents = (search) => ({

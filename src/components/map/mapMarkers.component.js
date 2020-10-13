@@ -3,12 +3,7 @@ import { Marker, MarkerClusterer } from '@react-google-maps/api';
 import { connect } from 'react-redux';
 
 import filterAndSearch from '../utilities/filterAndSearch';
-
-import coin from '../../assets/svg/coin.svg';
-import sack from '../../assets/svg/sack.svg';
-import shirt from '../../assets/svg/shirt.svg';
-import mask from '../../assets/svg/mask.svg';
-
+import { getIconSource } from '../iconController/iconCategories.component';
 
 const clusterOptions = {
   styles: [{
@@ -43,27 +38,31 @@ const clusterOptions = {
     }]
 }
 
-const MapMarkers = ({ events, onMarkerClick }) => {
+const MapMarkers = ({ objects, onMarkerClick, mapMode }) => {
+  if (objects.length === 0) return null
+  
   return (
     <MarkerClusterer
         options={clusterOptions}
         averageCenter
       >
         {(clusterer) =>
-          events.map((event) => {
+          objects.map((object) => {
             return <Marker 
-              key={event._id}
+              key={object._id}
               position={{
-                lat: event.location.coordinates[1],
-                lng: event.location.coordinates[0]
+                lat: object.location.coordinates[1],
+                lng: object.location.coordinates[0]
               }}
               icon={{
-                url: whichIcon(event.typeOfRation),
+                url: getIconSource(mapMode === "PROJECTS" ? object.primaryCategory : object.typeOfRation),
                 scaledSize: new window.google.maps.Size(35, 35),
                 origin: new window.google.maps.Point(0, 0),
                 anchor: new window.google.maps.Point(12, 12),
               }}
-              onClick={() => onMarkerClick(event._id)}
+              onClick={() => {
+                onMarkerClick(object._id)
+              }}
               clusterer={clusterer}
             />
           })
@@ -72,23 +71,9 @@ const MapMarkers = ({ events, onMarkerClick }) => {
   )
 }
 
-const whichIcon = (type) => {
-  switch(type) {
-    case "food":
-      return sack
-    case "clothes":
-      return shirt
-    case "ppe":
-      return mask
-    case "money":
-      return coin
-    default:
-      return sack
-  }
-}
-
 const MapStateToProps = (state) => ({
-  filteredEvents: filterAndSearch(state.mapInfo.mapActions.events, state.mapInfo.mapActions.filterType, state.mapInfo.mapActions.filter, state.mapInfo.mapActions.search)
+  objects: filterAndSearch(state.mapInfo.mapActions.objects, state.mapInfo.mapActions.mapMode, state.mapInfo.mapActions.filterCategory, state.mapInfo.mapActions.filter, state.mapInfo.mapActions.search),
+  mapMode: state.mapInfo.mapActions.mapMode
 });
 
 export default memo(connect(MapStateToProps)(MapMarkers))

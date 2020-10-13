@@ -99,6 +99,7 @@ export function checkCookie() {
     })
     .then((res) => {
       dispatch(checkingCookieSuccess(res.data))
+      dispatch(getUserInfo())
     })
     .catch((error) => {
       // console.log(error)

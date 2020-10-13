@@ -1,15 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
+import ProjectSupplyReceivedList from './projectSupplyReceivedListItem.component';
 import ProjectCardDashProgressInfo from '../../../sharedComponents/projectCardDashProgressRing';
+import {  selectProjectDashSupply } from '../../../../Actions/projectActions'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
-const SelectedProjectSupply = ({ supply, setSelectedSupply }) => {
+const SelectedProjectSupply = ({ project, supply }) => {
+  const dispatch = useDispatch()
+
   return (
     <>
     <div className="headerButtonsContainer">
-      <button className="standardButtonWithoutColour mcGreenBG" onClick={() => setSelectedSupply(null)}> <FontAwesomeIcon icon={faChevronCircleLeft} style={{textAlign: 'left', marginRight: "0.3em"}}/> Back </button>
+      <button className="standardButtonWithoutColour mcGreenBG" onClick={() => dispatch(selectProjectDashSupply(null))}> <FontAwesomeIcon icon={faChevronCircleLeft} style={{textAlign: 'left', marginRight: "0.3em"}}/> Back </button>
     </div>
     <div className="projectDashSupplyContainer">
       <div className="projectDashCard projectSupplyCardA">
@@ -19,64 +24,15 @@ const SelectedProjectSupply = ({ supply, setSelectedSupply }) => {
         <ProjectSupplyDetails supply={supply} />
       </div>
       <div className="projectDashCard projectSupplyCardC">
-      
+        <p className="projectTitle"> Description </p>
+        <p className="projectText"> {supply.description} </p>
       </div>
       <div className="projectSupplyCardD">
-        <ProjectSupplyReceivedListItem supply={supply} />
+        <ProjectSupplyReceivedList project={project} supply={supply} />
       </div>
     </div>
     </>      
   )
-}
-
-const suppliedBy = [
-  {
-    suppliedBy: "u687943692783465",
-    userName: "Daniyaal Beg",
-    userMobile: "03008555592",
-    amount: "34",
-    accepted: false
-  },
-  {
-    suppliedBy: "u687943692783465",
-    userName: "Feraas Beg",
-    userMobile: "0932452764",
-    amount: "12",
-    accepted: true
-  }
-]
-
-const ProjectSupplyReceivedListItem = ({ supply }) => {
-  if (false) {//!supply.suppliedBy || supply.suppliedBy.length === 0) {
-    return (
-      <p> No one has sent you supply yet. </p>
-    )
-  } else {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th> Name </th>
-            <th> Contact </th>
-            <th> Amount </th>
-            <th> Accepted </th>
-          </tr>
-        </thead>
-        {
-          suppliedBy.map((supplyRequest) => {
-            return (
-              <tr>
-                <td> {supplyRequest.userName} </td>
-                <td> {supplyRequest.userMobile} </td>
-                <td> {supplyRequest.amount} </td>
-                <td> <SupplyAcceptPendingButton accepted={supplyRequest.accepted} /> </td>
-              </tr>
-            )
-          })
-        }
-      </table>
-    )
-  }
 }
 
 const ProjectSupplyDetails = ({ supply }) => {
@@ -90,16 +46,6 @@ const ProjectSupplyDetails = ({ supply }) => {
     <p className="projectText"> {supply.amountNeeded} </p>
     </>
   )
-}
-
-const SupplyAcceptPendingButton = ({ accepted }) => {
-  if (accepted) {
-    return "Accepted"
-  } else {
-    return (
-      <button className="standardButtonWithoutColour mcGreenBG"> Accept </button>
-    )
-  }
 }
 
 export default SelectedProjectSupply

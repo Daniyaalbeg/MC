@@ -5,13 +5,17 @@ import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import * as MapLayerType from './mapLayerTypes';
 import MapMarkers from './mapMarkers.component';
 import MapLayer from './mapLayer.component';
+import MapSelectModal from './mapSelectModal.component';
 import MapLayerNational from './mapLayerNational.component';
 import MapLegend from './mapLegend.component';
 
 import filterAndSearch from '../utilities/filterAndSearch';
-import { selectingEvent, toggleShowList, justSelectedEvent } from '../../Actions/selectEventActions';
+import { selectingObject, toggleShowList, justSelectedObject, toggleMapModal, selectedProjectMarker } from '../../Actions/mapSelectActions';
+import { getMapEventInfo, getMapProjectInfo, getMapResetFetch } from '../../Actions/mapInfoActions';
 import { loadingLayer } from '../../Actions/mapActions';
 import { GOOGLE_API_KEY } from '../../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTh } from '@fortawesome/pro-duotone-svg-icons';
 
 /* global google */
 
@@ -20,9 +24,9 @@ import { GOOGLE_API_KEY } from '../../config';
 // import circle from '../../assets/circle.png';
 
 const libraries = []
-let eventKeys = []
+let objectKeys = []
 
-const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, selectedEvent, showList, fetched, filteredEvents, mapLayer }) => {
+const MapView = ({ justSelected, dispatch, mapMode, search, filter, filterCategory, mapLayerData, mapLayerToDisplay, selectedObject, selectedProject, showList, fetched, filteredObjects, mapLayer }) => {
   const [map, setMap] = useState(null)
   const [mapBounds, setMapBounds] =useState(null)
   const [zoomLevel, setZoomLevel] = useState(null)
@@ -31,10 +35,24 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
   const [layerSelectedOnce, setLayerSelectedOnce] = useState(false)
 
   useEffect(() => {
+    switch(mapMode) {
+      case "PROJECTS":
+        dispatch(getMapProjectInfo())
+        return
+      case "EVENTS":
+        dispatch(getMapEventInfo())
+        return
+      default:
+        dispatch(getMapProjectInfo())
+        return
+    }
+  }, [mapMode, filter, filterCategory, search])
+
+  useEffect(() => {
     if (fetched && !computeDict) {
       setComputeDict(true)
-      filteredEvents.forEach((event) => {
-        eventKeys[event._id] = {...event}
+      filteredObjects.forEach((object) => {
+        objectKeys[object._id] = {...object}
       });
     }
 
@@ -85,12 +103,21 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
     setZoomLevel(null)
   }, [])
 
-  const onMarkerClick = (eventId) => {
-    map.setCenter({ lat: eventKeys[eventId].location.coordinates[1], lng: eventKeys[eventId].location.coordinates[0] })
+  const onMarkerClick = (objectId) => {
+    map.setCenter({ lat: objectKeys[objectId].location.coordinates[1], lng: objectKeys[objectId].location.coordinates[0] + 0.008 }) //0.008 guess value. In future need a concrete way to convert pixels to lat and long for centering
     map.setZoom(15)
-    dispatch(selectingEvent(eventKeys[eventId]))
-    if (showList) {
-      dispatch(toggleShowList())
+    switch(mapMode) {
+      case "PROJECTS":
+        dispatch(selectedProjectMarker(objectId))
+        return
+      case "EVENTS":
+        dispatch(selectingObject(objectKeys[objectId]))
+        if (showList) {
+          dispatch(toggleShowList())
+        }
+        return
+      default:
+        //nothing
     }
   }
 
@@ -102,9 +129,12 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
   }
 
   const onDrag = () => {
-    if (selectedEvent) {
-      dispatch(selectingEvent(null))
+    if (selectedObject) {
+      dispatch(selectingObject(null))
       dispatch(toggleShowList())
+    }
+    if (selectedProject) {
+      dispatch(selectedProjectMarker(null))
     }
     setShowInfo(false)
   }
@@ -120,10 +150,10 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
   if (loadError) return <div> error </div>
   if (!isLoaded) return <div>  </div>
 
-  if (selectedEvent && justSelected) {
-    dispatch(justSelectedEvent())
+  if (selectedObject && justSelected) {
+    dispatch(justSelectedObject())
     //Hard code the moving map to centralise it. These values are pretty yolo only working for zoom level 15
-    map.setCenter({ lat: selectedEvent.location.coordinates[1] + 0.0002628164259, lng: selectedEvent.location.coordinates[0] + 0.009922714459})
+    map.setCenter({ lat: selectedObject.location.coordinates[1] + 0.0002628164259, lng: selectedObject.location.coordinates[0] + 0.009922714459})
     // map.zoom = 15
     setTimeout(() => {
       map.setZoom(15)
@@ -150,13 +180,10 @@ const MapView = ({ justSelected, dispatch, mapLayerData, mapLayerToDisplay, sele
       options={options}
     >
       <MapLegend mapLayerToDisplay={mapLayerToDisplay} />
-      <MapMarkers events={filteredEvents} onMarkerClick={onMarkerClick} />
-      {mapLayerToDisplay !== MapLayerType.NONE &&
-        <MapLayer mapBounds={mapBounds} zoomLevel={zoomLevel} showInfo={showInfo} setShowInfo={setShowInfo} />
-      }
-      {mapLayerToDisplay === MapLayerType.UC &&
-        <MapLayerNational />
-      }
+      <MapMarkers objects={filteredObjects} onMarkerClick={onMarkerClick} />
+      <MapSelectModal dispatch={dispatch} selectedProject={objectKeys[selectedProject]} />
+      <MapLayer mapBounds={mapBounds} zoomLevel={zoomLevel} showInfo={showInfo} setShowInfo={setShowInfo} />
+      <MapLayerNational mapLayerToDisplay={mapLayerToDisplay} zoomLevel={zoomLevel}  />
     </GoogleMap >
     </>
   );
@@ -179,14 +206,19 @@ const createExtendedBounds = (map) => {
 
 
 const MapStateToProps = (state) => ({
-  selectedEvent: state.mapInfo.mapActions.selectedEvent,
+  selectedObject: state.mapInfo.mapActions.selectedObject,
   justSelected: state.mapInfo.mapActions.justSelected,
+  selectedProject: state.mapInfo.mapActions.selectedProject,
+  mapMode: state.mapInfo.mapActions.mapMode,
   showList: state.mapInfo.mapActions.showList,
   fetched: state.mapInfo.mapActions.fetched,
   mapLayer: state.mapInfo.mapData.mapLayer,
   mapLayerToDisplay: state.mapInfo.mapData.mapLayerToDisplay,
   mapLayerData: state.mapInfo.mapData.mapStoredData,
-  filteredEvents: filterAndSearch(state.mapInfo.mapActions.events, state.mapInfo.mapActions.filterType, state.mapInfo.mapActions.filter, state.mapInfo.mapActions.search)
+  filterCategory: state.mapInfo.mapActions.filterCategory,
+  filter: state.mapInfo.mapActions.filter,
+  search: state.mapInfo.mapActions.search,
+  filteredObjects: filterAndSearch(state.mapInfo.mapActions.objects, state.mapInfo.mapActions.mapMode, state.mapInfo.mapActions.filterCategory, state.mapInfo.mapActions.filter, state.mapInfo.mapActions.search)
 });
 
 export default memo(connect(MapStateToProps)(MapView))

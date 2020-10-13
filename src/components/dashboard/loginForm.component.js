@@ -1,6 +1,6 @@
-import React from 'react';
-import { Form, Spinner } from 'react-bootstrap';
-import { Formik } from 'formik';
+import React, { useEffect, useMemo } from 'react';
+import { Spinner } from 'react-bootstrap';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import '../../css/form.css';
@@ -16,100 +16,100 @@ import { faUserCircle } from '@fortawesome/pro-solid-svg-icons';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-  .required("*Email is required")
+  .required()
   .email("*Must be a valid email address")
   .max(100, "*Email must be less than 100 characters"),
   password: Yup.string()
-  .required('No password provided.') 
+  .required() 
 });
 
-const LoginForm = ({dispatch, loading, hasErrors}) => {
+const LoginForm = ({ dispatch, loading, hasErrors }) => {
+  let chosenColour = "#38454b"
+  useEffect(() => {
+    chosenColour = getRandomColour()
+  }, [chosenColour])
 
-  const chosenColour = getRandomColour();
-
-  return (
-  <Formik
-    initialValues={{ email: "", password: ""}}
-    validationSchema={validationSchema}
-    onSubmit={(values) => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
       dispatch(resetUserInfoGet())
       dispatch(login({
         email: values.email,
         password: values.password
       }));
-    }}
-    >{( {values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit }) => (
-        <Form noValidate onSubmit={handleSubmit} className="loginForm">
-          <div className="loginFormHeader" style={{backgroundColor: chosenColour}}>
-            <FontAwesomeIcon icon={faUserCircle} />
-            <p> Log In </p>
-          </div>
-          <div className="loginFormContent">
-          <Form.Group controlId="formEmail" className="loginFormGroup">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              placeholder="Email"
-              autoComplete="username"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              // isValid={touched.email && !errors.email}
-              // isInvalid={errors.email}
-            />
-            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
-            {/* <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback> */}
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
+    }
+  })
 
-          <Form.Group controlId="formPassword" className="loginFormGroup">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder="Password"
-              autoComplete="current-password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              // isValid={touched.password && !errors.password}
-              // isInvalid={errors.password}
-            />
-            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
-            {/* <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> */}
-            {hasErrors ? <Form.Text className="text-muted, red"> Wrong email or password, try again </Form.Text> : ""}
-            <Form.Text className="text-muted">
-              <Link to='/reset' className="link">Forgot password?</Link>
-            </Form.Text>
-          </Form.Group>
+  return (
+      <form noValidate onSubmit={formik.handleSubmit} className="loginForm">
+        <div className="loginFormHeader" style={{backgroundColor: chosenColour}}>
+          <FontAwesomeIcon icon={faUserCircle} />
+          <p> Log In </p>
+        </div>
+        <div className="loginFormContent">
 
-          <Form.Group>
-            <button className="standardButton" style={{backgroundColor: chosenColour, fontWeight: "bold"}} type="submit" disabled={loading}>
+        <div className="formGroup login">
+          <p className="formGroupHeader login">Email Address</p>
+          <input
+            autoFocus
+            autoComplete="username"
+            type="email"
+            name="email"
+            placeholder=""
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          {/* {formik.errors.email &&
+            <p className="formInputError"> {formik.errors.email} </p>
+          } */}
+        </div>
+
+        <div className="formGroup login">
+          <p className="formGroupHeader login">Password</p>
+          <input
+            autoComplete="current-password"
+            type="password"
+            name="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+          />
+          {/* {formik.errors.password &&
+            <p className="formInputError"> {formik.errors.password} </p>
+          } */}
+          <p className="formText text-muted">
+            <Link to='/reset' className="link">Forgot password?</Link>
+          </p>
+        </div>
+
+        <div className="formGroup">
+          <button className="standardButton" style={{height: '2.2em',backgroundColor: chosenColour, fontWeight: "bold"}} type="submit" disabled={loading}>
             {
-              loading ? 
-              <Spinner animation="grow" size="sm" style={{ marginRight: '8px' }} /> 
-              :
-              null
+            loading
+            ? 
+            <Spinner animation="border" size="sm" /> 
+            :
+            "Log in"
             }
-            {loading ? 'Logging in' : 'Log in'}
-            </button>
-          </Form.Group>
-          <Form.Text className="text-muted"> Don't have an account? <Link to='/signup' className="link" onClick={() =>{
-              dispatch(signupReset())
-            }}> Sign up </Link></Form.Text>
-          </div>
-        </Form>
-      )}
-    </Formik>
-  );
+          </button>  
+          {hasErrors ? <p className="wrongPassword"> Wrong email or password, try again </p> : null}
+        </div>
+
+        <p className="text-muted"> 
+          Don't have an account? 
+          <Link to='/signup' className="link formText" onClick={() =>{
+            dispatch(signupReset())
+          }}> Sign up </Link> 
+        </p>
+
+      </div>
+    </form>
+  )
 }
 
 const MapStateToProps = (state) => ({

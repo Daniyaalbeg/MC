@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 
-import { createSupply, creatingSupplyReset } from '../../../../Actions/projectActions';
+import { createSupply, changeProjectItemReset } from '../../../../Actions/projectActions';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
   .required("*Name of item is required")
-  .max(30, "*Email must be less than 30 characters"),
+  .max(30, "*Name must be less than 30 characters"),
+  description: Yup.string()
+  .required("*Description is required")
+  .max(150, "*Must be less than 150 charachters"),
   amountNeeded: Yup.number()
   .required("*Please add the amount of this item you need.")
   .typeError("*Must be a number")
@@ -17,43 +20,59 @@ const validationSchema = Yup.object().shape({
   amountReceived: Yup.number()
   .typeError("*Must be a number")
   .min(0, "*Number must be positive")
+  .test(
+    'lessThan',
+    '*Must be less than the amount needed',
+    function(v) {
+      const ref = Yup.ref('amountNeeded')
+      const currentVal = this.resolve(ref)
+      if (!currentVal) return true
+      return v <= this.resolve(ref)
+    }
+  )
 });
 
-const AddSupplyForm = ({ project, setAddSupplyModal, dispatch, loading, hasErrors, success }) => {
+const AddSupplyForm = ({ project, showModal, dispatch, loading, hasErrors, success }) => {
 
-  if (success) {
-    dispatch(creatingSupplyReset())
-    setAddSupplyModal(false)
-  }
+  useEffect(() => {
+    if (success) {
+      dispatch(changeProjectItemReset())
+      showModal(false)
+    }
+  }, [success, showModal])
 
   const formik = useFormik({
     initialValues: {
       name: "",
-      amountNeeded: 0,
+      description: "",
+      amountNeeded: "",
       amountReceived: 0,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       const supply = {
-        name: values.name, 
+        name: values.name,
+        description: values.description,
         amountReceived: values.amountReceived,
         amountNeeded: values.amountNeeded,
         supplyReceived: false,
-        suppliedBy: []
+        suppliedBy: [],
+        project: project
       }
-      dispatch(createSupply(supply, project))
+      dispatch(createSupply(supply))
     }
   })
 
   return (
     <form onSubmit={formik.handleSubmit} className="addSupplyForm">
 
-      <h2> Add Supply </h2>
+      <h2 className="formHeader"> Add Items Needed </h2>
 
       <div className="formGroup">
-        <p className="formGroupHeader">Supply Name</p>
+        <p className="formGroupHeader">Name</p>
         <input
-          type="name"
+          autoFocus
+          type="text"
           name="name"
           placeholder="E.g. Sewing Machine"
           onChange={formik.handleChange}
@@ -66,9 +85,25 @@ const AddSupplyForm = ({ project, setAddSupplyModal, dispatch, loading, hasError
       </div>
 
       <div className="formGroup">
+        <p className="formGroupHeader">Description</p>
+        <textarea
+          type="text"
+          name="description"
+          rows="2"
+          placeholder="E.g. To sew and mend clothes"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.description}
+        />
+        {formik.errors.description &&
+          <p className="formInputError"> {formik.errors.description} </p>
+        }
+      </div>
+
+      <div className="formGroup">
         <p className="formGroupHeader">Amount Needed</p>
         <input
-          type="amountNeeded"
+          type="text"
           name="amountNeeded"
           placeholder="E.g. 42"
           onChange={formik.handleChange}
@@ -81,9 +116,9 @@ const AddSupplyForm = ({ project, setAddSupplyModal, dispatch, loading, hasError
       </div>
 
       <div className="formGroup">
-        <p className="formGroupHeader">Supply amount already aquired?</p>
+        <p className="formGroupHeader">Amount already aquired?</p>
         <input
-          type="amountReceived"
+          type="text"
           name="amountReceived"
           placeholder="0"
           onChange={formik.handleChange}
@@ -95,7 +130,7 @@ const AddSupplyForm = ({ project, setAddSupplyModal, dispatch, loading, hasError
         }
       </div>
 
-      <div>
+      <div className="formGroup">
         <button className="standardButtonWithoutColour mcGreenBG" type="submit" disabled={loading}>
         {
           loading ? 
@@ -114,9 +149,9 @@ const AddSupplyForm = ({ project, setAddSupplyModal, dispatch, loading, hasError
 }
 
 const MapStateToProps = (state) => ({
-  loading: state.projectInfo.createSupply.loading,
-  hasErrors: state.projectInfo.createSupply.hasErrors,
-  success: state.projectInfo.createSupply.success,
+  loading: state.projectInfo.createProjectItem.loading,
+  hasErrors: state.projectInfo.createProjectItem.hasErrors,
+  success: state.projectInfo.createProjectItem.success,
 })
 
 export default connect(MapStateToProps)(AddSupplyForm)

@@ -6,7 +6,7 @@ const initialState = {
   hasErros: false,
   fetched: false,
   orgInfo: [],
-  filterType: "all",
+  filterCategory: "all",
   filterProject: "all",
   search: ""
 }
@@ -35,7 +35,7 @@ export default function orgInfoReducer(state = initialState, action) {
     case filterSearchActions.FILTER_ORG_TYPE:
       return {
         ...state,
-        filterType: action.payload
+        filterCategory: action.payload
       }
     case filterSearchActions.FILTER_ORG_PROJECT:
       return {

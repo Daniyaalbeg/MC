@@ -44,6 +44,8 @@ router.route('/create').post([
     })
 
     const newUser = new User({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: email,
       username: req.body.username,
       password: hashedPassword,

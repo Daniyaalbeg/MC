@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import  ScrollToTop from './components/utilities/scrollToTop.component'
 
 import { checkCookie } from './Actions/authActions';
-import { Spinner } from 'react-bootstrap';
+import LoadingSpinner from './components/utilities/loadingSpinner.component';
 // import mcSpinner from './assets/svg/mcWhole3.svg';
 
 import './css/about.css';
@@ -44,6 +44,8 @@ const OrgView = lazy(() => import('./components/organisations/organisationsView.
 const GroupView = lazy(() => import('./components/groups/groupView.component'));
 const CreateProject = lazy(() => import('./components/signup/createProject.component'));
 const OrgViewInfo = lazy(() => import('./components/organisations/organisationInfoView.component'));
+const ProjectView = lazy(() => import('./components/projects/mainProjectView.component'));
+const MainSelectedProjectView = lazy(() => import('./components/projects/mainSelectedProjectView.component'))
 const SignUpOrg = lazy(() => import('./components/signup/signUpOrg.component'));
 const EditOrg = lazy(() => import('./components/update/updateOrganisation.component'));
 const SignupUser = lazy(() => import('./components/signup/signupUser.component'));
@@ -75,11 +77,7 @@ function App({ dispatch, checkedCookie }) {
       <ScrollToTop />
       <NavigationBar />
       <Suspense fallback={
-        <div className="spinnerThing">
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
+        <LoadingSpinner />
       }>
         <Switch>
           <Route path="/" exact component={HomeView}/>
@@ -87,6 +85,8 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/map" exact component={MainMap}/>
           <Route path="/organisations/:id" component={OrgViewInfo}/>
           <Route path="/organisations" component={OrgView}/>
+          <Route path="/projects/:id" component={MainSelectedProjectView}/>
+          <Route path="/projects" component={ProjectView}/>
           <Route path="/groups" component={GroupView}/>
           <Route path="/about" component={AboutView} />
           <Route path={["/inspire/:id", "/inspire"]} component={InspireView} />

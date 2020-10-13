@@ -154,7 +154,14 @@ router.route('/me').get(verifyToken, (req, res, next) => {
   })
   .populate({
     path: 'createdOrganisations',
-    populate: { path: 'projects'}
+    populate: {
+      path: 'projects',
+      model: 'Project',
+      populate: {
+        path: 'supplies.suppliedBy',
+        model: 'SupplyAmountReceived'
+      }
+    }
   })
   .populate('createdGroups')
   .lean()

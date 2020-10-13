@@ -7,6 +7,7 @@ import { Card, Col, Form, Spinner } from 'react-bootstrap';
 import { signUpOrg } from '../../Actions/signUpActions';
 import CheckboxGroup, { Checkbox } from '../utilities/Checkboxs.component';
 import Thumb from '../utilities/thumb.component';
+import { categoryOptionValues } from '../utilities/categoryOptionValues';
 
 import '../../css/form.css';
 
@@ -128,7 +129,7 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
   }
 
   return (
-    <Card bsPrefix='card' bg='light' text='dark' className="signUpCard">
+    <Card bsPrefix='card' bg='light' text='dark' className="oldForm">
       <Fragment>
         {/* {!auth &&
           <Redirect push to="/dashboard" />
@@ -454,240 +455,18 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
             onChange={setFieldValue}
             onBlur={setFieldTouched}
           >
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="animalWelfare"
-              label="Animal Welfare"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="artsAndCulture"
-              label="Arts and Culture"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="clothing"
-              label="Clothing"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="communityDevelopment"
-              label="Community Development"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="disability"
-              label="Disability"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="disaster"
-              label="Disaster"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="education"
-              label="Education"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="primary"
-              label=" - Primary"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="secondary"
-              label=" - Secondary"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="higher"
-              label=" - Higher"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="energy"
-              label="Energy"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="environment"
-              label="Environment"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="forest"
-              label=" - Forest"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="water"
-              label=" - Water"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="equality"
-              label="Equality"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="food"
-              label="Food"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="agriculture"
-              label=" - Agriculture"
-            />
-            <Field
-              component={Checkbox}
-              name="areaOfWork"
-              id="livestock"
-              label=" - Livestock"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="fisheries"
-              label=" - Fisheries"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="gender"
-              label="Gender"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="health"
-              label="Health"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="motherAndChildHealth"
-              label=" - Mother and Child Health"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="humanRights"
-              label="Human Rights"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="infrastructure"
-              label="Infrastructure"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="it"
-              label="IT"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="justice"
-              label="Justice"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="livelihood"
-              label="Livelihood"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="money"
-              label="Money"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="peace"
-              label="Peace"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="ppe"
-              label="Protection Equipment"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="povertyAlleviation"
-              label="Poverty Alleviation"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="recycling"
-              label="Recycling"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="sanitation"
-              label="Sanitation"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="sports"
-              label="Sports"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="terrorism"
-              label="Terrorism"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="virus"
-              label="Virus"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="waste"
-              label="Waste"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="youth"
-              label="Youth"
-            />
-            <Field
-              component={Checkbox}
-              name="groupType"
-              id="other"
-              label="Other"
-            />
+            {
+              categoryOptionValues.map((option) => {
+                return (
+                  <Field
+                    component={Checkbox}
+                    name="groupType"
+                    id={option.value}
+                    label={option.name}
+                  />      
+                )
+              })
+            }
           </CheckboxGroup>
         </Form.Group>
 
