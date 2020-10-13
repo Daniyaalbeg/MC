@@ -128,7 +128,7 @@ const sendVerificationEmail = (user, callback, errorCallback) => {
    .send({
      template: 'sign-up',
      message: {
-       to: 'danyaalbeg@gmail.com'
+       to: user.email
      },
      locals: {
        username: user.username,

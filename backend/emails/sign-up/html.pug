@@ -1,10 +1,9 @@
 link(rel="stylesheet", type="text/css", href="css/email.css", data-inline)
-link(rel="stylesheet", type="text/css", href="//fonts.googleapis.com/css?family=Open+Sans")
 
-div(class="email-container")
-  div(class="email-body")
+div(class="email-container" style="width: calc(100% - 128px); height: calc(100% - 128px); padding: 64px; background-color: whitesmoke;")
+  div(class="email-body" style=" width: calc(100% - 64px); height: 100%; padding: 32px; background-color: white; border-radius: 8px; box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.07);")
     //- img(class="email-header-image" src="/images/McLogo.png")
     h1 Welcome to MC!
-    p Hi #{username}
+    p Hi #{username},
     p Please click the button below to verify your account.
-    a(class="btn" href=`${url}` target="_blank" rel="noopener noreferrer") Verify Account
+    a(class="btn" href=`${url}` target="_blank" rel="noopener noreferrer" style=" padding: .4em .6em; background-color: #4BB250; color: whitesmoke; border-radius: 8px; font-weight: bold; text-decoration: none;") Verify Account

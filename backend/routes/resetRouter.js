@@ -91,7 +91,7 @@ router.route('/password').post((req, res) => {
       .send({
         template: 'forgotten-password',
         message: {
-          to: 'danyaalbeg@gmail.com'
+          to: user.email
         },
         locals: {
           username: user.username,
