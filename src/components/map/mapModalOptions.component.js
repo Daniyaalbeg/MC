@@ -10,7 +10,7 @@ import MapSettingLayerList from './MapSettingLayerList.component';
 const MapModalOptions = ({ dispatch, showModal, mapMode, filter, filterCategory }) => {
   return (
     <>
-      <MapSettingLayerList />
+      <MapSettingLayerList showModal={showModal} />
       <br />
       <MapModalOptionalSettings dispatch={dispatch} showModal={showModal} mapMode={mapMode} filter={filter} filterCategory={filterCategory} />
     </>

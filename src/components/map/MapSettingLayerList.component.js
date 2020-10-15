@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { loadingLayer, loadingLsoLayer } from '../../Actions/mapActions';
 import { Spinner } from 'react-bootstrap';
 
 import * as MapLayerType from './mapLayerTypes';
 
-const MapSettingLayerList = ({ dispatch, loading, mapLayer}) => {
+const MapSettingLayerList = ({ dispatch, loading, mapLayer, showModal }) => {
   const [activeButton, setActiveButton] = useState(mapLayer)
   const [activeToolTip, setActiveToolTip] = useState(null)
+  const firstUpdate = useRef(true);
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    if (mapLayer !== MapLayerType.NONE) {
+      showModal()
+    }
+  }, [mapLayer])
 
   const checkActiveState = (type) => {
     if (type === activeButton) {

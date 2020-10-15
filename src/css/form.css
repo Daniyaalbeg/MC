@@ -324,7 +324,7 @@
   cursor: pointer;
   padding: 0.2em 0.4em;
   margin: 0.2em;
-  border: 2px solid whitesmoke;
+  border: 2px solid rgb(201, 201, 201);
   /* background-color: whitesmoke; */
   border-radius: 8px;
   user-select: none;

@@ -27,21 +27,23 @@ const MainSelectedProjectView = ({ dispatch, selectedProject, props, loading, ha
   if (fetched && selectedProject !== null) {
     return (
       <div className="mainSelectedProjectViewContainer">
-        <div className="mainSelectedProjectsViewTitle">
-          <h1> {selectedProject.name} </h1>
-          <p> {selectedProject.tagline} </p>
-        </div>
-        <div className="mainSelectedProjectsViewImages mainSelectedProjectCards">
-          <SelectedProjectImageView project={selectedProject} />
-        </div>
-        <div className="mainSelectedProjectsViewCallToAction mainSelectedProjectCards">
-          <SelectedProjectCallToAction project={selectedProject} setActiveTab={setActiveTab} />
-        </div>
-        <div className="mainSelectedProjectsViewCategories mainSelectedProjectCards">
-          <SelectedProjectCategories project={selectedProject} />
-        </div>
-        <div className="mainSelectedProjectsViewInfo mainSelectedProjectCards">
-          <SelectedProjectInfoTabs project={selectedProject} activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="mainSelectedProjectView">
+          <div className="mainSelectedProjectsViewTitle">
+            <h1> {selectedProject.name} </h1>
+            <p> {selectedProject.tagline} </p>
+          </div>
+          <div className="mainSelectedProjectsViewImages mainSelectedProjectCards">
+            <SelectedProjectImageView project={selectedProject} />
+          </div>
+          <div className="mainSelectedProjectsViewCallToAction mainSelectedProjectCards">
+            <SelectedProjectCallToAction project={selectedProject} setActiveTab={setActiveTab} />
+          </div>
+          <div className="mainSelectedProjectsViewCategories mainSelectedProjectCards">
+            <SelectedProjectCategories project={selectedProject} />
+          </div>
+          <div className="mainSelectedProjectsViewInfo mainSelectedProjectCards">
+            <SelectedProjectInfoTabs project={selectedProject} activeTab={activeTab} setActiveTab={setActiveTab} />
+          </div>
         </div>
       </div>
     )

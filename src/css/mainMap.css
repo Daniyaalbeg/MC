@@ -212,6 +212,9 @@
   background-color: white !important;
   border-radius: 50%;
 }
+.gm-style-iw {
+  max-width: 328px !important;
+}
 .gm-style-iw-d {
   width: fit-content;
   margin: auto;
@@ -303,5 +306,8 @@
 @media only screen and (max-width: 600px) {
   .eventListView {
     display: none;
+  }
+  .mapView {
+    width: 100vw;
   }
 }

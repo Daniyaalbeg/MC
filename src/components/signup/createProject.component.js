@@ -227,7 +227,7 @@ const CreateProject = ({ dispatch, auth, orgID, loading, success, hasErrors, his
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Estimated project date</p>
+              <p className="formGroupHeader">Project date</p>
               <DatePicker
                 selected={formik.values.date}
                 onChange={(date) => {
@@ -244,7 +244,7 @@ const CreateProject = ({ dispatch, auth, orgID, loading, success, hasErrors, his
 
             <div className="formGroup">
               <p className="formGroupHeader">
-                Images of the Project (Under 1mb, only 3 images, files must have
+                Project Images (Under 1mb, only 3 images, files must have
                 extension of either .jpg, .jpeg or .png)
               </p>
               <Dropzone

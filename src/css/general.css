@@ -524,13 +524,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Animations */
 
-.grow { transition: all .2s ease-in-out; }
+.grow { transition: all .3s }
 .grow:hover { transform: scale(1.05); }
 
-.growIcon { transition: all .3s ease-in-out; }
+.growIcon { transition: all .3s }
 .growIcon:hover { transform: scale(1.3); }
 
-.growSmall { transition: all .2s ease-in-out; }
+.growSmall { transition: all .3s }
 .growSmall:hover { transform: scale(1.01); }
 
 @-webkit-keyframes bounce {
