@@ -19,6 +19,7 @@
 .loginForm {
   border-radius: 16px;
   width: 350px;
+  min-width: 300px;
   background-color: white;
   overflow: hidden;
   margin-bottom: 10%;
@@ -472,5 +473,9 @@
   .cardsDashContainer {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     margin-bottom: 64px;
+  }
+
+  .loginForm {
+    width: fit-content;
   }
 }

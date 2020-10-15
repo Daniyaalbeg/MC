@@ -342,6 +342,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .filterSearchBarStandard {
   width: 100%;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;

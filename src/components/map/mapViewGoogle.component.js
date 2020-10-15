@@ -71,7 +71,7 @@ const MapView = ({ justSelected, dispatch, mapMode, search, filter, filterCatego
   
   const center = {
     lat: 31.04318239643529,
-    lng:  74.04074184374998
+    lng:  70.04074184374998
   }
 
   const options = {
@@ -104,7 +104,7 @@ const MapView = ({ justSelected, dispatch, mapMode, search, filter, filterCatego
   }, [])
 
   const onMarkerClick = (objectId) => {
-    map.setCenter({ lat: objectKeys[objectId].location.coordinates[1], lng: objectKeys[objectId].location.coordinates[0] + 0.008 }) //0.008 guess value. In future need a concrete way to convert pixels to lat and long for centering
+    map.setCenter({ lat: objectKeys[objectId].location.coordinates[1], lng: objectKeys[objectId].location.coordinates[0] }) //0.008 guess value. In future need a concrete way to convert pixels to lat and long for centering
     map.setZoom(15)
     switch(mapMode) {
       case "PROJECTS":
@@ -153,7 +153,8 @@ const MapView = ({ justSelected, dispatch, mapMode, search, filter, filterCatego
   if (selectedObject && justSelected) {
     dispatch(justSelectedObject())
     //Hard code the moving map to centralise it. These values are pretty yolo only working for zoom level 15
-    map.setCenter({ lat: selectedObject.location.coordinates[1] + 0.0002628164259, lng: selectedObject.location.coordinates[0] + 0.009922714459})
+    // map.setCenter({ lat: selectedObject.location.coordinates[1] + 0.0002628164259, lng: selectedObject.location.coordinates[0] + 0.009922714459})
+    map.setCenter({ lat: selectedObject.location.coordinates[1], lng: selectedObject.location.coordinates[0]})
     // map.zoom = 15
     setTimeout(() => {
       map.setZoom(15)
