@@ -65,7 +65,7 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
           <br />
           <h6 className="text-muted"> Type of Work </h6>
           <div className="orgInfoIcons">
-          <WhatCategories types={org.areaOfWork} />
+            <WhatCategories types={org.areaOfWork} />
           </div>
           <br />
           <h6 className="text-muted"> Address </h6>
@@ -112,10 +112,10 @@ const OrganisationsInfoView = ({ dispatch, hasErrors, loading, orgs, fetched, pr
 }
 
 const MapStateToProps = (state, ownProps) => ({
-  loading: state.orgInfo.loading,
-  orgs: state.orgInfo.orgInfo,
-  fetched: state.orgInfo.fetched,
-  hasErrors: state.orgInfo.hasErrors,
+  loading: state.orgInfo.orgMainInfo.loading,
+  orgs: state.orgInfo.orgMainInfo.orgInfo,
+  fetched: state.orgInfo.orgMainInfo.fetched,
+  hasErrors: state.orgInfo.orgMainInfo.hasErrors,
   props: ownProps
 })
 

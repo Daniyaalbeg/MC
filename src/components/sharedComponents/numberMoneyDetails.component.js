@@ -4,7 +4,7 @@ export const MoneyNumberDetails = ({ name, number }) => {
   if (name !== null) {
     return (
       <>
-        <p className="supplierTitleSmall"> {name} </p>
+        <p className="smallTitle"> {name} </p>
         {number ? <p> {number} </p> : "Not Added" }
       </>
     )

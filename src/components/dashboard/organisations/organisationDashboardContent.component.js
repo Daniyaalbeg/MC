@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,19 +8,22 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import SingleOrganisationInfo from './singleOrganisationInfo.component';
 import OrganisationCard from './organisationCard.component';
 
-const OrganisationDashboardContent = ({ orgs }) => {
-  const [selectedOrg, setSelectedOrg] = useState(null)
+import { selectOrgDash } from '../../../Actions/orgActions';
+
+const OrganisationDashboardContent = ({ orgs, selectedOrg }) => {
 
   if (selectedOrg) {
     return (
-      <SingleOrganisationInfo org={selectedOrg} setSelectedOrg={setSelectedOrg} />
+      <SingleOrganisationInfo org={selectedOrg} />
     )
   } else {
-    return <OrganisationCards orgs={orgs} setSelectedOrg={setSelectedOrg} />
+    return <OrganisationCards orgs={orgs} />
   }
 }
 
-const OrganisationCards = ({ orgs, setSelectedOrg }) => {
+const OrganisationCards = ({ orgs }) => {
+  const dispatch = useDispatch()
+
   return (
     <>
     <div className="createNewOrganisationButton">
@@ -28,7 +32,7 @@ const OrganisationCards = ({ orgs, setSelectedOrg }) => {
     <div className="cardsDashContainer">
       {
         orgs.map((org) => {
-          return <OrganisationCard org={org} key={org._id} setSelectedOrg={setSelectedOrg} orgBGColour="orgCardYellow" orgTextColour="orgTextBlack" />
+          return <OrganisationCard org={org} key={org._id} setSelectedOrg={(org) => dispatch(selectOrgDash(org))} orgBGColour="orgCardYellow" orgTextColour="orgTextBlack" />
         })
       }
     </div>
@@ -36,4 +40,8 @@ const OrganisationCards = ({ orgs, setSelectedOrg }) => {
   )
 }
 
-export default OrganisationDashboardContent
+const MapStateToProps = (state) => ({
+  selectedOrg: state.orgInfo.orgDashInfo.selectedOrg
+})
+
+export default connect(MapStateToProps)(OrganisationDashboardContent)

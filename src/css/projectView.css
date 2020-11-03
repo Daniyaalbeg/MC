@@ -16,8 +16,9 @@
   'title title' 
   'images cta'
   'categories categories'
+  'sponsors sponsors'
   'info info';
-  grid-template-rows: auto 480px auto auto;
+  grid-template-rows: auto 480px auto auto auto;
   grid-template-columns: 65% 35%;
   grid-column-gap: 16px;
   grid-row-gap: 16px;
@@ -53,6 +54,11 @@
   align-items: center;
   padding: 8px;
 }
+.mainSelectedProjectsViewSponsors {
+  grid-area: sponsors;
+  padding: 16px;
+  text-align: center;
+}
 .mainSelectedProjectsViewInfo {
   grid-area: info;
 }
@@ -60,6 +66,32 @@
 .primaryCategory {
   border: 4px solid var(--main-light-green-color);
   border-radius: 50%;
+}
+
+.selectedProjectSponsorCardContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.selectedProjectSponsorCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: fit-content;
+  margin: 8px;
+}
+.selectedProjectSponsorCard:hover {
+  cursor: pointer;
+}
+.selectedProjectSponsorCard > img {
+  height: 80px;
+}
+.selectedProjectSponsorCard > h2 {
+  margin: 0;
+  margin-top: 4px;
 }
 
 .selectedProjectCallToActionView {
@@ -564,6 +596,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /* Dashboard Project related styles */
 
 .projectViewContainer {
@@ -764,6 +807,10 @@
   background-color: var(--main-light-green-color);
 }
 
+.publishButton {
+
+}
+
 .projectDashCard {
   background-color: white;
   width: 100%;
@@ -782,13 +829,15 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
   grid-column-gap: 16px;
   grid-row-gap: 16px;
   grid-template-areas: 
   'info image'
-  'other other';
+  'other other'
+  'sponsors sponsors';
   overflow-y: scroll;
+  margin-bottom: 16px;
 }
 .projectInfoCardA {
   grid-area: info;
@@ -799,7 +848,11 @@
 .projectInfoCardC {
   grid-area: other;
   height: fit-content;
-  min-height: 300px;
+  min-height: 200px;
+}
+.projectInfoCardD {
+  grid-area: sponsors;
+  height: fit-content;
 }
 
 .publishButtonListItems {
@@ -816,6 +869,174 @@
   color: whitesmoke;
 }
 
+.dashSponsorDonor {
+  width: 100%;
+  text-align: center;
+}
+.dashSponsorDonor > p {
+  margin-bottom: 4px;
+}
+.dashSponsorDonor > button {
+  margin: auto;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashSponsorDonor > button > svg {
+  margin-right: 8px;
+}
+
+.dashSponsorDonorHave {
+  width: 100%;
+  text-align: center;
+}
+.dashSponsorDonorHaveHeader > p {
+  margin-bottom: 0;
+}
+.dashSponsorDonorHaveHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.dashSponsorDonorHaveHeader > button {
+  margin-left: 8px;
+  border-radius: 50%;
+}
+
+.addSponsorForm {
+  padding: 32px;
+  width: 100%;
+}
+.textInputSponsor {
+  position: relative;
+  width: 100%;
+}
+.textInputSponsor > input {
+  margin: auto;
+  border-radius: 8px;
+  border: 1px solid #040404;
+  width: 100%;
+  padding-left: 8px;
+}
+.textInputSponsor > button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+.orgSearchResultsContainer {
+  /* position: absolute; */
+  padding: 2px 2px;
+  margin-top: 8px;
+  width: 100%;
+}
+.orgSearchResultsContainer > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.orgSearchResultsContainer > div:hover {
+  background-color: #F8F9FA;
+}
+.orgSearchResultsContainer > div > img {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.orgSearchResultsContainer > div > p {
+  margin: 0;
+}
+
+.selectedSponorsContainer {
+  margin-top: 8px;
+  width: 100%;
+}
+.selectedSponsor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: whitesmoke;
+  width: fit-content;
+  border-radius: 8px;
+  padding: 8px;
+  position: relative;
+}
+.selectedSponsor > svg {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
+}
+.selectedSponsor > img {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+}
+.selectedSponsor > p {
+  font-size: large;
+  margin: 0;
+}
+
+.sponsorRequestsContainer {
+  margin-top: 16px;
+}
+.sponsorRequestsContainer > h3 {
+  text-align: center;
+}
+.sponsorRequestsCardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.sponsorRequestCard {
+  text-align: center;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  width: fit-content;
+  padding: 8px;
+  max-height: 240px;
+  margin: 4px;
+}
+.sponsorRequestCard > .svg .fa-primary {
+
+}
+.sponsorRequestCardButtonsRow {
+  display: flex;
+  flex-direction: row;
+}
+.sponsorRequestCardButtonsRow > button {
+  width: 100%;
+}
+.sponsorRequestCardButtonsRow > button:first-child {
+  margin-right: 4px;
+}
+.sponsorRequestCardButtonsRow > button:last-child {
+  margin-right: 4px;
+}
+.sponsorRequestCard > img {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+}
+
+.sponsorRequestName {
+  font-size: large;
+  font-weight: bold;
+  margin: 0;
+}
+.sponsorRequestStatus {
+  margin-bottom: 4px;
+}
 
 
 .projectDashSupplyContainerGrid {
@@ -1107,6 +1328,25 @@
   background-color: rgb(92, 92, 92);
   overflow: hidden;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media only screen and (max-device-width: 768px) {

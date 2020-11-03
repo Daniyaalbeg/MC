@@ -16,7 +16,7 @@ const PublishButton = ({ project, loading, success, hasErrors }) => {
   if (!project.published && !success) {
     return (
       <>
-      <button className="publishButton standardButtonWithoutColour mcGreenBG" onClick={() => {
+      <button className={"publishButton standardButtonWithoutColour" + (project.published ? " mcGreenBG" : " mcRedBG")} onClick={() => {
         if ((project.supplies && project.supplies.length > 0) || project.funding || project.volunteer) {
           dispatch(publishingProject(project._id))
         } else {

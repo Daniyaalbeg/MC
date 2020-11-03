@@ -391,12 +391,6 @@
   padding-bottom: 16px;
   padding-top: 16px;
 }
-.genericModal > .modalCloseButton {
-  color: var(--main-green-color);
-}
-.genericModal > .modalCloseButton:hover {
-  color: var(--main-dark-green-color);
-}
 
 .genericModalBGRoot {
   position: fixed;
@@ -420,7 +414,7 @@
   max-width: 90vw;
   min-width: 200px;
   border-radius: 8px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-left: 64px;
   padding-right: 64px;
   z-index: 40;
@@ -429,11 +423,30 @@
   background-color: var(--main-bg-color);
   color: whitesmoke;
 }
-.genericModalRoot > .modalCloseButton {
-  color: whitesmoke;
+
+.modalCloseButtonLight {
+  color: var(--main-green-color) !important;
 }
-.genericModalRoot > .modalCloseButton:hover {
-  color: white;
+.modalCloseButtonLight:hover {
+  color: var(--main-dark-green-color) !important;
+}
+
+.modalCloseButtonDark {
+  color: whitesmoke !important;
+}
+.modalCloseButtonDark:hover {
+  color: white !important;
+}
+
+.modalCloseButton {
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--main-green-color)
+}
+.modalCloseButton:hover {
+  color: var(--main-dark-green-color)
 }
 
 

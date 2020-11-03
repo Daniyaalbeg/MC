@@ -6,7 +6,7 @@ import signUpReducer from './signUpReducer';
 import mapInfoReducer from './mapInfoReducer';
 import createEventReducer from './createEventReducer';
 import updateReducer from './updateReducer';
-import orgInfoReducer from './orgInfoReducer';
+import orgReducer from './orgReducer';
 import homeViewReducer from './homeViewReducer';
 import deleteReducer from './deleteReducer';
 import cnicReducer from './cnicReducer';
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   createEvent: createEventReducer,
   updateInfo: updateReducer,
   mapInfo: mapInfoReducer,
-  orgInfo: orgInfoReducer,
+  orgInfo: orgReducer,
   deleteInfo: deleteReducer,
   cnicInfo: cnicReducer,
   groupInfo: groupReducer,

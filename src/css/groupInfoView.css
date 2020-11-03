@@ -247,16 +247,6 @@
   text-decoration: none;
 }
 
-.modalCloseButton {
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  color: whitesmoke;
-}
-.modalCloseButton:hover {
-  color: white;
-}
 
 
 

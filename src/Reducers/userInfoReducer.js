@@ -73,6 +73,9 @@ export default function userInfoReducer(state = initialState, action) {
               if (org.projects) {
                 return {
                   ...org,
+                  sponsorRequests: org.sponsorRequests.map((request) => {
+                    return request
+                  }),
                   projects: org.projects.map((project) => {
                     return {
                       ...project,

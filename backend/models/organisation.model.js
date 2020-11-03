@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bankingDetailsSchema = require('./bankingDetails.model').bankingDetailSchema;
 const addressSchema = require('./address.model').addressSchema;
+const sponsor = require('./sponsor.model').sponsorSchema;
 
 
 const Schema = mongoose.Schema
@@ -80,6 +81,14 @@ const organisationSchema = new Schema({
       type: String,
       required: false
     },
+    sponsoring: [{
+      type: sponsor,
+      required: false
+    }],
+    sponsorRequests: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ProjectSponsorRequest'
+    }],
     verifiedStepA: {
       type: Boolean,
       required: true
@@ -107,6 +116,9 @@ const organisationSchema = new Schema({
 }, {
     timestamps: true,
 });
+
+organisationSchema.index({ name: 'text', description: 'text' })
+
 
 const Organisation = mongoose.model('Organisation', organisationSchema);
 

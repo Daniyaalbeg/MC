@@ -27,7 +27,7 @@ const MapListControl = ({ dispatch, setShowModal }) => {
     <form className="searchBarContainer" onSubmit={(e) => { e.preventDefault() }}>
       <div className="searchBar">
         <FontAwesomeIcon icon={faSearch} className="searchIcon" size="1x"/>
-        <input type='text' onChange={onSearchChange} className="textInput"/>
+        <input type='text' onChange={onSearchChange} className="textInputMap"/>
         <button onClick={() => dispatch(toggleMapModal())} className="mapSettingsButton"> <FontAwesomeIcon icon={faTh} /> Categories </button>
       </div>
       <ChangeMapModeButton />

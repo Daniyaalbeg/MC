@@ -117,10 +117,10 @@ const OrgCards = (props) => {
 
 
 const MapStateToProps = (state) => ({
-  loading: state.orgInfo.loading,
-  hasErrors: state.orgInfo.hasErrors,
-	fetched: state.orgInfo.fetched,
-	orgInfo: filterAndSearchOrg(state.orgInfo.orgInfo, state.orgInfo.filterCategory, state.orgInfo.filterProject, state.orgInfo.search)
+  loading: state.orgInfo.orgMainInfo.loading,
+  hasErrors: state.orgInfo.orgMainInfo.hasErrors,
+	fetched: state.orgInfo.orgMainInfo.fetched,
+	orgInfo: filterAndSearchOrg(state.orgInfo.orgMainInfo.orgInfo, state.orgInfo.orgMainInfo.filterCategory, state.orgInfo.orgMainInfo.filterProject, state.orgInfo.orgMainInfo.search)
 })
 
 export default connect(MapStateToProps)(OrganisationsView);

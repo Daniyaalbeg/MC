@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { selectingObject, toggleShowList, toggleMapModal, selectedProjectMarker } from '../../Actions/mapSelectActions';
 import filterAndSearch from '../utilities/filterAndSearch';
 import { searchEvents, filterEvents } from '../../Actions/filterSearchMapAction';
-import { GenericModalPortal, MapModal } from '../sharedComponents/genericModal.component';
+import { GenericModalPortal, GenericModalNew } from '../sharedComponents/genericModal.component';
 import LoadingSpinner from '../utilities/loadingSpinner.component';
 
 import MapModalOptions from './mapModalOptions.component';
@@ -21,9 +21,9 @@ const MapListView = ({dispatch, filteredObjects, mapMode, showModal, selectedObj
       <div className="eventListContainer">
         {showModal &&
           <GenericModalPortal>
-            <MapModal showModal={() => dispatch(toggleMapModal())}>
+            <GenericModalNew scheme="dark" showModal={() => dispatch(toggleMapModal())}>
               <MapModalOptions showModal={() => dispatch(toggleMapModal())} />
-            </MapModal>
+            </GenericModalNew>
           </GenericModalPortal>
         }
         <MapListControl dispatch={dispatch} />

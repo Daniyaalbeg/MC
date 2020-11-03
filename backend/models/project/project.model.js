@@ -6,6 +6,7 @@ const fundingSchema = require('./funding.model').fundingSchema;
 const updateSchema = require('./update.model').updateSchema;
 const faqSchema = require('./faq.model').faqSchema;
 const impactSchema = require('./impact.model').impactSchema;
+const sponsorSchema = require('../sponsor.model').sponsorSchema;
 
 const Schema = mongoose.Schema
 
@@ -54,6 +55,16 @@ const projectSchema = new Schema({
     type: String,
     required: true
   }],
+  sponsors: [{
+    type: sponsorSchema,
+    required: false
+  }],
+  donors: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: false
+  }],
+
   //Impact
   impact: {
     type: impactSchema,
@@ -104,6 +115,10 @@ const projectSchema = new Schema({
     ref: 'Organisation',
     required: true
   },
+  sponsorRequests: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ProjectSponsorRequest'
+  }],
   published: {
     type: Boolean,
     required: true

@@ -163,6 +163,40 @@ router.route('/me').get(verifyToken, (req, res, next) => {
       }
     }
   })
+  .populate({
+    path: 'createdOrganisations',
+    populate: {
+      path: 'projects',
+      model: 'Project',
+      populate: {
+        path: 'sponsorRequests',
+        model: 'ProjectSponsorRequest'
+      }
+    }
+  })
+  .populate({
+    path: 'createdOrganisations',
+    populate: {
+      path: 'projects',
+      populate: {
+        path: 'sponsorRequests',
+        populate: {
+          path: 'requestedOrganisation',
+          select: 'name imageURL'
+        }
+      }
+    }
+  })
+  .populate({
+    path: 'createdOrganisations',
+    populate: {
+      path: 'sponsorRequests',
+      populate: {
+        path: 'requestingProject',
+        select: 'name imageURL'
+      }
+    }
+  })
   .populate('createdGroups')
   .lean()
   .exec((err, user) => {

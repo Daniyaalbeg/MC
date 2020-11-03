@@ -1,15 +1,18 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
+const db = mongoose.connection
 const { Organisation } = require('../models/organisation.model');
 const User = require('../models/user.model');
 const verifyToken = require('../verifyToken');
 const { Project } = require('../models/project/project.model');
 const { Supply } = require('../models/project/supply.model');
-const { FAQ } =require('../models/project/faq.model');
+const { FAQ } = require('../models/project/faq.model');
 const { Comment } = require('../models/project/comment.model');
 const { SupplyAmountReceived } = require('../models/project/userSupplyAmountRecieved.model')
-const mongoose = require('mongoose');
+const { ProjectSponsorRequest } = require('../models/project/projectSponsorRequest.model');
 const { Update } = require('../models/project/update.model');
 const { Funding } = require('../models/project/funding.model');
+
 
 //Map fetch projects
 router.route('/map').get((req, res) => {
@@ -528,6 +531,117 @@ router.route('/acceptSupplyRequest/:projectID/:supplyID/:supplyRequestID/').post
         return res.status(500).json({ errorDesc: "Error saving the project" })
       })
 
+    })
+  })
+})
+
+
+
+//Delete a sponsor Request
+router.route('/deleteSponsorRequest/:id').delete(verifyToken, (req, res, next) => {
+  ProjectSponsorRequest.findById(req.params.id)
+  .populate('requestedOrganisation', 'createdBy')
+  .then(async (request) => {
+    if (request.requestedOrganisation.createdBy.toString() !== req.id) {
+      return res.status(401).json({ errorDesc: "Not authorised to perform this action." })
+    }
+
+    const session = await db.startSession()
+    session.startTransaction();
+
+    Promise.all([
+      Project.updateOne( { _id: request.requestingProject }, { $pullAll: { sponsorRequests: [request._id] } } ).session(session),
+      Organisation.updateOne( { _id: request.requestedOrganisation }, { $pullAll: { sponsorRequests: [request._id] } } ).session(session),
+      ProjectSponsorRequest.findOneAndDelete({ _id: request._id }).session(session)
+    ])
+    .then(async (responses) => {
+      await session.commitTransaction()
+      session.endSession()
+      return res.status(200).send("success")
+    })
+    .catch(async (error) => {
+      console.log(error);
+      await session.abortTransaction()
+      session.endSession()
+      return res.status(500).json({ errorDesc: "There was a problem" });
+    })
+
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({ errorDesc: "There was a problem finding the request." });
+  })
+})
+
+//create a sponsor request
+router.route('/createSponsorRequest/:id').post(verifyToken, async (req, res, next) => {
+  Project.findById(req.params.id, async (err, project) => {
+    if (err) {
+      console.log(err)
+      return res.status(400).json({ errorDesc: "Error finding project" })
+    }
+    if (!project) return res.status(400).json({ errorDesc: "Project found but missing" })
+
+    if (project.createdByUser.toString() !== req.id) {
+      return res.status(401).json({ errorDesc: "Not authorised to perform this action." })
+    }
+
+    // ProjectSponsorRequest.find({ requestingProject: req.params.id, requestedOrganisation:  })
+
+    //NOTE: Add sponsor id verification here at some point
+
+    const session = await db.startSession()
+    session.startTransaction();
+
+    const requests = req.body.selectedSponsors.map((sponsor) => {
+      const createdRequest = new ProjectSponsorRequest({
+        requestingProject: req.params.id,
+        requestedOrganisation: sponsor,
+        accepted: false,
+        pending: true
+      })
+
+      return createdRequest.save({ session })
+    })
+
+    Promise.all(requests)
+    .then((responses) => {
+      const promises = responses.map((response) => {
+        return Organisation.findById(response.requestedOrganisation).session()
+      })
+      Promise.all(promises)
+      .then((orgResponses) => {
+        const promises2 = orgResponses.map((org, index) => {
+          org.sponsorRequests.unshift(responses[index]._id)
+          return org.save({ session })
+        })
+        Promise.all(promises2)
+        .then((orgSaveResponses) => {
+          project.sponsorRequests = project.sponsorRequests.concat(responses.map((response1) => response1._id))
+          project.save({ session })
+          .then(async () => {
+            await session.commitTransaction()
+            session.endSession()
+            return res.status(200).send("success")
+          })
+          .catch(async (err) => {
+            await session.abortTransaction()
+            return res.status(500).json({ errorDesc: "Failed creating the stuff" })
+          })
+        })
+        .catch(async (err) => {
+          await session.abortTransaction()
+          return res.status(500).json({ errorDesc: "Failed creating the stuff" })
+        })
+      })
+      .catch(async (err) => {
+        await session.abortTransaction()
+        return res.status(500).json({ errorDesc: "Failed creating the stuff" })
+      })
+    })
+    .catch(async (err) => {
+      await session.abortTransaction()
+      return res.status(500).json({ errorDesc: "Failed creating the stuff" })
     })
   })
 })

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API, rootURL, production } from '../config'
 import { selectProjectDash, selectedProjectDashBoardSupply, selectProjectDashSupply } from './projectActions'
+import { selectOrgDash } from './orgActions';
 
 export const GET_USER_INFO = "GET_USER_INFO";
 export const GET_USER_INFO_SUCCESS = "GET_USER_INFO_SUCCESS";
@@ -126,18 +127,26 @@ export function getUserInfoBackground() {
       dispatch(gettingUserInfoBackgroundSuccess(res.data));
       // HACK dispatch a new selectProject action with the new state if you have selected a project on the dashboard. This is disgusting. Only major fix is normalising the state tree
       const state = getState()
+      const selectedOrgDash = state.orgInfo.orgDashInfo.selectedOrg
       const selectedProjectDashBoard = state.projectInfo.createProject.selectedProjectDashBoard
       const selectedProjectDashBoardSupply = state.projectInfo.createProject.selectedProjectDashBoardSupply
       const user = state.userInfo.user
-      if (selectedProjectDashBoard) {
+      if (selectedProjectDashBoard || selectedOrgDash) {
         for (let i = 0; i < user.createdOrganisations.length; i++) {
+          if (selectedOrgDash) {
+            if (selectedOrgDash._id === user.createdOrganisations[i]._id) {
+              dispatch(selectOrgDash(user.createdOrganisations[i]))
+            }
+          }
           if (!user.createdOrganisations[i].projects || user.createdOrganisations[i].projects.length === 0) continue
           for (let j = 0; j < user.createdOrganisations[i].projects.length; j++) {
+            if (!selectedProjectDashBoard) continue
             if (user.createdOrganisations[i].projects[j]._id.toString() === selectedProjectDashBoard._id) {
               const newProject = user.createdOrganisations[i].projects[j]
               dispatch(selectProjectDash(newProject))
               if (newProject.supplies && newProject.supplies.length !== 0) {
                 for (let k = 0; k < newProject.supplies.length; k++) {
+                  if (!selectedProjectDashBoardSupply) continue
                   if (newProject.supplies[k]._id.toString() === selectedProjectDashBoardSupply._id.toString()) {
                     dispatch(selectProjectDashSupply(newProject.supplies[k]))
                     break

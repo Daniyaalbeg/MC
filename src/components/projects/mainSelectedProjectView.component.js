@@ -7,6 +7,7 @@ import SelectedProjectImageView from './selectedProjectImageView.component';
 import SelectedProjectCallToAction from './callToAction/selectedProjectCallToAction.component';
 import SelectedProjectInfoTabs from './selectedProjectInfoTabs.component';
 import SelectedProjectCategories from './selectedProjectCategories.component'
+import SelectedProjectSponsors from './selectedProjectSponsor.component';
 
 import { getProject } from '../../Actions/projectActions';
 
@@ -41,6 +42,7 @@ const MainSelectedProjectView = ({ dispatch, selectedProject, props, loading, ha
           <div className="mainSelectedProjectsViewCategories mainSelectedProjectCards">
             <SelectedProjectCategories project={selectedProject} />
           </div>
+          <SelectedProjectSponsors project={selectedProject} />
           <div className="mainSelectedProjectsViewInfo mainSelectedProjectCards">
             <SelectedProjectInfoTabs project={selectedProject} activeTab={activeTab} setActiveTab={setActiveTab} />
           </div>

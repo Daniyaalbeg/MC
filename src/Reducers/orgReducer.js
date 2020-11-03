@@ -1,5 +1,23 @@
 import * as actions from '../Actions/getOrgInfoActions';
+import * as orgActions from '../Actions/orgActions';
 import * as filterSearchActions from '../Actions/filterSearchOrgAction';
+import { combineReducers } from 'redux'
+
+const initialStateOrgDash = {
+  selectedOrg: null
+}
+
+function orgInfoDashReducer(state = initialStateOrgDash, action) {
+  switch(action.type) {
+    case orgActions.SELECT_ORG_DASHBOARD:
+      return {
+        ...state,
+        selectedOrg: action.payload 
+      }
+    default: 
+      return state
+  }
+}
 
 const initialState = {
   loading: false,
@@ -11,7 +29,7 @@ const initialState = {
   search: ""
 }
 
-export default function orgInfoReducer(state = initialState, action) {
+function orgInfoReducer(state = initialState, action) {
   switch(action.type) {
     case actions.GET_ORG_INFO:
       return {
@@ -51,3 +69,8 @@ export default function orgInfoReducer(state = initialState, action) {
       return state;
   }
 }
+
+export default combineReducers({
+  orgMainInfo: orgInfoReducer, 
+  orgDashInfo: orgInfoDashReducer
+})

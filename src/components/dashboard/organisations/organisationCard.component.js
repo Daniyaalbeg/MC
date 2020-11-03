@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
 import StandardCard from '../../sharedComponents/standardCard.component';
 
 const OrganisationCard = ({ org, setSelectedOrg, orgBGColour, orgTextColour }) => {

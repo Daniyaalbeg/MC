@@ -192,8 +192,8 @@ a, a:focus, a:active, a:hover, a:visited {
   height: 80%;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
 }
 .loading-spinner > svg {
   height: auto;
@@ -340,6 +340,15 @@ p, h1, h2, h3, h4, h5, h6 {
   font-size: larger;
 }
 
+.largeTitle {
+  font-size: medium;
+  margin-bottom: 4px;
+}
+.smallTitle {
+  font-size: small;
+  margin: 0;
+}
+
 .filterSearchBarStandard {
   width: 100%;
   height: fit-content;
@@ -361,8 +370,7 @@ p, h1, h2, h3, h4, h5, h6 {
   transform: rotate(90deg);
 }
 .addressTitle {
-  font-weight: bold;
-  font-size: medium;
+  font-size: small;
   margin-bottom: 0em;
 }
 .addressContainer {

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ProjectInfoSponsorDonor from './infoTab/sponsorDonor.component';
+
 import ImageCarousel from '../../sharedComponents/imageCarousel.component';
 import { iconForText } from '../../iconController/iconCategories.component';
 
@@ -17,6 +19,9 @@ const ProjectInfoTab = ({ project }) => {
       </div>
       <div className="projectDashCard projectInfoCardC">
         <ProjectInfoSolutionProblem project={project} />
+      </div>
+      <div className="projectDashCard projectInfoCardD">
+        <ProjectInfoSponsorDonor project={project} />
       </div>
     </div>
   )

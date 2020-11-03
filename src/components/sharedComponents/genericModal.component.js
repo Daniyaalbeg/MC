@@ -15,11 +15,14 @@ const GenericModal = ({ showModal, children }) => {
   )
 }
 
-export const MapModal = ({ showModal, children }) => {
+export const GenericModalNew = ({ scheme="light", showModal, children }) => {
   return (
     <div className="genericModalBGRoot" onClick={() => showModal()}>
-      <div className="genericModalRoot" onClick={(e) => e.stopPropagation()}>
-        <FontAwesomeIcon icon={faTimesCircle} size="2x" className="modalCloseButton" onClick={() => showModal(false)} />
+      <div className="genericModalRoot" style={{
+        backgroundColor: (scheme==="light" ? "#FFFFFF" : "#2b353a"),
+        color: (scheme==="light" ? "#040404" : "whitesmoke")
+      }} onClick={(e) => e.stopPropagation()}>
+        <FontAwesomeIcon icon={faTimesCircle} size="2x" className={"modalCloseButton" + (scheme==="light" ? " modalCloseButtonLight" : " modalCloseButtonDark")} onClick={() => showModal(false)} />
         {children}
       </div>
     </div>
