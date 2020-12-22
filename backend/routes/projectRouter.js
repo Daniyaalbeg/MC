@@ -12,6 +12,8 @@ const { SupplyAmountReceived } = require('../models/project/userSupplyAmountReci
 const { ProjectSponsorRequest } = require('../models/project/projectSponsorRequest.model');
 const { Update } = require('../models/project/update.model');
 const { Funding } = require('../models/project/funding.model');
+const { ProjectVolunteer } = require('../models/project/projectVolunteer.model');
+const { VolunteerRequest } = require('../models/volunteer/volunteerRequest.model');
 
 
 //Map fetch projects
@@ -48,7 +50,7 @@ router.route('/map').get((req, res) => {
 
 // Fetch all projects
 router.route('/').get((req, res) => {
-  Project.find({ approved: true, published: true }, { createdByUser: 0 })
+  Project.find({ approved: true, published: true }, { createdByUser: 0, 'volunteer.volunteerRequests': 0,  sponsorRequests: 0, 'supplies.suppliedBy' : 0 })
   .populate('createdByOrganisation', ['name', 'imageUrl'])
   .lean()
   .then((projects) => {
@@ -63,7 +65,7 @@ router.route('/').get((req, res) => {
 // Fetch a project
 router.route('/:id').get((req, res) => {
   //Santise the project info
-  Project.findById(req.params.id, { createdByUser: 0, followedBy: 0 }, { approved: true, published: true })
+  Project.findById(req.params.id, { createdByUser: 0, 'volunteer.volunteerRequests': 0,  sponsorRequests: 0, followedBy: 0, 'supplies.suppliedBy' : 0 }, { approved: true, published: true })
   .populate('createdByOrganisation', ['name', 'imageURL', 'contactName', 'contactNumber', 'bankingDetails'])
   .lean()
   .then((project) => {
@@ -315,6 +317,43 @@ router.route('/funding/:id/').post(verifyToken, (req, res, next) => {
   })
 })
 
+//Create volunteer request
+router.route('/volunteer/:id/').post(verifyToken, (req, res, next) => {
+  Project.findById(req.params.id, (err, project) => {
+    if (err) {
+      console.log(err)
+      return res.status(400).json({ errorDesc: "Error finding project" })
+    }
+    if (!project) return res.status(400).json({ errorDesc: "Project found but missing" })
+
+    if (project.createdByUser.toString() !== req.id) {
+      console.log(project.createdByUser)
+      console.log(req.id)
+      return res.status(401).json({ errorDesc: "Not authorised to perform this action." })
+    }
+
+    volunteeringInfo = new ProjectVolunteer({
+      volunteersNeeded: req.body.volunteersNeeded,
+      volunteersObtained: 0,
+      description: req.body.description,
+      skills: req.body.skills,
+      volunteerRequests: [],
+    })  
+
+    project.volunteeringInfo = volunteeringInfo
+
+    project.save()
+    .then((project) => {
+      return res.status(200).json(volunteeringInfo)
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.status(500).json({ errorDesc: "Error saving the project" })
+    })
+
+  })
+})
+
 
 // Create an FAQ
 router.route('/faq/:id/').post(verifyToken, (req, res, next) => {
@@ -428,6 +467,125 @@ router.route('/update/:id/').post(verifyToken, (req, res, next) => {
 
 
 // Public Project related calls
+
+// Create Project Volunteer Request
+router.route('/volunteerRequest/:id').post(verifyToken, (req, res, next) => {
+  Project
+  .findById(req.params.id)
+  .populate('volunteer.volunteerRequests', [])
+  .exec(async (err, project) => {
+    if (err) {
+      console.log(err)
+      return res.status(400).json({ errorDesc: "Error finding project" })
+    }
+    if (!project) return res.status(400).json({ errorDesc: "Project found but missing" })
+
+    //Check if volunteer already requested
+    for (let i = 0; i < project.volunteer.volunteerRequests.length; i++) {
+      if (project.volunteer.volunteerRequests[i].requestingVolunteer.toString() === req.id) {
+        return res.status(409).json({ errorDesc: "You have already registered for this"})
+      }
+    }
+
+    // if (project.createdByUser.toString() !== req.id) {
+    //   return res.status(401).json({ errorDesc: "Not authorised to perform this action." })
+    // }
+
+    const volunteerRequest = new VolunteerRequest({
+      requestingVolunteer: req.id,
+      requestedProject: project._id,
+      projectCreatedBy: project.createdByUser,
+      description: req.body.description,
+      motivation: req.body.motivation,
+      previousExperience: req.body.previousExperience,
+      availability: req.body.availability,
+      additionalInformation: req.body.additionalInformation,
+      declinedReason: "Not declined",
+      status: "PENDING"
+    })
+
+    const session = await db.startSession()
+
+    try {
+      await session.withTransaction(async () => {
+        await volunteerRequest.save({ session })
+        .then(async (savedVR) => {
+          await Promise.all([
+            Project.updateOne( { _id: project._id }, { $push: { 'volunteer.volunteerRequests': savedVR._id } } ).session(session),
+            User.updateOne({ _id: req.id }, { $push: { 'volunteer.volunteering': savedVR._id }}).session(session)
+          ])
+          .then(async () => {
+            await session.commitTransaction()
+            return res.status(200).send('success')
+          })
+          .catch(async (err) => {
+            console.log(err)
+            await session.abortTransaction()
+            console.log(err)
+            return
+          })
+        })
+        .catch(async (err) => {
+          console.error(err)
+          await session.abortTransaction()
+          return
+        })
+      })
+
+    } catch (err) {
+      console.error("transaction aborted, something went wrong")
+      return res.status(500).json({ errorDesc: "No idea..."})
+    } finally {
+      session.endSession()
+    }
+    
+    
+  })
+})
+
+//Accept volunteer request
+router.route('/volunteerRequest/:id').put(verifyToken, (req, res, next) => {
+  VolunteerRequest.findById(req.params.id, (err, request) => {
+    if (request.projectCreatedBy.toString() !== req.id) {
+      return res.status(401).json({ errorDesc: "Not authorised to perform this action." })
+    }
+
+    request.status = "ACCEPTED"
+
+    //send email
+
+    request.save()
+    .then((req) => {
+      return res.status(200).send('success')
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.status(500).json({ errorDesc: "Error saving the request" })
+    })
+  })
+})
+
+//Reject volunteer request
+router.route('/volunteerRequest/:id').delete(verifyToken, (req, res, next) => {
+  VolunteerRequest.findById(req.params.id, (err, request) => {
+    if (request.projectCreatedBy.toString() !== req.id) {
+      return res.status(401).json({ errorDesc: "Not authorised to perform this action." })
+    }
+
+    request.status = "DECLINED"
+
+    //send email
+
+    request.save()
+    .then((req) => {
+      return res.status(200).send('success')
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.status(500).json({ errorDesc: "Error saving the request" })
+    })
+  })
+})
 
 // Create Supply Request
 router.route('/supplyRequest/:projectID/:supplyID').post(verifyToken, (req, res, next) => {

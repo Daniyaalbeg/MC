@@ -1,7 +1,6 @@
 import React from 'react';
-import LoginForm from './loginForm.component'
+import LoginContainer from './login/loginContainer.component';
 import DashboardView from './dashboardView.component';
-import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import '../../css/dashboard.css'
 
@@ -15,17 +14,7 @@ const DashboardContainer = ({ auth }) => {
       </div>
     )
   } else {
-    return (
-      <>
-      <Helmet>
-        <html lang="en" />
-        <meta name="description" content="Dashboard for your MC account where you can add, edit or delete all your information" />
-      </Helmet>
-      <div className="loginFormContainer">
-        <LoginForm />
-      </div>
-      </>
-    )
+    return <LoginContainer />
   }
 }
 

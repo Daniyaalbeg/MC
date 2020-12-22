@@ -3,7 +3,7 @@ import React from 'react';
 import ProjectCardSheet from './projectCardSheet.component';
 import imagePlaceholder from '../../../../assets/Images/temp.jpg';
 
-const ProjectCard = ({ project, onClick }) => {
+const ProjectCard = ({ project, suppliesDict, volunteerDict, onClick }) => {
   let image = null
   if (project.images && project.images.length !== 0) {
     image = project.images[0]
@@ -14,7 +14,7 @@ const ProjectCard = ({ project, onClick }) => {
   return (
     <div className="projectCardContainer">
       <div className="projectCardSheet">
-        <ProjectCardSheet project={project} />
+        <ProjectCardSheet project={project} suppliesDict={suppliesDict} volunteerDict={volunteerDict} />
       </div>
       <div className="projectCard" onClick={onClick}>
         <div className="projectCardTop">

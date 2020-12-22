@@ -88,6 +88,8 @@ const CreateGroup = ({ dispatch, auth, loading, hasErrors, success, props, orgs,
           agreedToTerms: false,
         }}
         validationSchema={validationSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={(values) => {
           const group = {
             groupName: values.groupName,

@@ -166,6 +166,8 @@ const Signup = ({ dispatch, hasErrors, loading, success, auth, signUpError }) =>
           agreedToTerms: false,
         }}
         validationSchema={validationSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={(values) => {
           const bankingDetails = {
             bankName: values.bankName,

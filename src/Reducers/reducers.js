@@ -12,6 +12,7 @@ import deleteReducer from './deleteReducer';
 import cnicReducer from './cnicReducer';
 import groupReducer from './groupReducer';
 import projectReducer from './projectReducer';
+// import volunteerReducer from './volunteerReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   deleteInfo: deleteReducer,
   cnicInfo: cnicReducer,
   groupInfo: groupReducer,
-  projectInfo: projectReducer
+  projectInfo: projectReducer,
+  // volunteerInfo: volunteerReducer
 });
 
 export default rootReducer;

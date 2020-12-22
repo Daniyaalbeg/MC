@@ -49,6 +49,8 @@ const AddSupplyForm = ({ project, showModal, dispatch, loading, hasErrors, succe
       amountReceived: 0,
     },
     validationSchema: validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => {
       const supply = {
         name: values.name,

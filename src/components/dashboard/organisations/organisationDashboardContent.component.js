@@ -10,18 +10,18 @@ import OrganisationCard from './organisationCard.component';
 
 import { selectOrgDash } from '../../../Actions/orgActions';
 
-const OrganisationDashboardContent = ({ orgs, selectedOrg }) => {
+const OrganisationDashboardContent = ({ orgsIdList, selectedOrg, orgsDict }) => {
 
   if (selectedOrg) {
     return (
-      <SingleOrganisationInfo org={selectedOrg} />
+      <SingleOrganisationInfo org={orgsDict[selectedOrg]} />
     )
   } else {
-    return <OrganisationCards orgs={orgs} />
+    return <OrganisationCards orgsIdList={orgsIdList} orgsDict={orgsDict} />
   }
 }
 
-const OrganisationCards = ({ orgs }) => {
+const OrganisationCards = ({ orgsIdList, orgsDict }) => {
   const dispatch = useDispatch()
 
   return (
@@ -31,8 +31,8 @@ const OrganisationCards = ({ orgs }) => {
     </div>
     <div className="cardsDashContainer">
       {
-        orgs.map((org) => {
-          return <OrganisationCard org={org} key={org._id} setSelectedOrg={(org) => dispatch(selectOrgDash(org))} orgBGColour="orgCardYellow" orgTextColour="orgTextBlack" />
+        orgsIdList.map((org) => {
+          return <OrganisationCard org={orgsDict[org]} key={orgsDict[org]._id} setSelectedOrg={() => dispatch(selectOrgDash(org))} orgBGColour="orgCardYellow" orgTextColour="orgTextBlack" />
         })
       }
     </div>
@@ -41,7 +41,8 @@ const OrganisationCards = ({ orgs }) => {
 }
 
 const MapStateToProps = (state) => ({
-  selectedOrg: state.orgInfo.orgDashInfo.selectedOrg
+  selectedOrg: state.orgInfo.orgDashInfo.selectedOrg,
+  orgsDict: state.userInfo.createdOrganisations
 })
 
 export default connect(MapStateToProps)(OrganisationDashboardContent)

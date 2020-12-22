@@ -295,6 +295,28 @@ export const createSupply = (data) => {
   }
 }
 
+export const createVolunteerRequest = (data) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    axios({
+      method: 'post',
+      url: rootURL(production) + API + '/project/volunteer/' + data.project._id ,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include',
+      data: data
+    })
+    .then((res) => {
+      dispatch(changeProjectItemSuccess(res.data))
+      dispatch(getUserInfoBackground())
+    })
+    .catch((error) => {
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
 export const acceptSupplyRequest = (projectID, supplyID, supplyRequestID) => {
   return async dispatch => {
     dispatch(changeProjectItem())
@@ -389,6 +411,48 @@ const sendCreateUpdateRequest = (dispatch, data) => {
   })
 }
 
+export const declineVolunteerRequest = (requestID) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    axios({
+      method: 'delete',
+      url: `${rootURL(production) + API}/project/volunteerRequest/${requestID}`,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(changeProjectItemSuccess())
+      dispatch(getUserInfoBackground())
+    })
+    .catch((error) => {
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
+export const acceptVolunteerRequest = (requestID) => {
+  return async dispatch => {
+    dispatch(changeProjectItem())
+
+    axios({
+      method: 'put',
+      url: `${rootURL(production) + API}/project/volunteerRequest/${requestID}`,
+      headers: {'Content-Type': 'application/json'},
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(changeProjectItemSuccess())
+      dispatch(getUserInfoBackground())
+    })
+    .catch((error) => {
+      dispatch(changeProjectItemFailure(error))
+    })
+  }
+}
+
 
 
 
@@ -418,7 +482,7 @@ export const createPublicProjectItemReset = () => ({
   type: CREATE_PUBLIC_PROJECT_ITEM_RESET
 })
 
-export const creatingPublicProjectItem = (data, projectID, supplyID) => {
+export const creatingPublicProjectSupply = (data, projectID, supplyID) => {
   return async dispatch => {
     dispatch(createPublicProjectItem())
 
@@ -438,6 +502,29 @@ export const creatingPublicProjectItem = (data, projectID, supplyID) => {
     })
   }
 }
+
+export const creatingPublicProjectVolunteerRequest = (data, projectID) => {
+  return async dispatch => {
+    dispatch(createPublicProjectItem())
+
+    axios({
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      data: data,
+      url: `${rootURL(production) + API}/project/volunteerRequest/${projectID}`,
+      withCredentials: true,
+      credentials: 'include'
+    })
+    .then((res) => {
+      dispatch(createPublicProjectItemSuccess(res.data))
+    })
+    .catch((error) => {
+      dispatch(createPublicProjectItemFailure())
+    })
+  }
+}
+
+
 
 export const CREATE_COMMENT = "CREATE_COMMENT"
 export const CREATE_COMMENT_SUCCESS = "CREATE_COMMENT_SUCCESS"

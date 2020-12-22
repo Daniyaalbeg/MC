@@ -38,6 +38,8 @@ const ProjectFundingForm = ({ dispatch, loading, success, hasErrors, project, se
       fundingUsedFor: project.funding ? project.funding.fundingUsedFor : "",
     },
     validationSchema: validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => {
       const funding = {
         fundingNeeded: values.fundingNeeded,

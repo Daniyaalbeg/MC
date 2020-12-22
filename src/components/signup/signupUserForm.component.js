@@ -10,10 +10,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/pro-solid-svg-icons";
 
 const validationSchema = Yup.object().shape({
-  firstname: Yup.string()
+  firstName: Yup.string()
   .required("*First name is required")
   .max(100, "*First name must be less than 100 charachters"),
-  lastname: Yup.string()
+  lastName: Yup.string()
   .required("*Last name is required")
   .max(100, "*Last name must be less than 100 charachters"),
   email: Yup.string()
@@ -32,6 +32,9 @@ const validationSchema = Yup.object().shape({
   .matches("", )
   // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/, "*Password must contain an uppercase, lowercase letter, number and special charachter"),
   .matches(/(?=^.{5,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=(.*\d){1,}))((?!.*[",;&|'])|(?=(.*\W){1,}))(?!.*[",;&|'])^.*$/, "*Password must contain an uppercase, lowercase letter, and number"),
+  confirmPassword: Yup.string()
+  .oneOf([Yup.ref('password'), null], "*Passwords do not match")
+  .required("*Password is required"),
   mobile: Yup.string()
   .required("*Number is required")
   .min(7, "*Number must be longer than 7 charachters")
@@ -65,11 +68,12 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
 
   const formik = useFormik({
     initialValues: {
-      firstname: "",
-      lastname: "",
+      firstName: "",
+      lastName: "",
       email: "",
       username: "",
       password: "",
+      confirmPassword: "",
       mobile: "",
       cnic: "",
       addressLine1: "",
@@ -80,10 +84,12 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
       agreedToTerms: false
     },
     validationSchema: validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => {
       const data = {
-        firstname: values.firstname,
-        lastname: values.lastname,
+        firstName: values.firstName,
+        lastName: values.lastName,
         email: values.email,
         username: values.username,
         password: values.password,
@@ -116,14 +122,14 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
                   autoFocus
                   autoComplete="given-name"
                   type="text"
-                  name="firstname"
+                  name="firstName"
                   placeholder="Enter first name"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.firstname}
+                  value={formik.values.firstName}
                 />
-                {formik.errors.firstname && (
-                  <p className="formInputError"> {formik.errors.firstname} </p>
+                {formik.errors.firstName && (
+                  <p className="formInputError"> {formik.errors.firstName} </p>
                 )}
               </div>
 
@@ -132,14 +138,14 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
                 <input
                   autoComplete="family-name"
                   type="text"
-                  name="lastname"
+                  name="lastName"
                   placeholder="Enter last name"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.lastname}
+                  value={formik.values.lastName}
                 />
-                {formik.errors.lastname && (
-                  <p className="formInputError"> {formik.errors.lastname} </p>
+                {formik.errors.lastName && (
+                  <p className="formInputError"> {formik.errors.lastName} </p>
                 )}
               </div>
             </div>
@@ -189,6 +195,22 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
               />
               {formik.errors.password && (
                 <p className="formInputError"> {formik.errors.password} </p>
+              )}
+            </div>
+
+            <div className="formGroup">
+              <p className="formGroupHeader"> Confirm Password <span className="red">*</span> </p>
+              <input
+                autoComplete="new-password"
+                type="password"
+                name="confirmPassword"
+                placeholder="Re-enter password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.confirmPassword}
+              />
+              {formik.errors.confirmPassword && (
+                <p className="formInputError"> {formik.errors.confirmPassword} </p>
               )}
             </div>
 
@@ -359,7 +381,7 @@ const SignupUserForm = ({ dispatch, hasErrors, loading, success, auth, signUpErr
             </div>
 
             {success &&
-              <p className="successReply"> Sign up successfull. A verification email has been sent to {formik.values.email} </p>
+              <p className="successReply"> Sign up successful. A verification email has been sent to {formik.values.email} </p>
             }
 
             {hasErrors &&

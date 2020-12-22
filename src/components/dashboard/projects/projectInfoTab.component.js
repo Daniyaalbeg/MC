@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProjectInfoSponsorDonor from './infoTab/sponsorDonor.component';
-
+import { WhatCategories } from '../../iconController/iconCategories.component';
 import ImageCarousel from '../../sharedComponents/imageCarousel.component';
 import { iconForText } from '../../iconController/iconCategories.component';
 
@@ -51,12 +51,8 @@ const ProjectInfoCategory = ({ project }) => {
       <p className="projectTitle"> Primary Category </p>
       <p className="projectText"> {iconForText(project.primaryCategory)} </p>
       <p className="projectTitle"> Secondary Categories </p>
-      <div className="categoryBadgeContainer" style={{justifyContent: 'flex-start'}}>
-        {
-          project.secondaryCategories.map((category) => {
-            return <span key={category}> {iconForText(category)} </span>
-          })
-        }
+      <div className="projectInfoSecondaryCategories">
+        <WhatCategories types={project.secondaryCategories} />
       </div>
     </>
   )

@@ -58,6 +58,8 @@ const AddUpdateForm = ({ project, showModal, dispatch, loading, hasErrors, succe
       images: [],
     },
     validationSchema: validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => {
       const update = {
         title: values.title,

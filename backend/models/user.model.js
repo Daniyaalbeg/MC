@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
 const supplierSchema = require('./supplier.model').supplierSchema;
 const addressSchema = require('./address.model').addressSchema;
+const volunteerSchema = require('./volunteer/volunteer.model').volunteerSchema;
 
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
   username: {
     type: String,
-    required: true,
+    required: false,
   },
-  firstname: {
+  firstName: {
     type: String,
     required: false
   },
-  lastname: {
+  lastName: {
     type: String,
     required: false
   },
@@ -49,11 +50,10 @@ const userSchema = new Schema({
     ref: 'Group',
     required: false
   }],
-  volunteer: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Volunteer',
+  volunteer: {
+    type: volunteerSchema,
     required: false
-  }],
+  },
   approved: {
     type: Boolean,
     required: true

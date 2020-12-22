@@ -23,7 +23,7 @@ const CallToActionButtonViews = ({ project, setActiveTab, auth }) => {
         // }
       }}> <FontAwesomeIcon icon={faMoneyBillWave} style={{marginRight: "8px"}} /> Donate Funds </button>
     }
-    {project.volunteers &&
+    {project.volunteer &&
       <button onClick={() => {
         if (auth) {
           setShowVolunteerModal(true)

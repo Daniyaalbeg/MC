@@ -6,7 +6,7 @@ import ProjectContentView from './projectContentView.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faProjectDiagram } from '@fortawesome/pro-solid-svg-icons'
 
-const ProjectView = ({ orgs }) => {
+const ProjectView = ({ orgsIdList }) => {
   return (
     <div className="projectViewContainer">
       {/* <div className="projectViewHeader">
@@ -17,7 +17,7 @@ const ProjectView = ({ orgs }) => {
         <HeaderIcons />
       </div> */}
       <div className="projectViewContent">
-        <ProjectContentView orgs={orgs} />
+        <ProjectContentView />
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ const ProjectCardSheet = ({ project }) => {
   if (project.supplies && project.supplies.length !== 0) {
     renderedCircleSupplies = (<ProgressInfo key="2" text="Supplies" progress={calculateSupplyPercent(project)} colour={"#1589C9"} />)
   }
-  if (project.volunteer) {
+  if (project.volunteer && project.volunteer.volunteersNeeded) {
     renderedCircleVolunteers = (<ProgressInfo key="3" text="Volunteers" progress={calculateVolunteersPercent(project)} colour={"#EF2A30"} />)
   }
 

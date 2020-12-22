@@ -4,7 +4,7 @@ import { useFormik, Field } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 
-import { creatingPublicProjectItem, createPublicProjectItemReset } from '../../../Actions/projectActions';
+import { creatingPublicProjectSupply, createPublicProjectItemReset } from '../../../Actions/projectActions';
 import SelectMap from '../../signup/selectMap.component';
 
 const validationSchema = Yup.object().shape({
@@ -70,7 +70,9 @@ const ContributeSelectedSupply = ({ dispatch, user, loading, hasErrors, success,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      console.log(values)
       if (!formik.values.canDeliver && !formik.values.mapClicked) return
+      console.log("object")
       let newPoint = null
       if (values.mapClicked) {
         newPoint = {
@@ -87,7 +89,7 @@ const ContributeSelectedSupply = ({ dispatch, user, loading, hasErrors, success,
         canDeliver: values.canDeliver,
         location: newPoint,
       }
-      dispatch(creatingPublicProjectItem(supplyAmount, project._id, supply._id))
+      dispatch(creatingPublicProjectSupply(supplyAmount, project._id, supply._id))
     }
   })
   

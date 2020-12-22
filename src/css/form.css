@@ -284,6 +284,7 @@
   color: #040404;
   border-radius: 8px;
   padding-left: 8px;
+  padding-right: 8px;
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.07);
   transition: box-shadow ease 0.2s;
@@ -295,6 +296,7 @@
   border-radius: 8px;
   height: 2.1em;
   padding-left: 8px;
+  padding-right: 8px;
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.07);
 }
@@ -379,6 +381,9 @@
   }
   .formHeader {
     text-align: center;
+  }
+  .formMainHeader > h2 { 
+    font-size: x-large;
   }
   .formMainHeader > svg {
     margin-left: 32px;

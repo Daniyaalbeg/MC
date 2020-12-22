@@ -16,7 +16,7 @@ const SelectedProjectSponsors = ({ project }) => {
             return (
               <div key={sponsor._id} className="selectedProjectSponsorCard grow" onClick={(() => history.push(`/organisations/${sponsor.sponsorID}`))} >
                 <img src={sponsor.imageURL ? sponsor.imageURL : imagePlaceholder } />
-                <h2> {sponsor.name} </h2>
+                <h4> {sponsor.name} </h4>
               </div>
             )
           })

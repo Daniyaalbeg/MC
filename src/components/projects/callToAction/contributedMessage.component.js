@@ -9,6 +9,14 @@ const ContributedMessage = ({ type, closeModal }) => {
         <button className="standardButtonWithoutColour mcGreenBG" onClick={closeModal}> Dismiss </button>
       </div>
     )
+  } else if (type === "VOLUNTEER") {
+    return (
+      <div className="contributedMessageContainer">
+        <h4> Thanks for volunteering! </h4>
+        <p> You will be sent an email confirming your request was made. The project owner will now look over your request. Once a decision is made you will be notified. </p>
+        <button className="standardButtonWithoutColour mcGreenBG" onClick={closeModal}> Dismiss </button>
+      </div>
+    )
   }
 }
 

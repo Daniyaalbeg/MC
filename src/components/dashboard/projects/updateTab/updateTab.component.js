@@ -17,7 +17,6 @@ const UpdateTab = ({ project }) => {
         <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" style={{color: 'red'}} /> You have not created any updates's yet. </p>
         <button onClick={() => {
           setAddUpdateFaqModal(true)
-          console.log(setAddUpdateFaqModal);
         }} className="standardButtonWithoutColour mcGreenBG"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Add Update </button>
       </div>
       {addUpdateModal &&

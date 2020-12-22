@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import ProjectSupplies from './supplyTab/projectSupplies.component';
 import ProjectInfoTab from './projectInfoTab.component';
 import ProjectFunding from './fundingTab/projectFunding.component';
+import ProjectVolunteer from './volunteerTab/volunteerTab.component';
 import FaqTab from './faqTab/faqTab.component';
 import UpdateTab from './updateTab/updateTab.component';
 import PublishButton from './publishButton.component';
@@ -16,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/pro-solid-svg-icons'
 import { useDispatch } from 'react-redux';
 
-const SelectedProjectView = ({ project }) => {
+const SelectedProjectView = ({ project, suppliesDict }) => {
   const dispatch = useDispatch()
   const [pageTitle, setPageTitle] = useState('Project Info')
 
@@ -69,10 +70,10 @@ const SelectedProjectView = ({ project }) => {
               {/* <ProjectFunding project={project} /> */}
             </Panel>
             <Panel>
-              <ProjectSupplies project={project} />
+              <ProjectSupplies project={project} suppliesDict={suppliesDict} />
             </Panel>
             <Panel>
-              <div className="emptyDBContainer"> <p className="comingSoonText"> Coming Soon </p> </div>
+              <ProjectVolunteer project={project} />
             </Panel>
             <Panel>
               <FaqTab project={project} />

@@ -13,6 +13,7 @@
   --main-dark-blue-color: #157cb4;
   --main-light-blue-color: #1592d4;
   --main-red-color: #EF2A30;
+  --main-light-red-color: #db585c;
   --main-orange-color: #F47E2E;
   --main-grey-color: #4C5962;
   --main-dark-grey-color: #434f57;
@@ -233,6 +234,7 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  min-height: 34px;
 }
 .standardButton:hover {
   background-color: rgb(18, 117, 170);
@@ -248,6 +250,7 @@ p, h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
   padding: 0.3em 0.6em;
   font-weight: bold;
+  min-height: 34px;
 }
 
 .smallVersion {
@@ -267,6 +270,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .link {
+  cursor: pointer;
   color: #1589C9;
 }
 .link:hover {
@@ -528,6 +532,101 @@ p, h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   font-size: small;
   margin: 0;
+}
+
+
+
+/* Multi String Input */
+.multi-string-container {
+
+}
+.multi-string-input-button {
+  display: flex;
+  flex-direction: row;
+}
+.multi-string-input {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  height: 2em !important;
+}
+.multi-string-input:focus {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.multi-string-input:focus + .multi-string-button {
+  box-shadow: 0px 0px 2px 1px var(--main-green-color);
+}
+.multi-string-button {
+  padding: 0.2em 0.4em;
+  height: 2em;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: var(--main-green-color);
+  font-weight: bold;
+  color: whitesmoke;
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.multi-string-values {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.multi-string-value {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2em 0.4em;
+  background-color: var(--main-green-color);
+  border-radius: 8px;
+  margin: 4px;
+}
+.multi-string-value > p {
+  margin: 0;
+  margin-right: 8px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+.multi-string-value > svg {
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+/* Accordion */
+.accordion-container {
+
+}
+.accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(229,229,229);
+  background: linear-gradient(260deg, rgba(239,239,239,1) 0%, rgba(242,242,242,1) 100%);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: background ease 0.2s;
+}
+.accordion-title:hover {
+  background: linear-gradient(100deg, rgba(239,239,239,1) 0%, rgba(242,242,242,1) 100%);
+}
+.accordion-title > p {
+  margin: 0;
+}
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height ease 0.5s, padding ease 0.5s, opacity ease 0.5s;
+}
+.accordion-content.active {
+  padding: 0 16px;
+  opacity: 1;
 }
 
 

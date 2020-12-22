@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux'
+import { useDispatch, connect } from 'react-redux'
 import { API, rootURL, production } from '../../../../config'
 import imagePlaceholder from '../../../../assets/Images/temp.jpg'
 import LoadingSpinner from '../../../utilities/loadingSpinner.component';
@@ -9,7 +9,7 @@ import { getUserInfoBackground } from '../../../../Actions/userInfoActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/pro-solid-svg-icons'
 
-const SponsorDonorModal = ({ project, setShowModal, showModal }) => {
+const SponsorDonorModal = ({ project, setShowModal, showModal, sponsorRequestsDict }) => {
   const [typingTimeout, setTypingTimeout] = useState(0)
   const [searchResults, setSearchResults] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -31,18 +31,20 @@ const SponsorDonorModal = ({ project, setShowModal, showModal }) => {
       <h3> Search for a Sponsor </h3>
       <div className="textInputSponsor">
         <input type='text' onChange={onSearchChange}/>
-        <OrgSearchResultsDropDown project={project} orgSearchResults={searchResults} loading={loading} selectedSponsorKeys={selectedSponsorKeys} setSelectedSponsorKeys={setSelectedSponsorKeys} />
-        <SelectedOrgs project={project} selectedSponsorKeys={selectedSponsorKeys} setSelectedSponsorKeys={setSelectedSponsorKeys} sponsorDict={searchResults} />
-        <CurrentSponsorRequests project={project} setShowModal={setShowModal} />
+        <OrgSearchResultsDropDown project={project} sponsorRequestsDict={sponsorRequestsDict} orgSearchResults={searchResults} loading={loading} selectedSponsorKeys={selectedSponsorKeys} setSelectedSponsorKeys={setSelectedSponsorKeys} />
+        <SelectedOrgs project={project} sponsorRequestsDict={sponsorRequestsDict} selectedSponsorKeys={selectedSponsorKeys} setSelectedSponsorKeys={setSelectedSponsorKeys} sponsorDict={searchResults} />
+        <CurrentSponsorRequests project={project} setShowModal={setShowModal} sponsorRequestsDict={sponsorRequestsDict} />
       </div>
     </div>
   )
 }
 
-const CurrentSponsorRequests = ({ project, setShowModal }) => {
+const CurrentSponsorRequests = ({ project, setShowModal, sponsorRequestsDict }) => {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
-  if (!project.sponsorRequests || project.sponsorRequests.length === 0) return null
+
+  const sponsorRequests = project.sponsorRequests.map((requestID) => sponsorRequestsDict[requestID] )
+  if (!sponsorRequests || sponsorRequests.length === 0) return null
 
   const requestStatus = (request) => {
     if (request.pending) return "Pending"
@@ -56,7 +58,7 @@ const CurrentSponsorRequests = ({ project, setShowModal }) => {
       <h3> Sponsor Requests </h3>
       <div className="sponsorRequestsCardContainer">
       {
-        project.sponsorRequests.map((request) => {
+        sponsorRequests.map((request) => {
           return (
             <div key={request._id} className="sponsorRequestCard">
               <img src={request.imageURL ? request.imageURL : imagePlaceholder} alt="Logo" />
@@ -79,7 +81,7 @@ const CurrentSponsorRequests = ({ project, setShowModal }) => {
   )
 }
 
-const SelectedOrgs = ({ selectedSponsorKeys, setSelectedSponsorKeys, sponsorDict, project }) => {
+const SelectedOrgs = ({ selectedSponsorKeys, setSelectedSponsorKeys, sponsorDict, project, sponsorRequestsDict }) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -105,7 +107,7 @@ const SelectedOrgs = ({ selectedSponsorKeys, setSelectedSponsorKeys, sponsorDict
       }
     </div>
     <button className="standardButtonWithoutColour mcGreenBG" onClick={() => {
-      sendOrgSponsorRequest(dispatch, project, setLoading, setSuccess, selectedSponsorKeys, sponsorDict)
+      sendOrgSponsorRequest(dispatch, project, setLoading, setSuccess, selectedSponsorKeys, sponsorRequestsDict)
     }}>
       {
         loading ? <LoadingSpinner size="1x" style={{minHeight: "fit-content", padding: "0.3em 0.6em"}} /> : "Send Request"
@@ -118,7 +120,7 @@ const SelectedOrgs = ({ selectedSponsorKeys, setSelectedSponsorKeys, sponsorDict
   )
 }
 
-const OrgSearchResultsDropDown = ({ project, orgSearchResults, loading, selectedSponsorKeys, setSelectedSponsorKeys }) => {
+const OrgSearchResultsDropDown = ({ project, sponsorRequestsDict, orgSearchResults, loading, selectedSponsorKeys, setSelectedSponsorKeys }) => {
   if (loading) return (
     <div className="orgSearchResultsContainer">
       <LoadingSpinner size="2x" style={{ minHeight: "50px" }} />
@@ -134,7 +136,7 @@ const OrgSearchResultsDropDown = ({ project, orgSearchResults, loading, selected
           return (
             <div key={key} onClick={() => {
               if (selectedSponsorKeys.includes(key)) return
-              if (checkSponsoredSingle(key, project)) return
+              if (checkSponsoredSingle(key, project, sponsorRequestsDict)) return
               const newSelectedSponsorKeys = selectedSponsorKeys.concat(key)
               setSelectedSponsorKeys(newSelectedSponsorKeys)
             }}>
@@ -148,25 +150,28 @@ const OrgSearchResultsDropDown = ({ project, orgSearchResults, loading, selected
   )
 }
 
-const checkSponsoredSingle = (selected, project) => {
-  if (!project.sponsorRequests) { project.sponsorRequests = [] }
-  for (let i = 0; i < project.sponsorRequests.length; i++) {
-    if (selected === project.sponsorRequests[i].requestedOrganisation._id) return true
+const checkSponsoredSingle = (selected, project, sponsorRequestsDict) => {
+  const sponsorRequests = project.sponsorRequests.map((requestID) => sponsorRequestsDict[requestID] )
+  if (!sponsorRequests) { sponsorRequests = [] }
+  for (let i = 0; i < sponsorRequests.length; i++) {
+    if (selected === sponsorRequests[i].requestedOrganisation._id) return true
   }
   return false
 }
 
-const checkSponsored = (selectedSponsors, project) => {
+const checkSponsored = (selectedSponsors, project, sponsorRequestsDict) => {
+  const sponsorRequests = project.sponsorRequests.map((requestID) => sponsorRequestsDict[requestID] )
+
   if (!project.sponsorRequests) { project.sponsorRequests = [] }
   for (let i = 0; i < selectedSponsors.length; i++) {
-    for (let j = 0; j < project.sponsorRequests.length; j++) {
-      if (project.sponsorRequests[j].requestedOrganisation._id === selectedSponsors[i]) {
+    for (let j = 0; j < sponsorRequests.length; j++) {
+      if (sponsorRequests[j].requestedOrganisation._id === selectedSponsors[i]) {
         return true
       }
     }
     if (!project.sponsors) { project.sponsors = [] }
     for (let j = 0; j < project.sponsors.length; j++) {
-      if (project.sponsors[j]._id === selectedSponsors[i]) {
+      if (project.sponsors[j] === selectedSponsors[i]) {
         return true
       }
     }
@@ -193,8 +198,8 @@ const sendDeleteOrgSponsorRequest = (dispatch, setLoading, setSuccess, selectedR
   })
 }
 
-const sendOrgSponsorRequest = (dispatch, project, setLoading, setSuccess, selectedSponsorKeys, sponsorDict) => {
-  if (checkSponsored(selectedSponsorKeys, project)) return
+const sendOrgSponsorRequest = (dispatch, project, setLoading, setSuccess, selectedSponsorKeys, sponsorRequestsDict) => {
+  if (checkSponsored(selectedSponsorKeys, project, sponsorRequestsDict)) return
   setLoading(true)
   axios({
     method: 'post',
@@ -246,4 +251,8 @@ const searchOrgName = (searchText, setSearchResults, setLoading) => {
   });
 }
 
-export default SponsorDonorModal
+const MapStateToProps = (state) => ({
+  sponsorRequestsDict: state.userInfo.sponsorRequests
+})
+
+export default connect(MapStateToProps)(SponsorDonorModal)

@@ -7,6 +7,7 @@ const updateSchema = require('./update.model').updateSchema;
 const faqSchema = require('./faq.model').faqSchema;
 const impactSchema = require('./impact.model').impactSchema;
 const sponsorSchema = require('../sponsor.model').sponsorSchema;
+const projectVolunteerSchema = require('./projectVolunteer.model').projectVolunteerSchema
 
 const Schema = mongoose.Schema
 
@@ -71,7 +72,10 @@ const projectSchema = new Schema({
     required: false
   },
   //Volunteer
-
+  volunteeringInfo: {
+    type: projectVolunteerSchema,
+    required: false
+  },
   //Funding
   funding: {
     type: fundingSchema,

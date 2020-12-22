@@ -10,8 +10,8 @@ import { faSitemap } from '@fortawesome/pro-solid-svg-icons';
 import { faExclamationTriangle } from '@fortawesome/pro-duotone-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const OrganisationInfoViewDash = ({ orgs }) => {
-  if (!orgs || orgs.length === 0) {
+const OrganisationInfoViewDash = ({ orgsIdList }) => {
+  if (!orgsIdList || orgsIdList.length === 0) {
     return (
       <div className="supplierInfoContainer">
         <div className="supplierInfoHeader">
@@ -41,7 +41,7 @@ const OrganisationInfoViewDash = ({ orgs }) => {
         <HeaderIcons />
       </div>
       <div className="supplierInfoContent">
-        <OrganisationDashboardContent orgs={orgs} />
+        <OrganisationDashboardContent orgsIdList={orgsIdList} />
       </div>
     </div>
   )

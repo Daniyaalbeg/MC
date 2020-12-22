@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { CategoryBadgeOptionsModal } from '../../sharedComponents/categoryBadgeOptions.component';
+import { CategoryBadgeOptionsModal } from '../../sharedComponents/selectBadgeOptions.component';
 
 import { changeFilterProject } from '../../../Actions/filterMainProjectActions'
 

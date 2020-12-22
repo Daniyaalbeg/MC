@@ -10,21 +10,23 @@ import { selectProjectDashSupply } from '../../../../Actions/projectActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-const ProjectSupplies = ({ project, selectedSupply }) => {
-  if (selectedSupply) {
+const ProjectSupplies = ({ project, selectedSupplyID, suppliesDict }) => {
+  if (selectedSupplyID) {
     return (
-      <SelectedProjectSupply project={project} supply={selectedSupply} />
+      <SelectedProjectSupply project={project} supply={suppliesDict[selectedSupplyID]} />
     )
   } else {
     return (
-      <ProjectSupplyContent project={project} selectedSupply={selectedSupply} />
+      <ProjectSupplyContent project={project} suppliesDict={suppliesDict} />
     )
   }
 }
 
-const ProjectSupplyContent = ({ project }) => {
+const ProjectSupplyContent = ({ project, suppliesDict }) => {
   const [addSupplyModal, setAddSupplyModal] = useState(false)
   const dispatch = useDispatch()
+
+  const projectSupplies = project.supplies.map((supplyID) => suppliesDict[supplyID])
 
   if (!project.supplies || project.supplies.length === 0) {
     return (
@@ -48,7 +50,7 @@ const ProjectSupplyContent = ({ project }) => {
       </div>
       <div className="projectDashSupplyContainerGrid">
         {
-          project.supplies.map((supply) => {
+          projectSupplies.supplies.map((supply) => {
             return <ProjectSupplyListItem key={supply._id} onClick={() => dispatch(selectProjectDashSupply(supply))} supply={supply} />
           })
         }
@@ -76,7 +78,7 @@ const ProjectSupplyListItem = ({ onClick, supply }) => {
 }
 
 const MapStateToProps = (state) => ({
-  selectedSupply: state.projectInfo.createProject.selectedProjectDashBoardSupply
+  selectedSupplyID: state.projectInfo.createProject.selectedProjectDashBoardSupply
 })
 
 export default connect(MapStateToProps)(ProjectSupplies)

@@ -30,6 +30,8 @@ const AddFaqForm = ({ project, showModal, dispatch, loading, hasErrors, success 
       answer: "",
     },
     validationSchema: validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => {
       const faq = {
         answer: values.answer,

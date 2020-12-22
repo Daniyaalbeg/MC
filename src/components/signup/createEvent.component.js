@@ -99,6 +99,8 @@ const CreateEvent = ({ dispatch, loading, hasErrors, success, auth, orgID }) => 
           mapClicked: false
         }}
         validationSchema={validationSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={(values) => {
           const newPoint = {
             type: 'Point',

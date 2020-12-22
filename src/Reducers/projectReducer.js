@@ -165,7 +165,7 @@ const initialStateCreateProject = {
   loading: false,
   hasErrors: false,
   success: false,
-  selectedProjectDashBoard: null,
+  selectedProjectDashBoardID: null,
   selectedProjectDashBoardSupply: null
 }
 
@@ -218,7 +218,7 @@ function createProjectReducer(state = initialStateCreateProject, action) {
     case actions.SELECT_PROJECT_DASHBOARD:
       return {
         ...state,
-        selectedProjectDashBoard: action.payload
+        selectedProjectDashBoardID: action.payload
       }
     case actions.SELECT_PROJECT_DASHBOARD_SUPPLY:
       return {

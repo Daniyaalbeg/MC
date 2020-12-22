@@ -11,7 +11,7 @@ import SelectMap from "./selectMap.component";
 import Dropzone, { useDropzone } from "react-dropzone";
 import Thumb from "../utilities/thumb.component";
 import CategoryOptions from '../sharedComponents/categoryOptions.component';
-import { CategoryBadgeOptionsForm } from '../sharedComponents/categoryBadgeOptions.component'
+import { CategoryBadgeOptionsForm } from '../sharedComponents/selectBadgeOptions.component'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faProjectDiagram } from "@fortawesome/pro-solid-svg-icons";
 
@@ -79,6 +79,8 @@ const CreateProject = ({ dispatch, auth, orgID, loading, success, hasErrors, his
       agreedToTerms: false,
     },
     validationSchema: validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
     onSubmit: (values) => {
       const newPoint = {
         type: "Point",
@@ -220,7 +222,7 @@ const CreateProject = ({ dispatch, auth, orgID, loading, success, hasErrors, his
 
             <div className="formGroup">
               <p className="formGroupHeader">Select any other categories that may be valid</p>
-              <CategoryBadgeOptionsForm setFieldValue={formik.setFieldValue} secondaryCategories={formik.values.secondaryCategories} />
+              <CategoryBadgeOptionsForm fieldName="secondaryCategories" setFieldValue={formik.setFieldValue} options={formik.values.secondaryCategories} />
               {/* {formik.errors.solution && (
                 <p className="formInputError"> {formik.errors.secondary} </p>
               )} */}

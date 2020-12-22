@@ -93,6 +93,7 @@ const infoRouter = require('./routes/infoRouter');
 const cnicRouter = require('./routes/cnicRouter');
 const groupRouter = require('./routes/groupController');
 const projectRouter = require('./routes/projectRouter');
+const volunteerRouter = require('./routes/volunteerRouter');
 
 
 app.use('/api/organisation', organisationRouter);
@@ -107,6 +108,7 @@ app.use('/api/emailVerification', emailVerificationRouter.router);
 app.use('/api/info', infoRouter);
 app.use('/api/cnic', cnicRouter);
 app.use('/api/group', groupRouter);
+app.use('/api/volunteer', volunteerRouter);
 
 app.listen(local.port, () => {
   console.log(`HTTP server is running on port: ${local.port}`);

@@ -8,6 +8,7 @@ import OrganisationInfoViewDash from './organisations/organisationInfoViewDash.c
 import EventView from './events/eventView.component';
 import GroupInfoView from './groups/groupInfoView.component';
 import ProjectView from './projects/projectView.component';
+import VolunteerView from './volunteer/volunteerView.component';
 
 import { getUserInfo } from '../../Actions/userInfoActions';
 import getWindowDimensions from '../utilities/windowDimension.component';
@@ -19,7 +20,7 @@ import { faSignOutAlt, faHomeLg, faUserCircle, faProjectDiagram, faUsers, faBox,
 
 import { logout } from '../../Actions/authActions'
 
-const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, props}) => {
+const DashboardView = ({dispatch, fetched, loading, user, userID, orgsIdList, hasErrors, error, props}) => {
   
   useEffect(() => {
     if (!fetched) { dispatch(getUserInfo()) }
@@ -94,16 +95,13 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             </div>
           </Panel> */}
           <Panel>
-            <ProfileInfoView user={user} />
+            <ProfileInfoView user={user[userID]} />
           </Panel>
           <Panel>
-            <OrganisationInfoViewDash orgs={user.createdOrganisations} />
+            <OrganisationInfoViewDash orgsIdList={orgsIdList} />
           </Panel>
           <Panel>
-            <ProjectView orgs={user.createdOrganisations} />
-            {/* <div className="comingSoonContainer">
-              <p className="mcGreenBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
-            </div> */}
+            <ProjectView />
           </Panel>
           <Panel>
             <GroupInfoView groups={user.createdGroups} />
@@ -112,9 +110,7 @@ const DashboardView = ({dispatch, fetched, loading, user, hasErrors, error, prop
             <EventView orgs={user.createdOrganisations} />
           </Panel>
           <Panel>
-            <div className="comingSoonContainer">
-              <p className="mcRedBG"> <FontAwesomeIcon icon={faClock} style={{marginRight: "8px"}} /> Coming Soon </p>
-            </div>
+            <VolunteerView volunteer={user[userID].volunteer} />
           </Panel>
         </div>
         </Tabs>
@@ -135,6 +131,8 @@ const MapStateToProps = (state, ownProps) => ({
   fetched: state.userInfo.fetched,
   loading: state.userInfo.loading,
   user: state.userInfo.user,
+  userID: state.userInfo.userID,
+  orgsIdList: state.userInfo.entityIds.createdOrganisations,
   hasErrors: state.userInfo.hasErrors,
   error: state.userInfo.error,
   props: ownProps

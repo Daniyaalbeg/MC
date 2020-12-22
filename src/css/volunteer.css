@@ -1,0 +1,245 @@
+/* Volunteer Form Related */
+.createVolunteerContainer {
+  
+}
+
+/* Skills Selection */
+.skills-selection-container {
+
+}
+.skills-selection-top {
+
+}
+.skills-selection-bottom {
+
+}
+
+.select-skill-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+.select-skill-container > p {
+  margin: 0;
+}
+.select-skill-container > svg {
+  margin-right: 8px;
+}
+
+
+/* Volunteer Dashboard Styles */
+.volunteerCard {
+  height: fit-content;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 8px;
+  padding: 12px 18px;
+}
+
+.volunteerTitle {
+  font-size: small;
+  margin-bottom: 0;
+}
+.volunteerText {
+  font-size: large;
+  padding-bottom: 4px;
+  margin: 0;
+}
+
+.volunteerProfile {
+  width: 100%;
+  height: fit-content;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: min-content minmax(100px, 300px) auto min-content;
+  gap: 20px;
+}
+.volunteerProfile > button > svg {
+  transition: transform 0.5s;
+}
+.volunteerProfile > button > svg .fa-primary {
+  color: rgba(0, 0, 0, 0);
+}
+.volunteerProfile > button > svg .fa-secondary {
+  color: var(--main-red-color);
+  opacity: 1;
+}
+.volunteerProfile > button > svg:hover .fa-secondary {
+  color: var(--main-light-red-color);
+}
+.volunteerProfileA {
+  width: fit-content;
+}
+.volunteerProfileA > img {
+  height: 100px;
+  width: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.volunteerProfileA > p {
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+.volunteerProfileB > div {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 300px;
+}
+.volunteerProfileC {
+
+}
+
+.volunteerRequestListContainer {
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+.volunteerRequestList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: min-content;
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+  justify-content: center;
+}
+.emptyVolunteerRequestList {
+  height: 100px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projectVolunteerRequestListItem {
+  /* max-width: 200px; */
+  height: 320px;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 2px 1px 1px rgb(228, 228, 228, 0.2);
+  overflow: hidden;
+  transition: box-shadow ease 0.5s, padding-bottom 0.5s;
+}
+.projectVolunteerRequestListItem:hover {
+  box-shadow: 0px 2px 4px 1px rgb(228, 228, 228);
+  padding-bottom: 4px;
+}
+.projectVolunteerRequestListItem > div {
+  /* flex-grow: 1; */
+}
+.volunteerRequestImage {
+  width: 100%;
+  height: 160px;
+  flex-grow: 1;
+}
+.volunteerRequestImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.volunteerRequestHeader {
+  padding: 16px;
+  height: fit-content;
+  width: 100%;
+  position: relative;
+}
+.volunteerRequestHeader > div {
+  margin-bottom: 8px;
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
+}
+.volunteerRequestHeader > h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.volunteerRequestHeader > h6 {
+  margin: 0;
+}
+
+.volunteerRequestSelected {
+  height: fit-content;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 220px) 1fr;
+  grid-template-rows: auto auto;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  grid-template-areas: 
+  'image info'
+  'content content';
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+.volunteerRequestSelectedImage {
+  grid-area: image;
+  max-height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
+} 
+.volunteerRequestSelectedInfo {
+  grid-area: info;
+}
+.volunteerRequestSelectedContent {
+  grid-area: content;
+}
+.volunteerRequestSelectedImage > img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+.volunteerProfileButtons {
+  display: flex;
+  flex-direction: column;
+}
+.volunteerProfileButtons > button {
+  background-color: var(--main-red-color);
+  color: whitesmoke;
+  border-radius: 8px;
+  height: 34px;
+  width: 34px;
+  margin-bottom: 8px;
+}
+.volunteerProfileButtons > button:hover {
+  background-color: var(--main-light-red-color);
+}
+
+/* Volunteer Public Page Styles */
+
+
+
+
+@media (max-width: 768px) {
+  .volunteerProfile {
+    grid-template-columns: auto;
+  }
+  .volunteerProfileA {
+    margin: auto;
+  }
+  .volunteerRequestSelected {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-row-gap: 8px;
+    grid-template-areas: 
+    'image'
+    'info'
+    'content';
+  }
+}

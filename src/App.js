@@ -31,6 +31,7 @@ import './css/groupInfoView.css';
 import './css/groupMainView.css';
 import './css/inspireView.css'
 import './css/projectView.css'
+import './css/volunteer.css'
 
 import NavigationBar from './components/navigationBar.component';
 import HomeView from './components/homeView/homeView.component';
@@ -61,7 +62,8 @@ const CnicView = lazy(() => import('./components/cnic/cnicView.component'));
 const PrivacyPolicy = lazy(() => import('./components/privacyPolicy.component'));
 const TermsAndConditions = lazy(() => import('./components/termsAndConditions'));
 const CreateGroup = lazy(() => import('./components/signup/createGroup.component'));
-
+const CreateVolunteer = lazy(() => import('./components/signup/volunteer/createVolunteer.component'))
+const CreateUserVolunteer = lazy(() => import('./components/signup/volunteer/createUserVolunteer.component'))
 
 function App({ dispatch, checkedCookie }) {
   
@@ -101,6 +103,8 @@ function App({ dispatch, checkedCookie }) {
           <Route path="/createEvent/:orgID" component={CreateEvent} />
           <Route path="/updateEvent/:orgID/:id" component={UpdateEvent} />
           <Route path="/createGroup" component={CreateGroup} />
+          <Route path="/createVolunteer" component={CreateVolunteer} />
+          <Route path="/createUserVolunteer" component={CreateUserVolunteer} />
           <Route path="/cnic" component={CnicView} />
           <Route path="/privacypolicy" component={PrivacyPolicy} />
           <Route path="/termsandconditions" component={TermsAndConditions} />

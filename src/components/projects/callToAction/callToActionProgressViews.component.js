@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProgressCircle from '../../sharedComponents/progressCircle.component';
-import { calculateSupplyPercent, calculateFundingPercent } from '../../utilities/projectUtils.component';
+import { calculateSupplyPercent, calculateFundingPercent, calculateVolunteersPercent } from '../../utilities/projectUtils.component';
 
 const CallToActionProgressViews = ({ project }) => {
   return (
@@ -9,8 +9,8 @@ const CallToActionProgressViews = ({ project }) => {
     {project.funding &&
       <CallToActionProgress name="Funding" percent={calculateFundingPercent(project)} colour="#4BB250" />
     }
-    {project.volunteers &&
-      <CallToActionProgress name="Volunteers" percent={89} colour="#d6542d" />
+    {project.volunteer &&
+      <CallToActionProgress name="Volunteers" percent={calculateVolunteersPercent(project)} colour="#d6542d" />
     }
     {project.supplies &&
       <CallToActionProgress name="Supplies" percent={calculateSupplyPercent(project)} colour="#1589C9" />

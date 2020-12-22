@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import GenericModal from '../../sharedComponents/genericModal.component';
-import LoginForm from '../../dashboard/loginForm.component';
+import LoginForm from '../../dashboard/login/loginForm.component';
 import SubmitSupply from './submitSupply.component';
+import ApplyVolunteerForm from './forms/applyVolunteerForm.component';
 import ContributedMessage from './contributedMessage.component';
 
 const CallToActionModal = ({ funding, volunteer, supply, login, auth, project, closeModal }) => {
@@ -43,7 +44,7 @@ const CallToActionModal = ({ funding, volunteer, supply, login, auth, project, c
   if (volunteer) {
     return (
       <GenericModal showModal={closeModal}>
-        <p>Volunteer Sign Up</p>
+        <ApplyVolunteerForm volunteer={project.volunteer} project={project} setSubmitted={setSubmitted} />
       </GenericModal>
     )
   }

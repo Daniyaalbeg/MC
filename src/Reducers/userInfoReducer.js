@@ -1,10 +1,31 @@
 import * as actions from '../Actions/userInfoActions';
 import { LOGOUT } from '../Actions/authActions'
+import { normalizeUserState } from '../components/utilities/normalise'
 
 export const initialState = {
   fetched: false,
   loading: false,
-  user: "",
+  entities: "",
+  entityIds: {
+    // createdOrganisations: [],
+    // projects: [],
+    // createdGroups: [],
+    // sponsorRequests: [],
+    // volunteerInfo: [],
+    // volunteerRequests: [],
+    // updates: [],
+    // supplies: [],
+  },
+  sponsorRequests: null,
+  createdOrganisations: null,
+  projects: null,
+  groups: null,
+  volunteeringInfo: null,
+  volunteerRequests: null,
+  updates: null,
+  supplies: null,
+  user: null,
+  userID: null,
   hasErrors: false,
   error: null
 }
@@ -41,13 +62,16 @@ export default function userInfoReducer(state = initialState, action) {
         loading: true
       }
     case actions.GET_USER_INFO_SUCCESS:
+      const normalizedState = normalizeUserState(action.payload)
       return {
+        ...normalizedState.entities,
+        entityIds: normalizedState.entityIds,
         fetched: true,
         loading: false,
-        user: action.payload,
         hasErrors: false
       }
     case actions.GET_USER_INFO_FAILURE:
+      console.log(action.payload)
       return {
         ...state,
         fetched: false,
@@ -61,6 +85,14 @@ export default function userInfoReducer(state = initialState, action) {
         // loading: true
       }
     case actions.GET_USER_INFO_BACKGROUND_SUCCESS:
+      const normalizedState2 = normalizeUserState(action.payload)
+      return {
+        ...normalizedState2.entities,
+        entityIds: normalizedState2.entityIds,
+        fetched: true,
+        loading: false,
+        hasErrors: false
+      }
       const a = {
         ...state,
         // fetched: true,
