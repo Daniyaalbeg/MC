@@ -50,8 +50,8 @@ const ProjectSupplyContent = ({ project, suppliesDict }) => {
       </div>
       <div className="projectDashSupplyContainerGrid">
         {
-          projectSupplies.supplies.map((supply) => {
-            return <ProjectSupplyListItem key={supply._id} onClick={() => dispatch(selectProjectDashSupply(supply))} supply={supply} />
+          projectSupplies.map((supply) => {
+            return <ProjectSupplyListItem key={supply._id} onClick={() => dispatch(selectProjectDashSupply(supply._id))} supply={supply} />
           })
         }
       </div>

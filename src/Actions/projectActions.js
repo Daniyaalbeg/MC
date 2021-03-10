@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { API, rootURL, production } from '../config'
-import { getUserInfo, getUserInfoBackground,addSupplyItem, addFaqItem, deleteFaqItem, addUpdateItem } from './userInfoActions'
+import { getUserInfo, getUserInfoBackground } from './userInfoActions'
 import { withImageUploadMulti } from './imageUpload';
 
 
@@ -287,7 +287,8 @@ export const createSupply = (data) => {
     })
     .then((res) => {
       dispatch(changeProjectItemSuccess(res.data))
-      dispatch(addSupplyItem(res.data, data.project.createdByOrganisation, data.project._id))
+      // dispatch(addSupplyItem(res.data, data.project.createdByOrganisation, data.project._id))
+      dispatch(getUserInfoBackground())
     })
     .catch((error) => {
       dispatch(changeProjectItemFailure(error))
@@ -352,7 +353,7 @@ export const createFaq = (data) => {
     })
     .then((res) => {
       dispatch(changeProjectItemSuccess(res.data))
-      dispatch(addFaqItem(res.data, data.project.createdByOrganisation, data.project._id))
+      dispatch(getUserInfoBackground())
     })
     .catch((error) => {
       dispatch(changeProjectItemFailure(error))
@@ -373,7 +374,7 @@ export const deleteFaq = (project, faqID) => {
     })
     .then((res) => {
       dispatch(changeProjectItemSuccess())
-      dispatch(deleteFaqItem(res.data, project.createdByOrganisation, project._id))
+      dispatch(getUserInfoBackground())
     })
     .catch((error) => {
       dispatch(changeProjectItemFailure(error))
@@ -404,7 +405,7 @@ const sendCreateUpdateRequest = (dispatch, data) => {
   })
   .then((res) => {
     dispatch(changeProjectItemSuccess())
-    dispatch(addUpdateItem(res.data, data.project.createdByOrganisation, data.project._id))
+    dispatch(getUserInfoBackground())
   })
   .catch((error) => {
     dispatch(changeProjectItemFailure(error))

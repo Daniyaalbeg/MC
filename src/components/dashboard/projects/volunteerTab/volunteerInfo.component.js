@@ -6,19 +6,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/pro-duotone-svg-icons';
 import { faCheck, faTimes, faChevronCircleLeft, faMale, faFemale, faTransgender } from '@fortawesome/pro-solid-svg-icons'
 
-const VolunteerInfo = ({ volunteer }) => {
+const VolunteerInfo = ({ volunteer, volunteerRequestDict }) => {
   return (
     <>
       <VolunteerRequirmentInfo volunteer={volunteer} />
-      <VolunteerRequestsCheck volunteer={volunteer} />
+      <VolunteerRequestsCheck volunteer={volunteer} volunteerRequestDict={volunteerRequestDict} />
     </>
   )
 }
 
-const VolunteerRequestsCheck = ({ volunteer }) => {
+const VolunteerRequestsCheck = ({ volunteer, volunteerRequestDict }) => {
   let content = null
   if (volunteer.volunteerRequests && volunteer.volunteerRequests.length !== 0) {
-    content = (<VolunteerRequests volunteer={volunteer} />)
+    content = (<VolunteerRequests volunteer={volunteer} volunteerRequestDict={volunteerRequestDict} />)
   } else {
     content = (<p> No Requests yet. </p>)
   }
@@ -31,17 +31,17 @@ const VolunteerRequestsCheck = ({ volunteer }) => {
   )
 }
 
-const VolunteerRequests = ({ volunteer }) => {
+const VolunteerRequests = ({ volunteer, volunteerRequestDict={volunteerRequestDict} }) => {
   const [selectedRequest, setSelectedRequest] = useState(null)
 
   if (selectedRequest) {
-    return <SelectedVolunteerRequest request={selectedRequest} setSelectedRequest={setSelectedRequest} />
+    return <SelectedVolunteerRequest request={volunteerRequestDict[selectedRequest]} setSelectedRequest={setSelectedRequest} />
   } else {
     return (
       <div className="volunteerRequestList">
         {
           volunteer.volunteerRequests.map((request) => {
-            return <VolunteerRequest key={request._id} request={request} setSelectedRequest={setSelectedRequest} />
+            return <VolunteerRequest key={request} request={volunteerRequestDict[request]} setSelectedRequest={setSelectedRequest} />
           })
         }
       </div>
@@ -115,7 +115,7 @@ const VolunteerRequest = ({ request, setSelectedRequest }) => {
   const { volunteer } = request.requestingVolunteer
 
   return (
-    <div className="projectDashCard projectVolunteerRequestListItem" onClick={() => setSelectedRequest(() => request)}>
+    <div className="projectDashCard projectVolunteerRequestListItem" onClick={() => setSelectedRequest(() => request._id)}>
       {volunteer.image &&
         <div className="volunteerRequestImage">
           <img src={volunteer.image} />

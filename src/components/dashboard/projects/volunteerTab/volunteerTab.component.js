@@ -6,10 +6,10 @@ import VolunteerInfo from './volunteerInfo.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-const VolunteerTab = ({ project }) => {
+const VolunteerTab = ({ project, volunteerRequestDict, volunteerDict }) => {
   const [addVolunteerInfoModal, setAddVolunteerModal] = useState(false)
 
-  if (!project.volunteer || project.volunteer.length === 0) {
+  if (!project.volunteeringInfo) {
     return (
       <>
       <div className="emptyDBContainer">
@@ -26,7 +26,7 @@ const VolunteerTab = ({ project }) => {
       </>
     )
   } else {
-    return <VolunteerInfo volunteer={project.volunteer} />
+    return <VolunteerInfo volunteer={volunteerDict[project.volunteeringInfo]} volunteerRequestDict={volunteerRequestDict} />
   }
 }
 

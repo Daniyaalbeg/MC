@@ -11,9 +11,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from '@fortawesome/pro-solid-svg-icons';
 
-const ProjectList = ({ dispatch, org, setSelectedOrgID, selectedProjectID, projectDict, suppliesDict, volunteerDict }) => {
+const ProjectList = ({ dispatch, org, setSelectedOrgID, selectedProjectID, projectDict, suppliesDict, volunteerDict, volunteerRequestDict, updatesDict }) => {
   if (selectedProjectID) {
-    return <SelectedProjectView project={projectDict[selectedProjectID]} suppliesDict={suppliesDict} />
+    return <SelectedProjectView project={projectDict[selectedProjectID]} suppliesDict={suppliesDict} volunteerDict={volunteerDict} volunteerRequestDict={volunteerRequestDict} updatesDict={updatesDict} />
   } else {
     return (
       <>
@@ -38,6 +38,8 @@ const MapStateToProps = (state) => ({
   projectDict: state.userInfo.projects,
   suppliesDict: state.userInfo.supplies,
   volunteerDict: state.userInfo.volunteeringInfo,
+  volunteerRequestDict: state.userInfo.volunteerRequests,
+  updatesDict: state.userInfo.updates,
   //TODO:add funding dict
 })
 

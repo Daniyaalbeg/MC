@@ -1,19 +1,19 @@
 import React from 'react';
 
 import ProgressCircle from '../../sharedComponents/progressCircle.component';
-import { calculateSupplyPercent, calculateFundingPercent, calculateVolunteersPercent } from '../../utilities/projectUtils.component';
+import { calculateSupplyPercentPublic, calculateFundingPercentPublic, calculateVolunteersPercentPublic } from '../../utilities/projectUtils.component';
 
 const CallToActionProgressViews = ({ project }) => {
   return (
     <div className="callToActionProgressCircles">
     {project.funding &&
-      <CallToActionProgress name="Funding" percent={calculateFundingPercent(project)} colour="#4BB250" />
+      <CallToActionProgress name="Funding" percent={calculateFundingPercentPublic(project)} colour="#4BB250" />
     }
     {project.volunteer &&
-      <CallToActionProgress name="Volunteers" percent={calculateVolunteersPercent(project)} colour="#d6542d" />
+      <CallToActionProgress name="Volunteers" percent={calculateVolunteersPercentPublic(project)} colour="#d6542d" />
     }
     {project.supplies &&
-      <CallToActionProgress name="Supplies" percent={calculateSupplyPercent(project)} colour="#1589C9" />
+      <CallToActionProgress name="Supplies" percent={calculateSupplyPercentPublic(project)} colour="#1589C9" />
     }
     </div>
   )

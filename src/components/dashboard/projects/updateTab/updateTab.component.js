@@ -7,8 +7,8 @@ import AddUpdateForm from './addUpdateForm.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-const UpdateTab = ({ project }) => {
-  const [addUpdateModal, setAddUpdateFaqModal] = useState(false)
+const UpdateTab = ({ project, updatesDict }) => {
+  const [addUpdateModal, setAddUpdateModal] = useState(false)
 
   if (!project.updates || project.updates.length === 0) {
     return (
@@ -16,18 +16,18 @@ const UpdateTab = ({ project }) => {
       <div className="emptyDBContainer">
         <p> <FontAwesomeIcon icon={faExclamationTriangle} className="cnicExclamationIcon" style={{color: 'red'}} /> You have not created any updates's yet. </p>
         <button onClick={() => {
-          setAddUpdateFaqModal(true)
+          setAddUpdateModal(true)
         }} className="standardButtonWithoutColour mcGreenBG"> <FontAwesomeIcon icon={faPlus} style={{marginRight: "0.3em"}} /> Add Update </button>
       </div>
       {addUpdateModal &&
-        <GenericModal showModal={setAddUpdateFaqModal}>
-          <AddUpdateForm project={project} showModal={setAddUpdateFaqModal} />
+        <GenericModal showModal={setAddUpdateModal}>
+          <AddUpdateForm project={project} showModal={setAddUpdateModal} />
         </GenericModal>
       }
       </>
     )
   } else {
-    return <UpdateListOrSelect project={project} addUpdateModal={addUpdateModal} setAddUpdateFaqModal={setAddUpdateFaqModal} />
+    return <UpdateListOrSelect project={project} addUpdateModal={addUpdateModal} setAddUpdateModal={setAddUpdateModal} updatesDict={updatesDict} />
   }
 }
 

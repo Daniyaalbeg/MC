@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/pro-solid-svg-icons'
 import { useDispatch } from 'react-redux';
 
-const SelectedProjectView = ({ project, suppliesDict }) => {
+const SelectedProjectView = ({ project, suppliesDict, volunteerDict, volunteerRequestDict, updatesDict }) => {
   const dispatch = useDispatch()
   const [pageTitle, setPageTitle] = useState('Project Info')
 
@@ -73,13 +73,13 @@ const SelectedProjectView = ({ project, suppliesDict }) => {
               <ProjectSupplies project={project} suppliesDict={suppliesDict} />
             </Panel>
             <Panel>
-              <ProjectVolunteer project={project} />
+              <ProjectVolunteer project={project} volunteerRequestDict={volunteerRequestDict} volunteerDict={volunteerDict} />
             </Panel>
             <Panel>
               <FaqTab project={project} />
             </Panel>
             <Panel>
-              <UpdateTab project={project} />
+              <UpdateTab project={project} updatesDict={updatesDict} />
             </Panel>
           </div>
         </div>

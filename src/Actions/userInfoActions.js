@@ -15,8 +15,6 @@ export const DELETE_USER_INFO_EVENT = "DELETE_USER_INFO_EVENT"
 
 export const DELETE_USER_INFO_GROUP = "DELETE_USER_INFO_GROUP"
 
-export const ADD_SUPPLY_ITEM = "ADD_SUPPLY_ITEM"
-
 export const ADD_FAQ_ITEM = "ADD_FAQ_ITEM"
 
 export const DELETE_FAQ_ITEM = "DELETE_FAQ_ITEM"
@@ -63,31 +61,6 @@ export const deleteUserInfoGroup = (id) => ({
   type: DELETE_USER_INFO_GROUP,
   payload: id
 })
-
-export const addSupplyItem = (supplyItem, orgID, projectID) => ({
-  type: ADD_SUPPLY_ITEM,
-  payload: { supplyItem, orgID, projectID }
-})
-
-export const addFaqItem = (faqItem, faqOrgID, faqProjectID) => ({
-  type: ADD_FAQ_ITEM,
-  payload: { faqItem, faqOrgID, faqProjectID }
-})
-
-export const addUpdateItem = (updateItem, updateOrgID, updateProjectID) => ({
-  type: ADD_UPDATE_ITEM,
-  payload: { updateItem, updateOrgID, updateProjectID }
-})
-
-export const deleteFaqItem = (deletedFaqItem, deleteFaqOrgID, deleteFaqProjectID) => ({
-  type: DELETE_FAQ_ITEM,
-  payload: { deletedFaqItem, deleteFaqOrgID, deleteFaqProjectID }
-})
-
-// export const acceptSupplyRequest = (projectID, deleteFaqOrgID, deleteFaqProjectID) => ({
-//   type: ACCEPT_SUPPLY_REQUEST,
-//   payload: { deletedFaqItem, deleteFaqOrgID, deleteFaqProjectID }
-// })
 
 export function getUserInfo() {
   return async dispatch => {

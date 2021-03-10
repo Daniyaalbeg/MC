@@ -6,7 +6,7 @@ const UpdateListItem = ({ update, onClick }) => {
   return (
     <div className="projectDashCard projectUpdateListItem" onClick={onClick}>
       <div>
-        <UpdaListItemImage images={update.images} />
+        <UpdateListItemImage images={update.images} />
         <p className="projectText"> {update.title} </p>
       </div>
       <p className="projectText"> {new Date(update.date).toLocaleDateString("en-US", dateOptions)} </p>
@@ -14,8 +14,8 @@ const UpdateListItem = ({ update, onClick }) => {
   )
 }
 
-const UpdaListItemImage = ({ images }) => {
-  if (images.length > 0) {
+const UpdateListItemImage = ({ images }) => {
+  if (images && images.length > 0) {
     return <img src={images[0]} style={{ marginRight: '8px' }} />
   } else {
     return null
