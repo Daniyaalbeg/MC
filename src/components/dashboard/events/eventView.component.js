@@ -1,11 +1,12 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBoxOpen } from '@fortawesome/pro-solid-svg-icons'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBoxOpen } from "@fortawesome/pro-solid-svg-icons";
+import { connect } from "react-redux";
 
-import EventsContainer from './eventsContainer.component';
-import HeaderIcons from '../HeaderIcons.component';
+import EventsContainer from "./eventsContainer.component";
+import HeaderIcons from "../HeaderIcons.component";
 
-const EventView = ({ orgs }) => {
+const EventView = ({ createdOrganisations, createdOrganisationsIds }) => {
   return (
     <div className="eventViewContainer">
       <div className="eventViewHeader">
@@ -16,12 +17,18 @@ const EventView = ({ orgs }) => {
         <HeaderIcons />
       </div>
       <div className="eventViewContent">
-        <EventsContainer orgs={orgs} />
+        <EventsContainer
+          createdOrganisations={createdOrganisations}
+          createdOrganisationsIds={createdOrganisationsIds}
+        />
       </div>
     </div>
-  )
-}
+  );
+};
 
-// const Organisation
+const MapStateToProps = (state) => ({
+  createdOrganisations: state.userInfo.createdOrganisations,
+  createdOrganisationsIds: state.userInfo.entityIds.createdOrganisations,
+});
 
-export default EventView
+export default connect(MapStateToProps)(EventView);

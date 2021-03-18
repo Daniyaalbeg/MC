@@ -446,10 +446,10 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  color: var(--main-green-color)
+  color: #F5F5F5
 }
 .modalCloseButton:hover {
-  color: var(--main-dark-green-color)
+  color: #FFFFFF
 }
 
 

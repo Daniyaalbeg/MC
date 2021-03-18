@@ -1,31 +1,60 @@
-import React from 'react';
+import React from "react";
 
-import ProgressCircle from '../../sharedComponents/progressCircle.component';
-import { calculateSupplyPercent, calculateFundingPercent, calculateVolunteersPercent } from '../../utilities/projectUtils.component';
+import ProgressCircle from "../../sharedComponents/progressCircle.component";
+import {
+  calculateSupplyPercentPublic,
+  calculateFundingPercentPublic,
+  calculateVolunteersPercentPublic,
+} from "../../utilities/projectUtils.component";
 
 const ProjectCardSheet = ({ project }) => {
-  let renderedCircleFunction = null
-  let renderedCircleSupplies = null
-  let renderedCircleVolunteers = null
+  let renderedCircleFunction = null;
+  let renderedCircleSupplies = null;
+  let renderedCircleVolunteers = null;
 
   if (project.funding) {
-    renderedCircleFunction = (<ProgressInfo key="1" text="Funding" progress={calculateFundingPercent(project)} colour={"#FFD71A"} />)
+    renderedCircleFunction = (
+      <ProgressInfo
+        key="1"
+        text="Funding"
+        progress={calculateFundingPercentPublic(project)}
+        colour={"#FFD71A"}
+      />
+    );
   }
   if (project.supplies && project.supplies.length !== 0) {
-    renderedCircleSupplies = (<ProgressInfo key="2" text="Supplies" progress={calculateSupplyPercent(project)} colour={"#1589C9"} />)
+    renderedCircleSupplies = (
+      <ProgressInfo
+        key="2"
+        text="Supplies"
+        progress={calculateSupplyPercentPublic(project)}
+        colour={"#1589C9"}
+      />
+    );
   }
   if (project.volunteer && project.volunteer.volunteersNeeded) {
-    renderedCircleVolunteers = (<ProgressInfo key="3" text="Volunteers" progress={calculateVolunteersPercent(project)} colour={"#EF2A30"} />)
+    renderedCircleVolunteers = (
+      <ProgressInfo
+        key="3"
+        text="Volunteers"
+        progress={calculateVolunteersPercentPublic(project)}
+        colour={"#EF2A30"}
+      />
+    );
   }
 
-  const renderedCircles = [ renderedCircleFunction, renderedCircleSupplies, renderedCircleVolunteers]
+  const renderedCircles = [
+    renderedCircleFunction,
+    renderedCircleSupplies,
+    renderedCircleVolunteers,
+  ];
 
-  if (renderedCircles.every(element => element === null)) {
-    return <p className="emptyProjectSheet"> No Info </p>
+  if (renderedCircles.every((element) => element === null)) {
+    return <p className="emptyProjectSheet"> No Info </p>;
   }
 
-  return renderedCircles
-}
+  return renderedCircles;
+};
 
 const ProgressInfo = ({ text, progress, colour }) => {
   return (
@@ -40,7 +69,7 @@ const ProgressInfo = ({ text, progress, colour }) => {
       />
       <p> {text} </p>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectCardSheet
+export default ProjectCardSheet;

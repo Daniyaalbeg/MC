@@ -89,9 +89,9 @@
 .selectedProjectSponsorCard > img {
   height: 60px;
 }
-.selectedProjectSponsorCard > h4 {
+.selectedProjectSponsorCard > h5 {
   margin: 0;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .selectedProjectCallToActionView {

@@ -1,92 +1,109 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
-import { useFormik, Field } from 'formik';
-import * as Yup from 'yup';
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { useFormik, Field } from "formik";
+import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import SelectMap from "../selectMap.component";
 import Dropzone, { useDropzone } from "react-dropzone";
-import { baseStyle, acceptStyle, activeStyle, rejectStyle } from "../../utilities/dropzoneStyles";
+import {
+  baseStyle,
+  acceptStyle,
+  activeStyle,
+  rejectStyle,
+} from "../../utilities/dropzoneStyles";
 import Thumb from "../../utilities/thumb.component";
-import LoadingSpinner from '../../utilities/loadingSpinner.component';
-import SkillsSelection from '../../sharedComponents/skillsSelection.component';
-import { SelectBadgeOptionsForm, CategoryBadgeOptionsForm } from '../../sharedComponents/selectBadgeOptions.component'
-import { listOfLanguages } from '../../utilities/dataOptions.component';
+import LoadingSpinner from "../../utilities/loadingSpinner.component";
+import SkillsSelection from "../../sharedComponents/skillsSelection.component";
+import {
+  SelectBadgeOptionsForm,
+  CategoryBadgeOptionsForm,
+} from "../../sharedComponents/selectBadgeOptions.component";
+import { listOfLanguages } from "../../utilities/dataOptions.component";
 
-import { createUserVolunteerReset, creatingUserVolunteer } from '../../../Actions/volunteerActions';
+import {
+  createUserVolunteerReset,
+  creatingUserVolunteer,
+} from "../../../Actions/volunteerActions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandsHelping } from "@fortawesome/pro-solid-svg-icons";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
-  .required("*Username is required")
-  .min(5, "*Username must be longer than 5 charachters")
-  .max(20, "*Username must be less than 20 charachters")
-  .matches(/^[a-zA-Z0-9_ ]*$/, "*Username must be only letters or numbers"),
+    .required("*Username is required")
+    .min(5, "*Username must be longer than 5 charachters")
+    .max(20, "*Username must be less than 20 charachters")
+    .matches(/^[a-zA-Z0-9_ ]*$/, "*Username must be only letters or numbers"),
   password: Yup.string()
-  .required("*Password is required")
-  .min(5, "*Password must be longer than 5 charachters")
-  .max(20, "*password must be less than 20 charachters")
-  .matches("", )
-  // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/, "*Password must contain an uppercase, lowercase letter, number and special charachter"),
-  .matches(/(?=^.{5,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=(.*\d){1,}))((?!.*[",;&|'])|(?=(.*\W){1,}))(?!.*[",;&|'])^.*$/, "*Password must contain an uppercase, lowercase letter, and number"),
+    .required("*Password is required")
+    .min(5, "*Password must be longer than 5 charachters")
+    .max(20, "*password must be less than 20 charachters")
+    .matches("")
+    // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,20}$/, "*Password must contain an uppercase, lowercase letter, number and special charachter"),
+    .matches(
+      /(?=^.{5,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=(.*\d){1,}))((?!.*[",;&|'])|(?=(.*\W){1,}))(?!.*[",;&|'])^.*$/,
+      "*Password must contain an uppercase, lowercase letter, and number"
+    ),
   confirmPassword: Yup.string()
-  .oneOf([Yup.ref('password'), null], "*Passwords do not match")
-  .required("*Password is required"),
+    .oneOf([Yup.ref("password"), null], "*Passwords do not match")
+    .required("*Password is required"),
   firstName: Yup.string()
-  .required("*First name is required")
-  .max(100, "*First name must be less than 100 charachters"),
+    .required("*First name is required")
+    .max(100, "*First name must be less than 100 charachters"),
   lastName: Yup.string()
-  .required("*Last name is required")
-  .max(100, "*Last name must be less than 100 charachters"),
+    .required("*Last name is required")
+    .max(100, "*Last name must be less than 100 charachters"),
   email: Yup.string()
-  .required("*Email is required")
-  .email("*Must be a valid email")
-  .max(100, "*Email must be less than 100 charachters"),
-  cnic: Yup.string()
-  .matches(/^(\d{13})?$|[0-9]{12}-[0-9]{1}$|[0-9]{5}-[0-9]{7}-[0-9]{1}$|[0-9]{6}-[0-9]{6}-[0-9]{1}$/, "*This is not a valid CNIC, make sure it is in this format: 1234567891234 or 12345-1234567-1 or 123456-123456-1"),
-  dob: Yup.date()
-  .required("*Date of birth is required"),
-  gender: Yup.string()
-  .required("*Please select a gender"),
+    .required("*Email is required")
+    .email("*Must be a valid email")
+    .max(100, "*Email must be less than 100 charachters"),
+  cnic: Yup.string().matches(
+    /^(\d{13})?$|[0-9]{12}-[0-9]{1}$|[0-9]{5}-[0-9]{7}-[0-9]{1}$|[0-9]{6}-[0-9]{6}-[0-9]{1}$/,
+    "*This is not a valid CNIC, make sure it is in this format: 1234567891234 or 12345-1234567-1 or 123456-123456-1"
+  ),
+  tagLine: Yup.string()
+    .required("*Tag line is required")
+    .max(80, "*About must be less than 80 charachters"),
+  dob: Yup.date().required("*Date of birth is required"),
+  gender: Yup.string().required("*Please select a gender"),
   about: Yup.string()
-  .required("*About is required")
-  .max(1000, "*About must be less than 1000 charachters"),
+    .required("*About is required")
+    .max(1000, "*About must be less than 1000 charachters"),
   contactNumber: Yup.string()
-  .required("*Number is required")
-  .min(7, "*Number must be longer than 7 charachters")
-  .max(14, "*Number must be less than 14 charachters"),
-  educationLevel: Yup.string()
-  .required("*Education is required"),
-  employmentStatus: Yup.string()
-  .required("*Employment is required"),
+    .required("*Number is required")
+    .min(7, "*Number must be longer than 7 charachters")
+    .max(14, "*Number must be less than 14 charachters"),
+  educationLevel: Yup.string().required("*Education is required"),
+  employmentStatus: Yup.string().required("*Employment is required"),
   city: Yup.string()
-  .required("*City is required")
-  .min(1, "*City name must be longer than 1 charachter")
-  .max(50, "*City name must be less than 50 charachters"),
+    .required("*City is required")
+    .min(1, "*City name must be longer than 1 charachter")
+    .max(50, "*City name must be less than 50 charachters"),
   country: Yup.string()
-  .required("*Country is required")
-  .min(1, "*Country name must be longer than 1 charachter")
-  .max(60, "*Country name must be less than 60 charachters"),
-  vehicle: Yup.string()
-  .required("*Please select an option"),
-  languages: Yup.array()
-  .min(1, "*Please select at least one language"),
-  skills: Yup.array()
-  .min(1, "*Please select at least one skill"),
-  interests: Yup.array()
-  .min(1, "*Please select at least one interest"),
-  agreedToTerms: Yup.bool()
-  .oneOf([true], "*Must accept terms and conditions")
-})
+    .required("*Country is required")
+    .min(1, "*Country name must be longer than 1 charachter")
+    .max(60, "*Country name must be less than 60 charachters"),
+  vehicle: Yup.string().required("*Please select an option"),
+  languages: Yup.array().min(1, "*Please select at least one language"),
+  skills: Yup.array().min(1, "*Please select at least one skill"),
+  interests: Yup.array().min(1, "*Please select at least one interest"),
+  agreedToTerms: Yup.bool().oneOf([true], "*Must accept terms and conditions"),
+});
 
-const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, signUpError }) => {
+const CreateUserVolunteerForm = ({
+  dispatch,
+  hasErrors,
+  loading,
+  success,
+  auth,
+  signUpError,
+}) => {
   useEffect(() => {
     if (auth) {
-      return <Redirect to="/dashboard" />
+      return <Redirect to="/dashboard" />;
     }
-  }, [])
+  }, []);
 
   const [imageFiles, setImageFiles] = useState([]);
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
@@ -113,6 +130,7 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
       confirmPassword: "",
       email: "",
       cnic: "",
+      tagLine: "",
       imageURL: null,
       dob: new Date(),
       gender: "",
@@ -131,7 +149,7 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
       skills: [],
       interests: [],
       isPrivate: false,
-      agreedToTerms: false
+      agreedToTerms: false,
     },
     validationSchema: validationSchema,
     validateOnChange: false,
@@ -144,6 +162,7 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
         email: values.email,
         password: values.password,
         cnic: values.cnic,
+        tagLine: values.tagLine,
         imageURL: values.imageURL,
         dob: values.dob,
         gender: values.gender,
@@ -161,8 +180,8 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
         skills: values.skills,
         interests: values.interests,
         isPrivate: values.isPrivate,
-      }
-      dispatch(creatingUserVolunteer(data))
+      };
+      dispatch(creatingUserVolunteer(data));
       // alert(JSON.stringify(data))
     },
   });
@@ -176,9 +195,10 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             <h2> Volunteer Sign Up </h2>
           </div>
           <div className="formMainBody">
-
-          <div className="formGroup">
-              <p className="formGroupHeader">Username <span className="red">*</span> </p>
+            <div className="formGroup">
+              <p className="formGroupHeader">
+                Username <span className="red">*</span>{" "}
+              </p>
               <input
                 autoComplete="given-name"
                 type="text"
@@ -194,7 +214,9 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Password <span className="red">*</span> </p>
+              <p className="formGroupHeader">
+                Password <span className="red">*</span>{" "}
+              </p>
               <input
                 autoComplete="new-password"
                 type="password"
@@ -210,7 +232,10 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader"> Confirm Password <span className="red">*</span> </p>
+              <p className="formGroupHeader">
+                {" "}
+                Confirm Password <span className="red">*</span>{" "}
+              </p>
               <input
                 autoComplete="new-password"
                 type="password"
@@ -221,13 +246,18 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                 value={formik.values.confirmPassword}
               />
               {formik.errors.confirmPassword && (
-                <p className="formInputError"> {formik.errors.confirmPassword} </p>
+                <p className="formInputError">
+                  {" "}
+                  {formik.errors.confirmPassword}{" "}
+                </p>
               )}
             </div>
 
             <div className="formRow">
               <div className="formGroup">
-                <p className="formGroupHeader">First Name <span className="red">*</span> </p>
+                <p className="formGroupHeader">
+                  First Name <span className="red">*</span>{" "}
+                </p>
                 <input
                   autoFocus
                   autoComplete="given-name"
@@ -244,7 +274,9 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
               </div>
 
               <div className="formGroup">
-                <p className="formGroupHeader">Last Name <span className="red">*</span> </p>
+                <p className="formGroupHeader">
+                  Last Name <span className="red">*</span>{" "}
+                </p>
                 <input
                   autoComplete="family-name"
                   type="text"
@@ -261,7 +293,9 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Email <span className="red">*</span> </p>
+              <p className="formGroupHeader">
+                Email <span className="red">*</span>{" "}
+              </p>
               <input
                 autoComplete="email"
                 type="email"
@@ -293,8 +327,8 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
 
             <div className="formGroup">
               <p className="formGroupHeader">
-                Profile Picture (Under 1mb, file must have
-                extension of either .jpg, .jpeg or .png)
+                Profile Picture (Under 1mb, file must have extension of either
+                .jpg, .jpeg or .png)
               </p>
               <Dropzone
                 accept="image/jpeg, image/png, image/jpg, image/gif"
@@ -308,8 +342,8 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                     setRejectedFilesState([]);
                   }
                   if (acceptedFiles.length !== 1) {
-                    setRejectedFilesState(acceptedFiles)
-                    return
+                    setRejectedFilesState(acceptedFiles);
+                    return;
                   }
                   setImageFiles(acceptedFiles);
                   formik.setFieldValue("images", acceptedFiles);
@@ -341,7 +375,9 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Date of Birth <span className="red">*</span></p>
+              <p className="formGroupHeader">
+                Date of Birth <span className="red">*</span>
+              </p>
               <DatePicker
                 selected={formik.values.dob}
                 onChange={(date) => {
@@ -360,9 +396,16 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Gender <span className="red">*</span> </p>
-              <select name="gender" onChange={(e) => formik.setFieldValue("gender", e.target.value)}>
-                <option value="" defaultValue>Select your gender</option>
+              <p className="formGroupHeader">
+                Gender <span className="red">*</span>{" "}
+              </p>
+              <select
+                name="gender"
+                onChange={(e) => formik.setFieldValue("gender", e.target.value)}
+              >
+                <option value="" defaultValue>
+                  Select your gender
+                </option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">other</option>
@@ -373,7 +416,28 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">About Me <span className="red">*</span> </p>
+              <p className="formGroupHeader">
+                Why do you want to volunteer (1 line){" "}
+                <span className="red">*</span>{" "}
+              </p>
+              <textarea
+                type="text"
+                name="tagLine"
+                rows="2"
+                placeholder="Enter a tagline"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.tagLine}
+              />
+              {formik.errors.tagLine && (
+                <p className="formInputError"> {formik.errors.tagLine} </p>
+              )}
+            </div>
+
+            <div className="formGroup">
+              <p className="formGroupHeader">
+                About Me <span className="red">*</span>{" "}
+              </p>
               <textarea
                 type="text"
                 name="about"
@@ -389,7 +453,9 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Mobile <span className="red">*</span> </p>
+              <p className="formGroupHeader">
+                Mobile <span className="red">*</span>{" "}
+              </p>
               <input
                 autoComplete="tel"
                 type="text"
@@ -400,27 +466,51 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                 value={formik.values.contactNumber}
               />
               {formik.errors.contactNumber && (
-                <p className="formInputError"> {formik.errors.contactNumber} </p>
+                <p className="formInputError">
+                  {" "}
+                  {formik.errors.contactNumber}{" "}
+                </p>
               )}
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Highest level of Education <span className="red">*</span> </p>
-              <select name="educationLevel" onChange={(e) => formik.setFieldValue("educationLevel", e.target.value)}>
-                <option value="" defaultValue>Select your level</option>
+              <p className="formGroupHeader">
+                Highest level of Education <span className="red">*</span>{" "}
+              </p>
+              <select
+                name="educationLevel"
+                onChange={(e) =>
+                  formik.setFieldValue("educationLevel", e.target.value)
+                }
+              >
+                <option value="" defaultValue>
+                  Select your level
+                </option>
                 <option value="primary">Primary</option>
                 <option value="secondary">Secondary</option>
                 <option value="other">other</option>
               </select>
               {formik.errors.educationLevel && (
-                <p className="formInputError"> {formik.errors.educationLevel} </p>
+                <p className="formInputError">
+                  {" "}
+                  {formik.errors.educationLevel}{" "}
+                </p>
               )}
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Employment Status <span className="red">*</span> </p>
-              <select name="employmentStatus" onChange={(e) => formik.setFieldValue("employmentStatus", e.target.value)}>
-                <option value="" defaultValue>Select your status</option>
+              <p className="formGroupHeader">
+                Employment Status <span className="red">*</span>{" "}
+              </p>
+              <select
+                name="employmentStatus"
+                onChange={(e) =>
+                  formik.setFieldValue("employmentStatus", e.target.value)
+                }
+              >
+                <option value="" defaultValue>
+                  Select your status
+                </option>
                 <option value="STUDENT">Student</option>
                 <option value="HOME-MAKER">Home Maker</option>
                 <option value="PRIVATE-SECTOR">Private Sector</option>
@@ -433,7 +523,10 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                 <option value="OTHER">other</option>
               </select>
               {formik.errors.employmentStatus && (
-                <p className="formInputError"> {formik.errors.employmentStatus} </p>
+                <p className="formInputError">
+                  {" "}
+                  {formik.errors.employmentStatus}{" "}
+                </p>
               )}
             </div>
 
@@ -447,11 +540,9 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                   onBlur={formik.handleBlur}
                   value={formik.values.hasDisability}
                 />
-                <p className="agreedTo">
-                  Do you have a disability?
-                </p>
+                <p className="agreedTo">Do you have a disability?</p>
               </div>
-              {formik.values.hasDisability &&
+              {formik.values.hasDisability && (
                 <div>
                   <p className="formGroupHeader">What is your disability? </p>
                   <input
@@ -463,10 +554,13 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                     value={formik.values.disability}
                   />
                   {formik.errors.disability && (
-                    <p className="formInputError"> {formik.errors.disability} </p>
+                    <p className="formInputError">
+                      {" "}
+                      {formik.errors.disability}{" "}
+                    </p>
                   )}
                 </div>
-              }
+              )}
             </div>
 
             <div className="formGroup">
@@ -479,21 +573,26 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                   onBlur={formik.handleBlur}
                   value={formik.values.haveSmartPhone}
                 />
-                <p className="agreedTo">
-                  Do you have a smart phone?
-                </p>
+                <p className="agreedTo">Do you have a smart phone?</p>
               </div>
               {formik.errors.haveSmartPhone && (
-                <p className="formInputError">
-                  {formik.errors.haveSmartPhone}
-                </p>
+                <p className="formInputError">{formik.errors.haveSmartPhone}</p>
               )}
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Do you have a vehicle? <span className="red">*</span> </p>
-              <select name="vehicle" onChange={(e) => formik.setFieldValue("vehicle", e.target.value)}>
-                <option value="" defaultValue>Choose an option</option>
+              <p className="formGroupHeader">
+                Do you have a vehicle? <span className="red">*</span>{" "}
+              </p>
+              <select
+                name="vehicle"
+                onChange={(e) =>
+                  formik.setFieldValue("vehicle", e.target.value)
+                }
+              >
+                <option value="" defaultValue>
+                  Choose an option
+                </option>
                 <option value="none">No</option>
                 <option value="car">Car</option>
                 <option value="motorbike">Motorbike</option>
@@ -516,13 +615,18 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                 value={formik.values.preferredContact}
               />
               {formik.errors.preferredContact && (
-                <p className="formInputError"> {formik.errors.preferredContact} </p>
+                <p className="formInputError">
+                  {" "}
+                  {formik.errors.preferredContact}{" "}
+                </p>
               )}
             </div>
 
             <div className="formRow">
               <div className="formGroup">
-                <p className="formGroupHeader">City <span className="red">*</span> </p>
+                <p className="formGroupHeader">
+                  City <span className="red">*</span>{" "}
+                </p>
                 <input
                   autoComplete="address-level2"
                   type="text"
@@ -538,7 +642,9 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
               </div>
 
               <div className="formGroup">
-                <p className="formGroupHeader">Country <span className="red">*</span> </p>
+                <p className="formGroupHeader">
+                  Country <span className="red">*</span>{" "}
+                </p>
                 <input
                   autoComplete="country-name"
                   type="text"
@@ -555,24 +661,42 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Skills <span className="red">*</span> </p>
-              <SkillsSelection selectedSkills={formik.values.skills} setFieldValue={formik.setFieldValue} />
+              <p className="formGroupHeader">
+                Skills <span className="red">*</span>{" "}
+              </p>
+              <SkillsSelection
+                selectedSkills={formik.values.skills}
+                setFieldValue={formik.setFieldValue}
+              />
               {formik.errors.skills && (
                 <p className="formInputError"> {formik.errors.skills} </p>
               )}
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">Select what Interests you <span className="red">*</span> </p>
-              <CategoryBadgeOptionsForm fieldName="interests" setFieldValue={formik.setFieldValue} options={formik.values.interests} />
+              <p className="formGroupHeader">
+                Select what Interests you <span className="red">*</span>{" "}
+              </p>
+              <CategoryBadgeOptionsForm
+                fieldName="interests"
+                setFieldValue={formik.setFieldValue}
+                options={formik.values.interests}
+              />
               {formik.errors.interests && (
                 <p className="formInputError"> {formik.errors.interests} </p>
               )}
             </div>
 
             <div className="formGroup">
-              <p className="formGroupHeader">What languages can you speak? <span className="red">*</span> </p>
-              <SelectBadgeOptionsForm fieldName="languages" setFieldValue={formik.setFieldValue} options={formik.values.languages} baseOptions={listOfLanguages} />
+              <p className="formGroupHeader">
+                What languages can you speak? <span className="red">*</span>{" "}
+              </p>
+              <SelectBadgeOptionsForm
+                fieldName="languages"
+                setFieldValue={formik.setFieldValue}
+                options={formik.values.languages}
+                baseOptions={listOfLanguages}
+              />
               {formik.errors.languages && (
                 <p className="formInputError"> {formik.errors.languages} </p>
               )}
@@ -631,9 +755,11 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
                 {loading ? (
                   <LoadingSpinner
                     size="1x"
-                    style={{ marginRight: "8px", minHeight: 'unset' }}
+                    style={{ marginRight: "8px", minHeight: "unset" }}
                   />
-                ) : "Create Volunteer"}
+                ) : (
+                  "Create Volunteer"
+                )}
               </button>
               <button
                 type="button"
@@ -645,38 +771,41 @@ const CreateUserVolunteerForm = ({ dispatch, hasErrors, loading, success, auth, 
               </button>
             </div>
 
-            {success &&
+            {success && (
               <p className="successReply"> Volunteer sign up successfull. </p>
-            }
+            )}
 
-            {hasErrors &&
-              <ErrorComponent signUpError={signUpError} />
-            }
-
+            {hasErrors && <ErrorComponent signUpError={signUpError} />}
           </div>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const ErrorComponent = (props) => {
   if (props.signUpError === 200) {
     return (
       <>
         <br />
-        <p className="redError"> This email is already in use. Please use a different one</p>
+        <p className="redError">
+          {" "}
+          This email is already in use. Please use a different one
+        </p>
       </>
-    )
+    );
   } else {
     return (
       <>
         <br />
-        <p className="redError"> An error has occured please try again later or email support.</p>
+        <p className="redError">
+          {" "}
+          An error has occured please try again later or email support.
+        </p>
       </>
-    )
+    );
   }
-}
+};
 
 const MapStateToProps = (state) => ({
   loading: state.signUp.loading,
@@ -685,6 +814,5 @@ const MapStateToProps = (state) => ({
   hasErrors: state.signUp.hasErrors,
   auth: state.auth.auth,
 });
-
 
 export default connect(MapStateToProps)(CreateUserVolunteerForm);
