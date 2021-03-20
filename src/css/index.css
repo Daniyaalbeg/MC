@@ -23,3 +23,9 @@ button:focus,
 Button:focus {
     outline: none !important;
 }
+
+@layer utilities {
+  .shadow-solid {
+    box-shadow: 0px 2px 2px 2px rgb(0 0 0 / 5%);
+  }
+}

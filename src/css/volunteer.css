@@ -36,7 +36,6 @@
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  text-align: center;
   margin-bottom: 8px;
   padding: 12px 18px;
 }
@@ -76,23 +75,23 @@
   width: fit-content;
 }
 .volunteerProfileA > img {
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  min-width: 120px;
   border-radius: 12px;
   object-fit: cover;
 }
 .volunteerProfileA > p {
   font-weight: bold;
-  text-align: center;
   margin: 0;
+  margin-top: 4px;
 }
 .volunteerProfileB > div {
   width: fit-content;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   max-width: 300px;
 }
 .volunteerProfileC {

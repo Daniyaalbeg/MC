@@ -1,6 +1,6 @@
-import * as actions from '../Actions/userInfoActions';
-import { LOGOUT } from '../Actions/authActions'
-import { normalizeUserState } from '../components/utilities/normalise'
+import * as actions from "../Actions/userInfoActions";
+import { LOGOUT } from "../Actions/authActions";
+import { normalizeUserState } from "../components/utilities/normalise";
 
 export const initialState = {
   fetched: false,
@@ -27,96 +27,96 @@ export const initialState = {
   user: null,
   userID: null,
   hasErrors: false,
-  error: null
-}
+  error: null,
+};
 
 const newFundingState = (funding) => {
   if (funding) {
-    return ({
+    return {
       fundingNeeded: funding.fundingNeeded,
       fundingReceived: funding.fundingReceived,
       backers: funding.backers,
-      fundingUsedFor: funding.fundingUsedFor
-    })
+      fundingUsedFor: funding.fundingUsedFor,
+    };
   }
-  return null
-}
+  return null;
+};
 
 const newSupplyState = (supplies) => {
   if (supplies) {
     return supplies.map((supply) => {
-      return ({
+      return {
         ...supply,
-        suppliedBy: supply.suppliedBy
-      })
-    })
+        suppliedBy: supply.suppliedBy,
+      };
+    });
   }
-  return null
-}
+  return null;
+};
 
 export default function userInfoReducer(state = initialState, action) {
   switch (action.type) {
     case actions.GET_USER_INFO:
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     case actions.GET_USER_INFO_SUCCESS:
-      const normalizedState = normalizeUserState(action.payload)
+      const normalizedState = normalizeUserState(action.payload);
       return {
         ...normalizedState.entities,
         entityIds: normalizedState.entityIds,
         fetched: true,
         loading: false,
-        hasErrors: false
-      }
+        hasErrors: false,
+      };
     case actions.GET_USER_INFO_FAILURE:
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         fetched: false,
         hasErrors: true,
         loading: false,
-        error: action.payload
-      }
+        error: action.payload,
+      };
     case actions.GET_USER_INFO_BACKGROUND:
       return {
         ...state,
         // loading: true
-      }
+      };
     case actions.GET_USER_INFO_BACKGROUND_SUCCESS:
-      const normalizedState2 = normalizeUserState(action.payload)
+      const normalizedState2 = normalizeUserState(action.payload);
       return {
         ...normalizedState2.entities,
         entityIds: normalizedState2.entityIds,
         fetched: true,
         loading: false,
-        hasErrors: false
-      }
+        hasErrors: false,
+      };
     case actions.GET_USER_INFO_BACKGROUND_FAILURE:
       console.log(action.payload);
       return {
         ...state,
         loading: false,
         hasErrors: true,
-        fetched: false
-      }
+        fetched: false,
+      };
     case actions.RESET_USER_INFO_GET:
       return {
         ...state,
         fetched: false,
         loading: false,
-        hasErrors: false
-      }
+        hasErrors: false,
+      };
     case LOGOUT:
-      return initialState
+      return initialState;
     case actions.DELETE_USER_INFO_EVENT:
-      let orgs = [...state.user.createdOrganisations]
+      let orgs = [...state.user.createdOrganisations];
       for (let i = 0; i < orgs.length; i++) {
         for (let j = 0; j < orgs[i].events.length; j++) {
           if (orgs[i].events[j]._id === action.payload) {
-            orgs[i].events.splice(j, 1)
-            break
+            orgs[i].events.splice(j, 1);
+            break;
           }
         }
       }
@@ -124,14 +124,14 @@ export default function userInfoReducer(state = initialState, action) {
         ...state,
         user: {
           ...state.user,
-          createdOrganisations: [...orgs]
-        }
-      }
+          createdOrganisations: [...orgs],
+        },
+      };
     case actions.DELETE_USER_INFO_GROUP:
-      let newCreatedGroups = [...state.user.createdGroups]
-      for (let i = 0; i<state.user.createdGroups.length; i++) {
+      let newCreatedGroups = [...state.user.createdGroups];
+      for (let i = 0; i < state.user.createdGroups.length; i++) {
         if (state.user.createdGroups[i]._id === action.payload) {
-          newCreatedGroups.splice(i, 1)
+          newCreatedGroups.splice(i, 1);
           break;
         }
       }
@@ -139,9 +139,9 @@ export default function userInfoReducer(state = initialState, action) {
         ...state,
         user: {
           ...state.user,
-          createdGroups: [...newCreatedGroups]
-        }
-      }
+          createdGroups: [...newCreatedGroups],
+        },
+      };
     default:
       return state;
   }

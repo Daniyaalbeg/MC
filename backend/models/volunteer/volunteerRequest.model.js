@@ -16,7 +16,7 @@ const volunteerRequestSchema = new Schema(
     },
     projectCreatedBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Organisation",
       required: true,
     },
     description: {
@@ -40,6 +40,14 @@ const volunteerRequestSchema = new Schema(
       required: true,
     },
     declinedReason: {
+      type: String,
+      required: false,
+    },
+    volunteerContactNumber: {
+      type: String,
+      required: false,
+    },
+    projectContactNumber: {
       type: String,
       required: false,
     },
