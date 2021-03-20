@@ -2,10 +2,8 @@ import React from "react";
 
 import ProjectCardSheet from "./mainProjectCardSheet.component";
 import imagePlaceholder from "../../../assets/Images/temp.jpg";
-import { Link } from "react-router-dom";
 
 const ProjectCard = ({ project, onClick }) => {
-  console.log(project);
   let image = null;
   if (project.images && project.images.length !== 0) {
     image = project.images[0];

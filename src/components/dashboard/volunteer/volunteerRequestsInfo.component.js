@@ -17,6 +17,24 @@ const VolunteerRequestsInfo = ({ volunteerRequestIds, volunteerRequests }) => {
           </h3>
         </div>
         <div className="">
+          {selectedRequest.requestedProject.volunteeringInfo
+            .volunteerLeadName && (
+            <>
+              <h5 className="text-gray-800 font-bold"> Project contact: </h5>
+              <p>
+                {" "}
+                {
+                  selectedRequest.requestedProject.volunteeringInfo
+                    .volunteerLeadName
+                }
+                ,{" "}
+                {
+                  selectedRequest.requestedProject.volunteeringInfo
+                    .volunteerLeadContact
+                }{" "}
+              </p>
+            </>
+          )}
           <h5 className="text-gray-800 font-bold"> Description </h5>
           <p> {selectedRequest.description} </p>
           <h5 className="text-gray-800 font-bold"> Motivation </h5>

@@ -85,7 +85,8 @@ router.route("/me").get(verifyToken, (req, res, next) => {
         "description requestedProject motivation previousExperience availability additionalInformation declinedReason status",
       populate: {
         path: "requestedProject",
-        select: "name images completionDate",
+        select:
+          "name images completionDate volunteeringInfo.volunteerLeadName volunteeringInfo.volunteerLeadContact",
       },
     })
     .populate("createdGroups")

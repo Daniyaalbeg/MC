@@ -156,5 +156,6 @@ router.route("/create").post(verifyToken, (req, res, next) => {
 });
 
 //Create a volunteer when user does not exist
+//Inside user router
 
 module.exports = router;

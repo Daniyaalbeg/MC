@@ -39,7 +39,7 @@ const VolunteerProfile = ({ volunteer }) => {
             </button>
           </div>
         </div>
-        <div className="w-full py-4 text-center">
+        <div className="w-full py-1 text-center">
           <button onClick={() => setExpanded((expanded) => !expanded)}>
             {" "}
             <FontAwesomeIcon

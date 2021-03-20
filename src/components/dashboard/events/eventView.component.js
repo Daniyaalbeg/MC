@@ -6,7 +6,11 @@ import { connect } from "react-redux";
 import EventsContainer from "./eventsContainer.component";
 import HeaderIcons from "../HeaderIcons.component";
 
-const EventView = ({ createdOrganisations, createdOrganisationsIds }) => {
+const EventView = ({
+  createdOrganisations,
+  createdOrganisationsIds,
+  eventsDict,
+}) => {
   return (
     <div className="eventViewContainer">
       <div className="eventViewHeader">
@@ -20,6 +24,7 @@ const EventView = ({ createdOrganisations, createdOrganisationsIds }) => {
         <EventsContainer
           createdOrganisations={createdOrganisations}
           createdOrganisationsIds={createdOrganisationsIds}
+          eventsDict={eventsDict}
         />
       </div>
     </div>
@@ -29,6 +34,7 @@ const EventView = ({ createdOrganisations, createdOrganisationsIds }) => {
 const MapStateToProps = (state) => ({
   createdOrganisations: state.userInfo.createdOrganisations,
   createdOrganisationsIds: state.userInfo.entityIds.createdOrganisations,
+  eventsDict: state.userInfo.events,
 });
 
 export default connect(MapStateToProps)(EventView);

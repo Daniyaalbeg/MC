@@ -37,20 +37,20 @@ const volunteerRequestSchema = new Schema(
     },
     additionalInformation: {
       type: String,
-      required: true,
+      required: false,
     },
     declinedReason: {
       type: String,
       required: false,
     },
-    volunteerContactNumber: {
-      type: String,
-      required: false,
-    },
-    projectContactNumber: {
-      type: String,
-      required: false,
-    },
+    // volunteerContactNumber: {
+    //   type: String,
+    //   required: false,
+    // },
+    // projectContactNumber: {
+    //   type: String,
+    //   required: false,
+    // },
     status: {
       type: String,
       enum: ["PENDING", "ACCEPTED", "DECLINED"],

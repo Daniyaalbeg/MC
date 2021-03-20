@@ -1,6 +1,7 @@
 import { normalize, schema } from "normalizr";
 
 //Schema Defined
+const events = new schema.Entity("events", {}, { idAttribute: "_id" });
 const sponsorRequests = new schema.Entity(
   "sponsorRequests",
   {},
@@ -39,6 +40,7 @@ const organisations = new schema.Entity(
   {
     projects: [projects],
     sponsorRequests: [sponsorRequests],
+    events: [events],
   },
   { idAttribute: "_id" }
 );
@@ -61,6 +63,7 @@ export const normalizeUserState = (data) => {
   //Creating allIds array for each entity
   normalizedData.entityIds = {
     createdOrganisations: [],
+    events: [],
     projects: [],
     createdGroups: [],
     sponsorRequests: [],
@@ -78,6 +81,9 @@ export const normalizeUserState = (data) => {
     normalizedData.entityIds.userVolunteerRequests.push(v._id);
     normalizedData.entities.userVolunteerRequests[v._id] = v;
   });
+  // console.log(normalizedData);
+  // normalizedData.entities.user =
+  //   normalizedData.entities.user[Object.keys(normalizedData.entities.user)[0]];
 
   for (const [key] of Object.entries(normalizedData.entities.projects)) {
     normalizedData.entityIds.projects.push(key);
@@ -111,6 +117,9 @@ export const normalizeUserState = (data) => {
   }
   for (const [key] of Object.entries(normalizedData.entities.supplies)) {
     normalizedData.entityIds.supplies.push(key);
+  }
+  for (const [key] of Object.entries(normalizedData.entities.events)) {
+    normalizedData.entityIds.events.push(key);
   }
   return normalizedData;
 };

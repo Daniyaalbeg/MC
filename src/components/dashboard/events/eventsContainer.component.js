@@ -7,7 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faExclamationTriangle } from "@fortawesome/pro-duotone-svg-icons";
 
-const EventsContainer = ({ createdOrganisations, createdOrganisationsIds }) => {
+const EventsContainer = ({
+  createdOrganisations,
+  createdOrganisationsIds,
+  eventsDict,
+}) => {
   const [selectedOrg, setSelectedOrg] = useState(null);
 
   if (!createdOrganisationsIds || createdOrganisationsIds.length === 0) {
@@ -40,6 +44,7 @@ const EventsContainer = ({ createdOrganisations, createdOrganisationsIds }) => {
       <EventAccordionContainer
         org={selectedOrg}
         setSelectedOrg={setSelectedOrg}
+        eventsDict={eventsDict}
       />
     );
   } else {

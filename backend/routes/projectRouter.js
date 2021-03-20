@@ -388,6 +388,8 @@ router.route("/volunteer/:id/").post(verifyToken, (req, res, next) => {
     }
 
     volunteeringInfo = new ProjectVolunteer({
+      volunteerLeadName: req.body.volunteerLeadName,
+      volunteerLeadContact: req.body.volunteerLeadContact,
       volunteersNeeded: req.body.volunteersNeeded,
       volunteersObtained: 0,
       description: req.body.description,
@@ -534,7 +536,7 @@ router.route("/update/:id/").post(verifyToken, (req, res, next) => {
 // Create Project Volunteer Request
 router.route("/volunteerRequest/:id").post(verifyToken, (req, res, next) => {
   Project.findById(req.params.id)
-    .populate("volunteer.volunteerRequests", [])
+    .populate("volunteeringInfo.volunteerRequests", [])
     .exec(async (err, project) => {
       if (err) {
         console.log(err);
@@ -544,9 +546,13 @@ router.route("/volunteerRequest/:id").post(verifyToken, (req, res, next) => {
         return res.status(400).json({ errorDesc: "Project found but missing" });
 
       //Check if volunteer already requested
-      for (let i = 0; i < project.volunteer.volunteerRequests.length; i++) {
+      for (
+        let i = 0;
+        i < project.volunteeringInfo.volunteerRequests.length;
+        i++
+      ) {
         if (
-          project.volunteer.volunteerRequests[
+          project.volunteeringInfo.volunteerRequests[
             i
           ].requestingVolunteer.toString() === req.id
         ) {
@@ -583,7 +589,11 @@ router.route("/volunteerRequest/:id").post(verifyToken, (req, res, next) => {
               await Promise.all([
                 Project.updateOne(
                   { _id: project._id },
-                  { $push: { "volunteer.volunteerRequests": savedVR._id } }
+                  {
+                    $push: {
+                      "volunteeringInfo.volunteerRequests": savedVR._id,
+                    },
+                  }
                 ).session(session),
                 User.updateOne(
                   { _id: req.id },
@@ -619,25 +629,53 @@ router.route("/volunteerRequest/:id").post(verifyToken, (req, res, next) => {
 //Accept volunteer request
 router.route("/volunteerRequest/:id").put(verifyToken, (req, res, next) => {
   VolunteerRequest.findById(req.params.id, (err, request) => {
-    if (request.projectCreatedBy.toString() !== req.id) {
-      return res
-        .status(401)
-        .json({ errorDesc: "Not authorised to perform this action." });
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ errorDesc: "Error finding request" });
     }
+    Project.findById(request.requestedProject, async (error, project) => {
+      if (error) {
+        console.log(err);
+        return res.status(400).json({ errorDesc: "Error finding project" });
+      }
+      if (project.createdByUser.toString() !== req.id) {
+        return res
+          .status(401)
+          .json({ errorDesc: "Not authorised to perform this action." });
+      }
 
-    request.status = "ACCEPTED";
+      project.volunteeringInfo.volunteersObtained += 1;
 
-    //send email
+      request.status = "ACCEPTED";
 
-    request
-      .save()
-      .then((req) => {
-        return res.status(200).send("success");
-      })
-      .catch((error) => {
-        console.log(error);
-        return res.status(500).json({ errorDesc: "Error saving the request" });
-      });
+      //TODO: send email
+
+      const session = await db.startSession();
+
+      try {
+        await session.withTransaction(async () => {
+          await Promise.all([
+            project.save({ session }),
+            request.save({ session }),
+          ])
+            .then(async () => {
+              await session.commitTransaction();
+              return res.status(200).send("success");
+            })
+            .catch(async (err) => {
+              console.log(err);
+              await session.abortTransaction();
+              return;
+            });
+        });
+      } catch (err) {
+        console.log(err);
+        console.error("transaction aborted, something went wrong");
+        return res.status(500).json({ errorDesc: "No idea..." });
+      } finally {
+        session.endSession();
+      }
+    });
   });
 });
 

@@ -159,7 +159,7 @@ function App({ dispatch, checkedCookie }) {
               path="/createUserVolunteer"
               component={CreateUserVolunteer}
             />
-            <Route path="/cnic" component={CnicView} />
+            {/* <Route path="/cnic" component={CnicView} /> */}
             <Route path="/privacypolicy" component={PrivacyPolicy} />
             <Route path="/termsandconditions" component={TermsAndConditions} />
             <Route component={Error404} />

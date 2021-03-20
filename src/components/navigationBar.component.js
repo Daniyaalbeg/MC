@@ -68,12 +68,12 @@ const NavigationBar = ({ auth }) => {
                 Inspire{" "}
               </Link>
             </Nav.Item>
-            <Nav.Item onClick={() => setDropDown(false)}>
+            {/* <Nav.Item onClick={() => setDropDown(false)}>
               <Link className="navlink navlinkHome spaceLink" to="/cnic">
                 {" "}
                 CNIC{" "}
               </Link>
-            </Nav.Item>
+            </Nav.Item> */}
             {/* <Nav.Item><Link className="navlinkHome spaceLink" to="/about"> About </Link></Nav.Item> */}
             <Link
               className="loginNav loginNavHome"
@@ -142,12 +142,12 @@ const NavigationBar = ({ auth }) => {
                 Inspire{" "}
               </Link>
             </Nav.Item>
-            <Nav.Item onClick={() => setDropDown(false)}>
+            {/* <Nav.Item onClick={() => setDropDown(false)}>
               <Link className="navlink spaceLink" to="/cnic">
                 {" "}
                 CNIC{" "}
               </Link>
-            </Nav.Item>
+            </Nav.Item> */}
             {/* <Nav.Item><Link className="navlink spaceLink" to="/about"> About </Link></Nav.Item> */}
             <Link
               className="loginNav"

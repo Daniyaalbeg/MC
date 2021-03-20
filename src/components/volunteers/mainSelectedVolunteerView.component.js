@@ -68,14 +68,22 @@ const MainSelectedVolunteerView = ({
             <h3 className="mt-4 font-bold"> Languages </h3>
             <VolunteerPillsList items={volunteer.languages} />
           </div>
-          <div className="col-span-3 px-8 py-4 bg-white rounded-xl shadow-solid">
-            <h3 className="font-bold"> Volunteered For </h3>
-            <div className="flex flex-row flex-wrap gap-4">
-              {volunteer.volunteering.map((p) => {
-                return <ProjectMiniCard project={p} onClick={clickProject} />;
-              })}
+          {volunteer.volunteering && volunteer.volunteering.length !== 0 && (
+            <div className="col-span-3 px-8 py-4 bg-white rounded-xl shadow-solid">
+              <h3 className="font-bold"> Volunteered For </h3>
+              <div className="flex flex-row flex-wrap gap-4">
+                {volunteer.volunteering.map((p) => {
+                  return (
+                    <ProjectMiniCard
+                      key={p._id}
+                      project={p}
+                      onClick={clickProject}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
@@ -104,7 +112,7 @@ const ProjectMiniCard = ({ project, onClick }) => {
       </h5>
       <div className="absolute top-0 left-0 h-60 w-48 bg-gradient-to-t from-black via-transparent opacity-50 z-10"></div>
       <img
-        className="object-cover transition transform duration-500 scale-105 group-hover:scale-100 group-hover:-translate-y-2"
+        className="h-60 w-48 object-cover transition transform duration-500 scale-105 group-hover:scale-100 group-hover:-translate-y-2"
         src={image}
       />
     </div>

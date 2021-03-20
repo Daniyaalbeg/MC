@@ -33,7 +33,6 @@ export const calculateFundingPercentPublic = (project) => {
 
 //For dashboard values using normalised state
 export const calculateSupplyPercent = (project, suppliesDict) => {
-  console.log(project);
   const supplies = project.supplies.map((supplyID) => suppliesDict[supplyID]);
   if (!project.supplies || project.supplies.length === 0) return 0;
   let totalAmountNeeded = 0;

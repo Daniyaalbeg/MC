@@ -234,6 +234,9 @@
   flex-direction: column;
   margin-bottom: 16px;
 }
+.formGroup > textarea {
+  padding: 8px;
+}
 .formGroupHeader {
   margin-bottom: 4px;
   font-size: larger;

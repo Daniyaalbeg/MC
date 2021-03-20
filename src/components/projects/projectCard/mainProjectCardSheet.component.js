@@ -32,7 +32,7 @@ const ProjectCardSheet = ({ project }) => {
       />
     );
   }
-  if (project.volunteer && project.volunteer.volunteersNeeded) {
+  if (project.volunteeringInfo && project.volunteeringInfo.volunteersNeeded) {
     renderedCircleVolunteers = (
       <ProgressInfo
         key="3"

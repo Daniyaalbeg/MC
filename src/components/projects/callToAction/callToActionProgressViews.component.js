@@ -1,23 +1,39 @@
-import React from 'react';
+import React from "react";
 
-import ProgressCircle from '../../sharedComponents/progressCircle.component';
-import { calculateSupplyPercentPublic, calculateFundingPercentPublic, calculateVolunteersPercentPublic } from '../../utilities/projectUtils.component';
+import ProgressCircle from "../../sharedComponents/progressCircle.component";
+import {
+  calculateSupplyPercentPublic,
+  calculateFundingPercentPublic,
+  calculateVolunteersPercentPublic,
+} from "../../utilities/projectUtils.component";
 
 const CallToActionProgressViews = ({ project }) => {
   return (
     <div className="callToActionProgressCircles">
-    {project.funding &&
-      <CallToActionProgress name="Funding" percent={calculateFundingPercentPublic(project)} colour="#4BB250" />
-    }
-    {project.volunteer &&
-      <CallToActionProgress name="Volunteers" percent={calculateVolunteersPercentPublic(project)} colour="#d6542d" />
-    }
-    {project.supplies &&
-      <CallToActionProgress name="Supplies" percent={calculateSupplyPercentPublic(project)} colour="#1589C9" />
-    }
+      {project.funding && (
+        <CallToActionProgress
+          name="Funding"
+          percent={calculateFundingPercentPublic(project)}
+          colour="#4BB250"
+        />
+      )}
+      {project.volunteeringInfo && (
+        <CallToActionProgress
+          name="Volunteers"
+          percent={calculateVolunteersPercentPublic(project)}
+          colour="#d6542d"
+        />
+      )}
+      {project.supplies && project.supplies.length !== 0 && (
+        <CallToActionProgress
+          name="Supplies"
+          percent={calculateSupplyPercentPublic(project)}
+          colour="#1589C9"
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
 const CallToActionProgress = ({ name, percent, colour }) => {
   return (
@@ -33,7 +49,7 @@ const CallToActionProgress = ({ name, percent, colour }) => {
       />
       <h5> {name} </h5>
     </div>
-  )
-}
+  );
+};
 
-export default CallToActionProgressViews
+export default CallToActionProgressViews;
