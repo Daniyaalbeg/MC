@@ -110,6 +110,9 @@ const CreateVolunteer = lazy(() =>
 const CreateUserVolunteer = lazy(() =>
   import("./components/signup/volunteer/createUserVolunteer.component")
 );
+const UpdateVolunteerProfile = lazy(() =>
+  import("./components/update/updateVolunteerProfile.component")
+);
 
 function App({ dispatch, checkedCookie }) {
   useEffect(() => {
@@ -159,6 +162,7 @@ function App({ dispatch, checkedCookie }) {
               path="/createUserVolunteer"
               component={CreateUserVolunteer}
             />
+            <Route path="/updateVolunteer" component={UpdateVolunteerProfile} />
             {/* <Route path="/cnic" component={CnicView} /> */}
             <Route path="/privacypolicy" component={PrivacyPolicy} />
             <Route path="/termsandconditions" component={TermsAndConditions} />

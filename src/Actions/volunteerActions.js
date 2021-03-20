@@ -124,8 +124,6 @@ const sendCreateVolunteerRequest = (dispatch, data) => {
     withCredentials: true,
     credentials: "include",
     data: data,
-    withCredentials: true,
-    credentials: "include",
   })
     .then((res) => {
       dispatch(createVolunteerSuccess());
@@ -133,6 +131,64 @@ const sendCreateVolunteerRequest = (dispatch, data) => {
     })
     .catch((err) => {
       dispatch(createVolunteerFailure(err));
+    });
+};
+
+export const UPDATE_VOLUNTEER = "UPDATE_VOLUNTEER";
+export const UPDATE_VOLUNTEER_SUCCESS = "UPDATE_VOLUNTEER_SUCCESS";
+export const UPDATE_VOLUNTEER_FAILURE = "UPDATE_VOLUNTEER_FAILURE";
+export const UPDATE_VOLUNTEER_RESET = "UPDATE_VOLUNTEER_RESET";
+
+export const updateVolunteer = (data) => ({
+  type: UPDATE_VOLUNTEER,
+});
+export const updateVolunteerSuccess = (data) => ({
+  type: UPDATE_VOLUNTEER_SUCCESS,
+  payload: data,
+});
+export const updateVolunteerFailure = (error) => ({
+  type: UPDATE_VOLUNTEER_FAILURE,
+  payload: error,
+});
+export const updateVolunteerReset = () => ({
+  type: UPDATE_VOLUNTEER_RESET,
+});
+
+export const updatingVolunteer = (data, didUpdloadNewImage) => {
+  return async (dispatch) => {
+    dispatch(updateVolunteer());
+
+    if (data.image && didUpdloadNewImage) {
+      console.log("object");
+      console.log(data.image);
+      withImageUploadSingle(
+        dispatch,
+        data,
+        sendUpdateVolunteerRequest,
+        updateVolunteerFailure,
+        "volunteerImages"
+      );
+    } else {
+      sendUpdateVolunteerRequest(dispatch, data);
+    }
+  };
+};
+
+const sendUpdateVolunteerRequest = (dispatch, data) => {
+  axios({
+    method: "post",
+    url: rootURL(production) + API + "/volunteer/update/",
+    headers: { "Content-Type": "application/json" },
+    data: data,
+    withCredentials: true,
+    credentials: "include",
+  })
+    .then((res) => {
+      dispatch(updateVolunteerSuccess());
+      dispatch(getUserInfo());
+    })
+    .catch((err) => {
+      dispatch(updateVolunteerFailure(err));
     });
 };
 
@@ -160,7 +216,7 @@ export const creatingUserVolunteer = (data) => {
   return async (dispatch) => {
     dispatch(createUserVolunteer());
 
-    if (data.imageURL) {
+    if (data.image) {
       withImageUploadSingle(
         dispatch,
         data,

@@ -66,7 +66,7 @@ const volunteerSchema = new Schema(
       required: true,
     },
     disability: {
-      type: Boolean,
+      type: String,
       required: false,
     },
     haveSmartPhone: {

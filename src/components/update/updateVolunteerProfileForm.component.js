@@ -4,27 +4,26 @@ import { Link, Redirect } from "react-router-dom";
 import { useFormik, Field } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
-import SelectMap from "../selectMap.component";
 import Dropzone, { useDropzone } from "react-dropzone";
 import {
   baseStyle,
   acceptStyle,
   activeStyle,
   rejectStyle,
-} from "../../utilities/dropzoneStyles";
-import Thumb from "../../utilities/thumb.component";
-import LoadingSpinner from "../../utilities/loadingSpinner.component";
-import SkillsSelection from "../../sharedComponents/skillsSelection.component";
+} from "../utilities/dropzoneStyles";
+import Thumb from "../utilities/thumb.component";
+import LoadingSpinner from "../utilities/loadingSpinner.component";
+import SkillsSelection from "../sharedComponents/skillsSelection.component";
 import {
   SelectBadgeOptionsForm,
   CategoryBadgeOptionsForm,
-} from "../../sharedComponents/selectBadgeOptions.component";
-import { listOfLanguages } from "../../utilities/dataOptions.component";
+} from "../sharedComponents/selectBadgeOptions.component";
+import { listOfLanguages } from "../utilities/dataOptions.component";
 
 import {
-  creatingVolunteer,
-  createVolunteerReset,
-} from "../../../Actions/volunteerActions";
+  updatingVolunteer,
+  updateVolunteerReset,
+} from "../../Actions/volunteerActions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandsHelping } from "@fortawesome/pro-solid-svg-icons";
@@ -69,15 +68,17 @@ const validationSchema = Yup.object().shape({
   agreedToTerms: Yup.bool().oneOf([true], "*Must accept terms and conditions"),
 });
 
-const CreateVolunteerForm = ({
+const UpdateVolunteerProfileForm = ({
   dispatch,
   hasErrors,
   loading,
   success,
   auth,
-  user,
+  userDict,
+  userID,
 }) => {
   const [imageFiles, setImageFiles] = useState([]);
+  const [didUploadNewImage, setDidUploadNewImage] = useState(false);
   const [rejectedFilesState, setRejectedFilesState] = useState([]);
   const { isDragActive, isDragAccept, isDragReject } = useDropzone({
     accept: "image/jpeg, image/png, image/jpg, image/gif",
@@ -93,29 +94,31 @@ const CreateVolunteerForm = ({
     [isDragActive, isDragReject]
   );
 
+  const user = userDict[userID];
+
   const formik = useFormik({
     initialValues: {
-      firstName: user.firstname,
-      lastName: user.lastname,
-      email: user.email,
-      cnic: user.cnic,
-      image: null,
-      dob: new Date(),
-      gender: "",
-      about: "",
-      contactNumber: user.mobile,
-      educationLevel: "primary",
-      employmentStatus: "STUDENT",
-      disability: "",
-      languages: [],
-      haveSmartPhone: false,
-      vehicle: "none",
-      preferredContact: "",
-      country: user.address ? user.address.country : "",
-      city: user.address ? user.address.city : "",
-      skills: [],
-      interests: [],
-      isPrivate: false,
+      firstName: user.volunteer.firstName,
+      lastName: user.volunteer.lastName,
+      email: user.volunteer.email,
+      cnic: user.volunteer.cnic,
+      image: user.volunteer.image,
+      dob: new Date(user.volunteer.dob),
+      gender: user.volunteer.gender,
+      about: user.volunteer.about,
+      contactNumber: user.volunteer.contactNumber,
+      educationLevel: user.volunteer.educationLevel,
+      employmentStatus: user.volunteer.employmentStatus,
+      disability: user.volunteer.disability,
+      languages: user.volunteer.languages,
+      haveSmartPhone: user.volunteer.haveSmartPhone,
+      vehicle: user.volunteer.vehicle,
+      preferredContact: user.volunteer.preferredContact,
+      country: user.volunteer.country,
+      city: user.volunteer.city,
+      skills: user.volunteer.skills,
+      interests: user.volunteer.interests,
+      isPrivate: user.volunteer.isPrivate,
       agreedToTerms: false,
     },
     validationSchema: validationSchema,
@@ -143,16 +146,16 @@ const CreateVolunteerForm = ({
         interests: values.interests,
         isPrivate: values.isPrivate,
       };
-      dispatch(creatingVolunteer(data));
+      dispatch(updatingVolunteer(data, didUploadNewImage));
       // alert(JSON.stringify(data))
     },
   });
 
-  if (!auth) {
+  if (!auth || !user || !user.volunteer) {
     return <Redirect to="/dashboard" />;
   }
   if (success) {
-    dispatch(createVolunteerReset());
+    dispatch(updateVolunteerReset());
     return <Redirect to="/dashboard" />;
   }
 
@@ -162,7 +165,7 @@ const CreateVolunteerForm = ({
         <form noValidate onSubmit={formik.handleSubmit}>
           <div className="formMainHeader">
             <FontAwesomeIcon icon={faHandsHelping} size="2x" />
-            <h2> Volunteer Sign Up </h2>
+            <h2> Volunteer Update </h2>
           </div>
           <div className="formMainBody">
             <div className="formRow">
@@ -257,6 +260,7 @@ const CreateVolunteerForm = ({
                     setRejectedFilesState(acceptedFiles);
                     return;
                   }
+                  setDidUploadNewImage(true);
                   setImageFiles(acceptedFiles);
                   formik.setFieldValue("image", acceptedFiles[0]);
                 }}
@@ -297,7 +301,7 @@ const CreateVolunteerForm = ({
                 }}
                 name="dob"
                 className="datePicker"
-                maxDate={new Date()}
+                // maxDate={new Date()}
                 showMonthDropdown
                 showYearDropdown
                 dropdownMode="select"
@@ -651,7 +655,7 @@ const CreateVolunteerForm = ({
                     style={{ marginRight: "8px", minHeight: "unset" }}
                   />
                 ) : (
-                  "Create Volunteer"
+                  "Update Volunteer"
                 )}
               </button>
               <button
@@ -665,7 +669,7 @@ const CreateVolunteerForm = ({
             </div>
 
             {success && (
-              <p className="successReply"> Volunteer sign up successful. </p>
+              <p className="successReply"> Volunteer update successful. </p>
             )}
           </div>
         </form>
@@ -674,12 +678,4 @@ const CreateVolunteerForm = ({
   );
 };
 
-const MapStateToProps = (state) => ({
-  loading: state.signUp.loading,
-  success: state.signUp.success,
-  hasErrors: state.signUp.hasErrors,
-  auth: state.auth.auth,
-  user: state.userInfo.user,
-});
-
-export default connect(MapStateToProps)(CreateVolunteerForm);
+export default UpdateVolunteerProfileForm;

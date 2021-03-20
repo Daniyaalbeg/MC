@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import UserImagePlaceholder from "../../sharedComponents/userImagePlaceholder.component";
 import { WhatCategories } from "../../iconController/iconCategories.component";
 import VolunteerPillsList from "../../volunteers/volunteerPillsList.component";
@@ -10,6 +11,7 @@ import { faEdit, faChevronCircleUp } from "@fortawesome/pro-duotone-svg-icons";
 
 const VolunteerProfile = ({ volunteer }) => {
   const [expanded, setExpanded] = useState();
+  const histroy = useHistory();
 
   return (
     <>
@@ -33,7 +35,11 @@ const VolunteerProfile = ({ volunteer }) => {
             <VolunteerPillsList size="small" items={volunteer.skills} />
           </div>
           <div className="volunteerProfileButtons">
-            <button>
+            <button
+              onClick={() => {
+                histroy.push("/updateVolunteer");
+              }}
+            >
               {" "}
               <FontAwesomeIcon icon={faEdit} />{" "}
             </button>
