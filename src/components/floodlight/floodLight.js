@@ -9,6 +9,7 @@ const FloodLight = () => {
 				src="https://pak-flood.ushahidi.io/views/map"
 				frameborder="0"
 				allowfullscreen
+				title="Floodlight Map"
 			></iframe>
 		</div>
 	);

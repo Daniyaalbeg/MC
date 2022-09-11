@@ -18,6 +18,7 @@ import image13 from '../../assets/video/placeholder/13.jpg';
 import image14 from '../../assets/video/placeholder/14.jpg';
 import image15 from '../../assets/video/placeholder/15.jpg';
 import image16 from '../../assets/video/placeholder/16.jpg';
+import image17 from '../../assets/video/placeholder/17.jpg';
 import { CLIENT, production, rootURL } from '../../config';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -136,6 +137,13 @@ const videos = [
 		player: 'https://www.youtube.com/embed/YFT0jut6Ki4',
 		url: 'https://youtu.be/YFT0jut6Ki4',
 		image: image16,
+	},
+	{
+		id: 17,
+		name: 'Special programme on the floods in Pakistan',
+		player: 'https://www.youtube.com/embed/7NWhjlcoNAw',
+		url: 'https://youtu.be/7NWhjlcoNAw',
+		image: image17,
 	},
 ];
 
