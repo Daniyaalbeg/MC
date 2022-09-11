@@ -14,19 +14,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const VolunteerCard = ({ volunteer, onClick }) => {
-	// const [user, setUser] = useState(null);
-	// useEffect(() => {
-	//   fetch("https://randomuser.me/api/")
-	//     .then((res) => res.json())
-	//     .then((data) => setUser(data.results[0]));
-	// }, []);
-	// if (!user) return null;
-
 	const clickVolunteer = () => {
 		onClick(volunteer.parentId);
 	};
-
-	console.log(volunteer);
 
 	return (
 		<div
