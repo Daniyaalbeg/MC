@@ -44,6 +44,25 @@
   object-position: 55% 0%;
 }
 
+.homeImageNew1 {
+  object-position: 49% 0%;
+}
+.homeImageNew2 {
+  object-position: 70% 30%;
+}
+.homeImageNew3 {
+  object-position: 60% 30%;
+}
+.homeImageNew4 {
+  object-position: 35% 40%;
+}
+.homeImageNew5 {
+  object-position: 20% 65%;
+}
+.homeImageNew6 {
+  object-position: 40% 50%;
+}
+
 .spinnerHomeView {
   text-align: center;
   margin-top: 2rem;
@@ -102,6 +121,32 @@
   margin: auto;
   text-shadow: 1px 1px 4px black;
 }
+
+.captionNew1 {
+  left: 50%;
+  top: 75%;
+}
+.captionNew2 {
+  left: 50%;
+  top: 50%;
+}
+.captionNew3 {
+  left: 50%;
+  top: 75%;
+}
+.captionNew4 {
+  left: 30%;
+  top: 35%;
+}
+.captionNew5 {
+  left: 50%;
+  top: 50%;
+}
+.captionNew6 {
+  left: 50%;
+  top: 80%;
+}
+
 .caption0 {
   left: 50%;
   top: 65%;

@@ -14,7 +14,7 @@ const NavigationBar = ({ auth }) => {
 	if (location.pathname === '/') {
 		return (
 			<Navbar
-				className="navBarHome"
+				className="navBarHome bg-gradient-to-b from-black to-transparent"
 				variant="dark"
 				expand="lg"
 				expanded={dropDown}

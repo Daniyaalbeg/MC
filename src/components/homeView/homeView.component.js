@@ -13,24 +13,37 @@ import Footer from './mainFooter.component';
 import badlde from '../../assets/logo/badlde.png';
 import serendip from '../../assets/logo/serendip.jpg';
 
-import photo0 from '../../assets/Images/oldman.jpg';
-import photo3 from '../../assets/Images/chitralman.jpg';
-import photo2 from '../../assets/Images/doobi.jpg';
-import photo9 from '../../assets/Images/kalashgirls.jpg';
-import photo6 from '../../assets/Images/kalashkids.jpg';
-import photo5 from '../../assets/Images/smallkid.jpg';
-import photo7 from '../../assets/Images/attentiveDude.jpg';
-import photo1 from '../../assets/Images/girlCamera.jpg';
-import photo4 from '../../assets/Images/presentation.jpg';
-import photo8 from '../../assets/Images/sindhLady.jpg';
+// import photo0 from '../../assets/Images/oldman.jpg';
+// import photo3 from '../../assets/Images/chitralman.jpg';
+// import photo2 from '../../assets/Images/doobi.jpg';
+// import photo9 from '../../assets/Images/kalashgirls.jpg';
+// import photo6 from '../../assets/Images/kalashkids.jpg';
+// import photo5 from '../../assets/Images/smallkid.jpg';
+// import photo7 from '../../assets/Images/attentiveDude.jpg';
+// import photo1 from '../../assets/Images/girlCamera.jpg';
+// import photo4 from '../../assets/Images/presentation.jpg';
+// import photo8 from '../../assets/Images/sindhLady.jpg';
 import mapScreenshot from '../../assets/Images/mapScreenshot.png';
 import imagePlaceholder from '../../assets/Images/temp.jpg';
 
+import photoNew1 from '../../assets/Images/new/1.jpg';
+import photoNew2 from '../../assets/Images/new/2.jpg';
+import photoNew3 from '../../assets/Images/new/3.jpg';
+import photoNew4 from '../../assets/Images/new/4.jpg';
+import photoNew5 from '../../assets/Images/new/5.jpg';
+import photoNew6 from '../../assets/Images/new/6.jpg';
+
 //together we can, change our destiny, by changing ourselves doobi, being in service chitral dude, doing good presentation, living our truth mother son, working together group boys, focusing solutions ather, respecting diversity sindhi, honoring past kalash, together we can defocus being humble
-const images = [photo0, photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9]
-const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "BY CHANGING OURSELVES", "BEING IN SERVICE", "DOING GOOD", "LIVING OUR TRUTH", "WORKING TOGETHER", "FOCUSING ON SOLUTIONS", "RESPECTING DIVERSITY", "HONOURING OUR PAST"]
-const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5", "caption6", "caption7", "caption8", "caption9"]
-const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5", "homeImage6", "homeImage7", "homeImage8", "homeImage9"]
+// const images = [photo0, photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9]
+// const captions = ["TOGETHER WE CAN", "CHANGE OUR DESTINY", "BY CHANGING OURSELVES", "BEING IN SERVICE", "DOING GOOD", "LIVING OUR TRUTH", "WORKING TOGETHER", "FOCUSING ON SOLUTIONS", "RESPECTING DIVERSITY", "HONOURING OUR PAST"]
+// const styleCaptions = ["caption0", "caption1", "caption2", "caption3", "caption4", "caption5", "caption6", "caption7", "caption8", "caption9"]
+// const styleImages = ["homeImage0", "homeImage1", "homeImage2", "homeImage3", "homeImage4", "homeImage5", "homeImage6", "homeImage7", "homeImage8", "homeImage9"]
+
+const images = [photoNew1, photoNew2, photoNew3, photoNew4, photoNew5, photoNew6]
+const captions = ["HELP THEM HELP THEMSELVES", "NETWORK WITH CHANGEMAKERS", "VOLUNTEER IN PROJECTS", "DONATE TO CAUSES", "FIND SOLUTIONS", "HAVE YOUR VOICE HEARD"]
+const styleCaptions = ["captionNew1", "captionNew2", "captionNew3", "captionNew4", "captionNew5", "captionNew6"]
+const styleImages = ["homeImageNew1", "homeImageNew2", "homeImageNew3", "homeImageNew4", "homeImageNew5", "homeImageNew6"]
+
 
 const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading, statLoading, statFetched, statHasErrors, featuredLoading, featuredFetched, featuredHasErrors, numberOfEvents, numberOfUsers, numberOfGroups, numberOfOrganisations, featuredOrgs }) => {
   useEffect(() => {
@@ -52,7 +65,7 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
       <meta name="description" content="A web portal for change makers." />
     </Helmet>
     <div className="homeViewContainer">
-      <Carousel controls={true} fade={true} indicators={false} interval={2000}>
+      <Carousel controls={true} fade={true} indicators={false} interval={10000}>
         {images.map((image, index) => {
           return (
             <Carousel.Item className="carouselImage" key={image}>
@@ -65,6 +78,12 @@ const HomeView = ({ dispatch, userInfoFetched, userInfoHasError, userInfoLoading
         })}
       </Carousel>
       <ProjectsInfo loading={statLoading} hasErrors={statHasErrors} numberOfEvents={numberOfEvents} numberOfUsers={numberOfUsers} numberOfGroups={numberOfGroups} numberOfOrganisations={numberOfOrganisations}/>
+      <div className='w-full my-16'>
+        <h1 className='w-full text-center'> Let us build Pakistan together </h1>
+        <div className='w-full justify-center items-center flex'>
+          <a href="/map" className='font-bold px-3 py-2 bg-blue-200 rounded-xl' > See who is doing what </a>
+        </div>
+      </div>
       <div className="separator text-muted featuredText"> WHO WE ARE </div>
       <IntroText />
       <div className="separator text-muted featuredText"> FEATURED ORGANISATIONS TO ENGAGE WITH </div>
