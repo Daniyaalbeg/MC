@@ -12,6 +12,7 @@ import Footer from './mainFooter.component';
 
 import badlde from '../../assets/logo/badlde.png';
 import serendip from '../../assets/logo/serendip.jpg';
+import cfp from '../../assets/logo/codeforpakistan.svg';
 
 // import photo0 from '../../assets/Images/oldman.jpg';
 // import photo3 from '../../assets/Images/chitralman.jpg';
@@ -125,7 +126,8 @@ const Partners = () => {
         <div className="logoRow" style={{justifyContent: 'center'}}>
           {/* <a href="http://akho.org.pk" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={akho} alt="error" /></a> */}
           <a href="https://badlde.org" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={badlde} alt="error" /></a>
-          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={serendip} alt="error" /></a>
+          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow mr-4" src={serendip} alt="error" /></a>
+          <a href="http://serendip.tv" target="_blank" rel="noopener noreferrer"><img className="logoImage grow" src={cfp} alt="error" /></a>
         </div>
       </div>
   )
